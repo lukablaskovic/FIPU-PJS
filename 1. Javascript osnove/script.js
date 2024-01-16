@@ -5,5 +5,6 @@ function showMessage() {
   let formatiranaCijena = `Cijena proizvoda je ${Number(
     cijenaProizvoda
   )} ${valuta}.`;
+
   console.log(formatiranaCijena);
 }
