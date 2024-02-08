@@ -12,7 +12,7 @@
 
 # [1] JavaScript osnove
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/logojs/js1.png?token=GHSAT0AAAAAACM66GF6HP5JA4MRHDCZM2NOZOCDK5Q" style="width:9%; float:right;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js1.png?raw=true" style="width:9%; float:right;"></img>
 
 <p style="float: clear">JavaScript je programski jezik često korišten u web programiranju. Inicijalno je bio namijenjen kako bi učinio web stranice interaktivnijima. Međutim, danas se koristi i za izradu server-side aplikacija, desktop aplikacija, mobilnih aplikacija itd. </p>
 
@@ -118,7 +118,7 @@ function showMessage() {
 
 Kada otvorimo HTML dokument u web pregledniku, možemo otvoriti konzolu (F12) i vidjeti poruku "Hello World!", tako jednostavno!
 
-![Hello World](https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/1.%20Javascript%20osnove/screenshots/hello_world.png?token=GHSAT0AAAAAACM66GF6WM7HEE6ZUBBAOLJ2ZOCDLSQ)
+![Hello World](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/hello_world.png?raw=true)
 
 Idemo sada izmjeniti tekst koji nam ispisuje funkcija `showMessage()`. U `script.js` datoteci promijenimo tekst u `Hello JavaScript!`:
 
@@ -131,8 +131,8 @@ function showMessage() {
 
 Možemo primjetiti da se ponovnim klikom na gumb, tekst u konzoli nije promijenio. To je zato što je kȏd iz `script.js` datoteke izvršen samo jednom, prilikom učitavanja stranice. Da bi promjena bila prikazana, moramo osvježiti stranicu (F5).
 
-Naporno je svaki put osvježavati stranicu da bi vidjeli naše promjene. Iz tog razloga ćemo preuzeti [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) ekstenziju za Visual Studio Code. Ona će nam omogućiti da otvorimo HTML dokument u web pregledniku i da se svaka promjena u kodu automatski osvježi u web pregledniku. Nakon što instaliramo ekstenziju, kliknemo desnim klikom na HTML dokument i odaberemo `Open with Live Server`.
-![Live server](https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/1.%20Javascript%20osnove/screenshots/live_server.png?token=GHSAT0AAAAAACM66GF6DYCR52ST4W4WT24IZOCDMCA)
+Naporno je svaki put osvježavati stranicu da bi vidjeli naše promjene. Iz tog razloga ćemo preuzeti [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) ekstenziju za Visual Studio Code. Ona će nam omogućiti da otvorimo HTML dokument u web pregledniku i da se svaka promjena u kodu automatski osvježi u web pregledniku. Nakon što instaliramo ekstenziju, kliknemo desnim klikom na HTML dokument i odaberemo `Open with Live Server`.  
+![Live server](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/live_server.png?raw=true)
 
 # 2. Izrazi, tvrdnje, varijable, tipovi podataka i operatori
 
@@ -405,7 +405,7 @@ Nakon toga, `typeof` operatorom provjerite tipove varijabli i u konzolu ispišit
 Zašto `console.log(a == b)` vraća `true`? Objasnite.
 
 Rezultat:  
-![vjezba_1](https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/1.%20Javascript%20osnove/screenshots/vjezba1.png?token=GHSAT0AAAAAACM66GF7AJYEU6XQZ2KAALXQZOCDNEQ)
+![vjezba_1](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba1.png?raw=true)
 
 ## Vježba 2
 
@@ -413,7 +413,7 @@ Idemo sada napraviti jednostavan kalkulator. U `script.js` datoteci deklarirajte
 Dodatno, ispišite u konzolu ostatak pri dijeljenju varijabli `a` i `b` i rezultat eksponiranja varijable `a` na potenciju varijable `b`.
 
 Rezultat:  
-![vjezba_2](https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/1.%20Javascript%20osnove/screenshots/vjezba2.png?token=GHSAT0AAAAAACM66GF6UB4M5QICDVOFEVAYZOCDNNA)
+![vjezba_2](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba2.png?raw=true)
 
 ## 2.3 Koncept varijable u JavaScriptu
 
@@ -599,7 +599,7 @@ Deklarirajte dvije varijable `ime` i `prezime` i dodijelite im vrijednosti `Mark
 
 Rezultat:
 
-![vjezba3](https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?token=GHSAT0AAAAAACM66GF72GICFZC4K7NDAJ7SZOCDNZQ)
+![vjezba3](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?raw=true)
 
 ## Vježba 4
 
@@ -609,9 +609,12 @@ Napomena, vrijednost u eksponencijalnom zapisu možete pretvoriti u broj koriste
 
 Rezultat:
 
-![vjezba4](https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?token=GHSAT0AAAAAACM66GF64TMQSJL3E4H7VRKUZOCDN7Q)
+![vjezba4](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?raw=true)
 
 ## 3. Samostalni zadatak za vježbu
+
+**Napomena**: Ne predaje se i ne boduje se.
+
 1. Deklarirajte tri konstante i jednu promjenjivu varijablu. Konstante neka budu vaše `ime` i `prezime` i `godina_rodenja`. Promjenjivu varijablu nazovite `trenutno_vrijeme`.
 2. U varijable `ime` i `prezime` pohranite svoje ime i prezime, a u varijablu `godina_rodenja` pohranite godinu rođenja kao cjelobrojnu vrijednost. U varijablu `trenutno_vrijeme` pohranite trenutno vrijeme koristeći `new Date()` objekt.
 3. Napravite novu varijablu `godine` i u nju izračunajte koliko imate godina koristeći funkciju [`getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) nad varijablom `trenutno_vrijeme` i varijablu `godina_rodenja`. Radi pojednostavljivanja, pretpostavljamo da je vaš rođendan već prošao ove godine.
@@ -622,3 +625,4 @@ Rezultat:
 8. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s 2 . **Napomena**, sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji koda</span>.
 9. Upišite u novu varijablu `xsc` vrijednost varijable `x` u znanstvenom zapisu (napisati ručno!).
 10. Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`.
+
