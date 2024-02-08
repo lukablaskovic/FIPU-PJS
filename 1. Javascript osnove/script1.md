@@ -40,7 +40,7 @@
   - [2.5 BigInt [DODATNO]](#25-bigint-dodatno)
   - [Vježba 3](#vježba-3)
   - [Vježba 4](#vježba-4)
-- [3. Samostalni zadatak za vježbu](#3-samostalni-zadatak-za-vjebu)
+- [3. Samostalni zadatak za vježbu](#3-samostalni-zadatak-za-vježbu)
 
 <br>
 
