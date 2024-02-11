@@ -1,6 +1,8 @@
 # Programiranje u skriptnim jezicima
+
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
+
 - Luka Blašković, univ. bacc. inf.
 - Alesandro Žužić, univ. bacc. inf.
 
@@ -9,10 +11,11 @@
 <img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%"></img>
 
 # [1] Naslov skripte
+
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="logojs/js0.png" style="width:9%; float:right;"></img>
-<p style="float: clear">Uvod od nekoliko rečenica ovdje </p>
 
+<p style="float: clear">Uvod od nekoliko rečenica ovdje </p>
 
 ## Sadržaj
 
@@ -52,16 +55,17 @@ function showMessage() {
 }
 ```
 
-
 ### 2.2.1 Primjer grananja naslova
 
 #### Naslov 4
+
 #### Naslov 4
+
 #### Naslov 4
+
 ## 3. Primjer spoilera
+
 - kad se exporta u PDF ne radi, vec samo prikaze sadrzaj
-
-
 
 <details>
   <summary>Primjer spoilera!</summary>
@@ -74,19 +78,20 @@ function showMessage() {
 
 let x = "Volvo" + 16 + 4;
 console.log(x); // Volvo164
+
 ```
 </details>
 
 ## Vježba 1
 
 ### Tekst zadatka, npr.
-Idemo napraviti kratku vježbu onoga što smo dosad prošli. U `script.js` datoteci deklarirajte varijable `a`, `b` i `c` i dodijelite im vrijednosti `5`, `"5"` i true. Ispišite vrijednosti varijabli u konzolu i provjerite njihove tipove. Kod dodajte unutar funkcije `showMessage()`.  
-Nakon toga, `typeof` operatorom provjerite tipove varijabli i u konzolu ispišite tvrdnju za svaku varijablu, npr. "Varijabla a je tipa number". Izraze u `console.log()` možete spojiti pomoću `+` operatora.  
+Idemo napraviti kratku vježbu onoga što smo dosad prošli. U `script.js` datoteci deklarirajte varijable `a`, `b` i `c` i dodijelite im vrijednosti `5`, `"5"` i true. Ispišite vrijednosti varijabli u konzolu i provjerite njihove tipove. Kod dodajte unutar funkcije `showMessage()`.
+Nakon toga, `typeof` operatorom provjerite tipove varijabli i u konzolu ispišite tvrdnju za svaku varijablu, npr. "Varijabla a je tipa number". Izraze u `console.log()` možete spojiti pomoću `+` operatora.
 
 Zašto `console.log(a == b)` vraća `true`? Objasnite.
 
 ### Screenshot rezultata, npr.
-Rezultat:  
+Rezultat:
 ![vjezba_1](vjezba1.png)
 
 ## Vježba 2
@@ -102,4 +107,5 @@ Rezultat:
 7. Ispišite u konzolu "It is __ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
 8. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s 2 . **Napomena**, sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji koda</span>.
 9. Upišite u novu varijablu `xsc` vrijednost varijable `x` u znanstvenom zapisu (napisati ručno!).
-10. Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`. 
+10. Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`.
+```
