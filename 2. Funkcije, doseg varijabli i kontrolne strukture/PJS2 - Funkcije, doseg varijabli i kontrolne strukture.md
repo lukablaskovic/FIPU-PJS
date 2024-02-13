@@ -492,3 +492,7 @@ function sve_o_krugu(r) {
 }
 let zbroj = sve_o_krugu(5);
 ```
+
+# 3. Kontrolne strukture
+
+Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na temelju određenih uvjeta. Ako je uvjet ispunjen tada se izvršava određeni blok radnji, inače će se izvršavati drugi blok radnji koji zadovoljava taj uvjet. Kontrolne strukture možemo podijeliti u dvije kateogrije:
