@@ -35,6 +35,7 @@
     - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
     - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
   - [Vježba 2](#vježba-2)
+- [Samostalni zadatak za vježbu](#samostalni-zadatak-za-vježbu)
 - [3. Kontrolne strukture](#3-kontrolne-strukture)
   - [3.1 Selekcije](#31-selekcije)
     - [3.1.1 `if` selekcija](#311-if-selekcija)
@@ -371,7 +372,7 @@ console.log(a); // 1
 ### 2.3 Funkcijski izrazi
 
 Funkcijski izrazi (eng. **_function expressions_**) su način definiranja funkcija kao vrijednosti varijable. Mogu se koristiti kako bi definirali funkciju unutar izraza.
-Funkcijski izrazi također se definiraju s ključnom riječi `function`, ali se razlikuju od deklaracija funkcija po tome što se mogu dodijeliti varijablama, proslijediti kao argumenti drugim funkcijama, koristiti kao pridruživanje vrijednosti objektima i sl. Sintaksa je vrlo slična kao i kod klasične `function` deklaracije.
+Funkcijski izrazi također se definiraju s ključnom riječi `function`, ali se razlikuju od deklaracija funkcija po tome što se mogu dodijeliti varijablama, proslijediti kao argumenti drugim funkcijama, koristiti kao pridruživanje vrijednosti objektima i sl. Sintaksa je vrlo slična kao i kȏd klasične `function` deklaracije.
 
 ```javascript
 const izracunaj_povrsinu_pravokutnika = function (duzina, sirina) {
@@ -380,7 +381,7 @@ const izracunaj_povrsinu_pravokutnika = function (duzina, sirina) {
 console.log(izracunaj_povrsinu_pravokutnika(5, 3)); // 15 - funkciju pozivamo na isti način kao i deklarirane funkcije
 ```
 
-Kako razlikovati u kodu deklaraciju funkcije i funkcijske izraze? Uzmimo za primjer funkciju `zbroji` koja zbraja dva broja.
+Kako razlikovati u kȏdu deklaraciju funkcije i funkcijske izraze? Uzmimo za primjer funkciju `zbroji` koja zbraja dva broja.
 
 Deklaracija funkcije izgleda ovako:
 
@@ -398,7 +399,7 @@ const zbroji = function (a, b) {
 };
 ```
 
-Možemo primjetiti da se kod funkcijskog izraza funkcija izrađuje s desne strane operatora dodjeljivanja `=`.
+Možemo primjetiti da se kod funkcijskog izraza funkcija "izrađuje" s desne strane operatora dodjeljivanja `=`.
 
 Kako smo ranije spomenuli, u poglavlju 1.3, **function hoisting** ponašanje dovodi do toga da se deklaracije funkcija mogu pozvati prije nego su deklarirane. Međutim, to se ne odnosi na funkcijske izraze. Funkcijski izrazi se ponašaju kao bilo koja druga varijabla, i ne mogu se pozvati prije nego su deklarirane.
 
@@ -489,12 +490,50 @@ Rezultat:
 
 ![vjezba2](screenshots/vjezba2.png)
 
+# Samostalni zadatak za vježbu
+
+Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+
+1. Napišite **funkciju** `provjera_parnosti` koja će provjeravati je li broj paran ili neparan. Funkcija treba primiti jedan parametar `broj` i vratiti boolean vrijednosti "true" za parnost ili "false" za neparnost. Funkciju napišite **bez** upotrebe selekcija (if, else, switch) Funkciju pozovite s argumentom `5` i ispišite rezultat u konzolu.
+2. Napišite **funkcijski izraz** `izrazunaj_povrsinu` koji računa površinu pravokutnika. U varijablu `povrsina` pohranite taj funkcijski izraz. Ispišite vrijednost `povrsina(8,6)` u konzolu.
+3. Napišite **funkcijski izraz** `BMI` koji računa BMI (Body Mass Index) osobe. BMI se računa prema formuli `BMI = težina / (visina * visina)`. Ispišite u konzolu BMI osobe koja ima težinu 75 kg i visinu 1.75 m.
+4. Napišite **funkciju** `heron()` koja će računati površinu trokuta prema Heronovoj formuli. Funkcija treba primiti tri parametra `a`, `b` i `c` koji predstavljaju duljine stranica trokuta.
+   - Heronova formula: `P = √(p * (p - a) * (p - b) * (p - c))` gdje je `p` poluopseg trokuta, a računa se prema formuli `p = (a + b + c) / 2`. Koristite funkciju `Math.sqrt()` za računanje korijena.
+   - Napišite funkcijsi izraz `poluopseg` koji će primiti tri parametra `a`, `b` i `c` te vratiti poluopseg trokuta prema danoj formuli. Funkcijski izraz mora biti definiran unutar funkcije `heron()`.
+   - Deklarirajte novu konstantu `p` koja će pohraniti vrijednost funkcijskog izraza `poluopseg(a, b, c)`.
+   - Rezultat funkcije `heron(3, 4, 5)` pohranite u varijablu `povrsina_trokuta` te ispišite u konzolu: `Trokut s duljinama stranica _, _ i _ ima površinu: povrsina_trokuta(_, _, _)` koristeći `template_literals`.
+5. Sljedeći JavaScript kȏd sadrži nekoliko grešaka. Pronađite i ispravite greške kako bi kȏd radio ispravno. Provjerite s pozivom funkcije `izracunaj(x, y, z);` koji mora ispisati `17` i `3`. 
+
+```javascript
+  const x = 10;
+  const y = 5;
+  const z = 2;
+  
+  function izracunaj(x, y, z) {
+    let x = 5;
+    let y = 3;
+    let z = 2;
+
+    function = zbroji() {
+      return x + y + z;
+    }
+    console.log(function(zbroji(x,y,z)))
+
+    const oduzmi = function () = {
+      return y - x - z;
+    }
+    console.log(oduzmi());
+  }
+  // Provjera: izracunaj(x, y, z); mora ispisati sljedeće:
+  // 17
+  // 3
+```
 # 3. Kontrolne strukture
 
 Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na temelju određenih uvjeta. Ako je uvjet ispunjen tada se izvršava određeni blok radnji, inače će se izvršavati drugi blok radnji koji zadovoljava taj uvjet. Kontrolne strukture možemo podijeliti u dvije kateogrije:
 
-1. Selekcije (eng. **_Conditional statements_**) - odlučuju o toku izvršavanja bloka koda na temelju logičkog izraza koji se evaluira u `true` ili `false`.
-2. Iteracije/Petlje (eng. **_Iterations_**) - omogućuju izvršavanje bloka koda više puta dok se ne ispuni uvjet definiran logičkim izrazom.
+1. Selekcije (eng. **_Conditional statements_**) - odlučuju o toku izvršavanja bloka kȏda na temelju logičkog izraza koji se evaluira u `true` ili `false`.
+2. Iteracije/Petlje (eng. **_Iterations_**) - omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom.
 
 ## 3.1 Selekcije
 
@@ -628,7 +667,7 @@ Najlakše je objasniti logičke operatore kroz konkretne primjere:
 
 ### Primjer 1 - Selekcija vremena u danu (operator `&&` + `if-else` selekcija)
 
-Prije nego što krenemo sa samim kodom, zapisat ćemo nekoliko tvrdnji koje ćemo provjeravati logičkim operatorima:
+Prije nego što krenemo sa samim kȏdom, zapisat ćemo nekoliko tvrdnji koje ćemo provjeravati logičkim operatorima:
 
 - Ako je vrijeme između 6 i 12 sati, pozdravit ćemo s "Dobro jutro!"
 - Ako je vrijeme između 12 i 18 sati, pozdravit ćemo s "Dobar dan!"
