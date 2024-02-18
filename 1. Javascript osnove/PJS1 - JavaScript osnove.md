@@ -41,7 +41,7 @@
   - [2.5 BigInt \[DODATNO\]](#25-bigint-dodatno)
   - [Vježba 3](#vježba-3)
   - [Vježba 4](#vježba-4)
-  - [3. Samostalni zadatak za vježbu](#3-samostalni-zadatak-za-vježbu)
+- [Samostalni zadatak za vježbu](#samostalni-zadatak-za-vježbu)
 
 <br>
 
@@ -612,7 +612,7 @@ Rezultat:
 
 ![vjezba4](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?raw=true)
 
-## 3. Samostalni zadatak za vježbu
+# Samostalni zadatak za vježbu
 
 **Napomena**: Ne predaje se i ne boduje se. Zadatak rješavate u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
 
