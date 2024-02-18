@@ -798,5 +798,5 @@ Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. 
 
 Rezultat:
 
-![alt text](image-5.png)
+![vjezba3](screenshots/vjezba3.png)
 
