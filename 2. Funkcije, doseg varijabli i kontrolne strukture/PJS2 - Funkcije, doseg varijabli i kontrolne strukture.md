@@ -496,3 +496,127 @@ let zbroj = sve_o_krugu(5);
 # 3. Kontrolne strukture
 
 Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na temelju određenih uvjeta. Ako je uvjet ispunjen tada se izvršava određeni blok radnji, inače će se izvršavati drugi blok radnji koji zadovoljava taj uvjet. Kontrolne strukture možemo podijeliti u dvije kateogrije:
+
+1. Selekcije (eng. **_Conditional statements_**) - odlučuju o toku izvršavanja bloka koda na temelju logičkog izraza koji se evaluira u `true` ili `false`.
+2. Iteracije/Petlje (eng. **_Iterations_**) - omogućuju izvršavanje bloka koda više puta dok se ne ispuni uvjet definiran logičkim izrazom.
+
+## 3.1 Selekcije
+
+U JavaScriptu, kao i u većini programskih jezika, selekcije se ostvaruju pomoću ključnih riječi `if`, `else if` i `else` te `switch`. Kada koristimo koju selekciju ovisi o tome koliko uvjeta želimo provjeriti:
+- `if` selekciju koristimo kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `true`
+- `else` selekciju koristimo kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `false`
+- `else if` selekciju koristimo kako bi provjerili novi logički izraz ako je prethodni bio `false`
+- `switch` selekciju koristimo kada imamo puno alternativnih uvjeta (logičkih izraza) koje želimo provjeriti
+
+### 3.1.1 `if` selekcija
+
+Koristimo `if` selekciju kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `true`. Sintaksa je sljedeća:
+
+```javascript
+if (logicki_izraz) {
+  // blok kȏda koji se izvršava ako je logicki_izraz = true
+}
+```
+Pripazite da je blok kȏda uvučen unutar vitičastih zagrada `{}`. Ako je logički izraz `true`, izvršava se blok kȏda unutar vitičastih zagrada `{}`. Ako je logički izraz `false`, blok kȏda se preskače. Primjer:
+
+```javascript
+let x = 10;
+if (x < 5) {
+  console.log("x je veći od 5"); // neće se ispisati
+}
+```
+Ako izostavimo vitičaste zagrade `{}`, JavaScript će izvršiti samo prvu liniju kȏda nakon `if` selekcije. Ovo ponašanje može dovesti do neočekivanih rezultata i grešaka, stoga se preporučuje korištenje vitičastih zagrada `{}`.
+
+## 3.1.2 `else` selekcija
+
+Koristimo `else` selekciju kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `false`. Sintaksa je sljedeća:
+
+```javascript
+if (logicki_izraz) {
+  // blok kȏda koji se izvršava ako je logicki_izraz = true
+} else {
+  // blok kȏda koji se izvršava ako je logicki_izraz = false
+}
+```
+
+Primjer:
+
+```javascript
+let x = 10;
+if (x < 5) {
+  console.log("x je manji od 5"); // neće se ispisati
+} else {
+  console.log("x je veći ili jednak 5"); // ispisat će se
+}
+```
+
+## 3.1.3 `else if` selekcija
+
+Koristimo `else if` selekciju kako bi provjerili novi logički izraz ako je prethodni bio `false`. Sintaksa je sljedeća:
+
+```javascript
+if (logicki_izraz_1) {
+  // blok kȏda koji se izvršava ako je logicki_izraz_1 = true
+} else if (logicki_izraz_2) {
+  // blok kȏda koji se izvršava ako je logicki_izraz_2 = true
+} else {
+  // blok kȏda koji se izvršava ako su svi prethodni logicki izrazi (logicki_izraz_1 && logicki_izraz_2) = false
+}
+```
+
+Primjer:
+  
+  ```javascript
+let x = 10;
+if (x < 5) {
+  console.log("x je manji od 5"); // neće se ispisati
+} else if (x === 5) {
+  console.log("x je jednak 5"); // neće se ispisati
+} else {
+  console.log("x je veći od 5"); // ispisat će se
+}
+```
+
+## 3.1.4 `switch` selekcija
+
+`switch` selekcija koristi se kada imamo puno alternativnih uvjeta (logičkih izraza) koje želimo provjeriti. Selekcija se sastoji od ključnih riječi `switch`, `case` i `default`, gdje `switch` predstavlja izraz koji se provjerava, `case` predstavlja moguće vrijednosti izraza, a `default` predstavlja blok kȏda koji se izvršava ako niti jedan od prethodnih uvjeta nije ispunjen. Sintaksa je sljedeća:
+
+```javascript
+switch (izraz) {
+  case vrijednost_1:
+    // blok kȏda koji se izvršava ako je izraz = vrijednost_1
+    break;
+  case vrijednost_2:
+    // blok kȏda koji se izvršava ako je izraz = vrijednost_2
+    break;
+  default:
+    // blok kȏda koji se izvršava ako niti jedan od prethodnih uvjeta nije ispunjen
+}
+```
+Kao i u C jezicima, nakon svakog bloka kȏda u `case` selekciji koristimo ključnu riječ `break` kako bi prekinuli izvršavanje selekcije. Ako izostavimo `break` naredbu, JavaScript će izvršiti sve blokove kȏda nakon prvog koji zadovoljava uvjet, što može dovesti do neočekivanih rezultata i grešaka, stoga se gotovo uvijek koristi `break` naredba.
+
+Primjer:
+
+```javascript
+let dan = "srijeda";
+switch (dan) {
+  case "ponedjeljak":
+    console.log("Danas je ponedjeljak");
+    break;
+  case "utorak":
+    console.log("Danas je utorak");
+    break;
+  case "srijeda":
+    console.log("Danas je srijeda");
+    break;
+  case "četvrtak":
+    console.log("Danas je četvrtak");
+    break;
+  case "petak":
+    console.log("Danas je petak");
+    break;
+  default:
+    console.log("Danas je vikend");
+}
+```
+
