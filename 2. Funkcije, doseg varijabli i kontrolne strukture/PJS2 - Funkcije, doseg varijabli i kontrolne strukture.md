@@ -171,7 +171,7 @@ Napišite funkciju `pozdrav` koja će primati jedan argument `ime` te će ispisa
 
 Rezultat:
 
-![vjezba_1](screenshots/vjezba1.png)
+![vjezba_1](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba1.png?raw=true)
 
 ## 1.3 Funkcije možemo koristiti raznoliko
 
@@ -499,7 +499,7 @@ Napišite funkciju `sve_o_krugu(r)` s jednim parametrom `r` koji predstavlja rad
 
 Rezultat:
 
-![vjezba2](screenshots/vjezba2.png)
+![vjezba2](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba2.png?raw=true)
 
 # Samostalni zadatak za vježbu 2
 
@@ -848,7 +848,7 @@ Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. 
 
 Rezultat:
 
-![vjezba3](screenshots/vjezba3.png)
+![vjezba3](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba3.png?raw=true)
 
 ## 3.3 Iteracije/Petlje (eng. **_Iterations/Loops_**)
 
@@ -1178,7 +1178,7 @@ Napišite program koji će ispisati sve brojeve od `1` do `100`. No, za brojeve 
 
 Rezultat:
 
-![vjezba4](screenshots/vjezba4.png)
+![vjezba4](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba4.png?raw=true)
 
 # Samostalni zadatak za vježbu 3
 
