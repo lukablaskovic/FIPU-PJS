@@ -35,9 +35,9 @@
     - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
     - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
   - [Vježba 2](#vježba-2)
-- [Samostalni zadatak za vježbu](#samostalni-zadatak-za-vježbu)
+- [Samostalni zadatak za vježbu 2](#samostalni-zadatak-za-vježbu-2)
 - [3. Kontrolne strukture](#3-kontrolne-strukture)
-  - [3.1 Selekcije](#31-selekcije)
+  - [3.1 Selekcije (eng. **_Conditional statements_**)](#31-selekcije-eng-conditional-statements)
     - [3.1.1 `if` selekcija](#311-if-selekcija)
     - [3.1.2 `else` selekcija](#312-else-selekcija)
     - [3.1.3 `else if` selekcija](#313-else-if-selekcija)
@@ -46,6 +46,17 @@
     - [Primjer 1 - Selekcija vremena u danu (operator `&&` + `if-else` selekcija)](#primjer-1---selekcija-vremena-u-danu-operator---if-else-selekcija)
     - [Primjer 2 - Provjera prihvatljivosti za zajam (operator `||`, `&&` + `if-else` selekcija)](#primjer-2---provjera-prihvatljivosti-za-zajam-operator----if-else-selekcija)
   - [Vježba 3](#vježba-3)
+  - [3.3 Iteracije/Petlje (eng. **_Iterations/Loops_**)](#33-iteracijepetlje-eng-iterationsloops)
+    - [3.3.1 Klasična `for` petlja](#331-klasična-for-petlja)
+      - [Primjer 3 - Ispis ispis brojeva od 1 do 100 koji su djeljivi s 3](#primjer-3---ispis-ispis-brojeva-od-1-do-100-koji-su-djeljivi-s-3)
+    - [3.3.2 `while` petlja](#332-while-petlja)
+      - [3.3.2.1 `do-while` petlja](#3321-do-while-petlja)
+    - [3.3.3 Prekidanje petlji - `break` | `continue`](#333-prekidanje-petlji---break--continue)
+    - [3.3.4 Petlje nad nizom znakova (eng. **_String_**)](#334-petlje-nad-nizom-znakova-eng-string)
+    - [3.3.5 Ugniježđene petlje](#335-ugniježđene-petlje)
+    - [Primjer 4 - Ispis tablice množenja](#primjer-4---ispis-tablice-množenja)
+  - [Vježba 4](#vježba-4)
+- [Samostalni zadatak za vježbu 3](#samostalni-zadatak-za-vježbu-3)
 
 <br>
 
@@ -490,7 +501,7 @@ Rezultat:
 
 ![vjezba2](screenshots/vjezba2.png)
 
-# Samostalni zadatak za vježbu
+# Samostalni zadatak za vježbu 2
 
 Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
 
@@ -535,7 +546,7 @@ Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na
 1. Selekcije (eng. **_Conditional statements_**) - odlučuju o toku izvršavanja bloka kȏda na temelju logičkog izraza koji se evaluira u `true` ili `false`.
 2. Iteracije/Petlje (eng. **_Iterations_**) - omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom.
 
-## 3.1 Selekcije
+## 3.1 Selekcije (eng. **_Conditional statements_**)
 
 U JavaScriptu, kao i u većini programskih jezika, selekcije se ostvaruju pomoću ključnih riječi `if`, `else if` i `else` te `switch`. Kada koristimo koju selekciju ovisi o tome koliko uvjeta želimo provjeriti:
 
@@ -839,3 +850,345 @@ Rezultat:
 
 ![vjezba3](screenshots/vjezba3.png)
 
+## 3.3 Iteracije/Petlje (eng. **_Iterations/Loops_**)
+
+Petlje su konstrukti koji omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom. U JavaScriptu, kao i u većini programskih jezika, petlje se ostvaruju pomoću ključnih riječi `for` i `while`.
+
+Petlje su korisne kada želimo određeni dio koda izvršavati više puta, svaki put s različitim ulaznim podacima. Na primjer, kada želimo ispisati brojeve od `1` do `10`, možemo koristiti petlju umjesto da svaki broj ispišemo ručno.
+```javascript
+console.log(1);
+console.log(2);
+console.log(3);
+console.log(4);
+console.log(5);
+console.log(6);
+console.log(7);
+console.log(8);
+console.log(9);
+console.log(10);
+```
+možemo napisati jednostavno:
+```javascript
+for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}
+```
+Postoji više vrsta `for` petlji u JavaScriptu, ali u pravilu sve rade istu stvar - ponavljaju radnu određeni broj puta (ili nijednom). Koju petlju koristimo zaključujemo ovisno o ulaznim podacima, početku i kraju petlje, te koracima. Ova for petlja slična je for petljama u C i Java jezicima.
+
+### 3.3.1 Klasična `for` petlja
+
+Klasična `for` petlja koristi se kada znamo koliko puta želimo ponoviti blok kȏda. Sastoji se od `initialization`, `condition` i `afterthought`. Sintaksa je sljedeća:
+  
+```javascript
+for (initialization; condition; afterthought) {
+  statement // blok kȏda koji se izvršava dok je uvjet = true
+}
+```
+1. `initialization` - izvršava se jednom prije početka petlje, ako postoji. Često inicijalizira varijable koje se koriste u petlji, npr. `let i = 0`, ali sintaksa dozvoljava bilo koji izraz.
+2. `condition` izraz se evaluira prije svakog ponavljanja petlje. Ako je `true`, petlja i egezekucija `statement` izraza se nastavlja. Ako je `false`, petlja se prekida.
+3. `statement` izraz se izvršava svaki put kada je `condition` = `true`.
+4. `afterthought` izraz se izvršava nakon svakog ponavljanja petlje, ako postoji. Često se koristi za inkrementiranje ili dekrementiranje varijabli, npr. `i++`, ali sintaksa dozvoljava bilo koji izraz.
+
+Primjer, želimo ispisati brojeve od `1` do `10`:
+```javascript
+for (let i = 1; i <= 10; i++) {
+  console.log(i); // ispisuje brojeve od 1 do 10 -> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+}
+```
+Možemo i za nazad:
+```javascript
+for (let i = 10; i >= 1; i--) {
+  console.log(i); // ispisuje brojeve od 10 do 1 -> 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+}
+```
+
+Kako možemo upotrijebiti `for` petlju za ispis svih parnih brojeva od `1` do `10`?
+```javascript
+for (let i = 2; i <= 10; i += 2) {
+  console.log(i); // ispisuje parne brojeve od 1 do 10 -> 2, 4, 6, 8, 10
+}
+```
+
+Kako smo rekli da `initialization` dozvoljava bilo koji izraz pa i prazan, možemo koristiti `for` petlju i na sljedeće načine:
+```javascript
+let i, j;
+for (i = 0, j = 1; i < 10; i++, j++) {
+  console.log(`${i} je manji za 1 od ${j}.`);
+}
+```
+Uočite da smo varijable `i` i `j` inicijalizirali izvan petlje, ali smo ih koristili unutar petlje. Međutim, varijable je moguće deklarirati i unutar petlje, u tom slučaju ćemo ključnu riječ `let` koristiti samo jednom.
+```javascript
+for (let i = 0, j = 1; i < 10; i++, j++) {
+  console.log(`${i} je manji za 1 od ${j}.`);
+}
+```
+
+Možemo pustiti `initialization` prazan, ali moramo imati `;` separator.
+```javascript
+let i = 0;
+for (; i < 10; i++) {
+  console.log(i);
+}
+```
+
+Izostavljanjem nekih od dijelova `for` petlje, možemo dobiti beskonačnu petlju:
+Oprez, beskonačne petlje mogu dovesti do crashanja web preglednika ili vaše aplikacije koja izvodi JavaScript kȏd. Poželjno je izbjegavati beskonačne petlje.
+```javascript
+// Navedene petlje će vrlo vjerojatno srušiti vaš web preglednik
+for (;;) {
+  console.log("Beskonačna petlja!"); // Nema inicijalizacije, uvjeta niti afterthoughta
+}
+
+for (let i = 0; ; i++) {
+  console.log(i); // Nema uvjeta za prekid petlje
+}
+
+for (let i = 0; i < 10; ) {
+  console.log(i); // Nema afterthoughta, petlja će beskonačno ispisivati 0
+}
+```
+
+#### Primjer 3 - Ispis ispis brojeva od 1 do 100 koji su djeljivi s 3
+Izračunajte sumu svih brojeva od `1` do `100` koji su djeljivi s 3. Koristite `for` petlju. Ovaj zadatak zahtjeva korištenje petlje za iteriranje kroz brojeve od 1 do 100, uvjetne izjave za provjeru je li broj djeljiv sa 3 i varijablu za praćenje ukupne sume.
+
+Prvo ćemo napisati kȏd koji ispisuje sve brojeve od `1` do `100`.
+```javascript
+for (let i = 1; i <= 100; i++) {
+  console.log(i);
+}
+```
+Dodat ćemo provjeru je li broj djeljiv s 3. To radimo s operatorom `%` koji vraća ostatak dijeljenja dva broja. Ako je ostatak dijeljenja nekog broja s `3` jednak `0`, to znači da je broj djeljiv s 3.
+```javascript
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0) {
+    console.log(i);
+  }
+}
+```
+Konačno, dodat ćemo varijablu `suma` koja će pohraniti sumu svih brojeva od `1` do `100` koji su djeljivi s 3.
+```javascript
+let suma = 0;
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0) {
+    console.log(i);
+    suma += i;
+  }
+}
+console.log(suma); // ispisuje sumu svih brojeva od 1 do 100 koji su djeljivi s 3 -> 1683
+```
+
+### 3.3.2 `while` petlja
+while petlja koristi se kada u pravilu ne znamo koliko puta želimo ponoviti blok kȏda. Sastoji se od `condition`. Sintaksa je sljedeća:
+```javascript
+while (condition) {
+  statement // blok kȏda koji se izvršava dok je uvjet = true
+}
+```
+Ako je `condition` = `true`, izvršava se `statement`. Ako je `condition` = `false`, petlja se prekida. Kao i kod `for` petlje, `statement` izraz se izvršava svaki put kada je `condition` = `true`.
+
+`condition` se evaluira prije statement izraza, stoga je moguće da se `statement` izraz nikada ne izvrši ako je condition = `false`.
+
+Primjer, sljedeća petlja će iterirati dokle god je `n` manji od 3. Primjetite da u ovom slučaju, `n` mora biti deklariran izvan petlje.
+```javascript
+let n = 0;
+let x = 0;
+while (n < 3) {
+  n++;
+  x += n;
+}
+```
+Sa svakom iteracijom, `n` se inkrementira za `1` i dodaje se na `x`. Kada je `n` = `3`, petlja se prekida. Tako da će se izvršiti `3` puta, a `x` i `n` će biti:
+1. prolazak: `n` = `1`, `x` = `1`
+2. prolazak: `n` = `2`, `x` = `3`
+3. prolazak: `n` = `3`, `x` = `6`
+
+Već smo rekli da beskonačne petlje želimo izbjegavati. Moramo pripaziti da uvjet u `while` petlji kad tad postane `false`. Ako uvjet nikad ne postane `false`, petlja će se izvršavati beskonačno. Na primjer, sljedeća petlja će se izvršavati beskonačno:
+```javascript
+while (true) {
+  console.log("Beskonačna petlja!");
+}
+```
+
+Dalje, pogledajmo sljedeći primjer:
+```javascript
+let i = 0;
+while (i < 10) {
+  let text = "";
+  text += "Broj " + i;
+  i++;
+  console.log(text); // ispisuje "Broj 0", "Broj 1", "Broj 2", "Broj 3", "Broj 4", "Broj 5", "Broj 6", "Broj 7", "Broj 8", "Broj 9"
+}
+```
+Primjetimo da je varijabla `text` deklarirana unutar petlje. To znači da će se svaki put kada se petlja izvrši, varijabla `text` ponovno inicijalizirati. Kod petlji vrijede ista pravila o dosegu varijabli kao i kod funkcija - varijabla deklarirana unutar petlje neće biti dostupna izvan petlje.
+
+Što ako je `i` = `11`? Petlja se neće izvršiti niti jednom, jer je uvjet `i < 10` odmah `false`. Kako bismo ispisali "Broj 10", možemo koristiti varijantu `while` petlje -  `do-while` petlju.
+
+#### 3.3.2.1 `do-while` petlja
+
+`do-while` petlja koristi se kada želimo da se blok kȏda izvrši barem jednom, a zatim se ponavlja dok je uvjet = `true`. Sastoji se od `condition`. Sintaksa je sljedeća:
+```javascript
+do {
+  statement // blok kȏda koji se izvršava barem jednom, a zatim se ponavlja dok je uvjet = true
+} while (condition);
+```
+Prebacimo prethodni primjer u `do-while` petlju. Možemo primjetiti da se `statement` blok izvrši točno jednom, budući da je uvjet `i < 10` odmah `false`.
+```javascript
+let i = 11;
+do {
+  let text = "";
+  text += "Broj " + i;
+  i++;
+  console.log(text); // ispisuje "Broj 11"
+} while (i < 10);
+```
+`do-while` petlja ima svoje prednosti, ali se u praksi koristi rjeđe od `for` i `while` petlji.
+
+### 3.3.3 Prekidanje petlji - `break` | `continue`
+
+Kako bismo "naglo" prekinuli izvršavanje petlje, koristimo ključnu riječ `break`. Kada se `break` naredba izvrši, petlja se prekida i izvršavanje se nastavlja s prvim redom kȏda nakon petlje. Na primjer, želimo prekinuti petlju kada dođemo do broja `15` u petlji koja ispisuje brojeve od `1` do `100`.
+```javascript
+for (let i = 1; i <= 100; i++) {
+  if (i === 15) {
+    break; // Prekida petlju kada je i = 15, dakle neće se ispisati brojevi od 15 do 100
+  }
+  console.log(i); // ispisuje brojeve od 1 do 14
+}
+```
+Kako bismo preskočili trenutnu iteraciju petlje, koristimo ključnu riječ `continue`. Kada se `continue` naredba izvrši, trenutna iteracija petlje se prekida i izvršavanje se nastavlja s idućom iteracijom petlje. Na primjer, želimo ispisati sve brojeve od `1` do `100` osim brojeva koji su djeljivi s 3.
+```javascript
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0) {
+    continue; // Preskače trenutnu iteraciju petlje kada je i djeljiv s 3
+  }
+  console.log(i); // ispisuje sve brojeve od 1 do 100 osim brojeva koji su djeljivi s 3
+}
+```
+
+`break` i `continue` naredbe možemo koristiti kod svih vrsta petlji - `for`, `while` i `do-while`. 
+
+`break` naredbu koristimo i unutar `switch` selekcija kako bi prekinuli izvršavanje selekcije, međutim `continue` naredbu ne koristimo.
+
+### 3.3.4 Petlje nad nizom znakova (eng. **_String_**)
+
+Do sad smo koristili petlje za iteriranje kroz brojeve, ali možemo koristiti petlje i za iteriranje kroz nizove znakova. Na primjer, možemo ispisati svaki znak u nizu znakova. Kako bismo to postigli, koristimo `for` petlju i svojstvo `length` niza znakova koje nam govori koliko znakova niz sadrži.
+```javascript
+let grad = "Pula";
+for (let i = 0; i < grad.length; i++) {
+  console.log(grad[i]); // ispisuje svaki znak u nizu znakova -> P, u, l, a
+}
+```
+
+Idemo upotrijebiti svo znanje o petljama, selekcijama i funkcijama kako bismo napisali funkciju koja će zbrojiti ponavljanja određenog znaka u nizu znakova. Funkcija `brojPonavljanjaZnaka()` prima dva argumenta - niz znakova `niz` i znak `znak`. Funkcija vraća broj ponavljanja znaka `znak` u nizu znakova `niz`.
+
+```javascript
+function brojPonavljanjaZnaka(niz, znak) {
+  let brojac = 0;
+  for (let i = 0; i < niz.length; i++) {
+    if (niz[i] === znak) { // Provjerava je li trenutni znak u nizu znakova jednak znaku koji tražimo
+      brojac++;
+    }
+  }
+  return brojac;
+}
+console.log(brojPonavljanjaZnaka("Pula", "a")); // ispisuje broj ponavljanja znaka `a` u nizu znakova Pula -> 1
+console.log(brojPonavljanjaZnaka("JavaScript", "a")); // ispisuje broj ponavljanja znaka `a` u nizu znakova JavaScript -> 2
+console.log(brojPonavljanjaZnaka("JavaScript", "z")); // ispisuje broj ponavljanja znaka `z` u nizu znakova JavaScript -> 0
+```
+
+### 3.3.5 Ugniježđene petlje
+
+Ugniježđene petlje koriste se kada želimo iterirati kroz više dimenzija podataka. Na primjer, kada želimo ispisati sve parove `(i, j)` brojeva u rasponu od `1` do `3`:
+
+```javascript
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {
+    console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 -> 1 1, 1 2, 1 3, 2 1, 2 2, 2 3, 3 1, 3 2, 3 3
+  }
+}
+```
+
+Ugnjezditi možemo i kombinirati različite vrste petlji, na primjer, `for` i `while` petlje:
+```javascript
+let i = 1;
+while (i <= 3) {
+  for (let j = 1; j <= 3; j++) {
+    console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 -> 1 1, 1 2, 1 3, 2 1, 2 2, 2 3, 3 1, 3 2, 3 3
+  }
+  i++;
+}
+```
+`break` i `continue` naredbe u ugniježđenim petljama ponašaju se kao i kod jednostavnih petlji - prekidaju petlju ili preskaču trenutnu iteraciju petlje u kojoj se izvršavaju.
+```javascript
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {
+    if (i === 2 && j === 2) {
+      continue; // Preskače iteraciju gdje je i = 2 i j = 2
+    } else {
+        console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 osim 2 2 -> 1 1, 1 2, 1 3, 2 1, 2 3, 3 1, 3 2, 3 3
+    }
+  }
+}
+```
+
+### Primjer 4 - Ispis tablice množenja 
+
+Primjenjujući ugniježdene petlje možemo jednostavno ispisati tablicu množenja. U ovom primjeru implementirat ćemo funkciju za ispis tablice množenja za brojeve od `1` do `10`. Funkcija će ispisati sve kombinacije brojeva od `1` do `10` i njihovih umnožaka.
+
+Prvo definirajmo funkciju `tablicaMnozenja()` i unutar nje for petlju koja prolazi kroz brojeve od `1` do `10`.
+```javascript
+function tablicaMnozenja() {
+  for (let i = 1; i <= 10; i++) {
+    console.log(i);
+  }
+}
+tablicaMnozenja();
+```
+Dalje, želimo svaki broj `i` pomnožiti s brojevima od `1` do `10`. To ćemo jednostavno postići ugniježđenom `for` petljom.
+```javascript
+function tablicaMnozenja() {
+  for (let i = 1; i <= 10; i++) {
+    for (let j = 1; j <= 10; j++) {
+      console.log(i, j, i * j); // ispisuje sve kombinacije brojeva od 1 do 10 i njihove umnožke
+    }
+  }
+}
+tablicaMnozenja()
+```
+Kako bismo dobili tablicu, možemo dodati i formatiranje ispisa. Na primjer, možemo koristiti tabulator `\t` kako bi razdvojili brojeve.
+U varijablu `red` spremamo sve umnoške brojeva `i` i `j` od `1` do `10`, odvajamo ih tabulatorom, a zatim ispisujemo napunjeni `red` u vanjskoj petlji.
+
+Rješenje:
+
+```javascript
+function tablicaMnozenja() {
+  for (let i = 1; i <= 10; i++) {
+    let red = "";
+    for (let j = 1; j <= 10; j++) {
+      red += i * j + '\t';
+    }
+    console.log(red);
+  }
+}
+tablicaMnozenja()
+```
+
+## Vježba 4
+
+Napišite program koji će ispisati sve brojeve od `1` do `100`. No, za brojeve koji su djeljivi s 3 umjesto broja ispišite  `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon koje dodajte ` i kraj!`.
+
+Rezultat:
+
+![vjezba4](screenshots/vjezba4.png)
+
+# Samostalni zadatak za vježbu 3
+
+Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+
+1. Napišite funkciju reverseString koja prima znakovni niz (string) kao argument i vraća obrnuti string. Na primjer, ako je ulaz "hello", vaša funkcija treba vratiti "olleh". Funkcija mora vratiti "Not a string!" ako je ulazni argument različitog tipa od stringa. Funkciju pozovite s argumentima "hello", "JavaScript" i 123.
+2. Napišite funkciju `prost_broj` koja prima broj kao argument i vraća `true` ako je broj prost, odnosno `false` ako nije. Broj je prost ako je djeljiv samo s 1 i samim sobom. Funkciju pozovite s argumentima 7, 10 i 13.
+3. Nadogradite prethodni zadatak na način da ćete ispisati sve proste brojeve od 1 do 100. Funkciju `prost_broj` koristite unutar petlje. Ispis mora izgledati ovako: `Prosti brojevi od 1 do 100 su: 2, 3, 5, 7, itd.`
+4. Napišite funkciju `pronadi_najduzu_rijec()` koja prima rečenicu kao argument i vraća najdužu riječ u rečenici. Rečenicu morate razložiti koristeći petlju, bez pomoćnih funkcija.
+   - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća "Nije rečenica!". 
+   - Ako je rečenica prazna, funkcija vraća "Rečenica je prazna!". 
+   - Ako se rečenica sastoji od samo jedne riječi, funkcija vraća tu riječ.
+   - Ako se rečenica sastoji od više riječi iste duljine, funkcija vraća prvu riječ koja je pronađena.
