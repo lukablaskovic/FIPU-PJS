@@ -31,10 +31,20 @@
   - [Vježba 1](#vježba-1)
   - [1.3 Funkcije možemo koristiti raznoliko](#13-funkcije-možemo-koristiti-raznoliko)
 - [2. Doseg varijabli i funkcijski izrazi](#2-doseg-varijabli-i-funkcijski-izrazi)
-  - [2.1 Blokovski opseg (eng. **_block scope_**)](#21-blokovski-opseg-eng-block-scope)
-  - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
-  - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
+    - [2.1 Blokovski opseg (eng. **_block scope_**)](#21-blokovski-opseg-eng-block-scope)
+    - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
+    - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
   - [Vježba 2](#vježba-2)
+- [3. Kontrolne strukture](#3-kontrolne-strukture)
+  - [3.1 Selekcije](#31-selekcije)
+    - [3.1.1 `if` selekcija](#311-if-selekcija)
+    - [3.1.2 `else` selekcija](#312-else-selekcija)
+    - [3.1.3 `else if` selekcija](#313-else-if-selekcija)
+    - [3.1.4 `switch` selekcija](#314-switch-selekcija)
+  - [3.2 Selekcije s logičkim operatorima](#32-selekcije-s-logičkim-operatorima)
+    - [Primjer 1 - Selekcija vremena u danu (operator `&&` + `if-else` selekcija)](#primjer-1---selekcija-vremena-u-danu-operator---if-else-selekcija)
+    - [Primjer 2 - Provjera prihvatljivosti za zajam (operator `||`, `&&` + `if-else` selekcija)](#primjer-2---provjera-prihvatljivosti-za-zajam-operator----if-else-selekcija)
+  - [Vježba 3](#vježba-3)
 
 <br>
 
@@ -473,25 +483,11 @@ vanjskaFunkcija();
 
 ## Vježba 2
 
-Napišite funkciju `sve_o_krugu(r)` s jednim parametrom `r` koji predstavlja radijus kruga. Funkcija treba sadržavati dvije unutarnje funkcije `povrsina` i `opseg` koje će računati površinu i opseg kruga i vraćati vanjskoj funkciji rezultate. Jedna od dvije unutarnje funkcije treba koristiti funkcijski izraz, a druga deklaraciju funkcije. Vanjska funkcija treba ispisati rezultate unutarnjih funkcija u konzolu. Za vrijednost broja π koristite `Math.PI`. Vanjska funkcija treba lokalnu varijablu `zbroj` pohraniti zbroj površine i opsega kruga i vratiti tu vrijednost. Rezultat funkcije `sve_o_krugu(r)` pohranite u globalnu varijablu zbroj te ju ispišite u konzolu.
+Napišite funkciju `sve_o_krugu(r)` s jednim parametrom `r` koji predstavlja radijus kruga. Funkcija treba sadržavati dvije unutarnje funkcije `povrsina` i `opseg` koje će računati površinu i opseg kruga i vraćati vanjskoj funkciji rezultate. Jedna od dvije unutarnje funkcije treba koristiti funkcijski izraz, a druga deklaraciju funkcije. Vanjska funkcija treba ispisati rezultate unutarnjih funkcija u konzolu. Za vrijednost broja π koristite `Math.PI`. Vanjska funkcija treba lokalnu varijablu `zbroj` pohraniti zbroj površine i opsega kruga i vratiti **tu vrijednost**. Rezultat funkcije `sve_o_krugu(3)` pohranite u globalnu varijablu zbroj te ju ispišite u konzolu.
 
 Rezultat:
 
-```javascript
-function sve_o_krugu(r) {
-  function povrsina(r) {
-    return r * r * Math.PI;
-  }
-  let opseg = function (r) {
-    return 2 * r * Math.PI;
-  };
-  console.log("Površina kruga je: " + povrsina(r));
-  console.log("Opseg kruga je: " + opseg(r));
-  let zbroj = povrsina(r) + opseg(r);
-  return zbroj;
-}
-let zbroj = sve_o_krugu(5);
-```
+![vjezba2](screenshots/vjezba2.png)
 
 # 3. Kontrolne strukture
 
@@ -503,6 +499,7 @@ Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na
 ## 3.1 Selekcije
 
 U JavaScriptu, kao i u većini programskih jezika, selekcije se ostvaruju pomoću ključnih riječi `if`, `else if` i `else` te `switch`. Kada koristimo koju selekciju ovisi o tome koliko uvjeta želimo provjeriti:
+
 - `if` selekciju koristimo kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `true`
 - `else` selekciju koristimo kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `false`
 - `else if` selekciju koristimo kako bi provjerili novi logički izraz ako je prethodni bio `false`
@@ -517,6 +514,7 @@ if (logicki_izraz) {
   // blok kȏda koji se izvršava ako je logicki_izraz = true
 }
 ```
+
 Pripazite da je blok kȏda uvučen unutar vitičastih zagrada `{}`. Ako je logički izraz `true`, izvršava se blok kȏda unutar vitičastih zagrada `{}`. Ako je logički izraz `false`, blok kȏda se preskače. Primjer:
 
 ```javascript
@@ -525,9 +523,10 @@ if (x < 5) {
   console.log("x je veći od 5"); // neće se ispisati
 }
 ```
+
 Ako izostavimo vitičaste zagrade `{}`, JavaScript će izvršiti samo prvu liniju kȏda nakon `if` selekcije. Ovo ponašanje može dovesti do neočekivanih rezultata i grešaka, stoga se preporučuje korištenje vitičastih zagrada `{}`.
 
-## 3.1.2 `else` selekcija
+### 3.1.2 `else` selekcija
 
 Koristimo `else` selekciju kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `false`. Sintaksa je sljedeća:
 
@@ -550,7 +549,7 @@ if (x < 5) {
 }
 ```
 
-## 3.1.3 `else if` selekcija
+### 3.1.3 `else if` selekcija
 
 Koristimo `else if` selekciju kako bi provjerili novi logički izraz ako je prethodni bio `false`. Sintaksa je sljedeća:
 
@@ -565,8 +564,8 @@ if (logicki_izraz_1) {
 ```
 
 Primjer:
-  
-  ```javascript
+
+```javascript
 let x = 10;
 if (x < 5) {
   console.log("x je manji od 5"); // neće se ispisati
@@ -577,7 +576,7 @@ if (x < 5) {
 }
 ```
 
-## 3.1.4 `switch` selekcija
+### 3.1.4 `switch` selekcija
 
 `switch` selekcija koristi se kada imamo puno alternativnih uvjeta (logičkih izraza) koje želimo provjeriti. Selekcija se sastoji od ključnih riječi `switch`, `case` i `default`, gdje `switch` predstavlja izraz koji se provjerava, `case` predstavlja moguće vrijednosti izraza, a `default` predstavlja blok kȏda koji se izvršava ako niti jedan od prethodnih uvjeta nije ispunjen. Sintaksa je sljedeća:
 
@@ -590,9 +589,10 @@ switch (izraz) {
     // blok kȏda koji se izvršava ako je izraz = vrijednost_2
     break;
   default:
-    // blok kȏda koji se izvršava ako niti jedan od prethodnih uvjeta nije ispunjen
+  // blok kȏda koji se izvršava ako niti jedan od prethodnih uvjeta nije ispunjen
 }
 ```
+
 Kao i u C jezicima, nakon svakog bloka kȏda u `case` selekciji koristimo ključnu riječ `break` kako bi prekinuli izvršavanje selekcije. Ako izostavimo `break` naredbu, JavaScript će izvršiti sve blokove kȏda nakon prvog koji zadovoljava uvjet, što može dovesti do neočekivanih rezultata i grešaka, stoga se gotovo uvijek koristi `break` naredba.
 
 Primjer:
@@ -616,7 +616,184 @@ switch (dan) {
     console.log("Danas je petak");
     break;
   default:
-    console.log("Danas je vikend");
+    console.log("Vikend je!");
 }
 ```
 
+## 3.2 Selekcije s logičkim operatorima
+
+Selekcije s logičkim operatorima koriste se kako bi provjerili više uvjeta istovremeno. U JavaScriptu, kao i u većini programskih jezika, primarno koristimo logičke operatore `&&` (i), `||` (ili) i `!` (negacija) kako bi provjerili više uvjeta istovremeno. Logički operatori vraćaju `true` ili `false` ovisno o rezultatu provjere uvjeta.
+
+Najlakše je objasniti logičke operatore kroz konkretne primjere:
+
+### Primjer 1 - Selekcija vremena u danu (operator `&&` + `if-else` selekcija)
+
+Prije nego što krenemo sa samim kodom, zapisat ćemo nekoliko tvrdnji koje ćemo provjeravati logičkim operatorima:
+
+- Ako je vrijeme između 6 i 12 sati, pozdravit ćemo s "Dobro jutro!"
+- Ako je vrijeme između 12 i 18 sati, pozdravit ćemo s "Dobar dan!"
+- Inaće ćemo pozdraviti s "Dobra večer!"
+
+Idemo prvo ugrubo definirati strukturu kȏda:
+
+```javascript
+let sat = 10;
+
+if (uvjet) {
+  izraz;
+} else if (drugiUvjet) {
+  izraz;
+} else {
+  izraz;
+}
+```
+
+Krenimo s popunjavanjem onim redoslijedom kako smo naveli tvrdnje:
+Prvi uvjet: Ako je vrijeme između 6 i 12 sati, pozdravit ćemo s "Dobro jutro!" - `if (sat >= 6 && sat < 12)` - koristimo logički operator `&&` (i) kako bi provjerili oba uvjeta istovremeno. Ako je `sat` veći ili jednak `6` i manji od `12`, odnosno, `(6 <= sat < 12)` ispisat ćemo `"Dobro jutro!"`.
+
+```javascript
+let sat = 10;
+if (sat >= 6 && sat < 12) {
+  console.log("Dobro jutro!");
+} else if (drugiUvjet) {
+  izraz;
+} else {
+  izraz;
+}
+```
+
+Nastavljamo dalje, drugi uvjet: Ako je vrijeme između 12 i 18 sati, pozdravit ćemo s "Dobar dan!" - `else if (sat >= 12 && sat < 18)` - koristimo logički operator `&&` (i) kako bi provjerili oba uvjeta istovremeno. Ako je `sat` veći ili jednak `12` i manji od `18`, odnosno, `(12 <= sat < 18)` ispisat ćemo `"Dobar dan!"`.
+
+```javascript
+let sat = 10;
+if (sat >= 6 && sat < 12) {
+  console.log("Dobro jutro!");
+} else if (sat >= 12 && sat < 18) {
+  console.log("Dobar dan!");
+} else {
+  izraz;
+}
+```
+
+I na kraju, treći uvjet: Inaće ćemo pozdraviti s "Dobra večer!" - `else` - ako niti jedan od prethodnih uvjeta nije ispunjen, ispisat ćemo `"Dobra večer!"`.
+
+```javascript
+let sat = 10;
+if (sat >= 6 && sat < 12) {
+  console.log("Dobro jutro!");
+} else if (sat >= 12 && sat < 18) {
+  console.log("Dobar dan!");
+} else {
+  console.log("Dobra večer!");
+}
+```
+
+### Primjer 2 - Provjera prihvatljivosti za zajam (operator `||`, `&&` + `if-else` selekcija)
+
+U ovom primjeru simulirati ćemo provjeru prihvatljivosti klijenta za zajam temeljem nekoliko kriterija, koristeći logičke operatore `||` (ili) i `&&` (i).
+Izmislit ćemo nekoliko tvrdnji koje ćemo provjeravati logičkim operatorima:
+
+- Ako je klijent zaposlen i ima stabilne prihode veće od 7000 novčanih jedinica, može dobiti zajam.
+- Ako je klijent samostalni obrtnik ili ima visoku kreditnu ocjenu, može dobiti zajam.
+- Ako klijent ima barem 2 godine radnog iskustva ili je stariji od 25 godina i ima mjesečne prihode iznad 5000 novčanih jedinica, može dobiti zajam.
+
+_Svaka od tvrdnji je neovisna o drugima, odnosno barem jedna mora biti ispunjena kako bi klijent bio prihvatljiv za zajam!_
+
+Koje varijable možemo iščitati iz ovih tvrdnji?
+
+- zaposlen - `boolean`
+- obrtnik - `boolean`
+- kreditnaOcjenaVisoka - `boolean`
+- godineRadnogIskustva - `number`
+- dob - `number`
+- mjesecniPrihodi - `number`
+
+Krenimo s popunjavanjem onim redoslijedom kako smo naveli tvrdnje:
+
+**Prvi uvjet**: Ako je klijent zaposlen i ima stabilne prihode veće od 7000 novčanih jedinica, može dobiti zajam - `if (zaposlen == true && mjesecniPrihodi > 7000)` - koristimo logički operator `&&` (i) kako bi provjerili oba uvjeta istovremeno. Ako je `zaposlen` i `mjesecniPrihodi` veći od `7000`, odnosno, `(zaposlen == true && mjesecniPrihodi > 7000)` klijent može dobiti zajam.
+
+```javascript
+let zaposlen = true;
+let mjesecniPrihodi = 8000;
+
+if (zaposlen == true && mjesecniPrihodi > 7000) {
+  console.log("Čestitamo! Možete dobiti zajam!");
+} else {
+  console.log("Nažalost, ne možete dobiti zajam.");
+}
+```
+
+Prisjetimo se kratko kako JavaScript evaluira tvrdnje (eng. _expressions_) unutar kontrolnih struktura.
+Što će vratiti (u što će se evaluirati), u kȏdu iznad izraz `zaposlen == true`? Odgovor je `true`.
+Ako smo sigurni da je varijabla `zaposlen` uvijek tipa `boolean`, možemo izostaviti `== true` i napisati samo `if (zaposlen && mjesecniPrihodi > 7000)`.
+
+```javascript
+let zaposlen = true;
+let mjesecniPrihodi = 8000;
+
+if (zaposlen && mjesecniPrihodi > 7000) {
+  //Ovakav zapis je dovoljan, pa i čitljiviji
+  console.log("Čestitamo! Možete dobiti zajam!");
+} else {
+  console.log("Nažalost, ne možete dobiti zajam.");
+}
+```
+
+Drugi uvjet: Ako je klijent samostalni obrtnik ili ima visoku kreditnu ocjenu, može dobiti zajam - `else if (obrtnik || kreditnaOcjenaVisoka)` - koristimo logički operator `||` (ili) kako bi provjerili jedan od dva uvjeta. Ako je `obrtnik` ili `kreditnaOcjenaVisoka` istinita tvrdnja, odnosno, `(obrtnik || kreditnaOcjenaVisoka)` klijent može dobiti zajam. Primjetite da smo izostavili `== true` jer su `obrtnik` i `kreditnaOcjenaVisoka` tipa `boolean`.
+
+```javascript
+let zaposlen = true;
+let mjesecniPrihodi = 8000;
+
+let obrtnik = true;
+let kreditnaOcjenaVisoka = false;
+
+if ((zaposlen && mjesecniPrihodi > 7000) || obrtnik || kreditnaOcjenaVisoka) {
+  console.log("Čestitamo! Možete dobiti zajam!");
+} else {
+  console.log("Nažalost, ne možete dobiti zajam.");
+}
+```
+
+Treći uvjet: Ako klijent ima barem 2 godine radnog iskustva ili je stariji od 25 godina i ima stabilne mjesečne prihode, može dobiti zajam - `(godineRadnogIskustva >= 2 || (dob > 25 && mjesecniPrihodi > 5000))` - koristimo logički operator `||` (ili) kako bi provjerili jedan od dva uvjeta. Ako je `godineRadnogIskustva` veće ili jednako `2` ili je `dob` veći od `25` i `mjesecniPrihodi` veći od `5000`, odnosno, `(godineRadnogIskustva >= 2 || (dob > 25 && mjesecniPrihodi > 5000))` klijent može dobiti zajam.
+
+```javascript
+let zaposlen = true;
+let mjesecniPrihodi = 8000;
+
+let obrtnik = true;
+let kreditnaOcjenaVisoka = false;
+
+let godineRadnogIskustva = 3;
+let dob = 28;
+
+if ((zaposlen && mjesecniPrihodi > 7000) || (obrtnik || kreditnaOcjenaVisoka) || (godineRadnogIskustva >= 2 || (dob > 25 && mjesecniPrihodi > 5000))) {
+  console.log("Čestitamo! Možete dobiti zajam!");
+} else {
+  console.log("Nažalost, ne možete dobiti zajam.");
+}
+```
+
+Kako su uvjeti neovisni jedan o drugome, odnosno barem jedan uvjet mora biti ispunjen, možemo komplicirani izraz unutar `if` selekcije podijeliti u više manjih izraza kako bi kȏd bio čitljiviji.
+
+```javascript
+// Varijable ostaju iste
+
+if (zaposlen && mjesecniPrihodi > 7000) {
+  console.log("Čestitamo! Možete dobiti zajam!");
+}
+else if (obrtnik || kreditnaOcjenaVisoka) {
+  console.log("Čestitamo! Možete dobiti zajam!");
+}
+else if (godineRadnogIskustva >= 2 || (dob > 25 && mjesecniPrihodi > 5000)) {
+  console.log("Čestitamo! Možete dobiti zajam!");
+}
+else {
+  console.log("Nažalost, ne možete dobiti zajam.");
+}
+```
+## Vježba 3
+
+Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mjenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeće: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamjenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
+
+![alt text](image-5.png)
