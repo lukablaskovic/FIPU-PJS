@@ -10,10 +10,10 @@
 
 <img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%"></img>
 
-# [1] Naslov skripte
+# [1] Strukture podataka - objekti i polja
 
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
-<img src="logojs/js0.png" style="width:9%; float:right;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js3.png?raw=true" style="width:9%; float:right;"></img>
 
 <p style="float: clear">Uvod od nekoliko rečenica ovdje </p>
 
@@ -40,7 +40,7 @@
 
 <br>
 
-# 1 Uvod
+# 1 Objekti
 
 ## 1.2 Primjer slike
 
