@@ -14,7 +14,7 @@
 
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js2.png?raw=true" style="width:9%; float:right;"></img>
 
-<p style="float: clear"> <b>Funkcije</b> su jedan od temeljnih konstrukata u programiranju. One omogućuje grupiranje kȏda u logičke cjeline koje se mogu ponovno koristiti kroz cijeli program kao i apstrakciju složenih operacija, što nam olakšava razumijevanja i održavanje kȏda.</p>
+<p style="float: clear"> <b>Funkcije</b> su jedan od temeljnih konstrukata u programiranju. One omogućuju grupiranje kȏda u logičke cjeline koje se mogu ponovno koristiti kroz cijeli program kao i apstrakciju složenih operacija, što nam olakšava razumijevanje i održavanje kȏda.</p>
 
 <p><b>Kontrolne strukture</b> su konstrukti u programiranju koji odlučuju o toku izvršavanja programa. </p>
 
@@ -68,7 +68,7 @@ Funkcije, kao što smo već spomenuli, omogućuju grupiranje kȏda u logičke cj
 - lista parametara funkcije, omeđena zagradama `()` i odvojena zarezima (ako ima više parametara)
 - tijelo funkcije, omeđeno vitičastim zagradama `{}`
 
-Na primjer, možemo definirati jednostavnu funkciju `kvadriraj` koja će kvadrirati broj koji joj proslijedimo kao argument.
+Na primjer, možemo definirati jednostavnu funkciju `kvadriraj` koja će kvadrirati broj koji joj proslijedimo kao *argument*.
 
 ```javascript
 function kvadriraj(broj) {
@@ -76,11 +76,11 @@ function kvadriraj(broj) {
 }
 ```
 
-Funkcija kvadriraj prima jedan parametar `broj` i vraća kvadrat tog broja. Ključna riječ `return` označava vrijednost koju funkcija vraća. Ako funkcija ne vraća ništa, koristimo `return;` ili jednostavno izostavimo `return` naredbu.
+Funkcija `kvadriraj` prima jedan parametar `broj` i vraća kvadrat tog broja. Ključnom riječi `return` funkcija vraća definiranu vrijednost. Ako funkcija ne vraća ništa, koristimo `return;` ili još jednostavnije izostavimo `return` naredbu.
 
 Možemo primjetiti kako je funkcija `kvadriraj` zapravo vrlo slična matematičkoj funkciji `f(x) = x^2`. Funkcija `f` prima jedan parametar `x` i vraća kvadrat tog broja.
 
-Ako povućemo paralelu sa `C` familijom jezika, možemo primjetiti da kȏd deklaracije funkcije u JavaScriptu, kao i varijabli, ne navodimo tip podataka parametara i povratne vrijednosti. Funkcija `kvadriraj` ekvivalentna je funkciji u C-u:
+Ako povućemo paralelu sa `C` familijom jezika, možemo primjetiti da kod deklaracije funkcije u JavaScriptu, kao i varijabli, ne navodimo tip podataka parametara i povratne vrijednosti. Funkcija `kvadriraj` ekvivalentna je funkciji u C-u:
 
 ```c
 int kvadriraj(int broj) {
@@ -90,15 +90,15 @@ int kvadriraj(int broj) {
 
 Kada se izvršavaju funkcije u JavaScriptu? Funkcije u JavaScriptu se izvršavaju kada "nešto" pozove tu funkcije, primjerice to može biti:
 
-- kada se dogodi neki događaj (eng. _event_), npr. klik na gumb
+- kada se dogodi neki događaj (eng. _event_), npr. pritisak neke tipke
 - kada se pozove direktno iz Javascript kȏda
 - automatski (eng. **_self-invoking_**)
 
 ## 1.1 Osnovna sintaksa funkcija
 
-Kako smo već rekli, funkcije se deklariraju ključnom riječi `function`, nakon koje slijedi ime funkcije, lista parametara i tijelo funkcije.
+Kako smo već rekli, funkcije se deklariraju ključnom riječi `function`, nakon koje slijedi **1. ime funkcije**, **2. lista parametara** i **3. tijelo funkcije**.
 
-Imena funkcije mogu sadržavati slova, brojeve, povlake `_` i dolar `$` znakove (ista pravila vrijede kao i za imena varijabli). Imena funkcija ne smiju počinjati brojem. Kȏd koji se izvršava pišemo unutar vitičastih zagrada `{}`.
+Imena funkcije mogu sadržavati slova, brojeve, povlake `_` i dolar `$` znak (ista pravila vrijede kao i kod imenovanja varijabli). Imena funkcija ne smiju počinjati brojem. Kȏd koji se izvršava pišemo unutar vitičastih zagrada `{}`.
 
 ```javascript
 function imeFunkcije(parametar1, parametar2, parametar3) {
@@ -114,13 +114,13 @@ Zapamtimo par pojmova:
 
 ## 1.2 Pozivanje funkcije
 
-Deklariranje funkcije neće pozvati funkciju, već samo definira funkciju. Da bismo pozvali funkciju, koristimo ime funkcije, operator `()` i unutar njih argumente koje proslijeđujemo funkciji. Primjerice, kako bi pozvali našu funkciju `kvadriraj` s arugmentom `5` i ispisali rezultat u konzolu, koristimo sljedeći kȏd:
+Deklariranje funkcije neće pozvati funkciju, već samo definira funkciju. Da bismo pozvali funkciju, koristimo ime funkcije, operator `()` i unutar njega argumente koje proslijeđujemo funkciji. Primjerice, kako bi pozvali našu funkciju `kvadriraj` s arugmentom `5` i ispisali rezultat u konzolu, pišemo sljedeći kȏd:
 
 ```javascript
 console.log(kvadriraj(5)); // 25
 ```
 
-Deklarirajmo funkciju toCelsius koja će pretvoriti temperaturu iz Fahrenheit u Celzijevu temperaturu. Formula za pretvorbu je: `C = 5/9 * (F - 32)`.
+Deklarirajmo funkciju `toCelsius` koja će pretvoriti temperaturu iz Fahrenheit u Celzijevu. Formula za pretvorbu je: `C = 5/9 * (F - 32)`.
 
 Funkciju smo definirali ovako:
 
@@ -144,7 +144,7 @@ let value = toCelsius();
 console.log(value); // ?
 ```
 
-Odgovor je `NaN` (eng. **_Not a Number_**). Zašto? Funkcija `toCelsius` očekuje jedan argument, a mi nismo proslijedili niti jedan argument. Kako bismo izbjegli ovakve situacije, možemo postaviti defaultnu vrijednost za parametar funkcije, na primjer:
+Odgovor je `NaN` (eng. **_Not a Number_**). Zašto? Funkcija `toCelsius` očekuje jedan argument, a mi nismo proslijedili niti jedan. Kako bismo izbjegli ovakve situacije, možemo postaviti defaultnu vrijednost za parametar funkcije, na primjer:
 
 ```javascript
 function toCelsius(fahrenheit = 0) {
@@ -154,11 +154,11 @@ function toCelsius(fahrenheit = 0) {
 
 Poziv funkcije `toCelsius()` sada će nam vratiti `0`, jer smo postavili defaultnu vrijednost za parametar `fahrenheit`.
 
-Sada će nam `toCelsius()` vratiti `-17.777`, jer smo postavili defaultnu vrijednost za parametar `fahrenheit`.
+Sada će nam `toCelsius()` vratiti `-17.777`.
 
 <hr>
 
-JavaScript nam neće dati grešku ako slučajno pozovemo funkciju bez `()` operatora, već će to tretirati kao referencu na samu funkciju. Ovo može biti korisno u nekim situacijama, ali u pravilu želimo ponašati.
+JavaScript nam neće dati grešku ako slučajno pozovemo funkciju bez `()` operatora, već će to tretirati kao referencu na samu funkciju. Ovo može biti korisno u nekim situacijama, ali u pravilu želimo ovo izbjegavati.
 
 ```javascript
 let value = toCelsius;
@@ -178,6 +178,7 @@ Rezultat:
 U JavaScriptu, funkcije se mogu koristiti na jednak način kao što koristimo varijable. To znači da ih možemo dodijeliti varijablama, proslijediti kao argumente drugim funkcijama, koristiti kao pridruživanje vrijednosti objektima i sl.
 Primjerice, umjesto da koristimo varijablu za pohranu rezultata funkcije, možemo koristiti sam poziv funkcije!
 
+Uzmimo našu funkciju `kvadriraj`:
 ```javascript
 function kvadriraj(broj) {
   return broj * broj;
@@ -220,7 +221,7 @@ Napomena, navedeno ponašanje odnosi samo na deklaracije funkcija, ne i na funkc
 
 # 2. Doseg varijabli i funkcijski izrazi
 
-Doseg varijabli (eng. **_variable scope_**) odnosi se na to gdje u kȏdu varijabla može biti korištena. U JavaScriptu, varijable deklarirane unutar funkcije su **lokalne varijable** i mogu se koristiti samo unutar te funkcije. Varijable deklarirane izvan funkcije su globalne varijable i mogu se koristiti bilo gdje u kȏdu.
+Doseg varijabli (eng. **_variable scope_**) odnosi se na pravila gdje u kȏdu varijabla može biti korištena/pročitana. U JavaScriptu, varijable deklarirane unutar funkcije su **lokalne varijable** i mogu se koristiti samo unutar te funkcije. Varijable deklarirane izvan funkcije su globalne varijable i mogu se koristiti bilo gdje u kȏdu (ako nisu unutar nekog drugog bloka).
 
 ```javascript
 // Kȏd ovdje ne može koristiti varijablu x
@@ -234,7 +235,7 @@ console.log(x); // ReferenceError: x is not defined
 ```
 
 Budući da se lokalne varijable prepoznaju samo unutar njihovih funkcija, varijable s istim imenom mogu postojati u različitim funkcijama.
-Važno je napomenuti da se lokalne varijable stvaraju svaki put kada se funkcija pozove, a brišu kada se funkcija završi
+Važno je napomenuti da se lokalne varijable stvaraju svaki put kada se funkcija pozove, a dealociraju kada se funkcija završi.
 
 ```javascript
 // Ove varijable definirane su u globalnom dosegu
@@ -265,21 +266,21 @@ console.log(pomnozi()); // ?
 ```
 
 <details>
-  <summary>Odgovor!</summary>
+  <summary>Odgovor</summary>
   <p>Prvo smo deklarirali dvije konstante number_1 i number_2 u globalnom dosegu varijabli.</p>
   <p>Zatim smo deklarirali funkciju pomnozi koja vraća umnožak NOVIH lokalnih varijabli number_1 i number_2.</p>
   <p>Unutar tijela funkcije smo deklariramo nove konstante koje su lokalne za tu funkciju. Ove lokalne varijable "maskiraju" (eng. <b><i>shadowing</i></b>) globalne varijable s istim imenima.</p>
   <p>Stoga će funkcija vratiti rezultat 100.</p>
-  
+
   ```javascript
   console.log(pomnozi()); // 100
-```
+  ```
 
 </details>
 
 ### 2.1 Blokovski opseg (eng. **_block scope_**)
 
-U JavaScriptu, varijable deklarirane s ključnim riječima `let` i `const` imaju blokovski opseg. To znači da su vidljive samo unutar bloka kȏda u kojem su deklarirane, slično kao lokalne deklarirane unutar funkcija, blok kȏda je definiran vitičastim zagradama `{}`.
+U JavaScriptu, varijable deklarirane s ključnim riječima `let` i `const` imaju blokovski opseg. To znači da su vidljive samo unutar bloka kȏda u kojem su deklarirane, slično kao lokalne varijable deklarirane unutar funkcija, blok kȏda se definira vitičastim zagradama `{}`.
 
 ```javascript
 const x = 10;
@@ -294,7 +295,7 @@ console.log(x); // 10
 
 Možemo primjetiti da se varijabla `x` deklarirana unutar bloka `{}` ponaša kao lokalna varijabla unutar bloka, a varijabla `x` deklarirana izvan bloka ponaša se kao globalna varijabla.
 
-Ponovna deklaracija varijable s ključnom riječi `let` ili u varijablu `const`, unutar istog dosega, uzrokovat će grešku!
+Ponovna deklaracija varijable s ključnom riječi `let` ili redeklaracija ključnom riječi `const`, unutar istog dosega, uzrokovat će grešku!
 
 ```javascript
 let x = 10; // Okej
@@ -338,14 +339,14 @@ const x = 10; // Okej
 }
 ```
 
-Kao što je već rečeno u prethodnoj skripti, varijable deklarirane s ključnom riječi `var` nemaju blokovski opseg već funkcionalni, što znači da su vidljive unutar funkcija u kojoj su deklarirane, kao i unutar svih blokova i podunkcija. Ovo ponašanje može dovesti do neočekivanih rezultata i grešaka, stoga se toplo preporučuje korištenje ključnih riječi `let` i `const` koje imaju blokovski opseg, umjesto `var`.
+Kao što je već rečeno u prethodnoj skripti, varijable deklarirane s ključnom riječi `var` nemaju blokovski opseg već funkcionalni, što znači da su vidljive unutar funkcija u kojoj su deklarirane, kao i unutar svih blokova i podfunkcija. Ovo ponašanje može dovesti do neočekivanih rezultata i grešaka, stoga se preporučuje korištenje isključivo ključnih riječi `let` i `const` koje imaju blokovski opseg, umjesto `var`.
 
 ```javascript
 var x = 1;
 {
   var x = 2;
 }
-console.log(x); // 2 - neočekivano! Zadržimo se na ključnim riječima let i const
+console.log(x); // 2 - neočekivano! Zadržimo se na ključnim riječima let i const!
 ```
 
 ```javascript
@@ -358,7 +359,7 @@ const y = 2;
 console.log(x, y); // 1 2 - očekivano!
 ```
 
-Za one koji žele naučiti više o blokovskom opsegu, i function hoistingu, link [ovdje](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function).
+Za one koji žele naučiti više o blokovskom opsegu, i function hoistingu, link je [ovdje](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function).
 
 ### 2.2 Ponovno deklariranje funkcija
 
@@ -372,7 +373,7 @@ console.log(a.length); // 2 - broj parametara zadnje deklarirane funkcije
 let a = 2; // SyntaxError: Identifier 'a' has already been declared
 ```
 
-A ako overrideamo funkciju s `var` deklaracijom, to će raditi, ali još jednom, nije preporučljivo.
+Ako "overridamo" funkciju s `var` deklaracijom, to će raditi, ali još jednom, nije preporučljivo.
 
 ```javascript
 var a = 1;
@@ -382,8 +383,9 @@ console.log(a); // 1
 
 ### 2.3 Funkcijski izrazi
 
-Funkcijski izrazi (eng. **_function expressions_**) su način definiranja funkcija kao vrijednosti varijable. Mogu se koristiti kako bi definirali funkciju unutar izraza.
-Funkcijski izrazi također se definiraju s ključnom riječi `function`, ali se razlikuju od deklaracija funkcija po tome što se mogu dodijeliti varijablama, proslijediti kao argumenti drugim funkcijama, koristiti kao pridruživanje vrijednosti objektima i sl. Sintaksa je vrlo slična kao i kȏd klasične `function` deklaracije.
+Funkcijski izrazi (eng. **_function expressions_**) su način definiranja funkcija kao vrijednosti varijable. Mogu se koristiti kako bi **definirali funkciju unutar izraza**.
+
+Funkcijski izrazi također se definiraju s ključnom riječi `function`, ali se razlikuju od "deklaracija funkcija" po tome što se mogu dodijeliti varijablama, proslijediti kao argumenti drugim funkcijama, koristiti kao pridruživanje vrijednosti objektima i sl. Sintaksa je vrlo slična kao i kod klasične `function` deklaracije.
 
 ```javascript
 const izracunaj_povrsinu_pravokutnika = function (duzina, sirina) {
@@ -392,7 +394,7 @@ const izracunaj_povrsinu_pravokutnika = function (duzina, sirina) {
 console.log(izracunaj_povrsinu_pravokutnika(5, 3)); // 15 - funkciju pozivamo na isti način kao i deklarirane funkcije
 ```
 
-Kako razlikovati u kȏdu deklaraciju funkcije i funkcijske izraze? Uzmimo za primjer funkciju `zbroji` koja zbraja dva broja.
+Kako razlikujemo deklaraciju funkcije i funkcijske izraze? Uzmimo za primjer funkciju `zbroji` koja zbraja dva broja.
 
 Deklaracija funkcije izgleda ovako:
 
@@ -432,7 +434,7 @@ let zbroji = function (a, b) {
 };
 ```
 
-Možemo li deklarirati funkciju unutar funkcije? Naravno!
+Možemo li deklarirati funkciju unutar funkcije? Naravno 🙂
 
 ```javascript
 function vanjskaFunkcija() {
@@ -464,7 +466,7 @@ vanjskaFunkcija();
 // Pozdrav iz unutarnje funkcije!
 ```
 
-Svaka funkcija ima svoj svoj lokalni doseg varijabli, što znači da varijable deklarirane unutar unutarnje funkcije nisu vidljive vanjskoj funkciji?
+Svaka funkcija ima svoj svoj lokalni doseg varijabli, što znači da varijable deklarirane unutar unutarnje funkcije nisu vidljive vanjskoj funkciji (vanjska je ona koja omeđuje unutarnju)?
 
 ```javascript
 function vanjskaFunkcija() {
@@ -495,7 +497,7 @@ vanjskaFunkcija();
 
 ## Vježba 2
 
-Napišite funkciju `sve_o_krugu(r)` s jednim parametrom `r` koji predstavlja radijus kruga. Funkcija treba sadržavati dvije unutarnje funkcije `povrsina` i `opseg` koje će računati površinu i opseg kruga i vraćati vanjskoj funkciji rezultate. Jedna od dvije unutarnje funkcije treba koristiti funkcijski izraz, a druga deklaraciju funkcije. Vanjska funkcija treba ispisati rezultate unutarnjih funkcija u konzolu. Za vrijednost broja π koristite `Math.PI`. Vanjska funkcija treba lokalnu varijablu `zbroj` pohraniti zbroj površine i opsega kruga i vratiti **tu vrijednost**. Rezultat funkcije `sve_o_krugu(3)` pohranite u globalnu varijablu zbroj te ju ispišite u konzolu.
+Napišite funkciju `sve_o_krugu(r)` s jednim parametrom `r` koji predstavlja radijus kruga. Funkcija treba sadržavati dvije unutarnje funkcije `povrsina` i `opseg` koje će računati površinu i opseg kruga i vraćati vanjskoj funkciji rezultate. Jedna od dvije unutarnje funkcije treba koristiti funkcijski izraz, a druga deklaraciju funkcije. Vanjska funkcija treba ispisati rezultate unutarnjih funkcija u konzolu. Za vrijednost broja π koristite `Math.PI`. Vanjska funkcija treba u lokalnu varijablu `zbroj` pohraniti zbroj površine i opsega kruga i vratiti **tu vrijednost**. Rezultat funkcije `sve_o_krugu(3)` pohranite u globalnu varijablu `zbroj` te ju ispišite u konzolu.
 
 Rezultat:
 
@@ -544,15 +546,15 @@ Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u
 Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na temelju određenih uvjeta. Ako je uvjet ispunjen tada se izvršava određeni blok radnji, inače će se izvršavati drugi blok radnji koji zadovoljava taj uvjet. Kontrolne strukture možemo podijeliti u dvije kateogrije:
 
 1. Selekcije (eng. **_Conditional statements_**) - odlučuju o toku izvršavanja bloka kȏda na temelju logičkog izraza koji se evaluira u `true` ili `false`.
-2. Iteracije/Petlje (eng. **_Iterations_**) - omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom.
+2. Iteracije/Petlje (eng. **_Iterations_**) - omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom, koji se evaluira u `true` ili `false`.
 
 ## 3.1 Selekcije (eng. **_Conditional statements_**)
 
-U JavaScriptu, kao i u većini programskih jezika, selekcije se ostvaruju pomoću ključnih riječi `if`, `else if` i `else` te `switch`. Kada koristimo koju selekciju ovisi o tome koliko uvjeta želimo provjeriti:
+U JavaScriptu, kao i u većini programskih jezika, selekcije se pišu pomoću ključnih riječi `if`, `else if` i `else` te `switch`. Kada koristimo koju selekciju ovisi o tome koliko uvjeta želimo provjeriti:
 
 - `if` selekciju koristimo kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `true`
 - `else` selekciju koristimo kako bi specificirali blok kȏda koji se izvršava ako je evaluirani logički izraz `false`
-- `else if` selekciju koristimo kako bi provjerili novi logički izraz ako je prethodni bio `false`
+- `else if` selekciju koristimo kako bi provjerili novi logički izraz ako je prethodni izraz unutar `if` ili `if else` bio `false`
 - `switch` selekciju koristimo kada imamo puno alternativnih uvjeta (logičkih izraza) koje želimo provjeriti
 
 ### 3.1.1 `if` selekcija
@@ -854,7 +856,7 @@ Rezultat:
 
 Petlje su konstrukti koji omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom. U JavaScriptu, kao i u većini programskih jezika, petlje se ostvaruju pomoću ključnih riječi `for` i `while`.
 
-Petlje su korisne kada želimo određeni dio koda izvršavati više puta, svaki put s različitim ulaznim podacima. Na primjer, kada želimo ispisati brojeve od `1` do `10`, možemo koristiti petlju umjesto da svaki broj ispišemo ručno.
+Petlje su korisne kada želimo određeni dio koda izvršavati više puta, svaki put s različitim ulaznim podacima. Na primjer, kada želimo ispisati brojeve od `1` do `10`, možemo koristiti petlju umjesto da svaki broj ispisujemo ručno.
 ```javascript
 console.log(1);
 console.log(2);
@@ -873,12 +875,12 @@ for (let i = 1; i <= 10; i++) {
   console.log(i);
 }
 ```
-Postoji više vrsta `for` petlji u JavaScriptu, ali u pravilu sve rade istu stvar - ponavljaju radnu određeni broj puta (ili nijednom). Koju petlju koristimo zaključujemo ovisno o ulaznim podacima, početku i kraju petlje, te koracima. Ova for petlja slična je for petljama u C i Java jezicima.
+Postoji više vrsta `for` petlji u JavaScriptu, ali u pravilu sve rade istu stvar - ponavljaju radnju određeni broj puta (ili nijednom). Koju petlju koristimo zaključujemo ovisno o: ulaznim podacima, početku i kraju petlje, te koracima. Ova `for` petlja slična je `for` petljama u C i Java jezicima.
 
 ### 3.3.1 Klasična `for` petlja
 
 Klasična `for` petlja koristi se kada znamo koliko puta želimo ponoviti blok kȏda. Sastoji se od `initialization`, `condition` i `afterthought`. Sintaksa je sljedeća:
-  
+
 ```javascript
 for (initialization; condition; afterthought) {
   statement // blok kȏda koji se izvršava dok je uvjet = true
@@ -931,8 +933,8 @@ for (; i < 10; i++) {
 }
 ```
 
-Izostavljanjem nekih od dijelova `for` petlje, možemo dobiti beskonačnu petlju:
-Oprez, beskonačne petlje mogu dovesti do crashanja web preglednika ili vaše aplikacije koja izvodi JavaScript kȏd. Poželjno je izbjegavati beskonačne petlje.
+Izostavljanjem nekih od dijelova `for` petlje, možemo dobiti beskonačnu petlju.
+Oprez, beskonačne petlje često dovode do crashanja web preglednika ili vaše aplikacije koja izvodi JavaScript kȏd. Poželjno je izbjegavati beskonačne petlje.
 ```javascript
 // Navedene petlje će vrlo vjerojatno srušiti vaš web preglednik
 for (;;) {
@@ -949,7 +951,7 @@ for (let i = 0; i < 10; ) {
 ```
 
 #### Primjer 3 - Ispis ispis brojeva od 1 do 100 koji su djeljivi s 3
-Izračunajte sumu svih brojeva od `1` do `100` koji su djeljivi s 3. Koristite `for` petlju. Ovaj zadatak zahtjeva korištenje petlje za iteriranje kroz brojeve od 1 do 100, uvjetne izjave za provjeru je li broj djeljiv sa 3 i varijablu za praćenje ukupne sume.
+Izračunajte sumu svih brojeva od `1` do `100` koji su djeljivi s 3. Koristite `for` petlju. Ovaj zadatak zahtjeva korištenje petlje za iteriranje kroz brojeve od 1 do 100, uvjetne izjave za provjeru je li broj djeljiv s 3 i varijablu za praćenje ukupne sume.
 
 Prvo ćemo napisati kȏd koji ispisuje sve brojeve od `1` do `100`.
 ```javascript
@@ -1002,7 +1004,7 @@ Sa svakom iteracijom, `n` se inkrementira za `1` i dodaje se na `x`. Kada je `n`
 2. prolazak: `n` = `2`, `x` = `3`
 3. prolazak: `n` = `3`, `x` = `6`
 
-Već smo rekli da beskonačne petlje želimo izbjegavati. Moramo pripaziti da uvjet u `while` petlji kad tad postane `false`. Ako uvjet nikad ne postane `false`, petlja će se izvršavati beskonačno. Na primjer, sljedeća petlja će se izvršavati beskonačno:
+Već smo rekli da beskonačne petlje želimo izbjegavati. Moramo osigurati da uvjet u `while` petlji kad tad postane `false`. Ako uvjet nikad ne postane `false`, petlja će se izvršavati beskonačno. Na primjer, sljedeća petlja će se izvršavati beskonačno:
 ```javascript
 while (true) {
   console.log("Beskonačna petlja!");
@@ -1066,11 +1068,12 @@ for (let i = 1; i <= 100; i++) {
 
 `break` i `continue` naredbe možemo koristiti kod svih vrsta petlji - `for`, `while` i `do-while`. 
 
-`break` naredbu koristimo i unutar `switch` selekcija kako bi prekinuli izvršavanje selekcije, međutim `continue` naredbu ne koristimo.
+`break` naredbu koristimo i unutar `switch` selekcija kako bi prekinuli njeno izvršavanje nakon ulaska u određeni `case` blok, međutim `continue` naredbu ne koristimo.
 
 ### 3.3.4 Petlje nad nizom znakova (eng. **_String_**)
 
-Do sad smo koristili petlje za iteriranje kroz brojeve, ali možemo koristiti petlje i za iteriranje kroz nizove znakova. Na primjer, možemo ispisati svaki znak u nizu znakova. Kako bismo to postigli, koristimo `for` petlju i svojstvo `length` niza znakova koje nam govori koliko znakova niz sadrži.
+Do sad smo koristili petlje za iteriranje kroz brojeve, ali možemo koristiti petlje i za iteriranje kroz nizove znakova. Na primjer, možemo ispisati svaki znak u nizu znakova. Kako bismo to postigli, koristimo `for` petlju i svojstvo `length` niza znakova koje nam govori koliko znakova niz sadrži. Kao i u C jezicima, indeksi znakova u nizu znakova počinju od `0` i idu do `length - 1`, a dohvaćamo ih koristeći operator `[]`.
+
 ```javascript
 let grad = "Pula";
 for (let i = 0; i < grad.length; i++) {
@@ -1134,7 +1137,7 @@ for (let i = 1; i <= 3; i++) {
 
 Primjenjujući ugniježdene petlje možemo jednostavno ispisati tablicu množenja. U ovom primjeru implementirat ćemo funkciju za ispis tablice množenja za brojeve od `1` do `10`. Funkcija će ispisati sve kombinacije brojeva od `1` do `10` i njihovih umnožaka.
 
-Prvo definirajmo funkciju `tablicaMnozenja()` i unutar nje for petlju koja prolazi kroz brojeve od `1` do `10`.
+Prvo definirajmo funkciju `tablicaMnozenja()` i unutar nje `for` petlju koja prolazi kroz brojeve od `1` do `10`.
 ```javascript
 function tablicaMnozenja() {
   for (let i = 1; i <= 10; i++) {
@@ -1154,7 +1157,7 @@ function tablicaMnozenja() {
 }
 tablicaMnozenja()
 ```
-Kako bismo dobili tablicu, možemo dodati i formatiranje ispisa. Na primjer, možemo koristiti tabulator `\t` kako bi razdvojili brojeve.
+Kako bismo dobili tablicu, možemo dodati i formatiranje ispisa. Na primjer, možemo koristiti tabulator `\t` kako bi razdvojili brojeve za veličinu jednog taba.
 U varijablu `red` spremamo sve umnoške brojeva `i` i `j` od `1` do `10`, odvajamo ih tabulatorom, a zatim ispisujemo napunjeni `red` u vanjskoj petlji.
 
 Rješenje:
@@ -1174,7 +1177,7 @@ tablicaMnozenja()
 
 ## Vježba 4
 
-Napišite program koji će ispisati sve brojeve od `1` do `100`. No, za brojeve koji su djeljivi s 3 umjesto broja ispišite  `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon koje dodajte ` i kraj!`.
+Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite  `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
 
 Rezultat:
 
