@@ -271,10 +271,10 @@ console.log(pomnozi()); // ?
   <p>Zatim smo deklarirali funkciju pomnozi koja vraća umnožak NOVIH lokalnih varijabli number_1 i number_2.</p>
   <p>Unutar tijela funkcije smo deklariramo nove konstante koje su lokalne za tu funkciju. Ove lokalne varijable "maskiraju" (eng. <b><i>shadowing</i></b>) globalne varijable s istim imenima.</p>
   <p>Stoga će funkcija vratiti rezultat 100.</p>
-  
+
   ```javascript
   console.log(pomnozi()); // 100
-```
+  ```
 
 </details>
 
@@ -880,7 +880,7 @@ Postoji više vrsta `for` petlji u JavaScriptu, ali u pravilu sve rade istu stva
 ### 3.3.1 Klasična `for` petlja
 
 Klasična `for` petlja koristi se kada znamo koliko puta želimo ponoviti blok kȏda. Sastoji se od `initialization`, `condition` i `afterthought`. Sintaksa je sljedeća:
-  
+
 ```javascript
 for (initialization; condition; afterthought) {
   statement // blok kȏda koji se izvršava dok je uvjet = true
