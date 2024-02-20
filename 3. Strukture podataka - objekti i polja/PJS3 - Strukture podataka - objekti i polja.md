@@ -585,3 +585,389 @@ Rezultat:
   ```
 
 # 3. Uvod u polja
+
+Polja u JavaScriptu omogućuju pohranjivanje kolekcije više elementa pod jednim imenom varijable i imaju članove za izvođenje uobičajenih operacija s poljima.
+
+- Polja se općenito opisuju kao *list-like objects*; to su jednostavno pojedinačni objekti koji sadrže više vrijednosti pohranjenih u listi.
+
+- Objekti polja se mogu pohraniti u varijable i obrađivati na isti način kao i bilo koji drugi tip vrijednosti, s razlikom što možemo pojedinačno pristupiti svakoj vrijednosti unutar polja te vršiti različite radnje nad njima, poput iteracije nad poljem i obavljanja istih operacija na svakoj vrijednosti.
+
+- Možda imamo niz elementa proizvoda i njihove cijene pohranjenih u polju i želimo prolaziti kroz sve i ispisivati ih na računu, dok istovremeno zbrajamo sve cijene i ispisujemo ukupnu cijenu na dnu.
+
+## 3.1 Sintaksa polja
+
+Polja se sastoje od uglatih zagrada `[]` i elementa koji su odvojeni zarezima `,`.
+
+Primjer: 
+
+```javascript
+const polje = ["kruh", "mlijeko", "sir", "jabuka", "banana"];
+console.log(polje); // ['kruh', 'mlijeko', 'sir', 'jabuka', 'banana']
+/*
+(5) ['kruh', 'mlijeko', 'sir', 'jabuka', 'banana']
+0: "kruh"
+1: "mlijeko"
+2: "sir"
+3: "jabuka"
+4: "banana"
+length: 5
+*/
+```
+
+U gornjem primjeru, svaki element je string, ali u polju možemo pohraniti **različite** tipove podataka - string-ove, brojeve, objekte, pa čak i druga polja. Također možemo **miješati** tipove podataka u jednom polju, kao što možemo i u objektu - ne moramo se ograničiti samo na pohranu brojeva u jedno polje, a u drugom samo string-ova. Na primjer:
+
+```javascript
+const poljeBrojeva = [1, 1, 2, 3, 5, 8, 13];
+const razlicitiTipoviPodataka = ["stablo", { ime: 'Marko', prezime: 'marić' }, [0, 1, 2]];
+```
+
+## 3.2 Veličina polja
+
+Veličina polja (koliko elementa sadrži) može se saznati na isti način kao i duljina string-a - korištenjem svojstva `length`.
+
+Primjer:
+
+```javascript
+const polje = ["kruh", "mlijeko", "sir", "jabuka", "banana"];
+console.log(polje.length); // 5
+```
+
+## 3.3 Pristupanje i modificiranje polja
+
+Elementi u polju su numerirani, počevši od nule `0`. Ta se brojka naziva **indeks** elementa. Dakle, prvi element ima indeks `0`, druga ima indeks `1`, i tako dalje. Može se pristupati pojedinim elementima u polju koristeći notaciju **uglatih** `[]` zagrada i pružajući indeks elementa, na isti način kao što se pristupa slovima u string-u.
+
+Primjer:
+
+```javascript
+const polje = ["kruh", "mlijeko", "sir", "jabuka", "banana"];
+console.log(polje[0]); // kruh
+console.log(polje[1]); // mlijeko
+console.log(polje[2]); // sir
+console.log(polje[3]); // jabuka
+console.log(polje[4]); // banana
+console.log(polje[5]); // undefined
+```
+
+Također se može izmijeniti element u polju dodjeljivanjem nove vrijednosti pojedinačnoj stavci u polju.
+
+```javascript
+const polje = ["kruh", "mlijeko", "sir", "jabuka", "banana"];
+polje[2] = "brašno";
+console.log(polje); // ['kruh', 'mlijeko', 'brašno', 'jabuka', 'banana']
+```
+
+> Napomena: Polje unutar polja naziva se **višedimenzionalno** polje. Možete pristupiti stavci unutar polja koja je samo po sebi u drugom polju pomoću spajanja dvije skupine uglatih zagrada `[][]`.
+
+Primjer:
+
+```javascript
+const polje = ["stablo", 795, [0, 1, 2]];
+
+console.log(polje[2][2]) // 2
+
+// ist kao da pišemo:
+
+const element2 = polje[2]
+console.log(element2[2]) // 2
+```
+
+Ako neznamo indeks elementa, koristimo metodu `indexOf()` koje prima element kao argument te vraća indeks elementa ako postoji, inače vraća `-1` ako elementa nema.
+
+```javascript
+const ptice = ["Galeb", "Sova", "Lastavica"];
+console.log(ptice.indexOf("Lastavica")); //  2
+console.log(ptice.indexOf("Papagaj")); // -1
+```
+
+## 3.4 Dodavanje i brisanje elementa u polju
+
+Za dodavanje jednog ili više elementa na kraj polja možemo koristiti `push()`. Može se uključiti jedan ili više elementa na kraj polja. Nova duljina polja se vraća kada se završi poziv metode.
+
+```javascript
+const gradovi = ["Pula", "Rijeka"];
+gradovi.push("Zagreb");
+console.log(gradovi); // ['Pula', 'Rijeka', 'Zagreb']
+gradovi.push("Karlovac", "Split");
+console.log(gradovi); // ['Pula', 'Rijeka', 'Zagreb', 'Karlovac', 'Split']
+const novaDuljina = gradovi.push("Šibenik");
+console.log(gradovi); // ['Pula', 'Rijeka', 'Zagreb', 'Karlovac', 'Split', 'Šibenik' ]
+console.log(novaDuljina); // 6
+```
+
+Za dodavanje elementa na početak polja koristite `unshift()`:
+
+```javascript
+const gradovi = ["Pula", "Rijeka"];
+gradovi.unshift("Zagreb");
+console.log(gradovi); // ['Zagreb', 'Pula', 'Rijeka']
+```
+
+Za uklanjanje posljednjeg elementa iz polja koristi se `pop()`. Metoda `pop()` vraća element koji je uklonjen.
+
+```javascript
+const gradovi = ["Pula", "Rijeka", "Karlovac", "Split"];
+const uklonjeniGrad = gradovi.pop();
+console.log(gradovi); // ['Pula', 'Rijeka', 'Karlovac']
+console.log(uklonjeniGrad); // Split
+```
+
+Za uklanjanje prvog elementa iz polja koristi se `shift()`:
+
+```javascript
+const gradovi = ["Pula", "Rijeka", "Karlovac", "Split"];
+gradovi.shift();
+console.log(gradovi); // ['Rijeka', 'Karlovac', 'Split']
+```
+Ako znamo indeks elementa, može se ukloniti iz polja koristeći `splice()`. Prvi argument kaže gdje početi s uklanjanjem elementa, a drugi argument kaže koliko elementa treba ukloniti. Stoga se može ukloniti više od jedog elementa.
+
+```javascript
+const gradovi = ["Pula", "Rijeka", "Karlovac", "Split", "Zagreb"];
+const indeks = gradovi.indexOf("Karlovac");
+if (indeks !== -1) {
+  gradovi.splice(indeks, 1);
+}
+console.log(gradovi); // ['Pula', 'Rijeka', 'Split', 'Zagreb']
+
+const indeks2 = gradovi.indexOf("Rijeka");
+if (indeks2 !== -1) {
+  gradovi.splice(indeks2, 2);
+}
+console.log(gradovi); // ['Pula', 'Zagreb']
+```
+
+## Vježba 7
+
+1. Definirajte polje `voce` s nekoliko različitih vrsta voća (jabuka, banana, naranča, kivi)
+2. Dodajte novu vrstu voća na kraj polja (ananas)
+3. Uklonite prvi element iz polja. 
+4. Promijeni vrijdnost u polju s indeksom 1 na 'mandarina'
+
+Ispišite rezultat nakon svake operacije.
+
+Rezultat:
+
+```plaintext
+1. ['jabuka', 'banana', 'naranča', 'kivi']
+2. ['jabuka', 'banana', 'naranča', 'kivi', 'ananas']
+3. ['banana', 'naranča', 'kivi', 'ananas']
+4. ['banana', 'mandarina', 'kivi', 'ananas']
+```
+
+## 3.5 Iteriranje kroz polje
+
+Iteriranje kroz polje je ključni koncept u JavaScriptu i omogućuje pristup svakom elementu u polju kako bi izvršili određene operacije. Postoje različite metode za iteriranje kroz polje, od tradicionalne `for` petlje do modernih metoda poput `forEach`, `map` i `filter`.
+
+#### 1. Tradicionalna `for` petlja
+`for` petlja je uobičajena metoda iteriranja kroz polje gdje koristimo `i` kao indeks za pristupanje elementima u polju.
+
+```javascript
+const slova = ["a","b","c"];
+
+for (let i = 0; i < slova.length; i++) {
+  console.log("Indeks : " + i, "Vrijednost : " + slova[i]);
+}
+// Indeks : 0 Vrijednost : a
+// Indeks : 1 Vrijednost : b
+// Indeks : 2 Vrijednost : c
+```
+
+
+#### 2. `for...in`
+`for...in`: Ova petlja uvijek iterira preko indeksa. Dok prolazimo kroz polje, varijabla `i` će držati vrijednost indeksa svakog elementa. Ovo se može koristiti kada su potrebni indeksi elemenata tijekom iteracije.
+
+```javascript
+const slova = ["a", "b", "c"];
+for (let i in slova) {
+    console.log("Indeks: " + i, "Vrijednost: " + slova[i]);
+}
+// Indeks : 0 Vrijednost : a
+// Indeks : 1 Vrijednost : b
+// Indeks : 2 Vrijednost : c
+```
+
+#### 3. `for...of`
+Petlja `for...of`: Ova petlja uvijek iterira kroz vrijednosti polja. Dok prolazimo kroz polje, varijabla `i` će držati vrijednost svakog elementa. Ovo se može koristiti ako su potrebne samo vrijednosti elemenata u polju.
+
+```javascript
+const slova = ["a", "b", "c"];
+for (let i of slova) {
+    console.log(i);
+}
+// a
+// b
+// c
+```
+
+#### 3. `forEach`
+
+Petlja `forEach`: Ova petlja izvršava povratnu funkciju na svakom elementu dok prolazi kroz polje. Parametri povratne funkcije su `trenutnaVrijednost` (trenutna vrijednost), `indeks` (indeks trenutne vrijednosti), `polje` (polje na kojem se izvodi petlja). Ovo se može koristiti za obavljanje određenih operacija na svakom elementu polja.
+
+```javascript
+const slova = ["a", "b", "c"];
+slova.forEach(function(trenutnaVrijednost, indeks, polje){
+    console.log("Vrijednost: " + trenutnaVrijednost, "Indeks: " + indeks, "Cijelo polje: " + polje);
+});
+// Vrijednost: a Indeks: 0 Cijelo polje: a,b,c
+// Vrijednost: b Indeks: 1 Cijelo polje: a,b,c
+// Vrijednost: c Indeks: 2 Cijelo polje: a,b,c
+```
+
+## 3.6 Funkcije nad poljem
+
+### 3.6.1. `map()`
+
+Metoda map() stvara novo polje s rezultatima izvršavanja funkcije nad svakim elementom u polju.
+
+```javascript
+const brojevi = [1, 2, 3, 4, 5];
+
+const udvostruceni = brojevi.map(function(broj) {
+  return broj * 2;
+});
+console.log(udvostruceni); // [2, 4, 6, 8, 10]
+```
+
+```javascript
+const brojevi = [1, 4, 9];
+
+const korijen = brojevi.map((broj) => Math.sqrt(broj));
+console.log(korijen); // [1, 2, 3]
+```
+
+### 3.6.2. `filter()`
+
+Metoda filter() stvara novo polje koje sadrži samo elemente koji zadovoljavaju određeni uvjet.
+
+```javascript
+const brojevi = [1, 2, 3, 4, 5];
+
+const veciOdDva = brojevi.filter(function(broj) {
+  return broj > 2;
+});
+
+console.log(veciOdDva); // [3, 4, 5]
+```
+
+```javascript
+const brojevi = [1, 2, 3, 4, 5];
+
+const djeljiviSaDva = brojevi.filter(broj => broj % 2 == 0);
+
+console.log(djeljiviSaDva); // [2, 4]
+```
+
+
+### 3.6.3. `sort()`
+
+Metoda sort() sortira elemente polja i vraća sortirano polje. Po default-u, sortira elemente kao niz stringova i sortira ih po ASCII vrijednostima. 
+
+```javascript
+const brojevi = [5, 2, 8, 1, 4];
+
+const sortiraniBrojevi = brojevi.sort();
+
+console.log(sortiraniBrojevi); // [1, 2, 4, 5, 8]
+```
+
+Da bi sortirali elemente kao niz brojeva, koristi se callback funkcija koja vraća vrijednost koja se koristi za sortiranje.
+
+```javascript
+const brojevi = [5, 2, 8, 1, 4];
+
+const sortiraniBrojevi = brojevi.sort((a, b) => b - a);
+
+console.log(sortiraniBrojevi); // [8, 5, 4, 2, 1]
+```
+
+> Ova funkcija za sortiranje oduzima brojeve drugi od prvog, što rezultira sortiranjem u padajućem redoslijedu.
+
+### 3.6.4. `reverse()`
+
+Metoda `reverse()` obrće redoslijed elemenata u polju. Prvi element postaje posljednji, drugi postaje predzadnji, i tako dalje.
+
+```javascript
+const gradovi = ["Pula", "Rijeka", "Karlovac", "Split", "Zagreb"];
+
+const obrnutiGradovi = gradovi.reverse();
+
+console.log(obrnutiGradovi); // ['Zagreb', 'Split', 'Karlovac', 'Rijeka', 'Pula']
+```
+
+> Metoda `reverse()` mijenja originalno polje i vraća referencu na polje s obrnutim redoslijedom elemenata.
+
+### 3.6.5. `join(separator)`
+
+Metoda `join()` spaja sve elemente polja u jedan string. Možete specificirati separator koji će se koristiti između elemenata. Ako se separator ne navede, koristiti se zarez `,`.
+
+```javascript
+const voce = ["jabuka", "banana", "kruška"];
+
+const spojeniPlodovi = voce.join(", ");
+
+console.log(spojeniPlodovi); // "jabuka, banana, kruška"
+```
+
+### 3.6.6. `includes(element, odIndeksa)`
+
+Metoda `includes()` provjerava je li polje sadrži određeni element i vraća `true` ako je pronađen, inače vraća `false`. Opcionalni drugi argument, `odIndeksa`, omogućuje početak pretraživanja određenog indeksa u polju.
+
+```javascript
+const brojevi = [1, 2, 3, 4, 5];
+
+console.log(brojevi.includes(3)); // true
+console.log(brojevi.includes(6)); // false
+console.log(brojevi.includes(3, 2)); // true, zato što od indeksa 2 pa nadalje su 3, 4, 5
+console.log(brojevi.includes(3, 3)); // false, zato što od indeksa 3 pa nadalje su 4, 5
+```
+
+### 3.6.7. `some(callback)`
+
+Metoda `some()` provjerava zadovoljava li barem jedan element u polju uvjet naveden u `callback` funkciji. Ako barem jedan element zadovoljava uvjet, metoda vraća `true`, inače vraća `false`.
+
+```javascript
+const brojevi = [1, 2, 3, 4, 5];
+
+const rezultat = brojevi.some(broj => broj > 3);
+
+console.log(rezultat); // true
+```
+
+U ovom primjeru, metoda `some()` provjerava jesu li barem jedan element u polju `brojevi` veći od `3`. Budući da su brojevi `4` i `5` veći od `3`, rezultat je `true`.
+
+### 3.6.8. `every(callback)`
+
+Metoda every() provjerava zadovoljava li svaki element u polju uvjet naveden u `callback` funkciji. Ako svaki element zadovoljava uvjet, metoda vraća `true`, inače vraća `false`.
+
+```javascript
+const brojevi = [1, 2, 3, 4, 5];
+
+const rezultat = brojevi.every(broj => broj > 3);
+
+console.log(rezultat); // false
+```
+
+U ovom primjeru, metoda every() provjerava jesu li svi elementi u polju `brojevi` veći od 3. Budući da elementi 3, 4 i 5 u polju nisu veći od 3, rezultat je `false`.
+
+Tablica svih metoda kojih smo prošli:
+
+| Metoda            | Objasnjenje                                                                                                                                                         | Primjer                                                                                 | Izlaz                                                                                                                                                                             |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------------------------|
+| `length`          | Vraća broj elemenata u polju.                                                                                                                                       | `const polje = [1, 2, 3, 4, 5]; console.log(polje.length);`                            | `5`         |
+| `indexOf`         | Vraća indeks prvog pojavljivanja tražene stavke u polju. Ako stavka nije pronađena, vraća `-1`.                                                                    | `const polje = ["jabuka", "banana", "kruška"]; console.log(polje.indexOf("banana"));` | `1`                    |
+| `push`            | Dodaje jednu ili više stavki na kraj polja i vraća novu duljinu polja.                                                                                             | `const polje = ["jabuka", "banana"]; polje.push("kruška"); console.log(polje);`       | `["jabuka", "banana", "kruška"]`             |
+| `unshift`         | Dodaje jednu ili više stavki na početak polja i vraća novu duljinu polja.                                                                                           | `const polje = ["jabuka", "banana"]; polje.unshift("kruška"); console.log(polje);`    | `["kruška", "jabuka", "banana"]`                  |
+| `pop`             | Uklanja posljednju stavku iz polja i vraća tu stavku.                                                                                                               | `const polje = ["jabuka", "banana"]; const zadnjaStavka = polje.pop(); console.log(zadnjaStavka);` | `"banana"`                    |
+| `shift`           | Uklanja prvu stavku iz polja i vraća tu stavku.                                                                                                                      | `const polje = ["jabuka", "banana"]; const prvaStavka = polje.shift(); console.log(prvaStavka);`   | `"jabuka"`                                                                                                                                                                        |
+| `splice`          | Dodaje ili uklanja stavke iz polja. Prvi argument je indeks početka, drugi argument je broj stavki za uklanjanje (opcionalno), a ostali argumenti su stavke za dodavanje (opcionalno). | `const polje = ["jabuka", "banana", "kruška"]; polje.splice(1, 1); console.log(polje);`  | `["jabuka", "kruška"]`                                                                                                                                                            |
+| `for`             | Standardna petlja koja prolazi kroz svaki element polja koristeći indeks.                                                                                           | ```javascript for (let i = 0; i < polje.length; i++) { console.log(polje[i]); }```    | `"jabuka" "banana" "kruška"`                                                                                                                                                     |
+| `for...in`        | Prolazi kroz indekse polja.                                                                                                                                               | ```javascript for (let index in polje) { console.log(index); }```                     | `"0" "1" "2"`                                                                                                                                                                     |
+| `for...of`        | Prolazi kroz vrijednosti polja.                                                                                                                                          | ```javascript for (let value of polje) { console.log(value); }```                     | `"jabuka" "banana" "kruška"`                                                                                                                                                      |
+| `forEach`         | Prolazi kroz svaki element polja i primjenjuje callback funkciju na svaki element.                                                                                   | `polje.forEach(function(stavka) { console.log(stavka); });`                             | `"jabuka" "banana" "kruška"`                                                                                                                                                      |
+| `map`             | Prolazi kroz svaki element polja i stvara novo polje s rezultatima primjene callback funkcije na svaki element.                                                      | `const novoPolje = polje.map(function(stavka) { return stavka.toUpperCase(); }); console.log(novoPolje);` | `["JABUKA", "BANANA", "KRUŠKA"]`                                                                                                                                                  |
+| `filter`          | Stvara novo polje koje sadrži samo elemente koji zadovoljavaju uvjet naveden u callback funkciji.                                                                    | `const novoPolje = polje.filter(function(stavka) { return stavka.length > 5; }); console.log(novoPolje);` | `["jabuka"]`                                                                                                                                                                      |
+| `sort`            | Sortira elemente u polju.                                                                                                                                             | `const sortiranoPolje = polje.sort(); console.log(sortiranoPolje);`                   | `["banana", "jabuka", "kruška"]`                                                                                                                                                  |
+| `reverse`         | Okreće redoslijed elemenata u polju.                                                                                                                                   | `const okrenutoPolje = polje.reverse(); console.log(okrenutoPolje);`                  | `["kruška", "banana", "jabuka"]`                                                                                                                                                  |
+| `join`            | Spaja sve elemente polja u jedan string koristeći zarez ili drugi separator.                                                                                          | `const spojeni = polje.join(", "); console.log(spojeni);`                              | `"jabuka, banana, kruška"`                                                                                                                                                       |
+| `includes`        | Provjerava sadrži li polje određenu stavku i vraća `true` ili `false`.                                                                                                | `const rezultat = polje.includes("banana"); console.log(rezultat);`                    | `true`                                                                                                                                                                            |
+| `some`            | Provjerava zadovoljava li barem jedan element u polju uvjet naveden u callback funkciji. Ako barem jedan element zadovoljava uvjet, vraća `true`, inače `false`.          | `const rezultat = polje.some(function(stavka) { return stavka.length > 5; }); console.log(rezultat);`  | `true`                                                                                                                                                                            |
+| `every`           | Provjerava zadovoljava li svaki element u polju uvjet naveden u callback funkciji. Ako svaki element zadovoljava uvjet, vraća `true`, inače `false`.                      | `const rezultat = polje.every(function(stavka) { return stavka.length > 5; }); console.log(rezultat);` | `false`                                                                                                                                                                           |
