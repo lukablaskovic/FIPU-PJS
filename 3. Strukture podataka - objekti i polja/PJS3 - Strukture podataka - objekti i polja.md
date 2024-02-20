@@ -8,35 +8,24 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%"></img>
+<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%;"></img>
 
-# [1] Strukture podataka - objekti i polja
+# [3] Strukture podataka - objekti i polja
 
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js3.png?raw=true" style="width:9%; float:right;"></img>
 
-<p style="float: clear">Uvod od nekoliko rečenica ovdje </p>
+Strukture podataka su način organiziranja i pohranjivanja podataka u programiranju. U JavaScriptu, objekti i polja su osnovni tipovi struktura podataka. **Objekti** omogućuju pohranu podataka u obliku parova "naziv-vrijednost", dok **polja** predstavljaju kolekciju elemenata organiziranih u niz. Kombinacija ovih struktura omogućuje efikasno manipuliranje i pristup podacima u JavaScriptu.
 
 ## Sadržaj
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [Programiranje u skriptnim jezicima](#programiranje-u-skriptnim-jezicima)
-- [\[1\] Naslov skripte](#1-naslov-skripte)
+- [\[1\] Strukture podataka - objekti i polja](#3-strukture-podataka---objekti-i-polja)
   - [Sadržaj](#sadržaj)
-- [1 Uvod](#1-uvod)
-  - [1.2 Primjer slike](#12-primjer-slike)
-  - [1.2 Primjer koda](#12-primjer-koda)
-    - [2.2.1 Primjer grananja naslova](#221-primjer-grananja-naslova)
-      - [Naslov 4](#naslov-4)
-      - [Naslov 4](#naslov-4-1)
-      - [Naslov 4](#naslov-4-2)
-  - [3. Primjer spoilera](#3-primjer-spoilera)
-  - [Vježba 1](#vježba-1)
-    - [Tekst zadatka, npr.](#tekst-zadatka-npr)
-    - [Screenshot rezultata, npr.](#screenshot-rezultata-npr)
-  - [Vježba 2](#vježba-2)
-  - [3. Samostalni zadatak za vježbu (po koracima, s kombinacijama koda i teksta, npr.)](#3-samostalni-zadatak-za-vježbu-po-koracima-s-kombinacijama-koda-i-teksta-npr)
+- [1 Uvod u objekte](#1-uvod-u-objekte)
+  - [1.1 Osnovna sintaksa objekata](#11-osnovna-sintaksa-objekata)
 
 <br>
 
@@ -151,7 +140,7 @@ U gornjem primjeru objekta *auta*, jednom smo svojstvu pristupali koristeći not
 console.log(auto["godina_proizvodnje"]) // Siva
 ```
 
-### 1.3 Objekti unutar objekta
+### 1.4 Objekti unutar objekta
 
 Objekti u JavaScriptu mogu sadržavati druge **objekte** kao svoja **svojstva**. Ovo nam omogućava organizaciju informacija na *hijerarhijski* način, što je korisno kada imamo složene strukture podataka.
 
@@ -182,7 +171,7 @@ console.log(restoran.adresa["grad"]); // Zagreb
 console.log(restoran["adresa"]["postanski_broj"]); // 10000
 ```
 
-## 1.4 Što je to `this`?
+## 1.5 Što je to `this`?
 
 `This` je ključna riječ u JavaScriptu koja se odnosi na trenutni objekt unutar kojeg se piše kod. Na primjeru `auto`, kada koristimo `this` unutar metode `starostAuta()`, `this` se odnosi na trenutni objekt u kojem je metoda definirana, pristupamo svojstvu `godina_proizvodnje`.
 
@@ -236,7 +225,7 @@ Marić
 Pozdrav! Moje ime je Marko Marić i imam 29 godina.
 ```
 
-## 1.5 Ažuriranje objekata
+## 1.6 Ažuriranje objekata
 
 Do sada smo samo gledali kako dohvatiti *nazive* objekta - također možemo postaviti (*ažurirati*) vrijednost naziva objekta deklarirajući naziv koji želimo postaviti (koristeći dot ili notaciju uglatih zagrada):
 
@@ -283,7 +272,7 @@ console.log(osoba[naziv]); // 164
 
 Dodavanje svojstva u objekt koristeći gore navedenu metodu nije moguće s dot notacijom, koja može prihvatiti samo doslovno ime svojstva, a ne vrijednost varijable koja pokazuje na ime.
 
-## 1.6 Konstruktori
+## 1.7 Konstruktori
 
 Ručno pisanje objekata je u redu kada treba stvoriti samo jedan objekt, ali ako treba stvoriti više od jednog onda je taj način neučinkovit. Moramo ponovno pisati isti kôd za svaki objekt koji stvaramo, a ako želimo promijeniti neka svojstva objekta - tada moramo ručno ažurirati svaki objekt.
 
@@ -476,6 +465,123 @@ Ovi zadaci demonstriraju upotrebu različitih metoda za rad s brojevima i omogu�
 
 Objekt koji pruža razne matematičke funkcije i konstante. Ovaj objekt omogućuje izvođenje raznih matematičkih operacija, poput računanja trigonometrijskih funkcija, logaritama, eksponencijalnih funkcija itd.
 
+| Metoda           | Opis                                                   | Rezultat          |
+|------------------|--------------------------------------------------------|-------------------|
+| `Math.PI`        | Vraća vrijednost konstante `π` (pi)                    | 3.141592653589793 |
+| `Math.E`         | Vraća vrijednost konstante `e` (Eulerova konstanta)    | 2.718281828459045 |
+| `Math.SQRT2`     | Vraća vrijednost korijena iz `2`                       | 1.4142135623730951|
+| `Math.LN2`       | Vraća vrijednost prirodnog `logaritma` broja `2`       | 0.6931471805599453|
+| `Math.LN10`      | Vraća vrijednost prirodnog `logaritma` broja `10`      | 2.302585092994046 |
+
+| Metoda           | Objasnjenje                                      | Primjer                 | Izlaz                        |
+|------------------|--------------------------------------------------|-------------------------|------------------------------|
+| `Math.abs(x)`    | Vraća apsolutnu vrijednost broja `x`.            | `Math.abs(-4.5)`        | `4.5`                        |
+| `Math.ceil(x)`   | Zaokružuje broj `x` na najmanji veći cijeli broj.| `Math.ceil(4.3)`        | `5`                          |
+| `Math.floor(x)`  | Zaokružuje broj `x` na najveći manji cijeli broj.| `Math.floor(4.9)`       | `4`                          |
+| `Math.max(x, y)` | Vraća veći od dva broja `x` i `y`.               | `Math.max(5, 10)`       | `10`                         |
+| `Math.min(x, y)` | Vraća manji od dva broja `x` i `y`.              | `Math.min(5, 10)`       | `5`                          |
+| `Math.pow(x, y)` | Vraća rezultat `x` na potenciju `y`.             | `Math.pow(2, 3)`        | `8`                          |
+| `Math.sqrt(x)`   | Vraća kvadratni korijen broja `x`.               | `Math.sqrt(9)`          | `3`                          |
+| `Math.round(x)`  | Zaokružuje broj `x` na najbliži cijeli broj.     | `Math.round(4.3)`       | `4`                          |
+| `Math.random()`  | Generira pseudoslučajan broj između 0 i 1.       | `Math.random()`         | (slučajni broj između 0 i 1) |
+| `Math.log(x)`    | Vraća prirodni logaritam broja `x`.              | `Math.log(Math.E)`      | `1`                          |
+| `Math.exp(x)`    | Vraća e (Eulerov broj) na potenciju `x`.         | `Math.exp(1)`           | `2.718281828459045`          |
+| `Math.sin(x)`    | Vraća sinus broja `x` (u radijanima).            | `Math.sin(Math.PI / 2)` | `1`                          |
+| `Math.cos(x)`    | Vraća kosinus broja `x` (u radijanima).          | `Math.cos(Math.PI)`     | `-1`                         |
+| `Math.tan(x)`    | Vraća tangens broja `x` (u radijanima).          | `Math.tan(Math.PI / 4)` | `1`                          |
+
+## Vježba 5
+
+1. Napiši funkciju `izracunajKrug(broj)` koja prima decimalni broj koji predstavlja radius kruga. Funkcija treba izračunati i vratiti površinu i opseg tog kruga. Površina kruga se računa kao `πr²` (gdje je `r` radius), a opseg se računa kao `2πr`. Ispiši rezultate u formatu `"Površina kruga je: [površina], Opseg kruga je: [opseg]"`.
+
+Rezultat:
+  ```javascript
+  console.log(izracunajKrug(5)); // Output: Površina kruga je: 78.54, Opseg kruga je: 31.42
+  ```
+
+2. Napiši funkciju `izracunajPitagoru(duzinaA, duzinaB)` koja prima dužine dvije katete pravokutnog trokuta. Funkcija treba izračunati i vratiti dužinu hipotenuze pomoću teoreme Pitagore, koja glasi: `c=√(a²+b²)`, gdje su `a` i `b` dužine kateta, a `c` dužina hipotenuze. Ispiši rezultat u formatu `"Dužina hipotenuze je: [hipotenuza]"`.
+
+Rezultat:
+  ```javascript
+  console.log(izracunajPitagoru(3, 4)); // Output: Dužina hipotenuze je: 5.00
+  ```
+
+
 ## 2.4 **Date**
 
 Objekt koji predstavlja datum i vrijeme. Omogućuje manipulaciju datumima i vremenima, računanje razlika između datuma, formatiranje datuma za prikaz itd.
+
+Načini deklariranja datuma:
+
+| Način Deklaracije               | Objasnjenje                                                           | Primjer                           |
+|---------------------------------|-----------------------------------------------------------------------|-----------------------------------|
+| `new Date()`                    | Stvara datum na temelju trenutnog vremena i datuma.                   | `new Date()`                      |
+| `new Date(godina, mjesec, dan)` | Stvara datum s određenom godinom, mjesecom i danom.                   | `new Date(2024, 2, 20)`           |
+| `new Date("datumString")`       | Stvara datum iz stringa koji predstavlja datum.                       | `new Date("2024-02-20")`          |
+| `new Date(unixVrijeme)`         | Stvara datum iz UNIX vremena (broj milisekundi od 1. siječnja 1970.). | `new Date(1708436235000)`         |
+| `new Date(ISO_string)`          | Stvara datum iz stringa u ISO formatu (ISO 8601).                     | `new Date("2024-02-19T00:00:00Z")`|
+
+  ```javascript
+  const datum = new Date(); //Tue Feb 20 2024 09:51:54 GMT+0100 (Central European Standard Time)
+  const datum2 = new Date(2024, 1, 20); // Tue Feb 20 2024 00:00:00 GMT+0100 (Central European Standard Time)
+  const datum3 = new Date("2024-02-20"); // Tue Feb 20 2024 01:00:00 GMT+0100 (Central European Standard Time)
+  const datum4 = new Date(1708436235000); // Tue Jan 20 1970 19:33:56 GMT+0100 (Central European Standard Time)
+  const datum5 = new Date("2024-02-19T14:37:15Z"); // Mon Feb 19 2024 15:37:15 GMT+0100 (Central European Standard Time)
+  ```
+
+Osnovne funkcije datuma:
+
+| Metoda                  | Objasnjenje                                                                       | Primjer                              | Izlaz                                                                 |
+|-------------------------|-----------------------------------------------------------------------------------|--------------------------------------|-----------------------------------------------------------------------|
+| `getDate()`             | Vraća dan mjeseca za određeni datum.                                              | `datum.getDate();`                   | `20`                                                                  |
+| `getDay()`              | Vraća dan u tjednu za određeni datum (0 za nedjelju, 1 za ponedjeljak, itd.).     | `datum.getDay();`                    | `2`                                                                   |
+| `getFullYear()`         | Vraća godinu za određeni datum.                                                   | `datum.getFullYear();`               | `2024`                                                                |
+| `getMonth()`            | Vraća mjesec za određeni datum (0 za januar, 1 za februar, itd.).                 | `datum.getMonth();`                  | `1`                                                                   |
+| `getHours()`            | Vraća sate za određeni datum.                                                     | `datum.getHours();`                  | `14`                                                                  |
+| `getMinutes()`          | Vraća minute za određeni datum.                                                   | `datum.getMinutes();`                | `37`                                                                  |
+| `getSeconds()`          | Vraća sekunde za određeni datum.                                                  | `datum.getSeconds();`                | `15`                                                                  |
+| `getTime()`             | Vraća broj milisekundi od 1. januara 1970.                                        | `datum.getTime();`                   | `1645265835123`                                                       |
+| `toLocaleDateString()`  | Vraća datum u lokalnom formatu.                                                   | `datum.toLocaleDateString();`        | `'20/02/2024'`                                                        |
+| `toLocaleTimeString()`  | Vraća vrijeme u lokalnom formatu.                                                 | `datum.toLocaleTimeString();`        | `"14:37:15"`                                                          |
+| `toLocaleString()`      | Vraća datum i vrijeme u lokalnom formatu.                                         | `datum.toLocaleString();`            | `'20/02/2024, 14:37:15'`                                              |
+| `toString()`            | Vraća datum i vrijeme kao string.                                                 | `datum.toString();`                  | `"Tue Feb 20 2024 14:37:15 GMT+0100 (Central European Standard Time)"`|
+| `Date.now()`            | Vraća trenutno vrijeme u milisekundama od 1. januara 1970.                        | `Date.now();`                        | `1645265835123`                                                       |
+| `Date.parse()`          | Parsira string reprezentaciju datuma i vraća broj milisekundi od 1. januara 1970. | `Date.parse("2024-02-20T14:37:15Z");`| `1645265835000` (ovisno o vremenskoj zoni, može se razlikovati)       |
+
+Računanje s datumima:
+  ```javascript
+  const prviDatum = new Date("2024-02-15");
+  const drugiDatum = new Date("2024-03-10");
+
+  const razlika = drugiDatum.getTime() - prviDatum.getTime(); // Razlika u milisekundama
+  const razlikaUDanima = razlika / (1000 * 3600 * 24); // Pretvara razliku u dane
+
+  console.log(`Razlika između datuma je ${razlikaUDanima} dana.`); // Razlika između datuma je 24 dana.
+  ```
+
+## Vježba 6
+
+### Zadatak 1: Provjera Dana u Tjednu
+
+Napišite funkciju `provjeriDanUTjednu(datum)` koja prima datum i vraća naziv dana u tjednu za taj datum. Funkcija treba vratiti naziv dana kao string.
+
+Rezultat:
+  ```javascript
+const dan = new Date('2024-02-19T14:30:00');
+console.log(provjeriDanUTjednu(dan)); // "Ponedjeljak"
+const dan2 = new Date('2024-02-18T12:15:00');
+console.log(provjeriDanUTjednu(dan2)); // "Nedjelja"
+  ```
+
+### Zadatak 2: Razlika u Vremenu
+
+Napišite funkciju `razlikaUVremenu(datum1, datum2)` koja prima dva datuma i vraća razliku u vremenu između ta dva datuma u satima, minutama i sekundama. Ispiši rezultat u formatu `"[sati] sati, [minute] minuta, [sekunde] sekundi"`.
+
+Rezultat:
+  ```javascript
+  const datum1 = new Date('2024-02-19T14:30:10');
+  const datum2 = new Date('2024-02-18T12:15:35');
+  console.log(razlikaUVremenu(datum1, datum2)); // "26 sati, 14 minuta, 45 sekundi"
+  ```
+
+# 3. Uvod u polja
