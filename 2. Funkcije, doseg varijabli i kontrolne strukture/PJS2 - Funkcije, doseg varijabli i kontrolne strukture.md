@@ -514,7 +514,7 @@ Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u
    - Heronova formula: `P = √(p * (p - a) * (p - b) * (p - c))` gdje je `p` poluopseg trokuta, a računa se prema formuli `p = (a + b + c) / 2`. Koristite funkciju `Math.sqrt()` za računanje korijena.
    - Napišite funkcijsi izraz `poluopseg` koji će primiti tri parametra `a`, `b` i `c` te vratiti poluopseg trokuta prema danoj formuli. Funkcijski izraz mora biti definiran unutar funkcije `heron()`.
    - Deklarirajte novu konstantu `p` koja će pohraniti vrijednost funkcijskog izraza `poluopseg(a, b, c)`.
-   - Rezultat funkcije `heron(3, 4, 5)` pohranite u varijablu `povrsina_trokuta` te ispišite u konzolu: `Trokut s duljinama stranica _, _ i _ ima površinu: povrsina_trokuta(_, _, _)` koristeći `template_literals`.
+   - Rezultat funkcije `heron(3, 4, 5)` pohranite u varijablu `povrsina_trokuta` te ispišite u konzolu: `Trokut s duljinama stranica _, _ i _ ima površinu: povrsina_trokuta` koristeći `template_literals`.
 5. Sljedeći JavaScript kȏd sadrži nekoliko grešaka. Pronađite i ispravite greške kako bi kȏd radio ispravno. Provjerite s pozivom funkcije `izracunaj(x, y, z);` koji mora ispisati `17` i `3`. 
 
 ```javascript
@@ -1194,4 +1194,4 @@ Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u
    - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća "Nije rečenica!". 
    - Ako je rečenica prazna, funkcija vraća "Rečenica je prazna!". 
    - Ako se rečenica sastoji od samo jedne riječi, funkcija vraća tu riječ.
-   - Ako se rečenica sastoji od više riječi iste duljine, funkcija vraća prvu riječ koja je pronađena.
+   - Ako se rečenica sastoji od više različitih najdužih riječi, funkcija vraća prvu riječ koja je pronađena.
