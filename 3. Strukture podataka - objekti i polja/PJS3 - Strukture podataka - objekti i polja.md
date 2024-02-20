@@ -29,7 +29,7 @@ Strukture podataka su način organiziranja i pohranjivanja podataka u programira
     - [1.1.1 Svojstva objekta](#111-svojstva-objekta)
     - [1.1.2 Metode objekta](#112-metode-objekta)
   - [1.2 Ključna riječ `this`](#12-ključna-riječ-this)
-  - [1.3](#13)
+  - [1.3 Ažuriranje objekta](#13-ažuriranje-objekta)
   - [1.7 Konstruktori](#17-konstruktori)
   - [Vježba 2](#vježba-2)
 - [2. Standardni ugrađeni objekti](#2-standardni-ugrađeni-objekti)
@@ -158,7 +158,9 @@ console.log(auto[1]); // Ford
 ### 1.1.2 Metode objekta
 
 Već smo spomenuli da objekti mogu sadržavati i **funkcije**. Funkcije unutar objekta nazivaju se **metode**. Metode su funkcije koje su vezane uz objekt kojemu pripadaju i koriste definirana svojstva unutar objekta za izvršavanje određenih zadataka.
-Primjerice, kako bismo izračunali starost automobila, možemo dodati metodu `izracunajStarost` u objekt `auto`:
+Primjerice, kako bismo izračunali starost automobila, možemo dodati metodu `izracunajStarost` u objekt `auto`.
+
+Funkcije ćemo definirati unutar objekta koristeći već poznatu sintaksu:
 
 ```javascript
 const auto = {
@@ -172,10 +174,24 @@ const auto = {
 };
 ```
 
+Međutim postoji i kraći način, jednostavno izostavljanjem ključne riječ `function`:
+
+```javascript
+const auto = {
+  marka: "Ford",
+  model: "Mustang",
+  godina_proizvodnje: 2020,
+  boja: "Crna",
+  izracunajStarost() {
+    return new Date().getFullYear() - this.godina_proizvodnje;
+  },
+};
+```
+
 Metodu `izracunajStarost` možemo pozvati koristeći notaciju točke:
 
 ```javascript
-console.log(auto.izracunajStarost()); // 37
+console.log(auto.izracunajStarost()); // 4
 ```
 
 |                                                                                                                       Objekt                                                                                                                        |                                               Svojstva                                                |         Metode          |
@@ -212,25 +228,35 @@ Sada možemo pozvati metodu `opisiAuto` koristeći notaciju točke:
 console.log(auto.opisiAuto()); // Auto je Ford Mustang boje Crna iz 2020.
 ```
 
-## 1.3
+## 1.3 Ažuriranje objekta
 
-Do sada smo samo gledali kako dohvatiti _nazive_ objekta - također možemo postaviti (_ažurirati_) vrijednost naziva objekta deklarirajući naziv koji želimo postaviti (koristeći dot ili notaciju uglatih zagrada):
+Što ako želimo dodati, izbrisati ili ažurirati svojstva objekta? To možemo učiniti na nekoliko načina. Definirajmo objekt `grad` s nekoliko svojstava:
+
+- `ime`: Pula
+- `velicina`: 51.65 km²
 
 ```javascript
 const grad = {
   ime: "Pula",
   velicina: 51.65, // km^2
-  broj_stanovnika: 56540,
 };
-
-grad.velicina = 50;
-grad["broj_stanovnika"] = 57200;
-
-console.log(grad.velicina); // 50
-console.log(grad.broj_stanovnika); // 57200
 ```
 
-Postavljanje naziva ne znači samo ažuriranje vrijednosti postojećih svojstava i metoda; također se mogu stvoriti potpuno nova svojstva i metode:
+Recimo da hoćemo ažurirati svojstvo `velicina` na 52 i dodati novo svojstvo `broj_stanovnika` s vrijednošću `56540`. To možemo učiniti na sljedeći način koristeći notaciju točke:
+
+```javascript
+grad.velicina = 50;
+grad.broj_stanovnika = 56540;
+```
+
+Isto je moguće postići koristeći notaciju uglatih zagrada `[]`:
+
+```javascript
+grad["velicina"] = 50;
+grad["broj_stanovnika"] = 56540;
+```
+
+////////////////////////////////////////////////////////////////////////////////////
 
 ```javascript
 grad.postanski_broj = 52100;
