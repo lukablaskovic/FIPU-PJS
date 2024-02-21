@@ -30,15 +30,17 @@ Strukture podataka su specijalizirani formati podataka za efikasniju pohranu, or
     - [1.1.2 Metode objekta](#112-metode-objekta)
   - [1.2 Ključna riječ `this`](#12-ključna-riječ-this)
   - [1.3 Ažuriranje objekta](#13-ažuriranje-objekta)
-  - [1.4 Konstruktori](#17-konstruktori)
+  - [1.4 Konstruktori](#14-konstruktori)
+    - [Primjer 1 - Stvaranje objekta pomoću funkcije](#primjer-1---stvaranje-objekta-pomoću-funkcije)
+    - [Primjer 2 - Stvaranje objekta pomoću konstruktora](#primjer-2---stvaranje-objekta-pomoću-konstruktora)
   - [Vježba 1](#vježba-1)
-- [2. Standardni ugrađeni objekti](#2-standardni-ugrađeni-objekti)
-  - [2.1 **String**](#21-string)
+- [2. Standardni ugrađeni objekti (eng. **_built-in objects_**)](#2-standardni-ugrađeni-objekti-eng-built-in-objects)
+  - [2.1 `String` objekt](#21-string-objekt)
   - [Vježba 2](#vježba-2)
-  - [2.2 **Number**](#22-number)
+  - [2.2 `Number` objekt](#22-number-objekt)
   - [Vježba 3](#vježba-3)
-  - [2.3 **Math**](#23-math)
-  - [Vježba 5](#vježba-5)
+  - [2.3 `Math` objekt](#23-math-objekt)
+  - [Vježba 4](#vježba-4)
   - [2.4 **Date**](#24-date)
   - [Vježba 6](#vježba-6)
     - [Zadatak 1: Provjera Dana u Tjednu](#zadatak-1-provjera-dana-u-tjednu)
@@ -531,6 +533,8 @@ Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objek
 | `isInteger()`   | Provjerava je li dana vrijednost `value` integer. Vraća `boolean` vrijednost ovisno o tome.                                                                                              | `isInteger(value)`          | `isInteger(5.2)`                              | `false`               |
 | `isNaN()`       | Provjerava je li vrijednost dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                              | `isNaN(value)`              | `isNaN("string")`                             | `true`                |
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 ## Vježba 3
 
 1. Napiši funkciju `zaokruziBroj(broj, decimalnaMjesta)` koja prima broj i decimalni broj mjesta za zaokruživanje te vraća zaokruženi decimalni broj. Funkcija mora provjeriti je li parametar broj uistinu broj. Ako nije, prekida s radom.
@@ -541,38 +545,38 @@ Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objek
    console.log(zaokruziBroj(5.56789, 2)); // 5.57
    ```
 
-//////////////////////////////////////////////////LUKA//////////////////////////////////////////////////////////
+## 2.3 `Math` objekt
 
-## 2.3 **Math**
+`Math` objekt sadrži matematičke konstante i funkcije. Ovaj objekt je statički, što znači da se ne može instancirati. Sve metode i konstante `Math` objekta su statičke (eng. **_static_**), što znači da se pozivaju direktno na objektu, a ne na instanci objekta. `Math` objekt sadrži mnoge korisne metode i konstante za rad s brojevima. Mogu se koristiti samo s Number tipom, s `BigInt` tipom neće raditi.
 
-Objekt koji pruža razne matematičke funkcije i konstante. Ovaj objekt omogućuje izvođenje raznih matematičkih operacija, poput računanja trigonometrijskih funkcija, logaritama, eksponencijalnih funkcija itd.
+Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda `Math` objekta.
 
-| Metoda       | Opis                                                | Rezultat           |
-| ------------ | --------------------------------------------------- | ------------------ |
-| `Math.PI`    | Vraća vrijednost konstante `π` (pi)                 | 3.141592653589793  |
-| `Math.E`     | Vraća vrijednost konstante `e` (Eulerova konstanta) | 2.718281828459045  |
-| `Math.SQRT2` | Vraća vrijednost korijena iz `2`                    | 1.4142135623730951 |
-| `Math.LN2`   | Vraća vrijednost prirodnog `logaritma` broja `2`    | 0.6931471805599453 |
-| `Math.LN10`  | Vraća vrijednost prirodnog `logaritma` broja `10`   | 2.302585092994046  |
+| Metoda       | Opis                                                    | Rezultat           |
+| ------------ | ------------------------------------------------------- | ------------------ |
+| `Math.PI`    | Vraća vrijednost konstante `π` (pi)                     | 3.141592653589793  |
+| `Math.E`     | Vraća vrijednost konstante `e` (Eulerov broj)           | 2.718281828459045  |
+| `Math.SQRT2` | Vraća vrijednost `√2`                                   | 1.4142135623730951 |
+| `Math.LN2`   | Vraća vrijednost prirodnog (ln) `logaritma` broja `2` - | 0.6931471805599453 |
+| `Math.LN10`  | Vraća vrijednost prirodnog (ln) `logaritma` broja `10`  | 2.302585092994046  |
 
-| Metoda           | Objasnjenje                                       | Primjer                 | Izlaz                        |
-| ---------------- | ------------------------------------------------- | ----------------------- | ---------------------------- |
-| `Math.abs(x)`    | Vraća apsolutnu vrijednost broja `x`.             | `Math.abs(-4.5)`        | `4.5`                        |
-| `Math.ceil(x)`   | Zaokružuje broj `x` na najmanji veći cijeli broj. | `Math.ceil(4.3)`        | `5`                          |
-| `Math.floor(x)`  | Zaokružuje broj `x` na najveći manji cijeli broj. | `Math.floor(4.9)`       | `4`                          |
-| `Math.max(x, y)` | Vraća veći od dva broja `x` i `y`.                | `Math.max(5, 10)`       | `10`                         |
-| `Math.min(x, y)` | Vraća manji od dva broja `x` i `y`.               | `Math.min(5, 10)`       | `5`                          |
-| `Math.pow(x, y)` | Vraća rezultat `x` na potenciju `y`.              | `Math.pow(2, 3)`        | `8`                          |
-| `Math.sqrt(x)`   | Vraća kvadratni korijen broja `x`.                | `Math.sqrt(9)`          | `3`                          |
-| `Math.round(x)`  | Zaokružuje broj `x` na najbliži cijeli broj.      | `Math.round(4.3)`       | `4`                          |
-| `Math.random()`  | Generira pseudoslučajan broj između 0 i 1.        | `Math.random()`         | (slučajni broj između 0 i 1) |
-| `Math.log(x)`    | Vraća prirodni logaritam broja `x`.               | `Math.log(Math.E)`      | `1`                          |
-| `Math.exp(x)`    | Vraća e (Eulerov broj) na potenciju `x`.          | `Math.exp(1)`           | `2.718281828459045`          |
-| `Math.sin(x)`    | Vraća sinus broja `x` (u radijanima).             | `Math.sin(Math.PI / 2)` | `1`                          |
-| `Math.cos(x)`    | Vraća kosinus broja `x` (u radijanima).           | `Math.cos(Math.PI)`     | `-1`                         |
-| `Math.tan(x)`    | Vraća tangens broja `x` (u radijanima).           | `Math.tan(Math.PI / 4)` | `1`                          |
+| Metoda           | Objasnjenje                                                                                                                                                                 | Sintaksa                   | Primjer                 | Izlaz                        |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------------------- | ---------------------------- |
+| `Math.abs(x)`    | Vraća apsolutnu vrijednost broja `x`.                                                                                                                                       | ``Math.abs(x)`             | `Math.abs(-4.5)`        | `4.5`                        |
+| `Math.ceil(x)`   | Zaokružuje broj `x` na najmanji veći cijeli broj.                                                                                                                           | `Math.ceil(x)`             | `Math.ceil(4.3)`        | `5`                          |
+| `Math.floor(x)`  | Zaokružuje broj `x` na najveći manji cijeli broj.                                                                                                                           | `Math.floor(x)`            | `Math.floor(4.9)`       | `4`                          |
+| `Math.max(x, y)` | Vraća veći od dva broja `x` i `y`. Moguće je navesti i više od 2 parametara, metoda će uvijek vratiti najveći.                                                              | `Math.max(x, y, .. N)`     | `Math.max(5, 10)`       | `10`                         |
+| `Math.min(x, y)` | Vraća manji od dva broja `x` i `y`. Moguće je navesti i više od 2 parametara, metoda će uvijek vratiti najmanji.                                                            | `Math.min(x, y, .. N)`     | `Math.min(5, 10)`       | `5`                          |
+| `Math.pow(x, y)` | Vraća rezultat potenciranja broja `x` na potenciju `y`.                                                                                                                     | `Math.pow(base, exponent)` | `Math.pow(2, 3)`        | `8`                          |
+| `Math.sqrt(x)`   | Računa kvadratni korijen broja `x`.                                                                                                                                         | `Math.sqrt(x)`             | `Math.sqrt(9)`          | `3`                          |
+| `Math.round(x)`  | Zaokružuje broj `x` na najbliži cijeli broj.                                                                                                                                | `Math.round(x)`            | `Math.round(4.3)`       | `4`                          |
+| `Math.random()`  | Generira pseudoslučajan broj između 0 i 1. Funkcija koristi pribliŽno uniformnu distribuciju. Ne pruža kriptografski sigurne slučajne brojeve pa se za te svrhe ne koristi. | `Math.random()`            | `Math.random()`         | (slučajni broj između 0 i 1) |
+| `Math.log(x)`    | Računa prirodni logaritam (po bazi e) broja `x`.                                                                                                                            | `Math.log(x)`              | `Math.log(Math.E)`      | `1`                          |
+| `Math.exp(x)`    | Računa e na potenciju `x`.                                                                                                                                                  | `Math.exp(x)`              | `Math.exp(1)`           | `2.718281828459045`          |
+| `Math.sin(x)`    | Računa sinus broja `x` (u radijanima).                                                                                                                                      | `Math.sin(x)`              | `Math.sin(Math.PI / 2)` | `1`                          |
+| `Math.cos(x)`    | Računa kosinus broja `x` (u radijanima).                                                                                                                                    | `Math.cos(x)`              | `Math.cos(Math.PI)`     | `-1`                         |
+| `Math.tan(x)`    | Računa tangens broja `x` (u radijanima).                                                                                                                                    | `Math.tan(x)`              | `Math.tan(Math.PI / 4)` | `1`                          |
 
-## Vježba 5
+## Vježba 4
 
 1. Napiši funkciju `izracunajKrug(broj)` koja prima decimalni broj koji predstavlja radius kruga. Funkcija treba izračunati i vratiti površinu i opseg tog kruga. Površina kruga se računa kao `πr²` (gdje je `r` radius), a opseg se računa kao `2πr`. Ispiši rezultate u formatu `"Površina kruga je: [površina], Opseg kruga je: [opseg]"`.
 
