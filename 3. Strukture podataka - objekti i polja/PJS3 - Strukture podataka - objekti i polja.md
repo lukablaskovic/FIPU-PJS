@@ -15,7 +15,7 @@
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js3.png?raw=true" style="width:9%; float:right;"></img>
 
-Strukture podataka su način organiziranja i pohranjivanja podataka u programiranju. U JavaScriptu, objekti i polja su osnovni tipovi struktura podataka. **Objekti** omogućuju pohranu podataka u obliku proizvoljnog broja parova "ključ:vrijednost", dok **polja** predstavljaju kolekciju elemenata organiziranih u niz. Kombinacija ovih struktura omogućuje efikasno manipuliranje i pristup podacima u JavaScriptu.
+Strukture podataka su specijalizirani formati podataka za efikasniju pohranu, organizaciju, dohvat i obradu istih. U JavaScriptu, objekti i polja su bazični tipovi struktura podataka. **Objekti** omogućuju pohranu podataka u obliku proizvoljnog broja parova `"ključ:vrijednost"`, dok **polja** predstavljaju kolekciju različitih elemenata organiziranih u linearni niz. Kombinacija ovih struktura omogućuje efikasno manipuliranje i pristup podacima u JavaScriptu.
 
 ## Sadržaj
 
@@ -30,13 +30,13 @@ Strukture podataka su način organiziranja i pohranjivanja podataka u programira
     - [1.1.2 Metode objekta](#112-metode-objekta)
   - [1.2 Ključna riječ `this`](#12-ključna-riječ-this)
   - [1.3 Ažuriranje objekta](#13-ažuriranje-objekta)
-  - [1.7 Konstruktori](#17-konstruktori)
-  - [Vježba 2](#vježba-2)
+  - [1.4 Konstruktori](#17-konstruktori)
+  - [Vježba 1](#vježba-1)
 - [2. Standardni ugrađeni objekti](#2-standardni-ugrađeni-objekti)
   - [2.1 **String**](#21-string)
-  - [Vježba 3](#vježba-3)
+  - [Vježba 2](#vježba-2)
   - [2.2 **Number**](#22-number)
-  - [Vježba 4](#vježba-4)
+  - [Vježba 3](#vježba-3)
   - [2.3 **Math**](#23-math)
   - [Vježba 5](#vježba-5)
   - [2.4 **Date**](#24-date)
@@ -88,7 +88,7 @@ console.log(auto); // {}
 
 ## 1.1 Osnovna sintaksa objekata
 
-U JavaScriptu, objekt se sastoji od više članova, od kojih svaki ima ključ (npr. _godina_proizvodnje_ i _boja_) i vrijednost (npr. _1987_ i _"Siva"_). Svaki par `ključ:vrijednost` mora biti odvojen zarezom `,`, a ključ i vrijednost u svakom slučaju odvojeni su dvotočkom `:`. Sintaksa uvijek slijedi ovaj uzorak:
+U JavaScriptu, objekt se sastoji od više članova, od kojih svaki ima ključ (npr. _godina_proizvodnje_ i _boja_) i vrijednost (npr. _1987_ i _"Siva"_). Svaki par `ključ:vrijednost` mora biti odvojen zarezom `,`, a ključ i vrijednost u svakom slučaju odvojeni su dvotočjem `:`. Sintaksa uvijek slijedi ovaj uzorak:
 
 ```javascript
 const imeObjekta = {
@@ -265,7 +265,6 @@ grad.gustocaNaseljenosti = function () {
 };
 
 console.log(grad.gustocaNaseljenosti()); // 1130.8 stanovnika/km²
-
 ```
 
 Postoji još jedna korist upotrebe notacije uglatih zagrada `[]` - omogućuje nam pristup svojstvima objekta koristeći varijable. Na primjer, ako imamo varijablu `svojstvo` koja sadrži ime svojstva objekta, možemo koristiti tu varijablu za pristupanje svojstvu objekta:
@@ -273,8 +272,10 @@ Postoji još jedna korist upotrebe notacije uglatih zagrada `[]` - omogućuje na
 ```javascript
 const svojstvo = "ime";
 console.log(grad[svojstvo]); // Pula
-``` 
+```
+
 Navedeno je korisno kada imamo dinamički generirane ključeve. Međutim, isto nije moguće napraviti koristeći notaciju točke `.`.
+
 ```javascript
 const svojstvo = "ime";
 console.log(grad.svojstvo); // undefined - neće raditi
@@ -287,6 +288,7 @@ Recimo da hoćemmo izbrisati svojstvo `velicina` iz objekta `grad`:
 delete grad.velicina;
 console.log(grad); // { ime: "Pula", broj_stanovnika: 56540, gustocaNaseljenosti: [Function: gustocaNaseljenosti] }
 ```
+
 Ako upišete `delete grad.velicina` u konzolu primjetit ćete da će konzola vratiti `true` što znači da je svojstvo uspješno obrisano.
 
 ## 1.4 Konstruktori
@@ -304,7 +306,9 @@ const korisnik = {
   godina_rodenja: 1990,
 };
 ```
+
 Što ako želimo stvoriti još jednog korisnika? Moramo ponoviti cijeli postupak:
+
 ```javascript
 const korisnik2 = {
   ime: "Marko",
@@ -323,12 +327,15 @@ function stvoriKorisnika(ime, prezime, godina_rodenja) {
   obj.godina_rodenja = godina_rodenja; // dodaj svojstvo godina_rodenja
 
   obj.predstaviSe = function () {
-    console.log(`Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`);
+    console.log(
+      `Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`
+    );
   };
 
   return obj; // vrati objekt
 }
 ```
+
 Sada možemo jednostavnije stvoriti nove korisnike koristeći novu funkciju `stvoriKorisnika`:
 
 ```javascript
@@ -357,7 +364,9 @@ function Korisnik(ime, prezime, godina_rodenja) {
   this.prezime = prezime;
   this.godina_rodenja = godina_rodenja;
   this.predstaviSe = function () {
-    console.log(`Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`);
+    console.log(
+      `Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`
+    );
   };
 }
 ```
@@ -381,7 +390,7 @@ Na ovaj način definiramo i stvaramo nove objekte koristeći konstruktor.
 1. Definirajte konstruktor `Automobil`. U konstruktor postavite sljedeća svojstva automobilu: `marka`, `model`, `godina_proizvodnje`, `boja` i `cijena`. Kada to napravite, izradite nekoliko objekata tipa `Automobil` koristeći konstruktor.
 2. Dodajte metodu `azurirajCijenu(novaCijena)` u konstruktor `Automobil` koja će ažurirati cijenu automobila.
 3. Dodajte metodu `detalji()` u konstruktor `Automobil` koja će u jednoj rečenici ispisati sva svojstva automobila.
-5. Pozovite za svaki automobil metodu `detalji()` i metodu `azurirajCijenu()`.
+4. Pozovite za svaki automobil metodu `detalji()` i metodu `azurirajCijenu()`.
 
 Primjer rezultata:
 
@@ -400,39 +409,89 @@ Boja: crna
 Cijena: 11500
 ```
 
-# 2. Standardni ugrađeni objekti
+# 2. Standardni ugrađeni objekti (eng. **_built-in objects_**)
 
-Standardni ugrađeni objekti u JavaScriptu su preddefinirane objekti koji pružaju različite korisne metode i funkcionalnosti za manipulaciju podacima. Ovi ugrađeni objekti omogućuju rad s različitim vrstama podataka, rad s vremenom, matematičke operacije, rad s nizovima i drugo.
+JavaScript nudi mnoštvo ugrađenih (eng. **_built-in_**) objekata koji modeliraju mnoštvo objekata iz stvarnog svijeta, kao i osnovne podatkovne tipove. Ovi objekti pružaju razne metode i svojstva za rad s podacima, poput manipulacije nizovima znakova `String`, rad s datumima `Date`, matematičke operacije `Math`, itd.
 
-## 2.1 **String**
+Do sad smo već susreli s nekoliko ugrađenih objekata, poput `Date` i `Math`. U narednim poglavljima upoznat ćemo se detaljnije s ugrađenim objektima: `String`, `Number`, `Math` i `Date`.
 
-Objekt koji predstavlja tekstualne podatke. Nudi razne metode za manipulaciju i analizu nizova znakova, poput traženja podnizova, zamjene znakova i pretvaranja teksta u velika ili mala slova.
+## 2.1 `String` objekt
 
-| Metoda          | Objašnjenje                                        | Primjer                     | Izlaz                |
-| --------------- | -------------------------------------------------- | --------------------------- | -------------------- |
-| `charAt()`      | Vraća znak na određenom indeksu u nizu znakova     | `'hello'.charAt(1)`         | `'e'`                |
-| `concat()`      | Spaja dva ili više nizova znakova i vraća novi niz | `'hello'.concat(' world')`  | `'hello world'`      |
-| `indexOf()`     | Vraća indeks prvog pojavljivanja podniza u nizu    | `'hello'.indexOf('lo')`     | `3`                  |
-| `lastIndexOf()` | Vraća indeks zadnjeg pojavljivanja podniza u nizu  | `'hello'.lastIndexOf('l')`  | `3`                  |
-| `toUpperCase()` | Pretvara niz znakova u velika slova                | `'hello'.toUpperCase()`     | `'HELLO'`            |
-| `toLowerCase()` | Pretvara niz znakova u mala slova                  | `'HELLO'.toLowerCase()`     | `'hello'`            |
-| `slice()`       | Izdvaja dio niza znakova i vraća novi niz          | `'hello'.slice(1, 3)`       | `'el'`               |
-| `substring()`   | Vraća dio niza između dva indeksa                  | `'hello'.substring(1, 3)`   | `'el'`               |
-| `replace()`     | Traži podniz u nizu i zamjenjuje ga drugim nizom   | `'hello'.replace('e', 'a')` | `'hallo'`            |
-| `split()`       | Razdvaja niz na podnizove i vraća ih kao niz       | `'hello world'.split(' ')`  | `['hello', 'world']` |
-| `trim()`        | Uklanja razmake s početka i kraja niza             | `'  hello  '.trim()`        | `'hello'`            |
-| `match()`       | Pronalazi podudaranja uz pomoć regularnih izraza   | `'hello'.match(/l+/g)`      | `['ll']`             |
-| `repeat()`      | Ponavlja niz određeni broj puta                    | `'hello'.repeat(3)`         | `'hellohellohello'`  |
-| `startsWith()`  | Provjerava je li niz počinje određenim podnizom    | `'hello'.startsWith('he')`  | `true`               |
-| `endsWith()`    | Provjerava je li niz završava određenim podnizom   | `'hello'.endsWith('lo')`    | `true`               |
-| `includes()`    | Provjerava postoji li određeni podniz u nizu       | `'hello'.includes('ll')`    | `true`               |
-| `padStart()`    | Dodaje razmake na početak niza do određene duljine | `'5'.padStart(2, '0')`      | `'05'`               |
-| `padEnd()`      | Dodaje razmake na kraj niza do određene duljine    | `'5'.padEnd(2, '0')`        | `'50'`               |
-| `repeat()`      | Ponavlja niz određeni broj puta                    | `'hello'.repeat(3)`         | `'hellohellohello'`  |
+`String` objekt predstavlja tekstualne podatke, odnosno niz znakova (`string`). Nudi razne korisne metode za manipulaciju i analizu nizova znakova.
 
-## Vježba 3
+Ako postoji ugrađeni `String` objekt, to znači da možemo pozvati i njegov konstruktor `String()` kako bismo stvorili novi `String` objekt. Međutim, to rijetko radimo jer je moguće stvoriti `String` objekt koristeći objektne literale, tj. navodnike `""` ili apostrofe `''`.
 
-1. Napiši funkciju `brojSamoglasnikaISuglasnika` koja prima ulazni string i vraća objekt s dva svojstva: `samoglasnici` i `suglasnici`.
+**Važno je naglasiti** da kod svih primitivnih tipova podataka (npr. `string`, `number`, `boolean`) možemo koristiti metode i svojstva kao da su objekti. JavaScript automatski za nas pretvara primitivne tipove u objekte kada koristimo metode i svojstva.
+
+```javascript
+const ime = "Ana"; // stvara se tkz. primitivni string
+const prezime = new String("Anić"); // stvara se objekt String pozivanjem konstruktora
+
+console.log(typeof ime); // string
+console.log(typeof prezime); // object
+
+console.log(prezime); // [String: 'Anić']
+```
+
+Ispod su navedene neke od najčešće korištenih metoda `String` objekta. Ima ih još [mnogo](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), ali ove su najpoznatije.
+
+| Metoda          | Objašnjenje                                                                                                                                                                                                                                                                                                                                                     | Sintaksa                                                | Primjer                                                                                                                                                                                                  | Output                                                                     |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `charAt()`      | Vraća znak na određenom indeksu u nizu znakova. Indeks prvog znaka je `0`.                                                                                                                                                                                                                                                                                      | `string.charAt(index)`                                  | `'hello'.charAt(1)`                                                                                                                                                                                      | `'e'`                                                                      |
+| `concat()`      | Spaja dva ili više nizova znakova te vraća novi niz, slično kao operator `+` nad nizovima.                                                                                                                                                                                                                                                                      | `string.concat(substring1, substring2 ... substringN)`  | `'hello'.concat(' world')`                                                                                                                                                                               | `'hello world'`                                                            |
+| `indexOf()`     | Vraća indeks prvog pojavljivanja podniza (eng. **_substring_**) u nizu                                                                                                                                                                                                                                                                                          | `string.indexOf(substring)`                             | `'hello'.indexOf('lo')`                                                                                                                                                                                  | `3`                                                                        |
+| `lastIndexOf()` | Vraća indeks zadnjeg pojavljivanja podniza u nizu                                                                                                                                                                                                                                                                                                               | `string.lastIndexOf(substring)`                         | `'hello'.lastIndexOf('l')`                                                                                                                                                                               | `3`                                                                        |
+| `toUpperCase()` | Pretvara cijeli niz znakova u velika slova                                                                                                                                                                                                                                                                                                                      | `string.toUpperCase()`                                  | `'hello'.toUpperCase()`                                                                                                                                                                                  | `'HELLO'`                                                                  |
+| `toLowerCase()` | Pretvara cijeli niz znakova u mala slova                                                                                                                                                                                                                                                                                                                        | `string.toLowerCase()`                                  | `'HELLO'.toLowerCase()`                                                                                                                                                                                  | `'hello'`                                                                  |
+| `substring()`   | Izdvaja podskup niza znakova i vraća novi niz bez izmjene originalnog niza. Metoda će izdvojiti podskup `[indexStart, indexEnd)`, dakle `indexEnd` neće biti uključen. Ako je `indexStart > indexEnd`, `substring()` će ih zamjeniti. Ako su indeksi negativni brojevi, interpretirat će se kao `0`.                                                            | `string.substring(indexStart, indexEnd)`                | `let novi = 'Novigrad'.substring(0, 4)`                                                                                                                                                                  | `novi === 'Novi'`                                                          |
+| `slice()`       | Izdvaja podskup niza znakova i vraća novi niz bez izmjene originalnog niza. Metoda će izdvojiti podskup `[indexStart, indexEnd)`, dakle `indexEnd` neće biti uključen. Za razliku od `substring()` metode, ako je `indexStart > indexEnd`, `slice()` će vratiti prazan string `""`. Ako su indeksi negativni brojevi, brojat brojat će mjesta počevši od kraja. | `string.slice(indexStart, indexEnd)`                    | `let noviNiz = 'Novigrad'.slice(-4)`                                                                                                                                                                     | `noviNiz === 'grad'`                                                       |
+| `replace()`     | Metoda prvo pretražuje zadani `pattern` u stringu koji može biti drugi niz znakova ili [regExp](https://regexr.com/). Ako ga pronađe, zamjenjuje sve `pattern` podskupove s `replacement`. Metoda vraća novi uređeni znakovni niz bez izmjene originalnog.                                                                                                      | `string.replace(pattern, replacement)`                  | `'Hello, world!'.replace('world', 'JavaScript')`                                                                                                                                                         | `'Hello, JavaScript!'`                                                     |
+| `split()`       | Razdvaja znakovni niz prema danom `separator` argumentu i dobivene podnizove sprema u polje. Vraća polje podnizova bez izmjene originalnog znakovnog niza. Metoda ima i opcionalni separator limit koji označava limit broja podnizova koji se mogu spremiti u polje.                                                                                           | `string.split(separator, limit)`                        | `'The quick brown fox jumps over the lazy dog.'.split(' ')`                                                                                                                                              | `['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog.']` |
+| `trim()`        | Uklanja razmake s početka i kraja niza. Vraća novi niz bez izmjene originalnog.                                                                                                                                                                                                                                                                                 | `string.trim()`                                         | `'  hello  '.trim()`                                                                                                                                                                                     | `'hello'`                                                                  |
+| `match()`       | Pronalazi podudaranja u znakovnom nizu uz pomoć regularnih izraza (regExp). Vraća polje podskupa niza koji odgovaraju `regExp` izrazu.                                                                                                                                                                                                                          | `string.match(regExp)`                                  | Hoćemo pronaći sve brojeve u rečenici: `'Godina je 2024 i mjesec je 3'.match(/\d+/g)`. `\d` - broj `[0-9]`, `\d+` - traži poklapanje jednog ili više broja `g` - regex oznaka za globalno pretraživanje. | `['2024', '3']`                                                            |
+| `repeat()`      | Ponavlja niz određeni broj (`count`) puta.                                                                                                                                                                                                                                                                                                                      | `string.repeat(count)`                                  | `'hello'.repeat(3)`                                                                                                                                                                                      | `'hellohellohello'`                                                        |
+| `startsWith()`  | Provjerava počinje li niz nekim podnizom. Opcionalno ima parametar `position` koji definira poziciju gdje se provjerava podniz, `0` po defaultu. Vraća `boolean` vrijednost ovisno o pronalasku.                                                                                                                                                                | `string.startsWith(substring, position=0)`              | `'To be, or not to be, that is the question.'.startsWith('To be')`                                                                                                                                       | `true`                                                                     |
+| `endsWith()`    | Provjerava završava li niz nekim podnizom. Opcionalno ima parametar `endPosition` koji definira krajnju poziciju gdje se očekuje substring, `string.length` tj. zadnji indeks u stringu po defaultu. Vraća `boolean` vrijednost ovisno o pronalasku.                                                                                                            | `string.endsWith(substring, endPosition=string.length)` | `'Cats are the best!'.endsWith('best!')`                                                                                                                                                                 | `true`                                                                     |
+| `includes()`    | Provjerava postoji li određeni podniz u nizu. Metoda je case-sensitive te vraća `boolean` vrijednost ovisno o tome postoji li podniz. Dodatno, tu je opcionalni `position` argument koji započinje pretragu na određenoj poziciji, `0` po defaultu - dakle pretraživanje od početka                                                                             | `string.includes(substring)`                            | `'The quick brown fox jumps over the lazy dog.'.includes('fox')`                                                                                                                                         | `true`                                                                     |
+
+Da ne bi bilo zabune, prisjetimo se na trenutak `typeof` operatora. `typeof` operator vraća tip podatka. Na primjer, `typeof "hello"` vraća `"string"`. Međutim, `typeof String` vraća `"function"` jer je `String` konstruktor funkcija (Zato je važno držati se konvencije da se konstruktori objekata pišu velikim početnim slovom).
+
+Iz tablice možete iščitati razlike između metoda `substring()` i `slice()`. Oba metode vraćaju podniz niza, ali se razlikuju u načinu rada s negativnim indeksima i indeksima koji su izvan granica niza. Preporuka je koristiti `slice()` jer je fleksibilniji i ima jasnije ponašanje, osim ako nemate koristi od specifičnog ponašanja `substring()` - najčešće je to zamjena index argumenata.
+
+Zašto je dobro naučiti koristiti ove metode?
+Većina ovih metoda koristi se svakodnevno u programiranju. Na primjer, `split()` metoda koristi se za razdvajanje niza znakova na riječi, `toUpperCase()` i `toLowerCase()` metode koriste se za normalizaciju teksta, `replace()` metoda koristi se za zamjenu dijelova teksta, itd. Ne želimo gubiti vrijeme i ručno raditi stvari nad znakovnim nizovima, za koje već postoje gotove metode.
+
+Primjerice, imamo potrebnu izvući sve riječi iz rečenice neke rečenice. Ispod je primjer kako bismo to ručno napravili:
+
+```javascript
+const recenica = "Pula je grad u Istri.";
+const rijeci = []; // prazno polje za spremanje riječi (nismo još prošli polja)
+let trenutnaRijec = ""; // prazan string za spremanje trenutne riječi
+for (let i = 0; i < recenica.length; i++) {
+  // prolazimo kroz svaki znak u rečenici
+  if (recenica[i] !== " ") {
+    // ako trenutni znak nije razmak
+    trenutnaRijec += recenica[i]; // dodaj trenutni znak u trenutnu riječ
+  } else {
+    rijeci.push(trenutnaRijec); // dodaj trenutnu riječ u polje riječi
+    trenutnaRijec = ""; // resetiraj trenutnu riječ
+  }
+}
+rijeci.push(trenutnaRijec); // dodaj zadnju riječ u polje riječi
+console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
+```
+
+To je 10-tak linija koda za vrlo jednostavnu i učestalu radnju! Možemo to učiniti puno jednostavnije koristeći `split()` metodu:
+
+```javascript
+const recenica = "Pula je grad u Istri.";
+const rijeci = recenica.split(" ");
+console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
+```
+
+## Vježba 2
+
+1. Napišite funkciju `brojSamoglasnikaISuglasnika` koja prima ulazni string i vraća objekt s dva svojstva: `samoglasnici:broj_samoglasnika` i `suglasnici:broj_suglasnika`.
 
    - Koristi metodu `match()` za pronalaženje samoglasnika (`regex = /[aeiou]/g`) i suglasnika (`regex = /[^aeiou\W]/g`) u ulaznom stringu.
    - Koristi `toUpperCase()` ili `toLowerCase()` za normalizaciju slova.
@@ -442,9 +501,7 @@ Objekt koji predstavlja tekstualne podatke. Nudi razne metode za manipulaciju i 
      // { samoglasnici: 3, suglasnici: 7 }
      ```
 
-2. Napiši funkciju `duljinaRijeci` koja prima ulazni string i ispisuje duljinu svake riječi.
-   - Koristi `split()` za razdvajanje stringa na riječi.
-   - Koristi `trim()` za uklanjanje suvišnih razmaka.
+2. Napiši funkciju `duljinaRijeci` koja prima rečenicu te ispisuje sve riječi iz rečenice i njihovu duljinu. Funkcija ne mora vraćati ništa.
    - Na primjer:
      ```javascript
      duljinaRijeci("   JavaScript je zabavan   ");
@@ -453,23 +510,30 @@ Objekt koji predstavlja tekstualne podatke. Nudi razne metode za manipulaciju i 
      // zabavan: 7
      ```
 
-## 2.2 **Number**
+## 2.2 `Number` objekt
 
-Objekt koji predstavlja numeričke podatke. Nudi razne metode za rad s numeričkim vrijednostima, poput zaokruživanja, konverzije u druge formate i provjere svojstava (npr. provjera je li broj konačan ili beskonačan).
+Number objekt predstavlja numeričke podatke, odnosno brojeve. Nudi razne korisne metode za rad s brojevima u JavaScriptu. Isto kao i `String` objekt, `Number` objekt ima svoj konstruktor `Number()` koji se rijetko koristi jer je moguće stvoriti `Number` objekt koristeći objektne literale - same brojeve.
 
-| Metoda          | Objasnjenje                                        | Primjer                       | Izlaz    |
-| --------------- | -------------------------------------------------- | ----------------------------- | -------- |
-| `toFixed()`     | Zaokružuje broj na zadan broj decimalnih mjesta.   | `(5.56789).toFixed(2)`        | `"5.57"` |
-| `toPrecision()` | Formatira broj u zadanom opsegu značajnih brojeva. | `(9876.54321).toPrecision(4)` | `"9877"` |
-| `toString()`    | Prikazuje broj kao string.                         | `(123).toString()`            | `"123"`  |
-| `parseInt()`    | Parsira string i vraća cjelobrojni ekvivalent.     | `Number.parseInt("10.456")`   | `10`     |
-| `parseFloat()`  | Parsira string i vraća broj s pomičnim zarezom.    | `Number.parseFloat("10.456")` | `10.456` |
-| `isInteger()`   | Provjerava je li vrijednost integer.               | `Number.isInteger(5.2)`       | `false`  |
-| `isNaN()`       | Provjerava je li vrijednost NaN (Not a Number).    | `Number.isNaN("string")`      | `true`   |
+```javascript
+const broj = 5; // primitivni broj
+const brojObjekt = new Number(5); // objekt broj
+```
 
-## Vježba 4
+Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objekta:
 
-1. Napiši funkciju `zaokruziBroj(broj, decimalnaMjesta)` koja prima broj i decimalni broj mjesta za zaokruživanje te vraća zaokruženi broj na točno određenom decimalnom mjestu.
+| Metoda          | Objasnjenje                                                                                                                                                                              | Sintaksa                    | Primjer                                       | Izlaz                 |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | --------------------------------------------- | --------------------- |
+| `toFixed()`     | Zaokružuje broj na zadani broj (`digits`) decimalnih mjesta. Vraća string (zbog decimalne točke).                                                                                        | `number.toFixed(digits)`    | `(5.56789).toFixed(2)`                        | `"5.57"`              |
+| `toPrecision()` | Za dani broj metoda vraća njegovu string reprezentaciju na zadani broj značajnih znamenki `precision` parametar koja mora biti između `1` i `100`.                                       | `number.toPrecision(2)`     | `(5.123456).toPrecision(2)`                   | `"5.1"`               |
+| `toString()`    | Vraća string reprezentaciju broja. Opcionalni `radix` parametar, može biti između `2` i `36` i specificira bazu koja se koristi za reprezentaciju broja. Default je 10 (dekadski prikaz) | `number.toString(radix=10)` | `(123).toString()` ; `(100).toString(2)`      | `"123"` ; `"1100100"` |
+| `parseInt()`    | Metoda pretvara dani string u cjelobrojni ekvivalent. Kao i kod `toString()`, sadrži opcionalni `radix` parametar.                                                                       | `parseInt(string, radix)`   | `parseInt("10.456")` ; `parseInt("40 years")` | `10` ; `40`           |
+| `parseFloat()`  | Metoda pretvara dani string u floating-point ekvivalent.                                                                                                                                 | `parseFloat(string)`        | `parseFloat("10.456")`                        | `10.456`              |
+| `isInteger()`   | Provjerava je li dana vrijednost `value` integer. Vraća `boolean` vrijednost ovisno o tome.                                                                                              | `isInteger(value)`          | `isInteger(5.2)`                              | `false`               |
+| `isNaN()`       | Provjerava je li vrijednost dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                              | `isNaN(value)`              | `isNaN("string")`                             | `true`                |
+
+## Vježba 3
+
+1. Napiši funkciju `zaokruziBroj(broj, decimalnaMjesta)` koja prima broj i decimalni broj mjesta za zaokruživanje te vraća zaokruženi decimalni broj. Funkcija mora provjeriti je li parametar broj uistinu broj. Ako nije, prekida s radom.
 
    Primjer:
 
@@ -477,17 +541,7 @@ Objekt koji predstavlja numeričke podatke. Nudi razne metode za rad s numeričk
    console.log(zaokruziBroj(5.56789, 2)); // 5.57
    ```
 
-2. Napiši funkciju `provjeriKonačnost(broj)` koja prima brojeve i provijerava da li je konačan ili ne, ako nije konačan ispisuje riječ `"Beskonačan"`, ako je konačan provjerava da li je integer, ako nije integer formatira ga u integer koristeći `toFixed(0)` i ispisuje `broj prije -> broj poslije`, ako je integer ispisuje `Prirodan broj`
-
-   Primjer:
-
-   ```javascript
-   console.log(provjeriKonačnost(10)); // Prirodan broj
-   console.log(provjeriKonačnost(3.14159265359)); // 3.14159265359 -> 3
-   console.log(provjeriKonačnost(Infinity)); // Beskonačan
-   ```
-
-Ovi zadaci demonstriraju upotrebu različitih metoda za rad s brojevima i omogućuju vježbu u manipulaciji i provjeri brojeva.
+//////////////////////////////////////////////////LUKA//////////////////////////////////////////////////////////
 
 ## 2.3 **Math**
 
