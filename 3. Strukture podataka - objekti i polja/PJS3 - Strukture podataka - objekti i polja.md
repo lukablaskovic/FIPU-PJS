@@ -204,7 +204,7 @@ Ključna riječ `this` odnosi se na trenutni objekt u kojem se koristi. U kontek
 
 `this` se koristi za pristup svojstvima i metodama objekta unutar samog objekta. Na primjer, u metodi `izracunajStarost`, `this.godina_proizvodnje` koristi se za pristup svojstvu `godina_proizvodnje` objekta `auto`.
 
-Idemo dodati novu metodu `opisiAuto` u objekt `auto` koja će ispisati sve informacije o automobilu u jednoj rečenici, koristeći svojstva objekta `auto`:
+Idemo dodati novu metodu `opisiAuto` u objekt `auto` koja će ispisati sve informacije o automobilu u jednoj rečenici, koristeći svojstva objekta `auto`.
 Primjetite da se u metodi `opisiAuto` koristi ključna riječ `this` za pristup svojstvima objekta `auto`.
 
 ```javascript
@@ -238,7 +238,7 @@ console.log(auto.opisiAuto()); // Auto je Ford Mustang boje Crna iz 2020.
 ```javascript
 const grad = {
   ime: "Pula",
-  velicina: 51.65, // km^2
+  velicina: 51.65, // km²
 };
 ```
 
@@ -256,137 +256,148 @@ grad["velicina"] = 50;
 grad["broj_stanovnika"] = 56540;
 ```
 
-////////////////////////////////////////////////////////////////////////////////////
+Sada možemo ispisati objekt `grad` koristeći `console.log(grad)` i dobiti ćemo ažurirani objekt.
+Na jednak način objektu možemo dodati i metode. Primjerice, hoćemo dodati novu metodu `gustocaNaseljenosti()` kojom želimo prikazati broj stanovnika po kvadratnom kilometru.
 
 ```javascript
-grad.postanski_broj = 52100;
-grad.gustoca_naseljenosti = function () {
+grad.gustocaNaseljenosti = function () {
   return this.broj_stanovnika / this.velicina;
 };
-console.log(grad.postanski_broj); // 52100
-console.log(grad.gustoca_naseljenosti()); // 1144
+
+console.log(grad.gustocaNaseljenosti()); // 1130.8 stanovnika/km²
+
 ```
 
-Jedna korisna karakteristika notacije uglatih zagrada je da omogućava _dinamičko_ **pristupanje** i **postavljanje** svojstvima. Recimo da želimo korisnicima omogućiti spremanje prilagođenih tipova vrijednosti u svojim podacima, upisivanjem naziva i vrijednosti u dva tekstualna ulaza:
+Postoji još jedna korist upotrebe notacije uglatih zagrada `[]` - omogućuje nam pristup svojstvima objekta koristeći varijable. Na primjer, ako imamo varijablu `svojstvo` koja sadrži ime svojstva objekta, možemo koristiti tu varijablu za pristupanje svojstvu objekta:
 
 ```javascript
-const osoba = {
+const svojstvo = "ime";
+console.log(grad[svojstvo]); // Pula
+``` 
+Navedeno je korisno kada imamo dinamički generirane ključeve. Međutim, isto nije moguće napraviti koristeći notaciju točke `.`.
+```javascript
+const svojstvo = "ime";
+console.log(grad.svojstvo); // undefined - neće raditi
+```
+
+Kako možemo izbrisati svojstvo objekta? To možemo učiniti koristeći ključnu riječ `delete`:
+Recimo da hoćemmo izbrisati svojstvo `velicina` iz objekta `grad`:
+
+```javascript
+delete grad.velicina;
+console.log(grad); // { ime: "Pula", broj_stanovnika: 56540, gustocaNaseljenosti: [Function: gustocaNaseljenosti] }
+```
+Ako upišete `delete grad.velicina` u konzolu primjetit ćete da će konzola vratiti `true` što znači da je svojstvo uspješno obrisano.
+
+## 1.4 Konstruktori
+
+Objekte smo do sad stvarali ručno, što je u redu ako ih trebamo stvoriti samo nekoliko. Međutim, što ako trebamo stvoriti stotine ili čak tisuće objekata? U tom slučaju, ručno stvaranje objekata postaje nepraktično i vremenski zahtjevno. Do sad smo naučili koristiti funkcije, zašto ne bi koristili funkciju za stvaranje novog objekta?
+
+### Primjer 1 - Stvaranje objekta pomoću funkcije
+
+Želimo stvoriti objekt `korisnik` s tri svojstva: `ime`, `prezime` i `godina_rodenja`.
+
+```javascript
+const korisnik = {
   ime: "Ana",
-  godina_rodjenja: 1990,
-  mjesto_rodjenja: "Zagreb",
+  prezime: "Anić",
+  godina_rodenja: 1990,
 };
-
-const naziv = "visina";
-const vrijednost = 164;
-
-osoba[naziv] = vrijednost;
-console.log(osoba[naziv]); // 164
+```
+Što ako želimo stvoriti još jednog korisnika? Moramo ponoviti cijeli postupak:
+```javascript
+const korisnik2 = {
+  ime: "Marko",
+  prezime: "Marić",
+  godina_rodenja: 1985,
+};
 ```
 
-Dodavanje svojstva u objekt koristeći gore navedenu metodu nije moguće s dot notacijom, koja može prihvatiti samo doslovno ime svojstva, a ne vrijednost varijable koja pokazuje na ime.
-
-## 1.7 Konstruktori
-
-Ručno pisanje objekata je u redu kada treba stvoriti samo jedan objekt, ali ako treba stvoriti više od jednog onda je taj način neučinkovit. Moramo ponovno pisati isti kôd za svaki objekt koji stvaramo, a ako želimo promijeniti neka svojstva objekta - tada moramo ručno ažurirati svaki objekt.
-
-Želimo definirati `oblik` objekta - _skup metoda i svojstava_ - i zatim stvoriti koliko god želimo objekata, samo ažurirajući vrijednosti svojstava koje su različite.
-
-Primjer funkcije koja stvara osobe:
+Kako možemo automatizirati proces? Idemo pokušati stvoriti funkciju `stvoriKorisnika` koja će stvoriti novi objekt korisnika svaki put kada je pozovemo:
 
 ```javascript
-function stvoriOsobu(ime) {
-  const obj = {};
-  obj.ime = ime;
+function stvoriKorisnika(ime, prezime, godina_rodenja) {
+  const obj = {}; // stvori prazan objekt
+  obj.ime = ime; // dodaj svojstvo ime
+  obj.prezime = prezime; // dodaj svojstvo prezime
+  obj.godina_rodenja = godina_rodenja; // dodaj svojstvo godina_rodenja
+
   obj.predstaviSe = function () {
-    console.log(`Bok! Ja sam ${this.ime}.`);
+    console.log(`Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`);
   };
-  return obj;
+
+  return obj; // vrati objekt
 }
 ```
-
-Ova funkcija stvara i vraća novi objekt svaki put kada je pozovemo. Objekt će imati dva člana:
-
-- svojstvo `ime`
-- metodu `predstaviSe()`
-
-Primijetite da funkcija `stvoriOsobu()` uzima parametar `ime` kako bi postavila vrijednost svojstva `ime`, ali vrijednost metode `predstaviSe()` bit će ista za sve objekte koji su stvoreni korištenjem ove funkcije.
-
-Sada možemo stvoriti koliko god objekata želimo, koristeći istu definiciju:
+Sada možemo jednostavnije stvoriti nove korisnike koristeći novu funkciju `stvoriKorisnika`:
 
 ```javascript
-const ana = stvoriOsobu("Ana");
-const marko = stvoriOsobu("Marko");
+const ana = stvoriKorisnika("Ana", "Anić", 1990);
+const marko = stvoriKorisnika("Marko", "Marić", 1985);
+const petar = stvoriKorisnika("Petar", "Petrović", 2001);
 
-ana.predstaviSe(); // "Bok! Ja sam Ana."
-marko.predstaviSe(); // "Bok! Ja sam Marko."
+ana.predstaviSe(); // "Bok! Ja sam Ana Anić. Rođen/a sam 1990 godine."
+marko.predstaviSe(); // "Bok! Ja sam Marko Marić. Rođen/a sam 1985 godine."
+petar.predstaviSe(); // "Bok! Ja sam Petar Petrović. Rođen/a sam 2001 godine."
 ```
 
-Ovo radi dobro, ali može bolje: zato što moramo stvoriti prazan objekt, inicijalizirati ga i vratiti. Bolji način je koristiti `konstruktor`, a `konstruktor` je samo funkcija koja se poziva pomoću ključne riječi `new`. Kada pozovete `konstruktor`, on će:
+### Primjer 2 - Stvaranje objekta pomoću konstruktora
 
-- stvoriti `novi objekt`
-- povezati `this` s `novim objektom`, tako da možete koristiti `this` u kôdu svog `konstruktora`
-- izvršiti kôd u `konstruktoru`
-- vratiti `novi objekt`
+Ovo radi dobro, ali zašto moramo svaki put stvarati novi objekt `obj` i vraćati ga na kraju funkcije? U JavaScriptu postoji posebna vrsta funkcije koja se zove **konstruktor** (eng. **_constructor_**). Konstruktori su posebne funkcije koje se koriste za stvaranje novih objekata. Konstruktori rade na sljedeći način:
 
-Konstruktori, po konvenciji, se pišu velikim početnim slovom i nazivaju se prema vrsti objekta koje stvaraju. Dakle, prijašnju funkciju možemo napisati na sljedeći način:
+1. Stvaraju prazan objekt
+2. Dodaju svojstva i metode objektu
+3. Automatski vraćaju objekt
+
+Konstruktori, po konvenciji, se pišu velikim početnim slovom i nazivaju se prema vrsti objekta koje stvaraju. Dakle, prijašnju funkciju `stvoriKorisnika` možemo preoblikovati u konstruktor `Korisnik`. Kako ne stvaramo prazan objekt, već ga automatski vraćamo, ne moramo koristiti ključnu riječ `return`. Također, za dodavanje svojstava i metoda objektu koristimo ključnu riječ `this`, gdje se `this` odnosi na novi objekt koji se stvara.
 
 ```javascript
-function Osoba(ime) {
+function Korisnik(ime, prezime, godina_rodenja) {
   this.ime = ime;
+  this.prezime = prezime;
+  this.godina_rodenja = godina_rodenja;
   this.predstaviSe = function () {
-    console.log(`Bok! Ja sam ${this.ime}.`);
+    console.log(`Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`);
   };
 }
 ```
 
-Da bismo pozvali Osoba() kao konstruktor, koristimo new:
+Kako bi JavaScript znao da je funkcija `Korisnik` konstruktor, moramo koristiti ključnu riječ `new` prije poziva konstruktora.
 
 ```javascript
-const ana = new Osoba("Ana");
-const marko = new Osoba("Marko");
+const ana = new Osoba("Ana", "Anić", 1990);
+const marko = new Osoba("Marko", "Marić", 1985);
+const petar = new Osoba("Petar", "Petrović", 2001);
 
-ana.predstaviSe(); // "Bok! Ja sam Ana."
-marko.predstaviSe(); // "Bok! Ja sam Marko."
+ana.predstaviSe(); // "Bok! Ja sam Ana Anić. Rođen/a sam 1990 godine."
+marko.predstaviSe(); // "Bok! Ja sam Marko Marić. Rođen/a sam 1985 godine."
+petar.predstaviSe(); // "Bok! Ja sam Petar Petrović. Rođen/a sam 2001 godine."
 ```
 
 Na ovaj način definiramo i stvaramo nove objekte koristeći konstruktor.
 
-## Vježba 2
+## Vježba 1
 
-Definiraj konstruktor `Automobil`, koji će predstavljati objekt automobila. Svaki automobil će imati određena svojstva poput marke, modela, godine proizvodnje, boje i cijene. Osim toga, trebat će dodati metode za ispis detalja i ažuriranje cijene automobila.
+1. Definirajte konstruktor `Automobil`. U konstruktor postavite sljedeća svojstva automobilu: `marka`, `model`, `godina_proizvodnje`, `boja` i `cijena`. Kada to napravite, izradite nekoliko objekata tipa `Automobil` koristeći konstruktor.
+2. Dodajte metodu `azurirajCijenu(novaCijena)` u konstruktor `Automobil` koja će ažurirati cijenu automobila.
+3. Dodajte metodu `detalji()` u konstruktor `Automobil` koja će u jednoj rečenici ispisati sva svojstva automobila.
+5. Pozovite za svaki automobil metodu `detalji()` i metodu `azurirajCijenu()`.
 
-1. Definirajte konstruktor `Automobil` koji će imati sljedeća svojstva:
-
-   - `marka`: Naziv marke automobila (**string**).
-   - `model`: Model automobila (**string**).
-   - `godinaProizvodnje`: Godina proizvodnje automobila (**number**).
-   - `boja`: Boja automobila (**string**).
-   - `cijena`: Cijena automobila (**number**).
-
-2. Dodajte metodu `azurirajCijenu(novaCijena)` u konstruktor `Automobil` koja će omogućiti promjenu cijene automobila na temelju novog iznosa.
-
-3. Dodajte metodu `detalji()` u konstruktor `Automobil` koja će ispisati detalje automobila (marka, model, godina proizvodnje i boja).
-
-4. Stvorite dva objekta tipa `Automobil` pomoću konstruktora
-
-5. Provjerite funkcionalnost metode `azurirajCijenu()` na oba automobila.
-
-Rezultat:
+Primjer rezultata:
 
 ```javascript
 Marka: Toyota
 Model: Corolla
-Godina proizvodnje: 2018
-Boja: crvena
+Godina proizvodnje: 2019
+Boja: siva
+Cijena: 15000
+
 
 Marka: Volkswagen
 Model: Golf
-Godina proizvodnje: 2020
-Boja: plava
-
-Nakon ažuriranja cijene:
-Nova cijena Toyote: 16000
-Nova cijena Volkswagena: 22000
+Godina proizvodnje: 2015
+Boja: crna
+Cijena: 11500
 ```
 
 # 2. Standardni ugrađeni objekti
