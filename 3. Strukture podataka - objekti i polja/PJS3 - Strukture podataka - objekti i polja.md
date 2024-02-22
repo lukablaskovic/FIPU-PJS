@@ -15,7 +15,7 @@
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js3.png?raw=true" style="width:9%; float:right;"></img>
 
-Strukture podataka su specijalizirani formati podataka za efikasniju pohranu, organizaciju, dohvat i obradu istih. U JavaScriptu, objekti i polja su bazični tipovi struktura podataka. **Objekti** omogućuju pohranu podataka u obliku proizvoljnog broja parova `"ključ:vrijednost"`, dok **polja** predstavljaju kolekciju različitih elemenata organiziranih u linearni niz. Kombinacija ovih struktura omogućuje efikasno manipuliranje i pristup podacima u JavaScriptu.
+Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj pohrani, organizaciji, dohvatu i obradi podataka. U JavaScriptu, objekti i polja predstavljaju glavne gradivne elemente. **Objekti** su kontejneri koji omogućuju pohranu podataka u obliku proizvoljnog broja parova `"ključ:vrijednost"`, dok **polja** predstavljaju kolekciju različitih elemenata organiziranih u linearni niz. Kombinacija ovih struktura omogućuje efikasno manipuliranje i pristup podacima u JavaScriptu.
 
 ## Sadržaj
 
@@ -37,14 +37,17 @@ Strukture podataka su specijalizirani formati podataka za efikasniju pohranu, or
 - [2. Standardni ugrađeni objekti (eng. **_built-in objects_**)](#2-standardni-ugrađeni-objekti-eng-built-in-objects)
   - [2.1 `String` objekt](#21-string-objekt)
   - [Vježba 2](#vježba-2)
+    - [2.1.1 Escape znakovi (eng. **_escape characters_**) (DODATNO)](#211-escape-znakovi-eng-escape-characters-dodatno)
   - [2.2 `Number` objekt](#22-number-objekt)
-  - [Vježba 3](#vježba-3)
+    - [2.2.1 `NaN` (Not a Number)](#221-nan-not-a-number)
+    - [2.2.2 `Infinity` i `-Infinity`](#222-infinity-i--infinity)
   - [2.3 `Math` objekt](#23-math-objekt)
-  - [Vježba 4](#vježba-4)
-  - [2.4 **Date**](#24-date)
+  - [Vježba 3](#vježba-3)
+  - [2.4 `Date` objekt](#24-date-objekt)
   - [Vježba 6](#vježba-6)
     - [Zadatak 1: Provjera Dana u Tjednu](#zadatak-1-provjera-dana-u-tjednu)
     - [Zadatak 2: Razlika u Vremenu](#zadatak-2-razlika-u-vremenu)
+  - [2.4 Usporedba JavaScript objekata](#24-usporedba-javascript-objekata)
 - [3. Uvod u polja](#3-uvod-u-polja)
   - [3.1 Sintaksa polja](#31-sintaksa-polja)
   - [3.2 Veličina polja](#32-veličina-polja)
@@ -52,10 +55,10 @@ Strukture podataka su specijalizirani formati podataka za efikasniju pohranu, or
   - [3.4 Dodavanje i brisanje elementa u polju](#34-dodavanje-i-brisanje-elementa-u-polju)
   - [Vježba 7](#vježba-7)
   - [3.5 Iteriranje kroz polje](#35-iteriranje-kroz-polje)
-    - [1. Tradicionalna `for` petlja](#1-tradicionalna-for-petlja)
-    - [2. `for...in`](#2-forin)
-    - [3. `for...of`](#3-forof)
-    - [3. `forEach`](#3-foreach)
+      - [1. Tradicionalna `for` petlja](#1-tradicionalna-for-petlja)
+      - [2. `for...in`](#2-forin)
+      - [3. `for...of`](#3-forof)
+      - [3. `forEach`](#3-foreach)
   - [3.6 Funkcije nad poljem](#36-funkcije-nad-poljem)
     - [3.6.1. `map()`](#361-map)
     - [3.6.2. `filter()`](#362-filter)
@@ -70,13 +73,29 @@ Strukture podataka su specijalizirani formati podataka za efikasniju pohranu, or
 
 # 1. Uvod u objekte
 
-Objekti su osnovna struktura podataka koja omogućavaju organizaciju i pohranu informacija. Objekt je skup povezanih podataka i/ili funkcionalnosti. Obično se sastoje od nekoliko varijabli i funkcija (koje se nazivaju svojstvima i metodama kada se nalaze unutar objekata).
+Objekti su osnovna struktura podataka koja omogućavaju organizaciju i pohranu informacija. Objekt je skup povezanih podataka i/ili funkcionalnosti. Obično se sastoje od nekoliko varijabli i funkcija (koji se nazivaju **svojstvima** (eng. _property_) i **metodama** (eng. _methods_) kada se nalaze unutar definicije objekata).
 
-Objekti se koriste za modeliranje stvarnih stvari, kao što su automobili, uloge, ljudi, hrana, knjige, itd. U JavaScriptu, objekti su osnovni tip podataka i koriste se za pohranu i manipulaciju podacima.
+Objekti se koriste za modeliranje stvarnih stvari, kao što su automobili, uloge, ljudi, hrana, knjige, itd.
 
-Objekte stvaramo koristeći objektne literale, koji se sastoje od parova `ključ:vrijednost` (eng. _key-value_) odvojenih zarezom i okruženih vitičastim zagradama `{}`. Svaki par `ključ:vrijednost` može biti svojstvo ili metoda objekta.
+Prije nego definiramo objekte, važno je razumijeti što su primitivni tipovi podataka u JavaScriptu. Najjednostavnije rečeno, primitivni tipovi podataka, ili primitivi, su jednostavni podaci koji **nemaju svojstva i metode**, za razliku od objekata. JavaScript ima 7 primitivnih tipova podataka:
 
-Definirajmo prazan objekt `auto`:
+- `string`,
+- `number`,
+- `boolean`,
+- `null`,
+- `undefined`,
+- `symbol` i
+- `bigint`.
+
+Primitivne vrijednosti su nepromjenjive (eng. _immutable_). Kako ovo razumjeti?
+Na primjer, ako imamo `x = 3.14`, mi možemo promijeniti vrijednost varijable `x` u što god hoćemo, ali ne možemo promijeniti vrijednost `3.14`.
+Drugi primjer, boolean vrijednosti `true` i `false` su uvijek `true` i `false`, kao i `null` i `undefined`. Takve vrijednosti su nepromjenjive!
+
+Objekte stvaramo koristeći objektne literale, koji se sastoje od parova `ključ:vrijednost` (eng. _key-value_) odvojenih zarezima `,` i okruženih vitičastim zagradama `{}`. Svaki par `ključ:vrijednost` može biti svojstvo ili metoda objekta.
+
+> Možemo reći da je JavaScript objekt varijabla koja se sastoji od jednog ili više `ključ:vrijednost` parova.
+
+Definirajmo prazan objekt `auto`. Postoji praksa da se objekti definiraju pomoću konstante `const`.
 
 ```javascript
 const auto = {};
@@ -131,7 +150,7 @@ Par `ključ/vrijednost` može se deklarirati i na način da se `ključ` stavi un
 
 ```javascript
 const auto = {
-  godina_proizvodnje: 1987,
+  "godina_proizvodnje": 1987,
 };
 console.log(auto.godina_proizvodnje); // 1987
 ```
@@ -153,6 +172,7 @@ const auto = {
   1: "Ford", // JavaScript će automatski pretvoriti broj 1 u string "1"
 };
 console.log(auto[1]); // Ford
+console.log(auto.1); // SyntaxError: Unexpected number
 ```
 
 **Zaključak**: svojstvima objekata možemo pristupati koristeći notaciju točke `.` ili notaciju uglatih zagrada `[]`. Notacija točke je češće korištena i preporučljiva jer je jednostavnija i čitljivija. Notacija uglatih zagrada koristi se kada ključ sadrži razmake ili kada se ključ sastoji od varijable.
@@ -176,7 +196,7 @@ const auto = {
 };
 ```
 
-Međutim postoji i kraći način, jednostavno izostavljanjem ključne riječ `function`:
+Međutim postoji i kraći način - jednostavnim izostavljanjem ključne riječ `function`:
 
 ```javascript
 const auto = {
@@ -196,6 +216,8 @@ Metodu `izracunajStarost` možemo pozvati koristeći notaciju točke:
 console.log(auto.izracunajStarost()); // 4
 ```
 
+
+U tablici su navedene metode i svojstva objekta `auto`:
 |                                                                                                                       Objekt                                                                                                                        |                                               Svojstva                                                |         Metode          |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :---------------------: |
 | <div style="text-align:center;">auto<br><img src="https://www.motortrend.com/uploads/sites/10/2019/09/2020-ford-mustang-fastback-ecoboost-coupe-angular-front.png" style="width:50%; display: block; margin-left: auto; margin-right: auto;"></div> | auto.marka = "Ford"<br>auto.model = "Mustang"<br>auto.godina_proizvodnje = 2020<br>auto.boja = "Crna" | auto.izracunajStarost() |
@@ -232,7 +254,7 @@ console.log(auto.opisiAuto()); // Auto je Ford Mustang boje Crna iz 2020.
 
 ## 1.3 Ažuriranje objekta
 
-Što ako želimo dodati, izbrisati ili ažurirati svojstva objekta? To možemo učiniti na nekoliko načina. Definirajmo objekt `grad` s nekoliko svojstava:
+Što ako želimo dodati, izbrisati ili ažurirati svojstva objekta? To možemo učiniti na nekoliko načina, u ovoj lekciji ćemo proći kroz najjednostavniji. Definirajmo objekt `grad` s nekoliko svojstava:
 
 - `ime`: Pula
 - `velicina`: 51.65 km²
@@ -244,7 +266,7 @@ const grad = {
 };
 ```
 
-Recimo da hoćemo ažurirati svojstvo `velicina` na 52 i dodati novo svojstvo `broj_stanovnika` s vrijednošću `56540`. To možemo učiniti na sljedeći način koristeći notaciju točke:
+Recimo da hoćemo ažurirati svojstvo `velicina` na `52` i dodati novo svojstvo `broj_stanovnika` s vrijednošću `56540`. To možemo učiniti na sljedeći način koristeći notaciju točke:
 
 ```javascript
 grad.velicina = 50;
@@ -283,7 +305,7 @@ const svojstvo = "ime";
 console.log(grad.svojstvo); // undefined - neće raditi
 ```
 
-Kako možemo izbrisati svojstvo objekta? To možemo učiniti koristeći ključnu riječ `delete`:
+Kako možemo izbrisati svojstvo objekta? Ključnom riječi `delete`!
 Recimo da hoćemmo izbrisati svojstvo `velicina` iz objekta `grad`:
 
 ```javascript
@@ -319,7 +341,7 @@ const korisnik2 = {
 };
 ```
 
-Kako možemo automatizirati proces? Idemo pokušati stvoriti funkciju `stvoriKorisnika` koja će stvoriti novi objekt korisnika svaki put kada je pozovemo:
+Kako možemo automatizirati proces? Idemo pokušati stvoriti funkciju `stvoriKorisnika()` koja će stvoriti novog korisnika svaki put kada je pozovemo:
 
 ```javascript
 function stvoriKorisnika(ime, prezime, godina_rodenja) {
@@ -338,7 +360,7 @@ function stvoriKorisnika(ime, prezime, godina_rodenja) {
 }
 ```
 
-Sada možemo jednostavnije stvoriti nove korisnike koristeći novu funkciju `stvoriKorisnika`:
+Sada možemo jednostavnije stvoriti nove korisnike koristeći novu funkciju `stvoriKorisnika()`:
 
 ```javascript
 const ana = stvoriKorisnika("Ana", "Anić", 1990);
@@ -358,7 +380,7 @@ Ovo radi dobro, ali zašto moramo svaki put stvarati novi objekt `obj` i vraćat
 2. Dodaju svojstva i metode objektu
 3. Automatski vraćaju objekt
 
-Konstruktori, po konvenciji, se pišu velikim početnim slovom i nazivaju se prema vrsti objekta koje stvaraju. Dakle, prijašnju funkciju `stvoriKorisnika` možemo preoblikovati u konstruktor `Korisnik`. Kako ne stvaramo prazan objekt, već ga automatski vraćamo, ne moramo koristiti ključnu riječ `return`. Također, za dodavanje svojstava i metoda objektu koristimo ključnu riječ `this`, gdje se `this` odnosi na novi objekt koji se stvara.
+Konstruktori, po konvenciji, se pišu velikim početnim slovom i nazivaju po objektu kojeg stvaraju. Dakle, prijašnju funkciju `stvoriKorisnika` možemo preoblikovati u konstruktor `Korisnik`. Kako ne stvaramo prazan objekt, već ga automatski vraćamo, ne moramo koristiti ključnu riječ `return`. Također, za dodavanje svojstava i metoda objektu koristimo ključnu riječ `this`, gdje se `this` odnosi na novi objekt koji se stvara.
 
 ```javascript
 function Korisnik(ime, prezime, godina_rodenja) {
@@ -389,7 +411,7 @@ Na ovaj način definiramo i stvaramo nove objekte koristeći konstruktor.
 
 ## Vježba 1
 
-1. Definirajte konstruktor `Automobil`. U konstruktor postavite sljedeća svojstva automobilu: `marka`, `model`, `godina_proizvodnje`, `boja` i `cijena`. Kada to napravite, izradite nekoliko objekata tipa `Automobil` koristeći konstruktor.
+1. Definirajte konstruktor `Automobil`. U konstruktor postavite sljedeća svojstva automobilu: `marka`, `model`, `godina_proizvodnje`, `boja` i `cijena`. Kada to napravite, izradite nekoliko objekata tipa `Automobil` koristeći vaš konstruktor.
 2. Dodajte metodu `azurirajCijenu(novaCijena)` u konstruktor `Automobil` koja će ažurirati cijenu automobila.
 3. Dodajte metodu `detalji()` u konstruktor `Automobil` koja će u jednoj rečenici ispisati sva svojstva automobila.
 4. Pozovite za svaki automobil metodu `detalji()` i metodu `azurirajCijenu()`.
@@ -413,9 +435,9 @@ Cijena: 11500
 
 # 2. Standardni ugrađeni objekti (eng. **_built-in objects_**)
 
-JavaScript nudi mnoštvo ugrađenih (eng. **_built-in_**) objekata koji modeliraju mnoštvo objekata iz stvarnog svijeta, kao i osnovne podatkovne tipove. Ovi objekti pružaju razne metode i svojstva za rad s podacima, poput manipulacije nizovima znakova `String`, rad s datumima `Date`, matematičke operacije `Math`, itd.
+JavaScript nudi mnoštvo ugrađenih (eng. **_built-in_**) objekata koji modeliraju mnoštvo stvari iz stvarnog svijeta, ali i obogaćuju primitivne tipove podataka brojnim korisnim metodama. Ugrađeni objekti pružaju razne metode i svojstva za rad s podacima, poput manipulacije nizovima znakova `String`, rad s datumima `Date`, matematičke operacije `Math`, itd.
 
-Do sad smo već susreli s nekoliko ugrađenih objekata, poput `Date` i `Math`. U narednim poglavljima upoznat ćemo se detaljnije s ugrađenim objektima: `String`, `Number`, `Math` i `Date`.
+Do sad smo se već susreli s nekoliko ugrađenih objekata, poput `Date` i `Math`, a narednim poglavljima upoznat ćemo se detaljnije s ugrađenim objektima: `String`, `Number`, `Math` i `Date`.
 
 ## 2.1 `String` objekt
 
@@ -423,17 +445,44 @@ Do sad smo već susreli s nekoliko ugrađenih objekata, poput `Date` i `Math`. U
 
 Ako postoji ugrađeni `String` objekt, to znači da možemo pozvati i njegov konstruktor `String()` kako bismo stvorili novi `String` objekt. Međutim, to rijetko radimo jer je moguće stvoriti `String` objekt koristeći objektne literale, tj. navodnike `""` ili apostrofe `''`.
 
-**Važno je naglasiti** da kod svih primitivnih tipova podataka (npr. `string`, `number`, `boolean`) možemo koristiti metode i svojstva kao da su objekti. JavaScript automatski za nas pretvara primitivne tipove u objekte kada koristimo metode i svojstva.
+>**Važno je naglasiti** da kod svih primitivnih tipova podataka (npr. `string`, `number`, `boolean`) možemo koristiti metode i svojstva kao da su objekti. JavaScript automatski za nas pretvara primitivne tipove u objekte kada koristimo metode i svojstva nad njima.
 
 ```javascript
-const ime = "Ana"; // stvara se tkz. primitivni string
+const ime = "Ana"; // stvara se primitivni tip podataka string
 const prezime = new String("Anić"); // stvara se objekt String pozivanjem konstruktora
 
 console.log(typeof ime); // string
-console.log(typeof prezime); // object
+console.log(typeof prezime); // object - stvoren je objekt String
+
 
 console.log(prezime); // [String: 'Anić']
 ```
+
+>Uočite da se primitivni tipovi podataka pišu malim početnim slovom, a objekti velikim početnim slovom.
+
+Pitanje? Što će vratiti `===` operator za x i y?
+
+```javascript
+let x = "Pas";
+let y = new String("Pas");
+console.log(x === y); ?
+```
+
+<details>
+  <summary>Spoiler!</summary>
+  <p>Vratit će false. Operator 'je identično' će usporediti i tipove podataka, ne samo primitivnu vrijednost - koja je ista!</p>
+
+  ```javascript
+  let x = "Pas";
+  let y = new String("Pas");
+  console.log(x === y); false
+  console.log(typeof x); // string
+  console.log(typeof y); // object
+  console.log(x == y); true
+```
+</details>
+
+<hr>
 
 Ispod su navedene neke od najčešće korištenih metoda `String` objekta. Ima ih još [mnogo](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), ali ove su najpoznatije.
 
@@ -456,14 +505,13 @@ Ispod su navedene neke od najčešće korištenih metoda `String` objekta. Ima i
 | `endsWith()`    | Provjerava završava li niz nekim podnizom. Opcionalno ima parametar `endPosition` koji definira krajnju poziciju gdje se očekuje substring, `string.length` tj. zadnji indeks u stringu po defaultu. Vraća `boolean` vrijednost ovisno o pronalasku.                                                                                                            | `string.endsWith(substring, endPosition=string.length)` | `'Cats are the best!'.endsWith('best!')`                                                                                                                                                                 | `true`                                                                     |
 | `includes()`    | Provjerava postoji li određeni podniz u nizu. Metoda je case-sensitive te vraća `boolean` vrijednost ovisno o tome postoji li podniz. Dodatno, tu je opcionalni `position` argument koji započinje pretragu na određenoj poziciji, `0` po defaultu - dakle pretraživanje od početka                                                                             | `string.includes(substring)`                            | `'The quick brown fox jumps over the lazy dog.'.includes('fox')`                                                                                                                                         | `true`                                                                     |
 
-Da ne bi bilo zabune, prisjetimo se na trenutak `typeof` operatora. `typeof` operator vraća tip podatka. Na primjer, `typeof "hello"` vraća `"string"`. Međutim, `typeof String` vraća `"function"` jer je `String` konstruktor funkcija (Zato je važno držati se konvencije da se konstruktori objekata pišu velikim početnim slovom).
-
 Iz tablice možete iščitati razlike između metoda `substring()` i `slice()`. Oba metode vraćaju podniz niza, ali se razlikuju u načinu rada s negativnim indeksima i indeksima koji su izvan granica niza. Preporuka je koristiti `slice()` jer je fleksibilniji i ima jasnije ponašanje, osim ako nemate koristi od specifičnog ponašanja `substring()` - najčešće je to zamjena index argumenata.
 
-Zašto je dobro naučiti koristiti ove metode?
+**Zašto je dobro naučiti koristiti ove metode?**
+
 Većina ovih metoda koristi se svakodnevno u programiranju. Na primjer, `split()` metoda koristi se za razdvajanje niza znakova na riječi, `toUpperCase()` i `toLowerCase()` metode koriste se za normalizaciju teksta, `replace()` metoda koristi se za zamjenu dijelova teksta, itd. Ne želimo gubiti vrijeme i ručno raditi stvari nad znakovnim nizovima, za koje već postoje gotove metode.
 
-Primjerice, imamo potrebnu izvući sve riječi iz rečenice neke rečenice. Ispod je primjer kako bismo to ručno napravili:
+Primjerice, imamo potrebu izvući sve riječi iz neke rečenice. Ispod je primjer kako bismo to ručno napravili:
 
 ```javascript
 const recenica = "Pula je grad u Istri.";
@@ -483,7 +531,7 @@ rijeci.push(trenutnaRijec); // dodaj zadnju riječ u polje riječi
 console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
 ```
 
-To je 10-tak linija koda za vrlo jednostavnu i učestalu radnju! Možemo to učiniti puno jednostavnije koristeći `split()` metodu:
+To je 10-tak linija koda za vrlo jednostavnu i učestalu radnju! Isto možemo postići koristeći `String.split()` metodu:
 
 ```javascript
 const recenica = "Pula je grad u Istri.";
@@ -512,38 +560,127 @@ console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
      // zabavan: 7
      ```
 
+### 2.1.1 Escape znakovi (eng. **_escape characters_**) (DODATNO)
+
+Escape znakovi su posebni znakovi koji se koriste za označavanje posebnih znakova u nizovima znakova. Na primjer, ako želimo koristiti znak navodnika `"` unutar niza znakova, moramo ga označiti escape znakom `\`.
+Primjerice, kako bismo pokušali na ovaj način pohraniti sljedeći tekst, naišli bi na problem:
+  
+```javascript
+const tekst = "We are the so-called "Vikings" from the north."; // SyntaxError: Unexpected identifier
+```
+JavaScript će ovaj string presjeći na `"We are the so-called"`.
+Ovaj problem možemo riješiti pisanjem jednostrukih navodnika `'` umjesto dvostrukih `"`:
+
+```javascript
+const tekst = 'We are the so-called "Vikings" from the north.';
+```
+No escape znakovi nam omogućavaju rješavanje ovog, i još brojnih sličnih problema s nizovima znakova.
+Možemo ubaciti escape znak `\` prije svakog znaka navodnika `"`:
+
+```javascript
+const tekst = "We are the so-called \"Vikings\" from the north."; // We are the so-called "Vikings" from the north.
+```
+
+Kako možemo jednostavno ispisati znak `\` u nizu znakova? Koristimo dva escape znaka `\\`:
+
+```javascript
+console.log("C:\\Users\\Ana\\Desktop\\file.txt"); // C:\Users\Ana\Desktop\file.txt
+```
+ili ako želimo tekst ispisivati u više linije, koristimo escape znakove `\n`:
+
+```javascript
+console.log("Prva linija\nDruga linija\nTreća linija");
+// Prva linija
+// Druga linija
+// Treća linija
+```
+
+Ispod je tablica escape znakova:
+
+| Code      | Result |
+| ----------- | ----------- |
+| \\"      | "       |
+| \\`   | `        |
+| \\\   | \        |
+| \b   | Backspace        |
+| \f   | Form Feed        |
+| \n   | New line        |
+| \r   | Carriage return        |
+| \t   | Horizontal Tabulator        |
+| \v   | Vertical Tabulator        |
+
+Ne morate ih sve znati napamet, ali je dobro znati da postoje. Ovi tabulatori nastali su u doba pisačih strojeva, teleprintera i fax uređaja. U HTML-u ih nema potrebe koristiti jer se tekst formatira pomoću CSS-a.
+
+
 ## 2.2 `Number` objekt
 
-Number objekt predstavlja numeričke podatke, odnosno brojeve. Nudi razne korisne metode za rad s brojevima u JavaScriptu. Isto kao i `String` objekt, `Number` objekt ima svoj konstruktor `Number()` koji se rijetko koristi jer je moguće stvoriti `Number` objekt koristeći objektne literale - same brojeve.
+Number objekt predstavlja numeričke podatke, odnosno brojeve. Nudi razne korisne metode za rad s brojevima u JavaScriptu. Isto kao i `String` objekt, `Number` objekt ima svoj konstruktor `Number()` koji se rijetko koristi jer je moguće stvoriti `Number` objekt koristeći objektne literale odnosno same brojeve.
 
 ```javascript
 const broj = 5; // primitivni broj
-const brojObjekt = new Number(5); // objekt broj
+const brojObjekt = new Number(5); // objekt broj - nemojte ovo raditi (samo komplicira kod)
+
+console.log(typeof broj); // number - uočite malo početno slovo
+console.log(typeof brojObjekt); // object - Number objekt
 ```
+
+Prisjetimo se kratko gradiva iz prve skripte. JavaScript će pokušati evaluirati "string brojeve", npr. `5` u primitivni tip `number`.
+  
+```javascript
+console.log(5 + 5); // 10
+let x = "10";
+let y = "2";
+console.log(x - y); // 8
+console.log(x * y); // 20
+console.log(x / y); // 5
+```
+Ali...
+  
+```javascript
+console.log(x + y); // "102" - konkatenacija stringova
+```
+U primjeru `x+y` JavaScript neće koristiti matematičku logiku operatora `+` već će spojiti dva stringa u jedan, jer je `+` operator nad stringovima operator konkatenacije.
+Iz ovog razloga, poželjno je izbjegavati spajanje stringova `+` operatorom, već koristiti metodu `String.concat()` s kojom smo se upoznali u prethodnom poglavlju.
 
 Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objekta:
 
-| Metoda          | Objasnjenje                                                                                                                                                                              | Sintaksa                    | Primjer                                       | Izlaz                 |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | --------------------------------------------- | --------------------- |
-| `toFixed()`     | Zaokružuje broj na zadani broj (`digits`) decimalnih mjesta. Vraća string (zbog decimalne točke).                                                                                        | `number.toFixed(digits)`    | `(5.56789).toFixed(2)`                        | `"5.57"`              |
-| `toPrecision()` | Za dani broj metoda vraća njegovu string reprezentaciju na zadani broj značajnih znamenki `precision` parametar koja mora biti između `1` i `100`.                                       | `number.toPrecision(2)`     | `(5.123456).toPrecision(2)`                   | `"5.1"`               |
-| `toString()`    | Vraća string reprezentaciju broja. Opcionalni `radix` parametar, može biti između `2` i `36` i specificira bazu koja se koristi za reprezentaciju broja. Default je 10 (dekadski prikaz) | `number.toString(radix=10)` | `(123).toString()` ; `(100).toString(2)`      | `"123"` ; `"1100100"` |
-| `parseInt()`    | Metoda pretvara dani string u cjelobrojni ekvivalent. Kao i kod `toString()`, sadrži opcionalni `radix` parametar.                                                                       | `parseInt(string, radix)`   | `parseInt("10.456")` ; `parseInt("40 years")` | `10` ; `40`           |
-| `parseFloat()`  | Metoda pretvara dani string u floating-point ekvivalent.                                                                                                                                 | `parseFloat(string)`        | `parseFloat("10.456")`                        | `10.456`              |
-| `isInteger()`   | Provjerava je li dana vrijednost `value` integer. Vraća `boolean` vrijednost ovisno o tome.                                                                                              | `isInteger(value)`          | `isInteger(5.2)`                              | `false`               |
-| `isNaN()`       | Provjerava je li vrijednost dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                              | `isNaN(value)`              | `isNaN("string")`                             | `true`                |
+| Metoda          | Objasnjenje                                                                                                                                                                              | Sintaksa                         | Primjer                                       | Izlaz                 |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------- | --------------------- |
+| `toFixed()`     | Zaokružuje broj na zadani broj (`digits`) decimalnih mjesta. Vraća string (zbog decimalne točke).                                                                                        | `number.toFixed(digits)`         | `(5.56789).toFixed(2)`                        | `"5.57"`              |
+| `toPrecision()` | Za dani broj metoda vraća njegovu string reprezentaciju na zadani broj značajnih znamenki: `precision` parametar koja mora biti između `1` i `100`.                                      | `number.toPrecision(2)`          | `(5.123456).toPrecision(2)`                   | `"5.1"`               |
+| `toString()`    | Vraća string reprezentaciju broja. Opcionalni `radix` parametar, može biti između `2` i `36` i specificira bazu koja se koristi za reprezentaciju broja. Default je 10 (dekadski zapis) | `number.toString(radix=10)`      | `(123).toString()` ; `(100).toString(2)`      | `"123"` ; `"1100100"` |
+| `parseInt()`    | Metoda pretvara dani string u cjelobrojni ekvivalent. Kao i kod `toString()`, sadrži opcionalni `radix` parametar.                                                                       | `Number.parseInt(string, radix)` | `parseInt("10.456")` ; `parseInt("40 years")` | `10` ; `40`           |
+| `parseFloat()`  | Metoda pretvara dani string u floating-point ekvivalent.                                                                                                                                 | `Number.parseFloat(string)`      | `parseFloat("10.456")`                        | `10.456`              |
+| `isInteger()`   | Provjerava je li dana vrijednost `value` integer. Vraća `boolean` vrijednost ovisno o tome.                                                                                              | `Number.isInteger(value)`        | `isInteger(5.2)`                              | `false`               |
+| `isNaN()`       | Provjerava je li vrijednost dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                              | `Number.isNaN(value)`            | `isNaN("string")`                             | `true`                |
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+### 2.2.1 `NaN` (Not a Number)
 
-## Vježba 3
+`NaN` je rezervirana riječ u JavaScriptu koja označava "Not a Number". `NaN` je povratna vrijednsot nakon evaluacije neuspješnog matematičkog izraza. Na primjer, ako želimo podijeliti broj 100 s jabukom.
 
-1. Napiši funkciju `zaokruziBroj(broj, decimalnaMjesta)` koja prima broj i decimalni broj mjesta za zaokruživanje te vraća zaokruženi decimalni broj. Funkcija mora provjeriti je li parametar broj uistinu broj. Ako nije, prekida s radom.
+```javascript
+let x = 100 / "jabuka";
+console.log(x); // NaN
+```
+Naravno, ako se radi o numeričkom stringu, rezultat će biti broj.
 
-   Primjer:
+```javascript
+let y = 100 / "10";
+console.log(y); // 10
+```
 
-   ```javascript
-   console.log(zaokruziBroj(5.56789, 2)); // 5.57
-   ```
+Ironično, `typeof(NaN)` vraća `number`! 😁
+
+### 2.2.2 `Infinity` i `-Infinity`
+
+`Infinity` je rezervirana riječ u JavaScriptu koja označava beskonačnost. `Infinity` je povratna vrijednost nakon evaluacije matematičkog izraza koji rezultira beskonačnošću. Na primjer, ako podijelimo bilo koji broj s nulom, rezultat će biti `Infinity`.
+
+```javascript
+let x = 100 / 0;
+console.log(x); // Infinity
+```
+
+`typeof(Infinity)` također vraća `number`.
 
 ## 2.3 `Math` objekt
 
@@ -576,27 +713,42 @@ Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda 
 | `Math.cos(x)`    | Računa kosinus broja `x` (u radijanima).                                                                                                                                    | `Math.cos(x)`              | `Math.cos(Math.PI)`     | `-1`                         |
 | `Math.tan(x)`    | Računa tangens broja `x` (u radijanima).                                                                                                                                    | `Math.tan(x)`              | `Math.tan(Math.PI / 4)` | `1`                          |
 
-## Vježba 4
+## Vježba 3
 
-1. Napiši funkciju `izracunajKrug(broj)` koja prima decimalni broj koji predstavlja radius kruga. Funkcija treba izračunati i vratiti površinu i opseg tog kruga. Površina kruga se računa kao `πr²` (gdje je `r` radius), a opseg se računa kao `2πr`. Ispiši rezultate u formatu `"Površina kruga je: [površina], Opseg kruga je: [opseg]"`.
-
-Rezultat:
-
-```javascript
-console.log(izracunajKrug(5)); // Output: Površina kruga je: 78.54, Opseg kruga je: 31.42
-```
-
-2. Napiši funkciju `izracunajPitagoru(duzinaA, duzinaB)` koja prima dužine dvije katete pravokutnog trokuta. Funkcija treba izračunati i vratiti dužinu hipotenuze pomoću teoreme Pitagore, koja glasi: `c=√(a²+b²)`, gdje su `a` i `b` dužine kateta, a `c` dužina hipotenuze. Ispiši rezultat u formatu `"Dužina hipotenuze je: [hipotenuza]"`.
+1. Napišite funkciju `hipotenuza(duzinaA, duzinaB)` koja prima dužine dvije katete pravokutnog trokuta. Funkcija treba izračunati i vratiti dužinu hipotenuze primjenjujući Pitagorin poučak, koji glasi: `c=√(a²+b²)`, gdje su `a` i `b` dužine kateta, a `c` dužina hipotenuze. Ispiši rezultat u formatu `"Dužina hipotenuze je: [hipotenuza]"`. Za implementaciju koristite metode iz `Math` objekta.
 
 Rezultat:
 
 ```javascript
-console.log(izracunajPitagoru(3, 4)); // Output: Dužina hipotenuze je: 5.00
+console.log(hipotenuza(3, 4)); // Output: Dužina hipotenuze je: 5.00
 ```
 
-## 2.4 **Date**
+2. Napišite funkciju proizvoljnog naziva koja prima broj `n`. Funkcija provjerava je li `n` broj, ako nije vraća poruku `"Nije broj!"`. Ako je broj, funkcija vraća 10 brojeva većih od `n` u formatu: `"Broj 1: [n+1], Broj 2: [n+2], ..., Broj 10: [n+10]"`. Ako su `[Broj 1 - Broj 10]` decimalni brojevi, zaokružite ih na dvije decimale i ispišite ih u tom formatu u konzolu. Ako su `[Broj 1 - Broj 10]` cijeli brojevi, pretvorite ih u binarni oblik i ispišite ih u konzolu.
 
-Objekt koji predstavlja datum i vrijeme. Omogućuje manipulaciju datumima i vremenima, računanje razlika između datuma, formatiranje datuma za prikaz itd.
+Rezultat:
+
+```javascript
+console.log(fun(5));
+// Output: 110, 111, 1000, 1001, 1010, 1011, 1100, 1101, 1110, 1111
+
+console.log(fun(5.5));
+// Output: 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5
+```
+
+3. Napišite funkciju `izracunajSinKos()` koja računa sinus i kosinus kuta `d` (u stupnjevima) te vraća objekt s 2 svojstva: `sinus: sinsusVrijednost, kosinus: kosinusVrijednost` Za implementaciju koristite metode iz `Math` objekta. Stupnjeve pretvorite u radijane koristeći formulu: `radijani = stupnjevi * (π / 180)`. Dobivene vrijednosti zaokružite na 2 decimale.
+
+Rezultat:
+
+```javascript
+console.log(izracunajSinKos(30));
+// Output: { sinus: 0.5, kosinus: 0.87 }
+```
+
+/////////////////////////////////////////////////////////////////////////////////POPRAVITI/////////////////////////////////////////////////////////////////////////////////
+
+## 2.4 `Date` objekt
+
+`Date` objekt reprezentira trenutak u vremenu. Ovaj objekt koristi se za rad s datumima i vremenima. `Date` objekt može se koristiti za stvaranje datuma i vremena, te za njihovu manipulaciju i prikaz. `Date` objekt enkapsulira broj milisekundi od 1. siječnja 1970. godine, poznat kao UNIX vremenska oznaka (eng. **_UNIX timestamp_**).
 
 Načini deklariranja datuma:
 
@@ -616,7 +768,7 @@ const datum4 = new Date(1708436235000); // Tue Jan 20 1970 19:33:56 GMT+0100 (Ce
 const datum5 = new Date("2024-02-19T14:37:15Z"); // Mon Feb 19 2024 15:37:15 GMT+0100 (Central European Standard Time)
 ```
 
-Osnovne funkcije datuma:
+Osnovne metode `Date` objekta su sljedeće:
 
 | Metoda                 | Objasnjenje                                                                       | Primjer                               | Izlaz                                                                  |
 | ---------------------- | --------------------------------------------------------------------------------- | ------------------------------------- | ---------------------------------------------------------------------- |
@@ -673,6 +825,48 @@ const datum1 = new Date("2024-02-19T14:30:10");
 const datum2 = new Date("2024-02-18T12:15:35");
 console.log(razlikaUVremenu(datum1, datum2)); // "26 sati, 14 minuta, 45 sekundi"
 ```
+
+## 2.4 Usporedba JavaScript objekata
+
+Naučili smo što su primitivni tipovi podataka, koji su i kako se koriste. Također smo prošli kroz osnovne ugrađene objekte te samu teoriju iza objekata. Također smo naučili da postoje ugrađeni objekti za već postojeće primitivne tipove, poput `String` i `Number` objekata.
+
+Rekli smo da nema smisla komplicirati kôd instanciranjem nekih primitivnih tipova kao objekte, zbog automatske pretvorbe. Na primjer:
+```javascript
+let x = "Hello"; // primitivni string
+let y = new String("Hello"); // String objekt
+```
+Ili
+```javascript
+let x = 5; // primitivni broj
+let y = new Number(5); // Number objekt
+```
+
+Također smo zaključili da će operator `==` uspoređivati primitivne tipove podataka, a operator `===` uspoređivati objekte. No, što ako želimo usporediti dva objekta? Po toj logici, sljedeći primjer bi trebao vratiti `true`:
+
+```javascript
+let a = new String("Hello");
+let b = new String("Hello");
+console.log(x == y); // true ?
+console.log(x === y); // true ?
+```
+No to nije slučaj! Odgovor je jednostavan, objekte nema smisla uspoređivati operatorima `==` i `===` jer će se uspoređivati njihove reference, a ne vrijednosti koje oni sadrže.
+> **Objekti su referentni tipovi podataka, a primitivni tipovi su vrijednosni tipovi podataka**.
+
+Usporedba objekata na spomenuti način će uvijek rezultirati s `false`, jer uspoređujemo memorijske lokacije gdje su objekti pohranjeni, a one će naravno biti različite.
+
+```javascript
+let pet = new Number(5);
+let isto_pet = new Number(5);
+console.log(pet == isto_pet); // false
+console.log(pet === isto_pet); // false
+
+let auto = { marka: "Ford", model: "Mustang" };
+let isti_auto = { marka: "Ford", model: "Mustang" };
+console.log(auto == isti_auto); // false
+console.log(auto === isti_auto); // false
+```
+
+> Zbog jedinstvenih karakteristika objekata u JavaScriptu postoji i `Object` konstruktor koji se koristi za izradu objekata! No, o tome ćemo u nekim budućim lekcijama.
 
 # 3. Uvod u polja
 
