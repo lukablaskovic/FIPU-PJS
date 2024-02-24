@@ -57,7 +57,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
     - [3.2 Zašto `Array` objekt?](#32-zašto-array-objekt)
     - [Primjer 1 - dodavanje, brisanje i pretraživanje koristeći obične uglate zagrade](#primjer-1---dodavanje-brisanje-i-pretraživanje-koristeći-obične-uglate-zagrade)
     - [Primjer 2 - dodavanje, brisanje i pretraživanje koristeći `Array` objekt](#primjer-2---dodavanje-brisanje-i-pretraživanje-koristeći-array-objekt)
-  - [Vježba 1](#vježba-1-1)
+  - [Vježba 5](#vježba-5)
   - [3.2 Iteracije kroz polja](#32-iteracije-kroz-polja)
     - [3.2.1 Tradicionalna `for` petlja](#321-tradicionalna-for-petlja)
     - [3.2.2 `for...of` petlja](#322-forof-petlja)
@@ -65,7 +65,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
     - [3.2.4 `Array.forEach` metoda](#324-arrayforeach-metoda)
   - [3.3 Objekti unutar polja](#33-objekti-unutar-polja)
     - [Primjer 3 - iteracija kroz polje objekata](#primjer-3---iteracija-kroz-polje-objekata)
-  - [Vježba 2](#vježba-2-1)
+  - [Vježba 6](#vježba-6)
   - [3.4 Osnovne metode `Array` objekta](#34-osnovne-metode-array-objekta)
   - [3.4.1 Metode dodavanja, brisanja i stvaranja novih polja](#341-metode-dodavanja-brisanja-i-stvaranja-novih-polja)
     - [Primjer 4 - `paginate` funkcija koristeći `slice` metodu](#primjer-4---paginate-funkcija-koristeći-slice-metodu)
@@ -212,7 +212,7 @@ const auto = {
   godina_proizvodnje: 2020,
   boja: "Crna",
   izracunajStarost: function () {
-    return new Date().getFullYear() - this.godina_proizvodnje; // this se odnosi na trenutni objekt u kojem je metoda definirana
+    return new Date().getFullYear() - this.godina_proizvodnje; // 'this' se odnosi na trenutni objekt u kojem je metoda definirana
   },
 };
 ```
@@ -432,10 +432,13 @@ Na ovaj način definiramo i stvaramo nove objekte koristeći konstruktor.
 
 ## Vježba 1
 
+**EduCoder šifra**: `Automobil`
+
 1. Definirajte konstruktor `Automobil`. U konstruktor postavite sljedeća svojstva automobilu: `marka`, `model`, `godina_proizvodnje`, `boja` i `cijena`. Kada to napravite, izradite nekoliko objekata tipa `Automobil` koristeći vaš konstruktor.
 2. Dodajte metodu `azurirajCijenu(novaCijena)` u konstruktor `Automobil` koja će ažurirati cijenu automobila.
 3. Dodajte metodu `detalji()` u konstruktor `Automobil` koja će u jednoj rečenici ispisati sva svojstva automobila.
 4. Pozovite za svaki automobil metodu `detalji()` i metodu `azurirajCijenu()`.
+
 
 Primjer rezultata:
 
@@ -562,6 +565,8 @@ console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
 
 ## Vježba 2
 
+**EduCoder šifra**: `vowels`
+
 1. Napišite funkciju `brojSamoglasnikaISuglasnika` koja prima ulazni string i vraća objekt s dva svojstva: `samoglasnici:broj_samoglasnika` i `suglasnici:broj_suglasnika`.
 
    - Koristi metodu `match()` za pronalaženje samoglasnika (`regex = /[aeiou]/g`) i suglasnika (`regex = /[^aeiou\W]/g`) u ulaznom stringu ili koristi `indexOf()` metodu za provjeru podudaranja svakog znaka s nizom samoglasnika.
@@ -572,7 +577,7 @@ console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
      // { samoglasnici: 3, suglasnici: 7 }
      ```
 
-2. Napiši funkciju `duljinaRijeci` koja prima rečenicu te ispisuje sve riječi iz rečenice i njihovu duljinu. Funkcija ne mora vraćati ništa.
+2. Napišite funkciju `duljinaRijeci` koja prima rečenicu te ispisuje sve riječi iz rečenice i njihovu duljinu. Funkcija ne mora vraćati ništa.
    - Na primjer:
      ```javascript
      duljinaRijeci("   JavaScript je zabavan   ");
@@ -736,7 +741,10 @@ Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda 
 
 ## Vježba 3
 
+**EduCoder šifra**: `matematika:)`
+
 1. Napišite funkciju `hipotenuza(duzinaA, duzinaB)` koja prima dužine dvije katete pravokutnog trokuta. Funkcija treba izračunati i vratiti dužinu hipotenuze primjenjujući Pitagorin poučak, koji glasi: `c=√(a²+b²)`, gdje su `a` i `b` dužine kateta, a `c` dužina hipotenuze. Ispiši rezultat u formatu `"Dužina hipotenuze je: [hipotenuza]"`. Za implementaciju koristite metode iz `Math` objekta.
+
 
 ✅Rezultat:
 
@@ -744,7 +752,7 @@ Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda 
 console.log(hipotenuza(3, 4)); // Output: Dužina hipotenuze je: 5.00
 ```
 
-2. Napišite funkciju proizvoljnog naziva koja prima broj `n`. Funkcija provjerava je li `n` broj, ako nije vraća poruku `"Nije broj!"`. Ako je broj, funkcija vraća 10 brojeva većih od `n` u formatu: `"Broj 1: [n+1], Broj 2: [n+2], ..., Broj 10: [n+10]"`. Ako su `[Broj 1 - Broj 10]` decimalni brojevi, zaokružite ih na dvije decimale i ispišite ih u tom formatu u konzolu. Ako su `[Broj 1 - Broj 10]` cijeli brojevi, pretvorite ih u binarni oblik i ispišite ih u konzolu.
+1. Napišite funkciju proizvoljnog naziva koja prima broj `n`. Funkcija provjerava je li `n` broj, ako nije vraća poruku `"Nije broj!"`. Ako je broj, funkcija vraća 10 brojeva većih od `n` u formatu: `"Broj 1: [n+1], Broj 2: [n+2], ..., Broj 10: [n+10]"`. Ako su `[Broj 1 - Broj 10]` decimalni brojevi, zaokružite ih na dvije decimale i ispišite ih u tom formatu u konzolu. Ako su `[Broj 1 - Broj 10]` cijeli brojevi, pretvorite ih u binarni oblik i ispišite u konzolu.
 
 ✅Rezultat:
 
@@ -814,6 +822,8 @@ Nakon što izradimo `Date` objekt, možemo koristiti razne metode za dohvaćanje
 Tablica se većinom sastoji od `get` metoda za dohvaćanje pojedinih dijelova datuma i vremena. Popis vrlo sličnog skupa `set` metoda za postavljanje dijelova datuma i vremena možete pronaći [ovdje](https://www.w3schools.com/js/js_date_methods_set.asp).
 
 ## Vježba 4
+
+**EduCoder šifra**: `vrijeme_u_rh`
 
 1. Napišite funkciju hrDatum() koja vraća današanji datum u formatu `dd.mm.yyyy.`. Funkcija ne prima argumente. Za implementaciju koristite metode iz `Date` objekta. Ispis ne smije sadržavati razmake. Regex izraz za pronalaženje svih razmaka u stringu je `/\s/g`.
 
@@ -913,7 +923,9 @@ console.log(datum instanceof String); // false
 
 # Samostalni zadatak za vježbu 4
 
-Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+**Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+
+**EduCoder šifra**: `UNIPU`
 
 1. Napišite konsturktor za objekt `Grad` koji prima 3 argumenta: `ime`, `brojStanovnika` i `drzava`. Konstruktor treba stvoriti objekt s tim svojstvima. Napišite metodu `ispisi()` koja ispisuje informacije o gradu u formatu: `Ime: [ime], Broj stanovnika: [brojStanovnika], Država: [drzava]`. U objekt dodajte metodu `azurirajBrojStanovnika()`. Kada to napravite, dodajte konstruktoru svojstvo `velicina` te ažurirajte metodu `ispisi()` da ispisuje i veličinu grada. 
 2. Napiši funkciju `izbaciSamoglasnike()` koja prima rečenicu kao argument i vraća novu rečenicu bez samoglasnika. Za implementaciju koristite metode iz `String` objekta. 
@@ -1141,7 +1153,9 @@ stabla.forEach(function(stablo) {
 });
 ```
 
-## Vježba 1
+## Vježba 5
+
+**EduCoder šifra**: `pliz_moze_2`
 
 Napravite novo polje `ocjene_mat` koje sadrži ocjene iz matematike. U polje dodajte 10 ocjena: `5, 4, 3, 1, 2, 4, 5, 1, 4, 5`. Ispišite polje u konzolu. Za negativne ocjene ispišite poruku: `Ocjena na poziciji polja [pozicija] je negativna!`. Nakon šta to napravite, iterirajte kroz polje još jednom i ispravite negativne ocjene na `2`. Sumirajte sve ocjene i izračunajte prosjek. Ispišite `novo polje`, `sumu` ocjena i `prosjek` u konzolu.
 
@@ -1384,7 +1398,9 @@ korisnici.push(korisnik_ivan);
 console.log(korisnici[0].ime); // Output: "Ivan"
 ```
 
-## Vježba 2
+## Vježba 6
+
+**EduCoder šifra**: `grocery_shopping`
 
 Napravite novo polje `groceryList` koje će sadržavati objekte `Namirnica`. Objekt `Namirnica` mora se sastojati od svojstava: `ime`, `cijena` i `količina`. Prvo definirajte konstruktor `Namirnica` i dodajte svojstva. Napravite nekoliko namirnica i dodajte ih u polje `groceryList`. Dodajte novu metodu `ukupno()` u konstruktor koja će računati ukupnu cijenu za pojedinu namirnicu. Iterirajte kroz polje `groceryList` i ispišite sve namirnice u konzolu, kao i ukupnu cijenu za svaku namirnicu. Dodajte globalnu funkciju `shoppingUkupno(groceryList)` koja će kao argument primati polje `groceryList`, izračunati ukupnu cijenu za sve namirnice i ispisati je u konzolu.
 
@@ -1419,6 +1435,8 @@ Do sad smo spomenuli nekoliko osnovnih metoda `Array` objekta, kao što su `push
 >Metode `push()`, `pop()`, `shift()` i `unshift()` su metode koje se koriste za dodavanje i brisanje elemenata polja. Metode `concat()` i `slice()` su metode koje se koriste za stvaranje novih polja. Metoda `splice()` je metoda koja se koristi za mijenjanje sadržaja polja dodavanjem/brisanjem elemenata.
 
 ### Primjer 4 - `paginate` funkcija koristeći `slice` metodu
+
+**EduCoder šifra**: `paginate`
 
 Recimo da radimo na web stranici koja prikazuje objave korisnika. Kako ne bi preopterećivali korisnika s previše objava, želimo prikazati samo 5 objava po stranici od ukupno 100 objava. Kako bismo to napravili, koristimo `slice` metodu koja će nam omogućiti da izradimo "podskup" polja koji će sadržavati samo po 5 objava. Implementirati ćemo funkciju `paginate` koja će uzeti polje objava, trenutnu stranicu i broj objava po stranici, i vratiti "podskup" polja koji će sadržavati objave za trenutnu stranicu.
 
@@ -1506,6 +1524,8 @@ Kada koristit koju metodu pretraživanja?
 
 ### Primjer 5 - funkcija za brisanje korisnika iz polja
 
+**EduCoder šifra**: `DELETEme`
+
 Recimo da imamo polje `korisnici` koje sadrži nekoliko objekata `Korisnik`. Želimo implementirati funkciju `deleteUser` koja će primiti polje korisnika i korisničko ime, pronaći korisnika s tim korisničkim imenom i obrisati ga iz polja. 
 
 Upotrijebit ćemo konstruktor `Korisnik` i dodat ćemo još atribut `korisničko_ime`.
@@ -1555,6 +1575,8 @@ console.log(deleteUser(korisnici, "mmarkic90")); //Output: [Korisnik, Korisnik, 
 ```
 
 ### Primjer 6 - Implementacija `removeDuplicates` funkcije
+
+**EduCoder šifra**: `duplicates,duplicates`
 
 Recimo da imamo polje `brojevi` koje sadrži nekoliko brojeva. Želimo implementirati funkciju `removeDuplicates` koja će primiti polje brojeva (ili stringove) i obrisati sve duplikate iz polja. Funkcija mora vratiti novo polje bez duplikata.
 
@@ -1617,13 +1639,17 @@ console.log(stringoviBezDuplikata); // Output: ["jabuka", "kruška", "banana"]
 
 # Samostalni zadatak za vježbu 5
 
+**Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+
+**EduCoder šifra**: `sportski_duh`
+
 1. Napišite JavaScript program koji će stvoriti polje `osobe` koje će sadržavati objekte `Osoba`. Objekt `Osoba` mora se sastojati od svojstava: `ime`, `prezime`, `godina_rodenja`, `spol` i `visina`. Prvo definirajte konstruktor `Osoba` i dodajte svojstva. Napravite nekoliko osoba i dodajte ih u polje `osobe`. Dodajte novu metodu `predstaviSe()` u konstruktor koja će ispisati sve podatke o osobi u konzolu. Iterirajte kroz polje `osobe` i ispišite sve osobe u konzolu, kao i sve podatke o svakoj osobi. Dodajte globalnu funkciju `prosjecnaVisina(osobe)` koja će kao argument primati polje `osobe`, izračunati prosječnu visinu svih osoba i ispisati je u konzolu.
 2. Napravite novi objekt `Sportas` koji će se sastojati od svojstava: `ime`, `prezime`, `godina_rodenja`, `spol`, `visina`, `tezina`, `sport`, `klub` i `broj_dresa`. Napravite nekoliko sportaša i dodajte ih u polje `sportasi`.
    - implementirajte globalnu funkciju `prosjecnaTezina(sportasi)` koja će kao argument primati polje `sportasi`, izračunati prosječnu težinu svih sportaša i ispisati je u konzolu.
    - implementirajte globalnu funkciju `najteziSportas(sportasi)` koja će pronaći i vratiti objekt najtežeg sportaša.
    - deklarirajte novo polje `sportasi_senior` u koje ćete pohraniti sve sportaše starije od 30 godina. Koristite neke od metoda iz poglavlja 3.4.2 - Metode pretraživanja polja.
    - dodajte novo svojstvo u konstruktor `Sportas`. Neka to bude polje `nastupi`. Dodajte i metodu `dodajNastup()` koja će dodati novi nastup sportašu, pojedini nastup neka bude običan string, npr. "2022 Zagreb Open". Dodajte nekoliko nastupa svakom sportašu.
-   - dodajte metodu `nastupiSportasa(sportas)` koja će ispisati sve nastupe sportaša u konzolu u sljedećem formatu: "Nastup 1: ${nastup1}, Nastup 2: ${nastup2}, ... Nastup N: ${nastupN}".
+   - dodajte metodu `nastupiSportasa(sportas)` koja će ispisati sve nastupe sportaša u konzolu u sljedećem formatu: `"Nastup 1: ${nastup1}, Nastup 2: ${nastup2}, ... Nastup N: ${nastupN}"`.
    - implementirajte globalnu funkciju `izbrisiSvimaPrviNastup(sportasi)` koja će obrisati svim sportašima prvi nastup. Koristite metodu `shift()`.
 3. Koristeći danu funkciju `gcd_two_numbers(x, y)` koja vraća najveći zajednički djelitelj dva broja, implementirajte funkciju `gcd_array(arr)` koja će primiti polje brojeva i vratiti najveći zajednički djelitelj svih brojeva u polju. Morate koristiti funkciju `gcd_two_numbers(x, y)` unutar funkcije `gcd_array(arr)`. 
 ```javascript

@@ -207,7 +207,7 @@ console.log(text3); // ?
 ```
 
 Primjetite da smo pozvali funkciju `kvadriraj` prije nego smo ju deklarirali. JavaScript će prvo pročitati sve deklaracije funkcija i varijabli prije nego počne izvršavati kȏd, tako da ovaj kȏd neće proizvesti grešku i ispisat će `25 je rezultat kvadriranja broja 5.`. Ovo ponašanje se zove **Function hoisting**.
-Dakle prethodni kȏd je ekvivalentan:
+Dakle prethodni kȏd je ekvivalentan ovome:
 
 ```javascript
 function kvadriraj(broj) {
@@ -391,7 +391,7 @@ Funkcijski izrazi također se definiraju s ključnom riječi `function`, ali se 
 const izracunaj_povrsinu_pravokutnika = function (duzina, sirina) {
   return duzina * sirina;
 };
-console.log(izracunaj_povrsinu_pravokutnika(5, 3)); // 15 - funkciju pozivamo na isti način kao i deklarirane funkcije
+console.log(izracunaj_povrsinu_pravokutnika(5, 3)); // 15 - funkcijski izraz pozivamo na isti način kao i deklarirane funkcije
 ```
 
 Kako razlikujemo deklaraciju funkcije i funkcijske izraze? Uzmimo za primjer funkciju `zbroji` koja zbraja dva broja.
@@ -499,13 +499,17 @@ vanjskaFunkcija();
 
 Napišite funkciju `sve_o_krugu(r)` s jednim parametrom `r` koji predstavlja radijus kruga. Funkcija treba sadržavati dvije unutarnje funkcije `povrsina` i `opseg` koje će računati površinu i opseg kruga i vraćati vanjskoj funkciji rezultate. Jedna od dvije unutarnje funkcije treba koristiti funkcijski izraz, a druga deklaraciju funkcije. Vanjska funkcija treba ispisati rezultate unutarnjih funkcija u konzolu. Za vrijednost broja π koristite `Math.PI`. Vanjska funkcija treba u lokalnu varijablu `zbroj` pohraniti zbroj površine i opsega kruga i vratiti **tu vrijednost**. Rezultat funkcije `sve_o_krugu(3)` pohranite u globalnu varijablu `zbroj` te ju ispišite u konzolu.
 
+**EduCoder šifra**: `krug`
+
 Rezultat:
 
 ![vjezba2](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba2.png?raw=true)
 
 # Samostalni zadatak za vježbu 2
 
-Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+**Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+
+**EduCoder šifra**: `bmi_and_heron`
 
 1. Napišite **funkciju** `provjera_parnosti` koja će provjeravati je li broj paran ili neparan. Funkcija treba primiti jedan parametar `broj` i vratiti boolean vrijednosti "true" za parnost ili "false" za neparnost. Funkciju napišite **bez** upotrebe selekcija (if, else, switch) Funkciju pozovite s argumentom `5` i ispišite rezultat u konzolu.
 2. Napišite **funkcijski izraz** `izrazunaj_povrsinu` koji računa površinu pravokutnika. U varijablu `povrsina` pohranite taj funkcijski izraz. Ispišite vrijednost `povrsina(8,6)` u konzolu.
@@ -848,6 +852,8 @@ else {
 
 Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mjenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeće: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamjenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
 
+**EduCoder šifra**: `zlatne_godine`
+
 Rezultat:
 
 ![vjezba3](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba3.png?raw=true)
@@ -1179,17 +1185,21 @@ tablicaMnozenja()
 
 Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite  `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
 
+**EduCoder šifra**: `fizz_buzz`
+
 Rezultat:
 
 ![vjezba4](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba4.png?raw=true)
 
 # Samostalni zadatak za vježbu 3
 
-Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+**Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
 
-1. Napišite funkciju reverseString koja prima znakovni niz (string) kao argument i vraća obrnuti string. Na primjer, ako je ulaz "hello", vaša funkcija treba vratiti "olleh". Funkcija mora vratiti "Not a string!" ako je ulazni argument različitog tipa od stringa. Funkciju pozovite s argumentima "hello", "JavaScript" i 123.
+**EduCoder šifra**: `ReversePrimeLongest`
+
+1. Napišite funkciju `reverseString` koja prima znakovni niz (string) kao argument i vraća obrnuti string. Na primjer, ako je ulaz `"hello"`, funkcija treba vratiti `"olleh"`. Funkcija mora vratiti `"Not a string!"` ako je ulazni argument različitog tipa od stringa. Funkciju testirajte s argumentima `"hello"`, `"JavaScript"` i `123`.
 2. Napišite funkciju `prost_broj` koja prima broj kao argument i vraća `true` ako je broj prost, odnosno `false` ako nije. Broj je prost ako je djeljiv samo s 1 i samim sobom. Funkciju pozovite s argumentima 7, 10 i 13.
-3. Nadogradite prethodni zadatak na način da ćete ispisati sve proste brojeve od 1 do 100. Funkciju `prost_broj` koristite unutar petlje. Ispis mora izgledati ovako: `"Prosti brojevi od 1 do 100 su: 2, 3, 5, 7, itd."`
+3. Nadogradite prethodni zadatak na način da ćete ispisati sve proste brojeve od 1 do 100. Funkciju `prost_broj` pozivajte unutar petlje. Ispis mora izgledati ovako: `"Prosti brojevi od 1 do 100 su: 2, 3, 5, 7, itd."`
 4. Napišite funkciju `pronadi_najduzu_rijec()` koja prima rečenicu kao argument i vraća najdužu riječ u rečenici. Rečenicu morate razložiti koristeći petlju, bez pomoćnih funkcija.
    - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća `"Nije rečenica!"`. 
    - Ako je rečenica prazna, funkcija vraća `"Rečenica je prazna!"`. 
