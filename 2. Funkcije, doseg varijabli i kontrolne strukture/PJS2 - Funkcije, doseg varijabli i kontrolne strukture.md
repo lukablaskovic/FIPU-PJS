@@ -1189,9 +1189,9 @@ Napomena: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u
 
 1. Napišite funkciju reverseString koja prima znakovni niz (string) kao argument i vraća obrnuti string. Na primjer, ako je ulaz "hello", vaša funkcija treba vratiti "olleh". Funkcija mora vratiti "Not a string!" ako je ulazni argument različitog tipa od stringa. Funkciju pozovite s argumentima "hello", "JavaScript" i 123.
 2. Napišite funkciju `prost_broj` koja prima broj kao argument i vraća `true` ako je broj prost, odnosno `false` ako nije. Broj je prost ako je djeljiv samo s 1 i samim sobom. Funkciju pozovite s argumentima 7, 10 i 13.
-3. Nadogradite prethodni zadatak na način da ćete ispisati sve proste brojeve od 1 do 100. Funkciju `prost_broj` koristite unutar petlje. Ispis mora izgledati ovako: `Prosti brojevi od 1 do 100 su: 2, 3, 5, 7, itd.`
+3. Nadogradite prethodni zadatak na način da ćete ispisati sve proste brojeve od 1 do 100. Funkciju `prost_broj` koristite unutar petlje. Ispis mora izgledati ovako: `"Prosti brojevi od 1 do 100 su: 2, 3, 5, 7, itd."`
 4. Napišite funkciju `pronadi_najduzu_rijec()` koja prima rečenicu kao argument i vraća najdužu riječ u rečenici. Rečenicu morate razložiti koristeći petlju, bez pomoćnih funkcija.
-   - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća "Nije rečenica!". 
-   - Ako je rečenica prazna, funkcija vraća "Rečenica je prazna!". 
+   - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća `"Nije rečenica!"`. 
+   - Ako je rečenica prazna, funkcija vraća `"Rečenica je prazna!"`. 
    - Ako se rečenica sastoji od samo jedne riječi, funkcija vraća tu riječ.
    - Ako se rečenica sastoji od više različitih najdužih riječi, funkcija vraća prvu riječ koja je pronađena.

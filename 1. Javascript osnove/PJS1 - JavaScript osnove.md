@@ -614,7 +614,9 @@ Rezultat:
 
 # Samostalni zadatak za vježbu 1
 
-**Napomena**: Ne predaje se i ne boduje se. Zadatak rješavate u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+**Napomena**: Ne predaje se i ne boduje se. Zadatak rješavate u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji. 
+
+**Šifra zadatka**: `js_solo1`
 
 1. Deklarirajte tri konstante i jednu promjenjivu varijablu. Konstante neka budu vaše `ime` i `prezime` i `godina_rodenja`. Promjenjivu varijablu nazovite `trenutno_vrijeme`.
    - U varijable `ime` i `prezime` pohranite svoje ime i prezime, a u varijablu `godina_rodenja` pohranite godinu rođenja kao cjelobrojnu vrijednost. U varijablu `trenutno_vrijeme` pohranite trenutno vrijeme koristeći `new Date()` objekt.
