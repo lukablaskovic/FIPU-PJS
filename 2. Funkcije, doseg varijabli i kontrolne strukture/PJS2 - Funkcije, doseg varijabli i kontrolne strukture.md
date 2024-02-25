@@ -1,4 +1,4 @@
-# Programiranje u skriptnim jezicima
+# Programiranje u skriptnim jezicima (PJS)
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -22,7 +22,7 @@
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [Programiranje u skriptnim jezicima](#programiranje-u-skriptnim-jezicima)
+- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
 - [\[2\] Funkcije, doseg varijabli i kontrolne strukture](#2-funkcije-doseg-varijabli-i-kontrolne-strukture)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u funkcije](#1-uvod-u-funkcije)
