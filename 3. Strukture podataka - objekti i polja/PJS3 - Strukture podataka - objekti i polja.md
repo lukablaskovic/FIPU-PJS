@@ -1615,7 +1615,7 @@ let stringoviBezDuplikata = removeDuplicates(stringovi);
 console.log(stringoviBezDuplikata); // Output: ["jabuka", "kruška", "banana"]
 ```
 
-1. način počiva na metodi `indexOf` za provjeru postojanja elementa u polju. Funkcija vraća `-1` ako element nije pronađen, a indeks elementa ako je pronađen. 
+2. način bazira se na metodi `indexOf` za provjeru postojanja elementa u polju. Metoda vraća `-1` ako element nije pronađen, a indeks elementa ako je pronađen. 
 ```javascript
 function removeDuplicates2(polje) {
 let rezultatPolje = [];
@@ -1652,6 +1652,7 @@ console.log(stringoviBezDuplikata); // Output: ["jabuka", "kruška", "banana"]
    - deklarirajte novo polje `sportasi_senior` u koje ćete pohraniti sve sportaše starije od 30 godina. Koristite neke od metoda iz poglavlja 3.4.2 - Metode pretraživanja polja.
    - dodajte novo svojstvo u konstruktor `Sportas`. Neka to bude polje `nastupi`. Dodajte i metodu `dodajNastup()` koja će dodati novi nastup sportašu, pojedini nastup neka bude običan string, npr. "2022 Zagreb Open". Dodajte nekoliko nastupa svakom sportašu.
    - dodajte metodu `nastupiSportasa(sportas)` koja će ispisati sve nastupe sportaša u konzolu u sljedećem formatu: `"Nastup 1: ${nastup1}, Nastup 2: ${nastup2}, ... Nastup N: ${nastupN}"`.
+   - dodajte metodu `dohvatiZadnjaDvaNastupa(sportas)` koja će ispisati zadnja dva nastupa sportaša u konzolu. Koristite metodu `slice()`.
    - implementirajte globalnu funkciju `izbrisiSvimaPrviNastup(sportasi)` koja će obrisati svim sportašima prvi nastup. Koristite metodu `shift()`.
 3. Koristeći danu funkciju `gcd_two_numbers(x, y)` koja vraća najveći zajednički djelitelj dva broja, implementirajte funkciju `gcd_array(arr)` koja će primiti polje brojeva i vratiti najveći zajednički djelitelj svih brojeva u polju. Morate koristiti funkciju `gcd_two_numbers(x, y)` unutar funkcije `gcd_array(arr)`. 
 ```javascript
