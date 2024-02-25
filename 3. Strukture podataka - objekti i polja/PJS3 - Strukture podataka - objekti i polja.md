@@ -1,4 +1,4 @@
-# Programiranje u skriptnim jezicima
+# Programiranje u skriptnim jezicima (PJS)
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -48,7 +48,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
   - [2.4 Usporedba JavaScript objekata](#24-usporedba-javascript-objekata)
     - [2.4.1 `instanceof` operator](#241-instanceof-operator)
 - [Samostalni zadatak za vježbu 4](#samostalni-zadatak-za-vježbu-4)
-- [3. Polja (eng. ***Arrays***)](#3-polja-eng-arrays)
+- [3. Polja (eng. **_Arrays_**)](#3-polja-eng-arrays)
   - [3.1 Sintaksa polja](#31-sintaksa-polja)
     - [3.1.1 Pristup elementima polja](#311-pristup-elementima-polja)
     - [3.1.2 Veličina polja](#312-veličina-polja)
@@ -124,7 +124,6 @@ const imeObjekta = {
 };
 ```
 
-
 <img src="screenshots/objects.png" style="width:50%; display:block;">
 
 > Izvor: https://dev.to/himanshudevgupta/javascript-most-important-thing-object-2hm1
@@ -155,6 +154,7 @@ console.log(auto.godina_proizvodnje); // 2020
 console.log(auto.marka); // Ford
 console.log(auto.boja); // Crna
 ```
+
 > **Moramo paziti da je ključ objekta jedinstven. Ako pokušamo dodati isti ključ više puta, JavaScript će zadržati samo posljednju vrijednost.**
 
 ```javascript
@@ -171,7 +171,7 @@ Par `ključ/vrijednost` može se deklarirati i na način da se `ključ` stavi un
 
 ```javascript
 const auto = {
-  "godina_proizvodnje": 2020,
+  godina_proizvodnje: 2020,
 };
 console.log(auto.godina_proizvodnje); // 2020
 ```
@@ -237,9 +237,8 @@ Metodu `izracunajStarost` možemo pozvati koristeći notaciju točke:
 console.log(auto.izracunajStarost()); // 4
 ```
 
-
 U tablici su navedene metode i svojstva objekta `auto`:
-|                                                                                                                       Objekt                                                                                                                        |                                               Svojstva                                                |         Metode          |
+| Objekt | Svojstva | Metode |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :---------------------: |
 | <div style="text-align:center;">auto<br><img src="https://www.motortrend.com/uploads/sites/10/2019/09/2020-ford-mustang-fastback-ecoboost-coupe-angular-front.png" style="width:50%; display: block; margin-left: auto; margin-right: auto;"></div> | auto.marka = "Ford"<br>auto.model = "Mustang"<br>auto.godina_proizvodnje = 2020<br>auto.boja = "Crna" | auto.izracunajStarost() |
 
@@ -439,7 +438,6 @@ Na ovaj način definiramo i stvaramo nove objekte koristeći konstruktor.
 3. Dodajte metodu `detalji()` u konstruktor `Automobil` koja će u jednoj rečenici ispisati sva svojstva automobila.
 4. Pozovite za svaki automobil metodu `detalji()` i metodu `azurirajCijenu()`.
 
-
 Primjer rezultata:
 
 ```javascript
@@ -469,7 +467,7 @@ Do sad smo se već susreli s nekoliko ugrađenih objekata, poput `Date` i `Math`
 
 Ako postoji ugrađeni `String` objekt, to znači da možemo pozvati i njegov konstruktor `String()` kako bismo stvorili novi `String` objekt. Međutim, to rijetko radimo jer je moguće stvoriti `String` objekt koristeći objektne literale, tj. navodnike `""` ili apostrofe `''`.
 
->**Važno je naglasiti** da kod svih primitivnih tipova podataka (npr. `string`, `number`, `boolean`) možemo koristiti metode i svojstva kao da su objekti. JavaScript automatski za nas pretvara primitivne tipove u objekte kada koristimo metode i svojstva nad njima.
+> **Važno je naglasiti** da kod svih primitivnih tipova podataka (npr. `string`, `number`, `boolean`) možemo koristiti metode i svojstva kao da su objekti. JavaScript automatski za nas pretvara primitivne tipove u objekte kada koristimo metode i svojstva nad njima.
 
 ```javascript
 const ime = "Ana"; // stvara se primitivni tip podataka string
@@ -478,11 +476,10 @@ const prezime = new String("Anić"); // stvara se objekt String pozivanjem konst
 console.log(typeof ime); // string
 console.log(typeof prezime); // object - stvoren je objekt String
 
-
 console.log(prezime); // [String: 'Anić']
 ```
 
->Uočite da se primitivni tipovi podataka pišu malim početnim slovom, a objekti velikim početnim slovom.
+> Uočite da se primitivni tipovi podataka pišu malim početnim slovom, a objekti velikim početnim slovom.
 
 Pitanje? Što će vratiti `===` operator za x i y?
 
@@ -496,14 +493,17 @@ console.log(x === y); ?
   <summary>Spoiler!</summary>
   <p>Vratit će false. Operator 'je identično' će usporediti i tipove podataka, ne samo primitivnu vrijednost - koja je ista!</p>
 
-  ```javascript
-  let x = "Pas";
-  let y = new String("Pas");
-  console.log(x === y); false
-  console.log(typeof x); // string
-  console.log(typeof y); // object
-  console.log(x == y); true
+```javascript
+let x = "Pas";
+let y = new String("Pas");
+console.log(x === y);
+false;
+console.log(typeof x); // string
+console.log(typeof y); // object
+console.log(x == y);
+true;
 ```
+
 </details>
 
 <hr>
@@ -590,21 +590,23 @@ console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
 
 Escape znakovi su posebni znakovi koji se koriste za označavanje posebnih znakova u nizovima znakova. Na primjer, ako želimo koristiti znak navodnika `"` unutar niza znakova, moramo ga označiti escape znakom `\`.
 Primjerice, kako bismo pokušali na ovaj način pohraniti sljedeći tekst, naišli bi na problem:
-  
+
 ```javascript
 const tekst = "We are the so-called "Vikings" from the north."; // SyntaxError: Unexpected identifier
 ```
+
 JavaScript će ovaj string presjeći na `"We are the so-called"`.
 Ovaj problem možemo riješiti pisanjem jednostrukih navodnika `'` umjesto dvostrukih `"`:
 
 ```javascript
 const tekst = 'We are the so-called "Vikings" from the north.';
 ```
+
 No escape znakovi nam omogućavaju rješavanje ovog, i još brojnih sličnih problema s nizovima znakova.
 Možemo ubaciti escape znak `\` prije svakog znaka navodnika `"`:
 
 ```javascript
-const tekst = "We are the so-called \"Vikings\" from the north."; // We are the so-called "Vikings" from the north.
+const tekst = 'We are the so-called "Vikings" from the north.'; // We are the so-called "Vikings" from the north.
 ```
 
 Kako možemo jednostavno ispisati znak `\` u nizu znakova? Koristimo dva escape znaka `\\`:
@@ -612,6 +614,7 @@ Kako možemo jednostavno ispisati znak `\` u nizu znakova? Koristimo dva escape 
 ```javascript
 console.log("C:\\Users\\Ana\\Desktop\\file.txt"); // C:\Users\Ana\Desktop\file.txt
 ```
+
 ili ako želimo tekst ispisivati u više linije, koristimo escape znakove `\n`:
 
 ```javascript
@@ -623,20 +626,19 @@ console.log("Prva linija\nDruga linija\nTreća linija");
 
 Ispod je tablica escape znakova:
 
-| Code      | Result |
-| ----------- | ----------- |
-| \\"      | "       |
-| \\`   | `        |
-| \\\   | \        |
-| \b   | Backspace        |
-| \f   | Form Feed        |
-| \n   | New line        |
-| \r   | Carriage return        |
-| \t   | Horizontal Tabulator        |
-| \v   | Vertical Tabulator        |
+| Code | Result               |
+| ---- | -------------------- |
+| \\"  | "                    |
+| \\`  | `                    |
+| \\\  | \                    |
+| \b   | Backspace            |
+| \f   | Form Feed            |
+| \n   | New line             |
+| \r   | Carriage return      |
+| \t   | Horizontal Tabulator |
+| \v   | Vertical Tabulator   |
 
 Ne morate ih sve znati napamet, ali je dobro znati da postoje. Ovi tabulatori nastali su u doba pisačih strojeva, teleprintera i fax uređaja. U HTML-u ih nema potrebe koristiti jer se tekst formatira pomoću CSS-a.
-
 
 ## 2.2 `Number` objekt
 
@@ -651,7 +653,7 @@ console.log(typeof brojObjekt); // object - Number objekt
 ```
 
 Prisjetimo se kratko gradiva iz prve skripte. JavaScript će pokušati evaluirati "string brojeve", npr. `5` u primitivni tip `number`.
-  
+
 ```javascript
 console.log(5 + 5); // 10
 let x = "10";
@@ -660,25 +662,27 @@ console.log(x - y); // 8
 console.log(x * y); // 20
 console.log(x / y); // 5
 ```
+
 Ali...
-  
+
 ```javascript
 console.log(x + y); // "102" - konkatenacija stringova
 ```
+
 U primjeru `x+y` JavaScript neće koristiti matematičku logiku operatora `+` već će spojiti dva stringa u jedan, jer je `+` operator nad stringovima operator konkatenacije.
 Iz ovog razloga, poželjno je izbjegavati spajanje stringova `+` operatorom, već koristiti metodu `String.concat()` s kojom smo se upoznali u prethodnom poglavlju.
 
 Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objekta:
 
-| Metoda          | Objašnjenje                                                                                                                                                                              | Sintaksa                         | Primjer                                       | Output                 |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------- | --------------------- |
-| `toFixed()`     | Zaokružuje broj na zadani broj (`digits`) decimalnih mjesta. Vraća string (zbog decimalne točke).                                                                                        | `number.toFixed(digits)`         | `(5.56789).toFixed(2)`                        | `"5.57"`              |
-| `toPrecision()` | Za dani broj metoda vraća njegovu string reprezentaciju na zadani broj značajnih znamenki: `precision` parametar koja mora biti između `1` i `100`.                                      | `number.toPrecision(2)`          | `(5.123456).toPrecision(2)`                   | `"5.1"`               |
+| Metoda          | Objašnjenje                                                                                                                                                                             | Sintaksa                         | Primjer                                       | Output                |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------- | --------------------- |
+| `toFixed()`     | Zaokružuje broj na zadani broj (`digits`) decimalnih mjesta. Vraća string (zbog decimalne točke).                                                                                       | `number.toFixed(digits)`         | `(5.56789).toFixed(2)`                        | `"5.57"`              |
+| `toPrecision()` | Za dani broj metoda vraća njegovu string reprezentaciju na zadani broj značajnih znamenki: `precision` parametar koja mora biti između `1` i `100`.                                     | `number.toPrecision(2)`          | `(5.123456).toPrecision(2)`                   | `"5.1"`               |
 | `toString()`    | Vraća string reprezentaciju broja. Opcionalni `radix` parametar, može biti između `2` i `36` i specificira bazu koja se koristi za reprezentaciju broja. Default je 10 (dekadski zapis) | `number.toString(radix=10)`      | `(123).toString()` ; `(100).toString(2)`      | `"123"` ; `"1100100"` |
-| `parseInt()`    | Metoda pretvara dani string u cjelobrojni ekvivalent. Kao i kod `toString()`, sadrži opcionalni `radix` parametar.                                                                       | `Number.parseInt(string, radix)` | `parseInt("10.456")` ; `parseInt("40 years")` | `10` ; `40`           |
-| `parseFloat()`  | Metoda pretvara dani string u floating-point ekvivalent.                                                                                                                                 | `Number.parseFloat(string)`      | `parseFloat("10.456")`                        | `10.456`              |
-| `isInteger()`   | Provjerava je li dana vrijednost `value` integer. Vraća `boolean` vrijednost ovisno o tome.                                                                                              | `Number.isInteger(value)`        | `isInteger(5.2)`                              | `false`               |
-| `isNaN()`       | Provjerava je li vrijednost dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                              | `Number.isNaN(value)`            | `isNaN("string")`                             | `true`                |
+| `parseInt()`    | Metoda pretvara dani string u cjelobrojni ekvivalent. Kao i kod `toString()`, sadrži opcionalni `radix` parametar.                                                                      | `Number.parseInt(string, radix)` | `parseInt("10.456")` ; `parseInt("40 years")` | `10` ; `40`           |
+| `parseFloat()`  | Metoda pretvara dani string u floating-point ekvivalent.                                                                                                                                | `Number.parseFloat(string)`      | `parseFloat("10.456")`                        | `10.456`              |
+| `isInteger()`   | Provjerava je li dana vrijednost `value` integer. Vraća `boolean` vrijednost ovisno o tome.                                                                                             | `Number.isInteger(value)`        | `isInteger(5.2)`                              | `false`               |
+| `isNaN()`       | Provjerava je li vrijednost dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                             | `Number.isNaN(value)`            | `isNaN("string")`                             | `true`                |
 
 ### 2.2.1 `NaN` (Not a Number)
 
@@ -688,6 +692,7 @@ Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objek
 let x = 100 / "jabuka";
 console.log(x); // NaN
 ```
+
 Naravno, ako se radi o numeričkom stringu, rezultat će biti broj.
 
 ```javascript
@@ -714,7 +719,7 @@ console.log(x); // Infinity
 
 Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda `Math` objekta.
 
-| Metoda       | Objašnjenje                                                    | Rezultat           |
+| Metoda       | Objašnjenje                                             | Rezultat           |
 | ------------ | ------------------------------------------------------- | ------------------ |
 | `Math.PI`    | Vraća vrijednost konstante `π` (pi)                     | 3.141592653589793  |
 | `Math.E`     | Vraća vrijednost konstante `e` (Eulerov broj)           | 2.718281828459045  |
@@ -722,11 +727,11 @@ Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda 
 | `Math.LN2`   | Vraća vrijednost prirodnog (ln) `logaritma` broja `2` - | 0.6931471805599453 |
 | `Math.LN10`  | Vraća vrijednost prirodnog (ln) `logaritma` broja `10`  | 2.302585092994046  |
 
-| Metoda           | Objašnjenje                                                                                                                                                                 | Sintaksa                   | Primjer                 | Output                        |
+| Metoda           | Objašnjenje                                                                                                                                                                 | Sintaksa                   | Primjer                 | Output                       |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------------------- | ---------------------------- |
-| `Math.abs(x)`    | Vraća apsolutnu vrijednost broja `x`.                                                                                                                                       | `Math.abs(x)`             | `Math.abs(-4.5)`        | `4.5`                        |
-| `Math.ceil(x)`   | Metoda zaokružuje i vraća najmanji cijeli broj veći ili jednak zadanom (`x`) broju.                                                                                    | `Math.ceil(x)`             | `Math.ceil(4.3)`        | `5`                          |
-| `Math.floor(x)`  | Metoda zaokružuje prema dolje i vraća najveći cijeli broj manji ili jednak zadanom (`x`) broju.                                                                                                                         | `Math.floor(x)`            | `Math.floor(4.9)`       | `4`                          |
+| `Math.abs(x)`    | Vraća apsolutnu vrijednost broja `x`.                                                                                                                                       | `Math.abs(x)`              | `Math.abs(-4.5)`        | `4.5`                        |
+| `Math.ceil(x)`   | Metoda zaokružuje i vraća najmanji cijeli broj veći ili jednak zadanom (`x`) broju.                                                                                         | `Math.ceil(x)`             | `Math.ceil(4.3)`        | `5`                          |
+| `Math.floor(x)`  | Metoda zaokružuje prema dolje i vraća najveći cijeli broj manji ili jednak zadanom (`x`) broju.                                                                             | `Math.floor(x)`            | `Math.floor(4.9)`       | `4`                          |
 | `Math.max(x, y)` | Vraća veći od dva broja `x` i `y`. Moguće je navesti i više od 2 parametara, metoda će uvijek vratiti najveći.                                                              | `Math.max(x, y, .. N)`     | `Math.max(5, 10)`       | `10`                         |
 | `Math.min(x, y)` | Vraća manji od dva broja `x` i `y`. Moguće je navesti i više od 2 parametara, metoda će uvijek vratiti najmanji.                                                            | `Math.min(x, y, .. N)`     | `Math.min(5, 10)`       | `5`                          |
 | `Math.pow(x, y)` | Vraća rezultat potenciranja broja `x` na potenciju `y`.                                                                                                                     | `Math.pow(base, exponent)` | `Math.pow(2, 3)`        | `8`                          |
@@ -744,7 +749,6 @@ Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda 
 **EduCoder šifra**: `matematika:)`
 
 1. Napišite funkciju `hipotenuza(duzinaA, duzinaB)` koja prima dužine dvije katete pravokutnog trokuta. Funkcija treba izračunati i vratiti dužinu hipotenuze primjenjujući Pitagorin poučak, koji glasi: `c=√(a²+b²)`, gdje su `a` i `b` dužine kateta, a `c` dužina hipotenuze. Ispiši rezultat u formatu `"Dužina hipotenuze je: [hipotenuza]"`. Za implementaciju koristite metode iz `Math` objekta.
-
 
 ✅Rezultat:
 
@@ -779,45 +783,45 @@ console.log(izracunajSinKos(30));
 
 Generalno, u JavaScriptu postoje 3 načina definiranja datuma:
 
-| Tip      | Primjer |
-| ----------- | ----------- |
-| ISO Date      | `"2015-03-25"` (The International Standard)       |
-| Short Date   | `"03/25/2015"`        |
-| Long Date   | ``"Mar 25 2015"` ili `"25 Mar 2015"`        |
+| Tip        | Primjer                                     |
+| ---------- | ------------------------------------------- |
+| ISO Date   | `"2015-03-25"` (The International Standard) |
+| Short Date | `"03/25/2015"`                              |
+| Long Date  | ``"Mar 25 2015"` ili `"25 Mar 2015"`        |
 
 Od ovih standarda, ISO format je najčešće korišten i preporučen. ISO 8601 sintaksa izgleda ovako: `YYYY-MM-DDTHH:mm:ss.sssZ`, gdje `YYYY` predstavlja godinu, `MM` mjesec, `DD` dan, `T` literal koji odvaja datum i vrijeme, `HH` sat, `mm` minute, `ss` sekunde, `sss` milisekunde i `Z` je offset vremenske zone. Primjerice, 27. rujna 2023. godine u 18:00 sati izgleda ovako: `2023-09-27 18:00:00`.
 
-> *Mala napomena* - `Date` objekt u JavaScriptu je vrlo opširan, nekima možda i nezgrapan budući da ima veliki broj zastarjelih metoda i konvencija. U modernom JavaScriptu, preporučuje se korištenje `moment.js` biblioteke za rad s datumima i vremenima. To možete proučiti sami, za potrebe ovog kolegija proći ćemo samo osnove `Date` objekta. `TC39` grupa (koja razvija JavaScript) radi na [novom standardu](https://tc39.es/proposal-temporal/docs/index.html) za rad s datumima i vremenima, koji će zamijeniti `Date` objekt.
+> _Mala napomena_ - `Date` objekt u JavaScriptu je vrlo opširan, nekima možda i nezgrapan budući da ima veliki broj zastarjelih metoda i konvencija. U modernom JavaScriptu, preporučuje se korištenje `moment.js` biblioteke za rad s datumima i vremenima. To možete proučiti sami, za potrebe ovog kolegija proći ćemo samo osnove `Date` objekta. `TC39` grupa (koja razvija JavaScript) radi na [novom standardu](https://tc39.es/proposal-temporal/docs/index.html) za rad s datumima i vremenima, koji će zamijeniti `Date` objekt.
 
 Novi datum možemo stvoriti koristeći `new Date()` konstruktor. Konstruktor može primiti različite argumente, ukupno njih 9, mi ćemo proći samo nekoliko:
 
-| Sintaksa      | Objašnjenje | Primjer |  
-| ----------- | ----------- | ----------- |
-| `new Date()`      | stvara novi `Date` objekt s **trenutnim datumom i vremenom**     | `const d = new Date();`       |
-| `new Date(date string)`    | stvara novi `Date` objekt iz [**date stringa**](https://www.w3schools.com/js/js_date_formats.asp)     | `new Date("October 13, 2014 11:13:00");` ili `new Date("2022-03-25");`  |
-| `new Date(year, month, ...)`    | stvara novi `Date` objekt sa specificiranim datumom i vremenom. **JavaScript broji mjesece od 0**! Dakle 0 = Siječanj, 11 = Prosinac      |`const d = new Date(2019, 3, 24, 10, 33, 30);` `d = Wed Apr 24 2019 10:33:30` |
-| `new Date()`      | stvara novi `Date` objekt s **trenutnim datumom i vremenom**     | `const d = new Date();`       |
-| `new Date(milliseconds)`    | stvara novi `Date` objekt s **brojem milisekundi od 1. siječnja 1970.** odnosno `unix oznakom`     | `const d = new Date(1708436235000);`
+| Sintaksa                     | Objašnjenje                                                                                                                          | Primjer                                                                       |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `new Date()`                 | stvara novi `Date` objekt s **trenutnim datumom i vremenom**                                                                         | `const d = new Date();`                                                       |
+| `new Date(date string)`      | stvara novi `Date` objekt iz [**date stringa**](https://www.w3schools.com/js/js_date_formats.asp)                                    | `new Date("October 13, 2014 11:13:00");` ili `new Date("2022-03-25");`        |
+| `new Date(year, month, ...)` | stvara novi `Date` objekt sa specificiranim datumom i vremenom. **JavaScript broji mjesece od 0**! Dakle 0 = Siječanj, 11 = Prosinac | `const d = new Date(2019, 3, 24, 10, 33, 30);` `d = Wed Apr 24 2019 10:33:30` |
+| `new Date()`                 | stvara novi `Date` objekt s **trenutnim datumom i vremenom**                                                                         | `const d = new Date();`                                                       |
+| `new Date(milliseconds)`     | stvara novi `Date` objekt s **brojem milisekundi od 1. siječnja 1970.** odnosno `unix oznakom`                                       | `const d = new Date(1708436235000);`                                          |
 
 Primjetite da kod ispisa `Date` objekta, u konzolu nećemo dobiti klasičan ispis objekta, kao što je slučaj kod `String` i `Number` objekata. Umjesto toga, dobit ćemo ispis u formatu koji podsjeća na string reprezentaciju datuma budući da JavaScript automatski poziva `toString()` metodu prilikom ispisa objekta.
 
 Nakon što izradimo `Date` objekt, možemo koristiti razne metode za dohvaćanje i manipulaciju datuma i vremena. Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Date` objekta:
 
-| Metoda                 | Objašnjenje                                                                       | Sintaksa | Primjer                               | Output                                                                  |
-| ---------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |------------------------------------- | ---------------------------------------------------------------------- |
-| `getDate()`            | Za dani datum, vraća **dan** u mjesecu kao broj (1-31).                                              | `Date.getDate()` |`const rodendan = new Date("April 13, 2000");` ; `rodendan.getDate() == 13`                    | `13`                                                                   |
-| `getDay()`             | za dani datum vraća **dan u tjednu** (0 za nedjelju, 1 za ponedjeljak, itd.).     | `Date.getDay()` |`const rodendan = new Date("April 13, 2000");` ; `rodendan.getDay() == 4`                      | `4`                                                                    |
-| `getFullYear()`        | Za dani datum vraća godinu. **Izbjegavajte** metodu `getYear()` budući da je izgubila podršku i radi pogrešno.                                                  | `Date.getFullYear()` |`moonLanding = new Date("July 20, 69 00:20:18");` ; `moonLanding.getFullYear() == 1969`                | `1969`                                                                 |
-| `getMonth()`           | Za dani datum vraća mjesec (0 - Siječanj, 11 - Prosinac)                | `Date.getMonth()` |`const moonLanding = new Date('July 20, 69 00:20:18');`                   | `6`                                                                    |
-| `getHours()`           | Za dani datum vraća sate.                                                    | `Date.getHours()` |`const xmas95 = new Date("1995-12-25T23:15:30");` ; `xmas95.getHours() == 23`                   | `23`                                                                   |
-| `getMinutes()`         | Za dani datum vraća minute.                                                 | `Date.getMinutes();`  | `const xmas95 = new Date("1995-12-25T23:15:30");` ; `xmas95.getMinutes() == 15`                | `15`                                                                   |
-| `getSeconds()`         | Za dani datum vraća sekunde.                                                 | `Date.getSeconds();`   | `const xmas95 = new Date("1995-12-25T23:15:30");` ; `xmas95.getSeconds() == 30`               | `30`                                                                   |
-| `getTime()`            | Za dani datum vraća vraća koliko je prošlo milisekundi od 1. siječnja 1970, UTC. Ako je dani datum bio prije, vraća negativan broj.                                         | `Date.getTime()` |`const moonLanding = new Date('July 20, 69 20:17:40 GMT+00:00');` ; `moonLanding.getTime() == -14182940000`                    | `-14182940000`                                                        |
-| `toLocaleDateString()` | Za dani datum vraća string prikaz datuma u definiranom lokalnom formatu. Prima opcionalne argumente [`locales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#locales) i [`options`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options). Npr. ako hoćemo datum napisati po hrvatskom standardu, postavljamo `locales='hr'`. Ako želimo i datum i vrijeme, postoji varijanta - `toLocaleString()`.                                            | `Date.toLocaleDateString();` | `let bozic23 = new Date("December 25, 23"); bozic23.toLocaleDateString("hr") == '25. 12. 2023.'`         |   `'25. 12. 2023.'`                                                       |
-| `toLocaleTimeString()` | Za dani datum vraća string prikaz vremena u definiranom lokalnom formatu. Prima opcionalne argumente [`locales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#locales) i [`options`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#options). Npr. ako hoćemo datum napisati po američkom standardu, postavljamo `locales='en-US'`. Ako želimo i datum i vrijeme, postoji varijanta - `toLocaleString()`.                                               | `Date.toLocaleTimeString();` |`const event = new Date('August 19, 1975 23:15:30 GMT+00:00'); event.toLocaleTimeString('en-US') == '1:15:30 AM'`         | `'1:15:30 AM'`                                                           |                                          |
-| `toString()`           | Pretvara dani `Date` objekt u string format lokalne vremenske zone. Ova metoda poziva se automatski kod ispisavanja datuma.                                                | `Date.toString();`  | `const event = new Date('August 19, 1975 23:15:30');` ; `event.toString() == 'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'`                    | `'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'` |
-| `Date.now()`           | Statična metoda koja vraća unix timestamp trenutno vremena prošlog od 1. siječnja 1970, UTC. Budući da je metoda statična, ne stvaramo novi objekt s konstruktorom `new Date()`.                        | `Date.now();` |`let upravo_sada = Date.now();`                         | `1708686440160`                                                        |
-| `Date.parse()`         | Parsira string reprezentaciju datuma i vraća broj milisekundi od 1. siječnja 1970, UTC. Budući da je metoda statična, ne stvaramo novi objekt s konstruktorom `new Date()`.  | `Date.parse(dateString)` |`Date.parse("2024-02-20T14:37:15Z");` | `1645265835000` (ovisno o vremenskoj zoni, može se razlikovati)        |
+| Metoda                 | Objašnjenje                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Sintaksa                     | Primjer                                                                                                                                            | Output                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | --- |
+| `getDate()`            | Za dani datum, vraća **dan** u mjesecu kao broj (1-31).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `Date.getDate()`             | `const rodendan = new Date("April 13, 2000");` ; `rodendan.getDate() == 13`                                                                        | `13`                                                                   |
+| `getDay()`             | za dani datum vraća **dan u tjednu** (0 za nedjelju, 1 za ponedjeljak, itd.).                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `Date.getDay()`              | `const rodendan = new Date("April 13, 2000");` ; `rodendan.getDay() == 4`                                                                          | `4`                                                                    |
+| `getFullYear()`        | Za dani datum vraća godinu. **Izbjegavajte** metodu `getYear()` budući da je izgubila podršku i radi pogrešno.                                                                                                                                                                                                                                                                                                                                                                                                                                    | `Date.getFullYear()`         | `moonLanding = new Date("July 20, 69 00:20:18");` ; `moonLanding.getFullYear() == 1969`                                                            | `1969`                                                                 |
+| `getMonth()`           | Za dani datum vraća mjesec (0 - Siječanj, 11 - Prosinac)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `Date.getMonth()`            | `const moonLanding = new Date('July 20, 69 00:20:18');`                                                                                            | `6`                                                                    |
+| `getHours()`           | Za dani datum vraća sate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `Date.getHours()`            | `const xmas95 = new Date("1995-12-25T23:15:30");` ; `xmas95.getHours() == 23`                                                                      | `23`                                                                   |
+| `getMinutes()`         | Za dani datum vraća minute.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `Date.getMinutes();`         | `const xmas95 = new Date("1995-12-25T23:15:30");` ; `xmas95.getMinutes() == 15`                                                                    | `15`                                                                   |
+| `getSeconds()`         | Za dani datum vraća sekunde.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `Date.getSeconds();`         | `const xmas95 = new Date("1995-12-25T23:15:30");` ; `xmas95.getSeconds() == 30`                                                                    | `30`                                                                   |
+| `getTime()`            | Za dani datum vraća vraća koliko je prošlo milisekundi od 1. siječnja 1970, UTC. Ako je dani datum bio prije, vraća negativan broj.                                                                                                                                                                                                                                                                                                                                                                                                               | `Date.getTime()`             | `const moonLanding = new Date('July 20, 69 20:17:40 GMT+00:00');` ; `moonLanding.getTime() == -14182940000`                                        | `-14182940000`                                                         |
+| `toLocaleDateString()` | Za dani datum vraća string prikaz datuma u definiranom lokalnom formatu. Prima opcionalne argumente [`locales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#locales) i [`options`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options). Npr. ako hoćemo datum napisati po hrvatskom standardu, postavljamo `locales='hr'`. Ako želimo i datum i vrijeme, postoji varijanta - `toLocaleString()`. | `Date.toLocaleDateString();` | `let bozic23 = new Date("December 25, 23"); bozic23.toLocaleDateString("hr") == '25. 12. 2023.'`                                                   | `'25. 12. 2023.'`                                                      |
+| `toLocaleTimeString()` | Za dani datum vraća string prikaz vremena u definiranom lokalnom formatu. Prima opcionalne argumente [`locales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#locales) i [`options`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#options). Npr. ako hoćemo datum napisati po američkom standardu, postavljamo `locales='en-US'`. Ako želimo i datum i vrijeme, postoji varijanta - `toLocaleString()`.                   | `Date.toLocaleTimeString();` | `const event = new Date('August 19, 1975 23:15:30 GMT+00:00'); event.toLocaleTimeString('en-US') == '1:15:30 AM'`                                  | `'1:15:30 AM'`                                                         |     |
+| `toString()`           | Pretvara dani `Date` objekt u string format lokalne vremenske zone. Ova metoda poziva se automatski kod ispisavanja datuma.                                                                                                                                                                                                                                                                                                                                                                                                                       | `Date.toString();`           | `const event = new Date('August 19, 1975 23:15:30');` ; `event.toString() == 'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'` | `'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'` |
+| `Date.now()`           | Statična metoda koja vraća unix timestamp trenutno vremena prošlog od 1. siječnja 1970, UTC. Budući da je metoda statična, ne stvaramo novi objekt s konstruktorom `new Date()`.                                                                                                                                                                                                                                                                                                                                                                  | `Date.now();`                | `let upravo_sada = Date.now();`                                                                                                                    | `1708686440160`                                                        |
+| `Date.parse()`         | Parsira string reprezentaciju datuma i vraća broj milisekundi od 1. siječnja 1970, UTC. Budući da je metoda statična, ne stvaramo novi objekt s konstruktorom `new Date()`.                                                                                                                                                                                                                                                                                                                                                                       | `Date.parse(dateString)`     | `Date.parse("2024-02-20T14:37:15Z");`                                                                                                              | `1645265835000` (ovisno o vremenskoj zoni, može se razlikovati)        |
 
 Tablica se većinom sastoji od `get` metoda za dohvaćanje pojedinih dijelova datuma i vremena. Popis vrlo sličnog skupa `set` metoda za postavljanje dijelova datuma i vremena možete pronaći [ovdje](https://www.w3schools.com/js/js_date_methods_set.asp).
 
@@ -846,8 +850,8 @@ console.log(hrVrijeme()); // Output: 13:08:27 (ovisno o trenutnom vremenu)
 ✅Rezultat:
 
 ```javascript
-console.log(isWeekend(new Date('2024-01-01'))); // Output: false
-console.log(isWeekend(new Date('2024-03-31'))); // Output: true
+console.log(isWeekend(new Date("2024-01-01"))); // Output: false
+console.log(isWeekend(new Date("2024-03-31"))); // Output: true
 ```
 
 ## 2.4 Usporedba JavaScript objekata
@@ -855,11 +859,14 @@ console.log(isWeekend(new Date('2024-03-31'))); // Output: true
 Naučili smo što su primitivni tipovi podataka, koji su i kako se koriste. Također smo prošli kroz osnovne ugrađene objekte te samu teoriju iza objekata. Također smo naučili da postoje ugrađeni objekti za već postojeće primitivne tipove, poput `String` i `Number` objekata.
 
 Rekli smo da nema smisla komplicirati kôd instanciranjem nekih primitivnih tipova kao objekte, zbog automatske pretvorbe. Na primjer:
+
 ```javascript
 let x = "Hello"; // primitivni string
 let y = new String("Hello"); // String objekt
 ```
+
 Ili
+
 ```javascript
 let x = 5; // primitivni broj
 let y = new Number(5); // Number objekt
@@ -873,7 +880,9 @@ let b = new String("Hello");
 console.log(x == y); // true ?
 console.log(x === y); // true ?
 ```
+
 No to nije slučaj! Odgovor je jednostavan, objekte nema smisla uspoređivati operatorima `==` i `===` jer će se uspoređivati njihove reference, a ne vrijednosti koje oni sadrže.
+
 > **Objekti su referentni tipovi podataka, a primitivni tipovi su vrijednosni tipovi podataka**.
 
 Usporedba objekata na spomenuti način će uvijek rezultirati s `false`, jer uspoređujemo memorijske lokacije gdje su objekti pohranjeni, a one će naravno biti različite.
@@ -894,10 +903,12 @@ console.log(auto === isti_auto); // false
 
 ### 2.4.1 `instanceof` operator
 
-Kako možemo jednostavno provjeriti kojem objektu pripada neka varijabla? U prvoj skripti vrlo kratko smo spomenuli `instanceof` operator. `instanceof` operator vraća `true` ako objekt pripada određenom tipu, inače vraća `false`. Sintaksa je sljedeća: 
+Kako možemo jednostavno provjeriti kojem objektu pripada neka varijabla? U prvoj skripti vrlo kratko smo spomenuli `instanceof` operator. `instanceof` operator vraća `true` ako objekt pripada određenom tipu, inače vraća `false`. Sintaksa je sljedeća:
+
 ```javascript
-object instanceof constructor
+object instanceof constructor;
 ```
+
 gdje je `object` objekt koji se provjerava, a `constructor` je funkcija koja opisuje svojstva i metode tog objekta.
 Klasični `typeof` operator nam ovdje ne pruža dovoljno informacija, budući da će za sve objekte vratiti `object`. `instanceof` operator nam omogućuje da provjerimo pripada li objekt određenom tipu.
 
@@ -906,7 +917,7 @@ let pet = new Number(5);
 console.log(pet instanceof Number); // true
 console.log(pet instanceof String); // false
 
-console.log(typeof(pet)); // object (ne daje dovoljno informacija)
+console.log(typeof pet); // object (ne daje dovoljno informacija)
 
 function Auto(marka, model) {
   this.marka = marka;
@@ -927,23 +938,24 @@ console.log(datum instanceof String); // false
 
 **EduCoder šifra**: `UNIPU`
 
-1. Napišite konsturktor za objekt `Grad` koji prima 3 argumenta: `ime`, `brojStanovnika` i `drzava`. Konstruktor treba stvoriti objekt s tim svojstvima. Napišite metodu `ispisi()` koja ispisuje informacije o gradu u formatu: `Ime: [ime], Broj stanovnika: [brojStanovnika], Država: [drzava]`. U objekt dodajte metodu `azurirajBrojStanovnika()`. Kada to napravite, dodajte konstruktoru svojstvo `velicina` te ažurirajte metodu `ispisi()` da ispisuje i veličinu grada. 
-2. Napiši funkciju `izbaciSamoglasnike()` koja prima rečenicu kao argument i vraća novu rečenicu bez samoglasnika. Za implementaciju koristite metode iz `String` objekta. 
-3. Napiši funkciju `zaokruziBroj()` koja prima dva argumenta: `broj` i `decimale`. Funkcija vraća broj zaokružen na `decimale` decimala. Za implementaciju možete koristiti metode iz `Number` i `Math` objekata. Ako je proslijeđeni argument `broj` već cijeli, funkcija vraća string `Broj je već cijeli!`. Ako je proslijeđeni argument `decimale` manji ili jednak 0, funkcija vraća string `"Pogrešno definirane decimale! Unijeli ste {decimale}, a očekuje se broj veći od 0."`. 
+1. Napišite konsturktor za objekt `Grad` koji prima 3 argumenta: `ime`, `brojStanovnika` i `drzava`. Konstruktor treba stvoriti objekt s tim svojstvima. Napišite metodu `ispisi()` koja ispisuje informacije o gradu u formatu: `Ime: [ime], Broj stanovnika: [brojStanovnika], Država: [drzava]`. U objekt dodajte metodu `azurirajBrojStanovnika()`. Kada to napravite, dodajte konstruktoru svojstvo `velicina` te ažurirajte metodu `ispisi()` da ispisuje i veličinu grada.
+2. Napiši funkciju `izbaciSamoglasnike()` koja prima rečenicu kao argument i vraća novu rečenicu bez samoglasnika. Za implementaciju koristite metode iz `String` objekta.
+3. Napiši funkciju `zaokruziBroj()` koja prima dva argumenta: `broj` i `decimale`. Funkcija vraća broj zaokružen na `decimale` decimala. Za implementaciju možete koristiti metode iz `Number` i `Math` objekata. Ako je proslijeđeni argument `broj` već cijeli, funkcija vraća string `Broj je već cijeli!`. Ako je proslijeđeni argument `decimale` manji ili jednak 0, funkcija vraća string `"Pogrešno definirane decimale! Unijeli ste {decimale}, a očekuje se broj veći od 0."`.
 4. Napiši funkciju `daniOdPocetkaGodine()` koja vraća koliko je dana prošlo od početka godine do trenutnog datuma. Za implementaciju koristite metode iz `Date` objekta. Ako je trenutni datum 1. siječnja, funkcija vraća `Danas je 1. siječnja!`.
 5. Definirajte objekt `UNIPUKorisnik` s 3 svojstva: `korisnicko_ime`, `email` i `lozinka`. Napravite konstruktor za objekt `UNIPUKorisnik`. Uz spomenuta svojstva, implementirajte u konstruktor i sljedeće metode:
    - `promijeniEmail()` - prima novi email kao argument i mijenja email korisnika. U metodi morate provjeravati sadrži završava li novi email s `@unipu.hr`, ako ne metoda ispisuje u konzolu: `Email mora završavati s '@unipu.hr'!`. Ako je email ispravan, metoda ispisuje u konzolu poruku: `Email uspješno promijenjen!`. Ako korisnik pokuša promijeniti email na trenutni (`novi_email == this.email`), metoda ispisuje u konzolu: `Novi email je isti kao stari!`.
    - `promijeniLozinku()` - prima novu lozinku kao argument i mijenja lozinku korisnika. Nova lozinka korisnika mora sadržavati barem 8 znakova, od tog jedan broj i jedan specijalan znak (npr `!`). Za svaki od uvjeta koji nije zadovoljen, metoda mora ispisati odgovarajuću poruku u konzolu. Ako korisnik pokuša promijeniti lozinku na trenutnu (`nova_lozinka == this.lozinka`), metoda ispisuje u konzolu: `Unijeli ste postojeću lozinku!`.
    - u objekt dodajte novo svojstvo `datum_registracije` koje će pohraniti datum i vrijeme registracije korisnika, odnosno u našem slučaju datum i vrijeme izrade objekta. Datum i vrijeme pohranite u formatu `dd.mm.yyyy. hh:mm:ss` koristeći metodu iz `Date` objekta.
 
-# 3. Polja (eng. ***Arrays***)
+# 3. Polja (eng. **_Arrays_**)
 
-Polja (eng. ***Arrays***) su strukture podataka koje, kao i u drugim programskim jezicima, omogućuju pohranu kolekcije podataka pod varijablom jednog naziva.
+Polja (eng. **_Arrays_**) su strukture podataka koje, kao i u drugim programskim jezicima, omogućuju pohranu kolekcije podataka pod varijablom jednog naziva.
 JavaScript polja se razlikuju po tome što mogu sadržavati različite tipove podataka, a ne samo jedan tip, kao što je slučaj u nekim drugim jezicima poput C i C++. Polja u JavaScriptu su dinamičke strukture podataka, što znači da se mogu proširivati i smanjivati tijekom izvođenja programa.
 
 U JavaScriptu, kao i večina elemenata, tako su i polja objekti. Polja su ustvari specijalni tip objekata `Array` koji se koristi za pohranu više vrijednosti u jednoj varijabli. Ne možemo li to i s objektima? Možemo, ali polja su specijalizirana za pohranu više vrijednosti, dok su objekti specijalizirani za pohranu više parova ključ-vrijednost.
 
 **Polja nisu primitivi**! Polja su `Array` objekti s nekoliko ključnih karakteristika:
+
 - Polja su **indeksirana** struktura podataka, što znači da svaki element polja ima svoj indeks. Indeksi počinju od 0, zadnji element je indeksiran s `length - 1`.
 - Polja su **dinamička** struktura podataka, što znači da se mogu proširivati i smanjivati tijekom izvođenja programa.
 - Polja mogu sadržavati **različite tipove podataka**, primjerice brojeve, stringove, objekte, druga polja, funkcije, itd.
@@ -955,19 +967,18 @@ U JavaScriptu, kao i večina elemenata, tako su i polja objekti. Polja su ustvar
 
 ## 3.1 Sintaksa polja
 
-Polja deklariramo koristeći uglate zagrade `[]`. Elementi polja se odvajaju zarezom. Polja mogu sadržavati različite tipove podataka, uključujući i druga polja. 
+Polja deklariramo koristeći uglate zagrade `[]`. Elementi polja se odvajaju zarezom. Polja mogu sadržavati različite tipove podataka, uključujući i druga polja.
 
 Sintaksa:
+
 ```javascript
 let ime_polja = [element1, element2, element3, ...];
 ```
+
 Razmaci i novi redovi nisu bitni, ali se preporučuje formatiranje kôda radi bolje čitljivosti. Moguće je polje deklarirati i ovako:
+
 ```javascript
-let ime_polja = [
-    element1,
-    element2,
-    element3,
-];
+let ime_polja = [element1, element2, element3];
 ```
 
 ### 3.1.1 Pristup elementima polja
@@ -989,10 +1000,9 @@ console.log(namirnice); // Output: ["kruh", "mlijeko", "sir"] //Primjetite uglat
 console.log(namirnice[0]); // Output: "kruh"
 console.log(namirnice[1]); // Output: "mlijeko"
 console.log(namirnice[2]); // Output: "sir"
-
 ```
 
-Dodavanje i pristup elementima s operatorom `.` nije moguće! 
+Dodavanje i pristup elementima s operatorom `.` nije moguće!
 
 ```javascript
 let namirnice = [];
@@ -1001,7 +1011,7 @@ namirnice.0 = "kruh"; // SyntaxError: Unexpected number
 
 ### 3.1.2 Veličina polja
 
-Veličinu polja možemo dohvatiti koristeći `length` svojstvo, kao i kod znakovnih nizova. `length` svojstvo vraća broj elemenata polja. 
+Veličinu polja možemo dohvatiti koristeći `length` svojstvo, kao i kod znakovnih nizova. `length` svojstvo vraća broj elemenata polja.
 
 ```javascript
 let namirnice = ["kruh", "mlijeko", "sir"];
@@ -1013,7 +1023,9 @@ console.log(namirnice.length); // Output: 4
 namirnice[5] = "riža";
 console.log(namirnice.length); // Output: 5 ili 6 ?
 ```
+
 Nakon dodavanja elementa na indeks 5, `length` svojstvo će vratiti `6`, iako polje ima samo 5 elemenata. JavaScript automatski dodaje prazne elemente između indeksa 5 i 4. Ovo je jedna od karakteristika dinamičkih polja u JavaScriptu.
+
 ```javascript
 console.log(namirnice); // Output: ["kruh", "mlijeko", "sir", "jaja", empty, "riža"]
 console.log(namirnice[4]); // Output: undefined
@@ -1021,21 +1033,32 @@ console.log(namirnice[4]); // Output: undefined
 
 U polje, kao što smo već rekli, možemo dodavati različite tipove podataka, uključujući i druge objekte, funkcije, itd.
 Primjer:
+
 ```javascript
-let mjesovito_polje = [1, "string", true, {ime: "Ivan", godine: 25}, function() {console.log("Pozdrav iz funkcije!")}];
-console.log(mjesovito_polje); // Output: [1, "string", true, {ime: "Ivan", godine: 25}, ƒ ()] 
+let mjesovito_polje = [
+  1,
+  "string",
+  true,
+  { ime: "Ivan", godine: 25 },
+  function () {
+    console.log("Pozdrav iz funkcije!");
+  },
+];
+console.log(mjesovito_polje); // Output: [1, "string", true, {ime: "Ivan", godine: 25}, ƒ ()]
 ```
+
 > U `C` i `Java` jezicima ovo nije moguće, budući da su polja u tim jezicima statičke strukture podataka, što znači da moraju sadržavati isti tip podataka. Međutim, i u JavaScriptu se preporučuje korištenje polja s istim tipom podataka, radi bolje čitljivosti i održavanja kôda. Izbjegavajte mješovita polja! Za mješovite tipove podataka koriste se objekti.
 
 ### 3.1.3 Izmjene u polju
 
-Elemente u polje možemo dodavati čak i ako smo ga deklarirali kao konstantu. Isto tako, možemo mijenjati i brisati elemente iz polja. 
+Elemente u polje možemo dodavati čak i ako smo ga deklarirali kao konstantu. Isto tako, možemo mijenjati i brisati elemente iz polja.
 
 ```javascript
 const voće = ["jabuka", "kruška", "šljiva"];
 voće[0] = "banana"; // voće = ["banana", "kruška", "šljiva"]
 voće[3] = "naranča"; // voće = ["banana", "kruška", "šljiva", "naranča"]
 ```
+
 Zašto je ovo moguće? Konstanta `voće` sadrži referencu na polje, a ne samo polje. Referenca se ne može mijenjati, ali se može mijenjati sadržaj na koji referenca pokazuje. Što ako pokušamo promijeniti referencu na skroz novo polje? To ne možemo.
 
 ```javascript
@@ -1045,7 +1068,7 @@ voće = ["ananas", "kivi", "mango"]; // TypeError: Assignment to constant variab
 
 ### 3.1.4 `Array` objekt sintaksa
 
-Rekli smo da su polja ustvari `Array` objekti. Dakle, možemo stvoriti novo polje na isti način kao i bilo koji drugi objekt, pozivanjem konstruktora ključnom riječi `new`. 
+Rekli smo da su polja ustvari `Array` objekti. Dakle, možemo stvoriti novo polje na isti način kao i bilo koji drugi objekt, pozivanjem konstruktora ključnom riječi `new`.
 
 ```javascript
 let voće = new Array("jabuka", "kruška", "šljiva");
@@ -1059,7 +1082,8 @@ typeof isto_voće; // Output: "object"
 
 voće == isto_voće; // Output: false - različite reference
 ```
->Vidimo da će typeof u oba slučaja vratiti `object`. typeof neće vratiti `array` kao što bi se očekivalo, budući da su polja ustvari objekti.
+
+> Vidimo da će typeof u oba slučaja vratiti `object`. typeof neće vratiti `array` kao što bi se očekivalo, budući da su polja ustvari objekti.
 
 ### 3.2 Zašto `Array` objekt?
 
@@ -1068,24 +1092,30 @@ Možemo si postaviti pitanje zašto koristiti `Array` objekt, ako možemo korist
 ### Primjer 1 - dodavanje, brisanje i pretraživanje koristeći obične uglate zagrade
 
 Imamo polje `stabla` koje sadrži nekoliko poznatih vrsta stabala u Hrvatskoj.
+
 ```javascript
 let stabla = ["hrast", "bukva", "javor", "bor", "smreka"];
 ```
-Kako bismo dodali novi element u polje, moramo znati koliko elemenata polje trenutno sadrži, kako ne bi došlo do preklapanja indeksa i gubitka podataka. 
+
+Kako bismo dodali novi element u polje, moramo znati koliko elemenata polje trenutno sadrži, kako ne bi došlo do preklapanja indeksa i gubitka podataka.
+
 ```javascript
 let duljina = stabla.length; // duljina = 5
-stabla[duljina] = "jela";  // Možemo, zato što je duljina polja 5, a indeks zadnjeg elementa je 4 
+stabla[duljina] = "jela"; // Možemo, zato što je duljina polja 5, a indeks zadnjeg elementa je 4
 console.log(stabla); // Output: ["hrast", "bukva", "javor", "bor", "smreka", "jela"]
 ```
 
 Kako bismo izbrisali element iz polja, moramo znati indeks elementa koji želimo izbrisati.
+
 ```javascript
 delete stabla[2]; // stabla = ["hrast", "bukva", empty, "bor", "smreka", "jela"]
 console.log(stabla); // Output: ["hrast", "bukva", empty, "bor", "smreka", "jela"]
 ```
+
 Primjećujemo da je `delete` operator ostavio prazno mjesto na indeksu 2, umjesto da je izbrisao element.
 
 Što ako želimo izbrisati zadnji element iz polja?
+
 ```javascript
 delete stabla[stabla.length - 1]; // stabla = ["hrast", "bukva", empty, "bor", "smreka", empty] - isti problem
 ```
@@ -1095,61 +1125,72 @@ Kako možemo pretraživati naše polje? Polja su iterabilna struktura podataka, 
 ```javascript
 let stabla = ["hrast", "bukva", "javor", "bor", "smreka"];
 for (let i = 0; i < stabla.length; i++) {
-    console.log(stabla[i]); // Output: "hrast", "bukva", "javor", "bor", "smreka"
-}
-```
-Recimo da hoćemo zaustaviti pretraživanje kada naiđemo na element `bor`. Kako bismo to napravili, koristimo `break` naredbu.
-```javascript
-let stabla = ["hrast", "bukva", "javor", "bor", "smreka"];
-for (let i = 0; i < stabla.length; i++) {
-    if (stabla[i] == "bor") {
-        console.log("Pronašli smo bor!");
-        break;
-    }
+  console.log(stabla[i]); // Output: "hrast", "bukva", "javor", "bor", "smreka"
 }
 ```
 
->Naporno je svaki put računati indekse kako bi dodali novi element u polje, a i `delete` operator ne radi kako bi trebao. `Array` objekt nudi gotove metode za sve ove operacije, kao i mnoge druge. U većini slučajeva je bolje koristiti `Array` objekt, jer je brži i sigurniji, a kôd je mnogo čitljiviji!
+Recimo da hoćemo zaustaviti pretraživanje kada naiđemo na element `bor`. Kako bismo to napravili, koristimo `break` naredbu.
+
+```javascript
+let stabla = ["hrast", "bukva", "javor", "bor", "smreka"];
+for (let i = 0; i < stabla.length; i++) {
+  if (stabla[i] == "bor") {
+    console.log("Pronašli smo bor!");
+    break;
+  }
+}
+```
+
+> Naporno je svaki put računati indekse kako bi dodali novi element u polje, a i `delete` operator ne radi kako bi trebao. `Array` objekt nudi gotove metode za sve ove operacije, kao i mnoge druge. U većini slučajeva je bolje koristiti `Array` objekt, jer je brži i sigurniji, a kôd je mnogo čitljiviji!
 
 ### Primjer 2 - dodavanje, brisanje i pretraživanje koristeći `Array` objekt
 
 Napravimo novo polje `stabla` koristeći `Array` objekt.
+
 ```javascript
 let stabla = new Array("hrast", "bukva", "javor", "bor", "smreka");
 ```
 
 Kako bismo dodali novi element u polje, koristimo jednostavno `push()` metodu koja dodaje novi element na kraj polja. Ne moramo brinuti o indeksima, jer će `push()` metoda sama pronaći zadnji indeks i dodati novi element na kraj polja.
+
 ```javascript
 stabla.push("jela"); // To je to.
-console.log(stabla); // Output: ["hrast", "bukva", "javor", "bor", "smreka", "jela"] 
+console.log(stabla); // Output: ["hrast", "bukva", "javor", "bor", "smreka", "jela"]
 ```
 
-Kako bismo izbrisali element iz polja, koristimo `pop()` metodu koja briše zadnji element iz polja. 
+Kako bismo izbrisali element iz polja, koristimo `pop()` metodu koja briše zadnji element iz polja.
+
 ```javascript
 stabla.pop(); // Briše zadnji element iz polja - "jela"
 console.log(stabla); // Output: ["hrast", "bukva", "javor", "bor", "smreka"] // "jela" je potpuno izbrisan, nema više praznog mjesta
 ```
 
 Pretraživanje polja možemo napraviti koristeći `forEach()` metodu, koja prolazi kroz svaki element polja i izvršava zadanu funkciju za svaki element.
+
 ```javascript
-stabla.forEach(function(stablo) { // stablo je lokalna varijabla koja sadrži trenutni element polja. Ova funkcija naziva se callback funkcija, a koristi se u mnogim metodama polja.
-    console.log(stablo); // Output: "hrast", "bukva", "javor", "bor", "smreka"
+stabla.forEach(function (stablo) {
+  // stablo je lokalna varijabla koja sadrži trenutni element polja. Ova funkcija naziva se callback funkcija, a koristi se u mnogim metodama polja.
+  console.log(stablo); // Output: "hrast", "bukva", "javor", "bor", "smreka"
 });
 ```
+
 Recimo da hoćemo pretražiti polje s ciljem pronalaska elementa `bor`. Koristimo `find()` metodu koja vraća prvi element koji zadovoljava uvjet koji je definiran u `callback` funkciji.
+
 ```javascript
-let bor = stabla.find(function(stablo) {
-    return stablo == "bor"; // vraća prvi element koji zadovoljava ovaj uvjet
+let bor = stabla.find(function (stablo) {
+  return stablo == "bor"; // vraća prvi element koji zadovoljava ovaj uvjet
 });
 console.log(bor); // Output: "bor"
 ```
+
 > Primjetite koliko je kôd čitljiviji i jednostavniji za razumijevanje 😁
 
 Neke metode moguće je doslovno čitati prirodnim jezikom, na primjer sljedeći primjer čitamo: "Za svaki element polja `stabla` ispiši pojedino `stablo`"
+
 ```javascript
 let stabla = ["hrast", "bukva", "javor", "bor", "smreka"];
-stabla.forEach(function(stablo) {
-    console.log(stablo); 
+stabla.forEach(function (stablo) {
+  console.log(stablo);
 });
 ```
 
@@ -1167,74 +1208,85 @@ Već smo se upoznali s `for` petljom i klasičnim načinom prolaska kroz sve ele
 No, krenimo od jednostavnijih principa, bez korištenja `callback` funkcija.
 
 ### 3.2.1 Tradicionalna `for` petlja
-Tradicionalna `for` petlja, koju smo već koristili u prethodnim predavanjima, može se koristiti za prolazak kroz sve elemente polja, kao i za izmjene elemenata polja. 
+
+Tradicionalna `for` petlja, koju smo već koristili u prethodnim predavanjima, može se koristiti za prolazak kroz sve elemente polja, kao i za izmjene elemenata polja.
 
 ```javascript
 let polje = ["jabuka", "kruška", "šljiva", "naranča", "banana"];
-for (let i = 0; i < polje.length; i++) { // Iteriramo za veličinu polja
-    console.log(polje[i]); // Output: "jabuka", "kruška", "šljiva", "naranča", "banana"
+for (let i = 0; i < polje.length; i++) {
+  // Iteriramo za veličinu polja
+  console.log(polje[i]); // Output: "jabuka", "kruška", "šljiva", "naranča", "banana"
 }
 ```
 
 Možemo svaki element izmjeniti u petlji, na primjer, npr. svakom elementu dodati prefiks `fruit_`.
+
 ```javascript
 let polje = ["jabuka", "kruška", "šljiva", "naranča", "banana"];
-for (let i = 0; i < polje.length; i++) { // Iteriramo za veličinu polja
-    polje[i] = "fruit_" + polje[i]; // Na ovaj način možemo jednostavno mijenjati elemente polja
+for (let i = 0; i < polje.length; i++) {
+  // Iteriramo za veličinu polja
+  polje[i] = "fruit_" + polje[i]; // Na ovaj način možemo jednostavno mijenjati elemente polja
 }
 console.log(polje); // Output: ["fruit_jabuka", "fruit_kruška", "fruit_šljiva", "fruit_naranča", "fruit_banana"]
 ```
 
 ### 3.2.2 `for...of` petlja
 
-`for...of` petlja je novi način iteracije kroz polja koji je uveden u ES6 standardu JavaScripta. `for...of` petlja prolazi kroz sve elemente iterabilnih objekata (eng. ***iterables***), uključujući polja (`Array`) i znakovne nizove (`String`) (ima ih još).
+`for...of` petlja je novi način iteracije kroz polja koji je uveden u ES6 standardu JavaScripta. `for...of` petlja prolazi kroz sve elemente iterabilnih objekata (eng. **_iterables_**), uključujući polja (`Array`) i znakovne nizove (`String`) (ima ih još).
 
 Sintaksa je sljedeća:
 
 ```javascript
 for (let element of iterable) {
-    // blok kôda koji se izvršava za svaki element
+  // blok kôda koji se izvršava za svaki element
 }
 ```
+
 `element` je lokalna varijabla proizvoljnog naziva koja sadrži trenutni element iterabilnog objekta, a `iterable` je iterabilni objekt kroz koji prolazimo.
 
 Kako možemo iterirati kroz naše polje voća?
+
 ```javascript
 let voće = ["jabuka", "kruška", "šljiva", "naranča", "banana"];
-for (let voćka of voće) { // `voćka` je lokalna varijabla proizvoljnog naziva koja sadrži trenutni element polja
-    console.log(voćka); // Output: "jabuka", "kruška", "šljiva", "naranča", "banana"
+for (let voćka of voće) {
+  // `voćka` je lokalna varijabla proizvoljnog naziva koja sadrži trenutni element polja
+  console.log(voćka); // Output: "jabuka", "kruška", "šljiva", "naranča", "banana"
 }
 ```
 
 Ili možemo koristiti `for...of` petlju za iteraciju kroz znakovni niz.
+
 ```javascript
 let ime = "Ivan";
-for (let slovo of ime) { // `slovo` je lokalna varijabla proizvoljnog naziva koja sadrži trenutni znak u nizu
-    console.log(slovo); // Output: "I", "v", "a", "n"
+for (let slovo of ime) {
+  // `slovo` je lokalna varijabla proizvoljnog naziva koja sadrži trenutni znak u nizu
+  console.log(slovo); // Output: "I", "v", "a", "n"
 }
 ```
 
 ### 3.2.3 `for... in` petlja
 
-`for...in` petlja se koristi za **iteraciju kroz svojstva objekta**. Međutim, može se koristiti i za iteraciju kroz indekse polja. 
+`for...in` petlja se koristi za **iteraciju kroz svojstva objekta**. Međutim, može se koristiti i za iteraciju kroz indekse polja.
 Sintaksa je sljedeća:
 
 ```javascript
 for (let key in object) {
-    // blok kôda
+  // blok kôda
 }
 ```
 
 `key` je lokalna varijabla proizvoljnog naziva koja sadrži ključ objekta, a `object` je objekt kroz koji prolazimo.
-  
+
 ```javascript
 let voće = ["jabuka", "kruška", "šljiva", "naranča", "banana"];
-for (let indeks in voće) { // `indeks` je lokalna varijabla proizvoljnog naziva koja sadrži indeks polja
-    console.log(indeks); // Output: "0", "1", "2", "3", "4"
+for (let indeks in voće) {
+  // `indeks` je lokalna varijabla proizvoljnog naziva koja sadrži indeks polja
+  console.log(indeks); // Output: "0", "1", "2", "3", "4"
 }
 ```
 
 Međutim, uzmimo za primjer objekt `auto` s prošlih vježbi:
+
 ```javascript
 const auto = {
   marka: "Ford",
@@ -1260,21 +1312,23 @@ Zašto je ovo povezano s poljima? Kao što smo već rekli, polja su ustvari obje
 Sintaksa je sljedeća:
 
 ```javascript
-polje.forEach(callbackFn)
+polje.forEach(callbackFn);
 ```
 
 `callback` funkcija je funkcija koja se izvršava za svaki element polja. `callback` funkcija prima tri argumenta: `element`, `index` i `array`. `element` je trenutni element polja, `index` je indeks trenutnog elementa, a `array` je polje koje se prolazi.
 
 ```javascript
-polje.forEach(function(element, index, array) {
-    // blok kôda koji se izvršava za svaki element
+polje.forEach(function (element, index, array) {
+  // blok kôda koji se izvršava za svaki element
 });
 ```
 
 Primjerice imamo polje `slova` koje sadrži nekoliko slova. U sljedećem primjeru ispisat ćemo elemente `callback` funkcije u konzolu.
+
 ```javascript
-let slova = ["a", "b", "c",];
-slova.forEach(function (trenutnaVrijednost, indeks, polje) { // primjetite da u callback funkciji možemo koristiti bilo koje ime za argumente
+let slova = ["a", "b", "c"];
+slova.forEach(function (trenutnaVrijednost, indeks, polje) {
+  // primjetite da u callback funkciji možemo koristiti bilo koje ime za argumente
   console.log(
     "Vrijednost: " + trenutnaVrijednost,
     "Indeks: " + indeks,
@@ -1285,9 +1339,11 @@ slova.forEach(function (trenutnaVrijednost, indeks, polje) { // primjetite da u 
 // Vrijednost: b Indeks: 1 Cijelo polje: a,b,c
 // Vrijednost: c Indeks: 2 Cijelo polje: a,b,c
 ```
+
 Ne moramo pozvati sve argumente `callback` funkcije, možemo koristiti samo one koji su nam potrebni.
+
 ```javascript
-let slova = ["a", "b", "c",];
+let slova = ["a", "b", "c"];
 slova.forEach(function (trenutnaVrijednost) {
   console.log("Slovo: " + trenutnaVrijednost);
 });
@@ -1302,17 +1358,17 @@ slova.forEach(function (trenutnaVrijednost) {
 
 Rekli smo da polja mogu sadržavati različite tipove podataka, uključujući i druge objekte.
 Uzmimo za primjer polje `korisnici` koje sadrži nekoliko objekata `Korisnik`. Možemo iskoristiti konstruktor `Korisnik` koji smo definirali u prethodnom poglavlju.
-  
+
 ```javascript
 function Korisnik(ime, prezime, godina_rodenja) {
-this.ime = ime;
-this.prezime = prezime;
-this.godina_rodenja = godina_rodenja;
-this.predstaviSe = function () {
-  console.log(
-    `Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`
-  );
-};
+  this.ime = ime;
+  this.prezime = prezime;
+  this.godina_rodenja = godina_rodenja;
+  this.predstaviSe = function () {
+    console.log(
+      `Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`
+    );
+  };
 }
 ```
 
@@ -1329,9 +1385,9 @@ let korisnik3 = new Korisnik("Ana", "Anić", 1985);
 ```javascript
 let korisnici = [korisnik1, korisnik2, korisnik3];
 console.log(korisnici); // Output: [Korisnik, Korisnik, Korisnik]
-                        // 0: Korisnik {ime: "Ivan", prezime: "Ivić", godina_rodenja: 1995, predstaviSe: ƒ}
-                        // 1: Korisnik {ime: "Marko", prezime: "Markić", godina_rodenja: 1990, predstaviSe: ƒ}
-                        // 2: Korisnik {ime: "Ana", prezime: "Anić", godina_rodenja: 1985, predstaviSe: ƒ}
+// 0: Korisnik {ime: "Ivan", prezime: "Ivić", godina_rodenja: 1995, predstaviSe: ƒ}
+// 1: Korisnik {ime: "Marko", prezime: "Markić", godina_rodenja: 1990, predstaviSe: ƒ}
+// 2: Korisnik {ime: "Ana", prezime: "Anić", godina_rodenja: 1985, predstaviSe: ƒ}
 ```
 
 ### Primjer 3 - iteracija kroz polje objekata
@@ -1339,31 +1395,33 @@ console.log(korisnici); // Output: [Korisnik, Korisnik, Korisnik]
 Koristeći `for`, `for...of` ili `for...in` petlje, kao i `Array.forEach` metodu, možemo iterirati kroz polje i pozvati metodu `predstaviSe` za svakog korisnika.
 
 Idemo prvo iterirati kroz polje objekata koristeći `for` petlju.
+
 ```javascript
 for (let i = 0; i < korisnici.length; i++) {
   korisnici[i].predstaviSe(); //Output: Bok! Ja sam Ivan Ivić. Rođen/a sam 1995 godine.
-                              //        Bok! Ja sam Marko Markić. Rođen/a sam 1990 godine.
-                              //        Bok! Ja sam Ana Anić. Rođen/a sam 1985 godine.
+  //        Bok! Ja sam Marko Markić. Rođen/a sam 1990 godine.
+  //        Bok! Ja sam Ana Anić. Rođen/a sam 1985 godine.
 }
-
 ```
+
 - koristeći `for...in` petlju.
+
 ```javascript
 for (let i in korisnici) {
   korisnici[i].predstaviSe(); //Output: kao i u prethodnom primjeru
 }
 ```
 
-
 - koristeći `for...of` petlju.
+
 ```javascript
 for (let korisnik of korisnici) {
   korisnik.predstaviSe(); //Output: kao i u prethodnom primjeru
-
 }
 ```
 
 - koristeći `Array.forEach` metodu.
+
 ```javascript
 korisnici.forEach(function (korisnik) {
   korisnik.predstaviSe(); //Output: kao i u prethodnom primjeru
@@ -1373,25 +1431,40 @@ korisnici.forEach(function (korisnik) {
 > Glavna ideja polja je da pohranjujemo više istvornih podataka pod jednim nazivom te da imamo mogućnost iteracije i primjene metoda na svakom elementu polja. Ono što ne želimo je raditi polja koja sadrže različite tipove podataka, kao što smo već rekli, na primjer.
 
 ```javascript
-let korisnik = ["Ivan", "Ivić", 1995, function() {console.log("Pozdrav ja sam Ivan!")}]; // ❌
+let korisnik = [
+  "Ivan",
+  "Ivić",
+  1995,
+  function () {
+    console.log("Pozdrav ja sam Ivan!");
+  },
+]; // ❌
 ```
+
 Kako pristupiti imenu ovog korisnika?
+
 ```javascript
 console.log(korisnik[0]); // Output: "Ivan"
 ```
-Međutim, ne znamo je li to ime, prezime, godina rođenja ili funkcija. Ovo je jako loša praksa i treba je izbjegavati. 
->Napravite objekt kada imate potrebu pohraniti ključ-vrijednost parove, a polje kada imate potrebu pohraniti više istovrsnih podataka.
- ```javascript
-let korisnik_ivan = { // ✅
+
+Međutim, ne znamo je li to ime, prezime, godina rođenja ili funkcija. Ovo je jako loša praksa i treba je izbjegavati.
+
+> Napravite objekt kada imate potrebu pohraniti ključ-vrijednost parove, a polje kada imate potrebu pohraniti više istovrsnih podataka.
+
+```javascript
+let korisnik_ivan = {
+  // ✅
   ime: "Ivan",
   prezime: "Ivić",
   godina_rodenja: 1995,
-  predstaviSe: function() {
+  predstaviSe: function () {
     console.log(`Pozdrav ja sam ${this.ime}!`);
-  }
+  },
 };
 ```
+
 Sada možemo korisnika pohraniti u polje, npr. `korisnici`.
+
 ```javascript
 let korisnici = [];
 korisnici.push(korisnik_ivan);
@@ -1405,11 +1478,12 @@ console.log(korisnici[0].ime); // Output: "Ivan"
 Napravite novo polje `groceryList` koje će sadržavati objekte `Namirnica`. Objekt `Namirnica` mora se sastojati od svojstava: `ime`, `cijena` i `količina`. Prvo definirajte konstruktor `Namirnica` i dodajte svojstva. Napravite nekoliko namirnica i dodajte ih u polje `groceryList`. Dodajte novu metodu `ukupno()` u konstruktor koja će računati ukupnu cijenu za pojedinu namirnicu. Iterirajte kroz polje `groceryList` i ispišite sve namirnice u konzolu, kao i ukupnu cijenu za svaku namirnicu. Dodajte globalnu funkciju `shoppingUkupno(groceryList)` koja će kao argument primati polje `groceryList`, izračunati ukupnu cijenu za sve namirnice i ispisati je u konzolu.
 
 Primjer rezultata:
+
 ```javascript
-"Za namirnicu kruh trebate izdvojiti 3 eur."
-"Za namirnicu mlijeko trebate izdvojiti 2 eur."
-"Za namirnicu jaja trebate izdvojiti 3 eur."
-"Ukupno za sve namirnice trebate izdvojiti 8 eur."
+"Za namirnicu kruh trebate izdvojiti 3 eur.";
+"Za namirnicu mlijeko trebate izdvojiti 2 eur.";
+"Za namirnicu jaja trebate izdvojiti 3 eur.";
+"Ukupno za sve namirnice trebate izdvojiti 8 eur.";
 ```
 
 ## 3.4 Osnovne metode `Array` objekta
@@ -1418,21 +1492,21 @@ Do sad smo spomenuli nekoliko osnovnih metoda `Array` objekta, kao što su `push
 
 ## 3.4.1 Metode dodavanja, brisanja i stvaranja novih polja
 
-| Metoda          | Objašnjenje                                                                                                                                                                              | Sintaksa                         | Primjer                                       | Output                 |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------- | --------------------- |
-| `length`₁     | ₁Radi se o svojstvu, ne metodi. Dakle pozvat ćemo ju bez `()` operatora. Vraća veličinu polja kao cjelobrojnu vrijednost.                                                                                        | `Array.length`         | `const fruits = ["Banana", "Orange", "Apple", "Mango"];` ; `fruits.size == 4`                       | `4`              |
-| `toString()` |  Vraća polje u string obliku, gdje su vrijednosti odvojene zarezima.                                   | `Array.toString()`          | `const fruits = ["Banana", "Orange", "Apple", "Mango"]; fruits.toString();`                   | `'Banana,Orange,Apple,Mango'`               |
-| `at()`    | Vraća vrijednost na danom indeksu u parametru `index`. Funkcija je implementirana u ES2022 standardu i ima isto ponašanje kao dohvaćanje elemenata koristeći `[]`. Ono što nije bilo moguće je tkz. `negative bracket indexing`, npr. dohvaćanje zadnjeg elementa u polju koristeći `[-1]`. Funkcija `Array.at()` riješava taj nedostatak.   | `Array.at(index)`      | `const fruits = ["Banana", "Orange", "Apple", "Mango"];` `fruits.at(2) == "Apple"` ; `fruits.at(-1) == "Mango"`      | `"Apple"` ; `"Mango"` |
-| `join()`    |       Metoda spaja elemente polja u jedinstveni string. Radi kao toString() metoda, ali se dodatno može definirati `separator` koji će odvajati elemente u novom stringu.                                                         | `Array.join(separator)` |  `const elements = ['Fire', 'Air', 'Water'];` ; `elements.join('-') == "Fire-Air-Water"`      | `"Fire-Air-Water"` | 
-| `push()`    |       Metoda dodaje novi element/elemente na kraj polja, a kao povratnu vrijednost veličinu polja vraća `Array.length`                                                        | `Array.push(element1, element2, ... elementN)` |  `const elements = ['Fire', 'Air', 'Water'];` ;  `let count = elements.push("Earth")`   | `elements = ["Fire", "Air", "Water", "Earth"]` ; `count == 4` |
-| `pop()`    |       Metoda briše zadnji element u polju, a kao povratnu vrijednost vraća obrisani element.                                        | `Array.pop()` |  `const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];` ; `let deleted = plants.pop()`   | `tomato` |
-| `shift()`    |       Metoda briše prvi element u polju, a kao povratnu vrijednost vraća obrisani element. Preostale elemente pomiče "ulijevo" na manji indeks, kako bi se riješilo prazno prvo mjesto.                                       | `Array.shift()` |  `const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];` `let shifted = plants.shift()`   | `broccoli` |
-| `unshift()`    |       Metoda dodaje novi element/elemente na početak polja, i pomiče ostale elemente "udesno" za onoliko indeksa koliko je elemenata ubačeno. Vraća `Array.length` svojstvo poput metode `Array.push`.                                        | `Array.unshift(element1, element2, ... elementN)` |  `const numbers = [1, 2, 3];` `let count = numbers.unshift(4, 5);`   | `numbers = [4, 5, 1, 2, 3]` ; `count = 5` |
-| `concat()`    |       Metoda spaja 2 ili više polja bez da mijenja originalna polja. Vraća novo-izrađeno polje.                                      | `Array.concat(Array1, Array2, ... ArrayN)` |  `const array1 = ['a', 'b', 'c']; const array2 = ['d', 'e', 'f'];` ; `const array3 = array1.concat(array2);`   | `array3 = ["a", "b", "c", "d", "e", "f"]` |
-| `slice()`    |       Metoda stvara novo polje kao podskup originalnog, definirano `start` (gdje počinje ekstrakcija) i `end` (gdje završava ekstrakcija) parametrima - `[start, end)` Ne mijenja originalno polje i vraća novo "podskup polje". Ako se pozove bez parametara, kopira cijelo polje.                                   | `Array.slice(start, end)` |  `const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];` ; `animals2 = animals.slice(2, 4)` ;   | `animals2 = ["camel", "duck"]` |
-| `splice()`    |       Metoda mijenja sadržaj polja dodavanjem/brisanjem elemenata. Vraća obrisane elemente u novom polju. Parametri su `start` (gdje počinje promjena), `deleteCount` (koliko elemenata treba obrisati od `start`) i `item1, item2, ...` (elementi koji se dodaju).                                   | `Array.splice(start, deleteCount, item1, item2, ... itemN)` |  `const months = ['Jan', 'March', 'April', 'June'];` ; `months.splice(1, 0, 'Feb');`   | `months = ["Jan", "Feb", "March", "April", "June"]` |
+| Metoda       | Objašnjenje                                                                                                                                                                                                                                                                                                                                | Sintaksa                                                    | Primjer                                                                                                         | Output                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `length`₁    | ₁Radi se o svojstvu, ne metodi. Dakle pozvat ćemo ju bez `()` operatora. Vraća veličinu polja kao cjelobrojnu vrijednost.                                                                                                                                                                                                                  | `Array.length`                                              | `const fruits = ["Banana", "Orange", "Apple", "Mango"];` ; `fruits.size == 4`                                   | `4`                                                           |
+| `toString()` | Vraća polje u string obliku, gdje su vrijednosti odvojene zarezima.                                                                                                                                                                                                                                                                        | `Array.toString()`                                          | `const fruits = ["Banana", "Orange", "Apple", "Mango"]; fruits.toString();`                                     | `'Banana,Orange,Apple,Mango'`                                 |
+| `at()`       | Vraća vrijednost na danom indeksu u parametru `index`. Funkcija je implementirana u ES2022 standardu i ima isto ponašanje kao dohvaćanje elemenata koristeći `[]`. Ono što nije bilo moguće je tkz. `negative bracket indexing`, npr. dohvaćanje zadnjeg elementa u polju koristeći `[-1]`. Funkcija `Array.at()` riješava taj nedostatak. | `Array.at(index)`                                           | `const fruits = ["Banana", "Orange", "Apple", "Mango"];` `fruits.at(2) == "Apple"` ; `fruits.at(-1) == "Mango"` | `"Apple"` ; `"Mango"`                                         |
+| `join()`     | Metoda spaja elemente polja u jedinstveni string. Radi kao toString() metoda, ali se dodatno može definirati `separator` koji će odvajati elemente u novom stringu.                                                                                                                                                                        | `Array.join(separator)`                                     | `const elements = ['Fire', 'Air', 'Water'];` ; `elements.join('-') == "Fire-Air-Water"`                         | `"Fire-Air-Water"`                                            |
+| `push()`     | Metoda dodaje novi element/elemente na kraj polja, a kao povratnu vrijednost veličinu polja vraća `Array.length`                                                                                                                                                                                                                           | `Array.push(element1, element2, ... elementN)`              | `const elements = ['Fire', 'Air', 'Water'];` ; `let count = elements.push("Earth")`                             | `elements = ["Fire", "Air", "Water", "Earth"]` ; `count == 4` |
+| `pop()`      | Metoda briše zadnji element u polju, a kao povratnu vrijednost vraća obrisani element.                                                                                                                                                                                                                                                     | `Array.pop()`                                               | `const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];` ; `let deleted = plants.pop()`       | `tomato`                                                      |
+| `shift()`    | Metoda briše prvi element u polju, a kao povratnu vrijednost vraća obrisani element. Preostale elemente pomiče "ulijevo" na manji indeks, kako bi se riješilo prazno prvo mjesto.                                                                                                                                                          | `Array.shift()`                                             | `const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];` `let shifted = plants.shift()`       | `broccoli`                                                    |
+| `unshift()`  | Metoda dodaje novi element/elemente na početak polja, i pomiče ostale elemente "udesno" za onoliko indeksa koliko je elemenata ubačeno. Vraća `Array.length` svojstvo poput metode `Array.push`.                                                                                                                                           | `Array.unshift(element1, element2, ... elementN)`           | `const numbers = [1, 2, 3];` `let count = numbers.unshift(4, 5);`                                               | `numbers = [4, 5, 1, 2, 3]` ; `count = 5`                     |
+| `concat()`   | Metoda spaja 2 ili više polja bez da mijenja originalna polja. Vraća novo-izrađeno polje.                                                                                                                                                                                                                                                  | `Array.concat(Array1, Array2, ... ArrayN)`                  | `const array1 = ['a', 'b', 'c']; const array2 = ['d', 'e', 'f'];` ; `const array3 = array1.concat(array2);`     | `array3 = ["a", "b", "c", "d", "e", "f"]`                     |
+| `slice()`    | Metoda stvara novo polje kao podskup originalnog, definirano `start` (gdje počinje ekstrakcija) i `end` (gdje završava ekstrakcija) parametrima - `[start, end)` Ne mijenja originalno polje i vraća novo "podskup polje". Ako se pozove bez parametara, kopira cijelo polje.                                                              | `Array.slice(start, end)`                                   | `const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];` ; `animals2 = animals.slice(2, 4)` ;           | `animals2 = ["camel", "duck"]`                                |
+| `splice()`   | Metoda mijenja sadržaj polja dodavanjem/brisanjem elemenata. Vraća obrisane elemente u novom polju. Parametri su `start` (gdje počinje promjena), `deleteCount` (koliko elemenata treba obrisati od `start`) i `item1, item2, ...` (elementi koji se dodaju).                                                                              | `Array.splice(start, deleteCount, item1, item2, ... itemN)` | `const months = ['Jan', 'March', 'April', 'June'];` ; `months.splice(1, 0, 'Feb');`                             | `months = ["Jan", "Feb", "March", "April", "June"]`           |
 
->Metode `push()`, `pop()`, `shift()` i `unshift()` su metode koje se koriste za dodavanje i brisanje elemenata polja. Metode `concat()` i `slice()` su metode koje se koriste za stvaranje novih polja. Metoda `splice()` je metoda koja se koristi za mijenjanje sadržaja polja dodavanjem/brisanjem elemenata.
+> Metode `push()`, `pop()`, `shift()` i `unshift()` su metode koje se koriste za dodavanje i brisanje elemenata polja. Metode `concat()` i `slice()` su metode koje se koriste za stvaranje novih polja. Metoda `splice()` je metoda koja se koristi za mijenjanje sadržaja polja dodavanjem/brisanjem elemenata.
 
 ### Primjer 4 - `paginate` funkcija koristeći `slice` metodu
 
@@ -1441,18 +1515,29 @@ Do sad smo spomenuli nekoliko osnovnih metoda `Array` objekta, kao što su `push
 Recimo da radimo na web stranici koja prikazuje objave korisnika. Kako ne bi preopterećivali korisnika s previše objava, želimo prikazati samo 5 objava po stranici od ukupno 100 objava. Kako bismo to napravili, koristimo `slice` metodu koja će nam omogućiti da izradimo "podskup" polja koji će sadržavati samo po 5 objava. Implementirati ćemo funkciju `paginate` koja će uzeti polje objava, trenutnu stranicu i broj objava po stranici, i vratiti "podskup" polja koji će sadržavati objave za trenutnu stranicu. Funkcija mora raditi za svaki broj objava po stranici i za svaku stranicu, kao i za bilo koji ukupni broj objava.
 
 Prvo ćemo definirati nekoliko varijabli:
+
 ```javascript
 const objave = []; //Zamislite da je ovo polje koje sadrži 100 objava korisnika. Objave mogu biti custom objekti, npr. {naslov: "Naslov objave", sadržaj: "Sadržaj objave", autor: "Ime autora", datum: "Datum objave"}
 
 const ukupnoObjava = 100; //Ukupan broj objava
 
-for (let i = 1; i <= ukupnoObjava; i++) { // Dodajemo 100 dummy objava u polje
-    objave.push({naslov: `Naslov objave ${i}`, sadržaj: `Sadržaj objave ${i}`, autor: `Ime autora ${i}`, datum: `Datum objave ${i}`});
+for (let i = 1; i <= ukupnoObjava; i++) {
+  // Dodajemo 100 dummy objava u polje
+  objave.push({
+    naslov: `Naslov objave ${i}`,
+    sadržaj: `Sadržaj objave ${i}`,
+    autor: `Ime autora ${i}`,
+    datum: `Datum objave ${i}`,
+  });
 }
 
 const trenutnaStranica = 1; //Trenutna stranica na kojoj se korisnik nalazi
 const objavePoStranici = 5; //Broj objava koje želimo prikazati po stranici
-const objaveNaTrenutnojStranici = paginate(objave, trenutnaStranica, objavePoStranici);
+const objaveNaTrenutnojStranici = paginate(
+  objave,
+  trenutnaStranica,
+  objavePoStranici
+);
 ```
 
 `paginate` funkciju možemo implementirati na sljedeći način. Zapamtite da je `startIndex` uključen, a `endIndex` nije uključen u "podskup" polja.
@@ -1466,10 +1551,15 @@ function paginate(objave, trenutnaStranica, objavePoStranici) {
 ```
 
 ✅ Rezultat:
+
 ```javascript
-const trenutnaStranica = 1; 
+const trenutnaStranica = 1;
 const objavePoStranici = 5;
-const objaveNaTrenutnojStranici = paginate(objave, trenutnaStranica, objavePoStranici);
+const objaveNaTrenutnojStranici = paginate(
+  objave,
+  trenutnaStranica,
+  objavePoStranici
+);
 console.log(objaveNaTrenutnojStranici);
 
 //Output:
@@ -1481,9 +1571,13 @@ console.log(objaveNaTrenutnojStranici);
 //   {naslov: "Naslov objave 5", sadržaj: "Sadržaj objave 5", autor: "Ime autora 5", datum: "Datum objave 5"}
 // ]
 
-const trenutnaStranica = 2; 
+const trenutnaStranica = 2;
 const objavePoStranici = 10;
-const objaveNaTrenutnojStranici = paginate(objave, trenutnaStranica, objavePoStranici);
+const objaveNaTrenutnojStranici = paginate(
+  objave,
+  trenutnaStranica,
+  objavePoStranici
+);
 console.log(objaveNaTrenutnojStranici);
 
 //Output:
@@ -1503,17 +1597,18 @@ console.log(objaveNaTrenutnojStranici);
 
 ## 3.4.2 Metode pretraživanja polja
 
-| Metoda          | Objašnjenje                                                                                                                                                                              | Sintaksa                         | Primjer                                       | Output                 |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------- | --------------------- |
-| `indexOf()`     | Metoda pretražuje polje za dani `searchElement` i vraća indeks prvog pronađenog elementa, ili `-1` ako element nije pronađen. Prima i opcionalni parametar `fromIndex` preko kojeg se može definirati od kojeg indeksa da se pretražuje.                                                                                     | `Array.indexOf(searchElement, fromIndex)`         | `const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];` ; `beasts.indexOf('bison') == 1`                       | `1`              |
-| `lastIndexOf()` |  Metoda pretražuje polje za dani `searchElement` i vraća indeks zadnjeg pronađenog elementa, ili `-1` ako element nije pronađen. Prima i opcionalni parametar `fromIndex` preko kojeg se može definirati od kojeg indeksa da se pretražuje **unazad**.                                  | `Array.lastIndexOf(searchElement, fromIndex)`         | `const animals = ['Elephant', 'Tiger', 'Penguin', 'Elephant'];` ; `animals.lastIndexOf('Elephant') == 3`                   | `3`               |
-| `includes()` |  Slično kao kod `String.includes()` metode, ova metoda provjerava sadrži li polje traženu vrijednost. Vraća `boolean` vrijednost ovisno o sadržavanju. Opcionalni `fromIndex` parametar koji definira od kojeg indeksa se pretražuje.                                   | `Array.includes(searchElement, fromIndex)`          | `const array1 = [1, 2, 3]; array1.includes(2) == true` ; `const pets = ['cat', 'dog', 'bat']; pets.includes('cat', 1) == false `                   | `true` ; `false`               |
-| `find()` |  Vraća **vrijednost** prvog elementa u polju koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `undefined` ako nema nijednog podudaranja.                                     | `Array.find(callbackFn, thisArg)`          | `const numbers = [4, 9, 16, 25, 29];` ; `let first = numbers.find(function(value) {return value > 18;});`                    | `first == 25`               |
-| `findIndex()` |  Vraća **indeks** prvog elementa u polju koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `-1` ako nema nijednog podudaranja.                                  |  `Array.findIndex(callbackFn, thisArg)`         |`const numbers = [4, 9, 16, 25, 29];` ; `let firstIndex = numbers.find(function(value) {return value > 18;});`                   | `firstIndex == 3`               |
-| `findLast()` |  Vraća **vrijednost** prvog elementa u polju **iteriranjem unazad** koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `undefined` ako nema nijednog podudaranja.                                    | `Array.findLast(callbackFn, thisArg)`          | `const array1 = [5, 12, 50, 130, 44];`; `array1.findLast(function(value){return value > 45;})`                   | `130`               |
-| `findLastIndex()` |  Vraća **indeks** prvog elementa u polju **iteriranjem unazad** koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `-1` ako nema nijednog podudaranja.                                    | `Array.findLastIndex(callbackFn, thisArg)`          | `const array1 = [5, 12, 50, 130, 44];` ; `array1.findLastIndex(function(value){return value > 45;})`                   | `3`               |
+| Metoda            | Objašnjenje                                                                                                                                                                                                                                                            | Sintaksa                                      | Primjer                                                                                                                          | Output            |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `indexOf()`       | Metoda pretražuje polje za dani `searchElement` i vraća indeks prvog pronađenog elementa, ili `-1` ako element nije pronađen. Prima i opcionalni parametar `fromIndex` preko kojeg se može definirati od kojeg indeksa da se pretražuje.                               | `Array.indexOf(searchElement, fromIndex)`     | `const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];` ; `beasts.indexOf('bison') == 1`                                    | `1`               |
+| `lastIndexOf()`   | Metoda pretražuje polje za dani `searchElement` i vraća indeks zadnjeg pronađenog elementa, ili `-1` ako element nije pronađen. Prima i opcionalni parametar `fromIndex` preko kojeg se može definirati od kojeg indeksa da se pretražuje **unazad**.                  | `Array.lastIndexOf(searchElement, fromIndex)` | `const animals = ['Elephant', 'Tiger', 'Penguin', 'Elephant'];` ; `animals.lastIndexOf('Elephant') == 3`                         | `3`               |
+| `includes()`      | Slično kao kod `String.includes()` metode, ova metoda provjerava sadrži li polje traženu vrijednost. Vraća `boolean` vrijednost ovisno o sadržavanju. Opcionalni `fromIndex` parametar koji definira od kojeg indeksa se pretražuje.                                   | `Array.includes(searchElement, fromIndex)`    | `const array1 = [1, 2, 3]; array1.includes(2) == true` ; `const pets = ['cat', 'dog', 'bat']; pets.includes('cat', 1) == false ` | `true` ; `false`  |
+| `find()`          | Vraća **vrijednost** prvog elementa u polju koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `undefined` ako nema nijednog podudaranja.                        | `Array.find(callbackFn, thisArg)`             | `const numbers = [4, 9, 16, 25, 29];` ; `let first = numbers.find(function(value) {return value > 18;});`                        | `first == 25`     |
+| `findIndex()`     | Vraća **indeks** prvog elementa u polju koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `-1` ako nema nijednog podudaranja.                                   | `Array.findIndex(callbackFn, thisArg)`        | `const numbers = [4, 9, 16, 25, 29];` ; `let firstIndex = numbers.find(function(value) {return value > 18;});`                   | `firstIndex == 3` |
+| `findLast()`      | Vraća **vrijednost** prvog elementa u polju **iteriranjem unazad** koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `undefined` ako nema nijednog podudaranja. | `Array.findLast(callbackFn, thisArg)`         | `const array1 = [5, 12, 50, 130, 44];`; `array1.findLast(function(value){return value > 45;})`                                   | `130`             |
+| `findLastIndex()` | Vraća **indeks** prvog elementa u polju **iteriranjem unazad** koji zadovoljava danu `callback` funkciju. Opcionalno, prima `thisArg` koji predstavlja lokalnu `this` vrijednost varijable u `callback` funkciji. Vraća `-1` ako nema nijednog podudaranja.            | `Array.findLastIndex(callbackFn, thisArg)`    | `const array1 = [5, 12, 50, 130, 44];` ; `array1.findLastIndex(function(value){return value > 45;})`                             | `3`               |
 
 Kada koristit koju metodu pretraživanja?
+
 - ako želimo pronaći **indeks** **prvog** pronađenog elementa, koristimo `indexOf()`
 - ako želimo pronaći **indeks** **zadnjeg** pronađenog elementa, koristimo `lastIndexOf()`
 - ako želimo pronaći indeks **prvog** elementa koji zadovoljava uvjet definiran u `callback` funkciji, koristimo `findIndex()`
@@ -1522,15 +1617,16 @@ Kada koristit koju metodu pretraživanja?
 - ako želimo pronaći **vrijednost** **zadnjeg** elementa koji zadovoljava uvjet definiran u `callback` funkciji, koristimo `findLast()`
 - ako želimo provjeriti sadrži li polje traženu vrijednost, koristimo `includes()`
 
->Postoji još metoda pretraživanja polja, poput `filter()`, `some()`, `every()`, `map()`, `reduce()` itd. O njima ćemo više na vježbama iz naprednih funkcija.
+> Postoji još metoda pretraživanja polja, poput `filter()`, `some()`, `every()`, `map()`, `reduce()` itd. O njima ćemo više na vježbama iz naprednih funkcija.
 
 ### Primjer 5 - funkcija za brisanje korisnika iz polja
 
 **EduCoder šifra**: `DELETEme`
 
-Recimo da imamo polje `korisnici` koje sadrži nekoliko objekata `Korisnik`. Želimo implementirati funkciju `deleteUser` koja će primiti polje korisnika i korisničko ime, pronaći korisnika s tim korisničkim imenom i obrisati ga iz polja. 
+Recimo da imamo polje `korisnici` koje sadrži nekoliko objekata `Korisnik`. Želimo implementirati funkciju `deleteUser` koja će primiti polje korisnika i korisničko ime, pronaći korisnika s tim korisničkim imenom i obrisati ga iz polja.
 
 Upotrijebit ćemo konstruktor `Korisnik` i dodat ćemo još atribut `korisničko_ime`.
+
 ```javascript
 function Korisnik(ime, prezime, godina_rodenja, korisnicko_ime) {
   this.ime = ime;
@@ -1544,7 +1640,9 @@ function Korisnik(ime, prezime, godina_rodenja, korisnicko_ime) {
   };
 }
 ```
+
 Izrađujemo nekoliko korisnika i dodajemo ih u polje `korisnici`.
+
 ```javascript
 let korisnik1 = new Korisnik("Ivan", "Ivić", 1995, "iivic");
 let korisnik2 = new Korisnik("Marko", "Markić", 1990, "mmarkic90");
@@ -1555,25 +1653,30 @@ let korisnici = [korisnik1, korisnik2, korisnik3, korisnik4];
 ```
 
 Sada možemo implementirati funkciju `deleteUser` koja će primiti polje korisnika i korisničko ime, pronaći korisnika s tim korisničkim imenom i obrisati ga iz polja.
+
 ```javascript
 function deleteUser(korisnici, korisnicko_ime) {
-  const delIndex = korisnici.findIndex(function (korisnik) { // Naša callback funkcija vraća indeks prvog korisnika koji ima korisničko ime koje tražimo
-    return korisnik.korisničko_ime === korisnicko_ime; 
+  const delIndex = korisnici.findIndex(function (korisnik) {
+    // Naša callback funkcija vraća indeks prvog korisnika koji ima korisničko ime koje tražimo
+    return korisnik.korisničko_ime === korisnicko_ime;
   });
-  if (delIndex !== -1) { // Ako je korisnik pronađen, obriši ga iz polja
+  if (delIndex !== -1) {
+    // Ako je korisnik pronađen, obriši ga iz polja
     korisnici.splice(delIndex, 1); //Brišemo jedan element na indeksu delIndex
   }
   return korisnici; //Vraćamo novo polje korisnika
 }
 ```
+
 Kao povratnu vrijednost funkcije vraćamo novo polje korisnika. Izbrisat ćemo korisnika s korisničkim imenom `mmarkic90`.
 
 ✅Rezultat:
+
 ```javascript
 console.log(deleteUser(korisnici, "mmarkic90")); //Output: [Korisnik, Korisnik, Korisnik]
-                                              // 0: Korisnik {ime: "Ivan", prezime: "Ivić", godina_rodenja: 1995, korisničko_ime: "iivic", predstaviSe: ƒ}
-                                              // 1: Korisnik {ime: "Ana", prezime: "Anić", godina_rodenja: 1985, korisničko_ime: "aanic", predstaviSe: ƒ}
-                                              // 2: Korisnik {ime: "Petra", prezime: "Petrović", godina_rodenja: 1970, korisničko_ime: "ppetrovic70", predstaviSe: ƒ}
+// 0: Korisnik {ime: "Ivan", prezime: "Ivić", godina_rodenja: 1995, korisničko_ime: "iivic", predstaviSe: ƒ}
+// 1: Korisnik {ime: "Ana", prezime: "Anić", godina_rodenja: 1985, korisničko_ime: "aanic", predstaviSe: ƒ}
+// 2: Korisnik {ime: "Petra", prezime: "Petrović", godina_rodenja: 1970, korisničko_ime: "ppetrovic70", predstaviSe: ƒ}
 ```
 
 ### Primjer 6 - Implementacija `removeDuplicates` funkcije
@@ -1587,24 +1690,31 @@ let brojevi = [1, 2, 3, 4, 5, 1, 2, 6, 7, 6];
 
 let brojeviBezDuplikata = removeDuplicates(brojevi); // Output: [1, 2, 3, 4, 5, 6, 7] - ono što želimo
 ```
+
 Ovakvu funkciju možemo implementirati koristeći `filter` gotovu filter metodu, vrlo jednostavnu. Kako mi `filter` metodu još nismo odradili. Iskoristit ćemo znanje koje do sada imamo. Pokazat ćemo 2 načina implementacije ove funkcije.
 
-1. način počiva na ideji da su ključevi objekta jedinstveni, pa ćemo iskoristiti objekt kao pomoćnu strukturu za brisanje duplikata. 
+1. način počiva na ideji da su ključevi objekta jedinstveni, pa ćemo iskoristiti objekt kao pomoćnu strukturu za brisanje duplikata.
+
 ```javascript
 function removeDuplicates(polje) {
-let element, rezultatPolje = [], pomocniObjekt = {}; // Varijable koje ćemo koristiti
+  let element,
+    rezultatPolje = [],
+    pomocniObjekt = {}; // Varijable koje ćemo koristiti
 
-for (element = 0; element < polje.length; element++) { //Iteriramo kroz polje
-  pomocniObjekt[polje[element]] = 0; //Dodajemo parove ključ-vrijednost. Vrijednost nam nije bitna, a ključevi će biti elementi polja
-}
-for (element in pomocniObjekt) { //Iteriramo kroz ključeve objekta
-  rezultatPolje.push(element); //Dodajemo ključeve u novo polje
-}
-return rezultatPolje; //Vraćamo novo polje
+  for (element = 0; element < polje.length; element++) {
+    //Iteriramo kroz polje
+    pomocniObjekt[polje[element]] = 0; //Dodajemo parove ključ-vrijednost. Vrijednost nam nije bitna, a ključevi će biti elementi polja
+  }
+  for (element in pomocniObjekt) {
+    //Iteriramo kroz ključeve objekta
+    rezultatPolje.push(element); //Dodajemo ključeve u novo polje
+  }
+  return rezultatPolje; //Vraćamo novo polje
 }
 ```
 
 Testirajmo funkciju:
+
 ```javascript
 let brojevi = [1, 2, 3, 4, 5, 1, 2, 6, 7, 6];
 let brojeviBezDuplikata = removeDuplicates(brojevi);
@@ -1615,20 +1725,23 @@ let stringoviBezDuplikata = removeDuplicates(stringovi);
 console.log(stringoviBezDuplikata); // Output: ["jabuka", "kruška", "banana"]
 ```
 
-2. način bazira se na metodi `indexOf` za provjeru postojanja elementa u polju. Metoda vraća `-1` ako element nije pronađen, a indeks elementa ako je pronađen. 
+2. način bazira se na metodi `indexOf` za provjeru postojanja elementa u polju. Metoda vraća `-1` ako element nije pronađen, a indeks elementa ako je pronađen.
+
 ```javascript
 function removeDuplicates2(polje) {
-let rezultatPolje = [];
-for (let i = 0; i < polje.length; i++) {
-  if (rezultatPolje.indexOf(polje[i]) === -1) { // Čitaj: Ako element nije pronađen u rezultatPolje
-    rezultatPolje.push(polje[i]); // Ako element nije pronađen u rezultatPolje, dodajemo ga
+  let rezultatPolje = [];
+  for (let i = 0; i < polje.length; i++) {
+    if (rezultatPolje.indexOf(polje[i]) === -1) {
+      // Čitaj: Ako element nije pronađen u rezultatPolje
+      rezultatPolje.push(polje[i]); // Ako element nije pronađen u rezultatPolje, dodajemo ga
+    }
   }
-}
-return rezultatPolje; //Vraćamo novo polje
+  return rezultatPolje; //Vraćamo novo polje
 }
 ```
 
 Testirajmo funkciju:
+
 ```javascript
 let brojevi = [1, 2, 3, 4, 5, 1, 2, 6, 7, 6];
 let brojeviBezDuplikata = removeDuplicates2(brojevi);
@@ -1654,14 +1767,14 @@ console.log(stringoviBezDuplikata); // Output: ["jabuka", "kruška", "banana"]
    - dodajte metodu `nastupiSportasa(sportas)` koja će ispisati sve nastupe sportaša u konzolu u sljedećem formatu: `"Nastup 1: ${nastup1}, Nastup 2: ${nastup2}, ... Nastup N: ${nastupN}"`.
    - dodajte metodu `dohvatiZadnjaDvaNastupa(sportas)` koja će ispisati zadnja dva nastupa sportaša u konzolu. Koristite metodu `slice()`.
    - implementirajte globalnu funkciju `izbrisiSvimaPrviNastup(sportasi)` koja će obrisati svim sportašima prvi nastup. Koristite metodu `shift()`.
-3. Koristeći danu funkciju `gcd_two_numbers(x, y)` koja vraća najveći zajednički djelitelj dva broja, implementirajte funkciju `gcd_array(arr)` koja će primiti polje brojeva i vratiti najveći zajednički djelitelj svih brojeva u polju. Morate koristiti funkciju `gcd_two_numbers(x, y)` unutar funkcije `gcd_array(arr)`. 
+3. Koristeći danu funkciju `gcd_two_numbers(x, y)` koja vraća najveći zajednički djelitelj dva broja, implementirajte funkciju `gcd_array(arr)` koja će primiti polje brojeva i vratiti najveći zajednički djelitelj svih brojeva u polju. Morate koristiti funkciju `gcd_two_numbers(x, y)` unutar funkcije `gcd_array(arr)`.
+
 ```javascript
 function gcd_two_numbers(x, y) {
-  if ((typeof x !== 'number') || (typeof y !== 'number')) 
-    return false;
+  if (typeof x !== "number" || typeof y !== "number") return false;
   x = Math.abs(x);
   y = Math.abs(y);
-  while(y) {
+  while (y) {
     var t = y;
     y = x % y;
     x = t;
@@ -1669,6 +1782,7 @@ function gcd_two_numbers(x, y) {
   return x;
 }
 ```
+
 ```javascript
 function gcd_array(array) {
   // Vaš kôd ovdje
