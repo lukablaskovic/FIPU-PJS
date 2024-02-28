@@ -766,7 +766,7 @@ console.log(fun(5.5));
 // Output: 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5
 ```
 
-3. Napišite funkciju `izracunajSinKos()` koja računa sinus i kosinus kuta `d` (u stupnjevima) te vraća objekt s 2 svojstva: `sinus: sinsusVrijednost, kosinus: kosinusVrijednost` Za implementaciju koristite metode iz `Math` objekta. Stupnjeve pretvorite u radijane koristeći formulu: `radijani = stupnjevi * (π / 180)`. Dobivene vrijednosti zaokružite na 2 decimale.
+3. Napišite funkciju `izracunajSinKos()` koja računa sinus i kosinus kuta `d` (u stupnjevima) te vraća objekt s 2 svojstva: `sinus: sinusVrijednost, kosinus: kosinusVrijednost` Za implementaciju koristite metode iz `Math` objekta. Stupnjeve pretvorite u radijane koristeći formulu: `radijani = stupnjevi * (π / 180)`. Dobivene vrijednosti zaokružite na 2 decimale.
 
 ✅Rezultat:
 
@@ -1532,13 +1532,13 @@ Kada koristit koju metodu pretraživanja?
 
 Recimo da imamo polje `korisnici` koje sadrži nekoliko objekata `Korisnik`. Želimo implementirati funkciju `deleteUser` koja će primiti polje korisnika i korisničko ime, pronaći korisnika s tim korisničkim imenom i obrisati ga iz polja. 
 
-Upotrijebit ćemo konstruktor `Korisnik` i dodat ćemo još atribut `korisničko_ime`.
+Upotrijebit ćemo konstruktor `Korisnik` i dodat ćemo još atribut `korisnicko_ime`.
 ```javascript
 function Korisnik(ime, prezime, godina_rodenja, korisnicko_ime) {
   this.ime = ime;
   this.prezime = prezime;
   this.godina_rodenja = godina_rodenja;
-  this.korisničko_ime = korisnicko_ime;
+  this.korisnicko_ime = korisnicko_ime;
   this.predstaviSe = function () {
     console.log(
       `Bok! Ja sam ${this.ime} ${this.prezime}. Rođen/a sam ${this.godina_rodenja} godine.`
@@ -1560,7 +1560,7 @@ Sada možemo implementirati funkciju `deleteUser` koja će primiti polje korisni
 ```javascript
 function deleteUser(korisnici, korisnicko_ime) {
   const delIndex = korisnici.findIndex(function (korisnik) { // Naša callback funkcija vraća indeks prvog korisnika koji ima korisničko ime koje tražimo
-    return korisnik.korisničko_ime === korisnicko_ime; 
+    return korisnik.korisnicko_ime === korisnicko_ime; 
   });
   if (delIndex !== -1) { // Ako je korisnik pronađen, obriši ga iz polja
     korisnici.splice(delIndex, 1); //Brišemo jedan element na indeksu delIndex
