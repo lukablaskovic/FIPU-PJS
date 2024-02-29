@@ -743,7 +743,7 @@ Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda 
 
 ## Vježba 3
 
-**EduCoder šifra**: `matematika:)`
+**EduCoder šifra**: `matematika`
 
 1. Napišite funkciju `hipotenuza(duzinaA, duzinaB)` koja prima dužine dvije katete pravokutnog trokuta. Funkcija treba izračunati i vratiti dužinu hipotenuze primjenjujući Pitagorin poučak, koji glasi: `c=√(a²+b²)`, gdje su `a` i `b` dužine kateta, a `c` dužina hipotenuze. Ispiši rezultat u formatu `"Dužina hipotenuze je: [hipotenuza]"`. Za implementaciju koristite metode iz `Math` objekta.
 
