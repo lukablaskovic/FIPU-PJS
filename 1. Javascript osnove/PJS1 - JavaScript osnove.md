@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%; float:left;"></img>
+<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%;"></img>
 
 # [1] JavaScript osnove
 
@@ -19,7 +19,7 @@
 ## Sadržaj
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [1.JavaScript osnove](#1-javascript-osnove)
+- [\[1\] JavaScript osnove](#1-javascript-osnove)
   - [Sadržaj](#sadržaj)
   - [1.1 Uvod](#11-uvod)
   - [1.2 Gdje pisati JavaScript kȏd?](#12-gdje-pisati-javascript-kȏd)
@@ -38,7 +38,7 @@
   - [2.3 Koncept varijable u JavaScriptu](#23-koncept-varijable-u-javascriptu)
     - [2.3.1 JavaScript Strings](#231-javascript-strings)
   - [2.4 Eksponencijalna (znanstvena) notacija](#24-eksponencijalna-znanstvena-notacija)
-  - [2.5 BigInt DODATNO](#25-bigint-dodatno)
+  - [2.5 BigInt \[DODATNO\]](#25-bigint-dodatno)
   - [Vježba 3](#vježba-3)
   - [Vježba 4](#vježba-4)
 - [Samostalni zadatak za vježbu 1](#samostalni-zadatak-za-vježbu-1)
@@ -591,7 +591,7 @@ Deklarirajte dvije varijable `ime` i `prezime` i dodijelite im vrijednosti `Mark
 
 Rezultat:
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?raw=true" style="float:left;" alt="vjezba3" />
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?raw=true"  alt="vjezba3" />
 
 ## Vježba 4
 
@@ -601,7 +601,7 @@ Napomena, vrijednost u eksponencijalnom zapisu možete pretvoriti u broj koriste
 
 Rezultat:
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?raw=true" style="float:left;" alt="vjezba4" />
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?raw=true" alt="vjezba4" />
 
 # Samostalni zadatak za vježbu 1
 
@@ -619,3 +619,4 @@ Rezultat:
 3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s `2`. Sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
    - Upišite u novu varijablu `xsc` vrijednost varijable `x` u znanstvenom zapisu (napisati ručno!).
    - Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`.
+
