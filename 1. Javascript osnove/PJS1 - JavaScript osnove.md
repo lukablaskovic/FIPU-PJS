@@ -338,9 +338,11 @@ let g = true;
 let h = false;
 console.log(g && h); // false
 console.log(g || h); // true
-
-// Što ako se ne koriste uz boolean operande?
-// JavaScript će pokušati pretvoriti operande u boolean vrijednosti (npr. 0 u false, 1 u true, prazan string u false, string sa sadržajem u true, itd. Googlaj: javascript type coercion)
+```
+Što ako se ne koriste uz boolean operande?
+JavaScript će pokušati pretvoriti operande u boolean vrijednosti (npr. `0` u `false`, `1` u `true`, prazan string u `false`, string sa sadržajem u `true` itd.
+ Googlaj: javascript type coercion)
+```javascript
 
 // Logički AND
 console.log(5 && 6); // 6 (Pogledati u tablici - '&&' evaluira s lijeva na desno i vraća zadnji koji je 'true')
@@ -362,6 +364,111 @@ console.log(!""); // true
 console.log(!0); // true
 console.log(!5); // false
 ```
+
+Naglasi smo da je izraz (eng. ***expression***) u JavaScriptu bilo koji valjani kod koji se evaluira u vrijednost. 
+
+*Primjer 1:*
+
+- `5 + 5` je izraz koji se evaluira u `10`, 
+- kao i izraz `5 < 10` koji se evaluira u `true`, 
+- ili `9 < 9` koji se evaluira u `false`.
+
+Logički operatori `&&`, `||` i `!` su također izrazi, koji se evaluiraju u `true` ili `false`, kako smo već prikazali u tablici operatora.
+
+<hr>
+
+*Primjer 2:*
+- Izraz `true && true` se evaluira u `true`, 
+- Izraz `true && false` se evaluira u `false`.
+- Izraz `true || false` se evaluira u `true`,
+- Izraz `false || false` se evaluira u `false`.
+
+Jednako tako se izrazi iz primjera 1 mogu koristiti kao operandi u izrazima iz primjera 2. Vrlo je važno pritom pametno imenovati varijable, kako bi se izrazi mogli čitati kao rečenice.
+
+<hr>
+
+*Primjer 3:* Želimo definirati logički izraz i nekoliko varijabli kako bi zaključili jesmo li pročitali broj stranica knjige koji smo si zadali kao cilj za ovaj tjedan. 
+```javascript
+let brojStranicaProcitano = 100;
+let ciljaniBrojStranica = 200;
+
+let ciljPostignut = brojStranicaProcitano >= ciljaniBrojStranica; // false
+```
+
+<hr>
+
+*Primjer 4:* Želimo definirati logički izraz i nekoliko varijabli kako bi zaključili jesmo li obavili sve zadatke prije nego što možemo krenuti na putovanje.
+```javascript
+let kupljeneAvionskeKarte = true;
+let rezerviraniSmjestaj = true;
+
+let spremniZaPutovanje = kupljeneAvionskeKarte && rezerviraniSmjestaj; // true
+```
+Recimo da postoji opcija i da idemo s vlakom. 
+```javascript
+let kupljeneKarteZaVlak = true;
+let kupljeneAvionskeKarte = false;
+let rezerviraniSmjestaj = true;
+
+let spremniZaPutovanje = (kupljeneAvionskeKarte || kupljeneKarteZaVlak) && rezerviraniSmjestaj; // true - jer je bar jedan od uvjeta prijevoza ispunjen
+```
+Međutim i uvjet prijevoza možemo logično definirati kao varijablu!
+```javascript
+let kupljeneKarteZaVlak = true;
+let kupljeneAvionskeKarte = false;
+let rezerviraniSmjestaj = true;
+let uvjetPrijevoza = kupljeneAvionskeKarte || kupljeneKarteZaVlak; // true - jer je bar jedan od uvjeta prijevoza ispunjen
+let spremniZaPutovanje = uvjetPrijevoza && rezerviraniSmjestaj; // true - sada oba moraju biti ispunjena!
+```
+
+<hr>
+
+*Primjer 5.* Želimo definirati nekoliko logičkih izraza i varijabli kako bi zaključili jesmo li zadovoljili sve uvjete za prolazak kolegija na fakultetu. Dani su sljedeći uvjeti:
+- student mora imati više ili točno 50% bodova na završnom pismenom i više ili točno 50% bodova na završnom usmenom ispitu ili mora imati ukupno 50% bodova ostvarenih tijekom semestra
+- student mora biti prisutan na više od 80% predavanja
+- student mora predati projektni zadatak
+- projektni zadatak mora biti ocijenjen s pozitivnom ocjenom
+
+Kako možemo definirati prolaz preko ispita?
+```javascript
+// Bodovi na pismenom i usmenom ispitu
+let bodoviNaPismenom = 60;
+let bodoviNaUsmenom = 40;
+
+// Maksimalni broj bodova na pismenom i usmenom ispitu
+let pismeniMaxBodova = 100;
+let usmeniMaxBodova = 100;
+
+// Prisustvo na predavanjima
+let ukupniBrojPredavanja = 15;
+let brojPrisustva = 14;
+
+// Projektni zadatak
+let predanProjektniZadatak = true;
+let ocjenaProjektnogZadatka = 3;
+```
+
+Prvo ćemo definirati nekoliko logičkih i usporednih izraza, kako bi lakše ispisali konačan rezultat.
+```javascript
+let prolazNaPismenom = (bodoviNaPismenom / pismeniMaxBodova) >= 0.5;
+let prolazNaUsmenom = (bodoviNaUsmenom / usmeniMaxBodova) >= 0.5;
+
+let prisutnostZadovoljavajuca = (brojPrisustva / ukupniBrojPredavanja) > 0.8;
+
+let projektRijesen = predanProjektniZadatak && ocjenaProjektnogZadatka > 1;
+
+let prolaz = prolazNaPismenom && prolazNaUsmenom && prisutnostZadovoljavajuca && projektRijesen // false
+```
+Dodat ćemo i alternativu polaganja putem kontinuiranog praćenja.
+```javascript
+let kolokvij1 = 40;
+let kolokvij2 = 60;
+let kolokvijiMaxBodova = 200;
+let prolazNaKolokvijima = (kolokvij1 + kolokvij2) / kolokvijiMaxBodova >= 0.5;
+
+let prolaz = ((prolazNaPismenom && prolazNaUsmenom) || prolazNaKolokvijima) && prisutnostZadovoljavajuca && projektRijesen // true
+```
+
 
 ### 2.2.4 Typeof operator
 
@@ -617,6 +724,14 @@ Rezultat:
    - Ispišite u konzolu "Moje ime i prezime imaju __ i __ slova." koristeći `template literals`.
    - Ispišite u konzolu "It is __ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
 3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s `2`. Sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
-   - Upišite u novu varijablu `xsc` vrijednost varijable `x` u znanstvenom zapisu (napisati ručno!).
-   - Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`.
 
+4. Recimo da si želite definirati daily routine koji se sastoji od nekoliko ciljeva. Koristeći logičke operatore i operatore usporedbe, definirajte varijablu `daily_routine_ostvaren`, temeljem sljedećih tvrdnji. Vaš `daily_routine_ostvaren` je ispunjen ako:
+   - ste pročitali više od 50 stranica vaše omiljene knjige **ili** ste vježbali JavaScript barem 1 sat
+   - ste popili više od 2 litre vode
+   - ste vježbali minimalno 30 minuta **ili** ste prošetali minimalno 3 km
+   - ste naučili nešto novo 
+   - ste se naspavali minimalno 7 sati
+   - ste se nasmijali
+
+    Za svaki od danih izraza deklarirajte varijablu za ostvarenu vrijednost i ciljanu vrijednost, te boolean varijablu koja će sadržavati rezultat ostvarenja. Na primjer, za izraz `ste popili više od 2 litre vode` deklarirajte varijable `unos_vode` i `ciljani_dnevni_unos_vode` te varijablu `dnevni_unos_vode_zadovoljen`.
+    - Definirajte varijablu `daily_routine_ostvaren` koja će sadržavati rezultat ostvarenja svih dnevnih ciljeva.
