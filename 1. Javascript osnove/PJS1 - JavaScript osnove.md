@@ -198,9 +198,9 @@ const PI; // Netočno!
 
 ### 2.2.1 Izrazi (eng. _expressions_) vs tvrdnje (eng. _statements_)
 
-U JavaScriptu, **izraz** (eng. **_expression_**) je bilo koji valjani kȏd koji se evaluira/razlaže (eng. _resolve_) u vrijednost.
-Primjer izraza može biti bilo koja matematička operacija, npr. za `x = 3`: `5 + 5`, ili `x = 7`, ili `x = x + 5`. Navedeni izrazi se evaluiraju u vrijednosti: `3`, `10`, `10` i `12`.
-Primjer izraza ne moraju biti samo brojevi! Evo još primjera izraza da bude jasnije:
+U JavaScriptu, **izraz** (eng. **_expression_**) je bilo koji valjani kȏd koji se evaluira/razlaže (eng. **_resolve_**) u vrijednost.
+Primjer izraza može biti bilo koja matematička operacija, npr. za `x = 3`, `5 + 5`, ili `x = 7`, ili `x = x + 5`. Navedeni izrazi se evaluiraju u vrijednosti: `3`, `10`, `10` i `12`.
+Izrazi ne moraju biti samo brojevi! Evo još primjera izraza da bude jasnije:
 
 - aritmetički izrazi: `5 + 3` ili `4 * 2`
 - izrazi znakovnog niza: `"Hello " + "World"`
@@ -211,7 +211,7 @@ Najjednostavnije rečeno, računalni program je popis "instrukcija" koje računa
 
 ### 2.2.2 Tablica osnovnih JavaScript operatora
 
-Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preciznije: sve kompleksnije izraze spajamo pomoću operatora, poput `=` i `+`. Postoji više vrsta operatora, mi ćemo se baviti s nekima od njih:
+Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preciznije: sve kompleksnije izraze spajamo pomoću operatora, poput `=` i `+`. Postoji više vrsta operatora, mi ćemo se baviti samo nekima od njih:
 
 - **Aritmetički operatori** - primarno se koriste za izvođenje aritmetičkih operacija nad brojevima
 - **Operatori pridruživanja** - koriste se za pridruživanje vrijednosti varijablama
@@ -350,8 +350,8 @@ console.log(false && 0); // false
 // Logički OR
 
 console.log(5 || 6); // 5 (Pogledati u tablici - '||' evaluira s lijeva na desno i vraća prvi koji je 'true')
-console.log(0 || 7); // 7 (Pogledati u tablici - '||' evaluira s lijeva na desno i vraća prvi koji je 'true', )
-console.log(false || 0); // 0
+console.log(0 || 7); // 7 (Pogledati u tablici - '||' evaluira s lijeva na desno i vraća prvi koji je 'true')
+console.log(false || 0); // 0 (Pogledati u tablici - '||' evaluira s lijeva na desno i vraća zadnji koji je 'false')
 
 // Logički NOT
 
@@ -383,7 +383,7 @@ console.log(typeof undefined); // undefined
 console.log(typeof null); // object
 ```
 
-Zašto je typeof null objekt? U JavaScriptu, `null` doslovno predstavlja "ništa". Nažalost, typeof funkcija će vratiti da je tip podatka `null` objekt. Radi se o bugu koji je prisutan od samih početaka ovog jezika.
+Zašto je `typeof null` = objekt? U JavaScriptu, `null` doslovno predstavlja "ništa". Nažalost, `typeof` funkcija će vratiti da je tip podatka `null` objekt. Radi se o bugu koji je prisutan od samih početaka ovog jezika.
 
 Kojeg će tipa biti sljedeća varijabla?
 
@@ -400,7 +400,7 @@ Odgovor je `undefined`. `undefined` je tip podatka koji se koristi kada varijabl
 
 ## Vježba 1
 
-Idemo napraviti kratku vježbu onoga što smo dosad prošli. U `script.js` datoteci deklarirajte varijable `a`, `b` i `c` i dodijelite im vrijednosti `5`, `"5"` i true. Ispišite vrijednosti varijabli u konzolu i provjerite njihove tipove. Kȏd dodajte unutar funkcije `showMessage()`.  
+Idemo napraviti kratku vježbu onoga što smo dosad prošli. U `script.js` datoteci deklarirajte varijable `a`, `b` i `c` i dodijelite im vrijednosti `5`, `"5"` i `true`. Ispišite vrijednosti varijabli u konzolu i provjerite njihove tipove. Kȏd dodajte unutar funkcije `showMessage()`.  
 Nakon toga, `typeof` operatorom provjerite tipove varijabli i u konzolu ispišite tvrdnju za svaku varijablu, npr. "Varijabla a je tipa number". Izraze u `console.log()` možete spojiti pomoću `+` operatora.
 
 Zašto `console.log(a == b)` vraća `true`? Objasnite.
@@ -462,15 +462,6 @@ console.log(x); // Volvo164
 
 ````
 <p>Imajte na umu da prioritet i asocijativnost operatora utječu samo na redoslijed evaluacije <b>operatora</b>, ali ne i na redoslijed evaluacije <b>operanada</b>. <b><u>Operandi se uvijek evaluiraju s lijeva na desno!</b></u>, međutim njihovi rezultati se sastavljaju prema redoslijedu prioritera operatora!</p>
-
-```javascript
-   (1 + ( ( (2 ** 3) * 4 ) / 5) ) >> 6
-// │    │ │ └─ 1. ─┘     │    │ │
-// │    └─│─────── 2. ───│────┘ │
-// └──────│───── 3. ─────│──────┘
-//        └───── 4. ─────┘
-```
-
 </details>
 
 
@@ -501,7 +492,7 @@ Možemo koristiti i navodne znakove unutar stringa, ali moramo paziti da se ne p
 let x = "Petar je rekao: 'Dobar dan!'";
 ```
 
-Možemo koristiti i varijable unutar stringa, ali onda moramo koristiti backtickse `` te `${}` za prikaz same varijable. Ovaj princip se zove [**template literals**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+Možemo koristiti i varijable unutar stringa, ali onda moramo koristiti backtickse `` te `${}` za prikaz same varijable. Ovakva sintaksa se zove [**template literals**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
 
 ```javascript
 let ime = "Petar";
@@ -509,7 +500,7 @@ let predstavljanje = `Moje ime je ${ime}`;
 console.log(predstavljanje); // Moje ime je Petar
 ```
 
-Istu stvar možemo dobiti i sa `+` operatorom, ali ovaj princip je točan i puno čitljiviji!
+Istu stvar možemo dobiti i sa `+` operatorom, ali `template literals` sintaksa je jednostavnija i puno čitljivija!
 
 ```javascript
 let ime = "Petar";
@@ -604,7 +595,7 @@ Rezultat:
 
 ## Vježba 4
 
-Pohranite u varijablu `cijenaProizvoda` vrijednost 5e3, u drugu varijablu `valuta` pohranite vrijednost "EUR".
+Pohranite u varijablu `cijenaProizvoda` vrijednost `5e3`, u drugu varijablu `valuta` pohranite vrijednost "EUR".
 U konzolu ispišite rečenicu `Cijena proizvoda je 5000 EUR.` koristeći `template literals`.
 Napomena, vrijednost u eksponencijalnom zapisu možete pretvoriti u broj koristeći `Number(value)` funkciju.
 
@@ -614,17 +605,17 @@ Rezultat:
 
 # Samostalni zadatak za vježbu 1
 
-**Napomena**: Ne predaje se i ne boduje se. Zadatak rješavate u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji. 
+**Napomena**: Ne predaje se i ne boduje se. Zadatak rješavate u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
 
 **EduCoder šifra**: `a_new_hope`
 
 1. Deklarirajte tri konstante i jednu promjenjivu varijablu. Konstante neka budu vaše `ime` i `prezime` i `godina_rodenja`. Promjenjivu varijablu nazovite `trenutno_vrijeme`.
    - U varijable `ime` i `prezime` pohranite svoje ime i prezime, a u varijablu `godina_rodenja` pohranite godinu rođenja kao cjelobrojnu vrijednost. U varijablu `trenutno_vrijeme` pohranite trenutno vrijeme koristeći `new Date()` objekt.
-   - Dodajte novu varijablu `godine` i u nju izračunajte koliko imate godina koristeći: funkciju [`getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) nad varijablom `trenutno_vrijeme` i varijablu `godina_rodenja`. Radi pojednostavljivanja, pretpostavljamo da je vaš rođendan već prošao ove godine.
+   - Dodajte novu varijablu `godine` i u nju izračunajte koliko imate godina koristeći: funkciju [`getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) nad varijablom `trenutno_vrijeme` i varijablu `godina_rodenja`. Sintaksa je: `varijabla.getFullYear()`. Radi pojednostavljivanja, pretpostavljamo da je vaš rođendan već prošao ove godine.
 2. Koristeći [`template literals`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), u konzolu ispišite "Bok moje ime je __ __ i imam __ godina.".
    - Deklarirajte dvije nove konstante `ime_duljina` i `prezime_duljina` u koje ćete pohraniti broj slova u vašem imenu i prezimenu koristeći funkciju [`length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) nad varijablama `ime` i `prezime`.
    - Ispišite u konzolu "Moje ime i prezime imaju __ i __ slova." koristeći `template literals`.
    - Ispišite u konzolu "It is __ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
-3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s 2, sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
+3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s `2`. Sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
    - Upišite u novu varijablu `xsc` vrijednost varijable `x` u znanstvenom zapisu (napisati ručno!).
    - Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`.
