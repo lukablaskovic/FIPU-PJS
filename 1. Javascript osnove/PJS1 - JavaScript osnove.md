@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%"></img>
+<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%; float:left;"></img>
 
 # [1] JavaScript osnove
 
@@ -19,7 +19,7 @@
 ## Sadržaj
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [\[1\] JavaScript osnove](#1-javascript-osnove)
+- [1.JavaScript osnove](#1-javascript-osnove)
   - [Sadržaj](#sadržaj)
   - [1.1 Uvod](#11-uvod)
   - [1.2 Gdje pisati JavaScript kȏd?](#12-gdje-pisati-javascript-kȏd)
@@ -38,7 +38,7 @@
   - [2.3 Koncept varijable u JavaScriptu](#23-koncept-varijable-u-javascriptu)
     - [2.3.1 JavaScript Strings](#231-javascript-strings)
   - [2.4 Eksponencijalna (znanstvena) notacija](#24-eksponencijalna-znanstvena-notacija)
-  - [2.5 BigInt \[DODATNO\]](#25-bigint-dodatno)
+  - [2.5 BigInt DODATNO](#25-bigint-dodatno)
   - [Vježba 3](#vježba-3)
   - [Vježba 4](#vježba-4)
 - [Samostalni zadatak za vježbu 1](#samostalni-zadatak-za-vježbu-1)
@@ -158,7 +158,7 @@ console.log(y);
 
 ## 2.1 Tipovi podataka
 
-JavaScript je slabo tipizirani jezik (eng. _weakly typed_), što znači da razlikuje različite tipove varijable, no ne moramo ih strogo navoditi prilikom deklaracije varijable. Tip podatka varijable određuje se automatski prilikom dodjele vrijednosti varijabli.
+JavaScript je slabo tipizirani jezik (eng. _**weakly typed**_), što znači da razlikuje različite tipove varijable, no ne moramo ih strogo navoditi prilikom deklaracije varijable. Tip podatka varijable određuje se automatski prilikom dodjele vrijednosti varijabli.
 Za provjeru tipa podatka varijable koristimo `typeof` operator.
 
 ```javascript
@@ -452,7 +452,7 @@ let x = "Volvo" + 16 + 4;
   <summary>Spoiler Warning!</summary>
   <p>U prvom primjeru, JavaScript tretira 16 i 4 kao brojeve, dok ne dođe do "Volvo", rezultat će biti "20Volvo".  </p>
   <p>U drugom primjeru, budući da je prvi operand string, JavaScript će sve operande tretirati kao stringove, rezultat će biti "Volvo164".</p>
-  
+
   ```javascript
   let x = 16 + 4 + "Volvo";
   console.log(x); // 20Volvo
@@ -591,7 +591,7 @@ Deklarirajte dvije varijable `ime` i `prezime` i dodijelite im vrijednosti `Mark
 
 Rezultat:
 
-![vjezba3](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?raw=true" style="float:left;" alt="vjezba3" />
 
 ## Vježba 4
 
@@ -601,7 +601,7 @@ Napomena, vrijednost u eksponencijalnom zapisu možete pretvoriti u broj koriste
 
 Rezultat:
 
-![vjezba4](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?raw=true" style="float:left;" alt="vjezba4" />
 
 # Samostalni zadatak za vježbu 1
 
