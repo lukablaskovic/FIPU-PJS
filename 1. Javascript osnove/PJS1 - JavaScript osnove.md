@@ -729,7 +729,7 @@ Napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
 
 4. Recimo da si želite definirati daily routine koji se sastoji od nekoliko ciljeva. Koristeći logičke operatore i operatore usporedbe, definirajte varijablu `daily_routine_ostvaren`, temeljem sljedećih tvrdnji. Vaš `daily_routine_ostvaren` je ispunjen ako:
    - ste pročitali više od 50 stranica vaše omiljene knjige **ili** ste vježbali JavaScript barem 1 sat
-   - ste popili više od 2 litre vode
+   - ste popili između litre i dvije litre vode
    - ste vježbali minimalno 30 minuta **ili** ste prošetali minimalno 3 km
    - ste naučili nešto novo 
    - ste se naspavali minimalno 7 sati
