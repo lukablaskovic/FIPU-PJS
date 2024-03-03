@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%;"></img>
+<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%; float:left;"></img>
 
 # [1] JavaScript osnove
 
@@ -19,7 +19,7 @@
 ## Sadržaj
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [\[1\] JavaScript osnove](#1-javascript-osnove)
+- [1 JavaScript osnove](#1-javascript-osnove)
   - [Sadržaj](#sadržaj)
   - [1.1 Uvod](#11-uvod)
   - [1.2 Gdje pisati JavaScript kȏd?](#12-gdje-pisati-javascript-kȏd)
@@ -38,7 +38,7 @@
   - [2.3 Koncept varijable u JavaScriptu](#23-koncept-varijable-u-javascriptu)
     - [2.3.1 JavaScript Strings](#231-javascript-strings)
   - [2.4 Eksponencijalna (znanstvena) notacija](#24-eksponencijalna-znanstvena-notacija)
-  - [2.5 BigInt \[DODATNO\]](#25-bigint-dodatno)
+  - [2.5 BigInt DODATNO](#25-bigint-dodatno)
   - [Vježba 3](#vježba-3)
   - [Vježba 4](#vježba-4)
 - [Samostalni zadatak za vježbu 1](#samostalni-zadatak-za-vježbu-1)
@@ -47,7 +47,7 @@
 
 ## 1.1 Uvod
 
-1. **Web stranice**: Zamislimo da je web stranica ljudsko tijelo.
+1. **Web stranica**: Zamislimo da je web stranica ljudsko tijelo.
 
    - **HTML** (Hypertext Markup Language) je kostur koji daje strukturu i podršku tijelu.
    - **CSS** (Cascading Style Sheets) je koža koja daje izgled tijelu.
@@ -221,7 +221,7 @@ Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preci
 
 | Operator                                                |     Vrsta     | Broj operanada |                                                                                                                     Opis                                                                                                                     |                                                                                                                    Primjer |
 | :------------------------------------------------------ | :-----------: | :------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------: |
-| **Osnovni aritmetički `+`, `-`, `*`, `/`**              |  Aritmetički  |  binarni (2)   |                                                                                                      Standardni aritmetički operatori.                                                                                                       |                                                                                   `2 + 3` vraća ` 5`, `5 `\*`6` vraća `30` |
+| **Osnovni aritmetički `+`, `-`, `*`, `/`**              |  Aritmetički  |  binarni (2)   |                                                                                                      Standardni aritmetički operatori.                                                                                                       |                                                                                   `2 + 3` vraća ` 5`, `5 * 6` vraća `30` |
 | **Unarni `+`**                                          |  Aritmetički  |   unarni (1)   |                                                                                              Pokušava pretvoriti operand u broj, ako već nije.                                                                                               |                                                                                          +`"3"` vraća 3, `+true` vraća `1` |
 | **Unarni `-`**                                          |  Aritmetički  |   unarni (1)   |                                                                                                           Vraća negaciju operanda.                                                                                                           |                                                                                              ako je `x=3`, `-x` vraća `-3` |
 | **Inkrement `++`**                                      |  Aritmetički  |   unarni (1)   |                                             Povećava svoj operand za 1, vraćajući novu vrijednost ako se koristi kao prefix (`++x`), ili izvornu vrijednost ako se koristi kao postfix (`x++`).                                              |       ako je `x = 3`, onda `++x` postavlja `x` na `4` i vraća `4`. Ali, `x++` vraća `3` i nakon toga postavlja `x` na `4`. |
@@ -698,17 +698,20 @@ Deklarirajte dvije varijable `ime` i `prezime` i dodijelite im vrijednosti `Mark
 
 Rezultat:
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?raw=true"  alt="vjezba3" />
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba3.png?raw=true" style="float:left;"  alt="vjezba3" />
 
 ## Vježba 4
 
-Pohranite u varijablu `cijenaProizvoda` vrijednost `5e3`, u drugu varijablu `valuta` pohranite vrijednost "EUR".
-U konzolu ispišite rečenicu `Cijena proizvoda je 5000 EUR.` koristeći `template literals`.
-Napomena, vrijednost u eksponencijalnom zapisu možete pretvoriti u broj koristeći `Number(value)` funkciju.
+Želite si definirati nekoliko ciljeva za ovaj tjedan kako biste ispunili vaš `weekly_goal`. Vaši ciljevi definirani su sljedećim tvrdnjama, odnosno vaš `weekly_goal` je ispunjen ako:
+- želim proučiti PJS1 skriptu iz JavaScripta
+- želim pročitati barem 50 stranica omiljene knjige
+- želim vježbati JavaScript barem 2 sata ili riješiti barem 10 zadataka
+- želim se svaki dan naspavati
+
+Za svaku izjavu definirajte po 3 varijable, jednu za ciljanu vrijednost, jednu za ostvarenu vrijednost i jednu za rezultat ostvarenja. Na primjer, za izjavu `želim pročitati barem 50 stranica omiljene knjige` deklarirajte varijable `broj_procitanih_stranica` i `ciljani_broj_stranica` te varijablu `cilj_citanje`.
 
 Rezultat:
-
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/vjezba4.png?raw=true" alt="vjezba4" />
+Napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
 
 # Samostalni zadatak za vježbu 1
 
