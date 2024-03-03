@@ -19,7 +19,7 @@
 ## Sadržaj
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [1 JavaScript osnove](#1-javascript-osnove)
+- [\[1\] JavaScript osnove](#1-javascript-osnove)
   - [Sadržaj](#sadržaj)
   - [1.1 Uvod](#11-uvod)
   - [1.2 Gdje pisati JavaScript kȏd?](#12-gdje-pisati-javascript-kȏd)
@@ -38,7 +38,7 @@
   - [2.3 Koncept varijable u JavaScriptu](#23-koncept-varijable-u-javascriptu)
     - [2.3.1 JavaScript Strings](#231-javascript-strings)
   - [2.4 Eksponencijalna (znanstvena) notacija](#24-eksponencijalna-znanstvena-notacija)
-  - [2.5 BigInt DODATNO](#25-bigint-dodatno)
+  - [2.5 BigInt \[DODATNO\]](#25-bigint-dodatno)
   - [Vježba 3](#vježba-3)
   - [Vježba 4](#vježba-4)
 - [Samostalni zadatak za vježbu 1](#samostalni-zadatak-za-vježbu-1)
@@ -234,7 +234,7 @@ Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preci
 | **Pomnoži i pridruži `*=`**                             | Pridruživanja |  binarni (2)   |                                                                                     Pomnoži vrijednosti 2 operanda i rezultat pridruži lijevom operandu.                                                                                     |                                                                                                  `a = 2`, `a*=3` vraća `6` |
 | **Podijeli i pridruži `/=`**                            | Pridruživanja |  binarni (2)   |                                                                                    Podijeli vrijednosti 2 operanda i rezultat pridruži lijevom operandu.                                                                                     |                                                                                                `a = 2`, `a/=2` vraća `1.5` |
 | **Ostatak i pridruži `%=`**                             | Pridruživanja |  binarni (2)   |                                                                          Izračunaj cjelobrojni ostatak vrijednosti 2 operanda i rezultat pridruži lijevom operandu.                                                                          |                                                                                                  `a = 3`, `a%=2` vraća `1` |
-| **Jednako `==`**                                        |   Usporedni   |  binarni (2)   |                                                                                                    Vrati `true` ako su operandi jednaki.                                                                                                     |                                     `1 == 1` vraća `true`, `'hello' == 'hello'` vraća `true`, ali `5 == '5'` vraća `false` |
+| **Jednako `==`**                                        |   Usporedni   |  binarni (2)   |                                                                                                    Vrati `true` ako su operandi jednaki.                                                                                                     |                                     `1 == 1` vraća `true`, `'hello' == 'hello'` vraća `true`, `5 == '5'` također vraća `true` |
 | **Nejednako `!=`**                                      |   Usporedni   |  binarni (2)   |                                                                                                   Vrati `true` ako operandi nisu jednaki.                                                                                                    |                                                                  `1 != 1` vraća `false`, `'hello' != 'world'` vraća `true` |
 | **Identično `===`**                                     |   Usporedni   |  binarni (2)   |                                                                                     Vrati `true` ako operandi su operandi jednaki i istog tipa podataka.                                                                                     |         `1 === 1` vraća `true`, `'hello' === 'hello'` vraća `true`, `'1' === 1` vraća `false`, `0 === false` vraća `false` |
 | **Identično nejednako `!==`**                           |   Usporedni   |  binarni (2)   |                                                                    Vrati `true` ako su operandi jednaki ali različitog tipa, ili ako su različiti i istog tipa. podataka.                                                                    |         `1 !== 1` vraća `false`, `'hello' !== 'hello'` vraća `false`, `'1' !== 1` vraća `true`, `0 !== false` vraća `true` |
@@ -244,7 +244,6 @@ Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preci
 | **Logički OR `\|\|`**                                   |    Logički    |  binarni (2)   | Za skup boolean operanada rezultat će biti `true` ako je jedan ili više operanada `true`. Ako generaliziramo, vraća vrijednost prvog `truthy` operanda kod evaluacije s lijeva na desno, ili vrijednost zadnjeg operanda ako su svi `false`. |     za `a = 3` i `b = -2`, izraz `(a > 0 \|\| b > 0)` vraća `true`, `true \|\| 0` vraća `true`, ali `false \|\| 0 vraća 0` |
 | **Logički NOT `!`**                                     |    Logički    |   unarni (1)   |                               Mijenja `true` izraz u `false` i obrnuto. Tipično se koristi sa boolean operandima, ali kada ne, vraća `false` kada se dodaje na tkz. `truthy` izraze, u suprotnom vraća `true`.                               | za `a = 3` i `b = -2`, izraz `(!(a > 0 \|\| b > 0))` vraća `false`. `!""` vraća `true`, ali `!"Hello World"` vraća `false` |
 | **Operator tipa `typeof`**                              |     Type      |   unarni (1)   |                                                                                               Vraća niz znakova koji označava vrstu operatora.                                                                                               |               `typeof(2)` vraća `"number"`, `typeof("Banana")` vraća `"string"`, `typeof(someFunction)` vraća `"function"` |
-| **Operator tipa `instanceof`**                          |     Type      |  binarni (2)   |                                                                Vraća `true` ako je `object` instanca specificiranog `constuctor`-a u izrazu `object instanceof constructor`.                                                                 |                                                                                   `"green" instanceof String` vraća `true` |
 
 ### 2.2.3 Dodatni primjeri korištenja operatora
 
@@ -365,7 +364,7 @@ console.log(!0); // true
 console.log(!5); // false
 ```
 
-Naglasi smo da je izraz (eng. ***expression***) u JavaScriptu bilo koji valjani kod koji se evaluira u vrijednost. 
+Naglasili smo da je izraz (eng. ***expression***) u JavaScriptu bilo koji valjani kod koji se evaluira u vrijednost. 
 
 *Primjer 1:*
 
@@ -708,7 +707,7 @@ Rezultat:
 - želim vježbati JavaScript barem 2 sata ili riješiti barem 10 zadataka
 - želim se svaki dan naspavati
 
-Za svaku izjavu definirajte po 3 varijable, jednu za ciljanu vrijednost, jednu za ostvarenu vrijednost i jednu za rezultat ostvarenja. Na primjer, za izjavu `želim pročitati barem 50 stranica omiljene knjige` deklarirajte varijable `broj_procitanih_stranica` i `ciljani_broj_stranica` te varijablu `cilj_citanje`.
+Za svaku izjavu definirajte po nekoliko pomoćnih varijabli, npr. jednu za ciljanu vrijednost, jednu za ostvarenu vrijednost i jednu za rezultat ostvarenja (boolean). Na primjer, za izjavu `želim pročitati barem 50 stranica omiljene knjige` deklarirajte varijable `broj_procitanih_stranica` i `ciljani_broj_stranica` te varijablu `cilj_citanje`.
 
 Rezultat:
 Napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
