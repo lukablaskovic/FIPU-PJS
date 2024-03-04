@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%; box-shadow: none !important"></img>
+<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%; box-shadow: none !important;"></img>
 
 # [1] JavaScript osnove
 
@@ -236,8 +236,8 @@ Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preci
 | **Ostatak i pridruži `%=`**                             | Pridruživanja |  binarni (2)   |                                                                          Izračunaj cjelobrojni ostatak vrijednosti 2 operanda i rezultat pridruži lijevom operandu.                                                                          |                                                                                                  `a = 3`, `a%=2` vraća `1` |
 | **Jednako `==`**                                        |   Usporedni   |  binarni (2)   |                                                                                                    Vrati `true` ako su operandi jednaki.                                                                                                     |                                     `1 == 1` vraća `true`, `'hello' == 'hello'` vraća `true`, `5 == '5'` također vraća `true` |
 | **Nejednako `!=`**                                      |   Usporedni   |  binarni (2)   |                                                                                                   Vrati `true` ako operandi nisu jednaki.                                                                                                    |                                                                  `1 != 1` vraća `false`, `'hello' != 'world'` vraća `true` |
-| **Identično `===`**                                     |   Usporedni   |  binarni (2)   |                                                                                     Vrati `true` ako operandi su operandi jednaki i istog tipa podataka.                                                                                     |         `1 === 1` vraća `true`, `'hello' === 'hello'` vraća `true`, `'1' === 1` vraća `false`, `0 === false` vraća `false` |
-| **Identično nejednako `!==`**                           |   Usporedni   |  binarni (2)   |                                                                    Vrati `true` ako su operandi jednaki ali različitog tipa, ili ako su različiti i istog tipa. podataka.                                                                    |         `1 !== 1` vraća `false`, `'hello' !== 'hello'` vraća `false`, `'1' !== 1` vraća `true`, `0 !== false` vraća `true` |
+| **Identično `===`**                                     |   Usporedni   |  binarni (2)   |                                                                                     Vrati `true` ako operandi su operandi jednaki i istog tipa podatka.                                                                                     |         `1 === 1` vraća `true`, `'hello' === 'hello'` vraća `true`, `'1' === 1` vraća `false`, `0 === false` vraća `false` |
+| **Identično nejednako `!==`**                           |   Usporedni   |  binarni (2)   |                                                                    Vrati `true` ako su operandi jednaki ali različitog tipa, ili ako su različiti i istog tipa podatka.                                                                    |         `1 !== 1` vraća `false`, `'hello' !== 'hello'` vraća `false`, `'1' !== 1` vraća `true`, `0 !== false` vraća `true` |
 | **Veće od `>`, manje od `<`**                           |   Usporedni   |  binarni (2)   |                                                     (`>`) Vrati `true` ako je lijevi operand veći od desnog operanda. (`<`) Vrati `true` ako je lijevi operand manji od desnog operanda.                                                     |                                                   `5 > 2` vraća `true`, `'ab' > 'aa'` vraća `false`, `5 < 3` vraća `false` |
 | **Veće ili jednako od `>=`, manje ili jednako od `<=`** |   Usporedni   |  binarni (2)   |                                            (`>=`) Vrati `true` ako je lijevi operand veći ili jednak desnom operandu. (`<=`) Vrati `true` ako je lijevi operand manji ili jednak desnom operandu.                                            |                                                  `5 >= 3` vraća `true`, `'ab' >= 'aa'` vraća `true`, `3 <= 3` vraća `true` |
 | **Logički AND `&&`**                                    |    Logički    |  binarni (2)   |  Za skup boolean operanada rezultat će biti `true` samo i samo ako su oba operanda `true`. Ako generaliziramo, vraća vrijednost prvog `falsy` operanda kod evaluacije s lijeva na desno, ili vrijednost zadnjeg operanda ako su svi `true`.  |   za `a = 3` i `b = -2`, izraz `(a > 0 && b > 0)` vraća `false`, za izraz `5 && 6` vraća 6, ali `4 && false` vraća `false` |
@@ -598,7 +598,7 @@ Možemo koristiti i navodne znakove unutar stringa, ali moramo paziti da se ne p
 let x = "Petar je rekao: 'Dobar dan!'";
 ```
 
-Možemo koristiti i varijable unutar stringa, ali onda moramo koristiti backtickse `` te `${}` za prikaz same varijable. Ovakva sintaksa se zove [**template literals**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+Možemo koristiti i varijable unutar stringa, ali onda moramo koristiti backtickse \`\` te `${}` za prikaz same varijable. Ovakva sintaksa se zove [**template literals**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
 
 ```javascript
 let ime = "Petar";
@@ -667,7 +667,7 @@ Većina programskih jezika ima različite tipove podataka za:
 
 **Svi Javascript brojevi su uvijek istog tipa!** A to je `double` (64-bit floating point).
 
-JavaScript, sa ES2020 standardom, dobiva novi tip podataka `BigInt` koji može prikazati brojeve veće od `Number.MAX_SAFE_INTEGER`, odnosno (2<sup>53</sup> - 1).
+JavaScript, sa ES2020 standardom, dobiva novi tip podatka `BigInt` koji može prikazati brojeve veće od `Number.MAX_SAFE_INTEGER`, odnosno (2<sup>53</sup> - 1).
 
 ```javascript
 const x = Number.MAX_SAFE_INTEGER + 1;
