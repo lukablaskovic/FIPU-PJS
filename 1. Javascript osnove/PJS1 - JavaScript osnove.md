@@ -221,7 +221,7 @@ Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preci
 
 | Operator                                                |     Vrsta     | Broj operanada |                                                                                                                     Opis                                                                                                                     |                                                                                                                    Primjer |
 | :------------------------------------------------------ | :-----------: | :------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------: |
-| **Osnovni aritmetički `+`, `-`, `*`, `/`**              |  Aritmetički  |  binarni (2)   |                                                                                                      Standardni aritmetički operatori.                                                                                                       |                                                                                   `2 + 3` vraća ` 5`, `5 * 6` vraća `30` |
+| **Osnovni aritmetički `+`, `-`, `*`, `/`**              |  Aritmetički  |  binarni (2)   |                                                                                                      Standardni aritmetički operatori.                                                                                                       |                                                                                     `2 + 3` vraća ` 5`, `5 * 6` vraća `30` |
 | **Unarni `+`**                                          |  Aritmetički  |   unarni (1)   |                                                                                              Pokušava pretvoriti operand u broj, ako već nije.                                                                                               |                                                                                          +`"3"` vraća 3, `+true` vraća `1` |
 | **Unarni `-`**                                          |  Aritmetički  |   unarni (1)   |                                                                                                           Vraća negaciju operanda.                                                                                                           |                                                                                              ako je `x=3`, `-x` vraća `-3` |
 | **Inkrement `++`**                                      |  Aritmetički  |   unarni (1)   |                                             Povećava svoj operand za 1, vraćajući novu vrijednost ako se koristi kao prefix (`++x`), ili izvornu vrijednost ako se koristi kao postfix (`x++`).                                              |       ako je `x = 3`, onda `++x` postavlja `x` na `4` i vraća `4`. Ali, `x++` vraća `3` i nakon toga postavlja `x` na `4`. |
@@ -234,10 +234,10 @@ Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preci
 | **Pomnoži i pridruži `*=`**                             | Pridruživanja |  binarni (2)   |                                                                                     Pomnoži vrijednosti 2 operanda i rezultat pridruži lijevom operandu.                                                                                     |                                                                                                  `a = 2`, `a*=3` vraća `6` |
 | **Podijeli i pridruži `/=`**                            | Pridruživanja |  binarni (2)   |                                                                                    Podijeli vrijednosti 2 operanda i rezultat pridruži lijevom operandu.                                                                                     |                                                                                                `a = 2`, `a/=2` vraća `1.5` |
 | **Ostatak i pridruži `%=`**                             | Pridruživanja |  binarni (2)   |                                                                          Izračunaj cjelobrojni ostatak vrijednosti 2 operanda i rezultat pridruži lijevom operandu.                                                                          |                                                                                                  `a = 3`, `a%=2` vraća `1` |
-| **Jednako `==`**                                        |   Usporedni   |  binarni (2)   |                                                                                                    Vrati `true` ako su operandi jednaki.                                                                                                     |                                     `1 == 1` vraća `true`, `'hello' == 'hello'` vraća `true`, `5 == '5'` također vraća `true` |
+| **Jednako `==`**                                        |   Usporedni   |  binarni (2)   |                                                                                                    Vrati `true` ako su operandi jednaki.                                                                                                     |                                  `1 == 1` vraća `true`, `'hello' == 'hello'` vraća `true`, `5 == '5'` također vraća `true` |
 | **Nejednako `!=`**                                      |   Usporedni   |  binarni (2)   |                                                                                                   Vrati `true` ako operandi nisu jednaki.                                                                                                    |                                                                  `1 != 1` vraća `false`, `'hello' != 'world'` vraća `true` |
-| **Identično `===`**                                     |   Usporedni   |  binarni (2)   |                                                                                     Vrati `true` ako operandi su operandi jednaki i istog tipa podatka.                                                                                     |         `1 === 1` vraća `true`, `'hello' === 'hello'` vraća `true`, `'1' === 1` vraća `false`, `0 === false` vraća `false` |
-| **Identično nejednako `!==`**                           |   Usporedni   |  binarni (2)   |                                                                    Vrati `true` ako su operandi jednaki ali različitog tipa, ili ako su različiti i istog tipa podatka.                                                                    |         `1 !== 1` vraća `false`, `'hello' !== 'hello'` vraća `false`, `'1' !== 1` vraća `true`, `0 !== false` vraća `true` |
+| **Identično `===`**                                     |   Usporedni   |  binarni (2)   |                                                                                     Vrati `true` ako operandi su operandi jednaki i istog tipa podatka.                                                                                      |         `1 === 1` vraća `true`, `'hello' === 'hello'` vraća `true`, `'1' === 1` vraća `false`, `0 === false` vraća `false` |
+| **Identično nejednako `!==`**                           |   Usporedni   |  binarni (2)   |                                                                     Vrati `true` ako su operandi jednaki ali različitog tipa, ili ako su različiti i istog tipa podatka.                                                                     |         `1 !== 1` vraća `false`, `'hello' !== 'hello'` vraća `false`, `'1' !== 1` vraća `true`, `0 !== false` vraća `true` |
 | **Veće od `>`, manje od `<`**                           |   Usporedni   |  binarni (2)   |                                                     (`>`) Vrati `true` ako je lijevi operand veći od desnog operanda. (`<`) Vrati `true` ako je lijevi operand manji od desnog operanda.                                                     |                                                   `5 > 2` vraća `true`, `'ab' > 'aa'` vraća `false`, `5 < 3` vraća `false` |
 | **Veće ili jednako od `>=`, manje ili jednako od `<=`** |   Usporedni   |  binarni (2)   |                                            (`>=`) Vrati `true` ako je lijevi operand veći ili jednak desnom operandu. (`<=`) Vrati `true` ako je lijevi operand manji ili jednak desnom operandu.                                            |                                                  `5 >= 3` vraća `true`, `'ab' >= 'aa'` vraća `true`, `3 <= 3` vraća `true` |
 | **Logički AND `&&`**                                    |    Logički    |  binarni (2)   |  Za skup boolean operanada rezultat će biti `true` samo i samo ako su oba operanda `true`. Ako generaliziramo, vraća vrijednost prvog `falsy` operanda kod evaluacije s lijeva na desno, ili vrijednost zadnjeg operanda ako su svi `true`.  |   za `a = 3` i `b = -2`, izraz `(a > 0 && b > 0)` vraća `false`, za izraz `5 && 6` vraća 6, ali `4 && false` vraća `false` |
@@ -338,11 +338,12 @@ let h = false;
 console.log(g && h); // false
 console.log(g || h); // true
 ```
+
 Što ako se ne koriste uz boolean operande?
 JavaScript će pokušati pretvoriti operande u boolean vrijednosti (npr. `0` u `false`, `1` u `true`, prazan string u `false`, string sa sadržajem u `true` itd.
- Googlaj: javascript type coercion)
-```javascript
+Googlaj: javascript type coercion)
 
+```javascript
 // Logički AND
 console.log(5 && 6); // 6 (Pogledati u tablici - '&&' evaluira s lijeva na desno i vraća zadnji koji je 'true')
 console.log(0 && 7); // 0 (Pogledati u tablici - '&&' evaluira s lijeva na desno i vraća prvi koji je 'false')
@@ -364,20 +365,21 @@ console.log(!0); // true
 console.log(!5); // false
 ```
 
-Naglasili smo da je izraz (eng. ***expression***) u JavaScriptu bilo koji valjani kod koji se evaluira u vrijednost. 
+Naglasili smo da je izraz (eng. **_expression_**) u JavaScriptu bilo koji valjani kod koji se evaluira u vrijednost.
 
-*Primjer 1:*
+_Primjer 1:_
 
-- `5 + 5` je izraz koji se evaluira u `10`, 
-- kao i izraz `5 < 10` koji se evaluira u `true`, 
+- `5 + 5` je izraz koji se evaluira u `10`,
+- kao i izraz `5 < 10` koji se evaluira u `true`,
 - ili `9 < 9` koji se evaluira u `false`.
 
 Logički operatori `&&`, `||` i `!` su također izrazi, koji se evaluiraju u `true` ili `false`, kako smo već prikazali u tablici operatora.
 
 <hr>
 
-*Primjer 2:*
-- Izraz `true && true` se evaluira u `true`, 
+_Primjer 2:_
+
+- Izraz `true && true` se evaluira u `true`,
 - Izraz `true && false` se evaluira u `false`.
 - Izraz `true || false` se evaluira u `true`,
 - Izraz `false || false` se evaluira u `false`.
@@ -386,7 +388,8 @@ Jednako tako se izrazi iz primjera 1 mogu koristiti kao operandi u izrazima iz p
 
 <hr>
 
-*Primjer 3:* Želimo definirati logički izraz i nekoliko varijabli kako bi zaključili jesmo li pročitali broj stranica knjige koji smo si zadali kao cilj za ovaj tjedan. 
+_Primjer 3:_ Želimo definirati logički izraz i nekoliko varijabli kako bi zaključili jesmo li pročitali broj stranica knjige koji smo si zadali kao cilj za ovaj tjedan.
+
 ```javascript
 let brojStranicaProcitano = 100;
 let ciljaniBrojStranica = 200;
@@ -396,22 +399,28 @@ let ciljPostignut = brojStranicaProcitano >= ciljaniBrojStranica; // false
 
 <hr>
 
-*Primjer 4:* Želimo definirati logički izraz i nekoliko varijabli kako bi zaključili jesmo li obavili sve zadatke prije nego što možemo krenuti na putovanje.
+_Primjer 4:_ Želimo definirati logički izraz i nekoliko varijabli kako bi zaključili jesmo li obavili sve zadatke prije nego što možemo krenuti na putovanje.
+
 ```javascript
 let kupljeneAvionskeKarte = true;
 let rezerviraniSmjestaj = true;
 
 let spremniZaPutovanje = kupljeneAvionskeKarte && rezerviraniSmjestaj; // true
 ```
-Recimo da postoji opcija i da idemo s vlakom. 
+
+Recimo da postoji opcija i da idemo s vlakom.
+
 ```javascript
 let kupljeneKarteZaVlak = true;
 let kupljeneAvionskeKarte = false;
 let rezerviraniSmjestaj = true;
 
-let spremniZaPutovanje = (kupljeneAvionskeKarte || kupljeneKarteZaVlak) && rezerviraniSmjestaj; // true - jer je bar jedan od uvjeta prijevoza ispunjen
+let spremniZaPutovanje =
+  (kupljeneAvionskeKarte || kupljeneKarteZaVlak) && rezerviraniSmjestaj; // true - jer je bar jedan od uvjeta prijevoza ispunjen
 ```
+
 Međutim i uvjet prijevoza možemo logično definirati kao varijablu!
+
 ```javascript
 let kupljeneKarteZaVlak = true;
 let kupljeneAvionskeKarte = false;
@@ -422,13 +431,15 @@ let spremniZaPutovanje = uvjetPrijevoza && rezerviraniSmjestaj; // true - sada o
 
 <hr>
 
-*Primjer 5.* Želimo definirati nekoliko logičkih izraza i varijabli kako bi zaključili jesmo li zadovoljili sve uvjete za prolazak kolegija na fakultetu. Dani su sljedeći uvjeti:
+_Primjer 5._ Želimo definirati nekoliko logičkih izraza i varijabli kako bi zaključili jesmo li zadovoljili sve uvjete za prolazak kolegija na fakultetu. Dani su sljedeći uvjeti:
+
 - student mora imati više ili točno 50% bodova na završnom pismenom i više ili točno 50% bodova na završnom usmenom ispitu ili mora imati ukupno 50% bodova ostvarenih tijekom semestra
 - student mora biti prisutan na više od 80% predavanja
 - student mora predati projektni zadatak
 - projektni zadatak mora biti ocijenjen s pozitivnom ocjenom
 
 Kako možemo definirati prolaz preko ispita?
+
 ```javascript
 // Bodovi na pismenom i usmenom ispitu
 let bodoviNaPismenom = 60;
@@ -448,26 +459,35 @@ let ocjenaProjektnogZadatka = 3;
 ```
 
 Prvo ćemo definirati nekoliko logičkih i usporednih izraza, kako bi lakše ispisali konačan rezultat.
-```javascript
-let prolazNaPismenom = (bodoviNaPismenom / pismeniMaxBodova) >= 0.5;
-let prolazNaUsmenom = (bodoviNaUsmenom / usmeniMaxBodova) >= 0.5;
 
-let prisutnostZadovoljavajuca = (brojPrisustva / ukupniBrojPredavanja) > 0.8;
+```javascript
+let prolazNaPismenom = bodoviNaPismenom / pismeniMaxBodova >= 0.5;
+let prolazNaUsmenom = bodoviNaUsmenom / usmeniMaxBodova >= 0.5;
+
+let prisutnostZadovoljavajuca = brojPrisustva / ukupniBrojPredavanja > 0.8;
 
 let projektRijesen = predanProjektniZadatak && ocjenaProjektnogZadatka > 1;
 
-let prolaz = prolazNaPismenom && prolazNaUsmenom && prisutnostZadovoljavajuca && projektRijesen // false
+let prolaz =
+  prolazNaPismenom &&
+  prolazNaUsmenom &&
+  prisutnostZadovoljavajuca &&
+  projektRijesen; // false
 ```
+
 Dodat ćemo i alternativu polaganja putem kontinuiranog praćenja.
+
 ```javascript
 let kolokvij1 = 40;
 let kolokvij2 = 60;
 let kolokvijiMaxBodova = 200;
 let prolazNaKolokvijima = (kolokvij1 + kolokvij2) / kolokvijiMaxBodova >= 0.5;
 
-let prolaz = ((prolazNaPismenom && prolazNaUsmenom) || prolazNaKolokvijima) && prisutnostZadovoljavajuca && projektRijesen // true
+let prolaz =
+  ((prolazNaPismenom && prolazNaUsmenom) || prolazNaKolokvijima) &&
+  prisutnostZadovoljavajuca &&
+  projektRijesen; // true
 ```
-
 
 ### 2.2.4 Typeof operator
 
@@ -559,17 +579,16 @@ let x = "Volvo" + 16 + 4;
   <p>U prvom primjeru, JavaScript tretira 16 i 4 kao brojeve, dok ne dođe do "Volvo", rezultat će biti "20Volvo".  </p>
   <p>U drugom primjeru, budući da je prvi operand string, JavaScript će sve operande tretirati kao stringove, rezultat će biti "Volvo164".</p>
 
-  ```javascript
-  let x = 16 + 4 + "Volvo";
-  console.log(x); // 20Volvo
+```javascript
+let x = 16 + 4 + "Volvo";
+console.log(x); // 20Volvo
 
 let x = "Volvo" + 16 + 4;
 console.log(x); // Volvo164
+```
 
-````
 <p>Imajte na umu da prioritet i asocijativnost operatora utječu samo na redoslijed evaluacije <b>operatora</b>, ali ne i na redoslijed evaluacije <b>operanada</b>. <b><u>Operandi se uvijek evaluiraju s lijeva na desno!</b></u>, međutim njihovi rezultati se sastavljaju prema redoslijedu prioritera operatora!</p>
 </details>
-
 
 <hr>
 JavaScript tipovi su dinamički, što znači da se tip podatka varijable može promijeniti tijekom izvođenja programa.
@@ -589,7 +608,7 @@ String je tekstualni podatak, radi se o nizu znakova. String možemo definirati 
 
 ```javascript
 let x = "Petar";
-let y = 'Petar';
+let y = "Petar";
 ```
 
 Možemo koristiti i navodne znakove unutar stringa, ali moramo paziti da se ne podudaraju s vanjskim navodnicima.
@@ -617,6 +636,7 @@ console.log(predstavljanje1 == predstavljanje2); // true
 ```
 
 Još jedan primjer s brojevima!
+
 ```javascript
 const a = 5;
 const b = 10;
@@ -638,12 +658,15 @@ Primjerice, broj 100 možemo zapisati kao:
 ```javascript
 100 = 10e1 //čitaj 10 puta 10 na prvu
 ```
+
 Broj 1 možemo zapisati kao:
+
 ```javascript
 1 = 10e-1 //čitaj 10 puta 10 na minus prvu
 ```
 
 Decimalni broj 200.5 možemo zapisati kao:
+
 ```javascript
 200.5 = 2.005e2 //čitaj 2.005 puta 10 na drugu
 ```
@@ -702,6 +725,7 @@ Rezultat:
 ## Vježba 4
 
 Želite si definirati nekoliko ciljeva za ovaj tjedan kako biste ispunili vaš `weekly_goal`. Vaši ciljevi definirani su sljedećim tvrdnjama, odnosno vaš `weekly_goal` je ispunjen ako:
+
 - želim proučiti PJS1 skriptu iz JavaScripta
 - želim pročitati barem 50 stranica omiljene knjige
 - želim vježbati JavaScript barem 2 sata ili riješiti barem 10 zadataka
@@ -719,21 +743,25 @@ Napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
 **EduCoder šifra**: `a_new_hope`
 
 1. Deklarirajte tri konstante i jednu promjenjivu varijablu. Konstante neka budu vaše `ime` i `prezime` i `godina_rodenja`. Promjenjivu varijablu nazovite `trenutno_vrijeme`.
+
    - U varijable `ime` i `prezime` pohranite svoje ime i prezime, a u varijablu `godina_rodenja` pohranite godinu rođenja kao cjelobrojnu vrijednost. U varijablu `trenutno_vrijeme` pohranite trenutno vrijeme koristeći `new Date()` objekt.
    - Dodajte novu varijablu `godine` i u nju izračunajte koliko imate godina koristeći: funkciju [`getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) nad varijablom `trenutno_vrijeme` i varijablu `godina_rodenja`. Sintaksa je: `varijabla.getFullYear()`. Radi pojednostavljivanja, pretpostavljamo da je vaš rođendan već prošao ove godine.
-2. Koristeći [`template literals`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), u konzolu ispišite "Bok moje ime je __ __ i imam __ godina.".
+
+2. Koristeći [`template literals`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), u konzolu ispišite "Bok moje ime je \_\_ ** i imam ** godina.".
    - Deklarirajte dvije nove konstante `ime_duljina` i `prezime_duljina` u koje ćete pohraniti broj slova u vašem imenu i prezimenu koristeći funkciju [`length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) nad varijablama `ime` i `prezime`.
-   - Ispišite u konzolu "Moje ime i prezime imaju __ i __ slova." koristeći `template literals`.
-   - Ispišite u konzolu "It is __ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
+   - Ispišite u konzolu "Moje ime i prezime imaju ** i ** slova." koristeći `template literals`.
+   - Ispišite u konzolu "It is \_\_ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
 3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s `2`. Sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
 
 4. Recimo da si želite definirati daily routine koji se sastoji od nekoliko ciljeva. Koristeći logičke operatore i operatore usporedbe, definirajte varijablu `daily_routine_ostvaren`, temeljem sljedećih tvrdnji. Vaš `daily_routine_ostvaren` je ispunjen ako:
+
    - ste pročitali više od 50 stranica vaše omiljene knjige **ili** ste vježbali JavaScript barem 1 sat
    - ste popili između litre i dvije litre vode
    - ste vježbali minimalno 30 minuta **ili** ste prošetali minimalno 3 km
-   - ste naučili nešto novo 
+   - ste naučili nešto novo
    - ste se naspavali minimalno 7 sati
    - ste se nasmijali
 
-    Za svaki od danih izraza deklarirajte varijable za ostvarenu vrijednost i ciljanu vrijednost, te boolean varijablu koja će sadržavati rezultat ostvarenja. Na primjer, za izraz `popiti između litre i dvije litre vode` deklarirajte varijable `unos_vode` i `ciljani_dnevni_unos_vode` te varijablu `dnevni_unos_vode_zadovoljen`.
-    - Definirajte varijablu `daily_routine_ostvaren` koja će sadržavati rezultat ostvarenja svih dnevnih ciljeva.
+   Za svaki od danih izraza deklarirajte varijable za ostvarenu vrijednost i ciljanu vrijednost, te boolean varijablu koja će sadržavati rezultat ostvarenja. Na primjer, za izraz `popiti između litre i dvije litre vode` deklarirajte varijable `unos_vode` i `ciljani_dnevni_unos_vode` te varijablu `dnevni_unos_vode_zadovoljen`.
+
+   - Definirajte varijablu `daily_routine_ostvaren` koja će sadržavati rezultat ostvarenja svih dnevnih ciljeva.

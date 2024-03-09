@@ -35,6 +35,10 @@
     - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
     - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
   - [Vježba 2](#vježba-2)
+- [3. Uvod u paradigmu funkcijskog programiranja](#3-uvod-u-paradigmu-funkcijskog-programiranja)
+  - [3.1 Čiste funkcije](#31-čiste-funkcije)
+  - [3.2 Imutabilnost](#32-imutabilnost)
+  - [3.3 Funkcije višeg reda](#33-funkcije-višeg-reda)
 - [Samostalni zadatak za vježbu 2](#samostalni-zadatak-za-vježbu-2)
 - [3. Kontrolne strukture](#3-kontrolne-strukture)
   - [3.1 Selekcije (eng. **_Conditional statements_**)](#31-selekcije-eng-conditional-statements)
@@ -56,6 +60,7 @@
     - [3.3.5 Ugniježđene petlje](#335-ugniježđene-petlje)
     - [Primjer 4 - Ispis tablice množenja](#primjer-4---ispis-tablice-množenja)
   - [Vježba 4](#vježba-4)
+  - [3.4 Rekurzija (eng. **_Recursion_**)](#34-rekurzija-eng-recursion)
 - [Samostalni zadatak za vježbu 3](#samostalni-zadatak-za-vježbu-3)
 
 <br>
@@ -68,7 +73,7 @@ Funkcije, kao što smo već spomenuli, omogućuju grupiranje kȏda u logičke cj
 - lista parametara funkcije, omeđena zagradama `()` i odvojena zarezima (ako ima više parametara)
 - tijelo funkcije, omeđeno vitičastim zagradama `{}`
 
-Na primjer, možemo definirati jednostavnu funkciju `kvadriraj` koja će kvadrirati broj koji joj proslijedimo kao *argument*.
+Na primjer, možemo definirati jednostavnu funkciju `kvadriraj` koja će kvadrirati broj koji joj proslijedimo kao _argument_.
 
 ```javascript
 function kvadriraj(broj) {
@@ -179,6 +184,7 @@ U JavaScriptu, funkcije se mogu koristiti na jednak način kao što koristimo va
 Primjerice, umjesto da koristimo varijablu za pohranu rezultata funkcije, možemo koristiti sam poziv funkcije!
 
 Uzmimo našu funkciju `kvadriraj`:
+
 ```javascript
 function kvadriraj(broj) {
   return broj * broj;
@@ -272,9 +278,9 @@ console.log(pomnozi()); // ?
   <p>Unutar tijela funkcije smo deklariramo nove konstante koje su lokalne za tu funkciju. Ove lokalne varijable "maskiraju" (eng. <b><i>shadowing</i></b>) globalne varijable s istim imenima.</p>
   <p>Stoga će funkcija vratiti rezultat 100.</p>
 
-  ```javascript
-  console.log(pomnozi()); // 100
-  ```
+```javascript
+console.log(pomnozi()); // 100
+```
 
 </details>
 
@@ -505,6 +511,128 @@ Rezultat:
 
 ![vjezba2](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba2.png?raw=true)
 
+# 3. Uvod u paradigmu funkcijskog programiranja
+
+Funkcijsko programiranje (eng. **_functional programming_**) je paradigma programiranja koja se temelji na korištenju funkcija kao osnovnih gradivnih blokova.
+Funkcijsko programiranje možemo zamisliti kao princip pisanja računalnih programa gdje primarno koristimo funkcije kao osnovne gradivne blokove, a ne npr. objekte, klase, varijable i sl.
+
+Funkcijsko programiranje možemo usporediti s LEGO kockicama. Svaki LEGO blok (funkcija) ima svoju specifičnu svrhu i obavlja jednu stvar dobro. Kombiniranjem tih blokova možemo izgraditi složene strukture (programe).
+
+## 3.1 Čiste funkcije
+
+Jedno od svojstava funkcijskog programiranja je **čista funkcija** (eng. **_pure function_**). Čista funkcija je funkcija koja ne mijenja stanje varijabli izvan svojeg dosega, ali niti ne ovisi o stanju varijabli izvan svog dosega. Čista funkcija uvijek vraća isti rezultat za iste ulazne parametre.
+
+```javascript
+// Čista funkcija - ne ovisi o stanju varijabli izvan svog dosega i ne mijenja stanje varijabli izvan svog dosega
+function kvadriraj(broj) {
+  return broj * broj;
+}
+console.log(kvadriraj(5)); // 25
+```
+
+```javascript
+// Nečista funkcija - ovisi o stanju varijabli izvan svog dosega i mijenja stanje varijabli izvan svog dosega
+let rezultat = 0;
+let broj = 5;
+function kvadriraj() {
+  rezultat = broj * broj;
+  return rezultat;
+}
+console.log(kvadriraj()); // 25
+```
+
+## 3.2 Imutabilnost
+
+Imutabilnost odnosno nepromjenjivost (eng. **_immutability_**) je još jedno svojstvo funkcijskog programiranja. Imutabilnost se odnosi na to da se vrijednosti varijabli ne mijenjaju jednom nakon što su definirane. Uzmimo za primjer inkrement/dekrement operatore `++` i `--` koji mijenjaju vrijednosti varijable nad kojom se koriste. U funkcijskom programiranju, umjesto da mijenjamo vrijednost varijable, htjeli bismo stvoriti novu varijablu s novom vrijednošću.
+
+```javascript
+let x = 5;
+x++; // mijenja vrijednost varijable x
+console.log(x); // 6
+```
+
+```javascript
+let x = 5;
+let y = x + 1; // stvara novu varijablu y s novom vrijednošću
+console.log(x, y); // 5 6
+```
+
+ili
+
+```javascript
+function inkrement(x) {
+  return x + 1;
+}
+let x = 5;
+let y = inkrement(x); // stvara novu varijablu y s novom vrijednošću
+console.log(x, y); // 5 6
+```
+
+## 3.3 Funkcije višeg reda
+
+Funkcije višeg reda (eng. **_higher-order functions_**) su funkcije koje primaju druge funkcije kao argumente ili vraćaju druge funkcije kao rezultat. Funkcije višeg reda omogućuju nam da apstrahiramo zajedničke obrasce u funkcijama i da ih koristimo kao argumente drugim funkcijama.
+
+Idemo napraviti jednostavan kalkulator koji može zbrajati i oduzimati. Napišimo funkcije `zbroji` i `oduzmi` koje će primati dva argumenta i vraćati rezultat zbrajanja i oduzimanja.
+
+```javascript
+function zbroji(a, b) {
+  return a + b;
+}
+
+function oduzmi(a, b) {
+  return a - b;
+}
+
+console.log(zbroji(5, 3)); // 8
+console.log(oduzmi(5, 3)); // 2
+```
+
+Rekli smo da je funkcija višeg reda koja prima drugu funkciju kao arugment ili vraća drugu funkciju kao rezultat. Možemo implementirati funkciju `izracunaj` koja će primiti funkciju `operacija` i dva broja `a` i `b` te će vratiti rezultat funkcije `operacija` s argumentima `a` i `b`.
+
+```javascript
+function izracunaj(operacija, a, b) {
+  return operacija(a, b);
+}
+console.log(izracunaj(zbroji, 5, 3)); // 8
+console.log(izracunaj(oduzmi, 5, 3)); // 2
+```
+
+Želimo deklarirati funkcije `double` i triple koje će primati jedan broj i vraćati dvostruko odnosno trostruko veći broj.
+
+```javascript
+function double(x) {
+  return x * 2;
+}
+
+function triple(x) {
+  return x * 3;
+}
+
+console.log(double(5)); // 10
+console.log(triple(5)); // 15
+```
+
+Što ako želimo dodati funkcije `quadruple` i `quintuple` koje će vraćati četverostruko odnosno petostruko veći broj? Recimo da želimo ostati na tome da naša funkcija prima samo jedan argument. Možemo li to riješiti pomoću funkcija višeg reda?
+Možemo! Deklarirati ćemo funkciju `mutliplier` koja će primati jedan argument `multiplier` te će vraćati funkciju koja će primati jedan argument `x` i vraćati `x * multiplier`.
+
+Dakle `multiplier` je funkcija višeg reda jer vraća funkciju kao povratnu vrijednost.
+
+```javascript
+function multiplier(multiplier) {
+  return function (x) {
+    return x * multiplier;
+  };
+}
+let double = multiplier(2);
+let triple = multiplier(3);
+let quadruple = multiplier(4);
+let quintuple = multiplier(5);
+console.log(double(5)); // 10
+console.log(triple(5)); // 15
+console.log(quadruple(5)); // 20
+console.log(quintuple(5)); // 25
+```
+
 # Samostalni zadatak za vježbu 2
 
 **Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
@@ -518,14 +646,14 @@ Rezultat:
    - Heronova formula: `P = √(p * (p - a) * (p - b) * (p - c))` gdje je `p` poluopseg trokuta, a računa se prema formuli `p = (a + b + c) / 2`. Koristite funkciju `Math.sqrt()` za računanje korijena.
    - Napišite funkcijsi izraz `poluopseg` koji će primiti tri parametra `a`, `b` i `c` te vratiti poluopseg trokuta prema danoj formuli. Funkcijski izraz mora biti definiran unutar funkcije `heron()`.
    - Deklarirajte novu konstantu `p` koja će pohraniti vrijednost funkcijskog izraza `poluopseg(a, b, c)`.
-   - Rezultat funkcije `heron(3, 4, 5)` pohranite u varijablu `povrsina_trokuta` te ispišite u konzolu: `Trokut s duljinama stranica _, _ i _ ima površinu: povrsina_trokuta` koristeći `template_literals`.
-5. Sljedeći JavaScript kȏd sadrži nekoliko grešaka. Pronađite i ispravite greške kako bi kȏd radio ispravno. Provjerite s pozivom funkcije `izracunaj(x, y, z);` koji mora ispisati `17` i `3`. 
+   - Rezultat funkcije `heron(3, 4, 5)` pohranite u varijablu `povrsina_trokuta` te ispišite u konzolu: `Trokut s duljinama stranica 3, 4 i 5 ima površinu: povrsina_trokuta(3, 4, 5)` koristeći `template_literals`.
+5. Sljedeći JavaScript kȏd sadrži nekoliko grešaka. Pronađite i ispravite greške kako bi kȏd radio ispravno. Provjerite s pozivom funkcije `izracunaj(x, y, z);` koji mora ispisati `17` i `3`.
 
 ```javascript
   const x = 10;
   const y = 5;
   const z = 2;
-  
+
   function izracunaj(x, y, z) {
     let x = 5;
     let y = 3;
@@ -545,6 +673,9 @@ Rezultat:
   // 17
   // 3
 ```
+
+<hr>
+
 # 3. Kontrolne strukture
 
 Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na temelju određenih uvjeta. Ako je uvjet ispunjen tada se izvršava određeni blok radnji, inače će se izvršavati drugi blok radnji koji zadovoljava taj uvjet. Kontrolne strukture možemo podijeliti u dvije kateogrije:
@@ -823,7 +954,13 @@ let kreditnaOcjenaVisoka = false;
 let godineRadnogIskustva = 3;
 let dob = 28;
 
-if ((zaposlen && mjesecniPrihodi > 7000) || (obrtnik || kreditnaOcjenaVisoka) || (godineRadnogIskustva >= 2 || (dob > 25 && mjesecniPrihodi > 5000))) {
+if (
+  (zaposlen && mjesecniPrihodi > 7000) ||
+  obrtnik ||
+  kreditnaOcjenaVisoka ||
+  godineRadnogIskustva >= 2 ||
+  (dob > 25 && mjesecniPrihodi > 5000)
+) {
   console.log("Čestitamo! Možete dobiti zajam!");
 } else {
   console.log("Nažalost, ne možete dobiti zajam.");
@@ -837,17 +974,15 @@ Kako su uvjeti neovisni jedan o drugome, odnosno barem jedan uvjet mora biti isp
 
 if (zaposlen && mjesecniPrihodi > 7000) {
   console.log("Čestitamo! Možete dobiti zajam!");
-}
-else if (obrtnik || kreditnaOcjenaVisoka) {
+} else if (obrtnik || kreditnaOcjenaVisoka) {
   console.log("Čestitamo! Možete dobiti zajam!");
-}
-else if (godineRadnogIskustva >= 2 || (dob > 25 && mjesecniPrihodi > 5000)) {
+} else if (godineRadnogIskustva >= 2 || (dob > 25 && mjesecniPrihodi > 5000)) {
   console.log("Čestitamo! Možete dobiti zajam!");
-}
-else {
+} else {
   console.log("Nažalost, ne možete dobiti zajam.");
 }
 ```
+
 ## Vježba 3
 
 Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mjenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeće: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamjenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
@@ -863,6 +998,7 @@ Rezultat:
 Petlje su konstrukti koji omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom. U JavaScriptu, kao i u većini programskih jezika, petlje se ostvaruju pomoću ključnih riječi `for` i `while`.
 
 Petlje su korisne kada želimo određeni dio koda izvršavati više puta, svaki put s različitim ulaznim podacima. Na primjer, kada želimo ispisati brojeve od `1` do `10`, možemo koristiti petlju umjesto da svaki broj ispisujemo ručno.
+
 ```javascript
 console.log(1);
 console.log(2);
@@ -875,12 +1011,15 @@ console.log(8);
 console.log(9);
 console.log(10);
 ```
+
 možemo napisati jednostavno:
+
 ```javascript
 for (let i = 1; i <= 10; i++) {
   console.log(i);
 }
 ```
+
 Postoji više vrsta `for` petlji u JavaScriptu, ali u pravilu sve rade istu stvar - ponavljaju radnju određeni broj puta (ili nijednom). Koju petlju koristimo zaključujemo ovisno o: ulaznim podacima, početku i kraju petlje, te koracima. Ova `for` petlja slična je `for` petljama u C i Java jezicima.
 
 ### 3.3.1 Klasična `for` petlja
@@ -889,21 +1028,25 @@ Klasična `for` petlja koristi se kada znamo koliko puta želimo ponoviti blok k
 
 ```javascript
 for (initialization; condition; afterthought) {
-  statement // blok kȏda koji se izvršava dok je uvjet = true
+  statement; // blok kȏda koji se izvršava dok je uvjet = true
 }
 ```
+
 1. `initialization` - izvršava se jednom prije početka petlje, ako postoji. Često inicijalizira varijable koje se koriste u petlji, npr. `let i = 0`, ali sintaksa dozvoljava bilo koji izraz.
 2. `condition` izraz se evaluira prije svakog ponavljanja petlje. Ako je `true`, petlja i egezekucija `statement` izraza se nastavlja. Ako je `false`, petlja se prekida.
 3. `statement` izraz se izvršava svaki put kada je `condition` = `true`.
 4. `afterthought` izraz se izvršava nakon svakog ponavljanja petlje, ako postoji. Često se koristi za inkrementiranje ili dekrementiranje varijabli, npr. `i++`, ali sintaksa dozvoljava bilo koji izraz.
 
 Primjer, želimo ispisati brojeve od `1` do `10`:
+
 ```javascript
 for (let i = 1; i <= 10; i++) {
   console.log(i); // ispisuje brojeve od 1 do 10 -> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 }
 ```
+
 Možemo i za nazad:
+
 ```javascript
 for (let i = 10; i >= 1; i--) {
   console.log(i); // ispisuje brojeve od 10 do 1 -> 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
@@ -911,6 +1054,7 @@ for (let i = 10; i >= 1; i--) {
 ```
 
 Kako možemo upotrijebiti `for` petlju za ispis svih parnih brojeva od `1` do `10`?
+
 ```javascript
 for (let i = 2; i <= 10; i += 2) {
   console.log(i); // ispisuje parne brojeve od 1 do 10 -> 2, 4, 6, 8, 10
@@ -918,13 +1062,16 @@ for (let i = 2; i <= 10; i += 2) {
 ```
 
 Kako smo rekli da `initialization` dozvoljava bilo koji izraz pa i prazan, možemo koristiti `for` petlju i na sljedeće načine:
+
 ```javascript
 let i, j;
 for (i = 0, j = 1; i < 10; i++, j++) {
   console.log(`${i} je manji za 1 od ${j}.`);
 }
 ```
+
 Uočite da smo varijable `i` i `j` inicijalizirali izvan petlje, ali smo ih koristili unutar petlje. Međutim, varijable je moguće deklarirati i unutar petlje, u tom slučaju ćemo ključnu riječ `let` koristiti samo jednom.
+
 ```javascript
 for (let i = 0, j = 1; i < 10; i++, j++) {
   console.log(`${i} je manji za 1 od ${j}.`);
@@ -932,6 +1079,7 @@ for (let i = 0, j = 1; i < 10; i++, j++) {
 ```
 
 Možemo pustiti `initialization` prazan, ali moramo imati `;` separator.
+
 ```javascript
 let i = 0;
 for (; i < 10; i++) {
@@ -941,6 +1089,7 @@ for (; i < 10; i++) {
 
 Izostavljanjem nekih od dijelova `for` petlje, možemo dobiti beskonačnu petlju.
 Oprez, beskonačne petlje često dovode do crashanja web preglednika ili vaše aplikacije koja izvodi JavaScript kȏd. Poželjno je izbjegavati beskonačne petlje.
+
 ```javascript
 // Navedene petlje će vrlo vjerojatno srušiti vaš web preglednik
 for (;;) {
@@ -957,15 +1106,19 @@ for (let i = 0; i < 10; ) {
 ```
 
 #### Primjer 3 - Ispis ispis brojeva od 1 do 100 koji su djeljivi s 3
+
 Izračunajte sumu svih brojeva od `1` do `100` koji su djeljivi s 3. Koristite `for` petlju. Ovaj zadatak zahtjeva korištenje petlje za iteriranje kroz brojeve od 1 do 100, uvjetne izjave za provjeru je li broj djeljiv s 3 i varijablu za praćenje ukupne sume.
 
 Prvo ćemo napisati kȏd koji ispisuje sve brojeve od `1` do `100`.
+
 ```javascript
 for (let i = 1; i <= 100; i++) {
   console.log(i);
 }
 ```
+
 Dodat ćemo provjeru je li broj djeljiv s 3. To radimo s operatorom `%` koji vraća ostatak dijeljenja dva broja. Ako je ostatak dijeljenja nekog broja s `3` jednak `0`, to znači da je broj djeljiv s 3.
+
 ```javascript
 for (let i = 1; i <= 100; i++) {
   if (i % 3 === 0) {
@@ -973,7 +1126,9 @@ for (let i = 1; i <= 100; i++) {
   }
 }
 ```
+
 Konačno, dodat ćemo varijablu `suma` koja će pohraniti sumu svih brojeva od `1` do `100` koji su djeljivi s 3.
+
 ```javascript
 let suma = 0;
 for (let i = 1; i <= 100; i++) {
@@ -986,17 +1141,21 @@ console.log(suma); // ispisuje sumu svih brojeva od 1 do 100 koji su djeljivi s 
 ```
 
 ### 3.3.2 `while` petlja
+
 while petlja koristi se kada u pravilu ne znamo koliko puta želimo ponoviti blok kȏda. Sastoji se od `condition`. Sintaksa je sljedeća:
+
 ```javascript
 while (condition) {
-  statement // blok kȏda koji se izvršava dok je uvjet = true
+  statement; // blok kȏda koji se izvršava dok je uvjet = true
 }
 ```
+
 Ako je `condition` = `true`, izvršava se `statement`. Ako je `condition` = `false`, petlja se prekida. Kao i kod `for` petlje, `statement` izraz se izvršava svaki put kada je `condition` = `true`.
 
 `condition` se evaluira prije statement izraza, stoga je moguće da se `statement` izraz nikada ne izvrši ako je condition = `false`.
 
 Primjer, sljedeća petlja će iterirati dokle god je `n` manji od 3. Primjetite da u ovom slučaju, `n` mora biti deklariran izvan petlje.
+
 ```javascript
 let n = 0;
 let x = 0;
@@ -1005,12 +1164,15 @@ while (n < 3) {
   x += n;
 }
 ```
+
 Sa svakom iteracijom, `n` se inkrementira za `1` i dodaje se na `x`. Kada je `n` = `3`, petlja se prekida. Tako da će se izvršiti `3` puta, a `x` i `n` će biti:
+
 1. prolazak: `n` = `1`, `x` = `1`
 2. prolazak: `n` = `2`, `x` = `3`
 3. prolazak: `n` = `3`, `x` = `6`
 
 Već smo rekli da beskonačne petlje želimo izbjegavati. Moramo osigurati da uvjet u `while` petlji kad tad postane `false`. Ako uvjet nikad ne postane `false`, petlja će se izvršavati beskonačno. Na primjer, sljedeća petlja će se izvršavati beskonačno:
+
 ```javascript
 while (true) {
   console.log("Beskonačna petlja!");
@@ -1018,6 +1180,7 @@ while (true) {
 ```
 
 Dalje, pogledajmo sljedeći primjer:
+
 ```javascript
 let i = 0;
 while (i < 10) {
@@ -1027,19 +1190,23 @@ while (i < 10) {
   console.log(text); // ispisuje "Broj 0", "Broj 1", "Broj 2", "Broj 3", "Broj 4", "Broj 5", "Broj 6", "Broj 7", "Broj 8", "Broj 9"
 }
 ```
+
 Primjetimo da je varijabla `text` deklarirana unutar petlje. To znači da će se svaki put kada se petlja izvrši, varijabla `text` ponovno inicijalizirati. Kod petlji vrijede ista pravila o dosegu varijabli kao i kod funkcija - varijabla deklarirana unutar petlje neće biti dostupna izvan petlje.
 
-Što ako je `i` = `11`? Petlja se neće izvršiti niti jednom, jer je uvjet `i < 10` odmah `false`. Kako bismo ispisali "Broj 10", možemo koristiti varijantu `while` petlje -  `do-while` petlju.
+Što ako je `i` = `11`? Petlja se neće izvršiti niti jednom, jer je uvjet `i < 10` odmah `false`. Kako bismo ispisali "Broj 10", možemo koristiti varijantu `while` petlje - `do-while` petlju.
 
 #### 3.3.2.1 `do-while` petlja
 
 `do-while` petlja koristi se kada želimo da se blok kȏda izvrši barem jednom, a zatim se ponavlja dok je uvjet = `true`. Sastoji se od `condition`. Sintaksa je sljedeća:
+
 ```javascript
 do {
-  statement // blok kȏda koji se izvršava barem jednom, a zatim se ponavlja dok je uvjet = true
+  statement; // blok kȏda koji se izvršava barem jednom, a zatim se ponavlja dok je uvjet = true
 } while (condition);
 ```
+
 Prebacimo prethodni primjer u `do-while` petlju. Možemo primjetiti da se `statement` blok izvrši točno jednom, budući da je uvjet `i < 10` odmah `false`.
+
 ```javascript
 let i = 11;
 do {
@@ -1049,11 +1216,13 @@ do {
   console.log(text); // ispisuje "Broj 11"
 } while (i < 10);
 ```
+
 `do-while` petlja ima svoje prednosti, ali se u praksi koristi rjeđe od `for` i `while` petlji.
 
 ### 3.3.3 Prekidanje petlji - `break` | `continue`
 
 Kako bismo "naglo" prekinuli izvršavanje petlje, koristimo ključnu riječ `break`. Kada se `break` naredba izvrši, petlja se prekida i izvršavanje se nastavlja s prvim redom kȏda nakon petlje. Na primjer, želimo prekinuti petlju kada dođemo do broja `15` u petlji koja ispisuje brojeve od `1` do `100`.
+
 ```javascript
 for (let i = 1; i <= 100; i++) {
   if (i === 15) {
@@ -1062,7 +1231,9 @@ for (let i = 1; i <= 100; i++) {
   console.log(i); // ispisuje brojeve od 1 do 14
 }
 ```
+
 Kako bismo preskočili trenutnu iteraciju petlje, koristimo ključnu riječ `continue`. Kada se `continue` naredba izvrši, trenutna iteracija petlje se prekida i izvršavanje se nastavlja s idućom iteracijom petlje. Na primjer, želimo ispisati sve brojeve od `1` do `100` osim brojeva koji su djeljivi s 3.
+
 ```javascript
 for (let i = 1; i <= 100; i++) {
   if (i % 3 === 0) {
@@ -1072,7 +1243,7 @@ for (let i = 1; i <= 100; i++) {
 }
 ```
 
-`break` i `continue` naredbe možemo koristiti kod svih vrsta petlji - `for`, `while` i `do-while`. 
+`break` i `continue` naredbe možemo koristiti kod svih vrsta petlji - `for`, `while` i `do-while`.
 
 `break` naredbu koristimo i unutar `switch` selekcija kako bi prekinuli njeno izvršavanje nakon ulaska u određeni `case` blok, međutim `continue` naredbu ne koristimo.
 
@@ -1093,7 +1264,8 @@ Idemo upotrijebiti svo znanje o petljama, selekcijama i funkcijama kako bismo na
 function brojPonavljanjaZnaka(niz, znak) {
   let brojac = 0;
   for (let i = 0; i < niz.length; i++) {
-    if (niz[i] === znak) { // Provjerava je li trenutni znak u nizu znakova jednak znaku koji tražimo
+    if (niz[i] === znak) {
+      // Provjerava je li trenutni znak u nizu znakova jednak znaku koji tražimo
       brojac++;
     }
   }
@@ -1117,6 +1289,7 @@ for (let i = 1; i <= 3; i++) {
 ```
 
 Ugnjezditi možemo i kombinirati različite vrste petlji, na primjer, `for` i `while` petlje:
+
 ```javascript
 let i = 1;
 while (i <= 3) {
@@ -1126,24 +1299,27 @@ while (i <= 3) {
   i++;
 }
 ```
+
 `break` i `continue` naredbe u ugniježđenim petljama ponašaju se kao i kod jednostavnih petlji - prekidaju petlju ili preskaču trenutnu iteraciju petlje u kojoj se izvršavaju.
+
 ```javascript
 for (let i = 1; i <= 3; i++) {
   for (let j = 1; j <= 3; j++) {
     if (i === 2 && j === 2) {
       continue; // Preskače iteraciju gdje je i = 2 i j = 2
     } else {
-        console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 osim 2 2 -> 1 1, 1 2, 1 3, 2 1, 2 3, 3 1, 3 2, 3 3
+      console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 osim 2 2 -> 1 1, 1 2, 1 3, 2 1, 2 3, 3 1, 3 2, 3 3
     }
   }
 }
 ```
 
-### Primjer 4 - Ispis tablice množenja 
+### Primjer 4 - Ispis tablice množenja
 
 Primjenjujući ugniježdene petlje možemo jednostavno ispisati tablicu množenja. U ovom primjeru implementirat ćemo funkciju za ispis tablice množenja za brojeve od `1` do `10`. Funkcija će ispisati sve kombinacije brojeva od `1` do `10` i njihovih umnožaka.
 
 Prvo definirajmo funkciju `tablicaMnozenja()` i unutar nje `for` petlju koja prolazi kroz brojeve od `1` do `10`.
+
 ```javascript
 function tablicaMnozenja() {
   for (let i = 1; i <= 10; i++) {
@@ -1152,7 +1328,9 @@ function tablicaMnozenja() {
 }
 tablicaMnozenja();
 ```
+
 Dalje, želimo svaki broj `i` pomnožiti s brojevima od `1` do `10`. To ćemo jednostavno postići ugniježđenom `for` petljom.
+
 ```javascript
 function tablicaMnozenja() {
   for (let i = 1; i <= 10; i++) {
@@ -1161,8 +1339,9 @@ function tablicaMnozenja() {
     }
   }
 }
-tablicaMnozenja()
+tablicaMnozenja();
 ```
+
 Kako bismo dobili tablicu, možemo dodati i formatiranje ispisa. Na primjer, možemo koristiti tabulator `\t` kako bi razdvojili brojeve za veličinu jednog taba.
 U varijablu `red` spremamo sve umnoške brojeva `i` i `j` od `1` do `10`, odvajamo ih tabulatorom, a zatim ispisujemo napunjeni `red` u vanjskoj petlji.
 
@@ -1173,23 +1352,85 @@ function tablicaMnozenja() {
   for (let i = 1; i <= 10; i++) {
     let red = "";
     for (let j = 1; j <= 10; j++) {
-      red += i * j + '\t';
+      red += i * j + "\t";
     }
     console.log(red);
   }
 }
-tablicaMnozenja()
+tablicaMnozenja();
 ```
 
 ## Vježba 4
 
-Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite  `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
+Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
 
 **EduCoder šifra**: `fizz_buzz`
 
 Rezultat:
 
 ![vjezba4](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba4.png?raw=true)
+
+## 3.4 Rekurzija (eng. **_Recursion_**)
+
+Rekurzija je proces kada funkcija poziva samu sebe. Rekurzivne funkcije koriste se kada je problem koji rješavamo moguće podijeliti na manje probleme iste vrste. Rekurzivne funkcije koriste se za rješavanje problema koji se mogu svesti na manje probleme iste vrste, kao što su problemi vezani uz matematičke operacije, npr. faktorijela, Fibonaccijev niz, Tower of Hanoi, itd.
+
+Rekurzivne funkcije imaju dvije komponente: bazni slučaj i rekurzivni slučaj. Bazni slučaj je uvjet koji prekida rekurziju, a rekurzivni slučaj je uvjet koji poziva samu funkciju za rješavanje manjeg problema iste vrste.
+
+Primjer rekurzivne funkcije za izračun faktorijele broja `n`. Faktorijel broja `n` označava se s `n!` i definira je kao umnožak svih pozitivnih cijelih brojeva manjih ili jednakih `n`. Na primjer, faktorijel broja `5` označava se kao `5!` i iznosi `5 * 4 * 3 * 2 * 1 = 120`.
+
+```javascript
+function faktorijel(n) {
+  if (n === 0) {
+    return 1; // Bazni slučaj, prekida rekurziju
+  } else {
+    return n * faktorijel(n - 1); // Rekurzivni slučaj, poziva samu funkciju za rješavanje manjeg problema iste vrste
+  }
+}
+```
+
+Rekurzija koristi stog memorije za pohranu svakog poziva funkcije. Ako se rekurzija ne prekine, može doći do prekoračenja stoga memorije i do rušenja aplikacije. Zato je važno osigurati da rekurzija ima bazni slučaj koji prekida rekurziju.
+
+Kako izgleda poziv funkcije `faktorijel(5)`?
+
+1. Početni poziv - `faktorijel(5)`
+
+- bazni slučaj: `5` nije `0`, stoga se izvršava rekurzivni slučaj
+- rekurzivni slučaj: `5 * faktorijel(4)`, dakle mora se izračunati `faktorijel(4)`
+
+2. Poziv - `faktorijel(4)`
+
+- bazni slučaj: `4` nije `0`, stoga se izvršava rekurzivni slučaj
+- rekurzivni slučaj: `4 * faktorijel(3)`, dakle mora se izračunati `faktorijel(3)`
+
+3. Poziv - `faktorijel(3)`
+
+- bazni slučaj: `3` nije `0`, stoga se izvršava rekurzivni slučaj
+- rekurzivni slučaj: `3 * faktorijel(2)`, dakle mora se izračunati `faktorijel(2)`
+
+4. Poziv - `faktorijel(2)`
+
+- bazni slučaj: `2` nije `0`, stoga se izvršava rekurzivni slučaj
+- rekurzivni slučaj: `2 * faktorijel(1)`, dakle mora se izračunati `faktorijel(1)`
+
+5. Poziv - `faktorijel(1)`
+
+- bazni slučaj: `1` nije `0`, stoga se izvršava rekurzivni slučaj
+- rekurzivni slučaj: `1 * faktorijel(0)`, dakle mora se izračunati `faktorijel(0)`
+
+6. Poziv - `faktorijel(0)`
+
+- bazni slučaj: `0` je `0`, stoga se rekurzija prekida i vraća se `1`
+
+7. Vraćanje vrijednosti - `faktorijel(0)` vraća `1` u poziv `faktorijel(1)`
+8. Vraćanje vrijednosti - `faktorijel(1)` vraća `1 * 1 = 1` u poziv `faktorijel(2)`
+9. Vraćanje vrijednosti - `faktorijel(2)` vraća `2 * 1 = 2` u poziv `faktorijel(3)`
+10. Vraćanje vrijednosti - `faktorijel(3)` vraća `3 * 2 = 6` u poziv `faktorijel(4)`
+11. Vraćanje vrijednosti - `faktorijel(4)` vraća `4 * 6 = 24` u poziv `faktorijel(5)`
+12. Vraćanje vrijednosti - `faktorijel(5)` vraća `5 * 24 = 120`
+
+Dakle konačni rezultat poziva `faktorijel(5)` je `120`.
+
+Rekurzija nije uvijek najbolje rješenje za rješavanje problema. Rekurzivne funkcije mogu biti teže za razumjeti i održavati, a mogu dovesti i do prekoračenja stoga memorije. U praksi, rekurzija se koristi kada je problem koji rješavamo mogu se svesti na manje probleme iste vrste, a rekurzivno rješenje je jednostavnije i čitljivije od iterativnog rješenja.
 
 # Samostalni zadatak za vježbu 3
 
@@ -1201,7 +1442,7 @@ Rezultat:
 2. Napišite funkciju `prost_broj` koja prima broj kao argument i vraća `true` ako je broj prost, odnosno `false` ako nije. Broj je prost ako je djeljiv samo s 1 i samim sobom. Funkciju pozovite s argumentima 7, 10 i 13.
 3. Nadogradite prethodni zadatak na način da ćete ispisati sve proste brojeve od 1 do 100. Funkciju `prost_broj` pozivajte unutar petlje. Ispis mora izgledati ovako: `"Prosti brojevi od 1 do 100 su: 2, 3, 5, 7, itd."`
 4. Napišite funkciju `pronadi_najduzu_rijec()` koja prima rečenicu kao argument i vraća najdužu riječ u rečenici. Rečenicu morate razložiti koristeći petlju, bez pomoćnih funkcija.
-   - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća `"Nije rečenica!"`. 
-   - Ako je rečenica prazna, funkcija vraća `"Rečenica je prazna!"`. 
+   - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća `"Nije rečenica!"`.
+   - Ako je rečenica prazna, funkcija vraća `"Rečenica je prazna!"`.
    - Ako se rečenica sastoji od samo jedne riječi, funkcija vraća tu riječ.
    - Ako se rečenica sastoji od više različitih najdužih riječi, funkcija vraća prvu riječ koja je pronađena.
