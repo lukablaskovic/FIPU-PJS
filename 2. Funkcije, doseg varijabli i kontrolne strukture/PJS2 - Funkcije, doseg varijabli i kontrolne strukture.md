@@ -35,6 +35,7 @@
     - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
     - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
   - [Vježba 2](#vježba-2)
+  - [Vježba 3](#vježba-3)
 - [3. Uvod u paradigmu funkcijskog programiranja](#3-uvod-u-paradigmu-funkcijskog-programiranja)
   - [3.1 Čiste funkcije](#31-čiste-funkcije)
   - [3.2 Imutabilnost](#32-imutabilnost)
@@ -49,7 +50,7 @@
   - [3.2 Selekcije s logičkim operatorima](#32-selekcije-s-logičkim-operatorima)
     - [Primjer 1 - Selekcija vremena u danu (operator `&&` + `if-else` selekcija)](#primjer-1---selekcija-vremena-u-danu-operator---if-else-selekcija)
     - [Primjer 2 - Provjera prihvatljivosti za zajam (operator `||`, `&&` + `if-else` selekcija)](#primjer-2---provjera-prihvatljivosti-za-zajam-operator----if-else-selekcija)
-  - [Vježba 3](#vježba-3)
+  - [Vježba 4](#vježba-4)
   - [3.3 Iteracije/Petlje (eng. **_Iterations/Loops_**)](#33-iteracijepetlje-eng-iterationsloops)
     - [3.3.1 Klasična `for` petlja](#331-klasična-for-petlja)
       - [Primjer 3 - Ispis ispis brojeva od 1 do 100 koji su djeljivi s 3](#primjer-3---ispis-ispis-brojeva-od-1-do-100-koji-su-djeljivi-s-3)
@@ -59,7 +60,8 @@
     - [3.3.4 Petlje nad nizom znakova (eng. **_String_**)](#334-petlje-nad-nizom-znakova-eng-string)
     - [3.3.5 Ugniježđene petlje](#335-ugniježđene-petlje)
     - [Primjer 4 - Ispis tablice množenja](#primjer-4---ispis-tablice-množenja)
-  - [Vježba 4](#vježba-4)
+  - [Vježba 5](#vježba-5)
+  - [Vježba 6](#vježba-6)
   - [3.4 Rekurzija (eng. **_Recursion_**)](#34-rekurzija-eng-recursion)
 - [Samostalni zadatak za vježbu 3](#samostalni-zadatak-za-vježbu-3)
 
@@ -511,6 +513,25 @@ Rezultat:
 
 ![vjezba2](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba2.png?raw=true)
 
+## Vježba 3
+
+Napišite funkciju `lessby20_others(x, y, z)` koja prima tri cjelobrojna argumenta: `x`, `y` i `z`. Funkcija treba provjeriti i vratiti `true` ako bilo koji od ovih brojeva zadovoljava sljedeće uvjete:
+
+- Broj je veći ili jednak 20.
+- Broj je manji od barem jednog od preostala dva broja.
+
+U svim ostalim slučajevima, funkcija treba vratiti `false`.
+
+**EduCoder šifra**: `lessby20_others`
+
+Rezultat:
+
+```javascript
+console.log(lessby20_others(23, 45, 10)) //true
+console.log(lessby20_others(23, 23, 10)) //false
+console.log(lessby20_others(10, 25, 75)) //true
+```
+
 # 3. Uvod u paradigmu funkcijskog programiranja
 
 Funkcijsko programiranje (eng. **_functional programming_**) je paradigma programiranja koja se temelji na korištenju funkcija kao osnovnih gradivnih blokova.
@@ -643,10 +664,10 @@ console.log(quintuple(5)); // 25
 2. Napišite **funkcijski izraz** `izrazunaj_povrsinu` koji računa površinu pravokutnika. U varijablu `povrsina` pohranite taj funkcijski izraz. Ispišite vrijednost `povrsina(8,6)` u konzolu.
 3. Napišite **funkcijski izraz** `BMI` koji računa BMI (Body Mass Index) osobe. BMI se računa prema formuli `BMI = težina / (visina * visina)`. Ispišite u konzolu BMI osobe koja ima težinu 75 kg i visinu 1.75 m.
 4. Napišite **funkciju** `heron()` koja će računati površinu trokuta prema Heronovoj formuli. Funkcija treba primiti tri parametra `a`, `b` i `c` koji predstavljaju duljine stranica trokuta.
-   - Heronova formula: `P = √(p * (p - a) * (p - b) * (p - c))` gdje je `p` poluopseg trokuta, a računa se prema formuli `p = (a + b + c) / 2`. Koristite funkciju `Math.sqrt()` za računanje korijena.
-   - Napišite funkcijsi izraz `poluopseg` koji će primiti tri parametra `a`, `b` i `c` te vratiti poluopseg trokuta prema danoj formuli. Funkcijski izraz mora biti definiran unutar funkcije `heron()`.
-   - Deklarirajte novu konstantu `p` koja će pohraniti vrijednost funkcijskog izraza `poluopseg(a, b, c)`.
-   - Rezultat funkcije `heron(3, 4, 5)` pohranite u varijablu `povrsina_trokuta` te ispišite u konzolu: `Trokut s duljinama stranica 3, 4 i 5 ima površinu: povrsina_trokuta(3, 4, 5)` koristeći `template_literals`.
+   - Heronova formula: `P = √(p * (p - a) * (p - b) * (p - c))` gdje je `p` poluopseg trokuta, a računa se prema formuli `p = (a + b + c) / 2`. Koristite funkciju `Math.sqrt()` za računanje korijena (Sintaksa je: `Math.sqrt(broj)`)
+   - Napišite funkcijski izraz `poluopseg` koji će primiti tri parametra `a`, `b` i `c` te vratiti poluopseg trokuta prema danoj formuli. Funkcijski izraz mora biti definiran unutar funkcije `heron()`.
+   - Unutar funkcije Heron, deklarirajte novu konstantu `p` koja će pohraniti vrijednost funkcijskog izraza `poluopseg(a, b, c)`.
+   - Rezultat funkcije `heron(3, 4, 5)` pohranite u varijablu `povrsina_trokuta` te ispišite u konzolu: `Trokut s duljinama stranica 3, 4 i 5 ima površinu: povrsina_trokuta(3, 4, 5) cm2` koristeći `template_literals`.
 5. Sljedeći JavaScript kȏd sadrži nekoliko grešaka. Pronađite i ispravite greške kako bi kȏd radio ispravno. Provjerite s pozivom funkcije `izracunaj(x, y, z);` koji mora ispisati `17` i `3`.
 
 ```javascript
@@ -983,7 +1004,7 @@ if (zaposlen && mjesecniPrihodi > 7000) {
 }
 ```
 
-## Vježba 3
+## Vježba 4
 
 Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mjenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeće: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamjenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
 
@@ -1360,7 +1381,7 @@ function tablicaMnozenja() {
 tablicaMnozenja();
 ```
 
-## Vježba 4
+## Vježba 5
 
 Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
 
@@ -1369,6 +1390,25 @@ Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji
 Rezultat:
 
 ![vjezba4](https://github.com/lukablaskovic/FIPU-PJS/blob/main/2.%20Funkcije,%20doseg%20varijabli%20i%20kontrolne%20strukture/screenshots/vjezba4.png?raw=true)
+
+## Vježba 6
+
+Napišite funkciju koja prima jedan argument `godina` i provjerava je li godina prijestupna ili nije. Prema Gregorijanskom kalendaru, godina je prijestupna ako:
+- je dijeljiva s 4, ali nije dijeljiva s 100
+- ako je dijeljiva s 100, mora biti i s 400
+Na primjer, godine `1700`, `1800` i `1900` nisu prijestupne, ali godina `2000` jest.
+
+**EduCoder šifra**: `svake_prijestupne`
+
+
+Rezultat:
+```javascript
+console.log(leapyear(2016)); // true
+console.log(leapyear(2000)); // true
+console.log(leapyear(1700)); // false
+console.log(leapyear(1800)); // false
+console.log(leapyear(100));  // false
+```
 
 ## 3.4 Rekurzija (eng. **_Recursion_**)
 
