@@ -31,9 +31,9 @@
   - [Vježba 1](#vježba-1)
   - [1.3 Funkcije možemo koristiti raznoliko](#13-funkcije-možemo-koristiti-raznoliko)
 - [2. Doseg varijabli i funkcijski izrazi](#2-doseg-varijabli-i-funkcijski-izrazi)
-    - [2.1 Blokovski opseg (eng. **_block scope_**)](#21-blokovski-opseg-eng-block-scope)
-    - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
-    - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
+  - [2.1 Blokovski opseg (eng. **_block scope_**)](#21-blokovski-opseg-eng-block-scope)
+  - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
+  - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
   - [Vježba 2](#vježba-2)
   - [Vježba 3](#vježba-3)
 - [3. Uvod u paradigmu funkcijskog programiranja](#3-uvod-u-paradigmu-funkcijskog-programiranja)
@@ -527,9 +527,9 @@ U svim ostalim slučajevima, funkcija treba vratiti `false`.
 Rezultat:
 
 ```javascript
-console.log(lessby20_others(23, 45, 10)) //true
-console.log(lessby20_others(23, 23, 10)) //false
-console.log(lessby20_others(10, 25, 75)) //true
+console.log(lessby20_others(23, 45, 10)); //true
+console.log(lessby20_others(23, 23, 10)); //false
+console.log(lessby20_others(10, 25, 75)); //true
 ```
 
 # 3. Uvod u paradigmu funkcijskog programiranja
@@ -639,15 +639,17 @@ Možemo! Deklarirati ćemo funkciju `mutliplier` koja će primati jedan argument
 Dakle `multiplier` je funkcija višeg reda jer vraća funkciju kao povratnu vrijednost.
 
 ```javascript
-function multiplier(multiplier) {
+function multiplier(value) {
   return function (x) {
-    return x * multiplier;
+    return x * value;
   };
 }
+
 let double = multiplier(2);
 let triple = multiplier(3);
 let quadruple = multiplier(4);
 let quintuple = multiplier(5);
+
 console.log(double(5)); // 10
 console.log(triple(5)); // 15
 console.log(quadruple(5)); // 20
@@ -1394,20 +1396,21 @@ Rezultat:
 ## Vježba 6
 
 Napišite funkciju koja prima jedan argument `godina` i provjerava je li godina prijestupna ili nije. Prema Gregorijanskom kalendaru, godina je prijestupna ako:
+
 - je dijeljiva s 4, ali nije dijeljiva s 100
 - ako je dijeljiva s 100, mora biti i s 400
-Na primjer, godine `1700`, `1800` i `1900` nisu prijestupne, ali godina `2000` jest.
+  Na primjer, godine `1700`, `1800` i `1900` nisu prijestupne, ali godina `2000` jest.
 
 **EduCoder šifra**: `svake_prijestupne`
 
-
 Rezultat:
+
 ```javascript
 console.log(leapyear(2016)); // true
 console.log(leapyear(2000)); // true
 console.log(leapyear(1700)); // false
 console.log(leapyear(1800)); // false
-console.log(leapyear(100));  // false
+console.log(leapyear(100)); // false
 ```
 
 ## 3.4 Rekurzija (eng. **_Recursion_**)
