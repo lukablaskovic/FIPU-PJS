@@ -842,7 +842,7 @@ Prije nego što krenemo sa samim kȏdom, zapisat ćemo nekoliko tvrdnji koje će
 
 - Ako je vrijeme između 6 i 12 sati, pozdravit ćemo s "Dobro jutro!"
 - Ako je vrijeme između 12 i 18 sati, pozdravit ćemo s "Dobar dan!"
-- Inaće ćemo pozdraviti s "Dobra večer!"
+- Inače ćemo pozdraviti s "Dobra večer!"
 
 Idemo prvo ugrubo definirati strukturu kȏda:
 
@@ -885,7 +885,7 @@ if (sat >= 6 && sat < 12) {
 }
 ```
 
-I na kraju, treći uvjet: Inaće ćemo pozdraviti s "Dobra večer!" - `else` - ako niti jedan od prethodnih uvjeta nije ispunjen, ispisat ćemo `"Dobra večer!"`.
+I na kraju, treći uvjet: Inače ćemo pozdraviti s "Dobra večer!" - `else` - ako niti jedan od prethodnih uvjeta nije ispunjen, ispisat ćemo `"Dobra večer!"`.
 
 ```javascript
 let sat = 10;
@@ -933,8 +933,8 @@ if (zaposlen == true && mjesecniPrihodi > 7000) {
 }
 ```
 
-Prisjetimo se kratko kako JavaScript evaluira tvrdnje (eng. _expressions_) unutar kontrolnih struktura.
-Što će vratiti (u što će se evaluirati), u kȏdu iznad izraz `zaposlen == true`? Odgovor je `true`.
+Prisjetimo se kratko kako JavaScript evaluira tvrdnje (eng. **_expressions_**) unutar kontrolnih struktura.
+Što će vratiti (u što će se evaluirati), u kȏdu iznad, izraz `zaposlen == true`? Odgovor je `true`.
 Ako smo sigurni da je varijabla `zaposlen` uvijek tipa `boolean`, možemo izostaviti `== true` i napisati samo `if (zaposlen && mjesecniPrihodi > 7000)`.
 
 ```javascript
@@ -1008,7 +1008,7 @@ if (zaposlen && mjesecniPrihodi > 7000) {
 
 ## Vježba 4
 
-Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mjenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeće: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamjenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
+Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mjenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeća: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamjenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
 
 **EduCoder šifra**: `zlatne_godine`
 
@@ -1165,7 +1165,7 @@ console.log(suma); // ispisuje sumu svih brojeva od 1 do 100 koji su djeljivi s 
 
 ### 3.3.2 `while` petlja
 
-while petlja koristi se kada u pravilu ne znamo koliko puta želimo ponoviti blok kȏda. Sastoji se od `condition`. Sintaksa je sljedeća:
+`while` petlja koristi se kada u pravilu ne znamo koliko puta želimo ponoviti blok kȏda. Sastoji se od `condition`. Sintaksa je sljedeća:
 
 ```javascript
 while (condition) {
@@ -1306,18 +1306,18 @@ Ugniježđene petlje koriste se kada želimo iterirati kroz više dimenzija poda
 ```javascript
 for (let i = 1; i <= 3; i++) {
   for (let j = 1; j <= 3; j++) {
-    console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 -> 1 1, 1 2, 1 3, 2 1, 2 2, 2 3, 3 1, 3 2, 3 3
+    console.log(i, j); // ispisuje sve kombinacije parova brojeva od 1 do 3 -> 1 1, 1 2, 1 3, 2 1, 2 2, 2 3, 3 1, 3 2, 3 3
   }
 }
 ```
 
-Ugnjezditi možemo i kombinirati različite vrste petlji, na primjer, `for` i `while` petlje:
+Kombinirati i ugnijezditi i različite vrste petlji, na primjer, `for` i `while` petlje:
 
 ```javascript
 let i = 1;
 while (i <= 3) {
   for (let j = 1; j <= 3; j++) {
-    console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 -> 1 1, 1 2, 1 3, 2 1, 2 2, 2 3, 3 1, 3 2, 3 3
+    console.log(i, j); // ispisuje sve kombinacije parova brojeva od 1 do 3 -> 1 1, 1 2, 1 3, 2 1, 2 2, 2 3, 3 1, 3 2, 3 3
   }
   i++;
 }
@@ -1331,7 +1331,7 @@ for (let i = 1; i <= 3; i++) {
     if (i === 2 && j === 2) {
       continue; // Preskače iteraciju gdje je i = 2 i j = 2
     } else {
-      console.log(i, j); // ispisuje sve kombinacije brojeva od 1 do 3 osim 2 2 -> 1 1, 1 2, 1 3, 2 1, 2 3, 3 1, 3 2, 3 3
+      console.log(i, j); // ispisuje sve kombinacije parova brojeva od 1 do 3 osim 2 2 -> 1 1, 1 2, 1 3, 2 1, 2 3, 3 1, 3 2, 3 3
     }
   }
 }
@@ -1339,7 +1339,7 @@ for (let i = 1; i <= 3; i++) {
 
 ### Primjer 4 - Ispis tablice množenja
 
-Primjenjujući ugniježdene petlje možemo jednostavno ispisati tablicu množenja. U ovom primjeru implementirat ćemo funkciju za ispis tablice množenja za brojeve od `1` do `10`. Funkcija će ispisati sve kombinacije brojeva od `1` do `10` i njihovih umnožaka.
+Primjenjujući ugniježđene petlje možemo jednostavno ispisati tablicu množenja. U ovom primjeru implementirat ćemo funkciju za ispis tablice množenja za brojeve od `1` do `10`. Funkcija će ispisati sve kombinacije brojeva od `1` do `10` i njihovih umnožaka.
 
 Prvo definirajmo funkciju `tablicaMnozenja()` i unutar nje `for` petlju koja prolazi kroz brojeve od `1` do `10`.
 
@@ -1385,7 +1385,7 @@ tablicaMnozenja();
 
 ## Vježba 5
 
-Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz` i za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
+Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz`, dok za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
 
 **EduCoder šifra**: `fizz_buzz`
 
@@ -1484,7 +1484,7 @@ Rekurzija nije uvijek najbolje rješenje za rješavanje problema. Rekurzivne fun
 1. Napišite funkciju `reverseString` koja prima znakovni niz (string) kao argument i vraća obrnuti string. Na primjer, ako je ulaz `"hello"`, funkcija treba vratiti `"olleh"`. Funkcija mora vratiti `"Not a string!"` ako je ulazni argument različitog tipa od stringa. Funkciju testirajte s argumentima `"hello"`, `"JavaScript"` i `123`.
 2. Napišite funkciju `prost_broj` koja prima broj kao argument i vraća `true` ako je broj prost, odnosno `false` ako nije. Broj je prost ako je djeljiv samo s 1 i samim sobom. Funkciju pozovite s argumentima 7, 10 i 13.
 3. Nadogradite prethodni zadatak na način da ćete ispisati sve proste brojeve od 1 do 100. Funkciju `prost_broj` pozivajte unutar petlje. Ispis mora izgledati ovako: `"Prosti brojevi od 1 do 100 su: 2, 3, 5, 7, itd."`
-4. Napišite funkciju `pronadi_najduzu_rijec()` koja prima rečenicu kao argument i vraća najdužu riječ u rečenici. Rečenicu morate razložiti koristeći petlju, bez pomoćnih funkcija.
+4. Napišite funkciju `pronadi_najduzu_rijec()` koja prima rečenicu kao argument i vraća najdužu riječ u rečenici. Rečenicu morate razložiti **koristeći petlju**, **bez pomoćnih funkcija/metoda**!
    - Ako se funkciji proslijedi tip podatka koji nije string, funkcija vraća `"Nije rečenica!"`.
    - Ako je rečenica prazna, funkcija vraća `"Rečenica je prazna!"`.
    - Ako se rečenica sastoji od samo jedne riječi, funkcija vraća tu riječ.
