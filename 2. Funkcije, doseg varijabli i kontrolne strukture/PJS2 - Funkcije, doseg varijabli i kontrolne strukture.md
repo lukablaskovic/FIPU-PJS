@@ -63,6 +63,7 @@
   - [Vježba 5](#vježba-5)
   - [Vježba 6](#vježba-6)
   - [3.4 Rekurzija (eng. **_Recursion_**)](#34-rekurzija-eng-recursion)
+  - [3.5 Primjer 5 - Validacija forme](#35-primjer-5---validacija-forme)
 - [Samostalni zadatak za vježbu 3](#samostalni-zadatak-za-vježbu-3)
 
 <br>
@@ -1476,6 +1477,206 @@ Kako izgleda poziv funkcije `faktorijel(5)`?
 Dakle konačni rezultat poziva `faktorijel(5)` je `120`.
 
 Rekurzija nije uvijek najbolje rješenje za rješavanje problema. Rekurzivne funkcije mogu biti teže za razumjeti i održavati, a mogu dovesti i do prekoračenja stoga memorije. U praksi, rekurzija se koristi kada je problem koji rješavamo mogu se svesti na manje probleme iste vrste, a rekurzivno rješenje je jednostavnije i čitljivije od iterativnog rješenja.
+
+## 3.5 Primjer 5 - Validacija forme
+
+Recimo da imamo web formu koja sadrži polja za unos imena, prezimena, e-maila i lozinke. Želimo provjeriti jesu li sva polja ispravno popunjena prije nego što se forma pošalje na server. Kako možemo to postići koristeći JavaScript?
+
+Prvo, deklarirat ćemo 4 varijable koje će pohraniti vrijednosti unesene u polja forme.
+
+```javascript
+let ime;
+let prezime;
+let email;
+let lozinka;
+```
+
+Dalje, deklarirat ćemo funkciju `validirajFormu()` koja će provjeriti jesu li sva polja ispravno popunjena. U praksi, funkcija će se pozivati kada korisnik klikne na gumb za slanje forme. Ako funkcija vrati `true`, podaci u formi će se poslati na server, a ako vrati `false`, podaci neće biti poslani i korisnika će se na neki način obavijestiti.
+
+Idemo prvo dodati provjere da su sva polja popunjena. Ako nisu, funkcija vraća `false` i obavještava korisnika koristeći `alert()` funkciju.
+
+```javascript
+function validirajFormu() {
+  if (ime === "" || prezime === "" || email === "" || lozinka === "") {
+    alert("Molimo da popunite sva polja forme!");
+    return false;
+  }
+  return true;
+}
+```
+
+Dodajmo našim varijablama proizvoljne vrijednosti:
+
+```javascript
+ime = "Sanja";
+prezime = "Sanjić";
+email = "sanjasanjic@gmail.com";
+lozinka = "123456";
+
+console.log(validirajFormu()); // ispisuje true
+```
+
+Sada ćemo dodati provjeru da lozinka mora sadržavati barem `6` znakova.
+
+```javascript
+function validirajFormu() {
+  if (ime === "" || prezime === "" || email === "" || lozinka === "") {
+    alert("Molimo da popunite sva polja forme!");
+    return false;
+  }
+  if (lozinka.length < 6) {
+    alert("Lozinka mora biti dugačka barem 6 znakova!");
+    return false;
+  }
+  return true;
+}
+```
+
+U redu, što ako korisnik za ime i prezime unese brojeve? Dodajmo provjeru da ime i prezime sadrže samo slova.
+Unutar naše funkcije `validirajFormu()` dodajmo pomoćnu funkciju `containsNumber()` koja će provjeriti sadrži li niz znakova brojeve.
+
+Funkcija `containsNumber()` radi na način da prolazi kroz svaki znak niza i provjerava je li znak broj. Ako je, vraća `true`, inače vraća `false`.
+
+> JavaScript pokušava pretvoriti znakove u brojeve kada koristimo operator `>=` i `<=`, stoga to možemo iskoristiti za usporedbu znakova s brojevima.
+> Ako znak (`string`) predstavlja broj (0 - 9), JavaScript ga uspješno pretvara u broj (`number`) i provodi aritmetičku provjeru.
+
+```javascript
+function validirajFormu(ime, prezime, email, lozinka) {
+  if (ime === "" || prezime === "" || email === "" || lozinka === "") {
+    alert("Molimo da popunite sva polja forme!");
+    return false;
+  }
+
+  if (lozinka.length < 6) {
+    alert("Lozinka mora biti dugačka barem 6 znakova!");
+    return false;
+  }
+
+  function containsNumber(str) {
+    for (let i = 0; i < str.length; i++) {
+      // Provjerava je li znak broj (0-9)
+      if (str[i] >= 0 && str[i] <= 9) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  if (containsNumber(ime) || containsNumber(prezime)) {
+    alert("Ime i prezime ne smiju sadržavati brojeve!");
+    return false;
+  }
+
+  return true;
+}
+```
+
+Sada ako pokušamo pozvati funkciju `validirajFormu()` s proizvoljnim argumentima, funkcija će provjeriti jesu li sva polja ispravno popunjena, je li lozinka dugačka barem `6` znakova i sadržavaju li ime i prezime brojeve.
+
+```javascript
+ime = "Sanja";
+prezime = "Sanji3";
+email = "sanjasanjic@gmail.com";
+lozinka = "123456";
+
+console.log(validirajFormu(ime, prezime, email, lozinka)); // false
+```
+
+U Javascriptu, znakovi (uključujući i brojeve i slova) se kodiraju koristeći [Unicode]("https://home.unicode.org/") skup znakova. U ASCII i Unicode skupovima znakova, znakovi se prikazuju numeričkim vrijednostima. Primjerice, u **ASCII** skupu, slovo `a` kodira se brojem `97`, a slovo `z` brojem `122`. Brojevi se kodiraju brojevima od `48` do `57`. Dok u **Unicode** skupu, znak `0` kodira se brojem `0030`, a znak `9` brojem `0039`.
+Imajući to na umu, možemo dodati novu provjeru za `ime` i `prezime`. Funkciju koja provjerava sadrže li ime i prezime samo niz znakova `[a - z]`.
+
+Na ovaj način ne uzimamo u obzir hrvatska slova: `č`, `ć`, `š`, `đ`, `ž`, `lj`, `nj`, `dž`.
+
+```javascript
+function containsOnlyLetters(str) {
+  for (let i = 0; i < str.length; i++) {
+    let c = str[i];
+    // Leksikografska usporedba znakova
+    if (!(c >= "a" && c <= "z") && !(c >= "A" && c <= "Z")) {
+      return false;
+    }
+  }
+  return true;
+}
+```
+
+> U ovom slučaju, JavaScript će znakove pretvoriti u brojeve prema **Unicode** skupu znakova. Dano rješenje radi zato što znamo da su slova `[a - z]` kodirana brojevima od `97` do `122` i od `65` do `90` u ASCII skupu znakova. Drugim riječima, pohranjena su sekvencijalno!
+
+**Zapamtite:**
+
+> - **containsNumber(str)** : Ovdje su nam operandi u selekciji **znak** i **broj**. JavaScript će u ovom slučaju nastojati pretvoriti znak u broj i provesti usporedbu.
+> - **containsOnlyLetters(str)** : Ovdje su nam operandi u selekciji **znak** i **znak**. JavaScript će u ovom slučaju usporedti znakove leksikografski, tj. po redoslijedu u ASCII skupu znakova.
+
+Možemo još dodati provjeru je li e-mail ispravno formatiran. Na primjer, e-mail mora sadržavati znak `@` i barem jednu točku nakon znaka `@`.
+Radi pojednostavljenja, nećemo provjeravati sadrži li e-mail nedozvoljene znakove ili više znakova `@`.
+
+Naša konačna funkcija `validirajFormu()` izgleda ovako:
+
+```javascript
+function validirajFormu(ime, prezime, email, lozinka) {
+  if (ime === "" || prezime === "" || email === "" || lozinka === "") {
+    alert("Molimo da popunite sva polja forme!");
+    return false;
+  }
+
+  if (lozinka.length < 6) {
+    alert("Lozinka mora biti dugačka barem 6 znakova!");
+    return false;
+  }
+
+  function containsNumber(str) {
+    for (let i = 0; i < str.length; i++) {
+      // Provjerava je li znak broj (0-9)
+      if (str[i] >= "0" && str[i] <= "9") {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function containsOnlyLetters(str) {
+    for (let i = 0; i < str.length; i++) {
+      let c = str[i];
+      // Leksikografska usporedba znakova
+      if (!(c >= "a" && c <= "z") && !(c >= "A" && c <= "Z")) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function checkEmail(email) {
+    let atFound = false;
+    let dotFound = false;
+    for (let i = 0; i < email.length; i++) {
+      if (email[i] === "@") {
+        atFound = true;
+      }
+      if (atFound && email[i] === ".") {
+        dotFound = true;
+      }
+    }
+    return atFound && dotFound;
+  }
+
+  if (containsNumber(ime) || containsNumber(prezime)) {
+    alert("Ime i prezime ne smiju sadržavati brojeve!");
+    return false;
+  }
+
+  if (!containsOnlyLetters(ime) || !containsOnlyLetters(prezime)) {
+    alert("Ime i prezime smiju sadržavati samo slova a-z!");
+    return false;
+  }
+
+  if (!checkEmail(email)) {
+    alert("Email mora sadržavati @ i najmanje jednu točku (.) nakon @!");
+    return false;
+  }
+
+  return true;
+}
+```
 
 # Samostalni zadatak za vježbu 3
 
