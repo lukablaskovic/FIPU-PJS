@@ -1491,12 +1491,12 @@ let email;
 let lozinka;
 ```
 
-Dalje, deklarirat ćemo funkciju `validirajFormu()` koja će provjeriti jesu li sva polja ispravno popunjena. U praksi, funkcija će se pozivati kada korisnik klikne na gumb za slanje forme. Ako funkcija vrati `true`, podaci u formi će se poslati na server, a ako vrati `false`, podaci neće biti poslani i korisnika će se na neki način obavijestiti.
+Dalje, deklarirat ćemo funkciju `validirajFormu(ime, prezime, email, lozinka)` koja će provjeriti jesu li sva polja ispravno popunjena. U praksi, funkcija će se pozivati kada korisnik klikne na gumb za slanje forme. Ako funkcija vrati `true`, podaci u formi će se poslati na server, a ako vrati `false`, podaci neće biti poslani i korisnika će se na neki način obavijestiti.
 
 Idemo prvo dodati provjere da su sva polja popunjena. Ako nisu, funkcija vraća `false` i obavještava korisnika koristeći `alert()` funkciju.
 
 ```javascript
-function validirajFormu() {
+function validirajFormu(ime, prezime, email, lozinka) {
   if (ime === "" || prezime === "" || email === "" || lozinka === "") {
     alert("Molimo da popunite sva polja forme!");
     return false;
@@ -1513,13 +1513,13 @@ prezime = "Sanjić";
 email = "sanjasanjic@gmail.com";
 lozinka = "123456";
 
-console.log(validirajFormu()); // ispisuje true
+console.log(validirajFormu(ime, prezime, email, lozinka)); // ispisuje true
 ```
 
 Sada ćemo dodati provjeru da lozinka mora sadržavati barem `6` znakova.
 
 ```javascript
-function validirajFormu() {
+function validirajFormu(ime, prezime, email, lozinka) {
   if (ime === "" || prezime === "" || email === "" || lozinka === "") {
     alert("Molimo da popunite sva polja forme!");
     return false;
@@ -1571,7 +1571,7 @@ function validirajFormu(ime, prezime, email, lozinka) {
 }
 ```
 
-Sada ako pokušamo pozvati funkciju `validirajFormu()` s proizvoljnim argumentima, funkcija će provjeriti jesu li sva polja ispravno popunjena, je li lozinka dugačka barem `6` znakova i sadržavaju li ime i prezime brojeve.
+Sada ako pokušamo pozvati funkciju `validirajFormu(ime, prezime, email, lozinka)` s proizvoljnim argumentima, funkcija će provjeriti jesu li sva polja ispravno popunjena, je li lozinka dugačka barem `6` znakova i sadržavaju li ime i prezime brojeve.
 
 ```javascript
 ime = "Sanja";
