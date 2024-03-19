@@ -1,4 +1,4 @@
-# Programiranje u skriptnim jezicima
+# Programiranje u skriptnim jezicima (PJS)
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -10,106 +10,216 @@
 
 <img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%"></img>
 
-# [1] Naslov skripte
+# [4] Ugniježđene strukture i napredne funkcije
 
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
-<img src="logojs/js0.png" style="width:9%; float:right;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js4.png?raw=true" style="width:9%; float:right;"></img>
 
-<p style="float: clear">Uvod od nekoliko rečenica ovdje </p>
+<p style="float: clear">"Baratanje" ugniježđenim strukturama je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili JSON objekata. Dohvat podataka s različitih API-ja, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. Cilj ove skripte je objasniti ugniježđene strukture i napredne funkcije za jednostavniji rad s njima.</p>
+
+<br>
 
 ## Sadržaj
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [Programiranje u skriptnim jezicima](#programiranje-u-skriptnim-jezicima)
-- [\[1\] Naslov skripte](#1-naslov-skripte)
+- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
+- [\[4\] Ugniježđene strukture i napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
   - [Sadržaj](#sadržaj)
-- [1 Uvod](#1-uvod)
-  - [1.2 Primjer slike](#12-primjer-slike)
-  - [1.2 Primjer koda](#12-primjer-koda)
-    - [2.2.1 Primjer grananja naslova](#221-primjer-grananja-naslova)
-      - [Naslov 4](#naslov-4)
-      - [Naslov 4](#naslov-4-1)
-      - [Naslov 4](#naslov-4-2)
-  - [3. Primjer spoilera](#3-primjer-spoilera)
-  - [Vježba 1](#vježba-1)
-    - [Tekst zadatka, npr.](#tekst-zadatka-npr)
-    - [Screenshot rezultata, npr.](#screenshot-rezultata-npr)
-  - [Vježba 2](#vježba-2)
-- [Samostalni zadatak za vježbu \[broj vjezbe\]](#samostalni-zadatak-za-vježbu-broj-vjezbe)
+- [1. Uvod u ugniježđene strukture](#1-uvod-u-ugniježđene-strukture)
+- [2. Ugniježđeni objekti](#2-ugniježđeni-objekti)
+  - [2.1 Manipulacije podataka unutar ugniježđenih objekata](#21-manipulacije-podataka-unutar-ugniježđenih-objekata)
+    - [2.1.1 Izmjena podataka unutar ugniježđenih objekata](#211-izmjena-podataka-unutar-ugniježđenih-objekata)
+    - [2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata](#212-dodavanje-novih-podataka-unutar-ugniježđenih-objekata)
+    - [2.1.3 Brisanje podataka unutar ugniježđenih objekata](#213-brisanje-podataka-unutar-ugniježđenih-objekata)
 
 <br>
 
-# 1 Uvod
+# 1. Uvod u ugniježđene strukture
 
-## 1.2 Primjer slike
+Do sad smo naučili da možemo ugniježđivati selekcije i petlje, pa i funkcije. No, što ako želimo ugniježđivati objekte? Ili polja? Ili funkcije koje vraćaju objekte? Ili objekte koji sadrže funkcije, itd. Sve to možemo, i to je ono što ćemo naučiti u ovoj skripti.
 
-![Hello World](hello_world.png)
-
-## 1.2 Primjer koda
+Primjer ugniježdene selekcije:
 
 ```javascript
-// script.js
-function showMessage() {
-  console.log("Hello JavaScript!");
+if (zaposlen) {
+    if (placa > 1500) { 
+        console.log("Kreditno sposoban!");
+    } else {
+        console.log("Ne diži kredit!");
+    }
+} else {
+    console.log("Ne diži kredit nikako!");
 }
 ```
 
-### 2.2.1 Primjer grananja naslova
+Primjer ugniježdene petlje:
 
-#### Naslov 4
+```javascript
+for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 6; j++) {
+        console.log(`i je ${i}, a j je ${j}`);
+    }
+}
+```
 
-#### Naslov 4
+Rekli smo da možemo ugniježđivati i funkcije. Možda to nije nešto što ćemo često raditi, ali je moguće. Evo primjera:
 
-#### Naslov 4
+```javascript
+function prvaFunkcija() {
+    console.log("Pozdrav iz prve funkcije!");
+    function drugaFunkcija() {
+        console.log("Pozdrav iz druge funkcije!");
+    }
+    drugaFunkcija();
+}
+prvaFunkcija();
+```
 
-## 3. Primjer spoilera
+Recimo da želimo napraviti pohraniti podatke o korisniku naše aplikacije. Želimo pohraniti `ime`, `prezime`, `adresa` i `kontakt`.
+Pod adresu želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`.
 
-- kad se exporta u PDF ne radi, vec samo prikaze sadrzaj
+Prvo ćemo pohraniti u jednostavan objekt bez ugniježđenih struktura:
 
-<details>
-  <summary>Primjer spoilera!</summary>
-  <p>U prvom primjeru, JavaScript tretira 16 i 4 kao brojeve, dok ne dođe do "Volvo", rezultat će biti "20Volvo".  </p>
-  <p>U drugom primjeru, budući da je prvi operand string, JavaScript će sve operande tretirati kao stringove, rezultat će biti "Volvo164".</p>
+```javascript
+let korisnik = {
+    ime: "Ivo",
+    prezime: "Ivić",
+    adresa: "Ulica 123, 52100 Pula",
+    kontakt: "0911234567",
+    email: "ivo@gmail.com"
+};
+```
+Primjetite zašto je ovakav zapis nezgrapan. Kako bi dohvatili ulicu, moramo koristiti `split` metodu. Kako dohvatiti poštanski broj? Idemo problem riješiti **ugniježđenim objektima**.
   
-  ```javascript
-  let x = 16 + 4 + "Volvo";
-  console.log(x); // 20Volvo
-
-let x = "Volvo" + 16 + 4;
-console.log(x); // Volvo164
-
+```javascript
+let korisnik = {
+    ime: "Ivo",
+    prezime: "Ivić",
+    adresa: {
+        ulica: "Ulica 123",
+        grad: "Pula",
+        postanskiBroj: "52100"
+    },
+    kontakt: {
+        telefon: "0911234567",
+        email: "ivo@gmail.com"
+    }
+};
 ```
-</details>
+Sada možemo jednostavno dohvatiti ulicu, grad, poštanski broj, telefon i email, a naš kod je pregledniji. Na jednak način kako dohvaćamo atribute objekata, možemo dohvaćati i atribute ugniježđenih objekata, koristeći `.` operator.
 
-## Vježba 1
+```javascript
+console.log(korisnik.adresa.ulica); // Ispisuje "Ulica 123"
+console.log(korisnik.adresa.grad); // Ispisuje "Pula"
+console.log(korisnik.adresa.postanskiBroj); // Ispisuje "52100"
 
-### Tekst zadatka, npr.
-Idemo napraviti kratku vježbu onoga što smo dosad prošli. U `script.js` datoteci deklarirajte varijable `a`, `b` i `c` i dodijelite im vrijednosti `5`, `"5"` i true. Ispišite vrijednosti varijabli u konzolu i provjerite njihove tipove. Kod dodajte unutar funkcije `showMessage()`.
-Nakon toga, `typeof` operatorom provjerite tipove varijabli i u konzolu ispišite tvrdnju za svaku varijablu, npr. "Varijabla a je tipa number". Izraze u `console.log()` možete spojiti pomoću `+` operatora.
-
-Zašto `console.log(a == b)` vraća `true`? Objasnite.
-
-### Screenshot rezultata, npr.
-Rezultat:
-
-![vjezba_1](vjezba1.png)
-
-## Vježba 2
-...
-
-# Samostalni zadatak za vježbu [broj vjezbe]
-
-**EduCoder šifra**: `sifra`
-
-1. Deklarirajte tri konstante i jednu promjenjivu varijablu. Konstante neka budu vaše `ime` i `prezime` i `godina_rodenja`. Promjenjivu varijablu nazovite `trenutno_vrijeme`.
-2. U varijable `ime` i `prezime` pohranite svoje ime i prezime, a u varijablu `godina_rodenja` pohranite godinu rođenja kao cjelobrojnu vrijednost. U varijablu `trenutno_vrijeme` pohranite trenutno vrijeme koristeći `new Date()` objekt.
-3. Napravite novu varijablu `godine` i u nju izračunajte koliko imate godina koristeći funkciju [`getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) nad varijablom `trenutno_vrijeme` i varijablu `godina_rodenja`. Radi pojednostavljivanja, pretpostavljamo da je vaš rođendan već prošao ove godine.
-4. Koristeći [`template literals`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), u konzolu ispišite "Bok moje ime je __ __ i imam __ godina.".
-5. Deklarirajte dvije nove konstante `ime_duljina` i `prezime_duljina` u koje ćete pohraniti broj slova u vašem imenu i prezimenu koristeći funkciju [`length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) nad varijablama `ime` i `prezime`.
-6. Ispišite u konzolu "Moje ime i prezime imaju __ i __ slova." koristeći `template literals`.
-7. Ispišite u konzolu "It is __ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
-8. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s 2 . **Napomena**, sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji koda</span>.
-9. Upišite u novu varijablu `xsc` vrijednost varijable `x` u znanstvenom zapisu (napisati ručno!).
-10. Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`.
+console.log(korisnik.kontakt.telefon); // Ispisuje "0911234567"
+console.log(korisnik.kontakt.email); // Ispisuje "ivo@gmail.com"
 ```
+
+# 2. Ugniježđeni objekti
+
+Najjednostavnije rečeno, **ugniježđeni objekti** su objekti koji sadrže druge objekte. U prethodnom primjeru smo vidjeli kako možemo ugniježđivati objekte.
+
+Ugniježđeni objekti su korisni jer nam omogućuju da strukturiramo podatke na način koji je pregledniji i lakši za korištenje. Također, omogućuju nam da grupiramo slične podatke zajedno.
+
+Idemo definirati dummy konfiguracijski objekt za našu aplikaciju. Konfiguracijski objekt se često definira kao objekt u koji ćemo definirati neke postavke naše aplikacije. Primjer:
+
+```javascript
+let konfiguracija = {
+    server: {
+        host: "localhost",
+        port: 8080
+    },
+    bazaPodataka: {
+        url: "mongodb://localhost:27017",
+        ime: "mojaBaza"
+    },
+    sigurnost: {
+        tip: "OAuth2",
+        tajna: "tajniKljuc"
+    }
+};
+
+console.log(konfiguracija.server.host); // Ispisuje "localhost
+console.log(konfiguracija.bazaPodataka.url); // Ispisuje "mongodb://localhost:27017"
+console.log(konfiguracija.sigurnost.tip); // Ispisuje "OAuth2"
+```
+
+Podobjekt može biti definiran i izvan objekta `konfiguracija`:
+  
+```javascript
+  let server = {
+      host: "localhost",
+      port: 8080
+  };
+
+  let bazaPodataka = {
+      url: "mongodb://localhost:27017",
+      ime: "mojaBaza"
+  };
+
+  let sigurnost = {
+      tip: "OAuth2",
+      tajna: "tajniKljuc"
+  };
+  // Glavni objekt
+  let konfiguracija = {
+      server: server, // Podobjekt
+      bazaPodataka: bazaPodataka,  // Podobjekt
+      sigurnost: sigurnost  // Podobjekt
+  };
+```
+Što ako ispišemo cijeli objekt `konfiguracija`? Ispisat će se cijeli objekt, uključujući i podobjekte.
+
+```javascript
+console.log(konfiguracija); // Ispisuje: {server: {...}, bazaPodataka: {...}, sigurnost: {...}}
+```
+Detaljni ispis objekta `konfiguracija`:
+```javascript
+{
+  bazaPodataka: {
+        url: "mongodb://localhost:27017",
+        ime: "mojaBaza"
+    },
+    server: {
+        host: "localhost",
+        port: 8080
+    },
+    sigurnost: {
+        tip: "OAuth2",
+        tajna: "tajniKljuc"
+    }
+}
+```
+
+## 2.1 Manipulacije podataka unutar ugniježđenih objekata
+
+### 2.1.1 Izmjena podataka unutar ugniježđenih objekata
+
+Kako mijenjati podatke unutar ugniježđenih objekata? Na primjer, kako promijeniti `host` servera u našem objektu `konfiguracija`? Na isti način kako dohvaćamo podatke iz ugniježđenih objekata, koristeći `.` operator.
+
+```javascript
+konfiguracija.server.host = "192.168.5.5";
+console.log(konfiguracija.server.host); // Ispisuje "192.168.5.5"
+```
+
+### 2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata
+
+Recimo da hoćemo dodati `protocol` podataka u naš objekt `server`. To radimo na isti način kao i kod dodavanja novih podataka u obične objekte.
+
+```javascript
+konfiguracija.server.protocol = "http";
+console.log(konfiguracija.server.protocol); // Ispisuje "http"
+```
+
+### 2.1.3 Brisanje podataka unutar ugniježđenih objekata
+
+Kako obrisati podatke unutar ugniježđenih objekata? Na primjer, kako obrisati `port` servera u našem objektu `konfiguracija`? Koristimo `delete` naredbu.
+
+```javascript
+delete konfiguracija.server.port; // vraća true
+console.log(konfiguracija.server.port); // Ispisuje "undefined"
+```
+
