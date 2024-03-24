@@ -45,6 +45,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
   - [Vježba 3](#vježba-3)
   - [2.4 `Date` objekt](#24-date-objekt)
   - [Vježba 4](#vježba-4)
+  - [Vježba 5](#vježba-5)
   - [2.4 Usporedba JavaScript objekata](#24-usporedba-javascript-objekata)
     - [2.4.1 `instanceof` operator](#241-instanceof-operator)
 - [Samostalni zadatak za vježbu 4](#samostalni-zadatak-za-vježbu-4)
@@ -57,7 +58,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
     - [3.2 Zašto `Array` objekt?](#32-zašto-array-objekt)
     - [Primjer 1 - dodavanje, brisanje i pretraživanje koristeći obične uglate zagrade](#primjer-1---dodavanje-brisanje-i-pretraživanje-koristeći-obične-uglate-zagrade)
     - [Primjer 2 - dodavanje, brisanje i pretraživanje koristeći `Array` objekt](#primjer-2---dodavanje-brisanje-i-pretraživanje-koristeći-array-objekt)
-  - [Vježba 5](#vježba-5)
+  - [Vježba 6](#vježba-6)
   - [3.2 Iteracije kroz polja](#32-iteracije-kroz-polja)
     - [3.2.1 Tradicionalna `for` petlja](#321-tradicionalna-for-petlja)
     - [3.2.2 `for...of` petlja](#322-forof-petlja)
@@ -65,7 +66,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
     - [3.2.4 `Array.forEach` metoda](#324-arrayforeach-metoda)
   - [3.3 Objekti unutar polja](#33-objekti-unutar-polja)
     - [Primjer 3 - iteracija kroz polje objekata](#primjer-3---iteracija-kroz-polje-objekata)
-  - [Vježba 6](#vježba-6)
+  - [Vježba 7](#vježba-7)
   - [3.4 Osnovne metode `Array` objekta](#34-osnovne-metode-array-objekta)
   - [3.4.1 Metode dodavanja, brisanja i stvaranja novih polja](#341-metode-dodavanja-brisanja-i-stvaranja-novih-polja)
     - [Primjer 4 - `paginate` funkcija koristeći `slice` metodu](#primjer-4---paginate-funkcija-koristeći-slice-metodu)
@@ -92,13 +93,13 @@ Prije nego definiramo objekte, važno je razumijeti što su primitivni tipovi po
 - `symbol` i
 - `bigint`.
 
-Primitivne vrijednosti su nepromjenjive (eng. _immutable_). Kako ovo razumjeti?
-Na primjer, ako imamo `x = 3.14`, mi možemo promijeniti vrijednost varijable `x` u što god hoćemo, ali ne možemo promijeniti vrijednost `3.14`.
-Drugi primjer, boolean vrijednosti `true` i `false` su uvijek `true` i `false`, kao i `null` i `undefined`. Takve vrijednosti su nepromjenjive!
+Primitivne vrijednosti su nepromjenjive (eng. _immutable_).
+Na primjer, ako imamo `x = 3.14`, mi možemo promijeniti vrijednost varijable `x` u što god hoćemo, ali ne možemo promijeniti vrijednost `3.14`. `3.14` je uvijek `3.14`, kao što je i `2` uvijek `2`.
+Drugi primjer, boolean vrijednosti `true` i `false` su uvijek `true` i `false`, isto vrijedi i za `null` i `undefined`. Takve vrijednosti su nepromjenjive!
 
 Objekte stvaramo koristeći objektne literale, koji se sastoje od parova `ključ:vrijednost` (eng. _key-value_) odvojenih zarezima `,` i okruženih vitičastim zagradama `{}`. Svaki par `ključ:vrijednost` može biti svojstvo ili metoda objekta.
 
-> Možemo reći da je JavaScript objekt varijabla koja se sastoji od jednog ili više `ključ:vrijednost` parova.
+> Možemo reći da je JavaScript objekt ustvari varijabla koja se sastoji od jednog ili više `ključ:vrijednost` parova.
 
 Definirajmo prazan objekt `auto`. Postoji praksa da se objekti definiraju pomoću konstante `const`.
 
@@ -114,7 +115,7 @@ console.log(auto); // {}
 
 ## 1.1 Osnovna sintaksa objekata
 
-U JavaScriptu, objekt se sastoji od više članova, od kojih svaki ima ključ (npr. _godina_proizvodnje_ i _boja_) i vrijednost (npr. _2020_ i _"Crna"_). Svaki par `ključ:vrijednost` mora biti odvojen zarezom `,`, a ključ i vrijednost u svakom slučaju odvojeni su dvotočjem `:`
+U JavaScriptu, objekt se sastoji od više članova, od kojih svaki ima **ključ** (npr. _godina_proizvodnje_ i _boja_) i **vrijednost** (npr. _2020_ i _"Crna"_). Svaki par `ključ:vrijednost` mora biti odvojen zarezom `,`dok su ključ i vrijednost u svakom slučaju odvojeni dvotočjem `:`
 
 Sintaksa uvijek slijedi uzorak:
 
@@ -178,7 +179,7 @@ const auto = {
 console.log(auto.godina_proizvodnje); // 2020
 ```
 
-Ovaj način deklariranja također omogućuje dodavanje `ključa` s **razmacima** što nije preporučljivo jer se tim varijablama može pristupati samo pomoću notacije uglatih zagrada `[]`:
+Ovaj način deklariranja također omogućuje dodavanje `ključa` s **razmacima** što nije preporučljivo jer se tim svojstvima može pristupati samo pomoću notacije uglatih zagrada `[]`:
 
 ```javascript
 const auto = {
@@ -244,6 +245,8 @@ U tablici su navedene metode i svojstva objekta `auto`:
 |                                                                                                                       Objekt                                                                                                                        |                                               Svojstva                                                |         Metode          |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :---------------------: |
 | <div style="text-align:center;">auto<br><img src="https://www.motortrend.com/uploads/sites/10/2019/09/2020-ford-mustang-fastback-ecoboost-coupe-angular-front.png" style="width:50%; display: block; margin-left: auto; margin-right: auto;"></div> | auto.marka = "Ford"<br>auto.model = "Mustang"<br>auto.godina_proizvodnje = 2020<br>auto.boja = "Crna" | auto.izracunajStarost() |
+
+>✅ Zapamti! Kada pričamo o objektima, **svojstva** su varijable koje pripadaju objektu, a **metode** su funkcije koje pripadaju objektu. 
 
 ## 1.2 Ključna riječ `this`
 
@@ -329,7 +332,7 @@ console.log(grad.svojstvo); // undefined - neće raditi
 ```
 
 Kako možemo izbrisati svojstvo objekta? Ključnom riječi `delete`!
-Recimo da hoćemmo izbrisati svojstvo `velicina` iz objekta `grad`:
+Recimo da hoćemo izbrisati svojstvo `velicina` iz objekta `grad`:
 
 ```javascript
 delete grad.velicina;
@@ -557,7 +560,7 @@ rijeci.push(trenutnaRijec); // dodaj zadnju riječ u polje riječi
 console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
 ```
 
-To je 10-tak linija kȏda za vrlo jednostavnu i učestalu radnju! Isto možemo postići koristeći `String.split()` metodu:
+To je 10-tak linija kȏda za vrlo učestalu radnju 🤯 Isto možemo postići koristeći `String.split()` metodu:
 
 ```javascript
 const recenica = "Pula je grad u Istri.";
@@ -684,7 +687,7 @@ Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objek
 
 ### 2.2.1 `NaN` (Not a Number)
 
-`NaN` je rezervirana riječ u JavaScriptu koja označava "Not a Number". `NaN` je povratna vrijednsot nakon evaluacije neuspješnog matematičkog izraza. Na primjer, ako želimo podijeliti broj 100 s jabukom.
+`NaN` je rezervirana riječ u JavaScriptu koja označava "Not a Number". `NaN` je povratna vrijednsot nakon evaluacije neuspješnog matematičkog izraza. Na primjer, ako želimo podijeliti broj 100 s jabukom?
 
 ```javascript
 let x = 100 / "jabuka";
@@ -777,7 +780,7 @@ console.log(izracunajSinKos(30));
 
 ## 2.4 `Date` objekt
 
-`Date` objekt reprezentira trenutak u vremenu. Ovaj objekt koristi se za rad s datumima i vremenima. `Date` objekt može se koristiti za stvaranje datuma i vremena, te za njihovu manipulaciju i prikaz. `Date` objekt enkapsulira broj milisekundi od 1. siječnja 1970. godine, poznat kao UNIX vremenska oznaka (eng. **_UNIX timestamp_**).
+`Date` objekt reprezentira trenutak u vremenu. Ovaj objekt koristi se za rad s datumima i vremenom. `Date` objekt može se koristiti za stvaranje datuma i vremena, te za njihovu manipulaciju i prikaz. `Date` objekt enkapsulira broj milisekundi od 1. siječnja 1970. godine, poznat kao UNIX vremenska oznaka (eng. **_UNIX timestamp_**).
 
 Generalno, u JavaScriptu postoje 3 načina definiranja datuma:
 
@@ -785,11 +788,11 @@ Generalno, u JavaScriptu postoje 3 načina definiranja datuma:
 | ----------- | ----------- |
 | ISO Date      | `"2015-03-25"` (The International Standard)       |
 | Short Date   | `"03/25/2015"`        |
-| Long Date   | ``"Mar 25 2015"` ili `"25 Mar 2015"`        |
+| Long Date   | `"Mar 25 2015"` ili `"25 Mar 2015"`        |
 
-Od ovih standarda, ISO format je najčešće korišten i preporučen. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) sintaksa izgleda ovako: `YYYY-MM-DDTHH:mm:ss.sssZ`, gdje `YYYY` predstavlja godinu, `MM` mjesec, `DD` dan, `T` literal koji odvaja datum i vrijeme, `HH` sat, `mm` minute, `ss` sekunde, `sss` milisekunde i `Z` je offset vremenske zone. Primjerice, 27. rujna 2023. godine u 18:00 sati izgleda ovako: `2023-09-27 18:00:00`.
+Od ovih standarda, ISO format je najčešće korišten i preporučuje se. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) sintaksa izgleda ovako: `YYYY-MM-DDTHH:mm:ss.sssZ`, gdje `YYYY` predstavlja godinu, `MM` mjesec, `DD` dan, `T` literal koji odvaja datum i vrijeme, `HH` sat, `mm` minute, `ss` sekunde, `sss` milisekunde i `Z` je offset vremenske zone. Primjerice, 27. rujna 2023. godine u 18:00 sati izgleda ovako: `2023-09-27 18:00:00`.
 
-> *Mala napomena* - `Date` objekt u JavaScriptu je vrlo opširan, nekima možda i nezgrapan budući da ima veliki broj zastarjelih metoda i konvencija. U modernom JavaScriptu, preporučuje se korištenje `moment.js` biblioteke za rad s datumima i vremenima. To možete proučiti sami, za potrebe ovog kolegija proći ćemo samo osnove `Date` objekta. `TC39` grupa (koja razvija JavaScript) radi na [novom standardu](https://tc39.es/proposal-temporal/docs/index.html) za rad s datumima i vremenima, koji će zamijeniti `Date` objekt.
+> *Mala napomena* - `Date` objekt u JavaScriptu je vrlo opširan, nekima možda i nezgrapan budući da ima veliki broj zastarjelih metoda i konvencija. U modernom JavaScriptu, preporučuje se korištenje `moment.js` biblioteke za rad s datumima i vremenom. To možete proučiti sami, za potrebe ovog kolegija proći ćemo samo osnove `Date` objekta. `TC39` grupa (koja razvija JavaScript) radi na [novom standardu](https://tc39.es/proposal-temporal/docs/index.html) za rad s datumima i vremenom, koji će zamijeniti `Date` objekt.
 
 Novi datum možemo stvoriti koristeći `new Date()` konstruktor. Konstruktor može primiti različite argumente, ukupno njih 9, mi ćemo proći samo nekoliko:
 
@@ -817,11 +820,32 @@ Nakon što izradimo `Date` objekt, možemo koristiti razne metode za dohvaćanje
 | `getTime()`            | Za dani datum vraća vraća koliko je prošlo milisekundi od 1. siječnja 1970, UTC. Ako je dani datum bio prije, vraća negativan broj.                                         | `Date.getTime()` |`const moonLanding = new Date('July 20, 69 20:17:40 GMT+00:00');` ; `moonLanding.getTime() == -14182940000`                    | `-14182940000`                                                        |
 | `toLocaleDateString()` | Za dani datum vraća string prikaz datuma u definiranom lokalnom formatu. Prima opcionalne argumente [`locales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#locales) i [`options`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options). Npr. ako hoćemo datum napisati po hrvatskom standardu, postavljamo `locales='hr'`. Ako želimo i datum i vrijeme, postoji varijanta - `toLocaleString()`.                                            | `Date.toLocaleDateString();` | `let bozic23 = new Date("December 25, 23"); bozic23.toLocaleDateString("hr") == '25. 12. 2023.'`         |   `'25. 12. 2023.'`                                                       |
 | `toLocaleTimeString()` | Za dani datum vraća string prikaz vremena u definiranom lokalnom formatu. Prima opcionalne argumente [`locales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#locales) i [`options`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#options). Npr. ako hoćemo datum napisati po američkom standardu, postavljamo `locales='en-US'`. Ako želimo i datum i vrijeme, postoji varijanta - `toLocaleString()`.                                               | `Date.toLocaleTimeString();` |`const event = new Date('August 19, 1975 23:15:30 GMT+00:00');` ; `event.toLocaleTimeString('en-US') == '1:15:30 AM'`         | `'1:15:30 AM'`                                                           |                                          |
-| `toString()`           | Pretvara dani `Date` objekt u string format lokalne vremenske zone. Ova metoda poziva se automatski kod ispisavanja datuma.                                                | `Date.toString();`  | `const event = new Date('August 19, 1975 23:15:30');` ; `event.toString() == 'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'`                    | `'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'` |
+| `toString()`           | Pretvara dani `Date` objekt u string format lokalne vremenske zone. Ova metoda poziva se **automatski** kod ispisa `Date` objekta. datuma.                                                | `Date.toString();`  | `const event = new Date('August 19, 1975 23:15:30');` ; `event.toString() == 'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'`                    | `'Tue Aug 19 1975 23:15:30 GMT+0100 (Central European Standard Time)'` |
 | `Date.now()`           | Statična metoda koja vraća unix timestamp trenutno vremena prošlog od 1. siječnja 1970, UTC. Budući da je metoda statična, ne stvaramo novi objekt s konstruktorom `new Date()`.                        | `Date.now();` |`let upravo_sada = Date.now();`                         | `1708686440160`                                                        |
 | `Date.parse()`         | Parsira string reprezentaciju datuma i vraća broj milisekundi od 1. siječnja 1970, UTC. Budući da je metoda statična, ne stvaramo novi objekt s konstruktorom `new Date()`.  | `Date.parse(dateString)` |`Date.parse("2024-02-20T14:37:15Z");` | `1645265835000` (ovisno o vremenskoj zoni, može se razlikovati)        |
 
 Tablica se većinom sastoji od `get` metoda za dohvaćanje pojedinih dijelova datuma i vremena. Popis vrlo sličnog skupa `set` metoda za postavljanje dijelova datuma i vremena možete pronaći [ovdje](https://www.w3schools.com/js/js_date_methods_set.asp).
+
+Što se dešava ako pokušamo "zbrojiti" dva `Date` objekta operatorom `+`?
+Rekli smo da se metoda `toString()` automatski poziva kod ispisa `Date` objekta. Kada pokušamo zbrojiti dva `Date` objekta, JavaScript će pretvoriti objekte u stringove i konkatenirati ih.
+
+```javascript
+const d1 = new Date("2022-03-25");
+const d2 = new Date("2022-03-26");
+
+console.log(d1 + d2); // "Fri Mar 25 2022 01:00:00 GMT+0100 (Central European Standard Time)Sat Mar 26 2022 01:00:00 GMT+0100 (Central European Standard Time)"
+```
+
+Međutim operator `-` će izvršiti matematičku operaciju, odnosno oduzimanje UNIX timestampa jednog datuma od drugog.
+
+>Kako smo rekli da je vrijednost UNIX timestampa u milisekundama, rezultat će biti **razlika u milisekundama između dva datuma**.
+
+```javascript
+const d1 = new Date("2022-03-25");
+const d2 = new Date("2022-03-26");
+
+console.log(d2 - d1); // 86400000
+```
 
 ## Vježba 4
 
@@ -850,6 +874,18 @@ console.log(hrVrijeme()); // Output: 13:08:27 (ovisno o trenutnom vremenu)
 ```javascript
 console.log(isWeekend(new Date('2024-01-01'))); // Output: false
 console.log(isWeekend(new Date('2024-03-31'))); // Output: true
+```
+
+## Vježba 5
+
+**EduCoder šifra**: `calculateHours`
+
+Napišite funkciju `calculateHours()` koja prima dva argumenta: `start` i `end`. Argumenti su tipa `Date`. Funkcija treba izračunati i vratiti razliku između dva datuma u satima. Za implementaciju koristite metode iz `Date` objekta.
+
+✅Rezultat:
+
+```javascript
+console.log(calculateHours(new Date(2024, 1, 14), new Date(2024, 1, 16))); // Output: 48
 ```
 
 ## 2.4 Usporedba JavaScript objekata
@@ -1155,7 +1191,7 @@ stabla.forEach(function(stablo) {
 });
 ```
 
-## Vježba 5
+## Vježba 6
 
 **EduCoder šifra**: `pliz_moze_2`
 
@@ -1400,7 +1436,7 @@ korisnici.push(korisnik_ivan);
 console.log(korisnici[0].ime); // Output: "Ivan"
 ```
 
-## Vježba 6
+## Vježba 7
 
 **EduCoder šifra**: `grocery_shopping`
 
