@@ -21,7 +21,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [\[3\] Strukture podataka - objekti i polja](#3-strukture-podataka---objekti-i-polja)
+- [\[3\] Strukture podataka - Objekti i Polja](#3-strukture-podataka---objekti-i-polja)
   - [Sadržaj](#sadržaj)
 - [1. Objekti (eng. **_objects_**)](#1-objekti-eng-objects)
   - [1.1 Osnovna sintaksa objekata](#11-osnovna-sintaksa-objekata)
@@ -850,7 +850,7 @@ console.log(d2 - d1); // 86400000
 
 **EduCoder šifra**: `vrijeme_u_rh`
 
-1. Napišite funkciju hrDatum() koja vraća današanji datum u formatu `dd.mm.yyyy.`. Funkcija ne prima argumente. Za implementaciju koristite metode iz `Date` objekta. Ispis ne smije sadržavati razmake. Regex izraz za pronalaženje svih razmaka u stringu je `/\s/g`.
+1. Napišite funkciju `hrDatum()` koja vraća današanji datum u formatu `dd.mm.yyyy.`. Funkcija ne prima argumente. Za implementaciju koristite metode iz `Date` objekta. Ispis ne smije sadržavati razmake. Regex izraz za pronalaženje svih razmaka u stringu je `/\s/g`.
 
 ✅Rezultat:
 
