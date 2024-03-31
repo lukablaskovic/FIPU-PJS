@@ -635,7 +635,7 @@ console.log(triple(5)); // 15
 ```
 
 Što ako želimo dodati funkcije `quadruple` i `quintuple` koje će vraćati četverostruko odnosno petostruko veći broj? Recimo da želimo ostati na tome da naša funkcija prima samo jedan argument. Možemo li to riješiti pomoću funkcija višeg reda?
-Možemo! Deklarirati ćemo funkciju `mutliplier` koja će primati jedan argument `multiplier` te će vraćati funkciju koja će primati jedan argument `x` i vraćati `x * multiplier`.
+Možemo! Deklarirati ćemo funkciju `mutliplier` koja će primati jedan argument `value` te će vraćati funkciju koja će primati jedan argument `x` i vraćati `x * multiplier`.
 
 Dakle `multiplier` je funkcija višeg reda jer vraća funkciju kao povratnu vrijednost.
 
