@@ -731,7 +731,7 @@ Pripazite da je blok kȏda uvučen unutar vitičastih zagrada `{}`. Ako je logi�
 ```javascript
 let x = 10;
 if (x < 5) {
-  console.log("x je veći od 5"); // neće se ispisati
+  console.log("x je manji od 5"); // neće se ispisati
 }
 ```
 
@@ -1131,7 +1131,7 @@ for (let i = 0; i < 10; ) {
 }
 ```
 
-#### Primjer 3 - Ispis ispis brojeva od 1 do 100 koji su djeljivi s 3
+#### Primjer 3 - Ispis brojeva od 1 do 100 koji su djeljivi s 3
 
 Izračunajte sumu svih brojeva od `1` do `100` koji su djeljivi s 3. Koristite `for` petlju. Ovaj zadatak zahtjeva korištenje petlje za iteriranje kroz brojeve od 1 do 100, uvjetne izjave za provjeru je li broj djeljiv s 3 i varijablu za praćenje ukupne sume.
 
