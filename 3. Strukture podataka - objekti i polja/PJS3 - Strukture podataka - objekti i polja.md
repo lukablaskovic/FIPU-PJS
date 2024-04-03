@@ -682,7 +682,7 @@ Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objek
 | `parseInt()`    | Metoda pretvara dani string u cjelobrojni ekvivalent. Kao i kod `toString()`, sadrži opcionalni `radix` parametar.                                                                       | `Number.parseInt(string, radix)` | `parseInt("10.456")` ; `parseInt("40 years")` | `10` ; `40`           |
 | `parseFloat()`  | Metoda pretvara dani string u floating-point ekvivalent.                                                                                                                                 | `Number.parseFloat(string)`      | `parseFloat("10.456")`                        | `10.456`              |
 | `isInteger()`   | Provjerava je li dana vrijednost `value` integer. Vraća `boolean` vrijednost ovisno o tome.                                                                                              | `Number.isInteger(value)`        | `isInteger(5.2)`                              | `false`               |
-| `isNaN()`       | Provjerava je li vrijednost dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                              | `Number.isNaN(value)`            | `isNaN("string")`                             | `true`                |
+| `isNaN()`       | Provjerava je li dana vrijednost `NaN` (Not a Number). Vraća `boolean` vrijednost ovisno o tome.                                                                              | `Number.isNaN(value)`            | `isNaN("string")`                             | `true`                |
 
 ### 2.2.1 `NaN` (Not a Number)
 
