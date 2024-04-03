@@ -686,7 +686,7 @@ Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Number` objek
 
 ### 2.2.1 `NaN` (Not a Number)
 
-`NaN` je rezervirana riječ u JavaScriptu koja označava "Not a Number". `NaN` je povratna vrijednsot nakon evaluacije neuspješnog matematičkog izraza. Na primjer, ako želimo podijeliti broj 100 s jabukom?
+`NaN` je rezervirana riječ u JavaScriptu koja označava "Not a Number". `NaN` je povratna vrijednost nakon evaluacije neuspješnog matematičkog izraza. Na primjer, ako želimo podijeliti broj 100 s jabukom?
 
 ```javascript
 let x = 100 / "jabuka";
