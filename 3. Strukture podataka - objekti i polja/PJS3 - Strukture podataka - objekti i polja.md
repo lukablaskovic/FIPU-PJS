@@ -1295,7 +1295,7 @@ for (let svojstvo in auto) {
   console.log(svojstvo); // Output: "marka", "model", "godina_proizvodnje", "boja"
 }
 
-for (let svojstvo of auto) {
+for (let svojstvo in auto) {
   console.log(auto[svojstvo]); // Output: "Ford", "Mustang", 2020, "Crna"
 }
 ```
