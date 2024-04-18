@@ -10,12 +10,12 @@
 
 <img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%"></img>
 
-# [4] Ugniježđene strukture i napredne funkcije
+# [4] Ugniježđene strukture i Napredne funkcije
 
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js4.png?raw=true" style="width:9%; float:right;"></img>
 
-<p style="float: clear">"Baratanje" ugniježđenim strukturama je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili JSON objekata. Dohvat podataka s različitih API-ja, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. Cilj ove skripte je objasniti ugniježđene strukture i napredne funkcije za jednostavniji rad s njima.</p>
+<p style="float: clear">"Baratanje" ugniježđenim strukturama (***eng. nested structures***) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili JSON objekata. Dohvat podataka s različitih API-ja, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i napredne funkcije za jednostavniji rad s njima.</p>
 
 <br>
 
@@ -24,22 +24,27 @@
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [\[4\] Ugniježđene strukture i napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
+- [\[4\] Ugniježđene strukture i Napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u ugniježđene strukture](#1-uvod-u-ugniježđene-strukture)
-- [2. Ugniježđeni objekti (***eng. Nested objects***)](#2-ugniježđeni-objekti-eng-nested-objects)
+- [2. Objekti unutar objekata](#2-objekti-unutar-objekata)
   - [2.1 Manipulacije podataka unutar ugniježđenih objekata](#21-manipulacije-podataka-unutar-ugniježđenih-objekata)
     - [2.1.1 Izmjena podataka unutar ugniježđenih objekata](#211-izmjena-podataka-unutar-ugniježđenih-objekata)
     - [2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata](#212-dodavanje-novih-podataka-unutar-ugniježđenih-objekata)
     - [2.1.3 Brisanje podataka unutar ugniježđenih objekata](#213-brisanje-podataka-unutar-ugniježđenih-objekata)
-  - [Primjer 1 - Web trgovina](#primjer-1---web-trgovina)
+- [3. Polja unutar objekata](#3-polja-unutar-objekata)
 
 <br>
 
 # 1. Uvod u ugniježđene strukture
 
-Do sad smo naučili da možemo ugniježđivati selekcije i petlje, pa i funkcije. No, što ako želimo ugniježđivati objekte? Ili polja? Ili funkcije koje vraćaju objekte? Ili objekte koji sadrže funkcije, itd. Sve to možemo, i to je ono što ćemo naučiti u ovoj skripti koja se bavi ugniježđenim strukturama (***eng. nested structures***).
+Do sad smo naučili da možemo ugniježđivati selekcije i petlje, pa i funkcije. No, što ako želimo ugniježđivati objekte? Ili polja? Ili funkcije koje vraćaju objekte? Ili objekte koji sadrže funkcije, itd. U kratko, ugniježđene strukture možemo podijeliti u **4 kategorije**:
+>1. **Objekti unutar objekata** `{{}}`
+>2. **Polja unutar objekata** `{[]}`
+>3. **Objekti unutar polja** `[{}]`
+>4. **Polja unutar polja** `[[]]`
 
+Prije nego odradimo navedene kategorije, prisjetimo se ugniježđenih selekcija, petlji i funkcija.
 Primjer ugniježdene selekcije:
 
 ```javascript
@@ -119,11 +124,33 @@ console.log(korisnik.kontakt.telefon); // Ispisuje "0911234567"
 console.log(korisnik.kontakt.email); // Ispisuje "ivo@gmail.com"
 ```
 
-# 2. Ugniježđeni objekti (***eng. Nested objects***)
+# 2. Objekti unutar objekata
 
-Najjednostavnije rečeno, **ugniježđeni objekti** su objekti koji sadržavaju druge objekte. U prethodnom primjeru smo vidjeli kako možemo ugniježđivati objekte.
+Često ćemo se u programirajnu susretati s potrebom za pohranjivanjem složenih podataka i specifikacije nekakve hijerarhijske strukture. Primjerice, kako ćemo pohraniti podatke o korisniku? Korisnik ima ime, prezime, adresu i kontakt. Adresa se sastoji od ulice, grada i poštanskog broja. Kontakt se sastoji od telefona i emaila. Navedeno možemo postići pomoću ugniježđenih objekata, tj. objekata unutar objekata.
 
-Ugniježđeni objekti su korisni jer nam omogućuju da strukturiramo podatke na način koji je pregledniji i lakši za korištenje. Također, omogućuju nam da grupiramo slične podatke zajedno.
+Objekte ugniježđujemo na način da stvaramo objekte unutar objekata, doslovno. Sintaksa je sljedeća:
+
+```javascript
+let objekt1 = {
+    svojstvo1: vrijednost1,
+    svojstvo2: vrijednost2,
+    objekt2: {
+        svojstvo3: vrijednost3,
+        svojstvo4: vrijednost4
+    },
+    objekt3: {
+        svojstvo5: vrijednost5,
+        svojstvo6: vrijednost6
+    }
+};
+```
+Za dohvaćanje podataka podataka kod ugniježđenih objekata koristimo već poznate operatore `.` ili `[]`. Primjer:
+
+```javascript
+console.log(objekt1.svojstvo1); // Ispisuje vrijednost1
+console.log(objekt1.objekt2.svojstvo3); // Ispisuje vrijednost3
+console.log(objekt1["objekt2"]["svojstvo3"]); // Ispisuje vrijednost3
+```
 
 Idemo definirati dummy konfiguracijski objekt za našu aplikaciju. Konfiguracijski objekt se često definira kao objekt u koji ćemo definirati neke postavke naše aplikacije. Primjer:
 
@@ -199,11 +226,18 @@ Detaljni ispis objekta `konfiguracija`:
 
 ### 2.1.1 Izmjena podataka unutar ugniježđenih objekata
 
-Kako mijenjati podatke unutar ugniježđenih objekata? Na primjer, kako promijeniti `host` servera u našem objektu `konfiguracija`? Na isti način kako dohvaćamo podatke iz ugniježđenih objekata, koristeći `.` operator.
+Kako mijenjati podatke unutar ugniježđenih objekata? Na primjer, kako promijeniti `host` servera u našem objektu `konfiguracija`? Na isti način kako dohvaćamo podatke iz ugniježđenih objekata, koristeći `.` operator ili notaciju uglatih zagrada `[]`.
 
 ```javascript
 konfiguracija.server.host = "192.168.5.5";
 console.log(konfiguracija.server.host); // Ispisuje "192.168.5.5"
+```
+
+Možemo koristiti i notaciju uglatih zagrada `[]`:
+
+```javascript
+konfiguracija["server"]["host"] = "192.168.5.5";
+console.log(konfiguracija["server"]["host"]); // Ispisuje "192.168.5.5"
 ```
 
 ### 2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata
@@ -271,7 +305,7 @@ konfiguracija.server.protocol = "http";
 
 ### 2.1.3 Brisanje podataka unutar ugniježđenih objekata
 
-Kako obrisati podatke unutar ugniježđenih objekata? Na primjer, kako obrisati `port` servera u našem objektu `konfiguracija`? Koristimo `delete` naredbu.
+Kako obrisati podatke unutar ugniježđenih objekata? Na primjer, tj. kako obrisati `port` servera u našem objektu `konfiguracija`? Koristimo `delete` naredbu.
 
 ```javascript
 delete konfiguracija.server.port; // vraća true
@@ -280,11 +314,11 @@ console.log(konfiguracija.server.port); // Ispisuje "undefined"
 
 Naravno, objekte možemo i dublje ugniježđivati, koliko god želimo. U praksi, nećemo ići dublje od 3-4 razine ugniježđivanja, jer postaje nepraktično i teško za održavanje.
 
+# 3. Polja unutar objekata
 
+// treba preoblikovati - jer se ovdje vec pocinje pricati o objektima unutar polja...
 
-## Primjer 1 - Web trgovina
-
-Hoćemo modelirati podatke o kupcu u našoj web trgovini. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Pod narudžbe želimo pohraniti `proizvodi` i `ukupna cijena`.
+Zamislite da radite neku web trgovinu, morate na neki način pohranjivati podatke o kupcu i narudžbama. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Kako ćemo pohraniti narudžbe? Narudžba se sastoji od više proizvoda, a svaki proizvod ima svoje svojstvo `naziv`, `količina` i `cijena`. Kako pohraniti sve ove podatke?
 
 Prvo ćemo pohraniti osnovne podatke o kupcu:
 ```javascript
@@ -297,7 +331,8 @@ let kupac = {
 };
 ```
 Ideja je da svojstva `adresa`, `kontakt` i `narudžbe` budu objekti. Definirajmo ih:
-
+Definirat ćemo i objekt narudžbe gdje ćemo pohraniti proizvode koje je kupac naručio i ukupnu cijenu narudžbe.
+> Novi oblik ugniježdene strukture koji sad moramo koristiti jesu polja unutar objekata.
 ```javascript
 let kupac = {
     ime: "Ivo",
@@ -319,7 +354,7 @@ let kupac = {
 ```
 Recimo da je kupac naručio 3 proizvoda: `"Mobitel" 1 kom`, `"Slušalice" 1 kom` i `"Punjač" 2 kom`. Cijene proizvoda su `300, `20` i `10` eur. Kako pohraniti proizvode?
 
->Pametno je proizvode pohraniti kao zasebne objekte, prvo izvan objekta `kupac`, a zatim ih dodati u objekt `kupac`.
+>Idemo proizvode pohraniti kao zasebne objekte, prvo izvan objekta `kupac`, a zatim ih dodati u objekt `kupac`.
 
 ```javascript
 let proizvod_1 = {
@@ -472,4 +507,3 @@ console.log(kupac.narudzbe[0].ukupnaCijena()); // voilà!
 U tkz. [document-based](https://en.wikipedia.org/wiki/Document-oriented_database) bazama podataka (npr. MongoDB), podaci se često pohranjuju u strukturama koje podsjećaju na objekte u JavaScriptu, često se takve strukture nazivaju dokumentima i kolekcijama. 
 
 >Jedna od asocijacija može biti: **JS objekt** = dokument, **JS polje** = kolekcija.
-
