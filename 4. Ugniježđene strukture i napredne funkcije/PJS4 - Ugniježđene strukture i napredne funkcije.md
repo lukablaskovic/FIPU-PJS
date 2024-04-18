@@ -32,7 +32,7 @@
     - [2.1.1 Izmjena podataka unutar ugniježđenih objekata](#211-izmjena-podataka-unutar-ugniježđenih-objekata)
     - [2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata](#212-dodavanje-novih-podataka-unutar-ugniježđenih-objekata)
     - [2.1.3 Brisanje podataka unutar ugniježđenih objekata](#213-brisanje-podataka-unutar-ugniježđenih-objekata)
-    - [Primjer 1 - Web trgovina](#primjer-1---web-trgovina)
+  - [Primjer 1 - Web trgovina](#primjer-1---web-trgovina)
 
 <br>
 
@@ -215,6 +215,60 @@ konfiguracija.server.protocol = "http";
 console.log(konfiguracija.server.protocol); // Ispisuje "http"
 ```
 
+Možemo i koristeći notaciju uglatih zagrada `[]`:
+
+```javascript
+konfiguracija.server["protocol"] = "http";
+```
+
+ili
+
+```javascript
+konfiguracija["server"]["protocol"] = "http";
+```
+
+Ima li smisla dodavati naknadno svojstva? Ako ne znamo unaprijed koja će svojstva biti potrebna, onda ima smisla. Ako znamo unaprijed, onda je bolje definirati sva svojstva odmah. Primjerice, ako znamo svojstva `server` konfiguracije, možemo odmah reći:
+
+```javascript
+let konfiguracija = {
+    server: {
+        host: "localhost",
+        port: 8080,
+        protocol: "http"
+    }
+};
+```
+
+Ako ne znamo, imamo više opcija:
+
+1. Možemo definirati prazan objekt i dodavati svojstva kako ih trebamo.
+
+```javascript
+let konfiguracija = {
+    server: {}
+};
+
+konfiguracija.server.host = "localhost";
+konfiguracija.server.port = 8080;
+konfiguracija.server.protocol = "http";
+```
+
+2. Možemo napraviti isto, ali definirati i koja podsvojstva će imati `server` objekt.
+
+```javascript
+let konfiguracija = {
+    server: {
+        host: "", // Prazni string jer nagađamo da će biti string
+        port: null, // Null jer nagađamo da će biti broj
+        protocol: "" // Prazni string jer nagađamo da će biti string
+    }
+};
+
+konfiguracija.server.host = "localhost";
+konfiguracija.server.port = 8080;
+konfiguracija.server.protocol = "http";
+```
+
 ### 2.1.3 Brisanje podataka unutar ugniježđenih objekata
 
 Kako obrisati podatke unutar ugniježđenih objekata? Na primjer, kako obrisati `port` servera u našem objektu `konfiguracija`? Koristimo `delete` naredbu.
@@ -226,7 +280,9 @@ console.log(konfiguracija.server.port); // Ispisuje "undefined"
 
 Naravno, objekte možemo i dublje ugniježđivati, koliko god želimo. U praksi, nećemo ići dublje od 3-4 razine ugniježđivanja, jer postaje nepraktično i teško za održavanje.
 
-### Primjer 1 - Web trgovina
+
+
+## Primjer 1 - Web trgovina
 
 Hoćemo modelirati podatke o kupcu u našoj web trgovini. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Pod narudžbe želimo pohraniti `proizvodi` i `ukupna cijena`.
 
@@ -263,7 +319,7 @@ let kupac = {
 ```
 Recimo da je kupac naručio 3 proizvoda: `"Mobitel" 1 kom`, `"Slušalice" 1 kom` i `"Punjač" 2 kom`. Cijene proizvoda su `300, `20` i `10` eur. Kako pohraniti proizvode?
 
->Pametno je proizvode pohraniti kao zasebne objekte, prvo van objekta `kupac`, a zatim ih dodati u objekt `kupac`.
+>Pametno je proizvode pohraniti kao zasebne objekte, prvo izvan objekta `kupac`, a zatim ih dodati u objekt `kupac`.
 
 ```javascript
 let proizvod_1 = {
@@ -306,7 +362,7 @@ let kupac = {
         email: "iivic@gmail.com"
     },
     narudzbe: {
-        proizvodi: [
+        proizvodi: [ // U polje smo dodali objekte proizvoda
             {
                 naziv: "Mobitel",
                 kolicina: 1,
@@ -411,3 +467,9 @@ Kako dohvatiti ukupnu cijenu prve narudžbe našeg kupca sad?
 ```javascript
 console.log(kupac.narudzbe[0].ukupnaCijena()); // voilà! 
 ```
+
+>U real-world aplikaciji, ovi podaci pohranjivali bi se u bazu podataka, a client-side aplikacija bi ih dohvaćala i prikazivala na korisničkom sučelju.
+U tkz. [document-based](https://en.wikipedia.org/wiki/Document-oriented_database) bazama podataka (npr. MongoDB), podaci se često pohranjuju u strukturama koje podsjećaju na objekte u JavaScriptu, često se takve strukture nazivaju dokumentima i kolekcijama. 
+
+>Jedna od asocijacija može biti: **JS objekt** = dokument, **JS polje** = kolekcija.
+
