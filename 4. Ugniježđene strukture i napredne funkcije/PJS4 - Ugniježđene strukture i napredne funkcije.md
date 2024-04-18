@@ -15,7 +15,7 @@
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js4.png?raw=true" style="width:9%; float:right;"></img>
 
-<p style="float: clear">"Baratanje" ugniježđenim strukturama (***eng. nested structures***) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili JSON objekata. Dohvat podataka s različitih API-ja, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i napredne funkcije za jednostavniji rad s njima.</p>
+<p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili JSON objekata. Dohvat podataka s različitih API-ja, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i napredne funkcije za jednostavniji rad s njima.</p>
 
 <br>
 
@@ -491,7 +491,7 @@ console.log(kupac.narudzbe.ukupnaCijena); // Ispisuje 340
 Uočite glavni problem: Narudžbe su ustvari objekt (`narudzbe`), gdje se svaka narudžba sastoji od više proizvoda (polje objekata) i ukupne cijene.
 - Što ako kupac ima više narudžbi? Gdje to dodajemo?
 
-Rješenje je da svaka narudžba bude zaseban objekt, a svaku narudžbu pohranimo u **polje objekata**.
+Rješenje je da svaka narudžba bude zaseban objekt koje ćemo pohranjivati u tkz. **polje objekata**.
 
 Dakle, do sada smo imali objekt `narduzbe` koji sadržava polje objekata `proizvodi`. Narudžbe su množina narudžbi, pa ima smisla da budu polje. Svaka narudžba sastoji se potencijano više stavki (proizvoda), pa je svaka narudžba objekt.
 
