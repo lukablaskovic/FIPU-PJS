@@ -27,17 +27,18 @@
 - [\[4\] Ugniježđene strukture i napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u ugniježđene strukture](#1-uvod-u-ugniježđene-strukture)
-- [2. Ugniježđeni objekti](#2-ugniježđeni-objekti)
+- [2. Ugniježđeni objekti (***eng. Nested objects***)](#2-ugniježđeni-objekti-eng-nested-objects)
   - [2.1 Manipulacije podataka unutar ugniježđenih objekata](#21-manipulacije-podataka-unutar-ugniježđenih-objekata)
     - [2.1.1 Izmjena podataka unutar ugniježđenih objekata](#211-izmjena-podataka-unutar-ugniježđenih-objekata)
     - [2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata](#212-dodavanje-novih-podataka-unutar-ugniježđenih-objekata)
     - [2.1.3 Brisanje podataka unutar ugniježđenih objekata](#213-brisanje-podataka-unutar-ugniježđenih-objekata)
+    - [Primjer 1 - Web trgovina](#primjer-1---web-trgovina)
 
 <br>
 
 # 1. Uvod u ugniježđene strukture
 
-Do sad smo naučili da možemo ugniježđivati selekcije i petlje, pa i funkcije. No, što ako želimo ugniježđivati objekte? Ili polja? Ili funkcije koje vraćaju objekte? Ili objekte koji sadrže funkcije, itd. Sve to možemo, i to je ono što ćemo naučiti u ovoj skripti.
+Do sad smo naučili da možemo ugniježđivati selekcije i petlje, pa i funkcije. No, što ako želimo ugniježđivati objekte? Ili polja? Ili funkcije koje vraćaju objekte? Ili objekte koji sadrže funkcije, itd. Sve to možemo, i to je ono što ćemo naučiti u ovoj skripti koja se bavi ugniježđenim strukturama (***eng. nested structures***).
 
 Primjer ugniježdene selekcije:
 
@@ -118,9 +119,9 @@ console.log(korisnik.kontakt.telefon); // Ispisuje "0911234567"
 console.log(korisnik.kontakt.email); // Ispisuje "ivo@gmail.com"
 ```
 
-# 2. Ugniježđeni objekti
+# 2. Ugniježđeni objekti (***eng. Nested objects***)
 
-Najjednostavnije rečeno, **ugniježđeni objekti** su objekti koji sadrže druge objekte. U prethodnom primjeru smo vidjeli kako možemo ugniježđivati objekte.
+Najjednostavnije rečeno, **ugniježđeni objekti** su objekti koji sadržavaju druge objekte. U prethodnom primjeru smo vidjeli kako možemo ugniježđivati objekte.
 
 Ugniježđeni objekti su korisni jer nam omogućuju da strukturiramo podatke na način koji je pregledniji i lakši za korištenje. Također, omogućuju nam da grupiramo slične podatke zajedno.
 
@@ -223,3 +224,190 @@ delete konfiguracija.server.port; // vraća true
 console.log(konfiguracija.server.port); // Ispisuje "undefined"
 ```
 
+Naravno, objekte možemo i dublje ugniježđivati, koliko god želimo. U praksi, nećemo ići dublje od 3-4 razine ugniježđivanja, jer postaje nepraktično i teško za održavanje.
+
+### Primjer 1 - Web trgovina
+
+Hoćemo modelirati podatke o kupcu u našoj web trgovini. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Pod narudžbe želimo pohraniti `proizvodi` i `ukupna cijena`.
+
+Prvo ćemo pohraniti osnovne podatke o kupcu:
+```javascript
+let kupac = {
+    ime: "Ivo",
+    prezime: "Ivić",
+    adresa: "Ulica 123, 52100 Pula",
+    kontakt: "0911234567",
+    email: "iivic@gmail.com"
+};
+```
+Ideja je da svojstva `adresa`, `kontakt` i `narudžbe` budu objekti. Definirajmo ih:
+
+```javascript
+let kupac = {
+    ime: "Ivo",
+    prezime: "Ivić",
+    adresa: {
+        ulica: "Ulica 123",
+        grad: "Pula",
+        postanskiBroj: "52100"
+    },
+    kontakt: {
+        telefon: "0911234567",
+        email: "iivic@gmail.com"
+    },
+    narudzbe: {
+        proizvodi: [], // Koristimo polja za pohranu više podataka istog tipa
+        ukupnaCijena: 0
+    }
+};
+```
+Recimo da je kupac naručio 3 proizvoda: `"Mobitel" 1 kom`, `"Slušalice" 1 kom` i `"Punjač" 2 kom`. Cijene proizvoda su `300, `20` i `10` eur. Kako pohraniti proizvode?
+
+>Pametno je proizvode pohraniti kao zasebne objekte, prvo van objekta `kupac`, a zatim ih dodati u objekt `kupac`.
+
+```javascript
+let proizvod_1 = {
+    naziv: "Mobitel",
+    kolicina: 1,
+    cijena: 300
+};
+let proizvod_2 = {
+    naziv: "Slušalice",
+    kolicina: 1,
+    cijena: 20
+};
+let proizvod_3 = {
+    naziv: "Punjač",
+    kolicina: 2,
+    cijena: 10
+};
+```
+Sada ćemo dodati proizvode u objekt `kupac`:
+
+```javascript
+kupac.narudzbe.proizvodi.push(proizvod_1);
+kupac.narudzbe.proizvodi.push(proizvod_2);
+kupac.narudzbe.proizvodi.push(proizvod_3);
+```
+
+Objekt `kupac` sada izgleda ovako:
+
+```javascript
+let kupac = {
+    ime: "Ivo",
+    prezime: "Ivić",
+    adresa: {
+        ulica: "Ulica 123",
+        grad: "Pula",
+        postanskiBroj: "52100"
+    },
+    kontakt: {
+        telefon: "0911234567",
+        email: "iivic@gmail.com"
+    },
+    narudzbe: {
+        proizvodi: [
+            {
+                naziv: "Mobitel",
+                kolicina: 1,
+                cijena: 300
+            },
+            {
+                naziv: "Slušalice",
+                kolicina: 1,
+                cijena: 20
+            },
+            {
+                naziv: "Punjač",
+                kolicina: 2,
+                cijena: 10
+            }
+        ], 
+        ukupnaCijena: 0
+    }
+};
+```
+**Zašto ovo nije dobro?** Uočite glavni problem: Narudžbe su ustvari objekt, gdje se svaka narudžba sastoji od više proizvoda (polje objekata) i ukupne cijene.
+- Kako bismo izračunali ukupnu cijenu, moramo proći kroz sve proizvode i zbrojiti njihove cijene.
+- Što ako kupac ima više narudžbi? Gdje to dodajemo?
+
+Rješenje je da svaka narudžba bude zaseban objekt, a sve narudžbe pohranimo u polje objekata.
+Dakle naš objekt narudžba će izgledati ovako:
+
+```javascript
+let narudzba_1 = {
+    proizvodi: [
+        {
+            naziv: "Mobitel",
+            kolicina: 1,
+            cijena: 300
+        },
+        {
+            naziv: "Slušalice",
+            kolicina: 1,
+            cijena: 20
+        },
+        {
+            naziv: "Punjač",
+            kolicina: 2,
+            cijena: 10
+        }
+    ],
+    ukupnaCijena: 0
+};
+```
+Zašto ne bi zamijenili svojstvo za ukupnu cijenu s odgovarajućom metodom? Dodat ćemo metodu koja za svaki proizvod računa ukupnu cijenu narudžbe.
+
+```javascript
+let narudzba_1 = {
+    proizvodi: [
+        {
+            naziv: "Mobitel",
+            kolicina: 1,
+            cijena: 300
+        },
+        {
+            naziv: "Slušalice",
+            kolicina: 1,
+            cijena: 20
+        },
+        {
+            naziv: "Punjač",
+            kolicina: 2,
+            cijena: 10
+        }
+    ],
+    ukupnaCijena: function() { // Vraća ukupnu cijenu narudžbe (340)
+        let ukupnaCijena = 0;
+        for (let proizvod of this.proizvodi) {
+            ukupnaCijena += proizvod.kolicina * proizvod.cijena;
+        }
+        return ukupnaCijena;
+    },
+    valuta: "eur" // Možemo dodati i valutu kao zasebno svojstvo 
+};
+```
+Sada ćemo svojstvo `narudzbe` iz objekta `kupac` pretvoriti u polje objekata i u njega dodati `narudzba_1`. 
+
+```javascript
+let kupac = {
+    ime: "Ivo",
+    prezime: "Ivić",
+    adresa: {
+        ulica: "Ulica 123",
+        grad: "Pula",
+        postanskiBroj: "52100"
+    },
+    kontakt: {
+        telefon: "0911234567",
+        email: "iivic@gmail.com"
+    },
+    narudzbe: [
+        narudzba_1 // Dodajemo narudžbu (narudzba_1) u polje narudžbi
+    ]
+};
+```
+Kako dohvatiti ukupnu cijenu prve narudžbe našeg kupca sad?
+```javascript
+console.log(kupac.narudzbe[0].ukupnaCijena()); // voilà! 
+```
