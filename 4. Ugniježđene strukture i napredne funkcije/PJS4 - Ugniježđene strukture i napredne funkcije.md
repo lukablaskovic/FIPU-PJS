@@ -27,12 +27,15 @@
 - [\[4\] Ugniježđene strukture i Napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u ugniježđene strukture](#1-uvod-u-ugniježđene-strukture)
-- [2. Objekti unutar objekata](#2-objekti-unutar-objekata)
-  - [2.1 Manipulacije podataka unutar ugniježđenih objekata](#21-manipulacije-podataka-unutar-ugniježđenih-objekata)
-    - [2.1.1 Izmjena podataka unutar ugniježđenih objekata](#211-izmjena-podataka-unutar-ugniježđenih-objekata)
-    - [2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata](#212-dodavanje-novih-podataka-unutar-ugniježđenih-objekata)
-    - [2.1.3 Brisanje podataka unutar ugniježđenih objekata](#213-brisanje-podataka-unutar-ugniježđenih-objekata)
-- [3. Polja unutar objekata](#3-polja-unutar-objekata)
+- [2. Ugniježđene strukture](#2-ugniježđene-strukture)
+  - [2.1 Objekti unutar objekata](#21-objekti-unutar-objekata)
+    - [2.1.1 Manipulacije podataka unutar ugniježđenih objekata](#211-manipulacije-podataka-unutar-ugniježđenih-objekata)
+      - [Izmjena podataka unutar ugniježđenih objekata](#izmjena-podataka-unutar-ugniježđenih-objekata)
+      - [Dodavanje novih podataka unutar ugniježđenih objekata](#dodavanje-novih-podataka-unutar-ugniježđenih-objekata)
+      - [Brisanje podataka unutar ugniježđenih objekata](#brisanje-podataka-unutar-ugniježđenih-objekata)
+  - [2.2 Polja unutar objekata](#22-polja-unutar-objekata)
+    - [2.2.1 Iteracija kroz polja unutar objekata](#221-iteracija-kroz-polja-unutar-objekata)
+  - [2.3 Objekti unutar polja](#23-objekti-unutar-polja)
 
 <br>
 
@@ -124,11 +127,13 @@ console.log(korisnik.kontakt.telefon); // Ispisuje "0911234567"
 console.log(korisnik.kontakt.email); // Ispisuje "ivo@gmail.com"
 ```
 
-# 2. Objekti unutar objekata
+# 2. Ugniježđene strukture
+
+## 2.1 Objekti unutar objekata
 
 Često ćemo se u programirajnu susretati s potrebom za pohranjivanjem složenih podataka i specifikacije nekakve hijerarhijske strukture. Primjerice, kako ćemo pohraniti podatke o korisniku? Korisnik ima ime, prezime, adresu i kontakt. Adresa se sastoji od ulice, grada i poštanskog broja. Kontakt se sastoji od telefona i emaila. Navedeno možemo postići pomoću ugniježđenih objekata, tj. objekata unutar objekata.
 
-Objekte ugniježđujemo na način da stvaramo objekte unutar objekata, doslovno. Sintaksa je sljedeća:
+Objekte ugniježđujemo na način da stvaramo **objekte unutar objekata**, doslovno. Sintaksa je sljedeća:
 
 ```javascript
 let objekt1 = {
@@ -222,9 +227,9 @@ Detaljni ispis objekta `konfiguracija`:
 }
 ```
 
-## 2.1 Manipulacije podataka unutar ugniježđenih objekata
+### 2.1.1 Manipulacije podataka unutar ugniježđenih objekata
 
-### 2.1.1 Izmjena podataka unutar ugniježđenih objekata
+#### Izmjena podataka unutar ugniježđenih objekata
 
 Kako mijenjati podatke unutar ugniježđenih objekata? Na primjer, kako promijeniti `host` servera u našem objektu `konfiguracija`? Na isti način kako dohvaćamo podatke iz ugniježđenih objekata, koristeći `.` operator ili notaciju uglatih zagrada `[]`.
 
@@ -240,7 +245,7 @@ konfiguracija["server"]["host"] = "192.168.5.5";
 console.log(konfiguracija["server"]["host"]); // Ispisuje "192.168.5.5"
 ```
 
-### 2.1.2 Dodavanje novih podataka unutar ugniježđenih objekata
+#### Dodavanje novih podataka unutar ugniježđenih objekata
 
 Recimo da hoćemo dodati `protocol` podataka u naš objekt `server`. To radimo na isti način kao i kod dodavanja novih podataka u obične objekte.
 
@@ -303,7 +308,7 @@ konfiguracija.server.port = 8080;
 konfiguracija.server.protocol = "http";
 ```
 
-### 2.1.3 Brisanje podataka unutar ugniježđenih objekata
+#### Brisanje podataka unutar ugniježđenih objekata
 
 Kako obrisati podatke unutar ugniježđenih objekata? Na primjer, tj. kako obrisati `port` servera u našem objektu `konfiguracija`? Koristimo `delete` naredbu.
 
@@ -314,11 +319,9 @@ console.log(konfiguracija.server.port); // Ispisuje "undefined"
 
 Naravno, objekte možemo i dublje ugniježđivati, koliko god želimo. U praksi, nećemo ići dublje od 3-4 razine ugniježđivanja, jer postaje nepraktično i teško za održavanje.
 
-# 3. Polja unutar objekata
+## 2.2 Polja unutar objekata
 
-// treba preoblikovati - jer se ovdje vec pocinje pricati o objektima unutar polja...
-
-Zamislite da radite neku web trgovinu, morate na neki način pohranjivati podatke o kupcu i narudžbama. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Kako ćemo pohraniti narudžbe? Narudžba se sastoji od više proizvoda, a svaki proizvod ima svoje svojstvo `naziv`, `količina` i `cijena`. Kako pohraniti sve ove podatke?
+Zamislite da radite neku web trgovinu, morate na neki način pohranjivati podatke o kupcu i narudžbama. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Kako ćemo pohraniti narudžbe? Narudžba se sastoji od više proizvoda, dakle moramo koristiti polja!
 
 Prvo ćemo pohraniti osnovne podatke o kupcu:
 ```javascript
@@ -332,7 +335,7 @@ let kupac = {
 ```
 Ideja je da svojstva `adresa`, `kontakt` i `narudžbe` budu objekti. Definirajmo ih:
 Definirat ćemo i objekt narudžbe gdje ćemo pohraniti proizvode koje je kupac naručio i ukupnu cijenu narudžbe.
-> Novi oblik ugniježdene strukture koji sad moramo koristiti jesu polja unutar objekata.
+> Novi oblik ugniježdene strukture koji sad moramo koristiti jesu **polja unutar objekata**.
 ```javascript
 let kupac = {
     ime: "Ivo",
@@ -347,14 +350,50 @@ let kupac = {
         email: "iivic@gmail.com"
     },
     narudzbe: {
-        proizvodi: [], // Koristimo polja za pohranu više podataka istog tipa
-        ukupnaCijena: 0
+        proizvodi: ["Mobitel", "Slušalice", "Punjač"], 
+        ukupnaCijena: 1500
     }
 };
 ```
-Recimo da je kupac naručio 3 proizvoda: `"Mobitel" 1 kom`, `"Slušalice" 1 kom` i `"Punjač" 2 kom`. Cijene proizvoda su `300, `20` i `10` eur. Kako pohraniti proizvode?
 
->Idemo proizvode pohraniti kao zasebne objekte, prvo izvan objekta `kupac`, a zatim ih dodati u objekt `kupac`.
+Koristili smo polje `proizvodi` unutar objekta `narudzbe` kako bismo pohranili proizvode koje je kupac naručio. Polje `proizvodi` je niz stringova. Kako dohvatiti proizvode koje je kupac naručio?
+
+```javascript
+console.log(kupac.narudzbe.proizvodi); // Ispisuje ["Mobitel", "Slušalice", "Punjač"]
+```
+
+Kako dohvatiti prvi proizvod iz niza proizvoda?
+
+```javascript
+console.log(kupac.narudzbe.proizvodi[0]); // Ispisuje "Mobitel"
+```
+
+### 2.2.1 Iteracija kroz polja unutar objekata
+
+Kako iterirati kroz polja unutar objekata? Na primjer, kako ispisati sve proizvode koje je kupac naručio?
+Možemo koristeći `for` petlju:
+
+```javascript
+for (let i = 0; i < kupac.narudzbe.proizvodi.length; i++) {
+    console.log(kupac.narudzbe.proizvodi[i]); // Ispisuje svaki proizvod - "Mobitel", "Slušalice", "Punjač"
+}
+```
+
+ili bolje, koristeći `for-of` petlju:
+
+```javascript
+for (let proizvod of kupac.narudzbe.proizvodi) {
+    console.log(proizvod); // Ispisuje svaki proizvod - "Mobitel", "Slušalice", "Punjač"
+}
+```
+
+Ovo je u redu, međutim naši proizvodi u narudžbi će u web trgovini uvijek sadržavati i cijenu i neku naručenu količinu. Kako ćemo to pohraniti? Možemo koristiti **objekte unutar polja**. 
+
+## 2.3 Objekti unutar polja
+
+Nastavljamo s prethodnim primjerom. Recimo da je kupac naručio 3 proizvoda: `"Mobitel" 1 kom`, `"Slušalice" 1 kom` i `"Punjač" 2 kom`. Cijene proizvoda su `300`, `20` i `10` eur. Kako pohraniti proizvode?
+
+Idemo proizvode pohraniti kao zasebne objekte, prvo izvan objekta `kupac`, a zatim ih dodati u objekt `kupac`.
 
 ```javascript
 let proizvod_1 = {
@@ -418,16 +457,47 @@ let kupac = {
     }
 };
 ```
-**Zašto ovo nije dobro?** Uočite glavni problem: Narudžbe su ustvari objekt, gdje se svaka narudžba sastoji od više proizvoda (polje objekata) i ukupne cijene.
-- Kako bismo izračunali ukupnu cijenu, moramo proći kroz sve proizvode i zbrojiti njihove cijene.
+> Novi oblik ugniježdene strukture koji smo sad iskoristili jesu **objekti unutar polja**.
+
+Idemo vidjeti kako sada dohvaćamo podatke. Polje `proizvodi` sadrži objekte, pa ćemo morati koristiti `.` operator za dohvaćanje svojstava objekata.
+
+```javascript
+console.log(kupac.narudzbe.proizvodi[0].naziv); // Ispisuje "Mobitel"
+console.log(kupac.narudzbe.proizvodi[0].kolicina); // Ispisuje 1
+console.log(kupac.narudzbe.proizvodi[0].cijena); // Ispisuje 300
+```
+
+Kako možemo iterirati kroz proizvode i ispisati ih? Možemo koristiti `for-of` petlju:
+Pripazite, `proizvod` je sada objekt, pa ćemo morati koristiti `.` operator za dohvaćanje svojstava objekta.
+```javascript
+for (let proizvod of kupac.narudzbe.proizvodi) {
+    console.log(proizvod.naziv); // Ispisuje naziv proizvoda
+    console.log(proizvod.kolicina); // Ispisuje količinu proizvoda
+    console.log(proizvod.cijena); // Ispisuje cijenu proizvoda
+}
+```
+
+Kako izračunati ukupnu cijenu narudžbe? Iterirajmo kroz proizvode i zbrojimo cijene:
+
+```javascript
+let ukupnaCijena = 0;
+for (let proizvod of kupac.narudzbe.proizvodi) {
+    ukupnaCijena += proizvod.kolicina * proizvod.cijena;
+}
+kupac.narudzbe.ukupnaCijena = ukupnaCijena;
+console.log(kupac.narudzbe.ukupnaCijena); // Ispisuje 340
+```
+
+Uočite glavni problem: Narudžbe su ustvari objekt (`narudzbe`), gdje se svaka narudžba sastoji od više proizvoda (polje objekata) i ukupne cijene.
 - Što ako kupac ima više narudžbi? Gdje to dodajemo?
 
-Rješenje je da svaka narudžba bude zaseban objekt, a sve narudžbe pohranimo u polje objekata.
-Dakle naš objekt narudžba će izgledati ovako:
+Rješenje je da svaka narudžba bude zaseban objekt, a svaku narudžbu pohranimo u **polje objekata**.
+
+Dakle, do sada smo imali objekt `narduzbe` koji sadržava polje objekata `proizvodi`. Narudžbe su množina narudžbi, pa ima smisla da budu polje. Svaka narudžba sastoji se potencijano više stavki (proizvoda), pa je svaka narudžba objekt.
 
 ```javascript
 let narudzba_1 = {
-    proizvodi: [
+    stavke: [
         {
             naziv: "Mobitel",
             kolicina: 1,
@@ -447,11 +517,12 @@ let narudzba_1 = {
     ukupnaCijena: 0
 };
 ```
-Zašto ne bi zamijenili svojstvo za ukupnu cijenu s odgovarajućom metodom? Dodat ćemo metodu koja za svaki proizvod računa ukupnu cijenu narudžbe.
+
+Zašto ne bi zamijenili svojstvo za ukupnu cijenu s odgovarajućom metodom? Dodat ćemo metodu koja za svaku stavku (proizvod) računa ukupnu cijenu narudžbe.
 
 ```javascript
 let narudzba_1 = {
-    proizvodi: [
+    stavke: [
         {
             naziv: "Mobitel",
             kolicina: 1,
@@ -470,8 +541,8 @@ let narudzba_1 = {
     ],
     ukupnaCijena: function() { // Vraća ukupnu cijenu narudžbe (340)
         let ukupnaCijena = 0;
-        for (let proizvod of this.proizvodi) {
-            ukupnaCijena += proizvod.kolicina * proizvod.cijena;
+        for (let stavka of this.stavke) {
+            ukupnaCijena += stavka.kolicina * stavka.cijena;
         }
         return ukupnaCijena;
     },
@@ -498,12 +569,9 @@ let kupac = {
     ]
 };
 ```
-Kako dohvatiti ukupnu cijenu prve narudžbe našeg kupca sad?
+Kako sad dohvatiti ukupnu cijenu prve narudžbe našeg kupca?
 ```javascript
-console.log(kupac.narudzbe[0].ukupnaCijena()); // voilà! 
+console.log(kupac.narudzbe[0].ukupnaCijena()); // 340 
 ```
 
->U real-world aplikaciji, ovi podaci pohranjivali bi se u bazu podataka, a client-side aplikacija bi ih dohvaćala i prikazivala na korisničkom sučelju.
-U tkz. [document-based](https://en.wikipedia.org/wiki/Document-oriented_database) bazama podataka (npr. MongoDB), podaci se često pohranjuju u strukturama koje podsjećaju na objekte u JavaScriptu, često se takve strukture nazivaju dokumentima i kolekcijama. 
-
->Jedna od asocijacija može biti: **JS objekt** = dokument, **JS polje** = kolekcija.
+>Da rezimiramo, u ovom primjeru imali smo objekt `narudzbe` koji je postao polje objekata `narudzba`. Svaka narudžba je objekt koji sadržava polje objekata `stavke`. Dodatno, svaka `stavka` je objekt (naziv, kolicina, cijena). Svaka narudžba ima svoju ukupnu cijenu, koja je metoda objekta `narudzba`.
