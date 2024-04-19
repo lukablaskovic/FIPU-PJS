@@ -775,18 +775,144 @@ Temeljem ugrubo danog opisa poslovnog procesa obrta `rentaBoat`, definirajte obj
 
 Prvo definirajte 3 objekta `brod` koristeći sljedeće podatke:
 
-> **Brod 1:** "Gliser", 2018. god, 20 čvorova, 150 KS, 6 osoba, "Tuš", "Hladnjak", "GPS", "Radio", "Tenda", "Oprema za ribolov", "Ekosonder", 500 eur/dan
-> **Brod 2:** "Jahta", 2015. god, 35 čvorova, 300 KS, 8 osoba, "Tuš", "Hladnjak", "GPS", "Radio", "Kuhinja", "WC", "Utičnice za struju", "Tenda", "Gumenjak", 1200 eur/dan
-> **Brod 3.** "Jedrilica", 2019. god, 12 čvorova, 50 KS, 4 osobe, "Tuš", "Hladnjak", "GPS", "Radio", "Kuhinja", "WC", "Utičnice za struju", "Gumenjak", "Oprema za ribolov" 700 eur/dan
+> **Brod 1:** "Gliser", 2015. god, 20 čvorova, 150 KS, 6 osoba, "Tuš", "Hladnjak", "GPS", "Radio", "Tenda", "Oprema za ribolov", "Ekosonder", 250 eur/dan
+> **Brod 2:** "Jahta", 2018. god, 35 čvorova, 300 KS, 8 osoba, "Tuš", "Hladnjak", "GPS", "Radio", "Kuhinja", "WC", "Utičnice za struju", "Tenda", "Gumenjak", 1000 eur/dan
+> **Brod 3.** "Jedrilica", 2019. god, 12 čvorova, 50 KS, 4 osobe, "Tuš", "Hladnjak", "GPS", "Radio", "Kuhinja", "WC", "Utičnice za struju", "Gumenjak", "Oprema za ribolov" 300 eur/dan
 
 Nakon toga definirajte objekt `rentaBoat` koji će sadržavati sve potrebne podatke za opisani poslovni proces. Potrudite se da objekt bude što precizniji, **jedinstvenog rješenja nema**, ali pokušajte što bolje modelirati opisani poslovni proces.
 
 ```javascript
-let rentaBoat = {
-  // Vaš kôd ovdje...
+let brod1 = {
+  naziv: "Gliser",
+  godinaProizvodnje: 2015,
+  maksimalnaBrzina: 20,
+  snagaMotora: 150,
+  kapacitet: 6,
+  dodatnaOprema: [
+    "Tuš",
+    "Hladnjak",
+    "GPS",
+    "Radio",
+    "Tenda",
+    "Oprema za ribolov",
+    "Ekosonder",
+  ],
+  cijenaPoDanu: 250,
 };
 
-rentaBoat.dodajRezervaciju(...);
+let brod2 = {
+  naziv: "Jahta",
+  godinaProizvodnje: 2018,
+  maksimalnaBrzina: 35,
+  snagaMotora: 300,
+  kapacitet: 8,
+  dodatnaOprema: [
+    "Tuš",
+    "Hladnjak",
+    "GPS",
+    "Radio",
+    "Kuhinja",
+    "WC",
+    "Utičnice za struju",
+    "Tenda",
+    "Gumenjak",
+  ],
+  cijenaPoDanu: 1000,
+};
+
+let brod3 = {
+  naziv: "Jedrilica",
+  godinaProizvodnje: 2019,
+  maksimalnaBrzina: 12,
+  snagaMotora: 50,
+  kapacitet: 4,
+  dodatnaOprema: [
+    "Tuš",
+    "Hladnjak",
+    "GPS",
+    "Radio",
+    "Kuhinja",
+    "WC",
+    "Utičnice za struju",
+    "Gumenjak",
+    "Oprema za ribolov",
+  ],
+  cijenaPoDanu: 300,
+};
+```
+
+```javascript
+let rentaBoat = {
+  naziv: "rentaBoat",
+  web: "https://www.rentaboat.net/",
+  brodovi: [brod1, brod2, brod3],
+  korisnici: [
+    {
+      ime: "Ivo",
+      prezime: "Ivić",
+      adresa: {
+        ulica: "Ulica 123",
+        grad: "Pula",
+      },
+      kontakt: {
+        telefon: "0911234567",
+        email: "ivoivic@gmail.com",
+      },
+    },
+  ],
+  rezervacije: [
+    {
+      datumOd: new Date("2022-08-01"),
+      datumDo: new Date("2022-08-05"),
+      brojOsoba: 6,
+      dodatnaOprema: ["Tuš", "Hladnjak", "GPS", "Radio", "Tenda"],
+      brod: brod1,
+      ukupnaCijena: this.ukupnaCijena,
+    },
+  ],
+  ukupnaCijena: function (rezervacija) {
+    const duration =
+      (rezervacija.datumDo - rezervacija.datumOd) / (1000 * 60 * 60 * 24);
+    return duration * rezervacija.brod.cijenaPoDanu;
+  },
+  provjeriOpremu: function (trazenaDodatnaOprema, brod) {
+    for (let oprema of trazenaDodatnaOprema) {
+      if (!brod.dodatnaOprema.includes(oprema)) {
+        return false;
+      }
+    }
+    return true;
+  },
+  dodajRezervaciju: function (
+    datumOd,
+    datumDo,
+    brojOsoba,
+    trazenaDodatnaOprema,
+    brod
+  ) {
+    if (!this.provjeriOpremu(trazenaDodatnaOprema, brod)) {
+      console.log("Brod nema traženu dodatnu opremu.");
+      return;
+    }
+    let rezervacija = {
+      datumOd: datumOd,
+      datumDo: datumDo,
+      brojOsoba: brojOsoba,
+      dodatnaOprema: trazenaDodatnaOprema,
+      brod: brod,
+    };
+    rezervacija.ukupnaCijena = this.ukupnaCijena(rezervacija);
+    this.rezervacije.push(rezervacija);
+  },
+};
+
+rentaBoat.dodajRezervaciju(
+  new Date("2022-08-01"),
+  new Date("2022-08-05"),
+  6,
+  ["Tuš", "Hladnjak", "GPS", "Radio", "Tenda"],
+  brod1
+);
 ```
 
 ## 2.4 Polja unutar polja
@@ -796,3 +922,7 @@ rentaBoat.dodajRezervaciju(...);
 # Samostalni zadatak za vježbu 6
 
 # 3. Napredne funkcije
+
+```
+
+```
