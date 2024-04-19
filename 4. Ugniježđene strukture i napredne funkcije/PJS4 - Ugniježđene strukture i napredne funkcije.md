@@ -15,7 +15,7 @@
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js4.png?raw=true" style="width:9%; float:right;"></img>
 
-<p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili JSON objekata. Dohvat podataka s različitih API-ja, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i napredne funkcije za jednostavniji rad s njima.</p>
+<p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili JSON objekata. Dohvat podataka s različitih API-ja, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
 
 <br>
 
@@ -41,6 +41,7 @@
   - [2.4 Polja unutar polja](#24-polja-unutar-polja)
   - [2.5 Sažetak ugiježđenih struktura](#25-sažetak-ugiježđenih-struktura)
 - [Samostalni zadatak za vježbu 6](#samostalni-zadatak-za-vježbu-6)
+- [3. Napredne funkcije](#3-napredne-funkcije)
 
 <br>
 
@@ -764,3 +765,5 @@ kinoValli.dodajRezervaciju(...);
 ## 2.5 Sažetak ugiježđenih struktura
 
 # Samostalni zadatak za vježbu 6
+
+# 3. Napredne funkcije
