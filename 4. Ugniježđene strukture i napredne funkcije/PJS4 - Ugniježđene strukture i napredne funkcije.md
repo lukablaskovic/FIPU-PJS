@@ -38,6 +38,9 @@
   - [2.3 Objekti unutar polja](#23-objekti-unutar-polja)
     - [Vježba 1](#vježba-1)
     - [Vježba 2](#vježba-2)
+  - [2.4 Polja unutar polja](#24-polja-unutar-polja)
+  - [2.5 Sažetak ugiježđenih struktura](#25-sažetak-ugiježđenih-struktura)
+- [Samostalni zadatak za vježbu 6](#samostalni-zadatak-za-vježbu-6)
 
 <br>
 
@@ -726,7 +729,7 @@ Kino Valli je kino u Puli na adresi Giardini 1, 52100 Pula. Kino ima jednu dvora
 
 Za rezervaciju karata potrebno je unijeti osobne podatke prilikom registracije: ime, prezime, adresa (ulica, grad) i kontakt (telefon, email). Također, potrebno je za određenu projekciju unijeti broj karata i odabrati sjedala, nakon čega se izračunava ukupna cijena rezervacije. Ovo realizirajte metodom `dodajRezervaciju()`.
 
-Temeljem u grubo danog opisa poslovnog procesa kina Valli, definirajte objekt `kinoValli` koji će sadržavati sve potrebne podatke za opisani poslovni proces. Za modeliranje ovog objekta koristite ugniježđene strukture objekata i polja.
+Temeljem ugrubo danog opisa poslovnog procesa kina Valli, definirajte objekt `kinoValli` koji će sadržavati sve potrebne podatke za opisani poslovni proces. Za modeliranje ovog objekta koristite ugniježđene strukture objekata i polja.
 
 Prvo definirajte objekte `film` koristeći sljedeće podatke:
 
@@ -755,3 +758,9 @@ kinoValli.dodajRezervaciju(...);
 ```
 
 ```
+
+## 2.4 Polja unutar polja
+
+## 2.5 Sažetak ugiježđenih struktura
+
+# Samostalni zadatak za vježbu 6
