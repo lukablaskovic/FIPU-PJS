@@ -1137,11 +1137,60 @@ for (let i = 0; i < matrica.length; i++) {
 
 # Samostalni zadatak za vježbu 6
 
-**EduCoder šifra**: `nestedStructures`
+**EduCoder šifra**: `restoran`
 
 1. Definirajte objekt `student` koji će sadržavati podatke o studentu: ime, prezime, adresa (ulica, grad, poštanski broj), kontakt (telefon, email), ocjene (polje objekata `Ocjena`).
 
 - definirajte konstruktor `Ocjena` koji se sastoji od 2 svojstva: `numerickaOcjena` i `opisnaOcjena`. Konstruktor se mora pozivati samo s argumentom numeričke ocjene, opisna ocjena dodjeljuje se ovisno o numeričkoj ocjeni (npr. 5 - "odličan", 4 - "vrlo dobar", 3 - "dobar", 2 - "dovoljan", 1 - "nedovoljan", default = "nevažeća ocjena"). Primjer poziva konstruktora: `new Ocjena(5)` - stvara objekt `{numerickaOcjena: 5, opisnaOcjena: "odličan"}`.
 - Dodajte studentu nekoliko ocjena (npr. 5 ocjena) i izračunajte prosječnu ocjenu studenta zaokruženu na dvije decimale (dodajte metodu `prosjecnaOcjena()` u objekt student).
+
+2. Imate zadatak napraviti malu web aplikaciju za restoran kako bi gosti mogli naručiti hranu i piće preko tableta u restoranu. Definirajte objekt `restoran` koji će sadržavati podatke o restoranu: naziv, adresa (ulica, grad, poštanski broj), kontakt (telefon, email), objekt meni (sadrži polje objekata `Jelo` i `Pice`).
+
+- definirajte konstruktor `Jelo` koji se sastoji od 5 svojstva: `naziv`, `cijena`, `opis`, `sastojci` i `kategorija`. Primjer pozivanja konstruktora može biti: `new Jelo("Margherita", 7, "Pizza s rajčicom i mozzarella sirom", ["rajčica", "sir"], "glavno jelo")`.
+- Definirajte nekoliko jela pozivanjem konstruktora `Jelo`
+- definirajte konstruktor `Pice` koji se sastoji od 4 svojstva: `naziv`, `cijena`, `opis` i `kategorija`. Primjer pozivanja konstruktora može biti: `new Pice("Coca-Cola", 2, "Osvježavajuće gazirano bezalkoholno piće", "bezalkoholno")`.
+- Definirajte nekoliko pića pozivanjem konstruktora `Pice`
+- u objekt `restoran` dodajte metodu `dodajNarudzbu()` koja će dodati novu narudžbu u polje narudžbi. Metoda mora raditi na sljedeći način:
+- kada se pozove funkcija, korisniku se mora otvoriti izbornik gdje će mu se izlistati sva jela i pića iz menija s indeksom koji počinje od 1 ispred zapisa. Primjer:
+
+```
+1. Margherita (Pizza s rajČicom i mozarella sirom)  - 7 eur
+2. Coca-Cola (Osvježavajuće gazirano bezalkoholno piće) - 3 eur
+3. Tjestenina s umakom od rajčice (Tjestenina s umakom od svježe rajčice) - 8 eur
+4. Fanta (Osvježavajuće gazirano bezalkoholno piće) - 2 eur
+5. Piletina s povrćem (Piletina s povrćem i umakom od vrhnja) - 10 eur
+```
+
+- korisnik unosi redni broj jela ili pića koje želi naručiti. Ako korisnik unese redni broj koji ne postoji, ispisuje se poruka "Narudžba ne postoji, pokušajte ponovno". Koristite `prompt()` funkciju za unos podataka.
+- ako korisnik unese ispravan redni broj, traži ga se količina koju želi naručiti. Ako korisnik unese količinu manju od 1, ispisuje se poruka "Količina mora biti veća od 0, pokušajte ponovno". Koristite `prompt()` funkciju za unos podataka.
+- preferencije koje korisnik unosi moraju se spremati u objekt `trenutna_narudzba` i polje `stavke`, a dodatno, u objekte jela i/ili pića potrebno je dodati svojstvo `kolicina`. Primjer za naručivanje 2 Margherita pizza i 2 Coca-Cola pića:
+
+```javascript
+let trenutna_narudzba = {
+  stavke: [
+    {
+      // narudžba Margherita (objekt Jelo + količina)
+      naziv: "Margherita",
+      cijena: 7,
+      opis: "Pizza s rajčicom i mozzarella sirom",
+      sastojci: ["rajčica", "sir"],
+      kategorija: "glavno jelo",
+      kolicina: 2,
+    },
+    {
+      // narudžba Coca-Cola (objekt Pice + količina)
+      naziv: "Coca-Cola",
+      cijena: 2,
+      opis: "Osvježavajuće gazirano bezalkoholno piće",
+      kategorija: "bezalkoholno",
+      kolicina: 2,
+    },
+  ],
+};
+```
+
+- korisnik završava s naručivanjem kada unese redni broj 0. Tada se ispisuje trenutna narudžba i ukupna cijena narudžbe.
+- dodajte `timestamp` u objekt `trenutna_narudzba` koji će sadržavati trenutno datum i vrijeme narudžbe.
+- jednom kad je narudžba uspješno dodana obavijestite o tome korisnika funkcijom `alert()`. U poruci obavijestite korisnika i o ukupnoj cijeni narudžbe.
 
 # 3. Napredne funkcije
