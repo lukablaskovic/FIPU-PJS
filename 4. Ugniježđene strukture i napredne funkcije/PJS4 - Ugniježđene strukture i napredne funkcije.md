@@ -39,6 +39,9 @@
     - [Vježba 1](#vježba-1)
     - [Vježba 2](#vježba-2)
   - [2.4 Polja unutar polja](#24-polja-unutar-polja)
+    - [2.4.1 Iteracije kroz više dimenzija](#241-iteracije-kroz-više-dimenzija)
+    - [2.4.2 Stvaranje višedimenzionalnih pomoću `Array` konstruktora](#242-stvaranje-višedimenzionalnih-pomoću-array-konstruktora)
+    - [Vježba 3](#vježba-3)
   - [2.5 Sažetak ugiježđenih struktura](#25-sažetak-ugiježđenih-struktura)
 - [Samostalni zadatak za vježbu 6](#samostalni-zadatak-za-vježbu-6)
 - [3. Napredne funkcije](#3-napredne-funkcije)
@@ -786,12 +789,359 @@ rentaBoat.dodajRezervaciju(...);
 
 ## 2.4 Polja unutar polja
 
+Ugnježđena polja su polja definirana unutar drugih polja, još se nazivaju multidimenzionalnim poljima (eng. multidimensional arrays). U praksi, multidimenzionalna polja se koriste za pohranu podataka koji su međusobno povezani. Primjerice, ako imamo matricu, onda je to dvodimenzionalno polje.
+
+Multidimenzionalna polja možemo definirati ugnježđivanjem polja definiranih uglatim zagradama `[]`.
+
+Primjer jednodimenzionalnog polja:
+
+```javascript
+let = [1, 2, 3, 4, 5];
+```
+
+Primjer dvodimenzionalnog polja (2D matrica)
+
+```javascript
+let matrica = [
+  [1, 2, 3], // Prvi redak
+  [4, 5, 6], // Drugi redak
+  [7, 8, 9], // Treći redak
+];
+```
+
+U ovom primjeru imamo matricu dimenzija 3x3. Matrica ima 3 redaka i 3 stupca. Svaki redak je polje koje sadrži 3 elementa. Matrica je dvodimenzionalna jer ima dvije (2) dimenzionalnosti (redak i stupac).
+
+Kako možemo dohvatiti elemente matrice? Koristimo indekse redaka i stupaca.
+
+```javascript
+console.log(matrica[0][0]); // Ispisuje 1 (prvi redak, prvi stupac)
+console.log(matrica[1][1]); // Ispisuje 5 (drugi redak, drugi stupac)
+console.log(matrica[2][0]); // Ispisuje 7 (treći redak, prvi stupac)
+```
+
+Možemo dohvatiti i samo cijeli redak matrice koristeći indeks redaka
+
+```javascript
+console.log(matrica[0]); // Ispisuje [1, 2, 3] (prvi redak)
+console.log(matrica[1]); // Ispisuje [4, 5, 6] (drugi redak)
+console.log(matrica[2]); // Ispisuje [7, 8, 9] (treći redak)
+```
+
+Modifikacije elemenata višedimenzionalnih polja rade se na isti način kao i kod jednodimenzionalnih polja.
+
+```javascript
+matrica[0][0] = 10; // Modificira prvi element matrice
+
+console.log(matrica[0][0]); // Ispisuje 10
+
+console.log(matrica); // Ispisuje [[10, 2, 3], [4, 5, 6], [7, 8, 9]]
+```
+
+**Matrice** se u programiranju reprezentiraju višedinimenzionalnim poljima. Ako se pokušate dosjetiti primjera gdje bi se mogli koristiti ovakvi zapisi, na prvu će vam višedimenzionalna polja možda izgledati komplicirano i nepotrebno, ali u praksi su vrlo korisna i često se koriste.
+
+U računarstvu, matrice se koriste za:
+
+- računalnu grafiku (slike, video, 3D modeli i sl.)
+- strojno učenje i umjetnu inteligenciju
+- modeliranje i simulacije
+- kriptografiju
+- teorija grafova
+- obrada signala
+- linearne transformacije
+
+### 2.4.1 Iteracije kroz više dimenzija
+
+Iteracije kroz više dimenzija rade se na isti način kao i kod jednodimenzionalnih polja, samo što koristimo više petlji - odnosno koristimo **ugniježđene petlje**.
+
+Idemo definirati jednu matricu dimenzija 5x5.
+
+```javascript
+let matrica = [
+  [10, 20, 45, 4, 3],
+  [6, 7, 8, 18, 11],
+  [30, 12, 70, 14, 5],
+  [16, 22, 100, 19, 2],
+  [18, 22, 23, 24, 266],
+];
+
+console.log(matrica); // [[10,20,45,4,3],[6,7,8,18,11],[30,12,70,14,5],[16,22,100,19,2],[18,22,23,24,266]]
+```
+
+Idemo iterirati kroz matricu i ispisati sve elemente.
+
+```javascript
+for (let i = 0; i < matrica.length; i++) {
+  console.log(matrica[i]); // Ispisuje svaki redak matrice
+  /*
+                            [10, 20, 45, 4, 3]
+                            [6, 7, 8, 18, 11]
+                            [30, 12, 70, 14, 5]
+                            [16, 22, 100, 19, 2]
+                            [18, 22, 23, 24, 266]
+  */
+}
+```
+
+Kod iznad ispisuje 5 puta (5 elemenata), ne ispisuje svaki element matrice (25 elemenata).
+
+Kako su rezultati ispisivanja redaka matrice polja, moramo iterirati ponovo kroz svaki element tih 5 polja.
+
+```javascript
+for (let i = 0; i < matrica.length; i++) {
+  for (let j = 0; j < matrica[i].length; j++) {
+    console.log(matrica[i][j]); // Ispisuje svaki element matrice
+    //Ispisuje: 10, 20, 45, 4, 3, 6, 7, 8, 18, 11, 30, 12, 70, 14, 5, 16, 22, 100, 19, 2, 18, 22, 23, 24, 266
+  }
+}
+```
+
+Kako bismo definirali matricu dimenzija 3x3x3, koristimo 3 ugniježđene polje.
+
+```javascript
+let matrica3D = [
+  [
+    // Prvi sloj
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ],
+  [
+    // Drugi sloj
+    [10, 11, 12],
+    [13, 14, 15],
+    [16, 17, 18],
+  ],
+  [
+    // Treći sloj
+    [19, 20, 21],
+    [22, 23, 24],
+    [25, 26, 27],
+  ],
+];
+```
+
+Iteracija kroz 3D matricu:
+
+```javascript
+for (let i = 0; i < matrica3D.length; i++) {
+  for (let j = 0; j < matrica3D[i].length; j++) {
+    for (let k = 0; k < matrica3D[i][j].length; k++) {
+      console.log(matrica3D[i][j][k]); // Ispisuje svaki element 3D matrice
+    }
+  }
+}
+```
+
+3D matricama možemo reprezentirati razne stvari, npr. u području fizike i ineženjerstva možemo 3D matricom definirati tkz. **Stress tensor** (tenzor naprezanja) koji se koristi za opisivanje naprezanja u različitim točkama nekog tijela (Cauchy stress tensor).
+
+U računalnoj grafici možemo 3D matricom definirati **voxel grid** gdje svaki element matrice predstavlja jedan voxel (3D piksel) koji sadrži informacije o boji, teksturi, materijalu i sl.
+
+### 2.4.2 Stvaranje višedimenzionalnih pomoću `Array` konstruktora
+
+U višedimenzionalna polja ne moraju biti pohranjeni samo brojevi (premda je to najčešće), već i bilo koji drugi tipovi podataka. U tom slučaju se višedimenzionalna polja više ne nazivaju matricama.
+
+Npr, pohranimo u višedimenzionalno polje stringove.
+
+```javascript
+let filmovi = [
+  "Begin Again",
+  "Soul",
+  ["Matrix", "Matix Reloaded", "Matrix Revolutions"], // polje (sadrži samo stringove)
+  ["Frozen", "Frozen 2", ["Tangled", "Alladin"]], // 2D polje (jer sadrži stringove i još jedno polje)
+];
+```
+
+Drugi način je korištenjem `Array` konstruktora.
+
+```javascript
+let filmovi = new Array();
+
+filmovi[0] = "Begin Again";
+filmovi[1] = "Soul";
+filmovi[2] = new Array("Matrix", "Matrix Reloaded", "Matrix Revolutions"); // polje (sadrži samo stringove)
+filmovi[3] = new Array("Frozen", "Frozen 2", new Array("Tangled", "Alladin")); // 2D polje (jer sadrži stringove i još jedno polje)
+```
+
+Dakle `filmovi[2]` predstavlja jednodimenzionalno polje s tri elementa (filmovi (string)), a `filmovi[3]` predstavlja dvodimenzionalno polje s tri elementa (**filmovi** (string) i polje s dva elementa (**filmovi** string)).
+
+Kako se raspoređuju elementi u višedimenzionalnim poljima? Pogledamo ilustraciju:
+
+![Indices array](./screenschots/indices_array.png)
+
+> Izvor: https://dev.to/sanchithasr/understanding-nested-arrays-2hf7
+
+Ako želimo dohvatiti film "Tangled" iz polja `filmovi`, koristimo indekse `[3][2][0]`.
+
+```javascript
+console.log(filmovi[3][2][0]); // Ispisuje "Tangled"
+```
+
+Ako želimo dohvatiti film "Matrix Reloaded" iz polja `filmovi`, koristimo indekse `[2][1]`.
+
+```javascript
+console.log(filmovi[2][1]); // Ispisuje "Matrix Reloaded"
+```
+
+Polje možemo "izravnati", odnosno svesti višedimenzionalno polje na jednodimenzionalno polje koristeći metodu `Array.flat()`.
+
+Primjerice uzmimo više dimenzionalno polje koje želimo svesti na jednodimenzionalno polje (listu).
+
+```javascript
+const arr1 = [0, 1, 2, [3, 4]];
+
+console.log(arr1.flat()); // [0, 1, 2, 3, 4]
+```
+
+Metoda `Array.flat()` smanjuje dubinu polja za jedan nivo. Ako želimo smanjiti dubinu polja za više nivoa, unosimo argument `depth`.
+
+```javascript
+const arr2 = [0, 1, 2, [3, 4, [5, 6]]];
+console.log(arr2.flat()); // [0, 1, 2, 3, 4, [5, 6]]
+
+// ali
+console.log(arr2.flat(2)); // [0, 1, 2, 3, 4, 5, 6]
+```
+
+> Već smo spomenuli moguće primjene višedimenzionalnih polja te naglasili da se u pravilu koriste za pohranu numeričkih podataka, koji su međusobno povezani odnosno predstavljaju neku **vrstu višedimenzionalne strukture**.
+
+Primjer filmova u praksi nije nešto što želite pohraniti u višedimenzionalno polje, jer se filmovi ne povezuju na način da se koriste višedimenzionalna polja.
+Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost koda, a i održavanje postaje teže.
+
+Primjer filmova možemo pohraniti koristeći ranije naučene ugniježđene strukture u kombinaciji s objektima:
+
+Ovako nekako:
+
+```javascript
+let filmovi = {
+  singleFilms: ["Begin Again", "Soul"],
+  matrixSeries: ["Matrix", "Matrix Reloaded", "Matrix Revolutions"],
+  disneyAnimations: {
+    frozenSeries: ["Frozen", "Frozen 2"],
+    classicTales: ["Tangled", "Alladin"],
+  },
+};
+```
+
+Sada možemo dohvatiti filmove na jednostavniji način:
+
+```javascript
+console.log(filmovi.disneyAnimations.classicTales[0]); // Ispisuje "Tangled"
+console.log(filmovi.matrixSeries[1]); // Ispisuje "Matrix Reloaded"
+```
+
+### Vježba 3
+
+**EduCoder šifra**: `matrix`
+
+Definirajte dvodimenzionalno polje (matricu) dimenzija 3x3 koja će sadržavati random brojeve od `1` do `9`. Matricu morate "izgraditi" s pomoću ugniježđenih petlji, ne dopušta se ručno definiranje matrice. Implementirajte funkciju `randomNumbers()` koja vraća random broj između `1` i `9` koristeći `Math.random()` metodu.
+Na kraju definirajte funkciju `ispisMatrice(matrix2D)` koja ispisuje sve elemente dvodimenzionalne matrice `matrix2D`.
+
 ## 2.5 Sažetak ugiježđenih struktura
+
+Ugniježđene strukture su strukture koje se sastoje od više različitih struktura koje su međusobno povezane. U kontekstu ove skripte, one se odnose na ugniježđene objekte i polja. Ugniježđene strukture koje smo obradili su:
+
+> 1.  **Objekti unutar objekata** `{{}}`
+> 2.  **Polja unutar objekata** `{[]}`
+> 3.  **Objekti unutar polja** `[{}]`
+> 4.  **Polja unutar polja** `[[]]`
+
+U kontekstu web programiranja, naučili smo da često koristimo prve 3 strukture: primjerice za modeliranje raznih entiteta iz stvarnog života. Međutim, višedimenzionalna polja odnosno polja unutar polja su korisna za pohranu drugih struktura podataka, npr. matrica, 3D modela, slika, videa, zvuka, tabličnih podataka i sl.
+
+> 1. **Objekte unutar objekata** koristimo za modeliranje entiteta koji imaju svoje pod-entitete (npr. kupac s podentitetima adresa i kontakt). Kako adresa i kontakt sami po sebi nisu jasni entiteti, koristimo objekte kako bi ih razložili na detaljnije podatke.
+
+```javascript
+let kupac = {
+  // Glavni objekt `kupac`
+  ime: "Ivo",
+  prezime: "Ivić",
+  adresa: {
+    // Podobjekt `adresa` unutar objekta `kupac`
+    ulica: "Ulica 123",
+    grad: "Pula",
+    postanskiBroj: "52100",
+  },
+  kontakt: {
+    // Podobjekt `kontakt` unutar objekta `kupac`
+    telefon: "0911234567",
+    email: "iivic@gmail.com",
+  },
+};
+```
+
+> 2. **Polja unutar objekata** koristimo za modeliranje entiteta koji imaju više podataka istog tipa (npr. kupac s više narudžbi). Kako narudžbe nisu jasni entiteti, modeliramo ih pomoću objekata kako bi ih razložili na detaljnije podatke, a potom te objekte pohranjujemo u polje.
+> 3. Svaku stavku predstavljamo kao **Objekt unutar polja**
+
+```javascript
+let narudzbe = [
+  {
+    // Polje objekata `stavke` unutar objekta `narudzba`
+    stavke: [
+      {
+        // Objekt `stavka` unutar polja `stavke`
+        naziv: "Mobitel",
+        kolicina: 1,
+        cijena: 300,
+      },
+      {
+        // Objekt `stavka` unutar polja `stavke`
+        naziv: "Slušalice",
+        kolicina: 1,
+        cijena: 20,
+      },
+      {
+        // Objekt `stavka` unutar polja `stavke`
+        naziv: "Punjač",
+        kolicina: 2,
+        cijena: 10,
+      },
+    ],
+    // Metoda unutar objekta `narudzba`
+    ukupnaCijena: function () {
+      let ukupnaCijena = 0;
+      for (let stavka of this.stavke) {
+        ukupnaCijena += stavka.kolicina * stavka.cijena;
+      }
+      return ukupnaCijena;
+    },
+  },
+];
+console.log(narudzbe[0].ukupnaCijena()); // 340
+
+// Iteracija kroz polje objekata (stavke svake narudžbe)
+for (let i = 0; i < narudzbe.length; i++) {
+  for (let j = 0; j < narudzbe[i].stavke.length; j++) {
+    console.log(narudzbe[i].stavke[j]); // Ispisuje svaku stavku narudžbe
+  }
+}
+```
+
+> 4. **Polja unutar polja** koristimo za modeliranje struktura podataka koje su međusobno povezane (npr. matrica, 3D modeli, slike, videa, zvuka, tablični podaci). U ovom slučaju, **svaki element polja je polje**.
+
+```javascript
+let matrica = [
+  [10, 20, 45, 4, 3],
+  [6, 7, 8, 18, 11],
+  [30, 12, 70, 14, 5],
+  [16, 22, 100, 19, 2],
+  [18, 22, 23, 24, 266],
+];
+console.log(matrica[4][0]); // Ispisuje 18
+
+// Iteracija kroz dvodimenzionalno polje (matricu)
+for (let i = 0; i < matrica.length; i++) {
+  for (let j = 0; j < matrica[i].length; j++) {
+    console.log(matrica[i][j]); // Ispisuje svaki element matrice
+  }
+}
+```
 
 # Samostalni zadatak za vježbu 6
 
+**EduCoder šifra**: `nestedStructures`
+
+1. Definirajte objekt `student` koji će sadržavati podatke o studentu: ime, prezime, adresa (ulica, grad, poštanski broj), kontakt (telefon, email), ocjene (polje objekata `Ocjena`).
+
+- definirajte konstruktor `Ocjena` koji se sastoji od 2 svojstva: `numerickaOcjena` i `opisnaOcjena`. Konstruktor se mora pozivati samo s argumentom numeričke ocjene, opisna ocjena dodjeljuje se ovisno o numeričkoj ocjeni (npr. 5 - "odličan", 4 - "vrlo dobar", 3 - "dobar", 2 - "dovoljan", 1 - "nedovoljan", default = "nevažeća ocjena"). Primjer poziva konstruktora: `new Ocjena(5)` - stvara objekt `{numerickaOcjena: 5, opisnaOcjena: "odličan"}`.
+- Dodajte studentu nekoliko ocjena (npr. 5 ocjena) i izračunajte prosječnu ocjenu studenta zaokruženu na dvije decimale (dodajte metodu `prosjecnaOcjena()` u objekt student).
+
 # 3. Napredne funkcije
-
-```
-
-```
