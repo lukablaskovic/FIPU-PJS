@@ -522,7 +522,7 @@ Uočite glavni problem: Narudžbe su ustvari objekt (`narudzbe`), gdje se svaka 
 
 - Što ako kupac ima više narudžbi? Gdje to dodajemo i kako?
 
-Rješenje je da svaka narudžba bude zaseban objekt koje ćemo pohranjivati u tkz. **polje objekata**.
+Rješenje je da svaka narudžba bude zaseban objekt koje ćemo pohranjivati u tzv. **polje objekata**.
 
 Dakle, do sada smo imali objekt `narduzbe` koji sadržava polje objekata `proizvodi`. Narudžbe su množina narudžbi, pa ima smisla da budu polje. Svaka narudžba sastoji se potencijano više stavki (proizvoda), pa ima smisla da svaka narudžba bude objekt.
 
@@ -933,7 +933,7 @@ for (let i = 0; i < matrica3D.length; i++) {
 }
 ```
 
-3D matricama možemo reprezentirati razne stvari, npr. u području fizike i ineženjerstva možemo 3D matricom definirati tkz. **Stress tensor** (tenzor naprezanja) koji se koristi za opisivanje naprezanja u različitim točkama nekog tijela (Cauchy stress tensor).
+**3D matricama** možemo reprezentirati razne stvari, npr. u području fizike i ineženjerstva možemo 3D matricom definirati tzv. **Stress tensor** (tenzor naprezanja) koji se koristi za opisivanje naprezanja u različitim točkama nekog tijela (Cauchy stress tensor).
 
 U računalnoj grafici možemo 3D matricom definirati **voxel grid** gdje svaki element matrice predstavlja jedan voxel (3D piksel) koji sadrži informacije o boji, teksturi, materijalu i sl.
 
@@ -1205,4 +1205,16 @@ let trenutna_narudzba = {
 - dodajte `timestamp` u objekt `trenutna_narudzba` koji će sadržavati trenutno datum i vrijeme narudžbe.
 - jednom kad je narudžba uspješno dodana obavijestite o tome korisnika funkcijom `alert()`. U poruci obavijestite korisnika i o ukupnoj cijeni narudžbe.
 
+<br>
+
 # 3. Napredne funkcije
+
+Napredne funkcije i metode odnose se na kompleksnije metode i tehnike koje se koriste za rješavanje određenih tipova problema. Studenti će kroz ove vježbe naučiti koristiti funkcije višeg reda (eng. **_higher-order functions_**). To su funkcije koje primaju funkcije kao argumente, npr. `map()`, `filter()`, `reduce()`, `sort()`.
+
+Detaljnije ćemo obraditi `callback` funkcije koje smo već spomenuli u primjerima skripte PJS3 te ćemo naučiti pisati tzv. `arrow` ili anonimne funkcije koje nam omogućuju konkretniju sintaksu za pisanje funkcijskih izraza, o kojima je bilo riječi u skripti PJS2.
+
+> Važno je prije prolaska kroz ovo poglavlje dobro ponoviti koncepte funkcija, funkcijskih izraza, objekata, polja te ugniježđenih struktura.
+
+<img src="./screenschots/reduce_graphics.png" alt="Advanced functions" style="width: 60%;" />
+
+> Izvor: https://blog.khanacademy.org/lets-reduce-a-gentle-introduction-to-javascripts-reduce-method/
