@@ -339,7 +339,7 @@ delete konfiguracija.server.port; // vraća true
 console.log(konfiguracija.server.port); // Ispisuje "undefined"
 ```
 
-Naravno, objekte možemo i dublje ugnježđivati, koliko god želimo. U praksi, nećemo ići dublje od 3-4 razine ugnježđivanja, jer postaje nepraktično i teško za održavanje.
+>Naravno, objekte možemo i dublje ugnježđivati, koliko god želimo. U praksi, nećemo ići dublje od 3-4 razine ugnježđivanja, jer postaje nepraktično i teško za održavanje.
 
 ## 2.2 Polja unutar objekata
 
@@ -574,8 +574,8 @@ let narudzba_1 = {
       cijena: 10,
     },
   ],
+  // Vraća ukupnu cijenu narudžbe (340)
   ukupnaCijena: function () {
-    // Vraća ukupnu cijenu narudžbe (340)
     let ukupnaCijena = 0;
     for (let stavka of this.stavke) {
       ukupnaCijena += stavka.kolicina * stavka.cijena;
@@ -592,19 +592,19 @@ Sada ćemo svojstvo `narudzbe` iz objekta `kupac` pretvoriti u polje objekata i 
 let kupac = {
   ime: "Ivo",
   prezime: "Ivić",
+  // Objekt unutar objekta `kupac`
   adresa: {
-    // Objekt unutar objekta `kupac`
     ulica: "Ulica 123",
     grad: "Pula",
     postanskiBroj: "52100",
   },
+  // Objekt unutar objekta `kupac`
   kontakt: {
-    // Objekt unutar objekta `kupac`
     telefon: "0911234567",
     email: "iivic@gmail.com",
   },
+  // Polje objekata unutar objekta `kupac`
   narudzbe: [
-    // Polje objekata unutar objekta `kupac`
   ],
 };
 ```
@@ -1005,10 +1005,10 @@ console.log(arr2.flat(2)); // [0, 1, 2, 3, 4, 5, 6]
 
 > Već smo spomenuli moguće primjene višedimenzionalnih polja te naglasili da se u pravilu koriste za pohranu numeričkih podataka, koji su međusobno povezani odnosno predstavljaju neku **vrstu višedimenzionalne strukture**.
 
-Primjer filmova u praksi nije nešto što želite pohraniti u višedimenzionalno polje, jer se filmovi ne povezuju na način da se koriste višedimenzionalna polja.
+- Primjer filmova u praksi nije nešto što želite pohraniti u višedimenzionalno polje, jer se filmovi ne povezuju na način da se koriste višedimenzionalna polja.
 Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost koda, a i održavanje postaje teže.
 
-Primjer filmova možemo pohraniti koristeći ranije naučene ugniježđene strukture u kombinaciji s objektima:
+Primjer filmova je bolje pohraniti koristeći ranije naučene ugniježđene strukture u kombinaciji s objektima:
 
 Ovako nekako:
 
