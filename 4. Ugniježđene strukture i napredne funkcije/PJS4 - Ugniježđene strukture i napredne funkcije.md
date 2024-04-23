@@ -1034,7 +1034,7 @@ console.log(filmovi.matrixSeries[1]); // Ispisuje "Matrix Reloaded"
 
 **EduCoder šifra**: `matrix`
 
-Definirajte dvodimenzionalno polje (matricu) dimenzija 3x3 koja će sadržavati random brojeve od `1` do `9`. Matricu morate "izgraditi" s pomoću ugniježđenih petlji, ne dopušta se ručno definiranje matrice. Implementirajte funkciju `randomNumbers()` koja vraća random broj između `1` i `9` koristeći `Math.random()` metodu.
+Definirajte dvodimenzionalno polje (matricu) dimenzija 3x3 koja će sadržavati random brojeve od `1` do `9`. Matricu morate "izgraditi" s pomoću ugniježđenih petlji, ne ručno! Implementirajte funkciju `randomNumbers()` koja vraća random broj između `1` i `9` koristeći `Math.random()` metodu.
 Na kraju definirajte funkciju `ispisMatrice(matrix2D)` koja ispisuje sve elemente dvodimenzionalne matrice `matrix2D`.
 
 ## 2.5 Sažetak ugiježđenih struktura
@@ -1055,14 +1055,14 @@ let kupac = {
   // Glavni objekt `kupac`
   ime: "Ivo",
   prezime: "Ivić",
+  // Podobjekt `adresa` unutar objekta `kupac`
   adresa: {
-    // Podobjekt `adresa` unutar objekta `kupac`
     ulica: "Ulica 123",
     grad: "Pula",
     postanskiBroj: "52100",
   },
+  // Podobjekt `kontakt` unutar objekta `kupac`
   kontakt: {
-    // Podobjekt `kontakt` unutar objekta `kupac`
     telefon: "0911234567",
     email: "iivic@gmail.com",
   },
