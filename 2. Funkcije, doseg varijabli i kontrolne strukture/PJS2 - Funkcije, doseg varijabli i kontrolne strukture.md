@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src=https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png style="width:40%; box-shadow: none !important;"></img>
+<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%; box-shadow: none !important;"></img>
 
 # [2] Funkcije, doseg varijabli i kontrolne strukture
 
@@ -31,9 +31,9 @@
   - [Vježba 1](#vježba-1)
   - [1.3 Funkcije možemo koristiti raznoliko](#13-funkcije-možemo-koristiti-raznoliko)
 - [2. Doseg varijabli i funkcijski izrazi](#2-doseg-varijabli-i-funkcijski-izrazi)
-  - [2.1 Blokovski opseg (eng. **_block scope_**)](#21-blokovski-opseg-eng-block-scope)
-  - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
-  - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
+    - [2.1 Blokovski opseg (eng. **_block scope_**)](#21-blokovski-opseg-eng-block-scope)
+    - [2.2 Ponovno deklariranje funkcija](#22-ponovno-deklariranje-funkcija)
+    - [2.3 Funkcijski izrazi](#23-funkcijski-izrazi)
   - [Vježba 2](#vježba-2)
   - [Vježba 3](#vježba-3)
 - [3. Uvod u paradigmu funkcijskog programiranja](#3-uvod-u-paradigmu-funkcijskog-programiranja)
@@ -53,7 +53,7 @@
   - [Vježba 4](#vježba-4)
   - [3.3 Iteracije/Petlje (eng. **_Iterations/Loops_**)](#33-iteracijepetlje-eng-iterationsloops)
     - [3.3.1 Klasična `for` petlja](#331-klasična-for-petlja)
-      - [Primjer 3 - Ispis ispis brojeva od 1 do 100 koji su djeljivi s 3](#primjer-3---ispis-ispis-brojeva-od-1-do-100-koji-su-djeljivi-s-3)
+      - [Primjer 3 - Ispis brojeva od 1 do 100 koji su djeljivi s 3](#primjer-3---ispis-brojeva-od-1-do-100-koji-su-djeljivi-s-3)
     - [3.3.2 `while` petlja](#332-while-petlja)
       - [3.3.2.1 `do-while` petlja](#3321-do-while-petlja)
     - [3.3.3 Prekidanje petlji - `break` | `continue`](#333-prekidanje-petlji---break--continue)
