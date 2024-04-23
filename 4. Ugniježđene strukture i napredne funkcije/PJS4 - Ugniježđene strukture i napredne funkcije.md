@@ -983,7 +983,7 @@ Ako želimo dohvatiti film "Matrix Reloaded" iz polja `filmovi`, koristimo indek
 console.log(filmovi[2][1]); // Ispisuje "Matrix Reloaded"
 ```
 
-Polje možemo "izravnati", odnosno svesti višedimenzionalno polje na jednodimenzionalno polje koristeći metodu `Array.flat()`.
+Polje možemo "izravnati", odnosno **svesti višedimenzionalno polje na jednodimenzionalno** polje koristeći metodu `Array.flat()`.
 
 Primjerice uzmimo više dimenzionalno polje koje želimo svesti na jednodimenzionalno polje (listu).
 
@@ -1209,7 +1209,7 @@ let trenutna_narudzba = {
 
 # 3. Napredne funkcije
 
-Napredne funkcije i metode odnose se na kompleksnije metode i tehnike koje se koriste za rješavanje određenih tipova problema. Studenti će kroz ove vježbe naučiti koristiti funkcije višeg reda (eng. **_higher-order functions_**). To su funkcije koje primaju funkcije kao argumente, npr. `map()`, `filter()`, `reduce()`, `sort()`.
+Napredne funkcije i metode odnose se na kompleksnije metode i tehnike koje se koriste za rješavanje određenih tipova problema. Studenti će kroz ove vježbe naučiti koristiti funkcije višeg reda (eng. **_higher-order functions_**). To su funkcije koje primaju funkcije kao argumente, poput: `map()`, `filter()`, `reduce()`, `sort()`.
 
 Detaljnije ćemo obraditi `callback` funkcije koje smo već spomenuli u primjerima skripte PJS3 te ćemo naučiti pisati tzv. `arrow` ili anonimne funkcije koje nam omogućuju konkretniju sintaksu za pisanje funkcijskih izraza, o kojima je bilo riječi u skripti PJS2.
 
