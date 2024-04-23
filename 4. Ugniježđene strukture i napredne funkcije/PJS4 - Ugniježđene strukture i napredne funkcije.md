@@ -1154,7 +1154,7 @@ for (let i = 0; i < matrica.length; i++) {
 - kada se pozove funkcija, korisniku se mora otvoriti izbornik gdje će mu se izlistati sva jela i pića iz menija s indeksom koji počinje od 1 ispred zapisa. Primjer:
 
 ```
-1. Margherita (Pizza s rajČicom i mozarella sirom)  - 7 eur
+1. Margherita (Pizza s rajčicom i mozarella sirom)  - 7 eur
 2. Coca-Cola (Osvježavajuće gazirano bezalkoholno piće) - 3 eur
 3. Tjestenina s umakom od rajčice (Tjestenina s umakom od svježe rajčice) - 8 eur
 4. Fanta (Osvježavajuće gazirano bezalkoholno piće) - 2 eur
