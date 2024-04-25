@@ -40,12 +40,17 @@
     - [Vježba 2](#vježba-2)
   - [2.4 Polja unutar polja](#24-polja-unutar-polja)
     - [2.4.1 Iteracije kroz više dimenzija](#241-iteracije-kroz-više-dimenzija)
-    - [2.4.2 Stvaranje višedimenzionalnih pomoću `Array` konstruktora](#242-stvaranje-višedimenzionalnih-pomoću-array-konstruktora)
+    - [2.4.2 Stvaranje višedimenzionalnih polja pomoću `Array` konstruktora](#242-stvaranje-višedimenzionalnih-polja-pomoću-array-konstruktora)
     - [Vježba 3](#vježba-3)
   - [2.5 Sažetak ugiježđenih struktura](#25-sažetak-ugiježđenih-struktura)
     - [Vježba 4](#vježba-4)
 - [Samostalni zadatak za vježbu 6](#samostalni-zadatak-za-vježbu-6)
 - [3. Napredne funkcije](#3-napredne-funkcije)
+  - [3.1 Callback funkcije](#31-callback-funkcije)
+    - [3.1.1 Primjer callback funkcije](#311-primjer-callback-funkcije)
+    - [3.1.2 Osnovna podjela `callback` funkcija](#312-osnovna-podjela-callback-funkcija)
+      - [Globalno definirana `callback` funkcija](#globalno-definirana-callback-funkcija)
+      - [Anonimna `callback` funkcija](#anonimna-callback-funkcija)
 
 <br>
 
@@ -111,7 +116,7 @@ let korisnik = {
 };
 ```
 
-Uočite zašto je ovakav zapis nezgrapan. Kako bi dohvatili ulicu, moramo koristiti `split` metodu. Isti problem predstavlja poštanski broj?
+Uočite zašto je ovakav zapis nezgrapan. Kako bi dohvatili `ulicu` moramo koristiti `split` metodu. Isti problem predstavlja `poštanski broj`.
 
 Idemo problem riješiti **ugniježđenim objektima**.
 
@@ -131,7 +136,7 @@ let korisnik = {
 };
 ```
 
-Sada možemo jednostavno dohvatiti ulicu, grad, poštanski broj, telefon i email, a naš kôd je pregledniji. Na jednaki način kako dohvaćamo atribute objekata, možemo dohvaćati i atribute ugniježđenih objekata, koristeći `.` operator.
+Sada možemo jednostavno dohvatiti `ulicu`, `grad`, `poštanski broj`, `telefon` i `email`, a naš kôd je pregledniji. Na jednaki način kako dohvaćamo atribute objekata, možemo dohvaćati i atribute ugniježđenih objekata, koristeći `.` operator.
 
 ```javascript
 console.log(korisnik.adresa.ulica); // Ispisuje "Ulica 123"
@@ -146,7 +151,7 @@ console.log(korisnik.kontakt.email); // Ispisuje "ivo@gmail.com"
 
 ## 2.1 Objekti unutar objekata
 
-Često ćemo se u programiranju susretati s potrebom za pohranjivanjem složenih podataka i specifikacije nekakve hijerarhijske strukture. Primjerice, kako ćemo pohraniti podatke o korisniku? Korisnik ima ime, prezime, adresu i kontakt. Adresa se sastoji od ulice, grada i poštanskog broja. Kontakt se sastoji od telefona i emaila. Navedeno možemo postići s pomoću ugniježđenih objekata, tj. objekata unutar objekata.
+Često ćemo se u programiranju susretati s potrebom za pohranjivanjem složenih podataka i specifikacije nekakve hijerarhijske strukture. Primjerice, kako ćemo pohraniti podatke o korisniku? Korisnik sadrži `ime`, `prezime`, `adresu` i `kontakt`. `Adresa` se sastoji od `ulice`, `grada` i `poštanskog broja`. `Kontakt` se sastoji od `telefona` i `emaila`. Navedeno možemo postići s pomoću ugniježđenih objekata, tj. **objekata unutar objekata**.
 
 Objekte "ugnježđujemo" tako da stvaramo **objekte unutar objekata**, doslovno. Sintaksa je sljedeća:
 
@@ -269,7 +274,7 @@ console.log(konfiguracija["server"]["host"]); // Ispisuje "192.168.5.5"
 
 #### Dodavanje novih podataka unutar ugniježđenih objekata
 
-Recimo da hoćemo dodati `protocol` podataka u naš objekt `server`. To radimo na isti način kao i kod dodavanja novih podataka u obične objekte.
+Recimo da hoćemo dodati `protocol` podatak u naš objekt `server`. To radimo na isti način kao dodavanje novih podataka u obične objekte.
 
 ```javascript
 konfiguracija.server.protocol = "http";
@@ -790,7 +795,7 @@ rentaBoat.dodajRezervaciju(...);
 
 ## 2.4 Polja unutar polja
 
-Ugnježđena polja su polja definirana unutar drugih polja, još se nazivaju multidimenzionalnim poljima (eng. multidimensional arrays). U praksi, multidimenzionalna polja se koriste za pohranu podataka koji su međusobno povezani. Primjerice, ako imamo matricu, onda je to dvodimenzionalno polje.
+Ugniježđena polja su polja definirana unutar drugih polja, još se nazivaju **multidimenzionalnim poljima** (***eng. multidimensional arrays***). U praksi, multidimenzionalna polja se koriste za pohranu podataka koji su međusobno povezani.
 
 Multidimenzionalna polja možemo definirati ugnježđivanjem polja definiranih uglatim zagradama `[]`.
 
@@ -800,7 +805,7 @@ Primjer jednodimenzionalnog polja:
 let = [1, 2, 3, 4, 5];
 ```
 
-Primjer dvodimenzionalnog polja (2D matrica)
+Primjer dvodimenzionalnog polja (**2D matrica**)
 
 ```javascript
 let matrica = [
@@ -840,7 +845,7 @@ console.log(matrica); // Ispisuje [[10, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 **Matrice** se u programiranju reprezentiraju višedimenzionalnim poljima. Ako se pokušate dosjetiti primjera gdje bi se mogli koristiti ovakvi zapisi, na prvu će vam višedimenzionalna polja možda izgledati komplicirano i nepotrebno, ali u praksi su vrlo korisna i često se koriste.
 
-U računarstvu, matrice se koriste za:
+U računarstvu i informacijskoj znanosti, matrice se koriste za:
 
 - računalnu grafiku (slike, video, 3D modeli i sl.)
 - strojno učenje i umjetnu inteligenciju
@@ -883,9 +888,9 @@ for (let i = 0; i < matrica.length; i++) {
 }
 ```
 
-Kod iznad ispisuje 5 puta (5 elemenata), ne ispisuje svaki element matrice (25 elemenata).
+Kôd  iznad ispisuje 5 puta (5 elemenata), ne ispisuje svaki element matrice (25 elemenata).
 
-Kako su rezultati ispisivanja redaka matrice polja, moramo iterirati ponovo kroz svaki element tih 5 polja.
+Kako su rezultati ispisivanja redaka matrice **polja**, moramo iterirati ponovo kroz svaki element tih **5 polja**.
 
 ```javascript
 for (let i = 0; i < matrica.length; i++) {
@@ -896,7 +901,7 @@ for (let i = 0; i < matrica.length; i++) {
 }
 ```
 
-Kako bismo definirali matricu dimenzija 3x3x3, koristimo 3 ugniježđene polje.
+Kako bismo definirali matricu dimenzija 3x3x3, koristimo 3 ugniježđena polja koja sadrže po 3 elementa (također polja):
 
 ```javascript
 let matrica3D = [
@@ -921,7 +926,7 @@ let matrica3D = [
 ];
 ```
 
-Iteracija kroz 3D matricu:
+Primjer kako izgleda iteracija kroz 3D matricu:
 
 ```javascript
 for (let i = 0; i < matrica3D.length; i++) {
@@ -937,7 +942,7 @@ for (let i = 0; i < matrica3D.length; i++) {
 
 U računalnoj grafici možemo 3D matricom definirati **voxel grid** gdje svaki element matrice predstavlja jedan voxel (3D piksel) koji sadrži informacije o boji, teksturi, materijalu i sl.
 
-### 2.4.2 Stvaranje višedimenzionalnih pomoću `Array` konstruktora
+### 2.4.2 Stvaranje višedimenzionalnih polja pomoću `Array` konstruktora
 
 U višedimenzionalna polja ne moraju biti pohranjeni samo brojevi (premda je to najčešće), već i bilo koji drugi tipovi podataka. U tom slučaju se višedimenzionalna polja više ne nazivaju matricama.
 
@@ -952,7 +957,7 @@ let filmovi = [
 ];
 ```
 
-Drugi način je korištenjem `Array` konstruktora.
+Drugi način je pozivanjem `Array` konstruktora.
 
 ```javascript
 let filmovi = new Array();
@@ -1003,14 +1008,14 @@ console.log(arr2.flat()); // [0, 1, 2, 3, 4, [5, 6]]
 console.log(arr2.flat(2)); // [0, 1, 2, 3, 4, 5, 6]
 ```
 
-> Već smo spomenuli moguće primjene višedimenzionalnih polja te naglasili da se u pravilu koriste za pohranu numeričkih podataka, koji su međusobno povezani odnosno predstavljaju neku **vrstu višedimenzionalne strukture**.
+> Već smo naveli moguće primjene višedimenzionalnih polja te naglasili da se u pravilu koriste za pohranu numeričkih podataka, koji su međusobno povezani odnosno predstavljaju neku **vrstu višedimenzionalne strukture**.
 
-- Primjer filmova u praksi nije nešto što želite pohraniti u višedimenzionalno polje, jer se filmovi ne povezuju na način da se koriste višedimenzionalna polja.
-Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost koda, a i održavanje postaje teže.
+- U praksi, ovaj primjer nije nešto što želite pohraniti u višedimenzionalno polje.
+Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost kôda , a i održavanje postaje teže.
 
-Primjer filmova je bolje pohraniti koristeći ranije naučene ugniježđene strukture u kombinaciji s objektima:
+Filmove je bolje pohraniti koristeći ranije naučene ugniježđene strukture - kombiniranjem objekata i polja.
 
-Ovako nekako:
+Recimo ovako:
 
 ```javascript
 let filmovi = {
@@ -1046,7 +1051,7 @@ Ugniježđene strukture su strukture koje se sastoje od više različitih strukt
 > 3.  **Objekti unutar polja** `[{}]`
 > 4.  **Polja unutar polja** `[[]]`
 
-U kontekstu web programiranja, naučili smo da često koristimo prve 3 strukture: primjerice za modeliranje raznih entiteta iz stvarnog života. Međutim, višedimenzionalna polja odnosno polja unutar polja su korisna za pohranu drugih struktura podataka, npr. matrica, 3D modela, slika, videa, zvuka, tabličnih podataka i sl.
+U kontekstu web programiranja, naučili smo da često koristimo prve 3 strukture - primjerice za modeliranje raznih entiteta iz stvarnog života. Međutim, višedimenzionalna polja odnosno polja unutar polja su korisna za pohranu drugih vrsta podataka, npr. matrica, 3D modela, slika, videa, zvuka, tabličnih podataka i sl.
 
 > 1. **Objekte unutar objekata** koristimo za modeliranje entiteta koji imaju svoje pod-entitete (npr. kupac s podentitetima adresa i kontakt). Kako adresa i kontakt sami po sebi nisu jasni entiteti, koristimo objekte kako bi ih razložili na detaljnije podatke.
 
@@ -1070,7 +1075,7 @@ let kupac = {
 ```
 
 > 2. **Polja unutar objekata** koristimo za modeliranje entiteta koji imaju više podataka istog tipa (npr. kupac s više narudžbi). Kako narudžbe nisu jasni entiteti, modeliramo ih pomoću objekata kako bi ih razložili na detaljnije podatke, a potom te objekte pohranjujemo u polje.
-> 3. Svaku stavku predstavljamo kao **Objekt unutar polja**
+> 3. Svaku stavku narudžbe predstavljamo kao **Objekt unutar polja**
 
 ```javascript
 let narudzbe = [
@@ -1116,7 +1121,7 @@ for (let i = 0; i < narudzbe.length; i++) {
 }
 ```
 
-> 4. **Polja unutar polja** koristimo za modeliranje struktura podataka koje su međusobno povezane (npr. matrica, 3D modeli, slike, videa, zvuka, tablični podaci). U ovom slučaju, **svaki element polja je polje**.
+> 4. **Polja unutar polja** koristimo za modeliranje struktura podataka koji su međusobno povezani (npr. matrica, 3D modeli, slike, videa, zvuka, tablični podaci). U ovom slučaju, **svaki element polja je polje**.
 
 ```javascript
 let matrica = [
@@ -1171,8 +1176,8 @@ U objekt `restoran` dodajte metodu `dodajNarudzbu()` koja će dodati novu narud�
 5. Piletina s povrćem (Piletina s povrćem i umakom od vrhnja) - 10 eur
 ```
 
-- korisnik unosi redni broj jela ili pića koje želi naručiti. Ako korisnik unese redni broj koji ne postoji, ispisuje se poruka "Narudžba ne postoji, pokušajte ponovno". Koristite `prompt()` funkciju za unos podataka.
-- ako korisnik unese ispravan redni broj, traži ga se količina koju želi naručiti. Ako korisnik unese količinu manju od 1, ispisuje se poruka "Količina mora biti veća od 0, pokušajte ponovno". Koristite `prompt()` funkciju za unos podataka.
+- korisnik unosi redni broj jela ili pića koje želi naručiti. Ako korisnik unese redni broj koji ne postoji, ispisuje se poruka `"Narudžba ne postoji, pokušajte ponovno".` Koristite `prompt()` funkciju za unos podataka.
+- ako korisnik unese ispravan redni broj, traži ga se količina koju želi naručiti. Ako korisnik unese količinu manju od 1, ispisuje se poruka `"Količina mora biti veća od 0, pokušajte ponovno".` Koristite `prompt()` funkciju za unos podataka.
 - preferencije koje korisnik unosi moraju se spremati u objekt `trenutna_narudzba` i polje `stavke`, a dodatno, u objekte jela i/ili pića potrebno je dodati svojstvo `kolicina`.
 
 Primjer za naručivanje 2 Margherita pizza i 2 Coca-Cola pića:
@@ -1201,8 +1206,8 @@ let trenutna_narudzba = {
 };
 ```
 
-- korisnik završava s naručivanjem kada unese redni broj 0. Tada se ispisuje trenutna narudžba i ukupna cijena narudžbe.
-- dodajte `timestamp` u objekt `trenutna_narudzba` koji će sadržavati trenutno datum i vrijeme narudžbe.
+- korisnik završava s naručivanjem kada unese redni broj `0`. Tada se ispisuje trenutna narudžba i ukupna cijena narudžbe.
+- dodajte `timestamp` u objekt `trenutna_narudzba` koji će sadržavati trenutni datum i vrijeme narudžbe.
 - jednom kad je narudžba uspješno dodana obavijestite o tome korisnika funkcijom `alert()`. U poruci obavijestite korisnika i o ukupnoj cijeni narudžbe.
 
 <br>
@@ -1218,4 +1223,143 @@ Detaljnije ćemo obraditi `callback` funkcije koje smo već spomenuli u primjeri
 <img src="./screenschots/reduce_graphics.png" alt="Advanced functions" style="width: 60%;" />
 
 > Izvor: https://blog.khanacademy.org/lets-reduce-a-gentle-introduction-to-javascripts-reduce-method/
+
+## 3.1 Callback funkcije
+
+### 3.1.1 Primjer callback funkcije
+
+U poglavlju PJS3 već smo ukratko napravili uvod u `callback` funkcije. `Callback` funkcije su funkcije koje se koriste kao argumenti drugih funkcija.
+
+Vidjeli smo da se `callback` funkcije  možemo koristiti kao argumente za neke od metoda `Array` objekta, kao što su `find` i `filter`.
+
+Primjer koji smo prošli u prošloj skripti je bio:
+
+```javascript
+let stabla = new Array("hrast", "bukva", "javor", "bor", "smreka");
+```
+
+Za definirano polje `stabla` pokazali smo kako pronaći stablo `bor` koristeći metodu `find()`.
+
+```javascript
+let bor = stabla.find(function(stablo) {
+    return stablo == "bor"; // vraća prvi element koji zadovoljava ovaj uvjet
+});
+console.log(bor); // Ispisuje "bor"
+```
+
+U ovom primjeru, `callback` funkcija je anonimna funkcija koja se koristi kao argument za metodu `find()`. `Callback` funkcija je anonimna jer nema ime, a koristi se samo kao argument za metodu `find()`.
+
+Kako bi nam bilo jasnije, idemo razdvojiti `callback` funkciju od metode `find()`.
+Recimo da imamo funkciju `pronadiBor()` koja provjerava je li stablo jednako "bor". 
+
+Metoda `find()` će pozvati funkciju `pronadiBor()` za svaki element polja `stabla`.
+
+```javascript
+let bor = stabla.find(pronadiBor); // Pozovi metodu find() s callback funkcijom pronadiBor()
+```
+
+Funkcija `pronadiBor()` mora imati jedan argument (`stablo`) koji predstavlja svaki element polja `stabla`.
+
+Primjer kako možemo implementirati našu funkciju `pronadiBor()`:
+
+```javascript
+function pronadiBor(stablo) { // Definiraj funkciju pronadiBor() koja prima jedan argument "stablo"
+    return stablo == "bor";  // Vrati true ako je "stablo" jednako "bor"
+}
+```
+
+Naš kôd sada izgleda ovako:
+
+```javascript
+let stabla = new Array("hrast", "bukva", "javor", "bor", "smreka");
+
+function pronadiBor(stablo) { 
+    return stablo == "bor";
+}
+
+let bor = stabla.find(pronadiBor); // Callback funkciju pronadiBor() proslijeđujemo bez zagrada ()
+console.log(bor); // Ispisuje "bor"
+```
+
+Ima li kôd grešaka? Funkciju `pronadiBor` proslijeđujemo bez zagrada `()`. Zašto? **Zato što želimo proslijediti referencu na funkciju, a ne rezultat izvršavanja funkcije.** 
+- Grešku bi dobili da smo napisali `let bor = stabla.find(pronadiBor());`. U tom slučaju, `pronadiBor()` bi se izvršila odmah, a rezultat bi bio proslijeđen metodi `find()`.
+
+### 3.1.2 Osnovna podjela `callback` funkcija
+
+Najjednostavnije rečeno, u JavaScriptu, `callback` funkcija je funkcija proslijeđena kao argument drugoj funkciji. `Callback` funkcije se koriste za izvršavanje koda nakon što je druga funkcija završila izvršavanje.
+
+U primjeru `stabla` koristili smo `callback` funkcije na 2 načina:
+1. koristili smo anonimnu funkciju kao `callback` funkciju
+2. koristili smo globalno definiranu funkciju kao `callback` funkciju
+
+#### Globalno definirana `callback` funkcija
+
+Pokazat ćemo prvo 2. primjer gdje koristimo `callback` funkciju definiranu izvana kao argument za metodu `forEach()`. Rekli smo da je metoda `forEach()` metoda koja prolazi kroz svaki element polja i izvršava `callback` funkciju za svaki element.
+
+Zadatak nam je da za svaki element polja `brojevi` ispišemo kvadrat tog broja.
+
+Prvo ćemo definirati polje `brojevi`:
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+```
+
+Zatim ćemo definirati globalnu `callback` funkciju `ispisiKvadrat()` koja će ispisati kvadrat broja.
+
+```javascript
+// ovu funkciju ćemo koristiti kao callback funkciju 
+function ispisiKvadrat(broj) {
+    console.log(broj * broj);
+}
+```
+
+Za sada je sve poznato, idemo upotrijebiti metodu `forEach()` i proslijediti `callback` funkciju `ispisiKvadrat()`.
+
+```javascript
+brojevi.forEach(ispisiKvadrat); // Pozovi metodu forEach() s callback funkcijom ispisiKvadrat()
+
+// Ispisuje:
+// 1
+// 4
+// 9
+// 16
+// 25
+```
+
+> VAŽNO: Primjetite da **nismo** pozivali `callback` funkciju niti definirani argument broj. Metoda `forEach()` će to učiniti za nas - mi smo samo **proslijedili referencu na funkciju** `ispisiKvadrat`.
+
+#### Anonimna `callback` funkcija
+
+Sada ćemo pokazati kako isto definirati anonimnom `callback` funkcijom.
+
+> **Anonimne funkcije** u programiranju su funkcije koje nisu vezane nekim identifikatorom. Često su to ustvari argumenti koji se proslijeđuju drugim funkcijama. Ponovite si poglavlje: Uvod u funkcijsko programiranje u skripti PJS2.
+
+Opet ćemo definirati polje `brojevi`:
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+```
+
+Zatim je ideja da koristimo anonimnu `callback` funkciju koja će ispisati kvadrat broja.
+
+```javascript
+brojevi.forEach(nasaAnonimnaFunkcija); // ???
+```
+
+>Anonimne funkcije možemo definirati na potpuno isti način kao i obične funkcije, samo što im ne navodimo, pogađate, ime.
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+brojevi.forEach(function(broj) { // Anonimna `callback` funkcija koja ispisuje kvadrat broja
+    console.log(broj * broj);
+});
+
+// Ispisuje:
+// 1
+// 4
+// 9
+// 16
+// 25
+```
+
 
