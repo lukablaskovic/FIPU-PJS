@@ -56,6 +56,7 @@
     - [3.2.2 Metoda `forEach(callbackFn)`](#322-metoda-foreachcallbackfn)
     - [3.2.3 Metoda `filter(callbackFn)`](#323-metoda-filtercallbackfn)
     - [Primjer 1: Tražilica 🔍](#primjer-1-tražilica-)
+  - [Vježba 5](#vježba-5)
 
 <br>
 
@@ -1620,4 +1621,15 @@ console.log(pretraziProizvode(proizvodi, "ten")); // Ispisuje: [{naziv: "Tenisic
 console.log(pretraziProizvode(proizvodi, "cikl")); // Ispisuje: [{naziv: "Bicikl", cijena: 500, kategorija: "sport"}, {naziv: "Tricikl", cijena: 350, kategorija: "sport"}]
 ```
 
+## Vježba 5
 
+**EduCoder šifra**: `samo_parni`
+
+Napišite funkciju `samoParni(brojevi)` koja prima polje brojeva i vraća novo polje koje sadrži samo parne brojeve iz polja `brojevi`. Za implementaciju ne smijete koristiti petlje `for` ili `while`, već metodu `filter()` s odgovarajućom `callback` funkcijom.
+
+Primjer poziva funkcije `samoParni()`:
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(samoParni(brojevi)); // Ispisuje [2, 4, 6, 8, 10]
+```
