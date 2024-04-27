@@ -49,8 +49,13 @@
   - [3.1 Callback funkcije](#31-callback-funkcije)
     - [3.1.1 Primjer callback funkcije](#311-primjer-callback-funkcije)
     - [3.1.2 Osnovna podjela `callback` funkcija](#312-osnovna-podjela-callback-funkcija)
-      - [Globalno definirana `callback` funkcija](#globalno-definirana-callback-funkcija)
-      - [Anonimna `callback` funkcija](#anonimna-callback-funkcija)
+      - [1. Globalno definirana `callback` funkcija](#1-globalno-definirana-callback-funkcija)
+      - [2. Anonimna `callback` funkcija](#2-anonimna-callback-funkcija)
+  - [3.2 Callback funkcije s poljima](#32-callback-funkcije-s-poljima)
+    - [3.2.1 Metoda `find(callbackFn)`](#321-metoda-findcallbackfn)
+    - [3.2.2 Metoda `forEach(callbackFn)`](#322-metoda-foreachcallbackfn)
+    - [3.2.3 Metoda `filter(callbackFn)`](#323-metoda-filtercallbackfn)
+    - [Primjer 1: Tražilica 🔍](#primjer-1-tražilica-)
 
 <br>
 
@@ -1228,9 +1233,11 @@ Detaljnije ćemo obraditi `callback` funkcije koje smo već spomenuli u primjeri
 
 ### 3.1.1 Primjer callback funkcije
 
-U poglavlju PJS3 već smo ukratko napravili uvod u `callback` funkcije. `Callback` funkcije su funkcije koje se koriste kao argumenti drugih funkcija.
+U poglavlju PJS3 već smo ukratko napravili uvod u `callback` funkcije. 
 
-Vidjeli smo da se `callback` funkcije  možemo koristiti kao argumente za neke od metoda `Array` objekta, kao što su `find` i `filter`.
+> `Callback` funkcije su funkcije koje se koriste kao argumenti drugih funkcija. Drugim riječima, `callback` **funkcija je funkcija koja se poziva unutar druge funkcije**.
+
+Vidjeli smo da `callback` funkcije  možemo koristiti kao argumente za neke od metoda `Array` objekta, kao što su `find` i `filter`.
 
 Primjer koji smo prošli u prošloj skripti je bio:
 
@@ -1247,10 +1254,9 @@ let bor = stabla.find(function(stablo) {
 console.log(bor); // Ispisuje "bor"
 ```
 
-U ovom primjeru, `callback` funkcija je anonimna funkcija koja se koristi kao argument za metodu `find()`. `Callback` funkcija je anonimna jer nema ime, a koristi se samo kao argument za metodu `find()`.
+Ovdje je `callback` funkcija je **anonimna funkcija** koja se koristi kao argument za metodu `find()`. Ova `callback` funkcija je anonimna jer nema ime i definirana je direktno unutar metode `find()`.
 
-Kako bi nam bilo jasnije, idemo razdvojiti `callback` funkciju od metode `find()`.
-Recimo da imamo funkciju `pronadiBor()` koja provjerava je li stablo jednako "bor". 
+- Kako bi nam bilo jasnije, idemo razdvojiti `callback` funkciju od metode `find()` na način da ćemo ju pretočiti u  funkciju `pronadiBor()` koja provjerava je li stablo "bor".
 
 Metoda `find()` će pozvati funkciju `pronadiBor()` za svaki element polja `stabla`.
 
@@ -1281,20 +1287,20 @@ let bor = stabla.find(pronadiBor); // Callback funkciju pronadiBor() proslijeđu
 console.log(bor); // Ispisuje "bor"
 ```
 
-Ima li kôd grešaka? Funkciju `pronadiBor` proslijeđujemo bez zagrada `()`. Zašto? **Zato što želimo proslijediti referencu na funkciju, a ne rezultat izvršavanja funkcije.** 
+> Ima li kôd grešaka? Funkciju `pronadiBor` proslijeđujemo bez zagrada `()`. Zašto? **Zato što želimo proslijediti referencu na funkciju, a ne rezultat izvršavanja funkcije.** 
 - Grešku bi dobili da smo napisali `let bor = stabla.find(pronadiBor());`. U tom slučaju, `pronadiBor()` bi se izvršila odmah, a rezultat bi bio proslijeđen metodi `find()`.
 
 ### 3.1.2 Osnovna podjela `callback` funkcija
 
-Najjednostavnije rečeno, u JavaScriptu, `callback` funkcija je funkcija proslijeđena kao argument drugoj funkciji. `Callback` funkcije se koriste za izvršavanje koda nakon što je druga funkcija završila izvršavanje.
+Najjednostavnije rečeno, u JavaScriptu, `callback` funkcija je funkcija proslijeđena kao argument drugoj funkciji - `callback` funkcije se koriste za izvršavanje koda nakon što je druga funkcija završila izvršavanje.
 
-U primjeru `stabla` koristili smo `callback` funkcije na 2 načina:
-1. koristili smo anonimnu funkciju kao `callback` funkciju
-2. koristili smo globalno definiranu funkciju kao `callback` funkciju
+U primjeru sa stablima koristili smo `callback` funkcije na 2 načina:
+1. koristili smo **globalno definiranu funkciju** kao `callback` funkciju (*definirana s imenom*)
+2. koristili smo **anonimnu funkciju** kao `callback` funkciju (*bez imena*)
 
-#### Globalno definirana `callback` funkcija
+#### 1. Globalno definirana `callback` funkcija
 
-Pokazat ćemo prvo 2. primjer gdje koristimo `callback` funkciju definiranu izvana kao argument za metodu `forEach()`. Rekli smo da je metoda `forEach()` metoda koja prolazi kroz svaki element polja i izvršava `callback` funkciju za svaki element.
+Pokazat ćemo prvo 1. primjer gdje koristimo `callback` funkciju definiranu izvana kao argument za metodu `forEach()`. Rekli smo da je metoda `forEach()` metoda koja prolazi kroz svaki element polja i izvršava `callback` funkciju za svaki element odnosno za svaki element polja izvršava neku operaciju.
 
 Zadatak nam je da za svaki element polja `brojevi` ispišemo kvadrat tog broja.
 
@@ -1326,13 +1332,13 @@ brojevi.forEach(ispisiKvadrat); // Pozovi metodu forEach() s callback funkcijom 
 // 25
 ```
 
-> VAŽNO: Primjetite da **nismo** pozivali `callback` funkciju niti definirani argument broj. Metoda `forEach()` će to učiniti za nas - mi smo samo **proslijedili referencu na funkciju** `ispisiKvadrat`.
+> VAŽNO: Primjetite da **nismo** pozivali `callback` funkciju niti definirali argument `broj`. Metoda `forEach()` će to učiniti za nas - mi smo samo **proslijedili referencu na funkciju** `ispisiKvadrat`.
 
-#### Anonimna `callback` funkcija
+#### 2. Anonimna `callback` funkcija
 
 Sada ćemo pokazati kako isto definirati anonimnom `callback` funkcijom.
 
-> **Anonimne funkcije** u programiranju su funkcije koje nisu vezane nekim identifikatorom. Često su to ustvari argumenti koji se proslijeđuju drugim funkcijama. Ponovite si poglavlje: Uvod u funkcijsko programiranje u skripti PJS2.
+> **Anonimne funkcije** u programiranju su funkcije koje nisu vezane nekim identifikatorom (imenom). Često predstavljaju argumente koji se proslijeđuju drugim funkcijama. Ponovite si poglavlje: **Uvod u funkcijsko programiranje** u skripti **PJS2**.
 
 Opet ćemo definirati polje `brojevi`:
 
@@ -1340,7 +1346,7 @@ Opet ćemo definirati polje `brojevi`:
 let brojevi = [1, 2, 3, 4, 5];
 ```
 
-Zatim je ideja da koristimo anonimnu `callback` funkciju koja će ispisati kvadrat broja.
+Ideja je da ovoga puta koristimo **anonimnu** `callback` funkciju koja će ispisati kvadrat broja.
 
 ```javascript
 brojevi.forEach(nasaAnonimnaFunkcija); // ???
@@ -1350,7 +1356,7 @@ brojevi.forEach(nasaAnonimnaFunkcija); // ???
 
 ```javascript
 let brojevi = [1, 2, 3, 4, 5];
-brojevi.forEach(function(broj) { // Anonimna `callback` funkcija koja ispisuje kvadrat broja
+brojevi.forEach(function(broj) { // Anonimna `callback` funkcija koja ispisuje kvadrat broja (bez imena)
     console.log(broj * broj);
 });
 
@@ -1360,6 +1366,258 @@ brojevi.forEach(function(broj) { // Anonimna `callback` funkcija koja ispisuje k
 // 9
 // 16
 // 25
+```
+
+## 3.2 Callback funkcije s poljima
+
+Kroz primjere s metodama `forEach()` i `find()` napravili smo uvod u `callback` funkcije. U ovom poglavlju proći ćemo kroz još nekoliko metoda `Array` objekta koje koriste `callback` funkcije.
+
+U 4. poglavlju - `Polja` naučili smo koristili osnovne metode `Arary` objekta. Podijelili smo ih u:
+- **metode dodavanja, brisanja i stvaranja novih polja**: npr. `push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `slice()`
+- **metode pretraživanja polja**: npr. `indexOf()`, `lastIndexOf()`, `includes()`, `find()`
+
+Neke od metoda pretraživanja polja koje smo već spomenuli koriste `callback` funkcije. Primjer:
+- `find(callbackFn)` metoda pretražuje polje i vraća prvi element koji zadovoljava uvjet definiran u `callback` funkciji.
+- `findIndex(callbackFn)` metoda pretražuje polje i vraća indeks prvog elementa koji zadovoljava uvjet definiran u `callback` funkciji.
+- `findLast(callbackFn)` metoda pretražuje polje i vraća zadnji element koji zadovoljava uvjet definiran u `callback` funkciji.
+- `findLastIndex(callbackFn)` metoda pretražuje polje i vraća indeks zadnjeg elementa koji zadovoljava uvjet definiran u `callback` funkciji.
+
+U ovom poglavlju, kroz primjere ćemo detaljnije proći kroz navedene metode, kao i dodatne metode `Array` objekta koje koriste `callback` funkcije.
+
+### 3.2.1 Metoda `find(callbackFn)`
+
+Metodu `find()` koristili smo za pretraživanje polja stabala i pronalazak stabla "bor".
+
+```javascript
+let stabla = new Array("hrast", "bukva", "javor", "bor", "smreka");
+let bor = stabla.find(function(stablo) { // Anonimna funkcija koja provjerava je li "stablo" jednako "bor"
+    return stablo == "bor";
+});
+console.log(bor); // Ispisuje "bor"
+```
+
+Metoda `find()` vraća **prvi element** polja koji zadovoljava uvjet definiran u `callback` funkciji. Ako nema elementa koji zadovoljava uvjet, vraća se `undefined`.
+
+Imamo definirano polje objekata `studenti`:
+
+```javascript
+let studenti = [
+    {ime: "Ivo", prezime: "Ivić", ocjena: 5},
+    {ime: "Ana", prezime: "Anić", ocjena: 4},
+    {ime: "Maja", prezime: "Majić", ocjena: 3},
+    {ime: "Ivan", prezime: "Ivanić", ocjena: 2},
+    {ime: "Pero", prezime: "Perić", ocjena: 1},
+];
+```
+
+Želimo pronaći studenta s prezimenom `Ivanić`. Koristimo metodu `find()` i `callback` funkciju koja provjerava je li prezime studenta jednako `Ivanić`.
+
+```javascript
+let student = studenti.find(function(student) { // Anonimna funkcija koja provjerava je liprezime studenta jednako "Ivanić"
+    return student.prezime == "Ivanić";
+});
+console.log(student); // Ispisuje {ime: "Ivan", prezime: "Ivanić", ocjena: 2}
+```
+
+Što ako želimo pronaći studenta s negativnom ocjenom? Potrebno je samo redefinirati uvjet u `callback` funkciji.
+
+```javascript
+let student = studenti.find(function(student) { // Anonimna funkcija koja provjerava je li ocjena studenta jednaka 1
+    return student.ocjena === 1;
+});
+```
+Što ako želimo pronaći studenta s ocjenom većom od 3? Izmjenit ćemo uvjet i definirati u vanjskoj `callback` funkciji.
+
+```javascript
+function ocjenaVecaOdTri(student) {
+    return student.ocjena > 3;
+}
+let student = studenti.find(ocjenaVecaOdTri); // Pozovi metodu find() s callback funkcijom ocjenaVecaOdTri.
+
+console.log(student); // Ispisuje {ime: "Ivo", prezime: "Ivić", ocjena: 5}
+```
+Rezultat je samo 1 objekt iako imamo 2 studenta s ocjenom većom od 3. Metoda `find()` vraća **prvi element** polja koji zadovoljava uvjet.
+Varijante postoje, to su metode: `findIndex()`, `findLast()` i `findLastIndex()`.
+
+Međutim ako želimo pronaći sve studente (ne samo prve ili zadnje) koji zadovoljavaju uvjet, moramo koristiti neke druge metode.
+
+### 3.2.2 Metoda `forEach(callbackFn)`
+
+Vidjeli smo već metodu `forEach()` koja prolazi kroz svaki element polja i izvršava `callback` funkciju za svaki element. Međutim, metoda `forEach()` ne vraća ništa, već samo prolazi kroz polje. Svejedno to možemo iskoristiti za pronalazak svih studenata s ocjenom većom od 3.
+
+```javascript
+let studenti = [
+    {ime: "Ivo", prezime: "Ivić", ocjena: 5},
+    {ime: "Ana", prezime: "Anić", ocjena: 4},
+    {ime: "Maja", prezime: "Majić", ocjena: 3},
+    {ime: "Ivan", prezime: "Ivanić", ocjena: 2},
+    {ime: "Pero", prezime: "Perić", ocjena: 1},
+];
+
+let studentiPrekoTri = []; // Inicijaliziraj prazno polje za spremanje studenata s ocjenom većom od 3
+
+studenti.forEach(function(student) { // Anonimna funkcija koja provjerava je li ocjena studenta veća od 3
+    if (student.ocjena > 3) {
+        studentiPrekoTri.push(student); // Dodaj studenta u polje studentiPrekoTri
+    }
+});
+
+console.log(studentiPrekoTri); // Ispisuje [{ime: "Ivo", prezime: "Ivić", ocjena: 5}, {ime: "Ana", prezime: "Anić", ocjena: 4}]
+```
+
+Ako bi izvukli `callback` funkciju iz metode `forEach()` i definirali ju izvan metode, ona bi izgledala ovako:
+  
+```javascript
+function ocjenaVecaOdTri(student) {
+  if (student.ocjena > 3) {
+      studentiPrekoTri.push(student);
+  }
+}
+```
+
+I na ovaj način ju možemo koristiti kao `callback` funkciju za metodu `forEach()`.
+
+```javascript
+let studentiPrekoTri = []; // Inicijaliziraj prazno polje za spremanje studenata s ocjenom većom od 3
+studenti.forEach(ocjenaVecaOdTri); // Pozovi metodu forEach() s callback funkcijom ocjenaVecaOdTri
+
+console.log(studentiPrekoTri); // Ispisuje [{ime: "Ivo", prezime: "Ivić", ocjena: 5}, {ime: "Ana", prezime: "Anić", ocjena: 4}]
+```
+
+### 3.2.3 Metoda `filter(callbackFn)`
+
+U prethodnom primjeru koristili smo metodu `forEach()` za prolazak kroz polje i filtriranje studenata s ocjenom većom od 3. Međutim, postoji metoda `filter()` koja radi upravo to - filtrira elemente polja prema zadanim kriterijima.
+
+Metoda `filter()` vraća **novo polje** s elementima koji zadovoljavaju uvjet definiran u `callback` funkciji.
+
+```javascript
+let studenti = [
+    {ime: "Ivo", prezime: "Ivić", ocjena: 5},
+    {ime: "Ana", prezime: "Anić", ocjena: 4},
+    {ime: "Maja", prezime: "Majić", ocjena: 3},
+    {ime: "Ivan", prezime: "Ivanić", ocjena: 2},
+    {ime: "Pero", prezime: "Perić", ocjena: 1},
+];
+
+let studentiPrekoTri = studenti.filter(function(student) { // Anonimna funkcija koja provjerava je li ocjena studenta veća od 3
+    return student.ocjena > 3;
+});
+console.log(studentiPrekoTri); // Ispisuje [{ime: "Ivo", prezime: "Ivić", ocjena: 5}, {ime: "Ana", prezime: "Anić", ocjena: 4}]
+```
+
+Ili koristeći globalno definiranu `callback` funkciju:
+
+```javascript
+function ocjenaVecaOdTri(student) {
+    return student.ocjena > 3;
+}
+let studentiPrekoTri = studenti.filter(ocjenaVecaOdTri); // Pozovi metodu filter() s callback funkcijom ocjenaVecaOdTri
+console.log(studentiPrekoTri); // Ispisuje [{ime: "Ivo", prezime: "Ivić", ocjena: 5}, {ime: "Ana", prezime: "Anić", ocjena: 4}]
+```
+
+To je to! Metoda `filter()` je korisna za filtriranje polja prema zadanim kriterijima.
+
+### Primjer 1: Tražilica 🔍
+
+**EduCoder šifra**: `trazilica`
+
+Na web stranicama trgovina, često se koristi tražilica koja omogućuje korisnicima pretraživanje proizvoda upisivanjem ključnih riječi ili same riječi proizvoda. Na primjer, korisnik može upisati "mobitel" i dobiti sve proizvode koji sadrže riječ "mobitel" u nazivu. Neke bolje tražilice omogućuju i pretraživanje po cijeni, kategoriji, brendu i sl.
+
+U ovom primjeru ćemo implementirati jednostavnu tražilicu koja će **pretraživati proizvode samo po nazivu**.
+
+Upotrijebit ćemo novo znanje o `callback` funkcijama i metodi `filter()`, kao i poznavanje ugniježdenih struktura.
+
+1. korak je definirati polje objekata `proizvodi` koje sadrži proizvode s nazivom, cijenom i kategorijom.
+
+```javascript
+let proizvodi = [
+    {naziv: "Mobitel", cijena: 300, kategorija: "elektronika"},
+    {naziv: "Slušalice", cijena: 20, kategorija: "elektronika"},
+    {naziv: "Punjač", cijena: 10, kategorija: "elektronika"},
+    {naziv: "Bicikl", cijena: 500, kategorija: "sport"},
+    {naziv: "Tricikl", cijena: 350, kategorija: "sport"},
+    {naziv: "Tenisice", cijena: 100, kategorija: "sport"},
+    {naziv: "Dres", cijena: 50, kategorija: "sport"},
+];
+```
+
+Recimo da je naša trgovina vrlo raznolikog asortimana, dodat ćemo u polje `proizvodi` i proizvode iz kategorije `prehrana`.
+
+```javascript
+proizvodi.push({naziv: "Jabuka", cijena: 1, kategorija: "prehrana"});
+proizvodi.push({naziv: "Jogurt", cijena: 2, kategorija: "prehrana"});
+proizvodi.push({naziv: "Mlijeko", cijena: 2, kategorija: "prehrana"});
+proizvodi.push({naziv: "Kruh", cijena: 3, kategorija: "prehrana"});
+```
+
+2. korak - želimo definirati funkciju `pretraziProizvode()` koja će pretraživati proizvode po nazivu. Funkcija će primati 2 argumenta: polje proizvoda i ključnu riječ za pretraživanje. Na primjer:
+
+```javascript
+pretraziProizvode(proizvodi, "mob"); // Ispisuje [{naziv: "Mobitel", cijena: 300, kategorija: "elektronika"}] // vraća polje s 1 elementom
+
+pretražiProizvode(proizvodi, "ten"); // Ispisuje [{naziv: "Tenisice", cijena: 100, kategorija: "sport"}] // vraća polje s 1 elementom
+
+pretražiProizvode(proizvodi, "J"); // Ispisuje [{naziv: "Punjač", cijena: 10, kategorija: "elektronika"}, {naziv: "Jabuka", cijena: 1, kategorija: "prehrana"}, {naziv: "Jogurt", cijena: 2, kategorija: "prehrana"}, {naziv: "Mlijeko", cijena: 2, kategorija: "prehrana"}] // vraća polje s 4 elementa
+
+pretražiProizvode(proizvodi, "cikl"); // Ispisuje [{naziv: "Bicikl", cijena: 500, kategorija: "sport"}, {naziv: "Tricikl", cijena: 350, kategorija: "sport"}] // vraća polje s 2 elementa
+```
+
+Idemo definirati kostur funkcije `pretraziProizvode()`:
+
+```javascript
+function pretraziProizvode(proizvodi, kljucnaRijec) {
+    // Implementacija funkcije
+}
+```
+
+Ideja je da koristimo metodu `filter()` za filtriranje proizvoda prema ključnoj riječi. 
+**Kao rezultat želimo dobiti novo polje filtriranih proizvoda koji sadrže ključnu riječ u nazivu.**
+
+```javascript
+function pretraziProizvode(proizvodi, kljucnaRijec) {
+    let filtriraniProizvodi = proizvodi.filter(function(proizvod) {
+        // Implementacija anonimne callback funkcije koja provjerava je li ključna riječ sadržana u nazivu proizvoda
+    });
+    return filtriraniProizvodi;
+}
+```
+
+3. korak - implementacija `callback` funkcije koja provjerava je li ključna riječ sadržana u **nazivu proizvoda**.
+
+```javascript
+function pretraziProizvode(proizvodi, kljucnaRijec) {
+    let filtriraniProizvodi = proizvodi.filter(function(proizvod) {
+        return proizvod.naziv.includes(kljucnaRijec); // Vraća true ako ključna riječ sadrži naziv proizvoda
+    });
+    return filtriraniProizvodi;
+}
+```
+
+Problem riješen! Sada možemo pretraživati proizvode po ključnoj riječi.
+
+```javascript
+console.log(pretraziProizvode(proizvodi, "MOB")); // Ispisuje: ništa? - vraća prazno polje
+```
+
+Problem je što je naš korisnik zaboravio ugasiti Caps Lock 🥲 Kako bi riješili ovaj problem, možemo koristiti metodu `toLowerCase()` koja će pretvoriti ključnu riječ u mala slova (normalizacija teksta).
+
+```javascript
+function pretraziProizvode(proizvodi, kljucnaRijec) {
+    let filtriraniProizvodi = proizvodi.filter(function(proizvod) {
+        return proizvod.naziv.toLowerCase().includes(kljucnaRijec.toLowerCase()); // Vraća true ako ključna riječ sadrži naziv proizvoda bez obzira na velika/mala slova
+    });
+    return filtriraniProizvodi;
+}
+```
+
+Sada možemo pretraživati proizvode bez obzira na velika/mala slova.
+
+```javascript
+console.log(pretraziProizvode(proizvodi, "MOB")); // Ispisuje: [{naziv: "Mobitel", cijena: 300, kategorija: "elektronika"}]
+
+console.log(pretraziProizvode(proizvodi, "ten")); // Ispisuje: [{naziv: "Tenisice", cijena: 100, kategorija: "sport"}]
+
+console.log(pretraziProizvode(proizvodi, "cikl")); // Ispisuje: [{naziv: "Bicikl", cijena: 500, kategorija: "sport"}, {naziv: "Tricikl", cijena: 350, kategorija: "sport"}]
 ```
 
 
