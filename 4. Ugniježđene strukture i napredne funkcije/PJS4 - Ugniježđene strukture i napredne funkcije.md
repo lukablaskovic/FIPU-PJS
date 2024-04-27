@@ -67,7 +67,9 @@
       - [Primjer 3: `arrow` funkcija koja kvadrira broj](#primjer-3-arrow-funkcija-koja-kvadrira-broj)
       - [Primjer 4: `arrow` funkcija bez parametara](#primjer-4-arrow-funkcija-bez-parametara)
     - [3.3.4 `arrow` funkcije kao callback funkcije](#334-arrow-funkcije-kao-callback-funkcije)
-      - [Primjer 2: `arrow` funkcija kao callback funkcija u metodi `find()`](#primjer-2-arrow-funkcija-kao-callback-funkcija-u-metodi-find)
+      - [Primjer 1: `arrow` funkcija kao callback funkcija u metodi `find()`](#primjer-1-arrow-funkcija-kao-callback-funkcija-u-metodi-find)
+      - [Primjer 2: `arrow` funkcija kao callback funkcija u metodi `filter()`](#primjer-2-arrow-funkcija-kao-callback-funkcija-u-metodi-filter)
+    - [Primjer 3: Pronađi let ✈️](#primjer-3-pronađi-let-️)
     - [Vježba 7](#vježba-7)
     - [Vježba 8](#vježba-8)
 
@@ -1504,6 +1506,9 @@ U prethodnom primjeru koristili smo metodu `forEach()` za prolazak kroz polje i 
 
 Metoda `filter()` vraća **novo polje** s elementima koji zadovoljavaju uvjet definiran u `callback` funkciji.
 
+> Sintaksa: `filter(callbackFn, thisArg)` - `thisArg` je opcionalni argument koji predstavlja vrijednost `this` u `callback` funkciji.
+
+
 ```javascript
 let studenti = [
     {ime: "Ivo", prezime: "Ivić", ocjena: 5},
@@ -1884,7 +1889,7 @@ Važno je da do ovog trenutka razlikujete nekoliko pojmova:
 
 Kako koristimo `arrow` funkcije kao callback funkcije? U prethodnim primjerima smo definirali `arrow` funkcije i pozivali ih direktno. Međutim, **vrlo često se koriste kao callback funkcije**.
 
-#### Primjer 2: `arrow` funkcija kao callback funkcija u metodi `find()`
+#### Primjer 1: `arrow` funkcija kao callback funkcija u metodi `find()`
 
 Vratimo se na primjer s poljem studenata. Definirali smo polje `studenti` i koristili metodu `find()` za pronalazak studenta s prezimenom `Ivanić`.
 
@@ -1956,6 +1961,132 @@ console.log(studentiPrekoTri); // Ispisuje {ime: "Ivo", prezime: "Ivić", ocjena
 Iz ovih primjera možete vidjeti snagu `arrow` funkcija, posebno u situacijama kada se koriste kao callback funkcije.
 Svi primjeri koje smo pokazali s običnim funkcijama mogu se zamijeniti `arrow` funkcijama, a sintaksa postaje puno čišća i čitljivija, do te mjere da se da napisati u jednoj liniji kôda.
 
+#### Primjer 2: `arrow` funkcija kao callback funkcija u metodi `filter()`
+
+U primjeru s filtriranjem studenata s ocjenom većom od 3 koristili smo anonimnu funkciju kao `callback` funkciju za metodu `filter()`.
+
+```javascript
+let studenti = [
+    {ime: "Ivo", prezime: "Ivić", ocjena: 5},
+    {ime: "Ana", prezime: "Anić", ocjena: 4},
+    {ime: "Maja", prezime: "Majić", ocjena: 3},
+    {ime: "Ivan", prezime: "Ivanić", ocjena: 2},
+    {ime: "Pero", prezime: "Perić", ocjena: 1},
+];
+```
+
+```javascript
+let studentiPrekoTri = studenti.filter(function(student) { // Anonimna funkcija koja provjerava je li ocjena studenta veća od 3
+    return student.ocjena > 3;
+});
+
+console.log(studentiPrekoTri); // Ispisuje [{ime: "Ivo", prezime: "Ivić", ocjena: 5}, {ime: "Ana", prezime: "Anić", ocjena: 4}]
+```
+
+Kako bismo to riješili koristeći `arrow` funkciju?
+
+```javascript
+let studentiPrekoTri = studenti.filter(student => student.ocjena > 3); // Arrow funkcija koja provjerava je li ocjena studenta veća od 3
+console.log(studentiPrekoTri); // Ispisuje [{ime: "Ivo", prezime: "Ivić", ocjena: 5}, {ime: "Ana", prezime: "Anić", ocjena: 4}]
+```
+
+Ne moramo koristiti objekte unutar polja, jednako tako možemo koristiti `arrow` funkcije za filtriranje brojeva, nizova, stringova i sl.
+Primjer s filtriranjem parnih brojeva koristeći `arrow` funkciju:
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let parniBrojevi = brojevi.filter(broj => broj % 2 == 0); // Arrow funkcija koja provjerava je li broj paran
+console.log(parniBrojevi); // Ispisuje [2, 4, 6, 8, 10]
+```
+
+Ili primjer s filtriranjem stringova koji sadrže ključnu riječ "PJS":
+```javascript
+let kolekcija_skripta = ["PJS_1", "OOP_2", "PJS_2", "SPA_3", "PIS_2", "PJS_4"];
+let skripte_PJS = kolekcija_skripta.filter(skripta => skripta.includes("PJS")); // Arrow funkcija koja provjerava je li skripta sadrži ključnu riječ "PJS"
+console.log(skripte_PJS); // Ispisuje ["PJS_1", "PJS_2", "PJS_4"]
+```
+ili
+```javascript
+let kolekcija_skripta = ["PJS_1", "OOP_2", "PJS_2", "SPA_3", "PIS_2", "PJS_4"];
+let skripte_PJS = kolekcija_skripta.filter(skripta => skripta.startsWith("PJS")); // Arrow funkcija koja provjerava je li skripta počinje s ključnom riječju "PJS"
+console.log(skripte_PJS); // Ispisuje ["PJS_1", "PJS_2", "PJS_4"]
+```
+
+### Primjer 3: Pronađi let ✈️
+
+**EduCoder šifra**: `skyscanner`
+
+Napišite funkciju `pronadiLet()` koja prima polje letova, željeni grad polaska, željeni grad dolaska i datum polaska. Funkcija treba pronaći sve letove koji odgovaraju zadanim parametrima i vratiti ih kao novo polje. Morate koristiti metodu `filter()` s odgovarajućom callback funkcijom koja provjerava je li let odgovara zadanim parametrima definiranom `arrow` funkcijom. Korisnik može izostaviti datum polaska, u tom slučaju funkcija treba pronaći sve letove koji odgovaraju zadanim gradovima.
+
+Definirano je polje letova `letovi` koje sadrži objekte sa svojstvima `polazak`, `dolazak` i `datum`.
+```javascript
+let letovi = [
+    {polazak: "Zagreb", dolazak: "Split", datum: new Date("2024-08-01")},
+    {polazak: "Zagreb", dolazak: "Split", datum: new Date("2024-09-05")},
+    {polazak: "Zagreb", dolazak: "Dubrovnik", datum: new Date("2024-08-02")},
+    {polazak: "Split", dolazak: "Zadar", datum: new Date("2024-06-03")},
+    {polazak: "Dubrovnik", dolazak: "Osijek", datum: new Date("2024-10-04")},
+    {polazak: "Dubrovnik", dolazak: "Osijek", datum: new Date("2024-10-22")},
+    {polazak: "Pula", dolazak: "Zagreb", datum: new Date("2024-05-05")},
+    {polazak: "Pula", dolazak: "Zagreb", datum: new Date("2024-05-11")},
+    {polazak: "Zagreb", dolazak: "Pula", datum: new Date("2024-07-06")},
+    {polazak: "Zadar", dolazak: "Zagreb", datum: new Date("2025-09-07")},
+];
+```
+
+Krenimo odmah s definiranjem funkcije `pronadiLet()` koja prima polje letova, željeni grad polaska, željeni grad dolaska i datum polaska.
+```javascript
+function pronadiLet(letovi, polazak, dolazak, datum = null) { // datum je opcionalan parametar
+    // Implementacija funkcije
+}
+console.log(pronadiLet(letovi, "Zagreb", "Split")); // Ispisuje [{polazak: "Zagreb", dolazak: "Split", datum: new Date("2024-08-01")}, {polazak: "Zagreb", dolazak: "Split", datum: new Date("2024-08-05")}]
+```
+
+Koristit ćemo metodu `filter()` za filtriranje letova prema zadanim parametrima.
+
+```javascript
+function pronadiLet(letovi, polazak, dolazak, datum = null) {
+    let filtriraniLetovi = letovi.filter(let => { //
+        // Implementacija arrow funkcije koja provjerava je li let odgovara zadanim parametrima
+    });
+}
+```
+Provjerit ćemo prvo podudaraju li se gradovi polaska i dolaska leta s zadanim gradovima.
+```javascript
+function pronadiLet(letovi, polazak, dolazak, datum = null) {
+    let filtriraniLetovi = letovi.filter(let => {
+        return let.polazak == polazak && let.dolazak == dolazak;
+    });
+}
+```
+
+Za datum možemo provjeriti je li datum leta jednak zadanom datumu. Ako je datum `null`, znači da korisnik nije unio datum polaska, u tom slučaju vraćamo sve letove koji odgovaraju zadanim gradovima.
+```javascript
+function pronadiLet(letovi, polazak, dolazak, datum = null) {
+    let filtriraniLetovi = letovi.filter(let => {
+        return let.polazak == polazak && let.dolazak == dolazak && (datum == null || let.datum == datum);
+    });
+}
+```
+Ne moramo ovo pohranjivati u varijablu `filtriraniLetovi`, već možemo odmah vratiti rezultat.
+```javascript
+function pronadiLet(letovi, polazak, dolazak, datum = null) {
+    return letovi.filter(let => {
+        return let.polazak == polazak && let.dolazak == dolazak && (datum == null || let.datum.getTime() === datum.getTime());
+    });
+}
+```
+
+Sada možemo testirati funkciju `pronadiLet()`.
+
+```javascript
+console.log(pronadiLet(letovi, "Zagreb", "Split")); // Ispisuje [{polazak: "Zagreb", dolazak: "Split", datum: new Date("2024-08-01")}, {polazak: "Zagreb", dolazak: "Split", datum: new Date("2024-08-05")}]
+
+console.log(pronadiLet(letovi, "Dubrovnik", "Osijek")); // Ispisuje [{polazak: "Dubrovnik", dolazak: "Osijek", datum: new Date("2024-10-04")}, {polazak: "Dubrovnik", dolazak: "Osijek", datum: new Date("2024-10-22")}]
+
+console.log(pronadiLet(letovi, "Zadar", "Zagreb", new Date("2025-09-07"))); // Ispisuje [{polazak: "Zadar", dolazak: "Zagreb", datum: new Date("2025-09-07")}]
+```
+
 ### Vježba 7
 
 **EduCoder šifra**: `arrows`
@@ -1994,4 +2125,40 @@ const isEven = /* arrow funkcija */;
 ```
 
 ### Vježba 8
+
+**EduCoder šifra**: `idealni_zaposlenik`
+
+Imate šefa koji želi zaposliti idealnog zaposlenika za svoju tvrtku, međutim na natječaj se javilo previše kandidata. Šef vas je zamolio da mu pomognete pronaći idealnog zaposlenika. Vi kao vrsni poznavatelji JavaScripta odlučili ste mu pomoći. Budući da šef ne zna programirati, a vama se neda ručno pregledavati sve prijave, odlučili ste napisati funkciju `idealni_zaposlenik()` koja će vratiti idealnog kandidata.
+
+Šef ima svoje kriterije za idealnog zaposlenika te jedva čeka upotrijebiti vašu funkciju. Sve što vam je dao jest polje objekata `kandidati` koje sadrži informacije o kandidatima. Svaki kandidat ima svojstva: `ime`, `godine`, `godine_iskustva`, `strani_jezici`, `programski_jezici`.
+  
+  ```javascript
+let kandidati = [
+    {ime: "Ana", godine: 25, godine_iskustva: 3, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]},
+    {ime: "Ivan", godine: 30, godine_iskustva: 5, strani_jezici: ["engleski", "francuski"], programski_jezici: ["JavaScript", "Java"]},
+    {ime: "Maja", godine: 22, godine_iskustva: 1, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]},
+    {ime: "Marko", godine: 35, godine_iskustva: 7, strani_jezici: ["engleski", "njemački", "francuski"], programski_jezici: ["JavaScript", "Python", "Java"]},
+    {ime: "Eva", godine: 28, godine_iskustva: 4, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]},
+    {ime: "Tomislav", godine: 40, godine_iskustva: 10, strani_jezici: ["engleski", "njemački", "francuski", "španjolski"], programski_jezici: ["JavaScript", "Python", "Java", "C++"]},
+    {ime: "Lucija", godine: 26, godine_iskustva: 3, strani_jezici: ["engleski", "španjolski"], programski_jezici: ["Python", "R"]},
+    {ime: "Dario", godine: 31, godine_iskustva: 6, strani_jezici: ["engleski", "ruski"], programski_jezici: ["C#", "Java", "Python"]},
+    {ime: "Petra", godine: 29, godine_iskustva: 5, strani_jezici: ["engleski", "talijanski", "francuski"], programski_jezici: ["JavaScript", "Swift"]},
+    {ime: "Nikola", godine: 32, godine_iskustva: 8, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Java", "Scala"]},
+    {ime: "Lara", godine: 24, godine_iskustva: 2, strani_jezici: ["engleski", "kineski"], programski_jezici: ["Python", "JavaScript"]},
+    {ime: "Jakov", godine: 33, godine_iskustva: 9, strani_jezici: ["engleski", "španjolski", "portugalski"], programski_jezici: ["Java", "JavaScript", "Go"]},
+];
+```
+
+Napišite funkciju `idealni_zaposlenik(kandidati, godine, godine_iskustva, strani_jezici, programski_jezici)` koja prima navedene argumente te koristi metodu `Array.filter()` za filtriranje kandidata prvo prema stranim jezicima i programskim jezicima, a zatim koristi metodu `Array.find()` za prvog kandidata koji ima barem zadane godine i godine iskustva. Dakle tražite prvog kandidata, ne onog koji ima najviše godina i/ili godina iskustva, već prvog koji zadovoljava sve uvjete.
+
+Za provjeru jezika možete koristiti petlje i metode `Array.includes()`. Ako znate, možete koristiti i metodu `Array.every()`.
+Morate koristiti `arrow` funkcije za definiranje callback funkcija u metodama `filter()` i `find()`.
+
+```javascript
+let idealni_zaposlenik = idealni_zaposlenik(kandidati, 25, 3, ["engleski"], ["JavaScript", "Python"]);
+console.log(idealni_zaposlenik); // Ispisuje {ime: "Ana", godine: 25, godine_iskustva: 3, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]}
+
+let trazeniKandidat = pronadiZaposlenika(kandidati, 35, 3, ["engleski"], ["JavaScript", "Python"]);
+console.log(trazeniKandidat); // Ispisuje {ime: "Marko", godine: 35, godine_iskustva: 7, strani_jezici: ["engleski", "njemački", "francuski"], programski_jezici: ["JavaScript", "Python", "Java"]}
+```
 
