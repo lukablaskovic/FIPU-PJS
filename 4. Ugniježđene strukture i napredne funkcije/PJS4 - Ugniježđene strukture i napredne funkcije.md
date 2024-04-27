@@ -62,10 +62,12 @@
     - [3.3.1 Funkcijski izrazi i deklaracije](#331-funkcijski-izrazi-i-deklaracije)
     - [3.3.2 Sintaksa `arrow` funkcija](#332-sintaksa-arrow-funkcija)
     - [3.3.3 Primjeri `arrow` funkcija](#333-primjeri-arrow-funkcija)
-      - [Primjer 1: Arrow funkcija koja zbraja 2 broja](#primjer-1-arrow-funkcija-koja-zbraja-2-broja)
-      - [Primjer 2: Arrow funkcija koja ispisuje pozdravnu poruku](#primjer-2-arrow-funkcija-koja-ispisuje-pozdravnu-poruku)
-      - [Primjer 3: Arrow funkcija koja kvadrira broj](#primjer-3-arrow-funkcija-koja-kvadrira-broj)
-      - [Primjer 4: Arrow funkcija bez parametara](#primjer-4-arrow-funkcija-bez-parametara)
+      - [Primjer 1: `arrow` funkcija koja zbraja 2 broja](#primjer-1-arrow-funkcija-koja-zbraja-2-broja)
+      - [Primjer 2: `arrow` funkcija koja ispisuje pozdravnu poruku](#primjer-2-arrow-funkcija-koja-ispisuje-pozdravnu-poruku)
+      - [Primjer 3: `arrow` funkcija koja kvadrira broj](#primjer-3-arrow-funkcija-koja-kvadrira-broj)
+      - [Primjer 4: `arrow` funkcija bez parametara](#primjer-4-arrow-funkcija-bez-parametara)
+    - [3.3.4 `arrow` funkcije kao callback funkcije](#334-arrow-funkcije-kao-callback-funkcije)
+      - [Primjer 2: `arrow` funkcija kao callback funkcija u metodi `find()`](#primjer-2-arrow-funkcija-kao-callback-funkcija-u-metodi-find)
 
 <br>
 
@@ -1777,7 +1779,7 @@ Iako su iznad navedene različite sintakse `arrow` funkcija, ne morate ih i neć
 
 ### 3.3.3 Primjeri `arrow` funkcija
 
-#### Primjer 1: Arrow funkcija koja zbraja 2 broja
+#### Primjer 1: `arrow` funkcija koja zbraja 2 broja
 Za početak ćemo definirati `arrow` funkciju koja zbraja 2 broja, dakle ekvilaventno funkciji `zbroji()` koju smo definirali ranije.
 
 ```javascript
@@ -1795,7 +1797,7 @@ const zbroji = (a, b) => a + b;
 console.log(zbroji(2, 3)); // Ispisuje 5
 ```
 
-#### Primjer 2: Arrow funkcija koja ispisuje pozdravnu poruku
+#### Primjer 2: `arrow` funkcija koja ispisuje pozdravnu poruku
 Sada ćemo definirati `arrow` funkciju koja ispisuje pozdravnu poruku. Funkcija `pozdrav()` prima jedan parametar `ime` i ispisuje poruku "Pozdrav, ime!".
 
 ```javascript
@@ -1813,7 +1815,7 @@ const pozdrav = ime => console.log(`Pozdrav ${ime}!`);
 pozdrav("Ana"); // Ispisuje "Pozdrav Ana!"
 ```
 
-#### Primjer 3: Arrow funkcija koja kvadrira broj
+#### Primjer 3: `arrow` funkcija koja kvadrira broj
 
 Definirat ćemo `arrow` funkciju koja kvadrira broj. Funkcija `kvadriraj()` prima jedan parametar `broj` i vraća kvadrat tog broja.
 
@@ -1831,7 +1833,7 @@ let kvadriraj = broj => broj * broj;
 console.log(kvadriraj(5)); // Ispisuje 25
 ```
 
-#### Primjer 4: Arrow funkcija bez parametara
+#### Primjer 4: `arrow` funkcija bez parametara
 
 Definirat ćemo funkciju koja recimo da inicijalizira našu aplikaciju. Funkcija `inicijaliziraj()` ne prima parametre i ispisuje poruku "Aplikacija inicijalizirana".
 
@@ -1862,5 +1864,92 @@ Ove funkcije su anonimne i koriste se kao callback funkcije, same po sebi se ne�
 () => console.log("Hello, World!");
 ```
 
-
 >`arrow` funkcije su korisne za definiranje jednostavnih funkcija koje se koriste kao callback funkcije.
+
+### 3.3.4 `arrow` funkcije kao callback funkcije
+
+Jedna od najčešćih primjena `arrow` funkcija je kao callback funkcije.
+
+Važno je da do ovog trenutka razlikujete nekoliko pojmova:
+- **callback funkcija** - funkcija koja se koristi kao argument druge funkcije.
+- **anonimna funkcija** - funkcija koja nema ime.
+- **arrow funkcija** - anonimna funkcija koja koristi sintaksu strelice `=>`.
+- **funkcijski izraz** - funkcija koja se dodjeljuje varijabli (može biti anonimna, imenovana obična, arrow funkcija)
+- **funkcijska deklaracija** - funkcija koja se deklarira ključnom riječi `function`
+- **metoda** - funkcija koja je dio objekta
+
+> Ako vam neki od ovih pojmova nije jasan, ili vam se čini da ih miješate, preporuka je da se vratite na prethodne lekcije i ponovite gradivo koje vam stvara poteškoće.
+
+Kako koristimo `arrow` funkcije kao callback funkcije? U prethodnim primjerima smo definirali `arrow` funkcije i pozivali ih direktno. Međutim, **vrlo često se koriste kao callback funkcije**.
+
+#### Primjer 2: `arrow` funkcija kao callback funkcija u metodi `find()`
+
+Vratimo se na primjer s poljem studenata. Definirali smo polje `studenti` i koristili metodu `find()` za pronalazak studenta s prezimenom `Ivanić`.
+
+```javascript
+let studenti = [
+    {ime: "Ivo", prezime: "Ivić", ocjena: 5},
+    {ime: "Ana", prezime: "Anić", ocjena: 4},
+    {ime: "Maja", prezime: "Majić", ocjena: 3},
+    {ime: "Ivan", prezime: "Ivanić", ocjena: 2},
+    {ime: "Pero", prezime: "Perić", ocjena: 1},
+];
+```
+
+Koristili smo anonimnu funkciju kao `callback` funkciju za metodu `find()`.
+
+```javascript
+let student = studenti.find(function(student) { // Anonimna funkcija koja provjerava je li prezime studenta jednako "Ivanić"
+    return student.prezime == "Ivanić";
+});
+
+console.log(student); // Ispisuje {ime: "Ivan", prezime: "Ivanić", ocjena: 2}
+```
+
+Isto tako smo rekli da anonimnu callback funkciju možemo imenovati i definirati izvan metode `find()`.
+
+```javascript
+function prezimeIvanić(student) {
+    return student.prezime == "Ivanić";
+}
+
+let student = studenti.find(prezimeIvanić); // Pozovi metodu find() s callback funkcijom prezimeIvanić
+console.log(student); // Ispisuje {ime: "Ivan", prezime: "Ivanić", ocjena: 2}
+```
+
+Napokon, evo kako bismo istu anonimnu callback funkciju definirali kao `arrow` funkciju.
+
+```javascript
+let student = studenti.find(student => student.prezime == "Ivanić"); // Arrow funkcija koja provjerava je li prezime studenta jednako "Ivanić"
+console.log(student); // Ispisuje {ime: "Ivan", prezime: "Ivanić", ocjena: 2}
+```
+
+Kao što vidimo, `arrow` funkcija je jednostavnija i čitljivija od obične anonimne funkcije!
+
+Kako možemo riješiti primjer s pronalaskom prvog studenta s ocjenom većom od 3 koristeći `arrow` funkciju?
+
+Bez `arrow` funkcije rekli smo da bi to izgledalo ovako:
+
+```javascript
+let studentiPrekoTri = studenti.find(function(student) { // Anonimna funkcija koja provjerava je li ocjena studenta veća od 3
+    return student.ocjena > 3;
+});
+
+ili pak ovako:
+
+function ocjenaVecaOdTri(student) {
+    return student.ocjena > 3;
+}
+
+let studentiPrekoTri = studenti.find(ocjenaVecaOdTri); // Pozovi metodu find() s callback funkcijom ocjenaVecaOdTri
+```
+
+Kako bismo to riješili koristeći `arrow` funkciju?
+
+```javascript
+let studentiPrekoTri = studenti.find(student => student.ocjena > 3); // Arrow funkcija koja provjerava je li ocjena studenta veća od 3
+console.log(studentiPrekoTri); // Ispisuje {ime: "Ivo", prezime: "Ivić", ocjena: 5}
+```
+
+Iz ovih primjera možete vidjeti snagu `arrow` funkcija, posebno u situacijama kada se koriste kao callback funkcije.
+Svi primjeri koje smo pokazali s običnim funkcijama mogu se zamijeniti `arrow` funkcijama, a sintaksa postaje puno čišća i čitljivija, do te mjere da se da napisati u jednoj liniji kôda.
