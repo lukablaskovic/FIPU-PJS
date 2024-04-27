@@ -57,6 +57,15 @@
     - [3.2.3 Metoda `filter(callbackFn)`](#323-metoda-filtercallbackfn)
     - [Primjer 1: Tražilica 🔍](#primjer-1-tražilica-)
   - [Vježba 5](#vježba-5)
+  - [Vježba 6](#vježba-6)
+  - [3.3 Arrow funkcije (`=>`)](#33-arrow-funkcije-)
+    - [3.3.1 Funkcijski izrazi i deklaracije](#331-funkcijski-izrazi-i-deklaracije)
+    - [3.3.2 Sintaksa `arrow` funkcija](#332-sintaksa-arrow-funkcija)
+    - [3.3.3 Primjeri `arrow` funkcija](#333-primjeri-arrow-funkcija)
+      - [Primjer 1: Arrow funkcija koja zbraja 2 broja](#primjer-1-arrow-funkcija-koja-zbraja-2-broja)
+      - [Primjer 2: Arrow funkcija koja ispisuje pozdravnu poruku](#primjer-2-arrow-funkcija-koja-ispisuje-pozdravnu-poruku)
+      - [Primjer 3: Arrow funkcija koja kvadrira broj](#primjer-3-arrow-funkcija-koja-kvadrira-broj)
+      - [Primjer 4: Arrow funkcija bez parametara](#primjer-4-arrow-funkcija-bez-parametara)
 
 <br>
 
@@ -1631,5 +1640,227 @@ Primjer poziva funkcije `samoParni()`:
 
 ```javascript
 let brojevi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(samoParni(brojevi)); // Ispisuje [2, 4, 6, 8, 10]
+console.log(samoParni(brojevi)); // Ispisuje: [2, 4, 6, 8, 10]
 ```
+
+## Vježba 6
+
+**EduCoder šifra**: `filtriraj_osobe`
+
+Dano vam je polje objekata koje predstavlja skup ljudi s njihovim imenima, godinama i zemljama iz kojih dolaze:
+
+```javascript
+const osobe = [
+    { ime: "Ana", godine: 22, zemlja: "Hrvatska" },
+    { ime: "Marko", godine: 16, zemlja: "Slovenija" },
+    { ime: "Ivan", godine: 35, zemlja: "Hrvatska" },
+    { ime: "Maja", godine: 28, zemlja: "Bosna i Hercegovina" },
+    { ime: "Eva", godine: 17, zemlja: "Slovenija" },
+    { ime: "Tomislav", godine: 43, zemlja: "Hrvatska" }
+];
+```
+
+Napišite funkciju `filtrirajOsobe(osobe, minGodine, zemlja)` koja prima polje `osobe`, minimalnu dob `minGodine` i zemlju `zemlja` te vraća novo polje koje sadrži samo osobe minimalne dobi i starije te iz zemlje `zemlja`. Za implementaciju koristite metodu `filter()` s odgovarajućom `callback` funkcijom.
+
+Primjer poziva funkcije `filtrirajOsobe()`:
+
+```javascript
+console.log(filtrirajOsobe(osobe, 18, "Hrvatska")); // Ispisuje: [{ ime: "Ana", godine: 22, zemlja: "Hrvatska" }, { ime: "Ivan", godine: 35, zemlja: "Hrvatska" }, { ime: "Tomislav", godine: 43, zemlja: "Hrvatska" }] 
+```
+
+## 3.3 Arrow funkcije (`=>`)
+
+U JavaScriptu, `arrow` funkcije predstavljaju kompaktnu alternativu tradicionalnim funkcijskim izrazima (eng. **_function expressions_**). `Arrow` funkcije su kratke i čitljive, a koriste se za **definiranje anonimnih funkcija**.
+
+Arrow funkcije definiraju se koristeći sintaksu strelice `=>`. Međutim, osim sintakse, `arrow` funkcije imaju nekoliko značajki/ograničenja na koje treba obratiti pažnju:
+- `arrow` funkcije nemaju vlastiti `this` kontekst, već nasljeđuju `this` kontekst iz roditeljskog okruženja (**najvažnija značajka**).
+- `arrow` funkcije ne vežu se na argumente `arguments` objekta.
+- `arrow` funkcije ne mogu biti konstruirane pomoću `new` ključne riječi, tj. ne mogu biti korištene kao konstruktori.
+- `arrow` funkcije se ne mogu koristiti kao generatori.
+
+Kako izgledaju `arrow` funkcije u usporedbi s tradicionalnim funkcijama? U lekciji Funkcije, doseg varijabli i kontrolne strukture, precizirali smo razliku između `function` deklaracija i `function` izraza odnosno funkcijskih izraza.
+
+Kako bismo jasno definirali sintaksu `arrow` funkcija, prisjetit ćemo se sintakse funkcijskih izraza i deklaracija.
+
+### 3.3.1 Funkcijski izrazi i deklaracije
+
+Rekli smo da su **deklaracije funkcije** definirane ključnom riječi `function` i imenom funkcije. Deklaracije funkcija mogu se koristiti prije nego što su deklarirane (koncept **hoisting**).
+
+```javascript
+function zbroji(a, b) {
+    return a + b;
+}
+console.log(zbroji(2, 3)); // Ispisuje 5
+```
+
+Deklaracijom klasičnih Javascript funkcijskih izraza na neki način dodjeljujemo funkciju varijabli.
+
+```javascript
+let zbroji = function(a, b) {
+    return a + b;
+}
+console.log(zbroji(2, 3)); // Ispisuje 5
+```
+
+Kao drugu točku limitacije `arrow` funkcija rekli smo da ne poznaju/ne vežu se na `arguments` objekt. `arguments` objekt je lokalna varijabla funkcije koja sadrži sve argumente koje je funkcija primila.
+
+Na primjeru funkcije `zbroji()` koja prima 2 argumenta, možemo koristiti `arguments` objekt za pristup argumentima funkcije (`a` i `b`).
+```javascript
+function zbroji(a, b) {
+    console.log(arguments); // Ispisuje [2, 3]
+    console.log(arguments[0]) // Ispisuje 2
+    console.log(arguments[1]) // Ispisuje 3
+    return a + b;
+}
+console.log(zbroji(2, 3)); // Ispisuje 5
+```
+
+### 3.3.2 Sintaksa `arrow` funkcija
+
+Arrow funkciju definirat ćemo koristeći sintaksu strelice `=>`. Sintakse `arrow` funkcija su sljedeće:
+
+>**Sintaksa 1 (više parametra i blok naredbi):** `(parametar1, parametar2, parametar3, parametarN) => {blok naredbi}`
+
+Definiramo parametre u zagradama `()` i tijelo funkcije u vitičastim zagradama `{}`.
+```javascript
+const imeFunkcije = (parametar1, parametar2, ..., parametarN) => {
+    // Tijelo funkcije
+}
+```
+
+>**Sintaksa 2 (jedan parametar i blok naredbi):** `parametar => {blok naredbi}`
+
+Međutim ako se funkcija sastoji samo od jednog parametra, možemo izostaviti zagrade oko parametara.
+
+```javascript
+const imeFunkcije = parametar => {
+    // Tijelo funkcije
+}
+```
+
+>**Sintaksa 3 (više parametara i jedna naredba):** `(parametar1, parametar2, parametar3, parametarN) => naredba`
+```javascript
+const imeFunkcije = (parametar1, parametar2, ..., parametarN) => naredba;
+```
+
+>**Sintaksa 4 (jedan parametar i jedna naredba):** `parametar => naredba`
+
+Ako se funkcija sastoji samo od jedne naredbe, možemo izostaviti vitičaste zagrade `{}` i `return` ključnu riječ.
+```javascript
+const imeFunkcije = parametar => naredba;
+```
+
+>**Sintaksa 5 (nema parametra i blok naredbi):** `() => {blok naredbi}`
+Ako funkcija ne prima parametre, koristimo prazne zagrade `()`.
+```javascript
+const imeFunkcije = () => {
+    // Tijelo funkcije
+}
+```
+
+>**Sintaksa 6 (nema parametra i jedna naredba):** `() => naredba`
+```javascript
+const imeFunkcije = () => naredba;
+```
+
+Na prvi pogled sintakse `arrow` funkcija mogu izgledati zbunjujuće, međutim s vježbom ćete se naviknuti na njih.
+Iako su iznad navedene različite sintakse `arrow` funkcija, ne morate ih i nećete učiti napamet. Bitno je razumjeti pravila sintakse i znati ih primijeniti ovisno o situaciji.
+
+**Pravila sintakse `arrow` funkcija su:**
+> Ako `arrow` funkcija ima više parametara moramo ih definirati u zagradama `()`, inače ih možemo izostaviti.
+> 
+> Ako `arrow` funkcija ima više naredbi, moramo koristiti vitičaste zagrade `{}`.
+> 
+> Ako nam se funkcija sastoji samo od jedne naredbe, možemo izostaviti vitičaste zagrade `{}` i `return` ključnu riječ.
+> 
+> Ako se funkcija sastoji od više parametara i više naredbi, u pravilu ne koristimo arrow funkcije
+
+### 3.3.3 Primjeri `arrow` funkcija
+
+#### Primjer 1: Arrow funkcija koja zbraja 2 broja
+Za početak ćemo definirati `arrow` funkciju koja zbraja 2 broja, dakle ekvilaventno funkciji `zbroji()` koju smo definirali ranije.
+
+```javascript
+// Deklaracija funkcije zbroji() koja zbraja 2 broja
+function zbroji(a, b) {
+    return a + b;
+}
+console.log(zbroji(2, 3)); // Ispisuje 5
+```
+
+Naša funkcija `zbroji` sastoji se od 2 parametra i jedne naredbe. Možemo definirati `arrow` funkciju koja zbraja 2 broja koristeći sintaksu 3.
+```javascript
+// Arrow funkcija koja zbraja 2 broja
+const zbroji = (a, b) => a + b;
+console.log(zbroji(2, 3)); // Ispisuje 5
+```
+
+#### Primjer 2: Arrow funkcija koja ispisuje pozdravnu poruku
+Sada ćemo definirati `arrow` funkciju koja ispisuje pozdravnu poruku. Funkcija `pozdrav()` prima jedan parametar `ime` i ispisuje poruku "Pozdrav, ime!".
+
+```javascript
+// Deklaracija funkcije pozdrav() koja ispisuje pozdravnu poruku
+function pozdrav(ime) {
+    console.log(`Pozdrav ${ime}!`);
+}
+pozdrav("Ana"); // Ispisuje "Pozdrav Ana!"
+```
+
+Naša funkcija `pozdrav` sastoji se od 1 parametra i jedne naredbe. Možemo definirati `arrow` funkciju koja ispisuje pozdravnu poruku koristeći sintaksu 4.
+```javascript
+// Arrow funkcija koja ispisuje pozdravnu poruku
+const pozdrav = ime => console.log(`Pozdrav ${ime}!`);
+pozdrav("Ana"); // Ispisuje "Pozdrav Ana!"
+```
+
+#### Primjer 3: Arrow funkcija koja kvadrira broj
+
+Definirat ćemo `arrow` funkciju koja kvadrira broj. Funkcija `kvadriraj()` prima jedan parametar `broj` i vraća kvadrat tog broja.
+
+```javascript
+// Deklaracija funkcije kvadriraj() koja kvadrira broj
+function kvadriraj(broj) {
+    return broj * broj;
+}
+console.log(kvadriraj(5)); // Ispisuje 25
+```
+
+Naša funkcija `kvadriraj` sastoji se od 1 parametra i jedne naredbe. Možemo definirati `arrow` funkciju koja kvadrira broj koristeći sintaksu 4.
+```javascript
+let kvadriraj = broj => broj * broj;
+console.log(kvadriraj(5)); // Ispisuje 25
+```
+
+#### Primjer 4: Arrow funkcija bez parametara
+
+Definirat ćemo funkciju koja recimo da inicijalizira našu aplikaciju. Funkcija `inicijaliziraj()` ne prima parametre i ispisuje poruku "Aplikacija inicijalizirana".
+
+```javascript
+// Deklaracija funkcije inicijaliziraj() koja inicijalizira aplikaciju
+function inicijaliziraj() {
+    console.log("Aplikacija inicijalizirana");
+}
+inicijaliziraj(); // Ispisuje "Aplikacija inicijalizirana"
+```
+
+Naša funkcija `inicijaliziraj` ne prima parametre i sastoji se od jedne naredbe. Možemo definirati `arrow` funkciju koja inicijalizira aplikaciju koristeći sintaksu 5 ili 6.
+```javascript
+let inicijaliziraj = () => console.log("Aplikacija inicijalizirana");
+inicijaliziraj(); // Ispisuje "Aplikacija inicijalizirana"
+```
+
+`arrow` funkcije su uvijek anonimne, tj. nikada ih ne imenujemo. Međutim, možemo ih dodijeliti varijabli ili koristiti kao argument funkcije, kao što smo pokazali u primjerima iznad.
+
+Sljedeći primjeri `arrow` funkcija su također ispravni. Jedina razlika je što ih ovdje ne pohranjujemo u varijable, poput funnkcijskih izraza.
+Ove funkcije su anonimne i koriste se kao callback funkcije, same po sebi se neće pozvati.
+
+```javascript
+(a,b) => a + b;
+```
+
+```javascript
+() => console.log("Hello, World!");
+```
+
+
+>`arrow` funkcije su korisne za definiranje jednostavnih funkcija koje se koriste kao callback funkcije.
