@@ -68,6 +68,8 @@
       - [Primjer 4: `arrow` funkcija bez parametara](#primjer-4-arrow-funkcija-bez-parametara)
     - [3.3.4 `arrow` funkcije kao callback funkcije](#334-arrow-funkcije-kao-callback-funkcije)
       - [Primjer 2: `arrow` funkcija kao callback funkcija u metodi `find()`](#primjer-2-arrow-funkcija-kao-callback-funkcija-u-metodi-find)
+    - [Vježba 7](#vježba-7)
+    - [Vježba 8](#vježba-8)
 
 <br>
 
@@ -1953,3 +1955,43 @@ console.log(studentiPrekoTri); // Ispisuje {ime: "Ivo", prezime: "Ivić", ocjena
 
 Iz ovih primjera možete vidjeti snagu `arrow` funkcija, posebno u situacijama kada se koriste kao callback funkcije.
 Svi primjeri koje smo pokazali s običnim funkcijama mogu se zamijeniti `arrow` funkcijama, a sintaksa postaje puno čišća i čitljivija, do te mjere da se da napisati u jednoj liniji kôda.
+
+### Vježba 7
+
+**EduCoder šifra**: `arrows`
+
+Za dane deklaracije funkcija napišite ekvivalente funkcijske izraze koristeći `arrow` funkcije.
+
+```javascript
+function hello(name) {
+    return `Hello, ${name}!`;
+}
+const hello = /* arrow funkcija */;
+```
+
+```javascript
+function getFullName(firstName, lastName) {
+    const fullName = `${firstName} ${lastName}`;
+    return fullName;
+}
+const getFullName = /* arrow funkcija */;
+```
+
+```javascript
+function multiplyThenAdd(a, b, c) {
+    const result = a * b + c;
+    return result;
+}
+const multiplyThenAdd = /* arrow funkcija */;
+```
+
+```javascript
+let five = 5;
+function fiveEven() {
+    return five % 2 == 0;
+}
+const isEven = /* arrow funkcija */;
+```
+
+### Vježba 8
+
