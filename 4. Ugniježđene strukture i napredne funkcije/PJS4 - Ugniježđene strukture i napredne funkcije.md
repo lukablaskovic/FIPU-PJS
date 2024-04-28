@@ -2916,9 +2916,9 @@ let RomobiliPula = {
 }
 ```
 
-2. Jednom kada ste izradili objekt `RomobiliPula`, potrebno je izraditi metode i funkcije koje će simulirati rad aplikacije. **Ne smijete koristiti petlje za niti jedan zadatak**, morate koristiti metode `Array` objekta. 
+Jednom kada ste izradili objekt `RomobiliPula`, potrebno je izraditi metode i funkcije koje će simulirati rad aplikacije. **Ne smijete koristiti petlje za niti jedan zadatak**, morate koristiti metode `Array` objekta. 
 
-- Metoda `otkljucavanjeRomobila` koja prima **id romobila** i **id korisnika**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "zauzet". Također, metoda treba postaviti trenutnog korisnika na korisnika s odgovarajućim id-em. Metoda treba vratiti poruku `"Romobil je uspješno otključan."`. Ako je romobil već zauzet ili ne postoji, metoda treba vratiti poruku `"Romobil nije dostupan."`. Ako korisnik s odgovarajućim id-em ne postoji, metoda treba vratiti poruku `"Korisnik nije pronađen."`.
+2. Metoda `otkljucavanjeRomobila` koja prima **id romobila** i **id korisnika**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "zauzet". Također, metoda treba postaviti trenutnog korisnika na korisnika s odgovarajućim id-em. Metoda treba vratiti poruku `"Romobil je uspješno otključan."`. Ako je romobil već zauzet ili ne postoji, metoda treba vratiti poruku `"Romobil nije dostupan."`. Ako korisnik s odgovarajućim id-em ne postoji, metoda treba vratiti poruku `"Korisnik nije pronađen."`.
 
 ```javascript
 function otkljucavanjeRomobila(idRomobila, idKorisnika) {
@@ -2929,7 +2929,7 @@ RomobiliPula.otkljucavanjeRomobila(500, 1); // Ispisuje "Romobil nije dostupan."
 RomobiliPula.otkljucavanjeRomobila(2, "pero"); // Ispisuje "Korisnik nije pronađen."
 ```
 
-- Metoda `dohvatiDostupneRomobile` koja vraća novo polje svih dostupnih romobila. Dostupni romobili su oni koji imaju status "slobodan" i bateriju veću od 20%.
+3. Metoda `dohvatiDostupneRomobile` koja vraća novo polje svih dostupnih romobila. Dostupni romobili su oni koji imaju status "slobodan" i bateriju veću od 20%.
 
 ```javascript
 RomobilPula.dohvatiDostupneRomobile = function() {
@@ -2937,7 +2937,7 @@ RomobilPula.dohvatiDostupneRomobile = function() {
 }
 ```
 
-3. Dodajte metodu `zakljucajRomobil` koja prima argumente **id romobila**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "slobodan". Također, metoda treba postaviti trenutnog korisnika na `null`. Metoda treba vratiti poruku `"Romobil je uspješno zaključan."`. Ako romobil nije pronađen, metoda treba vratiti poruku `"Romobil nije pronađen."`. Dodatno, metoda mora izračunati ukupnu cijenu važnje koja je jednaka: `cijena otključavanja + cijena po prijeđenom kilometru * prijeđeni kilometri za taj romobil`. Metoda mora vratiti ukupnu cijenu kao povratnu vrijednost. Nakon izračuna metoda mora postaviti prijeđene kilometre na 0.
+4. Dodajte metodu `zakljucajRomobil` koja prima argumente **id romobila**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "slobodan". Također, metoda treba postaviti trenutnog korisnika na `null`. Metoda treba vratiti poruku `"Romobil je uspješno zaključan."`. Ako romobil nije pronađen, metoda treba vratiti poruku `"Romobil nije pronađen."`. Dodatno, metoda mora izračunati ukupnu cijenu važnje koja je jednaka: `cijena otključavanja + cijena po prijeđenom kilometru * prijeđeni kilometri za taj romobil`. Metoda mora vratiti ukupnu cijenu kao povratnu vrijednost. Nakon izračuna metoda mora postaviti prijeđene kilometre na 0.
 
 ```javascript
 RomobiliPula.zakljucajRomobil = function(idRomobila) {
@@ -2945,11 +2945,19 @@ RomobiliPula.zakljucajRomobil = function(idRomobila) {
 }
 ```
 
-4. Potrebno je nadograditi metodu `zakljucajRomobil` tako da prije samog zaključavanja romobila, metoda pohrani ukupnu cijenu te pojedine vožnje u novo svojstvo objekta: `cijene_voznji` (polje brojeva) gdje se pohranjuju sve cijene vožnji kao cjelobrojne vrijednosti. Kada to napravite, dodajte globalnu varijablu `zarada` koja će predstavljati ukupnu zaradu firme. Varijabla mora biti definirana izvan objekta `RomobiliPula` te mora koristeći metodu `reduce()` i arrow callback funkciju pohraniti ukupnu vrijednost `RomobiliPula.cijene_voznji`.
+5. Potrebno je nadograditi metodu `zakljucajRomobil` tako da prije samog zaključavanja romobila, metoda pohrani ukupnu cijenu te pojedine vožnje u novo svojstvo objekta: `cijene_voznji` (polje brojeva) gdje se pohranjuju sve cijene vožnji kao cjelobrojne vrijednosti. Kada to napravite, dodajte globalnu varijablu `zarada` koja će predstavljati ukupnu zaradu firme. Varijabla mora biti definirana izvan objekta `RomobiliPula` te mora koristeći metodu `reduce()` i arrow callback funkciju pohraniti ukupnu vrijednost `RomobiliPula.cijene_voznji`.
 
 ```javascript
 RomobiliPula.zakljucajRomobil = function(idRomobila) {
   /* Nadogradite Vaš kôd */
 }
 let zarada = /* Vaš kôd ovdje... */
+```
+
+6. Dodajte globalnu funkciju `pronadiRomobil()` koja prima argument **lokacija**. Funkcija treba pronaći sve romobile koji se nalaze na određenoj lokaciji i vratiti `true` ako postoji barem jedan romobil na toj lokaciji koji je dostupan. Romobil je dostupan ako je status "slobodan" i baterija veća od 20%. Ako nema romobila na lokaciji, funkcija treba vratiti `false`.
+
+```javascript
+function pronadiRomobil(lokacija) {
+  /* Vaš kôd ovdje... */
+}
 ```
