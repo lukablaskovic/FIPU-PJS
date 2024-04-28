@@ -1194,6 +1194,12 @@ Primjer pozivanja konstruktora može biti: `new Jelo("Margherita", 7, "Pizza s r
 
 U objekt `restoran` dodajte metodu `dodajNarudzbu()` koja će dodati novu narudžbu u polje narudžbi. Metoda mora raditi na sljedeći način:
 
+```javascript
+this.dodajNarudzbu = async function (narudzba) { // async funkcija zbog specifičnosti EduCodera, inače nije potrebno
+  // Vaš kôd ovdje...
+};
+```
+
 - kada se pozove funkcija, korisniku se mora otvoriti izbornik gdje će mu se izlistati sva jela i pića iz menija s indeksom koji počinje od 1 ispred zapisa. Primjer:
 
 ```
