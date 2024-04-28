@@ -73,6 +73,7 @@
     - [3.4.3 Metoda `every()`](#343-metoda-every)
     - [3.4.4 Metoda `sort()`](#344-metoda-sort)
     - [3.4.5 Metoda `reduce()`](#345-metoda-reduce)
+    - [3.4.6 Kada koristiti koju metodu?](#346-kada-koristiti-koju-metodu)
     - [Vježba 9](#vježba-9)
     - [Vježba 10](#vježba-10)
 - [Samostalni zadatak za vježbu 7](#samostalni-zadatak-za-vježbu-7)
@@ -1463,7 +1464,7 @@ Međutim ako želimo pronaći sve studente (ne samo prve ili zadnje) koji zadovo
 
 ### 3.2.2 Metoda `forEach(callbackFn)`
 
-Vidjeli smo već metodu `forEach()` koja prolazi kroz svaki element polja i izvršava `callback` funkciju za svaki element. Međutim, metoda `forEach()` ne vraća ništa, već samo prolazi kroz polje. Svejedno to možemo iskoristiti za pronalazak svih studenata s ocjenom većom od 3.
+Vidjeli smo već metodu `forEach()` koja prolazi kroz svaki element polja i izvršava `callback` funkciju za svaki element. Međutim, metoda `forEach()` ne vraća ništa, već samo prolazi kroz polje. Svejedno to možemo iskoristiti za pronalazak svih studenata s ocjenom većom od 3. Važno je naglasiti da ova metoda ne vraća novo polje već samo prolazi kroz polje ili vrši neku operaciju nad elementima polja (modificira originalno polje).
 
 ```javascript
 let studenti = [
@@ -2735,7 +2736,21 @@ console.log(grupiranoPoGodinama);
 */
 ```
 
+### 3.4.6 Kada koristiti koju metodu?
+
+Napredne metode koje smo prošli su vrlo korisne i mogu vam uštedjeti puno vremena kod rješavanja problema. Međutim, važno je znati kada koristiti koju metodu.
+
+- `Array.map()` - koristimo kada želimo **stvoriti novo polje na temelju starog polja**. Ako želimo promijeniti elemente u polju, koristimo map metodu (mapiramo).
+- `Array.filter()` - koristimo kada želimo **dobiti novo polje na temeljeu starog međutim s manje elemenata**. Ako želimo filtrirati elemente u polju, koristimo filter metodu.
+- `Array.forEach()` - koristimo kada želimo **proći kroz svaki element polja i ne želimo stvarati novo polje**. Primjer: ispis, ažuriranje elemenata u polju i sl. Metoda ne vraća novo polje već modificira originalno polje ako se tako implementira callback funkcija.
+- `Array.some()` - koristimo kada želimo provjeriti **postoji li barem jedan element koji zadovoljava uvjet**.
+- `Array.every()` - koristimo kada želimo provjeriti **zadovaljaju li svi elementi uvjet**.
+- `Array.sort()` - koristimo kada želimo **sortirati elemente u polju**.
+- `Array.reduce()` - koristimo kada želimo **reducirati polje u jednu vrijednost**.
+
 ### Vježba 9
+
+Koristeći 
 
 ### Vježba 10
 
