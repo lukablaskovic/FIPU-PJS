@@ -8,23 +8,18 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%"></img>
+<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%; float:left;"></img>
 
 # [4] Ugniježđene strukture i Napredne funkcije
 
-[comment]: <> (Ažurirati sliku - logojs/js0.png)
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js4.png?raw=true" style="width:9%; float:right;"></img>
-
 <p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili polja. Dohvat podataka s različitih API-eva, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
 
-<br>
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js4.png?raw=true" style="width:9%; float:right;"></img><br>
 
 ## Sadržaj
 
-<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [\[4\] Ugniježđene strukture i Napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
+- [4. Ugniježđene strukture i Napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u ugniježđene strukture](#1-uvod-u-ugniježđene-strukture)
 - [2. Ugniježđene strukture](#2-ugniježđene-strukture)
@@ -1495,7 +1490,7 @@ console.log(studentiPrekoTri); // Ispisuje [{ime: "Ivo", prezime: "Ivić", ocjen
 ```
 
 Ako bi izvukli `callback` funkciju iz metode `forEach()` i definirali ju izvan metode, ona bi izgledala ovako:
-  
+
 ```javascript
 function ocjenaVecaOdTri(student) {
   if (student.ocjena > 3) {
@@ -2146,7 +2141,7 @@ const isEven = /* arrow funkcija */;
 Imate šefa koji želi zaposliti idealnog zaposlenika za svoju tvrtku, međutim na natječaj se javilo previše kandidata. Šef vas je zamolio da mu pomognete pronaći idealnog zaposlenika. Vi kao vrsni poznavatelji JavaScripta odlučili ste mu pomoći. Budući da šef ne zna programirati, a vama se neda ručno pregledavati sve prijave, odlučili ste napisati funkciju `idealni_zaposlenik()` koja će vratiti idealnog kandidata.
 
 Šef ima svoje kriterije za idealnog zaposlenika te jedva čeka upotrijebiti vašu funkciju. Sve što vam je dao jest polje objekata `kandidati` koje sadrži informacije o kandidatima. Svaki kandidat ima svojstva: `ime`, `godine`, `godine_iskustva`, `strani_jezici`, `programski_jezici`.
-  
+
   ```javascript
 let kandidati = [
     {ime: "Ana", godine: 25, godine_iskustva: 3, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]},
@@ -2162,7 +2157,7 @@ let kandidati = [
     {ime: "Lara", godine: 24, godine_iskustva: 2, strani_jezici: ["engleski", "kineski"], programski_jezici: ["Python", "JavaScript"]},
     {ime: "Jakov", godine: 33, godine_iskustva: 9, strani_jezici: ["engleski", "španjolski", "portugalski"], programski_jezici: ["Java", "JavaScript", "Go"]},
 ];
-```
+  ```
 
 Napišite funkciju `idealni_zaposlenik(kandidati, godine, godine_iskustva, strani_jezici, programski_jezici)` koja prima navedene argumente te koristi metodu `Array.filter()` za filtriranje kandidata prvo prema stranim jezicima i programskim jezicima, a zatim koristi metodu `Array.find()` za prvog kandidata koji ima barem zadane godine i godine iskustva. Dakle tražite prvog kandidata, ne onog koji ima najviše godina i/ili godina iskustva, već prvog koji zadovoljava sve uvjete.
 
@@ -2378,7 +2373,7 @@ let mnozeno = brojevi.map((element, index) => {
   }
 })
 console.log(mnozeno); // Ispisuje [10, 30, 30, 60]
-```
+  ```
 
 ### 3.4.2 Metoda `some()`
 
@@ -2436,7 +2431,7 @@ console.log(provjeriZalihe("naranča")); // Ispisuje true jer ima naranči na za
 ```
 
 Da ne bi bilo nejasnoća, pokazat ćemo i bez `arrow` funkcije.
-  
+
 ```javascript
 function provjeriZalihe(naziv) {
     return zaliha.some(function(voce) {
@@ -2714,7 +2709,7 @@ console.log(grupirano); // Ispisuje {jabuka: 3, banana: 1, naranča: 1, kruška:
 ```
 
 **Primjer 5: Grupiranje objekata po svojstvu**
-  
+
 ```javascript
 let osobe = [
     {ime: "Ana", godine: 20},
