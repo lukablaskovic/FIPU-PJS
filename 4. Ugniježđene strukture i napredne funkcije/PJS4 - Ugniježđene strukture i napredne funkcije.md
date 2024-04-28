@@ -869,7 +869,7 @@ console.log(matrica[0][0]); // Ispisuje 10
 console.log(matrica); // Ispisuje [[10, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-**Matrice** se u programiranju reprezentiraju višedimenzionalnim poljima. Ako se pokušate dosjetiti primjera gdje bi se mogli koristiti ovakvi zapisi, na prvu će vam višedimenzionalna polja možda izgledati komplicirano i nepotrebno, ali u praksi su vrlo korisna i često se koriste.
+**Matrice** se u programiranju reprezentiraju višedimenzionalnim poljima. Ako se pokušate dosjetiti primjera gdje bi se mogli koristiti ovakvi zapisi, na prvu će vam višedimenzionalna polja možda izgledati komplicirana i nepotrebna, ali u praksi su vrlo korisna i često se koriste.
 
 U računarstvu i informacijskoj znanosti, matrice se koriste za:
 
