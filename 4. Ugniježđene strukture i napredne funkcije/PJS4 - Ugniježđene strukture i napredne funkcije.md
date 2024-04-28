@@ -56,22 +56,26 @@
     - [3.2.2 Metoda `forEach(callbackFn)`](#322-metoda-foreachcallbackfn)
     - [3.2.3 Metoda `filter(callbackFn)`](#323-metoda-filtercallbackfn)
     - [Primjer 1: Tražilica 🔍](#primjer-1-tražilica-)
-  - [Vježba 5](#vježba-5)
-  - [Vježba 6](#vježba-6)
+    - [Vježba 5](#vježba-5)
+    - [Vježba 6](#vježba-6)
   - [3.3 Arrow funkcije (`=>`)](#33-arrow-funkcije-)
     - [3.3.1 Funkcijski izrazi i deklaracije](#331-funkcijski-izrazi-i-deklaracije)
     - [3.3.2 Sintaksa `arrow` funkcija](#332-sintaksa-arrow-funkcija)
     - [3.3.3 Primjeri `arrow` funkcija](#333-primjeri-arrow-funkcija)
-      - [Primjer 1: `arrow` funkcija koja zbraja 2 broja](#primjer-1-arrow-funkcija-koja-zbraja-2-broja)
-      - [Primjer 2: `arrow` funkcija koja ispisuje pozdravnu poruku](#primjer-2-arrow-funkcija-koja-ispisuje-pozdravnu-poruku)
-      - [Primjer 3: `arrow` funkcija koja kvadrira broj](#primjer-3-arrow-funkcija-koja-kvadrira-broj)
-      - [Primjer 4: `arrow` funkcija bez parametara](#primjer-4-arrow-funkcija-bez-parametara)
     - [3.3.4 `arrow` funkcije kao callback funkcije](#334-arrow-funkcije-kao-callback-funkcije)
-      - [Primjer 1: `arrow` funkcija kao callback funkcija u metodi `find()`](#primjer-1-arrow-funkcija-kao-callback-funkcija-u-metodi-find)
-      - [Primjer 2: `arrow` funkcija kao callback funkcija u metodi `filter()`](#primjer-2-arrow-funkcija-kao-callback-funkcija-u-metodi-filter)
-    - [Primjer 3: Pronađi let ✈️](#primjer-3-pronađi-let-️)
+    - [Primjer 2: Pronađi let ✈️](#primjer-2-pronađi-let-️)
     - [Vježba 7](#vježba-7)
     - [Vježba 8](#vježba-8)
+    - [3.3.5 `arrow` funkcije i `this` kontekst](#335-arrow-funkcije-i-this-kontekst)
+  - [3.4 Napredne metode `Array` objekta](#34-napredne-metode-array-objekta)
+    - [3.4.1 Metoda `map()`](#341-metoda-map)
+    - [3.4.2 Metoda `some()`](#342-metoda-some)
+    - [3.4.3 Metoda `every()`](#343-metoda-every)
+    - [3.4.4 Metoda `sort()`](#344-metoda-sort)
+    - [3.4.5 Metoda `reduce()`](#345-metoda-reduce)
+    - [Vježba 9](#vježba-9)
+    - [Vježba 10](#vježba-10)
+- [Samostalni zadatak za vježbu 7](#samostalni-zadatak-za-vježbu-7)
 
 <br>
 
@@ -1639,7 +1643,7 @@ console.log(pretraziProizvode(proizvodi, "ten")); // Ispisuje: [{naziv: "Tenisic
 console.log(pretraziProizvode(proizvodi, "cikl")); // Ispisuje: [{naziv: "Bicikl", cijena: 500, kategorija: "sport"}, {naziv: "Tricikl", cijena: 350, kategorija: "sport"}]
 ```
 
-## Vježba 5
+### Vježba 5
 
 **EduCoder šifra**: `samo_parni`
 
@@ -1652,7 +1656,7 @@ let brojevi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log(samoParni(brojevi)); // Ispisuje: [2, 4, 6, 8, 10]
 ```
 
-## Vježba 6
+### Vježba 6
 
 **EduCoder šifra**: `filtriraj_osobe`
 
@@ -1786,7 +1790,8 @@ Iako su iznad navedene različite sintakse `arrow` funkcija, ne morate ih i neć
 
 ### 3.3.3 Primjeri `arrow` funkcija
 
-#### Primjer 1: `arrow` funkcija koja zbraja 2 broja
+**Primjer 1: `arrow` funkcija koja zbraja 2 broja**
+
 Za početak ćemo definirati `arrow` funkciju koja zbraja 2 broja, dakle ekvilaventno funkciji `zbroji()` koju smo definirali ranije.
 
 ```javascript
@@ -1804,7 +1809,8 @@ const zbroji = (a, b) => a + b;
 console.log(zbroji(2, 3)); // Ispisuje 5
 ```
 
-#### Primjer 2: `arrow` funkcija koja ispisuje pozdravnu poruku
+**Primjer 2: `arrow` funkcija koja ispisuje pozdravnu poruku**
+
 Sada ćemo definirati `arrow` funkciju koja ispisuje pozdravnu poruku. Funkcija `pozdrav()` prima jedan parametar `ime` i ispisuje poruku "Pozdrav, ime!".
 
 ```javascript
@@ -1822,7 +1828,7 @@ const pozdrav = ime => console.log(`Pozdrav ${ime}!`);
 pozdrav("Ana"); // Ispisuje "Pozdrav Ana!"
 ```
 
-#### Primjer 3: `arrow` funkcija koja kvadrira broj
+**Primjer 3: `arrow` funkcija koja kvadrira broj**
 
 Definirat ćemo `arrow` funkciju koja kvadrira broj. Funkcija `kvadriraj()` prima jedan parametar `broj` i vraća kvadrat tog broja.
 
@@ -1840,7 +1846,7 @@ let kvadriraj = broj => broj * broj;
 console.log(kvadriraj(5)); // Ispisuje 25
 ```
 
-#### Primjer 4: `arrow` funkcija bez parametara
+**Primjer 4: `arrow` funkcija bez parametara**
 
 Definirat ćemo funkciju koja recimo da inicijalizira našu aplikaciju. Funkcija `inicijaliziraj()` ne prima parametre i ispisuje poruku "Aplikacija inicijalizirana".
 
@@ -1889,7 +1895,7 @@ Važno je da do ovog trenutka razlikujete nekoliko pojmova:
 
 Kako koristimo `arrow` funkcije kao callback funkcije? U prethodnim primjerima smo definirali `arrow` funkcije i pozivali ih direktno. Međutim, **vrlo često se koriste kao callback funkcije**.
 
-#### Primjer 1: `arrow` funkcija kao callback funkcija u metodi `find()`
+**Primjer 1: `arrow` funkcija kao callback funkcija u metodi `find()`**
 
 Vratimo se na primjer s poljem studenata. Definirali smo polje `studenti` i koristili metodu `find()` za pronalazak studenta s prezimenom `Ivanić`.
 
@@ -1961,7 +1967,7 @@ console.log(studentiPrekoTri); // Ispisuje {ime: "Ivo", prezime: "Ivić", ocjena
 Iz ovih primjera možete vidjeti snagu `arrow` funkcija, posebno u situacijama kada se koriste kao callback funkcije.
 Svi primjeri koje smo pokazali s običnim funkcijama mogu se zamijeniti `arrow` funkcijama, a sintaksa postaje puno čišća i čitljivija, do te mjere da se da napisati u jednoj liniji kôda.
 
-#### Primjer 2: `arrow` funkcija kao callback funkcija u metodi `filter()`
+**Primjer 2: `arrow` funkcija kao callback funkcija u metodi `filter()`**
 
 U primjeru s filtriranjem studenata s ocjenom većom od 3 koristili smo anonimnu funkciju kao `callback` funkciju za metodu `filter()`.
 
@@ -2012,7 +2018,7 @@ let skripte_PJS = kolekcija_skripta.filter(skripta => skripta.startsWith("PJS"))
 console.log(skripte_PJS); // Ispisuje ["PJS_1", "PJS_2", "PJS_4"]
 ```
 
-### Primjer 3: Pronađi let ✈️
+### Primjer 2: Pronađi let ✈️
 
 **EduCoder šifra**: `skyscanner`
 
@@ -2162,3 +2168,575 @@ let trazeniKandidat = pronadiZaposlenika(kandidati, 35, 3, ["engleski"], ["JavaS
 console.log(trazeniKandidat); // Ispisuje {ime: "Marko", godine: 35, godine_iskustva: 7, strani_jezici: ["engleski", "njemački", "francuski"], programski_jezici: ["JavaScript", "Python", "Java"]}
 ```
 
+### 3.3.5 `arrow` funkcije i `this` kontekst
+
+Kada smo radili objekte, naučili smo da svaki objekt ima svoj `this` kontekst. Općenito, `this` kontekst se odnosi se na kontekst gdje se izvršava određeni dio koda.
+
+Najčešće je to kod objekata, gdje se `this` ključnom riječi referencira na svojstvo ili metodu unutar objekta.
+
+Vrijednost `this` ovisi o  kontekstu u kojem se pojavljuje: globalni `this` kontekst, `this` kontekst unutar funkcije, `this` kontekst unutar metode objekta, `this` kontekst unutar `arrow` funkcije itd.
+
+Naučili smo da kod običnih funkcija (ne `arrow` funkcija) vrijednost `this` predstavlja objekt koji poziva funkciju. 
+
+> Drugim riječima, ako je poziv funkcije (metode) u obliku: `objekt.metoda()`, tada će `this` referencirati na `objekt`. 
+
+```javascript
+const osoba = {
+    ime: "Ana",
+    pozdrav: function() {
+        console.log(`Pozdrav, ${this.ime}!`); // this se referencira na objekt osoba
+    }
+};
+console.log(objekt.pozdrav()); // Ispisuje "Pozdrav, Ana!"
+```
+
+Pokazali smo upotrebu `this` ključne riječi i u kontekstu definiranja konstruktora.
+
+```javascript
+function Osoba(ime) {
+    this.ime = ime;
+    this.pozdrav = function() {
+        console.log(`Pozdrav, ${this.ime}!`); // this se referencira na objekt koji se stvara
+    }
+}
+let osoba = new Osoba("Ana");
+console.log(osoba.pozdrav()); // Ispisuje "Pozdrav, Ana!"
+```
+
+Što se tiče `this` konteksta i tradicionalnih funkcija, `this` ključna riječ se mijenja ovisno o kontekstu u kojem se funkcija poziva. Generalno se `this` ključna riječ odnosi na objekt koji poziva funkciju, međutim postoje različita ponašanja kada se koriste metode poput `call()`, `apply()` i `bind()`. Mi se time nećemo baviti u ovom kolegiju.
+
+Ono što vi morate zapamtiti jest da, kod `arrow` funkcija vrijednost `this` se ne mijenja, **već se nasljeđuje iz okoline u kojoj je definirana**. Drugim riječima, ključna riječ `this` u `arrow` funkcijama referencira na `this` kontekst izvan `arrow` funkcije.
+
+Dakle kod stvaranja našeg objekta `osoba` i metode `pozdrav` koristeći `arrow` funkciju, `this` ključna riječ će se referencirati na objekt `osoba`.
+```javascript
+// Konstruktor funkcija - možemo koristiti arrow funkciju
+function Osoba(ime) {
+    this.ime = ime;
+    this.pozdrav = () => {
+        console.log(`Pozdrav, ${this.ime}!`); // this se i ovdje referencira na objekt koji se stvara
+    }
+}
+let osoba = new Osoba("Ana");
+osoba.pozdrav(); // Ispisuje "Pozdrav, Ana!"
+```
+
+Međutim gdje dolazi do problema je kada koristimo `arrow` funkcije unutar metoda objekta.
+
+```javascript
+// Objekt osoba s metodom pozdrav() koja neispravno koristi arrow funkciju
+const osoba = {
+    ime: "Ana",
+    pozdrav () => {
+        console.log(`Pozdrav, ${this.ime}!`); // this se ne referencira na objekt osoba, već na globalni objekt (u web pregledniku je to window)
+    }
+};
+console.log(objekt.pozdrav()); // Ispisuje "Pozdrav, undefined!"
+```
+
+Razlika u ova dva pristupa je u tome što kod tradicionalnih funkcija `this` ključna riječ se mijenja ovisno o kontekstu u kojem se funkcija poziva, dok kod `arrow` funkcija `this` ključna riječ se nasljeđuje iz okoline u kojoj je definirana.
+>**VAŽNO!** U prvom primjeru kod stvaranja konsturktora, `this` ključna riječ se referencira na objekt koji se stvara, dok u drugom primjeru kod metode objekta, `this` ključna riječ se referencira na globalni objekt (u web pregledniku je to `window`).
+
+Na predavanjima ste naučili koristiti HTML elemente i dodavati im event listenere. Event listeneri su funkcije koje se pozivaju kada se dogodi određeni događaj na HTML elementu.
+
+Pokazat ćemo tradicionalni način dodavanja event listenera na HTML element.
+Želimo na `buton` element dodati event listener koji će ispisati "Hello, World!" kada se klikne na gumb.
+
+```html
+<button id="moj_button">Klikni me!</button>
+```
+
+```javascript
+document.getElementById("moj_button").addEventListener("click", function() {
+    console.log("Hello, World!");
+    console.log(this) // this se referencira na HTML element koji je kliknut (u ovom slučaju na gumb: moj_button)
+    console.log(this.id); // Ispisuje "moj_button"
+});
+```
+
+Međutim ako koristimo `arrow` funkciju kao callback funkciju, `this` ključna riječ će se referencirati na globalni objekt (u web pregledniku je to `window`).
+
+```javascript
+document.getElementById("moj_button").addEventListener("click", () => {
+    console.log("Hello, World!");
+    console.log(this); // this se referencira na globalni objekt (u web pregledniku je to window)
+    console.log(this.id); // Ispisuje "undefined"
+});
+```
+
+> **Zaključno**: važno je zapamtiti da kada se koriste metode s objektima, ako vam je potreban `this` za referenciranje na objekt, koristite tradicionalne funkcije. Ako vam `this` nije potreban, koristite `arrow` funkcije.
+
+> Arrow funkcije su najkorisnije kada se koriste kao callback funkcije, jer se `this` ne veže na samu funkciju već možete povući `this` iz okoline u kojoj je definirana, što je najčešće i potrebno.
+
+## 3.4 Napredne metode `Array` objekta
+
+U skripti PJS3 upoznali smo se s osnovnim metodama `Array` objekta. U ovoj skripti nastavli smo priču s nešto naprednijim metodama, poput metode `find()` koja pronalazi prvi element koji zadovoljava uvjet, te metode `filter()` koja filtrira elemente prema zadanom uvjetu.
+
+Također smo se kroz skriptu upoznali s `callback` funkcijama kao i `arrow` funkcijama koje su korisne kao callback funkcije. Sada kada znamo kako pisati kvalitetne `callback` funkcije, možemo napokon pokazati preostale napredne metode `Array` objekta.
+
+>Sve metode `Array` objekta (one koje smo do sad prošli pa i ove ispod) možemo koristiti i s `arrow` funkcijama, ali i bez - koristeći anonimne callback funkcije ili imenovane callback funkcije.
+
+### 3.4.1 Metoda `map()`
+
+Metoda `Array.map()` koristi se za stvaranje novog polja na temelju polja nad kojim se poziva. Metoda `map()` prima callback funkciju koja se poziva za svaki element polja.
+
+Drugim riječima, metoda `map()` prolazi kroz svaki element polja i poziva callback funkciju za svaki element. **Rezultat metode je novo polje**.
+
+Sintaksa:
+```javascript
+map(callbackFn)
+map(callbackFn, thisArg)
+
+const newArray = array.map(function(element, index, array) {
+  // povratna vrijednost je NOVO POLJE
+});
+
+```
+
+- `callbackFn` - funkcija koja se poziva za svaki element polja. Funkcija prima tri argumenta: `element`, `index` i `array`. Podsjetimo se prethodne skripte, `element` je trenutni element polja, `index` je indeks trenutnog elementa, a `array` je polje nad kojim se metoda poziva.
+- `thisArg` - opcionalni argument koji predstavlja vrijednost `this` ključne riječi unutar callback funkcije.
+
+**Primjer 1: Stvaranje novog polja s kvadratima brojeva**
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+let kvadrati = brojevi.map(broj => broj * broj); // Koristimo arrow callback funkciju koja vraća kvadrat broja
+console.log(kvadrati); // Ispisuje [1, 4, 9, 16, 25]
+```
+
+ili bez korištenja `arrow` funkcije:
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+let kvadrati = brojevi.map(function(broj) {
+    return broj * broj;
+});
+console.log(kvadrati); // Ispisuje [1, 4, 9, 16, 25]
+```
+
+**Primjer 2: Stvaranje novog polja s duljinama stringova**
+
+```javascript
+let imena = ["Ana", "Ivan", "Maja", "Pero"];
+let duljine = imena.map(ime => ime.length); // Koristimo arrow callback funkciju koja vraća duljinu stringa
+console.log(duljine); // Ispisuje [3, 4, 4, 4]
+```
+
+**Primjer 3: Stvaranje novog polja s objektima**
+
+```javascript
+let imena = ["Ana", "Ivan", "Maja", "Pero"];
+let objekti = imena.map(ime => ({ime: ime})); // Koristimo arrow callback funkciju koja vraća objekt s imenom
+console.log(objekti); // Ispisuje [{ime: "Ana"}, {ime: "Ivan"}, {ime: "Maja"}, {ime: "Pero"}]
+```
+
+> **Važno!** Ako nemamo potrebu za korištenjem novih polja, već želimo promijeniti elemente u polju, samo ih ispisati ili drugo, koristimo metodu `forEach()` ili petlju `for`, a ne metodu `map()`.
+
+Dakle sljedeće nema smisla:
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+let kvadrati = brojevi.map(broj => {
+    console.log(broj * broj);
+    return broj * broj;
+});
+```
+
+Za primjer iznad, koristit ćemo metodu `forEach()`.
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+brojevi.forEach(broj => {
+    console.log(broj * broj);
+});
+```
+
+**Primjer 4: Dodavanje indeksa elementima polja**
+
+```javascript
+let imena = ["Ana", "Ivan", "Maja", "Pero"];
+
+let imenaIndeksi = imena.map((ime, index) => `${ime}_${index+1}`); // Koristimo arrow callback funkciju koja vraća ime s indeksom
+console.log(imenaIndeksi); // Ispisuje ["Ana_1", "Ivan_2", "Maja_3", "Pero_4"]
+```
+
+**Primjer 5: Množenje elemenata obzirom na njihovu poziciju**  
+  ```javascript
+let brojevi = [5, 10, 15, 20];
+let mnozeno = brojevi.map((element, index) => {
+  if (index % 2 == 0) { // Ako je indeks paran množimo s 2, 
+    return element * 2;
+  } else { // inače množimo s 3
+    return element * 3;
+  }
+})
+console.log(mnozeno); // Ispisuje [10, 30, 30, 60]
+```
+
+### 3.4.2 Metoda `some()`
+
+Metoda `Array.some()` koristi se za provjeru postoji li **barem jedan element u polju koji zadovoljava uvjet**. Metoda `some()` vraća `true` ako postoji barem jedan element koji zadovoljava uvjet, inače vraća `false`. Uvjet se definira callback funkcijom. Metoda ne mijenja originalno polje.
+
+Sintaksa:
+```javascript
+some(callbackFn)
+some(callbackFn, thisArg)
+```
+
+Pravila su slična kao kod metode `filter()`. `callbackFn` je funkcija koja se poziva za svaki element polja. Funkcija prima tri argumenta: `element`, `index` i `array`. `thisArg` je opcionalni argument koji predstavlja vrijednost `this` ključne riječi unutar callback funkcije.
+
+Za razliku od metode `map` ova metoda ne stvara novo polje, već vraća `true` ili `false` ovisno o tome postoji li barem jedan element koji zadovoljava uvjet.
+
+**Primjer 1: Provjera postoji li barem jedan element veći od 10**
+```javascript
+let brojevi = [5, 10, 15, 20];
+let postojiVeciOdDeset = brojevi.some(broj => broj > 10); // Koristimo arrow callback funkciju koja provjerava je li broj veći od 10
+console.log(postojiVeciOdDeset); // Ispisuje true
+```
+
+**Primjer 2: Provjera postoji li barem jedan element koji sadrži ključnu riječ "PJS"**
+```javascript
+console.log(["PJS_1", "OOP_2", "PJS_2", "SPA_3", "PIS_2", "PJS_4"].some(skripta => skripta.includes("PJS"))); // Ispisuje true
+```
+
+**Primjer 3: Provjera postoji li barem jedan element koji je paran**
+```javascript
+console.log([7, 11, 21, 5, 5].some(broj => broj % 2 == 0)); // Ispisuje false jer nema parnih brojeva
+```
+
+**Primjer 4: Provjera postoji li barem jedan element koji je manji od 0**
+```javascript
+function isSmallerThanZero(broj) {
+    return broj < 0;
+}
+console.log([1, 2, 3, 4, 5].some(isSmallerThanZero)); // Ispisuje false jer nema negativnih brojeva
+```
+
+**Primjer 5: Provjerava postoji li barem jedan traženi element na zalihi**  
+```javascript
+let zaliha = [
+    {naziv: "jabuka", kolicina: 10},
+    {naziv: "kruška", kolicina: 5},
+    {naziv: "banana", kolicina: 0},
+    {naziv: "naranča", kolicina: 15},
+    {naziv: "limun", kolicina: 0}
+];
+function provjeriZalihe(naziv) {
+    return zaliha.some(voce => voce.naziv === naziv && voce.kolicina > 0);
+}
+console.log(provjeriZalihe("banana")); // Ispisuje false jer nema banana na zalihi
+console.log(provjeriZalihe("naranča")); // Ispisuje true jer ima naranči na zalihi
+```
+
+Da ne bi bilo nejasnoća, pokazat ćemo i bez `arrow` funkcije.
+  
+```javascript
+function provjeriZalihe(naziv) {
+    return zaliha.some(function(voce) {
+        return voce.naziv === naziv && voce.kolicina > 0;
+    });
+}
+console.log(provjeriZalihe("banana")); // Ispisuje false jer nema banana na zalihi
+console.log(provjeriZalihe("naranča")); // Ispisuje true jer ima naranči na zalihi
+```
+
+### 3.4.3 Metoda `every()`
+
+Metoda `Array.every()` koristi se za provjeru jesu li svi elementi u polju zadovoljavaju uvjet. Metoda `every()` vraća `true` ako svi elementi zadovoljavaju uvjet, inače vraća `false`. Uvjet se definira callback funkcijom. Metoda ne mijenja originalno polje.
+
+Dakle metoda je srodna metodi `Array.some()`, međutim `every()` (kako joj i sam naziv kaže) vraća `true` **samo ako svi elementi zadovoljavaju uvjet**.
+
+Sintaksa:
+```javascript
+every(callbackFn)
+every(callbackFn, thisArg)
+```
+
+Pravila su slična kao kod metode `some()`. `callbackFn` je funkcija koja se poziva za svaki element polja. Funkcija prima tri argumenta: `element`, `index` i `array`. `thisArg` je opcionalni argument koji predstavlja vrijednost `this` ključne riječi unutar callback funkcije.
+
+**Primjer 1: Provjera jesu li svi elementi veći od 10**
+```javascript
+let brojevi = [15, 20, 25, 30];
+let sviVeciOdDeset = brojevi.every(broj => broj > 10); // Koristimo arrow callback funkciju koja provjerava je li broj veći od 10
+console.log(sviVeciOdDeset); // Ispisuje true
+```
+
+**Primjer 2: Provjera je li svaki element paran broj**
+```javascript
+console.log([2, 4, 6, 8, 10].every(broj => broj % 2 == 0)); // Ispisuje true jer su svi brojevi parni
+```
+
+**Primjer 3: Provjera je li jedno polje podskup drugog polja**  
+```javascript
+const jePodskup = (polje1, polje2) => 
+  polje1.every((element) => polje2.includes(element));
+console.log(jePodskup([1, 2, 3], [1, 2, 3, 4, 5])); // Ispisuje true jer je [1, 2, 3] podskup [1, 2, 3, 4, 5]
+console.log(jePodskup([1, 2, 3], [1, 2, 4, 5])); // Ispisuje false jer [1, 2, 3] nije podskup [1, 2, 4, 5]
+```
+
+**Primjer 4: Provjerava je li svaki element veći od prethodnog**
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+let sviVeciOdPrethodnog = brojevi.every((element, index, array) => {
+  if (index === 0) { // Ako je prvi element, preskoči
+    return true;
+  }
+  return element > array[index - 1]; // Provjerava je li trenutni element veći od prethodnog
+});
+console.log(sviVeciOdPrethodnog); // Ispisuje true jer su svi elementi veći od prethodnog
+```
+
+### 3.4.4 Metoda `sort()`
+
+Metoda `Array.sort()` koristi se za sortiranje elemenata u polju. Metoda `sort()` mijenja originalno polje, odnosno radi `in place`. Kao povratnu vrijednost vraća sortirano polje.
+
+Prema defaultu, sortiranje je ascending (rastuće), odnosno sortira elemente od najmanjeg prema najvećem. Međutim, možemo definirati vlastitu funkciju za sortiranje koju ćemo definirati u callback funkciji.
+
+Vremenska i prostora složenost metode `sort()` se ne može garantirati budući da ovisi o implementaciji JavaScript enginea.
+Postoji varijanta ove metode koja ne mijenja originalno polje, a to je metoda `Array.toSorted()`.
+
+Sintaksa:
+```javascript
+sort()
+sort(compareFn)
+```
+
+- `compareFn` - funkcija koja se koristi za sortiranje elemenata. Funkcija prima dva argumenta `a` i `b` koji predstavljaju dva elementa koja se uspoređuju. 
+- Ako je rezultat negativan, `a` se smješta prije `b`, 
+- ako je rezultat pozitivan, `b` se smješta prije `a`, 
+- ako je rezultat 0, elementi ostaju na istom mjestu (a i b  su jednaki).
+
+Algoritam sortiranja u JavaScriptu ovisi o implementacija, najčešće se koriste algoritmi poput QuickSort i MergeSort.
+
+Dakle `compareFn` callback funkciju možemo definirati sljedećom sintaksom:
+```javascript
+function compareFn(a, b) {
+  if (a manji od b po nekom kriteriju) {
+    return -1;
+  } else if (a veći od b po nekom kriteriju) {
+    return 1;
+  }
+  // a i b su jednaki
+  return 0;
+}
+```
+
+**Primjer 1: Sortiranje brojeva u rastućem redoslijedu**
+```javascript
+let brojevi = [5, 2, 8, 1, 3];
+brojevi.sort((a, b) => a - b); // Sortira brojeve u rastućem redoslijedu
+console.log(brojevi); // Ispisuje [1, 2, 3, 5, 8]
+```
+
+Zašto pišemo našu callback funkciju kao `a-b`?
+- Ako je rezultat negativan, `a` se smješta prije `b`,
+- ako je rezultat pozitivan, `b` se smješta prije `a`,
+- ako je rezultat 0, elementi ostaju na istom mjestu (a i b su jednaki).
+
+**Primjer 2: Sortiranje stringova po duljini**
+```javascript
+let imena = ["Ana", "Ivan", "Maja", "Pero", "Aleksandar", "Marko", "Eva", "Tomislav"];
+imena.sort((a, b) => a.length - b.length); // Sortira stringove po duljini
+console.log(imena); // Ispisuje ["Ana", "Eva", "Ivan", "Maja", "Pero", "Marko", "Tomislav", "Aleksandar"]
+```
+
+**Primjer 3: Sortiranje objekata**
+```javascript
+let osobe = [
+    {ime: "Ana", godine: 25},
+    {ime: "Ivan", godine: 30},
+    {ime: "Maja", godine: 22},
+    {ime: "Marko", godine: 35},
+    {ime: "Eva", godine: 28},
+    {ime: "Tomislav", godine: 40},
+    {ime: "Lucija", godine: 26},
+    {ime: "Dario", godine: 31},
+    {ime: "Petra", godine: 29},
+    {ime: "Nikola", godine: 32},
+    {ime: "Lara", godine: 24},
+    {ime: "Jakov", godine: 33}
+];
+
+// sortiranje po godinama
+osobe.sort((a, b) => a.godine - b.godine);
+
+// sortiranje po imenu
+
+osobe.sort((a, b) => {
+    const imeA = a.ime.toLowerCase(); // pretvaramo imena u mala slova
+    const imeB = b.ime.toLowerCase(); // pretvaramo imena u mala slova
+
+    if (imeA < imeB) {
+        return -1;
+    } else if (imeA > imeB) {
+        return 1;
+    }
+
+    // imena su jednaka
+    return 0;
+});
+```
+
+### 3.4.5 Metoda `reduce()`
+
+Metoda `Array.reduce()` koristi se za reduciranje polja u jednu vrijednost. Metoda `reduce()` prima callback funkciju koja se poziva za svaki element polja. Funkcija prima četiri argumenta: `accumulator`, `currentValue`, `currentIndex` i `array`.
+
+Kod ove metode, `callback` funkcija je na neki način `reducer` funkcija koja akumulira vrijednosti (svaki element polja) u jednu vrijednost.
+
+> Konačna vrijednost `reduce` funkcije je uvijek jedna vrijednost, a ne polje!
+
+Premda ova metoda mnogima zadaje glavobolju, kada jednom shvatite kako radi, postaje vrlo korisna. Da bi se shvatila, potrebno je prvo uvidjeti njenu korist.
+
+Sjetite se primjera gdje smo nad svakim elementom polja zbrajali neku vrijednost (zadatak s košaricom i artiklima).
+
+Zadatak je izgledao ovako:
+```javascript
+function Namirnica(naziv, cijena, kolicina) {
+    this.naziv = naziv;
+    this.cijena = cijena;
+    this.kolicina = kolicina;
+    this.ukupno = function() {
+        return this.cijena * this.kolicina;
+    }
+}
+
+let kosarica = [
+    new Namirnica("Jabuka", 2, 3),
+    new Namirnica("Kruška", 3, 2),
+    new Namirnica("Banana", 1, 5),
+    new Namirnica("Naranča", 4, 1)
+];
+
+// globalna funkcija koja računa ukupnu cijenu
+
+function ukupnaCijena(kosarica) {
+    let ukupno = 0;
+    for(let namirnica of kosarica) {
+        ukupno += namirnica.ukupno();
+    }
+    return ukupno;
+}
+
+console.log(ukupnaCijena(kosarica)); // Ispisuje 21
+```
+
+Uočavate li gdje bi mogli koristiti metodu `reduce()`? Kod računanja ukupne cijene, svaki put smo zbrajali `ukupno` s `namirnica.ukupno()`.
+
+Ako pogledate ponovo definiciju metode `reduce()`, vidjet ćete da je upravo to ono što nam treba - **zbrajanje svih elemenata polja u jednu vrijednost**.
+
+Sintaksa:
+```javascript
+reduce(callbackFn)
+reduce(callbackFn, initialValue)
+```
+
+Naizgled jednostavna sintaksa, međutim komplciraniji dio leži u samoj definiciji `callback` funkcije.
+
+Callback funkcija prima četiri argumenta: `accumulator`, `currentValue`, `currentIndex` i `array`.
+- `initialValue` predstavlja početnu vrijednost accumulatora. Ako je definirana, prvi poziv funkcije koristi `initialValue` kao `accumulator`, inače koristi prvi element polja.
+
+- `accumulator` - **akumulator**, početna vrijednost je `initialValue` (ako je definirana), inače je prvi element polja. Akumulator je vrijednost koja se akumulira tijekom izvođenja funkcije.
+- `currentValue` - **vrijednost trenutnog elementa polja**. Ako je `initialValue` definiran, vrijednost `currentValue` je prvi element polja (`array[0]`), inače je drugi element polja (`array[1]`).
+- `currentIndex` - **indeks pozicija trenutnog elementa polja**. Prvim pozivom vrijednost je 0 ako je `initialValue` definiran, inače je 1.
+- `array` - **polje nad kojim se metoda poziva**.
+
+**Primjer 1: Ukupna cijena košarice**
+
+```javascript
+function Namirnica(naziv, cijena, kolicina) {
+    this.naziv = naziv;
+    this.cijena = cijena;
+    this.kolicina = kolicina;
+    this.ukupno = function() {
+        return this.cijena * this.kolicina;
+    }
+}
+
+let kosarica = [
+    new Namirnica("Jabuka", 2, 3),
+    new Namirnica("Kruška", 3, 2),
+    new Namirnica("Banana", 1, 5),
+    new Namirnica("Naranča", 4, 1)
+];
+// Akumulator je naša varijabla ukupno koju smo definirali u primjeru iznad
+let ukupno = kosarica.reduce((accumulator, currentValue) => accumulator + currentValue.ukupno(), 0); // Početna vrijednost akumulatora je 0, zatim zbrajamo sve vrijednosti ukupno za svaku namirnicu
+console.log(ukupno); // Ispisuje 21
+```
+
+**Primjer 2: Zbrajanje svih brojeva u polju**
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+let zbroj = brojevi.reduce((accumulator, currentValue) => accumulator + currentValue, 0); // Početna vrijednost akumulatora je 0, zatim zbrajamo sve brojeve
+console.log(zbroj); // Ispisuje 15
+```
+
+Možemo zapisati i bez korištenja `arrow` funkcije:
+
+```javascript
+let brojevi = [1, 2, 3, 4, 5];
+let zbroj = brojevi.reduce(function(accumulator, currentValue) {
+    return accumulator + currentValue;
+}, 0); // Uočite gdje se piše parametar initialValue, nakon callback funkcije!
+console.log(zbroj); // Ispisuje 15
+```
+
+**Primjer 3: Pronalazak najvećeg broja u polju**
+
+```javascript
+let brojevi = [5, 2, 8, 1, 3];
+let najveci = brojevi.reduce((accumulator, currentValue) => Math.max(accumulator, currentValue), brojevi[0]); // Početna vrijednost akumulatora je prvi element polja
+console.log(najveci); // Ispisuje 8
+```
+
+Ovo funkcionira zato što `Math.max()` vraća veći broj od dva broja, a `reduce()` funkcija koristi taj rezultat kao novu vrijednost akumulatora.
+
+**Primjer 4: Grupiranje elemenata polja po količini**
+
+```javascript
+let kosarica = ["jabuka", "banana", "naranča", "kruška", "jabuka", "jabuka", "kruška"];
+let grupirano = kosarica.reduce((accumulator, currentValue) => {
+  if (!accumulator[currentValue]) { // Ako ne postoji ključ u objektu, dodajemo ga
+    accumulator[currentValue] = 1;
+  } else { // Inače povećavamo vrijednost ključa za 1
+    accumulator[currentValue]++;
+  }
+  return accumulator;
+}, {});
+console.log(grupirano); // Ispisuje {jabuka: 3, banana: 1, naranča: 1, kruška: 2}
+```
+
+**Primjer 5: Grupiranje objekata po svojstvu**
+  
+```javascript
+let osobe = [
+    {ime: "Ana", godine: 20},
+    {ime: "Ivan", godine: 30},
+    {ime: "Maja", godine: 20},
+    {ime: "Marko", godine: 20},
+    {ime: "Eva", godine: 28},
+    {ime: "Tomislav", godine: 26},
+    {ime: "Lucija", godine: 26},
+    {ime: "Dario", godine: 31},
+    {ime: "Petra", godine: 32},
+    {ime: "Nikola", godine: 32},
+    {ime: "Lara", godine: 33},
+    {ime: "Jakov", godine: 33}
+];
+const grupiranoPoGodinama = osobe.reduce((accumulator, currentValue) => {
+    if (!accumulator[currentValue.godine]) {
+        accumulator[currentValue.godine] = [];
+    }
+    accumulator[currentValue.godine].push(currentValue.ime);
+    return accumulator;
+}, {});
+console.log(grupiranoPoGodinama);
+
+/*
+{"20":["Ana","Maja","Marko"],"26":["Tomislav","Lucija"],"28":["Eva"],"30":["Ivan"],"31":["Dario"],"32":["Petra","Nikola"],"33":["Lara","Jakov"]}
+*/
+```
+
+### Vježba 9
+
+### Vježba 10
+
+# Samostalni zadatak za vježbu 7
