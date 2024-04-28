@@ -1180,6 +1180,8 @@ Definirajte objekt `student` koji će sadržavati podatke o studentu: ime, prezi
 
 **EduCoder šifra**: `restoran`
 
+**Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+
 Imate zadatak napraviti malu web aplikaciju za restoran kako bi gosti mogli naručiti hranu i piće preko tableta u restoranu. Definirajte objekt `restoran` koji će sadržavati podatke o restoranu: naziv, adresa (ulica, grad, poštanski broj), kontakt (telefon, email), objekt meni (sadrži polje objekata `Jelo` i `Pice`).
 
 - definirajte konstruktor `Jelo` koji se sastoji od 5 svojstva: `naziv`, `cijena`, `opis`, `sastojci` i `kategorija`.
@@ -2750,8 +2752,137 @@ Napredne metode koje smo prošli su vrlo korisne i mogu vam uštedjeti puno vrem
 
 ### Vježba 9
 
-Koristeći 
+**EduCoder šifra**: `advanced-functions-1`
+
+Koristeći napredne metode `Array` objekta, riješite sljedeće zadatke. Ne smijete koristiti petlje `for` i `while`. Možete i ne morate koristiti `arrow` funkcije.
+
+**Zadatak 1:**
+```javascript
+const brojevi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// Koristeći metodu map() pohranite korijene svih brojeva u varijablu korijeni
+let korijeni = /* Vaš kôd ovdje... */ 
+```
+
+**Zadatak 2:**
+```javascript
+const imena = ["Ana", "Ivan", "Maja", "Pero", "Lucija", "Dario", "Petra", "Nikola"];
+// Koristeći metodu filter() filtrirajte polje samo na imena koja sadrže slovo "a" i pohranite ih u varijablu imenaSaA
+let imenaSaA = /* Vaš kôd ovdje... */
+```
+
+**Zadatak 3:**
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+function numberPositive(number){
+  /* Vaš kôd ovdje... */
+}
+console.log() // koristeći metodu every() i numberPositive callback funkciju provjerite jesu li svi brojevi pozitivni
+```
+
+**Zadatak 4:**
+```javascript
+const months = [
+  {name: "January", days: 31},
+  {name: "February", days: 28},
+  {name: "March", days: 31},
+  {name: "April", days: 30},
+  {name: "May", days: 31},
+  {name: "June", days: 30},
+  {name: "July", days: 31},
+  {name: "August", days: 31},
+  {name: "September", days: 30},
+  {name: "October", days: 31},
+  {name: "November", days: 30},
+  {name: "December", days: 31}
+]
+// Koristeći metodu reduce() izračunajte ukupan broj dana u godini. Riješite arrow callbackom u jednoj liniji koda.
+console.log(/* Vaš kôd ovdje... */) // Ispisuje 365
+```
+
+**Zadatak 5:**
+```javascript
+const imena = ["Ana", "Ivan", "Maja", "Pero", "Lucija", "Dario", "Petra", "Nikola"];
+// Napišite funkciju sortirajPoDuljini koja sortira imena po duljini
+// Napišite funkciju sortirajPoAbecedi koja sortira imena po abecedi (A -> Z)
+// Koristite metodu sort() i arrow funkcije
+// Ne smijete koristiti petlje (for, while) i selekcije (if, switch)
+```
 
 ### Vježba 10
 
+Zadano je sljedeće polje studenata koje sadrži ugniježđene objekte s podacima o studentima.
+
+```javascript
+const studenti = [
+    {ime: "Ana", prezime: "Anić", upisani_kolegiji : ["PIS", "OOP", "SPA"], prosjek: 4.5},
+    {ime: "Ivan", prezime: "Ivić", upisani_kolegiji : ["PIS", "OOP", "PJS", "MAT1", "MAT2"], prosjek: 3.8},
+    {ime: "Maja", prezime: "Majić", upisani_kolegiji : ["PIS", "OOP", "PJS", "ENG"], prosjek: 5.0},
+    {ime: "Pero", prezime: "Perić", upisani_kolegiji : ["PIS", "OOP", "PJS", "ENG", "SPA"], prosjek: 4.0},
+    {ime: "Lucija", prezime: "Lucić", upisani_kolegiji : ["PIS", "OOP", "PJS", "PROG", "SPA"], prosjek: 4.2},
+    {ime: "Dario", prezime: "Darić", upisani_kolegiji : ["PIS", "OOP", "PJS", "ENG", "PROG"], prosjek: 3.8},
+    {ime: "Petra", prezime: "Petrić", upisani_kolegiji : ["PROG", "OOP", "ENG", "WEBAPPS", "SPA"], prosjek: 4.6},
+    {ime: "Nikola", prezime: "Nikolić", upisani_kolegiji : ["PIS", "BP1", "PJS", "ENG", "WEBAPPS"], prosjek: 4.8},
+    {ime: "Lara", prezime: "Larić", upisani_kolegiji : ["PIS", "OOP", "BP1", "ENG", "PI"], prosjek: 4.9},
+    {ime: "Jakov", prezime: "Jakić", upisani_kolegiji : ["PIS", "OOP", "BP1", "ENG", "PI"], prosjek: 3.7}
+];
+```
+
+Riješite sljedeće zadatke koristeći napredne metode `Array` objekta. Ne smijete koristiti petlje `for` i `while`. Možete i ne morate koristiti `arrow` funkcije.
+
+1. Pohranite u varijablu `imePrezime` polje koje sadrži imena i prezimena svih studenata.
+
+```javascript
+const imePrezime = /* Vaš kôd ovdje... */
+console.log(imePrezime); // Ispisuje ["Ana Anić", "Ivan Ivić", "Maja Majić", "Pero Perić", "Lucija Lucić", "Dario Darić", "Petra Petrić", "Nikola Nikolić", "Lara Larić", "Jakov Jakić"]
+```
+
+2. Filtrirajte studente koji imaju prosjek veći od 4.5 i pohranite ih u varijablu `studentiVisokiProsjek`.
+
+```javascript
+const studentiVisokiProsjek = /* Vaš kôd ovdje... */
+console.log(studentiVisokiProsjek); // Ispisuje [{"ime":"Maja","prezime":"Majić","upisani_kolegiji":["PIS","OOP","PJS","ENG"],"prosjek":5},{"ime":"Petra","prezime":"Petrić","upisani_kolegiji":["PROG","OOP","ENG","WEBAPPS","SPA"],"prosjek":4.6},{"ime":"Nikola","prezime":"Nikolić","upisani_kolegiji":["PIS","BP1","PJS","ENG","WEBAPPS"],"prosjek":4.8},{"ime":"Lara","prezime":"Larić","upisani_kolegiji":["PIS","OOP","BP1","ENG","PI"],"prosjek":4.9}]
+```
+
+3. Izmjenite originalno polje studenata tako da svim studentima dodate novi ključ `broj_kolegija` koji predstavlja broj kolegija koje student ima upisane.
+
+```javascript
+/* Vaš kôd ovdje... */
+console.log(studenti); // Ispisuje polje studenata s novim ključem broj_kolegija
+```
+
+4. Pohranite u varijablu `prosjekProsjeka` prosjek svih prosjeka studenata. Rezultat zaokržite na dvije decimale.
+
+```javascript
+const prosjekProsjeka = /* Vaš kôd ovdje... */
+console.log(prosjekProsjeka); // Ispisuje 4.33
+```
+
+5. Grupirajte studente po prosjeku u 3 grupe. Možete koristiti selekcije, ne smijete koristiti petlje. 
+- grupa 1: studenti s prosjekom između 3.5 i 3.9
+- grupa 2: studenti s prosjekom između 4.0 i 4.4
+- grupa 3: studenti s prosjekom između 4.5 i 5.0
+
+Pohranite rezultat u varijablu `grupiraniStudenti`.
+
+```javascript
+const grupiraniStudenti = /* Vaš kôd ovdje... */
+
+console.log(grupiraniStudenti);
+
+{
+"grupa1":[{"ime":"Ivan","prezime":"Ivić","upisani_kolegiji":["PIS","OOP","PJS","MAT1","MAT2"],"prosjek":3.8},{"ime":"Dario","prezime":"Darić","upisani_kolegiji":["PIS","OOP","PJS","ENG","PROG"],"prosjek":3.8},{"ime":"Jakov","prezime":"Jakić","upisani_kolegiji":["PIS","OOP","BP1","ENG","PI"],"prosjek":3.7}],
+
+"grupa2":[{"ime":"Pero","prezime":"Perić","upisani_kolegiji":["PIS","OOP","PJS","ENG","SPA"],"prosjek":4},{"ime":"Lucija","prezime":"Lucić","upisani_kolegiji":["PIS","OOP","PJS","PROG","SPA"],"prosjek":4.2}],
+
+"grupa3":[{"ime":"Ana","prezime":"Anić","upisani_kolegiji":["PIS","OOP","SPA"],"prosjek":4.5},{"ime":"Maja","prezime":"Majić","upisani_kolegiji":["PIS","OOP","PJS","ENG"],"prosjek":5},{"ime":"Petra","prezime":"Petrić","upisani_kolegiji":["PROG","OOP","ENG","WEBAPPS","SPA"],"prosjek":4.6},{"ime":"Nikola","prezime":"Nikolić","upisani_kolegiji":["PIS","BP1","PJS","ENG","WEBAPPS"],"prosjek":4.8},{"ime":"Lara","prezime":"Larić","upisani_kolegiji":["PIS","OOP","BP1","ENG","PI"],"prosjek":4.9}]
+}
+```
+
 # Samostalni zadatak za vježbu 7
+
+**EduCoder šifra**: `ES6`
+
+**Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
+
+**Napomena 2**: Ovaj zadatak je svojim obujmom, složenošću i vremenskim ograničenjem vrlo sličan ispitu iz ove skripte (PJS4).
+
