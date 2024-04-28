@@ -2880,9 +2880,76 @@ console.log(grupiraniStudenti);
 
 # Samostalni zadatak za vježbu 7
 
-**EduCoder šifra**: `ES6`
+**EduCoder šifra**: `romobil`
 
 **Napomena**: Ne predaje se i ne boduje se. Zadatak možete i ne morate rješavati u [EduCoder](https://fipu-educoder.netlify.app/) aplikaciji.
 
-**Napomena 2**: Ovaj zadatak je svojim obujmom, složenošću i vremenskim ograničenjem vrlo sličan ispitu iz ove skripte (PJS4).
+**Napomena 2**: Ovaj zadatak je svojim obujmom, složenošću i vremenskim ograničenjem vrlo sličan ispitu iz ove skripte (PJS4). Stoga, preporuka je da ga riješite. Za pitanja i pomoć, slobodno se javite na Slack kanal.
 
+1. Dobili ste zadatak napraviti mobilnu aplikaciju za korištenje električnih romobila u gradu. Firma `RomobiliPula d.o.o.` želi aplikaciju koja će korisnicima omogućiti dijeljenje romobila po gradu. Kada korisnik otvori aplikaciju, na karti će mu se prikazati svi dostupni romobili u blizini korisnika. Korisnik će moći otključati romobil, aktivirati ga i krenuti voziti. Kada korisnik završava s vožnjom, romobil zaključava aplikacijom koja računa cijenu vožnje. Plaćanje se vrši automatski putem aplikacije, odnosno podacima o kreditnoj kartici koje korisnik unese prilikom registracije.
+
+Potrebno je u grubo izmodelirati ovaj poslovni proces kroz objekt `RomobiliPula`.
+
+Koristeći ugniježđene strukture izradite objekt `RomobiliPula` koji će sadržavati sljedeće podatke:
+- naziv grada (npr. "Pula")
+- adresa sjedišta firme (npr. "Ulica 123, 52100, Pula")
+- kontakt podaci (npr. "091 123 4567", "romobila@pula.hr")
+- cijena otključavanja romobila (npr. 2 eur)
+- cijena po prijeđenom kilometru (npr. 1 eur/km)
+- polje više romobila gdje svaki romobil ima sljedeće podatke:
+  - id (jedinstveni identifikator)
+  - lokacija (npr. "Arena Pula")
+  - baterija (npr. 100%)
+  - status (boolean - npr. "slobodan", "zauzet")
+  - trenutni korisnik (npr. "Ivan Ivić")
+  - prijeđeni kilometri (npr. 0 km)
+- polje korisnika gdje su sadržani podaci o korisnicima:
+  - id (jedinstveni identifikator)
+  - ime (npr. "Ivan")
+  - prezime (npr. "Ivić")
+  - email (npr. "ivanivic@gmail.com")
+
+Ne morate raditi konstruktor funkcije, odmah krenite raditi objekt. Napravite po 2 objekta za romobile i korisnike.
+```javascript
+let RomobiliPula = {
+  /* Vaš kôd ovdje... */
+}
+```
+
+2. Jednom kada ste izradili objekt `RomobiliPula`, potrebno je izraditi metode i funkcije koje će simulirati rad aplikacije. **Ne smijete koristiti petlje za niti jedan zadatak**, morate koristiti metode `Array` objekta. 
+
+- Metoda `otkljucavanjeRomobila` koja prima **id romobila** i **id korisnika**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "zauzet". Također, metoda treba postaviti trenutnog korisnika na korisnika s odgovarajućim id-em. Metoda treba vratiti poruku `"Romobil je uspješno otključan."`. Ako je romobil već zauzet ili ne postoji, metoda treba vratiti poruku `"Romobil nije dostupan."`. Ako korisnik s odgovarajućim id-em ne postoji, metoda treba vratiti poruku `"Korisnik nije pronađen."`.
+
+```javascript
+function otkljucavanjeRomobila(idRomobila, idKorisnika) {
+  /* Vaš kôd ovdje... */
+}
+RomobiliPula.otkljucavanjeRomobila(2, 1); // Ispisuje "Romobil je uspješno otključan."
+RomobiliPula.otkljucavanjeRomobila(500, 1); // Ispisuje "Romobil nije dostupan."
+RomobiliPula.otkljucavanjeRomobila(2, "pero"); // Ispisuje "Korisnik nije pronađen."
+```
+
+- Metoda `dohvatiDostupneRomobile` koja vraća novo polje svih dostupnih romobila. Dostupni romobili su oni koji imaju status "slobodan" i bateriju veću od 20%.
+
+```javascript
+RomobilPula.dohvatiDostupneRomobile = function() {
+  /* Vaš kôd ovdje... */
+}
+```
+
+3. Dodajte metodu `zakljucajRomobil` koja prima argumente **id romobila**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "slobodan". Također, metoda treba postaviti trenutnog korisnika na `null`. Metoda treba vratiti poruku `"Romobil je uspješno zaključan."`. Ako romobil nije pronađen, metoda treba vratiti poruku `"Romobil nije pronađen."`. Dodatno, metoda mora izračunati ukupnu cijenu važnje koja je jednaka: `cijena otključavanja + cijena po prijeđenom kilometru * prijeđeni kilometri za taj romobil`. Metoda mora vratiti ukupnu cijenu kao povratnu vrijednost. Nakon izračuna metoda mora postaviti prijeđene kilometre na 0.
+
+```javascript
+RomobiliPula.zakljucajRomobil = function(idRomobila) {
+  /* Vaš kôd ovdje... */
+}
+```
+
+4. Potrebno je nadograditi metodu `zakljucajRomobil` tako da prije samog zaključavanja romobila, metoda pohrani ukupnu cijenu te pojedine vožnje u novo svojstvo objekta: `cijene_voznji` (polje brojeva) gdje se pohranjuju sve cijene vožnji kao cjelobrojne vrijednosti. Kada to napravite, dodajte globalnu varijablu `zarada` koja će predstavljati ukupnu zaradu firme. Varijabla mora biti definirana izvan objekta `RomobiliPula` te mora koristeći metodu `reduce()` i arrow callback funkciju pohraniti ukupnu vrijednost `RomobiliPula.cijene_voznji`.
+
+```javascript
+RomobiliPula.zakljucajRomobil = function(idRomobila) {
+  /* Nadogradite Vaš kôd */
+}
+let zarada = /* Vaš kôd ovdje... */
+```
