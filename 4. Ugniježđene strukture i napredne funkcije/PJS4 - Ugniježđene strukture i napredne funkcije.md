@@ -1200,7 +1200,7 @@ this.dodajNarudzbu = async function (narudzba) { // async funkcija zbog specifi�
 };
 ```
 
-- kada se pozove funkcija, korisniku se mora otvoriti izbornik gdje će mu se izlistati sva jela i pića iz menija s indeksom koji počinje od 1 ispred zapisa. Primjer:
+- kada se pozove funkcija, korisniku se mora prikazati izbornik u konzoli koji sadrži sva jela i pića iz menija s indeksom koji počinje od 1 ispred zapisa. Primjer:
 
 ```
 1. Margherita (Pizza s rajčicom i mozarella sirom)  - 7 eur
@@ -2235,7 +2235,7 @@ Međutim gdje dolazi do problema je kada koristimo `arrow` funkcije unutar metod
 // Objekt osoba s metodom pozdrav() koja neispravno koristi arrow funkciju
 const osoba = {
     ime: "Ana",
-    pozdrav () => {
+    pozdrav() => {
         console.log(`Pozdrav, ${this.ime}!`); // this se ne referencira na objekt osoba, već na globalni objekt (u web pregledniku je to window)
     }
 };
