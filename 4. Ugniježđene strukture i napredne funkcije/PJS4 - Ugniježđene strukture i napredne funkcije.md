@@ -1780,7 +1780,7 @@ const imeFunkcije = () => {
 const imeFunkcije = () => naredba;
 ```
 
-Na prvi pogled sintakse `arrow` funkcija mogu izgledati zbunjujuće, međutim s vježbom ćete se naviknuti na njih.
+Na prvi pogled sintakse `arrow` funkcija mogu izgledati zbunjujuće, ali s vježbom ćete se naviknuti na njih.
 Iako su iznad navedene različite sintakse `arrow` funkcija, ne morate ih i nećete učiti napamet. Bitno je razumjeti pravila sintakse i znati ih primijeniti ovisno o situaciji.
 
 **Pravila sintakse `arrow` funkcija su:**
@@ -1952,7 +1952,7 @@ let studentiPrekoTri = studenti.find(function(student) { // Anonimna funkcija ko
     return student.ocjena > 3;
 });
 
-ili pak ovako:
+//ili pak ovako:
 
 function ocjenaVecaOdTri(student) {
     return student.ocjena > 3;
@@ -2082,7 +2082,7 @@ Ne moramo ovo pohranjivati u varijablu `filtriraniLetovi`, već možemo odmah vr
 ```javascript
 function pronadiLet(letovi, polazak, dolazak, datum = null) {
     return letovi.filter(let => {
-        return let.polazak == polazak && let.dolazak == dolazak && (datum == null || let.datum.getTime() === datum.getTime());
+        return let.polazak == polazak && let.dolazak == dolazak && (datum == null || let.datum.getTime() === datum.getTime()); // koristimo metodu Date.getTime() budući da smo rekli da objekte ne možemo direktno uspoređivati.
     });
 }
 ```
@@ -2159,7 +2159,7 @@ let kandidati = [
 ];
   ```
 
-Napišite funkciju `idealni_zaposlenik(kandidati, godine, godine_iskustva, strani_jezici, programski_jezici)` koja prima navedene argumente te koristi metodu `Array.filter()` za filtriranje kandidata prvo prema stranim jezicima i programskim jezicima, a zatim koristi metodu `Array.find()` za prvog kandidata koji ima barem zadane godine i godine iskustva. Dakle tražite prvog kandidata, ne onog koji ima najviše godina i/ili godina iskustva, već prvog koji zadovoljava sve uvjete.
+Napišite funkciju `idealni_zaposlenik(kandidati, godine, godine_iskustva, strani_jezici, programski_jezici)` koja prima navedene argumente te koristi metodu `Array.filter()` za filtriranje kandidata prvo prema stranim jezicima i programskim jezicima, a zatim koristi metodu `Array.find()` za prvog kandidata **koji ima barem** zadane godine i godine iskustva. Dakle tražite prvog kandidata, ne onog koji ima najviše godina i/ili godina iskustva, već prvog koji zadovoljava sve uvjete.
 
 Za provjeru jezika možete koristiti petlje i metode `Array.includes()`. Ako znate, možete koristiti i metodu `Array.every()`.
 Morate koristiti `arrow` funkcije za definiranje callback funkcija u metodama `filter()` i `find()`.
@@ -2207,7 +2207,7 @@ let osoba = new Osoba("Ana");
 console.log(osoba.pozdrav()); // Ispisuje "Pozdrav, Ana!"
 ```
 
-Što se tiče `this` konteksta i tradicionalnih funkcija, `this` ključna riječ se mijenja ovisno o kontekstu u kojem se funkcija poziva. Generalno se `this` ključna riječ odnosi na objekt koji poziva funkciju, međutim postoje različita ponašanja kada se koriste metode poput `call()`, `apply()` i `bind()`. Mi se time nećemo baviti u ovom kolegiju.
+Što se tiče `this` konteksta i tradicionalnih funkcija, `this` ključna riječ se mijenja ovisno o kontekstu u kojem se funkcija poziva. Generalno se `this` ključna riječ odnosi na objekt koji poziva funkciju, međutim postoje različita ponašanja kada se koriste metode poput `call()`, `apply()` i `bind()`. Mi se time nećemo baviti na ovom kolegiju.
 
 Ono što vi morate zapamtiti jest da, kod `arrow` funkcija vrijednost `this` se ne mijenja, **već se nasljeđuje iz okoline u kojoj je definirana**. Drugim riječima, ključna riječ `this` u `arrow` funkcijama referencira na `this` kontekst izvan `arrow` funkcije.
 
