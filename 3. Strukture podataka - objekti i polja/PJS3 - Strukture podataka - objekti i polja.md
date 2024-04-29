@@ -463,9 +463,9 @@ Cijena: 11500
 
 # 2. Standardni ugrađeni objekti (eng. **_built-in objects_**)
 
-JavaScript nudi mnoštvo ugrađenih (eng. **_built-in_**) objekata koji modeliraju mnoštvo stvari iz stvarnog svijeta, ali i obogaćuju primitivne tipove podataka brojnim korisnim metodama. Ugrađeni objekti pružaju razne metode i svojstva za rad s podacima, poput manipulacije nizovima znakova `String`, rad s datumima `Date`, matematičke operacije `Math`, itd.
+JavaScript nudi mnoštvo ugrađenih (eng. **_built-in_**) objekata koji modeliraju koncepte iz stvarnog svijeta, ali i obogaćuju primitivne tipove podataka brojnim korisnim metodama. Ugrađeni objekti pružaju razne metode i svojstva za rad s podacima, poput manipulacije nizovima znakova `String`, rad s datumima `Date`, matematičke operacije `Math`, itd.
 
-Do sad smo se već susreli s nekoliko ugrađenih objekata, poput `Date` i `Math`, a narednim poglavljima upoznat ćemo se detaljnije s ugrađenim objektima: `String`, `Number`, `Math` i `Date`.
+Do sad smo se već susreli s nekoliko ugrađenih objekata, poput `Date` i `Math`, a u narednim poglavljima upoznat ćemo se detaljnije s ugrađenim objektima: `String`, `Number`, `Math` i `Date`.
 
 ## 2.1 `String` objekt
 
