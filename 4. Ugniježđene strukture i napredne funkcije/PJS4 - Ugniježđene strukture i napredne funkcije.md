@@ -19,7 +19,7 @@
 ## Sadržaj
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [4. Ugniježđene strukture i Napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
+- [\[4\] Ugniježđene strukture i Napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u ugniježđene strukture](#1-uvod-u-ugniježđene-strukture)
 - [2. Ugniježđene strukture](#2-ugniježđene-strukture)
@@ -989,7 +989,7 @@ filmovi[2] = new Array("Matrix", "Matrix Reloaded", "Matrix Revolutions"); // po
 filmovi[3] = new Array("Frozen", "Frozen 2", new Array("Tangled", "Alladin")); // 2D polje (jer sadrži stringove i još jedno polje)
 ```
 
-Dakle `filmovi[2]` predstavlja jednodimenzionalno polje s tri elementa (filmovi (string)), a `filmovi[3]` predstavlja dvodimenzionalno polje s tri elementa (**filmovi** (string) i polje s dva elementa (**filmovi** string)).
+Dakle `filmovi[2]` predstavlja jednodimenzionalno polje s tri elementa (**filmovi** [string]), a `filmovi[3]` predstavlja dvodimenzionalno polje s tri elementa (**filmovi** [string] i polje s dva elementa (**filmovi** [string]).
 
 Kako se raspoređuju elementi u višedimenzionalnim poljima? Pogledamo ilustraciju:
 
@@ -1034,7 +1034,7 @@ console.log(arr2.flat(2)); // [0, 1, 2, 3, 4, 5, 6]
 - U praksi, ovaj primjer nije nešto što želite pohraniti u višedimenzionalno polje.
 Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost kôda , a i održavanje postaje teže.
 
-Filmove je bolje pohraniti koristeći ranije naučene ugniježđene strukture - kombiniranjem objekata i polja.
+Filmove je bolje pohraniti koristeći ranije naučene ugniježđene strukture - **kombiniranjem objekata i polja**.
 
 Recimo ovako:
 
@@ -1142,7 +1142,7 @@ for (let i = 0; i < narudzbe.length; i++) {
 }
 ```
 
-> 4. **Polja unutar polja** koristimo za modeliranje struktura podataka koji su međusobno povezani (npr. matrica, 3D modeli, slike, videa, zvuka, tablični podaci). U ovom slučaju, **svaki element polja je polje**.
+> 4. **Polja unutar polja** koristimo za modeliranje podataka koji su međusobno povezani (npr. matrica, 3D modeli, slike, videa, zvuka, tablični podaci). U ovom slučaju, **svaki element polja je polje**.
 
 ```javascript
 let matrica = [
@@ -1437,7 +1437,7 @@ let studenti = [
 Želimo pronaći studenta s prezimenom `Ivanić`. Koristimo metodu `find()` i `callback` funkciju koja provjerava je li prezime studenta jednako `Ivanić`.
 
 ```javascript
-let student = studenti.find(function(student) { // Anonimna funkcija koja provjerava je liprezime studenta jednako "Ivanić"
+let student = studenti.find(function(student) { // Anonimna funkcija koja provjerava je li prezime studenta jednako "Ivanić"
     return student.prezime == "Ivanić";
 });
 console.log(student); // Ispisuje {ime: "Ivan", prezime: "Ivanić", ocjena: 2}
