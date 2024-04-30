@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%; float:left; box-shadow: none !important;"></img>
+<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%; box-shadow: none !important;"></img>
 
 # [3] Strukture podataka - Objekti i Polja
 
@@ -994,7 +994,7 @@ U JavaScriptu, gotovo svi elementi su objekti, pa tako i polja. Polja su ustvari
 - Polja mogu sadržavati **različite tipove podataka**, primjerice brojeve, stringove, objekte, druga polja, funkcije, itd.
 - Polja nisu asocijativna, što znači da **nemaju ključeve**, već samo **indekse** koji su nenegativni cijeli brojevi.
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/3.%20Strukture%20podataka%20-%20objekti%20i%20polja/screenshots/arrays.png?raw=true" style="width:50%; display:block; float:left;">
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/3.%20Strukture%20podataka%20-%20objekti%20i%20polja/screenshots/arrays.png?raw=true" style="width:50%; display:block;">
 
 > Izvor: https://bugfender.com/blog/javascript-arrays-guide/
 
