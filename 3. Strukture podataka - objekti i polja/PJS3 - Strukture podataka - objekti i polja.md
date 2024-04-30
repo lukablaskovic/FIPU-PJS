@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%; box-shadow: none !important;"></img>
+<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%; float:left; box-shadow: none !important;"></img>
 
 # [3] Strukture podataka - Objekti i Polja
 
@@ -18,10 +18,8 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
 
 ## Sadržaj
 
-<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [\[3\] Strukture podataka - Objekti i Polja](#3-strukture-podataka---objekti-i-polja)
+- [3. Strukture podataka - Objekti i Polja](#3-strukture-podataka---objekti-i-polja)
   - [Sadržaj](#sadržaj)
 - [1. Objekti (eng. **_objects_**)](#1-objekti-eng-objects)
   - [1.1 Osnovna sintaksa objekata](#11-osnovna-sintaksa-objekata)
@@ -241,9 +239,9 @@ console.log(auto.izracunajStarost()); // 4
 
 
 U tablici su navedene metode i svojstva objekta `auto`:
-|                                                                                                                       Objekt                                                                                                                        |                                               Svojstva                                                |         Metode          |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :---------------------: |
-| <div style="text-align:center;">auto<br><img src="https://www.motortrend.com/uploads/sites/10/2019/09/2020-ford-mustang-fastback-ecoboost-coupe-angular-front.png" style="width:50%; display: block; margin-left: auto; margin-right: auto;"></div> | auto.marka = "Ford"<br>auto.model = "Mustang"<br>auto.godina_proizvodnje = 2020<br>auto.boja = "Crna" | auto.izracunajStarost() |
+|                            Objekt                            |                           Svojstva                           |         Metode          |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :---------------------: |
+| auto<br><img src="https://www.motortrend.com/uploads/sites/10/2019/09/2020-ford-mustang-fastback-ecoboost-coupe-angular-front.png" style="width:50%; display: block; margin-left: auto; margin-right: auto;"></div> | auto.marka = "Ford"<br>auto.model = "Mustang"<br>auto.godina_proizvodnje = 2020<br>auto.boja = "Crna" | auto.izracunajStarost() |
 
 >✅ Zapamti! Kada pričamo o objektima, **svojstva** su varijable koje pripadaju objektu, a **metode** su funkcije koje pripadaju objektu. 
 
@@ -507,7 +505,7 @@ console.log(x === y); ?
   console.log(typeof x); // string
   console.log(typeof y); // object
   console.log(x == y); true
-```
+  ```
 </details>
 
 <hr>
@@ -594,7 +592,7 @@ console.log(rijeci); // ["Pula", "je", "grad", "u", "Istri."]
 
 Escape znakovi su posebni znakovi koji se koriste za označavanje posebnih znakova u nizovima znakova. Na primjer, ako želimo koristiti znak navodnika `"` unutar niza znakova, moramo ga označiti escape znakom `\`.
 Primjerice, kako bismo pokušali na ovaj način pohraniti sljedeći tekst, naišli bi na problem:
-  
+
 ```javascript
 const tekst = "We are the so-called "Vikings" from the north."; // SyntaxError: Unexpected identifier
 ```
@@ -655,7 +653,7 @@ console.log(typeof brojObjekt); // object - Number objekt
 ```
 
 Prisjetimo se kratko gradiva iz prve skripte. JavaScript će pokušati evaluirati "string brojeve", npr. `5` u primitivni tip `number`.
-  
+
 ```javascript
 console.log(5 + 5); // 10
 let x = "10";
@@ -665,7 +663,7 @@ console.log(x * y); // 20
 console.log(x / y); // 5
 ```
 Ali...
-  
+
 ```javascript
 console.log(x + y); // "102" - konkatenacija stringova
 ```
@@ -970,11 +968,11 @@ console.log(datum instanceof String); // false
    - ažurirajte metodu `ispisi()` da ispisuje i veličinu grada. 
 
 2. Napišite funkciju `izbaciSamoglasnike()` koja prima rečenicu kao argument i vraća novu rečenicu bez samoglasnika. Za implementaciju koristite metode iz `String` objekta.
- 
+
 3. Napišite funkciju `zaokruziBroj()` koja prima dva argumenta: `broj` i `decimale`. Funkcija vraća broj zaokružen na `decimale` decimala. Za implementaciju koristite metode iz `Number` i `Math` objekata. 
    - Ako je proslijeđeni argument `broj` već cijeli, funkcija vraća string `Broj je već cijeli!`. 
    - Ako je proslijeđeni argument `decimale` manji ili jednak 0, funkcija vraća string `"Pogrešno definirane decimale! Unijeli ste {decimale}, a očekuje se broj veći od 0."`.
- 
+
 4. Napišite funkciju `daniOdPocetkaGodine()` koja vraća koliko je dana prošlo od početka godine do trenutnog datuma. Za implementaciju koristite metode iz `Date` objekta. 
    - Dodajte poseban uvjet ako je trenutni datum 1. siječnja, funkcija onda vraća `Danas je 1. siječnja!`.
 
@@ -996,7 +994,7 @@ U JavaScriptu, gotovo svi elementi su objekti, pa tako i polja. Polja su ustvari
 - Polja mogu sadržavati **različite tipove podataka**, primjerice brojeve, stringove, objekte, druga polja, funkcije, itd.
 - Polja nisu asocijativna, što znači da **nemaju ključeve**, već samo **indekse** koji su nenegativni cijeli brojevi.
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/3.%20Strukture%20podataka%20-%20objekti%20i%20polja/screenshots/arrays.png?raw=true" style="width:50%; display:block;">
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/3.%20Strukture%20podataka%20-%20objekti%20i%20polja/screenshots/arrays.png?raw=true" style="width:50%; display:block; float:left;">
 
 > Izvor: https://bugfender.com/blog/javascript-arrays-guide/
 
@@ -1274,7 +1272,7 @@ for (let key in object) {
 ```
 
 `key` je lokalna varijabla proizvoljnog naziva koja sadrži ključ objekta, a `object` je objekt kroz koji "prolazimo".
-  
+
 ```javascript
 let voće = ["jabuka", "kruška", "šljiva", "naranča", "banana"];
 for (let indeks in voće) { // `indeks` je lokalna varijabla proizvoljnog naziva koja sadrži indeks polja
@@ -1350,7 +1348,7 @@ slova.forEach(function (trenutnaVrijednost) {
 
 Rekli smo da polja mogu sadržavati različite tipove podataka, uključujući i druge objekte.
 Uzmimo za primjer polje `korisnici` koje sadrži nekoliko objekata `Korisnik`. Možemo iskoristiti konstruktor `Korisnik` koji smo definirali u prethodnom poglavlju.
-  
+
 ```javascript
 function Korisnik(ime, prezime, godina_rodenja) {
 this.ime = ime;
@@ -1438,7 +1436,7 @@ let korisnik_ivan = { // ✅
     console.log(`Pozdrav ja sam ${this.ime}!`);
   }
 };
-```
+ ```
 Sada možemo korisnika pohraniti u polje, npr. `korisnici`.
 ```javascript
 let korisnici = [];
