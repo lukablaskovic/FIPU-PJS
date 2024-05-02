@@ -8,7 +8,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://fipu.unipu.hr/_pub/themes_static/unipu2020/fipu/icons/fipu_hr.png" style="width:40%; box-shadow: none !important;"></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
 
 # [3] Strukture podataka - Objekti i Polja
 
@@ -19,7 +19,7 @@ Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj p
 ## Sadržaj
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [3. Strukture podataka - Objekti i Polja](#3-strukture-podataka---objekti-i-polja)
+- [\[3\] Strukture podataka - Objekti i Polja](#3-strukture-podataka---objekti-i-polja)
   - [Sadržaj](#sadržaj)
 - [1. Objekti (eng. **_objects_**)](#1-objekti-eng-objects)
   - [1.1 Osnovna sintaksa objekata](#11-osnovna-sintaksa-objekata)
