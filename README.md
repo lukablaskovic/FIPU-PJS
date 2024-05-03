@@ -8,6 +8,8 @@
 
 **Ustanova**: [Sveučilište Jurja Dobrile u Puli](https://www.unipu.hr/), [Fakultet informatike u Puli](https://fipu.unipu.hr/)
 
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
+
 ## Youtube 📺
 
 1. [Uvod u JavaScript i EduCoder](https://youtu.be/OcavyHkM9BI) ([PJS1](https://github.com/lukablaskovic/FIPU-PJS/tree/main/1.%20Javascript%20osnove))
