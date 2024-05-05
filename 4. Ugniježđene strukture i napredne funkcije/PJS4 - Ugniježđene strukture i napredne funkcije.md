@@ -2811,6 +2811,8 @@ const imena = ["Ana", "Ivan", "Maja", "Pero", "Lucija", "Dario", "Petra", "Nikol
 
 ### Vježba 10
 
+**EduCoder šifra**: `advanced-functions-2`
+
 Zadano je sljedeće polje studenata koje sadrži ugniježđene objekte s podacima o studentima.
 
 ```javascript
