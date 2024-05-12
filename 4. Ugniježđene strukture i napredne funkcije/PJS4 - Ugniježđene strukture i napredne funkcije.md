@@ -2012,13 +2012,13 @@ console.log(parniBrojevi); // Ispisuje [2, 4, 6, 8, 10]
 Ili primjer s filtriranjem stringova koji sadrže ključnu riječ "PJS":
 ```javascript
 let kolekcija_skripta = ["PJS_1", "OOP_2", "PJS_2", "SPA_3", "PIS_2", "PJS_4"];
-let skripte_PJS = kolekcija_skripta.filter(skripta => skripta.includes("PJS")); // Arrow funkcija koja provjerava je li skripta sadrži ključnu riječ "PJS"
+let skripte_PJS = kolekcija_skripta.filter(skripta => skripta.includes("PJS")); // Arrow funkcija koja provjerava sadrži li skripta ključnu riječ "PJS"
 console.log(skripte_PJS); // Ispisuje ["PJS_1", "PJS_2", "PJS_4"]
 ```
 ili
 ```javascript
 let kolekcija_skripta = ["PJS_1", "OOP_2", "PJS_2", "SPA_3", "PIS_2", "PJS_4"];
-let skripte_PJS = kolekcija_skripta.filter(skripta => skripta.startsWith("PJS")); // Arrow funkcija koja provjerava je li skripta počinje s ključnom riječju "PJS"
+let skripte_PJS = kolekcija_skripta.filter(skripta => skripta.startsWith("PJS")); // Arrow funkcija koja provjerava počinje li skripta s ključnom riječju "PJS"
 console.log(skripte_PJS); // Ispisuje ["PJS_1", "PJS_2", "PJS_4"]
 ```
 
@@ -2026,7 +2026,7 @@ console.log(skripte_PJS); // Ispisuje ["PJS_1", "PJS_2", "PJS_4"]
 
 **EduCoder šifra**: `skyscanner`
 
-Napišite funkciju `pronadiLet()` koja prima polje letova, željeni grad polaska, željeni grad dolaska i datum polaska. Funkcija treba pronaći sve letove koji odgovaraju zadanim parametrima i vratiti ih kao novo polje. Morate koristiti metodu `filter()` s odgovarajućom callback funkcijom koja provjerava je li let odgovara zadanim parametrima definiranom `arrow` funkcijom. Korisnik može izostaviti datum polaska, u tom slučaju funkcija treba pronaći sve letove koji odgovaraju zadanim gradovima.
+Napišite funkciju `pronadiLet()` koja prima polje letova, željeni grad polaska, željeni grad dolaska i datum polaska. Funkcija treba pronaći sve letove koji odgovaraju zadanim parametrima i vratiti ih kao novo polje. Morate koristiti metodu `filter()` s odgovarajućom callback funkcijom koja provjerava odgovara li let zadanim parametrima definiranom `arrow` funkcijom. Korisnik može izostaviti datum polaska, u tom slučaju funkcija treba pronaći sve letove koji odgovaraju zadanim gradovima.
 
 Definirano je polje letova `letovi` koje sadrži objekte sa svojstvima `polazak`, `dolazak` i `datum`.
 ```javascript
@@ -2057,7 +2057,7 @@ Koristit ćemo metodu `filter()` za filtriranje letova prema zadanim parametrima
 ```javascript
 function pronadiLet(letovi, polazak, dolazak, datum = null) {
     let filtriraniLetovi = letovi.filter(let => { //
-        // Implementacija arrow funkcije koja provjerava je li let odgovara zadanim parametrima
+        // Implementacija arrow funkcije koja provjerava odgovara li let zadanim parametrima
     });
 }
 ```
