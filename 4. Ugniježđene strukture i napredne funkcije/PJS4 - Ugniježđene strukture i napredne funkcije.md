@@ -12,9 +12,11 @@
 
 # [4] Ugniježđene strukture i Napredne funkcije
 
-<p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili polja. Dohvat podataka s različitih API-eva, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
 
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js4.png?raw=true" style="width:9%; float:right;"></img><br>
+
+<p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili polja. Dohvat podataka s različitih API-eva, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
+
 
 ## Sadržaj
 
@@ -993,7 +995,7 @@ Dakle `filmovi[2]` predstavlja jednodimenzionalno polje s tri elementa (**filmov
 
 Kako se raspoređuju elementi u višedimenzionalnim poljima? Pogledamo ilustraciju:
 
-![Indices array](./screenschots/indices_array.png)
+![Indices array](https://github.com/lukablaskovic/FIPU-PJS/blob/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije/screenschots/indices_array.png?raw=true)
 
 > Izvor: https://dev.to/sanchithasr/understanding-nested-arrays-2hf7
 
@@ -1249,7 +1251,7 @@ Detaljnije ćemo obraditi `callback` funkcije koje smo već spomenuli u primjeri
 
 > Važno je prije prolaska kroz ovo poglavlje dobro ponoviti koncepte funkcija, funkcijskih izraza, objekata, polja te ugniježđenih struktura.
 
-<img src="./screenschots/reduce_graphics.png" alt="Advanced functions" style="width: 60%;" />
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije/screenschots/reduce_graphics.png?raw=true" alt="Advanced functions" style="width: 60%;" />
 
 > Izvor: https://blog.khanacademy.org/lets-reduce-a-gentle-introduction-to-javascripts-reduce-method/
 
