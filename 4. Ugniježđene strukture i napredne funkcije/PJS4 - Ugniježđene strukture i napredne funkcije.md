@@ -2165,11 +2165,11 @@ Za provjeru jezika možete koristiti petlje i metode `Array.includes()`. Ako zna
 Morate koristiti `arrow` funkcije za definiranje callback funkcija u metodama `filter()` i `find()`.
 
 ```javascript
-let idealni_zaposlenik = idealni_zaposlenik(kandidati, 25, 3, ["engleski"], ["JavaScript", "Python"]);
-console.log(idealni_zaposlenik); // Ispisuje {ime: "Ana", godine: 25, godine_iskustva: 3, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]}
+let sretnik = idealni_zaposlenik(kandidati, 25, 3, ["engleski"], ["JavaScript", "Python"]);
+console.log(sretnik); // Ispisuje {ime: "Ana", godine: 25, godine_iskustva: 3, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]}
 
-let trazeniKandidat = pronadiZaposlenika(kandidati, 35, 3, ["engleski"], ["JavaScript", "Python"]);
-console.log(trazeniKandidat); // Ispisuje {ime: "Marko", godine: 35, godine_iskustva: 7, strani_jezici: ["engleski", "njemački", "francuski"], programski_jezici: ["JavaScript", "Python", "Java"]}
+let sretnik = pronadiZaposlenika(kandidati, 35, 3, ["engleski"], ["JavaScript", "Python"]);
+console.log(sretnik); // Ispisuje {ime: "Marko", godine: 35, godine_iskustva: 7, strani_jezici: ["engleski", "njemački", "francuski"], programski_jezici: ["JavaScript", "Python", "Java"]}
 ```
 
 ### 3.3.5 `arrow` funkcije i `this` kontekst
