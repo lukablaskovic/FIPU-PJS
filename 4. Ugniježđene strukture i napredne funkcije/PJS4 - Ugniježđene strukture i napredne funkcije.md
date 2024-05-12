@@ -2168,7 +2168,7 @@ Morate koristiti `arrow` funkcije za definiranje callback funkcija u metodama `f
 let sretnik = idealni_zaposlenik(kandidati, 25, 3, ["engleski"], ["JavaScript", "Python"]);
 console.log(sretnik); // Ispisuje {ime: "Ana", godine: 25, godine_iskustva: 3, strani_jezici: ["engleski", "njemački"], programski_jezici: ["JavaScript", "Python"]}
 
-let sretnik = pronadiZaposlenika(kandidati, 35, 3, ["engleski"], ["JavaScript", "Python"]);
+sretnik = pronadiZaposlenika(kandidati, 35, 3, ["engleski"], ["JavaScript", "Python"]);
 console.log(sretnik); // Ispisuje {ime: "Marko", godine: 35, godine_iskustva: 7, strani_jezici: ["engleski", "njemački", "francuski"], programski_jezici: ["JavaScript", "Python", "Java"]}
 ```
 
