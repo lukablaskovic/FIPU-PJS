@@ -1,0 +1,266 @@
+<style>
+    body {
+        padding: 64px;
+        font-family: Sans-Serif;
+    }
+    .main {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+    .card {
+        overflow: hidden;
+        width: 100%;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(205, 205, 205, 0.1);
+        border-radius: 8px;
+        color: #353535;  
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+    }
+    input, button {
+        transition: all 0.2s ease-in-out;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.5);
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0.1);  
+        border-radius: 8px;
+        &:hover {
+            background: rgba(255, 255, 255, 1);
+            border: 1px solid rgba(0, 0, 0, 0.25);
+        }
+        &:focus {
+            background: rgba(255, 255, 255, 1);
+            border: 1px solid rgba(0, 0, 0, 0.25);
+        }
+    }
+    button {
+        background-color: #a5d6a7;
+        &:hover {
+            background: #83c683;
+            cursor: pointer;
+        }
+    }
+    form {
+        overflow-y: hidden;
+        min-height: 48px;
+        overflow-x: auto;
+        padding: 0px 16px;
+        display: flex;
+        margin-top: 16px;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .content {
+        padding: 16px 16px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .flex {
+        width: 100%;
+        display: inline-grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .item-list {
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: none !important;
+        border-radius: 8px;
+        margin-top: 16px;
+    }
+    .item {
+        background-color: rgba(169, 169, 169, 0.2);
+        padding: 8px 16px;
+        align-items: center
+    }
+    .item:nth-child(2n) {
+        background-color: rgba(169, 169, 169, 0.1);
+    }
+    .item-kolicina {
+        width: 64px;
+        text-align: center;
+        margin-left: 8px;
+        margin-right: 4px;
+    }
+    .item-kolicina-button {
+        padding: 0px 4px;
+        font-size: 24;
+    }
+    .item-kolicina-button:hover {
+        padding: 0px 4px;
+        color: #1f87e8;
+        cursor: pointer;
+    }
+    .item-ukloni {
+        color: #d81b43;
+        font-size: 14;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+    #ukupno {
+        font-weight: normal;
+    }
+    .disabled {
+        opacity: 0.5;
+        cursor: not-allowed !important;
+    }
+</style> 
+
+<body>
+    <div class="main">
+        <div class="card">
+            
+            <h1 class="text-4xl mb-4 font-bold">Košarica</h1>
+            
+            <hr />
+            
+            <form>
+                <label for="naziv_proizvoda">Naziv proizvoda:</label>
+                <input type="text" name="naziv_proizvoda" id="naziv_proizvoda" placeholder="Upiši naziv proizvoda..." />
+                <label for="cijena_proizvoda">Cijena proizvoda:</label>
+                <input type="number" value="1" min="0" name="cijena_proizvoda" id="cijena_proizvoda" placeholder="Upiši cijenu proizvoda..." />
+                <button disabled class="whitespace-nowrap disabled" type="button" name="dodaj_button" id="dodaj_button">Dodaj artikl</button>
+            </form>
+            
+            <hr /> 
+ 
+            <div class="content">
+                <div class="flex" style="font-size: 18; color: #787878;">
+                    <b> Naziv </b>
+                    <b> Količina </b>
+                    <b> Cijena </b>
+                    <b> Ukupno </b>
+                </div>
+                
+                <div id="item_list" class="item-list">
+                </div>
+            </div>
+            
+            <hr /> 
+            <form> 
+                <div> UKUPNO: <span id="ukupno"></span> € </div>
+            </form>
+            
+        </div>     
+    </div>
+</body>   
+
+function Proizvod(naziv, kolicina, cijena) { 
+  this.naziv = naziv; 
+  this.kolicina = kolicina; 
+  this.cijena = cijena.toFixed(2);
+  this.ukupnaCijena = () => (this.kolicina * this.cijena).toFixed(2);  
+} 
+
+const item_list = document.getElementById("item_list");
+
+const kosarica = {
+  proizvodi: [],
+  dodajProizvod: function(proizvod) {
+    const indexFound = this.proizvodi.findIndex(p => p.naziv === proizvod.naziv);
+    if (indexFound == -1) {  
+      this.proizvodi.push(proizvod); 
+      const naziv = proizvod.naziv;   
+      const noviProizvod = document.createElement('div');    
+      noviProizvod.classList.add("flex");
+      noviProizvod.classList.add("item");
+      noviProizvod.id = `item_${naziv}`;
+      noviProizvod.innerHTML = `<b>        
+                                  ${naziv} 
+                                </b>
+                                <div style="display: flex; align-items: center">
+                                    <b class="item-kolicina-button item-kolicina-minus" id="item_kolicina_minus_${naziv}">-</b>
+                                    <input name="kolicina" id="item_kolicina_${naziv}" class="item-kolicina" value="${proizvod.kolicina}" disabled=""/>
+                                    <b class="item-kolicina-button item-kolicina-plus" id="item_kolicina_plus_${naziv}">+</b>
+                                </div>
+                                <div>
+                                    ${proizvod.cijena} €
+                                </div>
+                                <div class="flex">
+                                  <span id="item_ukupnaCijena_${naziv}">${proizvod.ukupnaCijena()}</span> € 
+                                  <div class="item-ukloni" id="item_ukloni_${naziv}">
+                                    Ukloni
+                                  <div>
+                                </div>`;
+      item_list.append(noviProizvod);
+      this.dodajFunkcionalnosti(naziv);
+      this.azurirajUkupnuCijenu();
+    } else { 
+       this.proizvodi[indexFound].kolicina++;
+       document.getElementById(`item_kolicina_${this.proizvodi[indexFound].naziv}`).value++;  
+       document.getElementById(`item_ukupnaCijena_${this.proizvodi[indexFound].naziv}`).innerHTML = this.proizvodi[indexFound].ukupnaCijena();
+       this.azurirajUkupnuCijenu();
+    }
+  },
+  
+  dodajFunkcionalnosti: function(naziv) {
+    const proizvod = this.proizvodi.find(p => p.naziv == naziv);
+    const item = document.getElementById(`item_${naziv}`);
+    const item_kolicina_minus = document.getElementById(`item_kolicina_minus_${naziv}`);
+    const item_kolicina_plus = document.getElementById(`item_kolicina_plus_${naziv}`);
+    const item_kolicina = document.getElementById(`item_kolicina_${naziv}`);
+    const item_ukupnaCijena = document.getElementById(`item_ukupnaCijena_${naziv}`);
+    const item_ukloni = document.getElementById(`item_ukloni_${naziv}`);
+  
+    item_kolicina_minus.addEventListener('click', (event) => {
+      if (proizvod.kolicina == 0) return;
+      proizvod.kolicina--;
+      item_kolicina.value = proizvod.kolicina;
+      item_ukupnaCijena.innerHTML = proizvod.ukupnaCijena();
+      this.azurirajUkupnuCijenu();
+    });
+   
+    item_kolicina_plus.addEventListener('click', (event) => {
+      proizvod.kolicina++; 
+      item_kolicina.value = proizvod.kolicina;
+      item_ukupnaCijena.innerHTML = proizvod.ukupnaCijena();
+      this.azurirajUkupnuCijenu();
+    });
+    
+    item_ukloni.addEventListener('click', (event) => {
+      const index = this.proizvodi.findIndex(p => p.naziv == naziv);
+      if (index != -1) this.proizvodi.splice(index, 1)
+      item.remove(); 
+      this.azurirajUkupnuCijenu();
+    });
+  },
+
+  azurirajUkupnuCijenu: function() {
+    const ukupnaCijena = this.proizvodi.reduce((accumulator, currentValue) =>
+      accumulator + parseFloat(currentValue.ukupnaCijena()), 0);
+    const ukupno = document.getElementById(`ukupno`);
+    ukupno.innerHTML = ukupnaCijena.toFixed(2);
+  },
+};
+
+kosarica.dodajProizvod(new Proizvod("Jabuka", 4, 0.25));
+kosarica.dodajProizvod(new Proizvod("Banana", 12, 0.12));
+kosarica.dodajProizvod(new Proizvod("Lubenica", 1, 4.48));
+kosarica.dodajProizvod(new Proizvod("Kruh", 3, 2));
+
+document.getElementById(`dodaj_button`).addEventListener('click', (event) => {
+  const title = document.getElementById(`naziv_proizvoda`).value;
+  const cijena = document.getElementById(`cijena_proizvoda`).value;
+  kosarica.dodajProizvod(new Proizvod(title, 1, Number.parseFloat(cijena)));
+});
+
+document.getElementById('naziv_proizvoda').addEventListener('input', (event) => {
+  const value = event.target.value;
+  const button = document.getElementById('dodaj_button'); // Ensure the button ID is correct
+  if (value.length > 0) {
+    button.disabled = false;
+    button.classList.remove("disabled");
+  } else {
+    button.disabled = true;
+    button.classList.add("disabled");
+  }
+});
