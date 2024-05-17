@@ -1,3 +1,57 @@
+# Programiranje u skriptnim jezicima
+
+**Nositelj**: doc. dr. sc. Nikola Tanković  
+**Asistenti**:
+
+- Luka Blašković, univ. bacc. inf.
+- Alesandro Žužić, univ. bacc. inf.
+
+**Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
+
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%"></img>
+
+# [5] DOM, JSON i Asinkrono programiranje
+
+
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js5.png?raw=true" style="width:9%; float:right;"></img>
+
+<p style="float: clear">Prilikom izrade web aplikacija i stranica, najčešća radnja koju ćete obavljati jest manipulacija strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Dodatno ćemo se upoznati s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešći format za razmjenu podataka. Za sam kraj ćemo napraviti uvod u asinkrono programiranje te na taj način stvoriti uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
+
+## Sadržaj
+
+
+- [Programiranje u skriptnim jezicima](#programiranje-u-skriptnim-jezicima)
+- [\[5\] DOM, JSON i Asinkrono programiranje](#5-dom-json-i-asinkrono-programiranje)
+  - [Sadržaj](#sadržaj)
+- [0. Ponavljanje HTML-a i CSS-a](#0-ponavljanje-html-a-i-css-a)
+- [1. Uvod u DOM](#1-uvod-u-dom)
+  - [1.1 Osnovni DOM element](#11-osnovni-dom-element)
+  - [1.2 Dohvaćanje DOM elemenata](#12-dohvaćanje-dom-elemenata)
+    - [Primjer 1 - dohvaćanje elementa](#primjer-1---dohvaćanje-elementa)
+  - [1.3 Svojstva elementa](#13-svojstva-elementa)
+    - [Primjer 2 - Pristupanje sadržaju, id-u. tag-u, atributima i klasama elementa](#primjer-2---pristupanje-sadržaju-id-u-tag-u-atributima-i-klasama-elementa)
+    - [Vježba 1](#vježba-1)
+    - [Primjer 3 - Manipulacija klasama](#primjer-3---manipulacija-klasama)
+    - [Vježba 2](#vježba-2)
+    - [Primjer 4 - Dohvaćanje `child` i `sibling` elemenata.](#primjer-4---dohvaćanje-child-i-sibling-elemenata)
+    - [Vježba 3](#vježba-3)
+  - [1.4 Dodavanje i brisanje DOM elemenata](#14-dodavanje-i-brisanje-dom-elemenata)
+    - [Primjer 5 - kreiranje, dodavanje, brisanje i mjenjanje elemenata](#primjer-5---kreiranje-dodavanje-brisanje-i-mjenjanje-elemenata)
+    - [Vježba 4](#vježba-4)
+  - [1.4 DOM events](#14-dom-events)
+    - [Primjer 6 - `click` event](#primjer-6---click-event)
+    - [Vježba 5](#vježba-5)
+    - [Primjer 7 - `focus` events](#primjer-7---focus-events)
+    - [Vježba 6](#vježba-6)
+    - [Primjer 8 - `mouse` events](#primjer-8---mouse-events)
+    - [Vježba 7](#vježba-7)
+    - [Primjer 9 - `input` event](#primjer-9---input-event)
+    - [Vježba 8](#vježba-8)
+- [Samostalni zadatak za vježbu 8](#samostalni-zadatak-za-vježbu-8)
+
+
+<br>
+
 # 0. Ponavljanje HTML-a i CSS-a
 U ovoj sekciji ćemo se osvrnuti na osnove HTML-a i CSS-a. HTML (HyperText Markup Language) je jezik za označavanje struktura web stranica, dok je CSS (Cascading Style Sheets) jezik za stilizaciju tih struktura. Kombinacija ova dva jezika omogućuje nam da oblikujemo i prikažemo sadržaj web stranica na željeni način.
 
@@ -179,11 +233,11 @@ Također postoje i CSS pseudo-klase kao što su `:hover`, `:active`, `:focus` i 
 # 1. Uvod u DOM
 Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura i metoda, sada smo spremni za početak manipulacije Document Object Model (DOM)-om, što uključuje dinamičko upravljanje HTML elementima i njihovim CSS svojstvima.
 
-## Osnovni DOM element
+## 1.1 Osnovni DOM element
 
 `Document` objekt je ključna komponenta u JavaScriptu koja predstavlja cijelu web stranicu u trenutnom pregledniku. On omogućava pristupanje i manipulaciju svim elementima na stranici, kao i njihovim svojstvima i sadržaju. Olakšava dinamičko upravljanje sadržajem stranice, što je ključno za stvaranje interaktivnih i responzivnih korisničkih iskustava.
 
-## Dohvaćanje DOM elemenata
+## 1.2 Dohvaćanje DOM elemenata
 Di bi uopće mogli raditi sa DOM elementima prvo ih trebamo dovatiti ako im želimo mjenjati atribute/svojstva i sam sadržaj i vrijednost.
 
 Imamo zadan sljedeći HTML gdje želimo izvući vrijednosti iz pojedinih elemenata.
@@ -249,7 +303,7 @@ for (let query of queryAll){
 
 > Kod `querySelector` uvijek prvo pretražuje po tagu, za pretraživanje po id-u treba koristiti `#`, za pretraživanje po klasi treba koristiti `.`, za pretraživanje po imenu ili drugim atributima prvo treba staviti ime taga pa unutar uglatih zagrada pretragu`[atribut = vrijednost]`
 
-### Primjer 1.
+### Primjer 1. - dohvaćanje elementa
 Za zadani HTML kod, treba dohvatiti `<input>` s vrijednošću **Točno**.
 ```html
 <div class="moja-forma glavni2">
@@ -278,7 +332,7 @@ const query = document.querySelector("div.moja-forma.glavni span[name='ime']");
 console.log(query.innerHTML) 
 ```
 
-## Svojstva elementa
+## 1.3 Svojstva elementa
 Elementi imaju mnogo svojstava, od kojih smo već koristili neka za dohvaćanje sadržaja elemenata poput `innerHTML`. U sljedećoj tablici su prikazana neka od bitnijih svojstava.
 
 | Svojstvo | Objašnjenje | Sintaksa |
@@ -709,7 +763,7 @@ function prosjekStudenata(poljeStudenata) {
 console.log(`Prosjek ocjena studenata: ${prosjekStudenata(filtriraniStudenti)}`);
 ```
 
-## Dodavanje i brisanje DOM elemenata
+## 1.4 Dodavanje i brisanje DOM elemenata
 Dodavanje i brisanje elemenata omogućuje dinamičko mijenjanje stranice temeljem korisničkih akcija ili događaja. Dosad smo naučili kako da dohvaćamo i mjenjamo elemente, međutim dodavanje novih elemenata je dosta nezgodno koristeći svojstvo `innerHTML`. Zato postoje sljedeće metode za dodavanja, umetanje i brisanje HTML-a i elemenata:
 
 | Metoda                   | Objašnjenje                                                  | Sintaksa                                              |
@@ -958,7 +1012,7 @@ divKupac.append(divUkupno);
 console.log(divKupac.outerHTML);
 ```
 
-## DOM events
+## 1.4 DOM events
 
 DOM događaji omogućuju JavaScriptu da reagira na korisničke akcije kao što su klikovi, unos teksta ili pokretanje mišem. Događaj se na element dodaje metodom `addEventListener(eventType, callbackFunction)`.
 - `callbackFunction` funkcija koju proslijeđujemo metodi, funkcija prima argument `event` koji se odnosi na pozvani događaj. Da bi se moglo pristupati elementu nad kojim se pozvao `event`, koristi se svojstvo `target`
@@ -1034,7 +1088,7 @@ CSS korišten u sljedećim primjerima/zadacima:
 </style>
 ```
 
-### Primjer 7 - `click` event
+### Primjer 6 - `click` event
 ```html
 <div>
     <button id="increaseBtn">+</button>
@@ -1183,7 +1237,7 @@ btn_unshift.addEventListener("click", () => dodajNoviElement("unshift"))
 btn_shift.addEventListener("click", () => ukloniElement("shift"))
 ```
 
-### Primjer 8 - `focus` events
+### Primjer 7 - `focus` events
 ```html
 <div id="inputi">
     <b>Ime:</b> <input id="ime" placeholder="Ime ..."/>
@@ -1274,7 +1328,7 @@ inputs.addEventListener("focusout", () => {
 
 Zadan je sljedeći kôd:
 
-### Primjer 9 - `mouse` events
+### Primjer 8 - `mouse` events
 ```html
 <div id="buttons" style="background: lightblue;">
     <button id="btn_1">1</button>
