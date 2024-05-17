@@ -240,14 +240,7 @@ const kosarica = {
     const ukupno = document.getElementById(`ukupno`);
     ukupno.innerHTML = ukupnaCijena.toFixed(2);
   },
-
-  ocistiKosaricu: function() {
-    this.proizvodi = [];
-    item_list.innerHTML = "";
-  }
 };
-
-kosarica.ocistiKosaricu();
 
 kosarica.dodajProizvod(new Proizvod("Jabuka", 4, 0.25));
 kosarica.dodajProizvod(new Proizvod("Banana", 12, 0.12));
@@ -271,16 +264,3 @@ document.getElementById('naziv_proizvoda').addEventListener('input', (event) => 
     button.classList.add("disabled");
   }
 });
-  
-
-
-
-
-
-
-
-
-
-
-
-
