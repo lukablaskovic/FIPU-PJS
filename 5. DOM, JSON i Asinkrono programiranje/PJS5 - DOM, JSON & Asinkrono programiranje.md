@@ -27,12 +27,12 @@
     - [Primjer upotrebe `class` atributa:](#primjer-upotrebe-class-atributa)
     - [Primjer kombiniranja `id` i `class` atributa:](#primjer-kombiniranja-id-i-class-atributa)
     - [CSS (Cascading Style Sheets)](#css-cascading-style-sheets)
-- [1. Uvod u DOM](#1-uvod-u-dom)
+- [1. DOM manipulacija](#1-dom-manipulacija)
   - [1.1 Osnovni DOM element](#11-osnovni-dom-element)
   - [1.2 Dohvaćanje DOM elemenata](#12-dohvaćanje-dom-elemenata)
-    - [Primjer 1. - dohvaćanje elementa](#primjer-1---dohvaćanje-elementa)
-  - [1.3 Svojstva elementa](#13-svojstva-elementa)
-    - [Primjer 2 - Pristupanje sadržaju, id-u. tag-u, atributima i klasama elementa](#primjer-2---pristupanje-sadržaju-id-u-tag-u-atributima-i-klasama-elementa)
+    - [Primjer 1. - dohvaćanje elemenata](#primjer-1---dohvaćanje-elemenata)
+  - [1.3 Svojstva DOM elemenata](#13-svojstva-dom-elemenata)
+    - [Primjer 2 - Pristupanje sadržaju, `id`-u, `tag`-u, atributima i klasama elementa](#primjer-2---pristupanje-sadržaju-id-u-tag-u-atributima-i-klasama-elementa)
     - [Vježba 1](#vježba-1)
     - [Primjer 3 - Manipulacija klasama](#primjer-3---manipulacija-klasama)
     - [Vježba 2](#vježba-2)
@@ -248,7 +248,7 @@ Tablica prikazuje neke od najčešće korištenih CSS pseudo-klasa:
 | `:enabled`   | Primjenjuje stil na omogućene (enabled) elemente. | ```css input:enabled { background-color: white; } ``` |
 | `:empty`     | Primjenjuje stil na elemente koji nemaju djece (prazne elemente). | ```css div:empty { display: none; } ``` |
 
-# 1. Uvod u DOM
+# 1. DOM manipulacija
 Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura i metoda, sada smo spremni za početak manipulacije **Document Object Model**, odnosno DOM-om, što uključuje dinamičko upravljanje HTML elementima i njihovim CSS svojstvima.
 
 **Document Object Model (DOM)** je standard koji definira strukturu i način pristupa HTML dokumentima. DOM predstavlja HTML dokument kao stablo objekata, gdje svaki HTML element predstavlja objekt, a svaki atribut i sadržaj elementa predstavlja svojstvo tog objekta.
@@ -260,20 +260,39 @@ Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura
 
 `Document` objekt je ključna komponenta u JavaScriptu koja predstavlja cijelu web stranicu u trenutnom pregledniku. On omogućava pristupanje i manipulaciju svim elementima na stranici, kao i njihovim svojstvima i sadržaju. Olakšava dinamičko upravljanje sadržajem stranice, što je ključno za stvaranje interaktivnih i responzivnih korisničkih iskustava.
 
+Možemo ga zamisliti kao korijenski čvor HTML dokumenta (slika iznad).
+
+`document` objekt možemo referencirati direktno ili preko `window` objekta.
+
+```javascript
+// Referenciranje document objekta
+let doc = document;
+
+// ili
+let doc = window.document;
+```
+
+`document` objekt ima brojna svojstva i metode, mi ćemo u ovoj skripti baviti prvenstveno metodama, no to mogu biti i svojstva. Na primjer, `document.title` vraća naslov stranice, a `document.URL` vraća URL stranice.
+
+```javascript
+console.log(document.title); // Ispisuje naslov stranice
+console.log(document.URL); // Ispisuje URL stranice
+```
+
 ## 1.2 Dohvaćanje DOM elemenata
-Di bi uopće mogli raditi sa DOM elementima prvo ih trebamo dovatiti ako im želimo mjenjati atribute/svojstva i sam sadržaj i vrijednost.
+Kako bismo uopće mogli raditi sa DOM elementima prvo ih moramo "dohvatiti".
 
 Imamo zadan sljedeći HTML gdje želimo izvući vrijednosti iz pojedinih elemenata.
 ```html
-<p id="mojID">Ja sam paragraf 1</p>
-<input type="text" name="ime" id="form_ime" class="mojInput" value="Marko" />
-<input type="text" name="prezime" id="form_prezime" class="mojInput" value="Marić" />
-<p class="mojaKlasa">Ja sam paragraf 2</p>
-<span class="mojaKlasa">Ja sam span</span>
+<p id="mojID">Ja sam paragraf 1</p> <!-- ID -->
+<input type="text" name="ime" id="form_ime" class="mojInput" value="Marko" /> <!-- ID, class -->
+<input type="text" name="prezime" id="form_prezime" class="mojInput" value="Marić" /> <!-- ID, class -->
+<p class="mojaKlasa">Ja sam paragraf 2</p> <!-- class -->
+<span class="mojaKlasa">Ja sam span</span> <!-- class -->
 <p>Ja sam paragraf 3</p>
 ```
 
-Elementi se mogu dohvatiti na sljedeće načine:
+HTML elementi se mogu dohvatiti na sljedeće načine:
 
 | Metoda | Objašnjenje |	Sintaksa |	Primjer |
 |--------|-------------|-------------|----------|
@@ -281,8 +300,8 @@ Elementi se mogu dohvatiti na sljedeće načine:
 | `getElementsByTagName(x)` | Vraća sve elemente po HTML tagu. | `document.getElementsByTagName(x)` | `document.getElementsByTagName("p")`
 | `getElementsByClassName(x)` | Vraća sve elemente po klasi/klasama ili kombinaciji HTML taga i klase. | `document.getElementsByClassName(x)` | `document.getElementsByClassName("mojaKlasa")`
 | `getElementsByName(x)` | Vraća sve elemente po imenu. | `document.getElementsByName(x)` | `document.getElementsByName("ime")`
-| `querySelector(x)` | Vraća prvi element koji odgovara određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća null. | `document.querySelector(x)` | `document.querySelector("#mojID")`<br>`document.querySelector(".mojaKlasa")`<br>`document.querySelector("p")`<br>`document.querySelector("input[name='ime']")`
-| `querySelectorAll(x)` | Vraća sve elemente koji odgovaraju određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća null. | `document.querySelectorAll(x)` |  `document.querySelectorAll("#mojID")`<br>`document.querySelectorAll(".mojaKlasa")`<br>`document.querySelectorAll("p")`<br>`document.querySelectorAll("input[name='ime']")`
+| `querySelector(x)` | Vraća **prvi element** koji odgovara određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća null. | `document.querySelector(x)` | `document.querySelector("#mojID")`<br>`document.querySelector(".mojaKlasa")`<br>`document.querySelector("p")`<br>`document.querySelector("input[name='ime']")`
+| `querySelectorAll(x)` | Vraća **sve elemente** koji odgovaraju određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća null. | `document.querySelectorAll(x)` |  `document.querySelectorAll("#mojID")`<br>`document.querySelectorAll(".mojaKlasa")`<br>`document.querySelectorAll("p")`<br>`document.querySelectorAll("input[name='ime']")`
 
 ```javascript
 // Dohvaćanje prvog DOM elementa po ID-u
@@ -324,10 +343,11 @@ for (let query of queryAll){
 }
 ```
 
-> Kod `querySelector` uvijek prvo pretražuje po tagu, za pretraživanje po id-u treba koristiti `#`, za pretraživanje po klasi treba koristiti `.`, za pretraživanje po imenu ili drugim atributima prvo treba staviti ime taga pa unutar uglatih zagrada pretragu`[atribut = vrijednost]`
+> `querySelector` uvijek prvo pretražuje po `tag`-u, za pretraživanje po `id`-u treba koristiti oznaku `#`.
+>  za pretraživanje po klasi treba koristiti `.` dok za pretraživanje po imenu ili drugim atributima prvo treba staviti ime `tag`-a pa unutar uglatih zagrada pretragu `[atribut = vrijednost]`
 
-### Primjer 1. - dohvaćanje elementa
-Za zadani HTML kod, treba dohvatiti `<input>` s vrijednošću **Točno**.
+### Primjer 1. - dohvaćanje elemenata
+Za zadani HTML kôd, treba dohvatiti `<input>` s vrijednošću **TOČNO**. Ne smijemo koristiti `id` atribut i naknadno mijenjati HTML.
 ```html
 <div class="moja-forma glavni2">
     <span name="ime">KRIVO</span>
@@ -347,35 +367,39 @@ Za zadani HTML kod, treba dohvatiti `<input>` s vrijednošću **Točno**.
     <span name="ime">KRIVO</span>
 </div>
 ```
-Treba dohvatiti prvi `<span>` element s imenom "*ime*" (`<span name="ime"/>`) koji se nalazi unutar `<div>` elementa čija je klasa "*moja-forma glavni*" (`<div class="moja-forma glavni">`)."
+Treba dohvatiti prvi `<span>` element s imenom `"ime"`: (`<span name="ime"/>`), a koji se nalazi unutar `<div>` elementa s klasama `"moja-forma glavni"` (`<div class="moja-forma glavni">`)."
 
-Rješenje:
+>Rješenje:
 ```javascript
-const query = document.querySelector("div.moja-forma.glavni span[name='ime']");
+const query = document.querySelector("div.moja-forma.glavni span[name='ime']"); // Pogledati definiciju selektora u tablici
 console.log(query.innerHTML) 
 ```
 
-## 1.3 Svojstva elementa
-Elementi imaju mnogo svojstava, od kojih smo već koristili neka za dohvaćanje sadržaja elemenata poput `innerHTML`. U sljedećoj tablici su prikazana neka od bitnijih svojstava.
+## 1.3 Svojstva DOM elemenata
+DOM Elementi imaju mnogo svojstava, od kojih smo već neka koristili neka za dohvaćanje sadržaja elemenata poput `innerHTML`.
+
+Možemo ih podijeliti u svojstva za: dohvaćanje i postavljanje atributa, dohvaćanje sadržaja, dohvaćanje stilova, dohvaćanje djece i susjeda.
+
+U sljedećoj tablici su prikazana neka od bitnijih svojstava:
 
 | Svojstvo | Objašnjenje | Sintaksa |
 |----------|-------------|----------|
-| `id` | Vraća ili postavlja vrijednost atributa `id` elementa. | `element.id` | `"mojID"` |
-| `tagName` | Vraća ime taga elementa u velikim slovima. | `element.tagName` | `"DIV"` |
+| `id` | Vraća ili postavlja vrijednost `id` atributa elementa. | `element.id` | `"mojID"` |
+| `tagName` | Vraća ime `tag`-a elementa velikim slovima. | `element.tagName` | `"DIV"` |
 | `classList` | Vraća kolekciju klasa elementa. | `element.classList` |
-| `className` | Vraća ili postavlja vrijednost atributa `class` elementa. | `element.className` |
-| `innerHTML` | Vraća ili postavlja HTML sadržaj unutar elementa. | `element.innerHTML` |
+| `className` | Vraća ili postavlja vrijednost `class` atributa elementa. | `element.className` |
+| `innerHTML` | Vraća ili mijenja HTML sadržaj unutar elementa. | `element.innerHTML` |
 | `outerHTML` | Vraća HTML elementa, uključujući sam element i njegov sadržaj. | `element.outerHTML` |
 | `attributes` | Vraća kolekciju svih atributa elementa. | `element.attributes` |
-| `style` | Vraća atributa stil elementa. | `element.style` |
-| `childElementCount` | Vraća broj direktnih djece elementa. | `element.childElementCount` |
-| `children` | Vraća kolekciju direktnih djece elementa. | `element.children` |
+| `style` | Vraća stil atribut elementa. | `element.style` |
+| `childElementCount` | Vraća broj direktnie djece elementa. | `element.childElementCount` |
+| `children` | Vraća kolekciju direktne djece elementa. | `element.children` |
 | `firstElementChild` | Vraća prvo direktno dijete elementa. | `element.firstElementChild` |
 | `lastElementChild` | Vraća posljednje direktno dijete elementa. | `element.lastElementChild` |
-| `nextElementSibling` | Vraća sljedeći element nakon određenog elementa u roditeljskom elementu. | `element.nextElementSibling` |
-| `previousElementSibling` | Vraća prethodni element prije određenog elementa u roditeljskom elementu. | `element.previousElementSibling` |
+| `nextElementSibling` | Vraća sljedeći element nakon `element` u roditeljskom elementu. | `element.nextElementSibling` |
+| `previousElementSibling` | Vraća element prije `element` u roditeljskom elementu. | `element.previousElementSibling` |
 
-### Primjer 2 - Pristupanje sadržaju, id-u. tag-u, atributima i klasama elementa
+### Primjer 2 - Pristupanje sadržaju, `id`-u, `tag`-u, atributima i klasama elementa
 ```html
 <div class="text-5xl">
     Hi!
@@ -409,24 +433,24 @@ element.classList.forEach( klasa => {
 })
 ```
 
->  `attributes`svojstvo ne vraća *polje objekata* već *objekt objekata* kao povratnu vrijednost, tako da za iteraciju najbolje koristiti `for of` petlju. Preciznije, `classList` vraća `DOMTokenList` koja omogućava korištenje `forEach` petlje dok `attributes` vraća `NamedNodeMap` te nema mogućnost korištenja `forEach` petlje.
+>  `attributes` svojstvo **ne vraća polje objekata već objekt objekata** kao povratnu vrijednost, tako da je za iteraciju najbolje koristiti `for of` petlju. Preciznije, `classList` vraća `DOMTokenList` koja omogućava korištenje `forEach` petlje dok `attributes` vraća `NamedNodeMap` te nema mogućnost korištenja `forEach` petlje.
 
-Elementu možemo direktno mijenjati ili dodati `id` koristeći `id` svojstvo. Možemo dohvatiti prvi `div` element s tekstom "Hi!" i dodat mu `id` "prviDiv".
+Elementu možemo direktno mijenjati ili dodati `id` koristeći `id` svojstvo. Možemo dohvatiti prvi `div` element s tekstom `"Hi!"` i dodati mu `id`: `"prviDiv"`.
 
 ```javascript
 const element = document.querySelector('div')
 console.log(element.outerHTML); //Output: "<div class="text-5xl"> Hi! </div>"
-element.id = "prviDiv"
+element.id = "prviDiv" // Dodavanje ID-a
 console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> Hi! </div>"
 ```
 
-Zatim mu možemo promjeniti sadržaj preko `innerHTML` svojstva.
+Sadržaj mu možemo promijeniti preko `innerHTML` svojstva.
 ```javascript
-element.innerHTML = " Pozdrav! "
+element.innerHTML = " Pozdrav! " //Mjenjanje sadržaja
 console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> Pozdrav! </div>"
 ```
 
-> Mjenjanjem sadržaja preko `outerHTML` svojstva možemo prekrižiti cijeli element i nije pametno raditi. Za to postoje dodatne metode koje ćemo proći u poglavlju `Dodavanje i brisanje DOM elemenata`
+> Mijenjanjem sadržaja preko `outerHTML` svojstva možemo prekrižiti cijeli element pa nije pametno to koristiti. Međutim, za to postoje metode koje ćemo proći u poglavlju `Dodavanje i brisanje DOM elemenata`
 
 ### Vježba 1
 **EduCoder šifra**: `kune_u_eure`
