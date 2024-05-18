@@ -15,19 +15,22 @@
 
 <img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js5.png?raw=true" style="width:9%; float:right;"></img>
 
-<p style="float: clear">Prilikom izrade web aplikacija i stranica, najčešća radnja koju ćete obavljati jest manipulacija strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Dodatno ćemo se upoznati s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešći format za razmjenu podataka. Za sam kraj ćemo napraviti uvod u asinkrono programiranje te na taj način stvoriti uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
+<p style="float: clear">Prilikom izrade web aplikacija i stranica, često ćete na neki način manipulirati strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Važno je razumjeti kako funkcionira DOM budući da se svi poznati JavaScript razvojni okviri temelje na njemu (React, VUE, Angular, jQuery...). Dodatno, upoznat ćemo se s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešće korišteni format za razmjenu podataka. Za sam kraj ćemo proći asinkrono programiranje i time postaviti dobre temelje za uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
 
 ## Sadržaj
-
 
 - [Programiranje u skriptnim jezicima](#programiranje-u-skriptnim-jezicima)
 - [\[5\] DOM, JSON i Asinkrono programiranje](#5-dom-json-i-asinkrono-programiranje)
   - [Sadržaj](#sadržaj)
 - [0. Ponavljanje HTML-a i CSS-a](#0-ponavljanje-html-a-i-css-a)
+    - [Primjer upotrebe `id` atributa:](#primjer-upotrebe-id-atributa)
+    - [Primjer upotrebe `class` atributa:](#primjer-upotrebe-class-atributa)
+    - [Primjer kombiniranja `id` i `class` atributa:](#primjer-kombiniranja-id-i-class-atributa)
+    - [CSS (Cascading Style Sheets)](#css-cascading-style-sheets)
 - [1. Uvod u DOM](#1-uvod-u-dom)
   - [1.1 Osnovni DOM element](#11-osnovni-dom-element)
   - [1.2 Dohvaćanje DOM elemenata](#12-dohvaćanje-dom-elemenata)
-    - [Primjer 1 - dohvaćanje elementa](#primjer-1---dohvaćanje-elementa)
+    - [Primjer 1. - dohvaćanje elementa](#primjer-1---dohvaćanje-elementa)
   - [1.3 Svojstva elementa](#13-svojstva-elementa)
     - [Primjer 2 - Pristupanje sadržaju, id-u. tag-u, atributima i klasama elementa](#primjer-2---pristupanje-sadržaju-id-u-tag-u-atributima-i-klasama-elementa)
     - [Vježba 1](#vježba-1)
@@ -53,12 +56,17 @@
 <br>
 
 # 0. Ponavljanje HTML-a i CSS-a
-U ovoj sekciji ćemo se osvrnuti na osnove HTML-a i CSS-a. HTML (HyperText Markup Language) je jezik za označavanje struktura web stranica, dok je CSS (Cascading Style Sheets) jezik za stilizaciju tih struktura. Kombinacija ova dva jezika omogućuje nam da oblikujemo i prikažemo sadržaj web stranica na željeni način.
+U ovoj sekciji ćemo se osvrnuti na osnove HTML-a i CSS-a. **HTML** (HyperText Markup Language) je markup jezik za označavanje struktura web stranica, dok je CSS (Cascading Style Sheets) jezik za stilizaciju tih struktura. Kombinacija ova dva jezika omogućuje nam da oblikujemo i prikažemo sadržaj web stranica na željeni način.
 
-HTML (HyperText Markup Language)
-HTML je jezik koji se koristi za strukturiranje sadržaja web stranica. Sastoji se od HTML elemenata koji se koriste za označavanje dijelova sadržaja. Svaki HTML element sastoji se od otvarajuće oznake, sadržaja elementa i zatvarajuće oznake.
+>**HTML (HyperText Markup Language)**
+
+**HTML** je markup jezik (***eng. [markup language](https://en.wikipedia.org/wiki/Markup_language#:~:text=July%202023content%20to%20facilitate%20automated%20processing.)***) koji se koristi za strukturiranje sadržaja web stranica. Sastoji se od HTML elemenata koji se koriste za označavanje dijelova sadržaja. Svaki HTML element sastoji se od otvarajuće oznake (***eng. start tag***), sadržaja elementa (***eng. content***) i zatvarajuće oznake (***eng. end tag***).
 
 ```html
+<head>
+    <title>Moja web stranica</title>
+</head>
+
 <body>
     <header>
         <h1>Naslov</h1>
@@ -88,9 +96,11 @@ HTML je jezik koji se koristi za strukturiranje sadržaja web stranica. Sastoji 
     </footer>
 </body>
 ```
-Ovaj primjer prikazuje osnovnu strukturu HTML dokumenta koji sadrži zaglavlje, glavni sadržaj i podnožje. U zaglavlju se nalaze meta oznake za deklariranje tipa dokumenta, naslov stranice i veze prema CSS datotekama. U tijelu dokumenta nalaze se elementi poput `<header>`, `<nav>`, `<main>`, `<article>`, `<footer>` itd., koji pomažu u strukturiranju i organizaciji sadržaja web stranice.
+Osnovna struktura HTML dokumenta često se može podijeliti na `head` i `body` dijelove. `head` dio obično sadrži meta informacije o dokumentu, kao što su naslov stranice, veze prema CSS datotekama, skripte itd. `body` dio sadrži glavni sadržaj stranice, poput zaglavlja (**header**), navigacije (**nav**), članaka (**article**) i podnožja (**footer**). 
 
-Tablica nekih osnovnih HTML elemenata:
+>Treba napomenuti da je dolaskom HTML5 standarda uvedeno mnogo novih elemenata i atributa koji omogućuju bolje semantičko označavanje sadržaja web stranica. Semantičko označavanje je važno jer pomaže tražilicama i drugim alatima da bolje razumiju strukturu i značenje sadržaja na web stranici. Svakako je moguće gotovo sve elemente stilizirati pomoću CSS-a i svesti na `div` i `span` elemente, ali korištenje semantičkih elemenata poboljšava pristupačnost i [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide#:~:text=SEO%E2%80%94short%20for%20search%20engine,site%20through%20a%20search%20engine.) (Search Engine Optimization) web stranice.
+
+U najnovijem HTML standardu za vrijeme pisanja ove skripte (svibanj 2024), postoji 142 HTML elementa. U tablici ispod prikazani su neki od najčešće korištenih HTML elemenata, zajedno s njihovim opisima, atributima i primjerima korištenja. Svakako provjerite i [HTML5 specifikaciju](https://www.spiceworks.com/tech/tech-general/articles/what-is-html-five/).
 
 | Naziv elementa | Opis | Atributi | Primjer |
 |----------------|------|----------|---------|
@@ -98,34 +108,36 @@ Tablica nekih osnovnih HTML elemenata:
 | `<head>`       | Sadrži meta-informacije o dokumentu | - | `<head> ... </head>` |
 | `<title>`      | Naslov dokumenta, prikazan u naslovnoj traci preglednika | - | `<title>Naslov stranice</title>` |
 | `<meta>`       | Definira metapodatke o HTML dokumentu | `charset`, `name`, `content`, `http-equiv` | `<meta charset="UTF-8">` |
-| `<link>`       | Povezuje vanjske resurse poput CSS datoteka | `rel`, `href`, `type` | `<link rel="stylesheet" href="style.css">` |
+| `<link>`       | Povezuje vanjske resurse, poput CSS datoteka | `rel`, `href`, `type` | `<link rel="stylesheet" href="style.css">` |
 | `<style>`      | Sadrži CSS stilove za dokument | `type` | `<style> body { background-color: lightblue; } </style>` |
 | `<script>`     | Sadrži ili povezuje JavaScript kod | `src`, `type` | `<script src="script.js"></script>` |
 | `<body>`       | Glavni sadržaj HTML dokumenta | - | `<body> ... </body>` |
 | `<h1>` do `<h6>` | Naslovi različitih razina | - | `<h1>Naslov 1</h1>` |
 | `<p>`          | Paragraf teksta | - | `<p>Ovo je paragraf.</p>` |
-| `<a>`          | Hiperlink | `href`, `target` | `<a href="https://example.com">Link</a>` |
+| `<a>`          | Hiperlink (poveznica) | `href`, `target` | `<a href="https://example.com">Link</a>` |
 | `<img>`        | Ugrađena slika | `src`, `alt`, `width`, `height` | `<img src="slika.jpg" alt="Opis slike">` |
-| `<ul>`         | Neuređena lista | - | `<ul><li>Prva stavka</li><li>Druga stavka</li></ul>` |
-| `<ol>`         | Uređena lista | - | `<ol><li>Prva stavka</li><li>Druga stavka</li></ol>` |
-| `<li>`         | Stavka u listi | - | `<li>Stavka</li>` |
+| `<ul>`         | Neuređena lista (bez numeriranja) | - | `<ul><li>Prva stavka</li><li>Druga stavka</li></ul>` |
+| `<ol>`         | Uređena lista (numerirana) | - | `<ol><li>Prva stavka numerirano</li><li>Druga stavka numerirano</li></ol>` |
+| `<li>`         | Stavka liste | - | `<li>Stavka</li>` |
 | `<table>`      | Tablica | - | `<table> ... </table>` |
 | `<tr>`         | Redak u tablici | - | `<tr> ... </tr>` |
 | `<td>`         | Ćelija u tablici | `colspan`, `rowspan` | `<td colspan="2">Ćelija</td>` |
 | `<th>`         | Zaglavlje ćelije u tablici | `colspan`, `rowspan`, `scope` | `<th scope="col">Zaglavlje</th>` |
-| `<form>`       | Formular za unos podataka | `action`, `method` | `<form action="/submit" method="post"> ... </form>` |
+| `<form>`       | Forma za unos podataka | `action`, `method` | `<form action="/submit" method="post"> ... </form>` |
 | `<input>`      | Unos podataka | `type`, `name`, `value`, `placeholder` | `<input type="text" name="ime" placeholder="Unesite ime">` |
 | `<button>`     | Gumb | `type` | `<button type="submit">Pošalji</button>` |
-| `<div>`        | Blok element za grupiranje sadržaja | - | `<div> ... </div>` |
-| `<span>`       | Inline element za grupiranje sadržaja | - | `<span> ... </span>` |
+| `<div>`        | [Block element](https://www.w3schools.com/html/html_blocks.asp#:~:text=A%20block%2Dlevel%20element%20always,p%3E%20and%20.) za grupiranje sadržaja | - | `<div> ... </div>` |
+| `<span>`       | [Inline element](https://www.w3schools.com/html/html_blocks.asp#:~:text=A%20block%2Dlevel%20element%20always,p%3E%20and%20.) za grupiranje sadržaja | - | `<span> ... </span>` |
 | `<br>`         | Prelom linije | - | `Tekst<br>Prelomljena linija` |
 | `<hr>`         | Horizontalna linija | - | `<hr>` |
 | `<b>`          | Podebljani tekst | - | `<b>Podebljano</b>` |
-| `<i>`          | Italicizirani tekst | - | `<i>Italicizirano</i>` |
+| `<i>`          | Kurziv tekst | - | `<i>Kurziv</i>` |
 | `<u>`          | Podvučeni tekst | - | `<u>Podvučeno</u>` |
 
 ### Primjer upotrebe `id` atributa:
-Atribut `id` koristi se za jedinstveno identificiranje HTML elementa na stranici. Id atribut mora biti jedinstven unutar cijelog dokumenta.
+Atribut `id` koristi se za jedinstveno identificiranje gotovo bilo kojeg HTML elementa na stranici. `id` atribut mora biti **jedinstven unutar cijelog dokumenta**. 
+
+Sintaksa: `<tag id="jedinstveniID">`.
 
 ```html
 <style>
@@ -141,7 +153,9 @@ Atribut `id` koristi se za jedinstveno identificiranje HTML elementa na stranici
 ```
 
 ### Primjer upotrebe `class` atributa:
-Atribut `class` koristi se za grupiranje više elemenata koji dijele iste stilove ili ponašanje. Elementi mogu imati više klasa odvojenih razmakom.
+Atribut `class` koristi se za grupiranje više elemenata koji dijele iste stilove ili ponašanje. Elementi mogu imati **više klasa odvojenih razmakom**. 
+
+Sintaksa: `<p class="klasa1 klasa2 klasa3 klasaN...">`.
 
 ```html
 <style>
@@ -160,8 +174,8 @@ Atribut `class` koristi se za grupiranje više elemenata koji dijele iste stilov
 </html>
 ```
 
-### Kombinirani primjer upotrebe `id` i `class` atributa:
-U ovom primjeru koristimo oba atributa kako bismo jedinstveno identificirali jedan element, dok druge grupiramo pomoću klase.
+### Primjer kombiniranja `id` i `class` atributa:
+U ovom primjeru koristimo oba atributa kako bismo jedinstveno identificirali jedan element, dok ostala dva grupiramo pomoću klase `podnaslov`.
 
 ```html
 <style>
@@ -181,7 +195,9 @@ U ovom primjeru koristimo oba atributa kako bismo jedinstveno identificirali jed
 </body>
 ```
 ### CSS (Cascading Style Sheets)
-CSS je jezik za stilizaciju HTML elemenata. Omogućuje nam definiranje izgleda i rasporeda elemenata na web stranici. CSS pravila sastoje se od selektora i deklaracija svojstava. Sljedeća tablica pokriva osnovne CSS svojstva:
+**CSS** je jezik za stilizaciju HTML elemenata. Omogućuje nam definiranje izgleda i rasporeda elemenata na web stranici. CSS pravila sastoje se od selektora (***[eng. selectors](https://www.w3schools.com/cssref/css_selectors.php)***) i deklaracija svojstava ([***eng. declarations***](https://www.w3schools.com/css/css_syntax.ASP)). 
+
+Sljedeća tablica pokriva osnovna CSS svojstva:
 
 | Naziv svojstva | Opis | Vrijednosti | Primjer |
 |----------------|------|-------------|---------|
@@ -326,7 +342,7 @@ Za zadani HTML kod, treba dohvatiti `<input>` s vrijednošću **Točno**.
 ```
 Treba dohvatiti prvi `<span>` element s imenom "*ime*" (`<span name="ime"/>`) koji se nalazi unutar `<div>` elementa čija je klasa "*moja-forma glavni*" (`<div class="moja-forma glavni">`)."
 
-Riješenje:
+Rješenje:
 ```javascript
 const query = document.querySelector("div.moja-forma.glavni span[name='ime']");
 console.log(query.innerHTML) 
@@ -438,7 +454,7 @@ Zadan je sljedeći HTML kôd:
 
 ![alt text](screenshots/kune_u_eure.png)
 
-Riješenje:
+Rješenje:
 ```javascript
 function azurirajSadrzaj(klasa, noviSimbol) {
   const query = document.querySelectorAll("."+klasa)
@@ -571,7 +587,7 @@ Koristeći `querySelector` i `classList` metode dodajte "tablica", "kvadrat" i "
 
 ![alt text](screenshots/tablica.png)
 
-Riješenje:
+Rješenje:
 ```javascript
 document.querySelector('table').classList.replace('slika', 'tablica');
 document.querySelectorAll('th, td').forEach(element => {
@@ -709,7 +725,7 @@ console.log(`Prosjek ocjena studenata: ${prosjekStudenata(filtriraniStudenti)}`)
 // Output: "Prosjek ocjena studenata: 3.00"
 ```
    
-Riješenje:
+Rješenje:
 
 ```javascript      
 function dodajStudente(id, poljeStudenata) {
@@ -961,7 +977,7 @@ Objekt treba prikazati u obliku HTML-a koristeći metode za dodavanje elemenata.
 
 ![alt text](screenshots/kupac.png)
 
-Riješenje: 
+Rješenje: 
 ```javascript
 const divKupac = document.getElementById("kupac");
 
