@@ -228,7 +228,9 @@ Sljedeća tablica pokriva osnovna CSS svojstva:
 | `align-items`  | Poravnanje stavki duž poprečne osi | flex-start, flex-end, center, baseline, stretch | `align-items: center;` |
 | `transition`   | Definira glatku animaciju prijelaza između različitih stilova | svojstvo, trajanje, kašnjenje, funkcija | `transition: width 0.3s ease-in-out;` |
 
-Također postoje i CSS pseudo-klase kao što su `:hover`, `:active`, `:focus` i druge koje se mogu nadodati na CSS klase:
+Postoje i CSS pseudo-klase (***[Pseudo-classes](https://www.w3schools.com/css/css_pseudo_classes.asp)***) kao što su `:hover`, `:active`, `:focus` i druge koje se mogu nadodati na CSS klase. Mogu se koristiti za primjenu stilova na elemente u određenim stanjima ili uvjetima.
+
+Tablica prikazuje neke od najčešće korištenih CSS pseudo-klasa:
 
 | Pseudo-klasa | Opis | Primjer |
 |--------------|------|---------|
@@ -247,7 +249,12 @@ Također postoje i CSS pseudo-klase kao što su `:hover`, `:active`, `:focus` i 
 | `:empty`     | Primjenjuje stil na elemente koji nemaju djece (prazne elemente). | ```css div:empty { display: none; } ``` |
 
 # 1. Uvod u DOM
-Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura i metoda, sada smo spremni za početak manipulacije Document Object Model (DOM)-om, što uključuje dinamičko upravljanje HTML elementima i njihovim CSS svojstvima.
+Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura i metoda, sada smo spremni za početak manipulacije **Document Object Model**, odnosno DOM-om, što uključuje dinamičko upravljanje HTML elementima i njihovim CSS svojstvima.
+
+**Document Object Model (DOM)** je standard koji definira strukturu i način pristupa HTML dokumentima. DOM predstavlja HTML dokument kao stablo objekata, gdje svaki HTML element predstavlja objekt, a svaki atribut i sadržaj elementa predstavlja svojstvo tog objekta.
+
+<img src="./screenshots/DOM.png" style="width:25%"></img> 
+> Izvor: https://en.wikipedia.org/wiki/Document_Object_Model
 
 ## 1.1 Osnovni DOM element
 
