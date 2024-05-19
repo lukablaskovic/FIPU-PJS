@@ -1255,7 +1255,7 @@ U svim primjerima koristit ćemo sljedeći CSS kôd:
 Dodajemo `input` polje i dva `button` elementa. Input polje predstavlja brojač, a dva button elementa povećavaju i smanjuju brojač za jedan.
 `click` događaj smo rekli da se poziva kada se klikne na element jedanput.
 
-Nemojte zaboraviti kopirati CSS kôd iznad.
+>Nemojte zaboraviti kopirati CSS kôd iznad.
 
 ```html
 <div>
@@ -1443,7 +1443,7 @@ btn_shift.addEventListener("click", () => ukloniElement("shift"))
 
 Dodat ćemo dva input polja za ime i prezime, te jedno za broj godina. Kada se fokusira na polje, ispisuje se koji je element fokusiran.
 
-Nemojte zaboraviti kopirati CSS kôd iznad.
+>Nemojte zaboraviti kopirati CSS kôd iznad.
 
 ```html
 <div id="inputi">
@@ -1601,7 +1601,10 @@ for (const btn of btnList) {
 ### Vježba 7
 **EduCoder šifra**: `gallery`
 
-Zadan je sljedeći kôd:
+Želimo izložiti galeriju slika na našu web stranicu. Svaka slika ima svoj naziv, umjetnika i godinu nastanka. Kada se mišem pređe preko slike, treba se prikazati opis slike (naziv, umjetnik, godina). Kada se mišem "izađe" sa slike, opis se mora maknuti.
+
+Imamo već zadan CSS i HTML kôd, a potrebno je dodati event listenere za `mouseover` i `mouseleave` događaje te ispisati podatke o slici u opisu.
+
 ```html
 <style>
 .gallery {
@@ -1632,12 +1635,16 @@ h3 { font-size: 14px; }
     <img class="artwork" id="artwork2" src="https://upload.wikimedia.org/wikipedia/en/1/14/Picasso_The_Weeping_Woman_Tate_identifier_T05010_10.jpg">    
     <img class="artwork" id="artwork3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/VanGogh-starry_night_ballance1.jpg/290px-VanGogh-starry_night_ballance1.jpg">
 </div>
+<!--Opis slike koji je ažurirati kroz JavaScript DOM manipulacijom-->
 <div class="opis">
     <h1></h1>
     <h2></h2>
     <h3></h3>
 </div>
 ```
+
+Naši podaci o slikama spremljeni su u polju `galerija`.
+
 ```javascript
 let galerija = [
   {
@@ -1659,14 +1666,13 @@ let galerija = [
     godina: 1889
   }
 ]
-/* 
-Potrebno je dodati dva event listener-a:
- > kada se mišem pređe preko slike
-    - treba iz polja galerije iščitati točne podatke i prikazati ih u opisu
- > kada se mišem izađe iz galerije
-    - isprazniti opis
-*/
 ```
+Potrebno je dodati dva event listenera:
+Pseudokod:
+ - kada se mišem pređe preko slike
+    - treba iz polja `galerija` iščitati točne podatke i prikazati ih u opisu
+ - kada se mišem izađe iz slike
+    - isprazniti opis
 
 ✅Rezultat:
 
@@ -1694,26 +1700,35 @@ let galerija = [
     godina: 1889
   }
 ]
-
+// Dohvaćamo galeriju i opis
 const gallery = document.getElementsByClassName("gallery")[0];
 const opis = document.getElementsByClassName("opis")[0];
 
+// Dodajemo event listenere za mouseover i mouseleave
 gallery.addEventListener("mouseover", event => {
-  let id = event.target.id;
-  if (id == "") return;
-  let artwork = galerija.find(g => g.id == id);
-  opis.children[0].innerHTML =  artwork.naziv;
-  opis.children[1].innerHTML =  artwork.umjetnik;
-  opis.children[2].innerHTML =  artwork.godina+".";
+    // Pronalazimo točnu sliku
+    let id = event.target.id;
+    if (id == "") return;
+    let artwork = galerija.find(g => g.id == id);
+
+    // Ažuriramo opis
+    opis.children[0].innerHTML =  artwork.naziv;
+    opis.children[1].innerHTML =  artwork.umjetnik;
+    opis.children[2].innerHTML =  artwork.godina+".";
 })
 gallery.addEventListener("mouseleave", event => {
-  opis.children[0].innerHTML = "";
-  opis.children[1].innerHTML = "";
-  opis.children[2].innerHTML = "";
+    // Brišemo opis
+    opis.children[0].innerHTML = "";
+    opis.children[1].innerHTML = "";
+    opis.children[2].innerHTML = "";
 })
 ```
 
 ### Primjer 9 - `input` event
+
+Kroz primjer ćemo pokazati kako koristiti `input` događaj. `input` događaj se poziva kada se promijeni vrijednost `input` elementa u kojeg korisnik unosi tekst.
+
+Definirat ćemo dva input polja za unos lozinke i ponovnu lozinku. Kada korisnik unese lozinku, ispod polja će se prikazati poruka je li ponovljena lozinka jednaka prvoj.
 ```html
 <div>
     Lozinka: <input id="password" type="password"/>
@@ -1721,11 +1736,15 @@ gallery.addEventListener("mouseleave", event => {
     Lozinke iste: <b id="same"></b>
 </div>
 ```
+
+I naš JavaScript kôd:
 ```javascript
+// Dohvaćamo input polja
 const password = document.getElementById("password");
 const repeatPassword = document.getElementById("repeatPassword");
 const same =  document.getElementById("same");
 
+// Dodajemo event listenere za input događaj. U dijelu naredbe provjeravamo jednakost lozinki
 password.addEventListener("input", event => {
   same.innerHTML = event.target.value == repeatPassword.value;
 });
@@ -1737,11 +1756,15 @@ repeatPassword.addEventListener("input", event => {
 ### Vježba 8
 **EduCoder šifra**: `recommend`
 
-Kreiramo aplikaciju za praćenje unosa u polje za pretraživanje. Korisnik će moći upisati pojam u polje za pretraživanje, a aplikacija će dinamički filtrirati rezultate kako korisnik tipka.
-- Implementirajte funkciju `showResults(searchTerm)` koja će filtrirati rezultate na temelju unesenog teksta
-- Klikom na rezultat popunjava se input i rezultati se izbrišu
+Na web stranicama i aplikacijama često se implementira preporuka pretrage. Kada korisnik počne unositi pojam u polje za pretragu, prikazuju se rezultati koji odgovaraju unesenom pojmu.
 
-Zadan je sljedeći kôd:
+U ovom primjeru implementirati ćemo preporuku pretrage za unos u polje za pretragu. Kada korisnik počne unositi pojam, prikazat će se rezultati koji odgovaraju unesenom pojmu. Rezultati se prikazuju u padajućem izborniku ispod polja za pretragu. Kada korisnik klikne na rezultat, unos u polje za pretragu postaje taj rezultat, a padajući izbornik se skriva.
+
+Samo filtriranje smo već do sad naučili kroz primjere iz prošlih skripti, sada ćemo sve ukomponirati koristeći HTML i CSS te JavaScript za manipulaciju našim `input` poljem odnosno tražilicom.
+
+>Za stilizirani input kopirajte CSS kôd od ranije.
+
+Zadan je sljedeći HTML/CSS kôd:
 ```html
 <style>
     #searchInput {
@@ -1763,14 +1786,18 @@ Zadan je sljedeći kôd:
 </style>
 
 <div>
-    <input type="text" id="searchInput" placeholder="Search...">
+    <input type="text" id="searchInput" placeholder="Traži...">
     <div id="searchResults"></div>
 </div>
 ```
+
+JavaScript kôd:
+
 ```javascript
 const inputField = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('searchResults');
 
+// Podaci za preporuku
 const data = [
     'JavaScript',
     'HTML',
@@ -1785,10 +1812,11 @@ const data = [
 ];
 
 function showResults(searchTerm) {
-
+    // Vaš kôd ovdje...
 }
 
-//eventListener
+//odgovarajući eventListener
+// Vaš kôd ovdje...
 ```
 
 ✅Rezultat:
@@ -1800,6 +1828,7 @@ function showResults(searchTerm) {
 const inputField = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('searchResults');
 
+// Podaci za preporuku
 const data = [
     'JavaScript',
     'HTML',
@@ -1814,18 +1843,20 @@ const data = [
 ];
 
 function showResults(searchTerm) {
+    // Filtriramo podatke (filter, normalizacija i Array.includes metoda)
     const filteredData = data.filter(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
 
     resultsContainer.innerHTML = '';
 
+    // Prikazujemo rezultate u padajućem izborniku (za svaki rezultat radimo div element)
     filteredData.forEach(item => {
-        const resultItem = document.createElement('div');
-        resultItem.textContent = item;
-        resultItem.addEventListener("click", event => {
+        const stavka = document.createElement('div');
+        stavka.textContent = item;
+        stavka.addEventListener("click", event => {
           inputField.value = event.target.textContent;
           resultsContainer.innerHTML = '';
         })
-        resultsContainer.appendChild(resultItem);
+        resultsContainer.appendChild(stavka);
     });
 }
 
@@ -1839,7 +1870,7 @@ inputField.addEventListener('input', event => {
 
 **EduCoder šifra**: `kosarica`
 
-Aplikacija omogućuje korisniku dodavanje proizvoda u košaricu, promjenu količine proizvoda te uklanjanje proizvoda iz košarice.
+Imate zadatak izraditi sučelje za košaricu web trgovine, promjenu količine proizvoda te uklanjanje proizvoda iz košarice.
 
 Sučelje aplikacije sastoji se od polja za unos naziva i cijene proizvoda te gumba za dodavanje proizvoda u košaricu. Također, prikazuje se lista proizvoda u košarici s informacijama o nazivu, količini, cijeni po komadu te ukupnoj cijeni za taj proizvod.
 
@@ -1865,11 +1896,11 @@ Jedan primjer implementacije:
         - brisanje proizvoda
     - metodu `azurirajUkupnuCijenu()` - koristeći `reduce` nad poljem računa ukupnu cijenu svih proizvoda zaokruženu na dvije decimale
 
-Primjer:
+>Primjer:
 
 ![alt text](screenshots/kosarica.png)
 
-CSS i HTML korišten na slici:
+Korišteni HTML i CSS kôd:
 ```html
 <style>
     body {
