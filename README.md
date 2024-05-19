@@ -10,7 +10,7 @@
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
 
-## Youtube 📺
+## YouTube 📺
 
 1. [Uvod u JavaScript i EduCoder](https://youtu.be/OcavyHkM9BI) ([PJS1](https://github.com/lukablaskovic/FIPU-PJS/tree/main/1.%20Javascript%20osnove))
 2. [Funkcije u JavaScriptu](https://youtu.be/deo6iU61qiQ) ([PJS2](https://github.com/lukablaskovic/FIPU-PJS/tree/main/2.%20Funkcije%2C%20doseg%20varijabli%20i%20kontrolne%20strukture))
