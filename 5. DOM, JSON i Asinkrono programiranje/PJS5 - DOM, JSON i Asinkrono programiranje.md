@@ -56,12 +56,18 @@
   - [2.2 Primjeri ispravnog i neispravnog JSON formata](#22-primjeri-ispravnog-i-neispravnog-json-formata)
   - [2.3 Online alati za prikaz/validaciju JSON formata](#23-online-alati-za-prikazvalidaciju-json-formata)
   - [2.4 Rad s JSON formatom u JavaScriptu](#24-rad-s-json-formatom-u-javascriptu)
-    - [2.4.1 JSON.parse()](#241-jsonparse)
-    - [2.4.1 JSON.stringify()](#241-jsonstringify)
+    - [2.4.1 `JSON.parse()`](#241-jsonparse)
+    - [2.4.1 `JSON.stringify()`](#241-jsonstringify)
   - [2.5 Lokalno čitanje JSON datoteka](#25-lokalno-čitanje-json-datoteka)
     - [2.5.1 Node.js](#251-nodejs)
     - [2.5.2 Web preglednik](#252-web-preglednik)
 - [3. Asinkrono programiranje](#3-asinkrono-programiranje)
+  - [3.1 Razumijevanje asinkronog vs. sinkronog](#31-razumijevanje-asinkronog-vs-sinkronog)
+  - [3.2 Asinkrone callback funkcije](#32-asinkrone-callback-funkcije)
+  - [3.3 Fetch API - dohvaćanje podataka s web poslužitelja](#33-fetch-api---dohvaćanje-podataka-s-web-poslužitelja)
+  - [3.4 Promise objekt](#34-promise-objekt)
+  - [3.5 Async/Await](#35-asyncawait)
+- [Samostalni zadatak za vježbu 9](#samostalni-zadatak-za-vježbu-9)
 
 
 <br>
@@ -2293,7 +2299,7 @@ JSON je isključivo tekstualni format podataka, koji ne sadržava ni svojstva ni
 
 Moguće je pretvoriti JSON format u JavaScript objekt i obrnuto, koristeći ugrađene metode `JSON.parse()` i `JSON.stringify()`.
 
-### 2.4.1 JSON.parse()
+### 2.4.1 `JSON.parse()`
 
 Kada podaci pristignu s web servera, gotovo uvijek su u JSON formatu koji je tekstualni format. Da bismo s njima mogli raditi u JavaScriptu, moramo ih pretvoriti u JavaScript objekt. To radimo pomoću metode `JSON.parse()`.
 
@@ -2352,7 +2358,7 @@ for (let zanr of knjiga.žanrovi) {
 // drama
 ```
 
-### 2.4.1 JSON.stringify()
+### 2.4.1 `JSON.stringify()`
 
 Metoda `JSON.stringify()` koristi se za pretvaranje JavaScript objekta u JSON format. Ova metoda je korisna kada želimo poslati podatke na web server, jer web serveri uglavnom očekuju JSON format.
 
@@ -2512,3 +2518,188 @@ Drugim riječima, ako naš korisnik čeka na odgovor s web poslužitelja, kod re
 > Izvor: https://dev.to/vinaykishore/how-does-asynchronous-javascript-work-behind-the-scenes-4bjl
 
 Asinkronim programiranjem bavit ćemo se intenzivnije na kolegijima: **[Programsko inženjerstvo](https://fipu.unipu.hr/fipu/predmet/proinz_a)**, **[Web aplikacije](https://fipu.unipu.hr/fipu/predmet/webapl)** i **[Raspodijeljeni sustavi](https://fipu.unipu.hr/fipu/predmet/rassus)**.
+
+## 3.1 Razumijevanje asinkronog vs. sinkronog
+
+Najjednostanvije rečeno, u **sinkronom programiranju**, operacije se izvršavaju jedna za drugom, redom. Kada se jedna operacija završi, tek tada se izvršava sljedeća operacija. Sve ispite, zadaće i vježbe do sad iz ovih skripti pisali smo sinkrono.
+
+U asinkronom programiranju svaka operaicja mora biti izvršena prije nego što se izvrši sljedeća operacija.
+
+Primjer:
+
+**Sinkrono programiranje**:
+```javascript
+console.log('Početak');
+console.log('Operacija');
+console.log('Kraj');
+```
+
+Ispisuje:
+```
+Početak
+Operacija
+Kraj
+```
+
+Kod **asinkronog programiranja**, kod se može izvršavati "preko reda". Operacije mogu započinjati i završavati u različito vrijeme, neovisno o glavnom protoku programa. JavaScript je single-threaded jezik, što znači da se sve operacije izvršavaju na jednoj dretvi. Međutim, JavaScript koristi asinkrono programiranje kako bi se izbjeglo blokiranje glavne dretve, asinkronim potrebama poput: čitanja podataka s web poslužitelja, pisanja u bazu podataka, čekanja na korisnički unos (I/O operacije).
+
+Idemo simulirati čekanje dohvata podataka s nekog web poslužitelja. Recimo da je web server dosta udaljen i imamo spor internet, pa će dohvat podataka trajati 3 sekunde. Simulirat ćemo pomoću `setTimeout` funkcije koja prima 2 argumenta: callback funkciju koja se izvršava nakon određenog vremena i vrijeme čekanja u milisekundama.
+
+**Asinkrono programiranje**:
+```javascript
+function fetchData(callback) {
+    setTimeout(() => {
+        callback('Podaci su dohvaćeni');
+    }, 2000); 
+}
+
+console.log('Start');
+fetchData((message) => {
+    console.log(message);
+});
+console.log('End');
+```
+
+Kojim redoslijedom će se ispisati poruke?
+
+
+
+<details>
+  <summary>Spoiler Warning!</summary>
+
+```
+Start
+End
+Podaci su dohvaćeni
+```
+
+</details>
+
+Zašto je ovako?
+
+Sinkroni redoslijed izvršavanja:
+1. Ispisuje se `Start`
+2. Poziva se funkcija `fetchData` koja simulira dohvat podataka s web poslužitelja
+3. Ispisuje se `End`
+4. Nakon 2 sekunde, vraća se odgovor s "web poslužitelja" i ispisuje se `Podaci su dohvaćeni`
+
+## 3.2 Asinkrone callback funkcije
+
+Upoznali smo se s callback funkcijama u skripti PJS4 u kontekstu pomoćnih funkcija za obradu podataka kod `Array` objekta. Rekli smo da su to funkcije koje prosljeđujemo kao argumente drugim funkcijama, a koje se pozivaju nakon završetka izvršavanja te funkcije.
+
+U kontekstu manipulacije DOM-om, koristili smo callback funkcije za dodavanje event listenera na HTML elemente.
+
+U kontekstu asinkronog programiranja, callback funkcije koristimo za **rukovanje asinkronim operacijama**.
+
+![alt text](./screenshots/async_callback.png)
+
+> Izvor: https://dev.to/marek/are-callbacks-always-asynchronous-bah
+
+U prethodnom primjeru vidjeli smo kako se koristi callback funkcija za rukovanje asinkronim operacijama.
+
+Pojednostavimo primjer:
+
+```javascript
+console.log('Start');
+
+setTimeout(() => {
+    console.log('Ovo je asinkroni callback');
+}, 2000); // 2000 milisekundi = 2 sekundi
+
+console.log('End');
+```
+
+Ispisuje:
+```
+Start
+End
+Ovo je asinkroni callback (nakon 2 sekunde)
+```
+
+Primjer iznad možemo podijeliti na sinkronu i asinkronu egzekuciju:
+
+1. Sinkrona egzekucija:
+    - Ispisuje se `Start`
+    - Ispisuje se `End`
+2. Asinkrona egzekucija:
+    - Poziva se `setTimeout` funkcija koja postavlja timer na 2 sekunde i definira asinkronu callback funkciju u `event queue`-u
+    - kada timer istekne, callback funkcija se stavlja u `call stack` i izvršava: ispisuje se `Ovo je asinkroni callback`
+
+## 3.3 Fetch API - dohvaćanje podataka s web poslužitelja
+
+U JavaScriptu, `fetch` API je sučelje koje omogućuje asinkrono dohvaćanje resursa s web poslužitelja preko HTTP protokola. `fetch` API je moderna zamjena za zastarjenu `XMLHttpRequest` metodu.
+
+`fetch` API koristi `Promise` objekte za rukovanje asinkronim operacijama. `Promise` objekt predstavlja eventualni rezultat asinkronog procesa i njegovo konačno stanje (rezoluciju ili odbijanje). Više o `Promise` objektima u sljedećem poglavlju, i nadolazećim kolegijima.
+
+Ovaj API možemo direktno koristiti u web pregledniku ili u Node.js okruženju bez da uključujemo dodatne biblioteke. Bez obzira na to, postoje i biblioteke kao što su `axios`, `jQuery.ajax`, `superagent` koje pojednostavljuju rad s HTTP zahtjevima.
+
+Postoji mnoštvo servisa koji pružaju besplatne API-eve za testiranje i učenje asinkronog programiranja. Na primjer:
+
+- [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
+- [PokeAPI](https://pokeapi.co/)
+- [TheDogAPI](https://thedogapi.com/)
+- [TheCatAPI](https://thecatapi.com/)
+
+Ogromnu listu razno-raznih API-eva možete pronaći [ovdje](https://github.com/public-apis/public-apis).
+Napomena, neki od API-eva mogu biti zastarjeli, imati ograničenja ili biti nedostupni. Prije slanja zahtjeva na API, provjerite dokumentaciju!
+
+`fetch` API možemo koristiti za dohvaćanje podataka s web poslužitelja, ali i lokalnih JSON datoteka (primjer s Harry Potter knjigama).
+
+Sad ćemo pokazati kako koristiti `fetch` API za dohvaćanje podataka s web poslužitelja koristeći `JSONPlaceholder` servis.
+
+```javascript
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json()) // arrow funkcija koja pretvara odgovor u JSON format
+      .then(json => console.log(json)) // arrow funkcija koja ispisuje JSON podatke
+
+// Ispisuje:
+// { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+```
+
+Isto možemo raspisati i bez arrow funkcija:
+
+```javascript
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(function(response) { // response kao argument je rezultat fetch metode
+          return response.json();
+      })
+      .then(function(json) { // json kao argument je rezultat prethodne then metode
+          console.log(json);
+      });
+```
+
+U gornjem primjeru, `fetch` funkcija prima URL kao argument i vraća `Promise` objekt. Nakon što se podaci dohvate, koristimo `then` metodu za rukovanje odgovorom. Prva `then` metoda pretvara odgovor u JSON format, a druga `then` metoda ispisuje JSON podatke.
+
+Kod možemo doslovno čitati kao: "**Dohvati** podatke s URL-a, **onda** pretvori odgovor u JSON format, **onda** ispiši JSON podatke".
+
+`json()` metoda koristi se za parsiranje `Response` odgovora koji je u JSON formatu u JavaScript objekt.
+
+Osim `then()` metode, možemo koristiti i `catch()` metodu za rukovanje greškama. Ako dođe do greške prilikom dohvaćanja podataka, `catch()` metoda će uhvatiti grešku i ispisati je.
+
+```javascript
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(error => console.error('Greška:', error));
+```
+
+Ili bez arrow funkcija:
+
+```javascript
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(function(response) { // response kao argument je rezultat fetch metode
+          return response.json();
+      })
+      .then(function(json) { // json kao argument je rezultat prethodne then metode
+          console.log(json);
+      })
+      .catch(function(error) { // error kao argument je rezultat greške
+          console.error('Greška:', error);
+      });
+```
+
+## 3.4 Promise objekt
+
+## 3.5 Async/Await
+
+# Samostalni zadatak za vježbu 9
