@@ -134,7 +134,7 @@ U najnovijem HTML standardu za vrijeme pisanja ove skripte (svibanj 2024), posto
 | `<button>`     | Gumb | `type` | `<button type="submit">Pošalji</button>` |
 | `<div>`        | [Block element](https://www.w3schools.com/html/html_blocks.asp#:~:text=A%20block%2Dlevel%20element%20always,p%3E%20and%20.) za grupiranje sadržaja | - | `<div> ... </div>` |
 | `<span>`       | [Inline element](https://www.w3schools.com/html/html_blocks.asp#:~:text=A%20block%2Dlevel%20element%20always,p%3E%20and%20.) za grupiranje sadržaja | - | `<span> ... </span>` |
-| `<br>`         | Prelom linije | - | `Tekst<br>Prelomljena linija` |
+| `<br>`         | Prijelom linije | - | `Tekst<br>Prelomljena linija` |
 | `<hr>`         | Horizontalna linija | - | `<hr>` |
 | `<b>`          | Podebljani tekst | - | `<b>Podebljano</b>` |
 | `<i>`          | Kurziv tekst | - | `<i>Kurziv</i>` |
@@ -262,11 +262,20 @@ Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura
 <img src="./screenshots/DOM.png" style="width:25%"></img> 
 > Izvor: https://en.wikipedia.org/wiki/Document_Object_Model
 
+>**Zašto je važno naučiti DOM manipulaciju?**
+> - Večina današnjeg digitalnog poslovanja bazirana je upravno na web tehnologijama.
+> - JavaScript je jedan od najpopularnijih jezika za web razvoj.
+> - Statične web stranice postale su prošlost, danas su gotovo sve web stranice dinamične (interaktivne).
+> - DOM manipulacija je ključna za stvaranje interaktivnih web stranica, samim time ih onda počinjemo nazivati i web aplikacijama.
+> - Poznavanje DOM-a je ključno za razumijevanja rada svih modernih JavaScript biblioteka i okvira (React, Angular, Vue, jQuery...).
+> - Poznavanje DOM-a je ključno za razvoj efikasnih i responzivnih korisničkih sučelja.
+
 ## 1.1 Osnovni DOM element
 
 `Document` objekt je ključna komponenta u JavaScriptu koja predstavlja cijelu web stranicu u trenutnom pregledniku. On omogućava pristupanje i manipulaciju svim elementima na stranici, kao i njihovim svojstvima i sadržaju. Olakšava dinamičko upravljanje sadržajem stranice, što je ključno za stvaranje interaktivnih i responzivnih korisničkih iskustava.
 
 Možemo ga zamisliti kao korijenski čvor HTML dokumenta (slika iznad).
+
 
 `document` objekt možemo referencirati direktno ili preko `window` objekta.
 
