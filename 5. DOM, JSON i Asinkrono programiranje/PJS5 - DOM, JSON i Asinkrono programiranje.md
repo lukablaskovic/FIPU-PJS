@@ -2494,7 +2494,7 @@ Posljednje poglavlje ove skripte, kao i gradiva ovog kolegija, odnosi se na asin
 
 Recimo da želimo dohvatiti podatke s API-a koji se nalazi na udaljenom web poslužitelju. Primjerice radimo aplikaciju koja prikazuje vremensku prognozu za gradove diljem svijeta. Da bismo dohvatili podatke s API-a, moramo poslati zahtjev na web poslužitelj, pričekati odgovor i zatim prikazati podatke korisniku. Navedena operacija može potrajati nekoliko sekundi, ovisno o brzini interneta i udaljenosti web poslužitelja.
 
-Protok podataka može biti spor zbog različitih faktora, kao što su:
+Protok podataka može biti spor (ili skroz puknuti) zbog različitih faktora, kao što su:
 - Spora veza s internetom
 - Preopterećenost web poslužitelja
 - Dugotrajne operacije na poslužitelju
@@ -2508,3 +2508,7 @@ Kako bi se izbjeglo blokiranje glavne dretve (engl. **main thread**), JavaScript
 Drugim riječima, ako naš korisnik čeka na odgovor s web poslužitelja, kod recimo dohvaćanja podataka o vremenskoj prognozi, ne želimo da mu se cijela aplikacija zamrzne dok čeka na odgovor. Umjesto toga, želimo da korisnik može nastaviti koristiti aplikaciju dok se podaci dohvaćaju.
 
 <img src="./screenshots/async.png" width="800" >
+
+> Izvor: https://dev.to/vinaykishore/how-does-asynchronous-javascript-work-behind-the-scenes-4bjl
+
+Asinkronim programiranjem bavit ćemo se intenzivnije na kolegijima: **[Programsko inženjerstvo](https://fipu.unipu.hr/fipu/predmet/proinz_a)**, **[Web aplikacije](https://fipu.unipu.hr/fipu/predmet/webapl)** i **[Raspodijeljeni sustavi](https://fipu.unipu.hr/fipu/predmet/rassus)**.
