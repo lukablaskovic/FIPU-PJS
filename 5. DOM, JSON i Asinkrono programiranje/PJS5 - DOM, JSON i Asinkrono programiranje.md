@@ -263,7 +263,7 @@ Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura
 > Izvor: https://en.wikipedia.org/wiki/Document_Object_Model
 
 >**Zašto je važno naučiti DOM manipulaciju?**
-> - Večina današnjeg digitalnog poslovanja bazirana je upravno na web tehnologijama.
+> - Većina današnjeg digitalnog poslovanja bazirana je upravno na web tehnologijama.
 > - JavaScript je jedan od najpopularnijih jezika za web razvoj.
 > - Statične web stranice postale su prošlost, danas su gotovo sve web stranice dinamične (interaktivne).
 > - DOM manipulacija je ključna za stvaranje interaktivnih web stranica, samim time ih onda počinjemo nazivati i web aplikacijama.
