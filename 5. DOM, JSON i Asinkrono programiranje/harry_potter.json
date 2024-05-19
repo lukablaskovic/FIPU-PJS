@@ -1,0 +1,61 @@
+{
+    "harry_potter_books": [
+      {
+        "title": "Harry Potter and the Philosopher's Stone",
+        "author": "J.K. Rowling",
+        "publication_date": "1997-06-26",
+        "publisher": "Bloomsbury",
+        "isbn": "978-0747532699",
+        "summary": "Harry Potter discovers on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own."
+      },
+      {
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "publication_date": "1998-07-02",
+        "publisher": "Bloomsbury",
+        "isbn": "978-0747538493",
+        "summary": "Harry returns to Hogwarts for his second year and discovers a hidden chamber housing a terrible monster."
+      },
+      {
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "author": "J.K. Rowling",
+        "publication_date": "1999-07-08",
+        "publisher": "Bloomsbury",
+        "isbn": "978-0747542155",
+        "summary": "Harry learns that a dangerous prisoner named Sirius Black has escaped from Azkaban and is believed to be after him."
+      },
+      {
+        "title": "Harry Potter and the Goblet of Fire",
+        "author": "J.K. Rowling",
+        "publication_date": "2000-07-08",
+        "publisher": "Bloomsbury",
+        "isbn": "978-0747546245",
+        "summary": "Harry unexpectedly becomes a participant in the Triwizard Tournament, a dangerous magical competition."
+      },
+      {
+        "title": "Harry Potter and the Order of the Phoenix",
+        "author": "J.K. Rowling",
+        "publication_date": "2003-06-21",
+        "publisher": "Bloomsbury",
+        "isbn": "978-0747551003",
+        "summary": "Harry and his friends form 'Dumbledore's Army' to fight against the dark forces gathering strength."
+      },
+      {
+        "title": "Harry Potter and the Half-Blood Prince",
+        "author": "J.K. Rowling",
+        "publication_date": "2005-07-16",
+        "publisher": "Bloomsbury",
+        "isbn": "978-0747581086",
+        "summary": "Harry learns more about Lord Voldemort's past and discovers a mysterious book marked as the property of the Half-Blood Prince."
+      },
+      {
+        "title": "Harry Potter and the Deathly Hallows",
+        "author": "J.K. Rowling",
+        "publication_date": "2007-07-21",
+        "publisher": "Bloomsbury",
+        "isbn": "978-0747591054",
+        "summary": "Harry, Ron, and Hermione leave Hogwarts to find and destroy Voldemort's Horcruxes, culminating in a final battle at Hogwarts."
+      }
+    ]
+  }
+  

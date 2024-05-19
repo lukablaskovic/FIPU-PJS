@@ -52,6 +52,15 @@
     - [Vježba 8](#vježba-8)
 - [Samostalni zadatak za vježbu 8](#samostalni-zadatak-za-vježbu-8)
 - [2. JSON - JavaScript Object Notation](#2-json---javascript-object-notation)
+  - [2.1 Struktura JSON-a](#21-struktura-json-a)
+  - [2.2 Primjeri ispravnog i neispravnog JSON formata](#22-primjeri-ispravnog-i-neispravnog-json-formata)
+  - [2.3 Online alati za prikaz/validaciju JSON formata](#23-online-alati-za-prikazvalidaciju-json-formata)
+  - [2.4 Rad s JSON formatom u JavaScriptu](#24-rad-s-json-formatom-u-javascriptu)
+    - [2.4.1 JSON.parse()](#241-jsonparse)
+    - [2.4.1 JSON.stringify()](#241-jsonstringify)
+  - [2.5 Lokalno čitanje JSON datoteka](#25-lokalno-čitanje-json-datoteka)
+    - [2.5.1 Node.js](#251-nodejs)
+    - [2.5.2 Web preglednik](#252-web-preglednik)
 - [3. Asinkrono programiranje](#3-asinkrono-programiranje)
 
 
@@ -2084,4 +2093,416 @@ Možete napisati vlastiti HTML i CSS kôd ili koristiti sljedeći:
 
 # 2. JSON - JavaScript Object Notation
 
+**JSON** (**JavaScript Object Notation**) je **string format za razmjenu podataka** koji je jednostavan čovjeku za razumijevanje, ali i računalu za procesiranje. JSON format često se koristi za slanje podataka između web poslužitelja i klijenta. Radi se o tekstualnom formatu koji se sastoji od parova ključ-vrijednost i nizova, vrlo slične sintakse kao i JavaScript objekti.
+
+JSON format je neovisan o jeziku, što znači da se može koristiti u bilo kojem programskom jeziku. Međutim, svojom sintaksom podsjeća na JavaScript objekte i polje. Format je nastao ranih 2000-ih, a danas je de facto **standard za razmjenu podataka na webu**.
+
+JSON podaci se mogu spremiti u datoteku s ekstenzijom `.json` ili kao tekstualni podaci u bazi podataka.
+
+<img src="https://www.opc-router.de/wp-content/uploads/2023/12/icon_json-datei_format_1200-1-1024x410.png" width="200" >
+
+## 2.1 Struktura JSON-a
+
+- Podaci u JSON zapisu su organizirani kao `ključ:vrijednost` parovi. Ključevi **moraju biti nizovi znakova**, a vrijednosti mogu biti bilo kojeg tipa podataka (string, broj, objekt, polje, boolean, null).
+- Vitičaste zagrade `{}` koriste se za definiranje objekata.
+- Uglate zagrade `[]` koriste se za definiranje polja/niza.
+- Svaki par `ključ:vrijednost` odvojen je zarezom.
+- Ključevi su nizovi znakova (stringovi) i **morate ih staviti u dvostruke navodnike**.
+- u JSON se **[ne mogu pisati komentari](https://www.freecodecamp.org/news/comments-in-json/#:~:text=The%20primary%20reason%20why%20JSON,a%20pure%20data%2Donly%20format.)**.
+
+Primjer JSON formata s 2 ključ:vrijednost para:
+```json
+{
+    "kljuc1": "vrijednost1",
+    "kljuc2": "vrijednost2"
+}
+```
+
+Primjer ugniježđenog JSON formata:
+```json
+{
+    "kljuc1": "vrijednost1",
+    "kljuc2": {
+        "kljuc3": "vrijednost3",
+        "kljuc4": "vrijednost4"
+    }
+}
+```
+
+> Kao glavnu razliku uočite dvostuke navodnike oko ključeva
+
+Još jedan popularan format za razmjenu podataka je **XML** (Extensible Markup Language). Sintaksa XML-a je nešto složenija od JSON-a te više nalikuje HTML-u.
+
+Primjer istog podataka u XML i JSON formatima:
+
+**XML**:
+```xml
+<employees>
+  <employee>
+    <firstName>John</firstName> <lastName>Doe</lastName>
+  </employee>
+  <employee>
+    <firstName>Anna</firstName> <lastName>Smith</lastName>
+  </employee>
+  <employee>
+    <firstName>Peter</firstName> <lastName>Jones</lastName>
+  </employee>
+</employees>
+```
+
+**JSON**:
+```json
+{
+  "employees": [
+    {
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "firstName": "Anna",
+      "lastName": "Smith"
+    },
+    {
+      "firstName": "Peter",
+      "lastName": "Jones"
+    }
+  ]
+}
+```
+
+## 2.2 Primjeri ispravnog i neispravnog JSON formata
+
+Primjer JSON formata s podacima o osobi:
+
+✅ Ispravan JSON format:
+```json
+{
+    "ime": "Ana",
+    "prezime": "Anić",
+    "godine": 25,
+    "zaposlen": true,
+    "adresa": {
+        "ulica": "Ulica 1",
+        "grad": "Zagreb",
+        "poštanski broj": "10000"
+    },
+    "hobi": ["čitanje", "pisanje", "plivanje"]
+}
+```
+
+Primjer JSON formata s podacima o knjizi:
+
+✅ Ispravan JSON format:
+```json
+{
+    "naslov": "Harry Potter and the Philosopher's Stone",
+    "autor": "J.K. Rowling",
+    "godina izdanja": 1997,
+    "žanrovi": ["fantasy", "drama"],
+    "izdavač": {
+        "naziv": "Bloomsbury",
+        "lokacija": "London"
+    }
+}
+```
+
+Postoji i mogućnost da se JSON podaci nalaze u polju, bez omotavanja vitičastim zagradama:
+
+✅ Ispravan JSON format:
+```json
+[
+    {
+        "ime": "Ana",
+        "prezime": "Anić",
+        "godine": 25
+    },
+    {
+        "ime": "Ivan",
+        "prezime": "Ivić",
+        "godine": 30
+    }
+]
+```
+
+Međutim ne možemo imati više objekata bez omotavanja u polje:
+
+❌ Neispravan JSON format:
+```json
+{
+    "ime": "Ana",
+    "prezime": "Anić",
+    "godine": 25
+},
+{
+    "ime": "Ivan",
+    "prezime": "Ivić",
+    "godine": 30
+}
+```
+
+Komentare nije moguće pisati u JSON formatu, jer JSON je strogo definiran format podataka.
+
+❌ Neispravan JSON format:
+```json
+{
+    "ime": "Ana",
+    "prezime": "Anić",
+    "godine": 25,
+    "adresa": "Zagreb" // Adresa stanovanja
+}
+```
+
+Ključeve je potrebno uvijek staviti u dvostruke navodnike:
+
+❌ Neispravan JSON format:
+```json
+{
+    ime: "Ana",
+    prezime: "Anić",
+    godine: 25
+}
+```
+
+Za razliku od JavaScript objekata, JSON ne podržava funkcije, niti metode.
+
+❌ Neispravan JSON format:
+```json
+{
+    "ime": "Ana",
+    "prezime": "Anić",
+    "godine": 25,
+    "pozdravi": function() {
+        return "Pozdrav!";
+    }
+}
+```
+
+## 2.3 Online alati za prikaz/validaciju JSON formata
+
+Postoje online alati koji vam mogu pomoći u validaciji i prikazu JSON formata:
+- [JSONFormatter.org](https://jsonformatter.org/json-viewer)
+- [Codebeautify.org](https://codebeautify.org/jsonviewer)
+- [JSONEditorOnline.org](https://jsoneditoronline.org/)
+- [JSONViwer Chrome ekstenzija](https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
+
+![alt text](./screenshots/json_formatter.png)
+
+## 2.4 Rad s JSON formatom u JavaScriptu
+
+JSON je isključivo tekstualni format podataka, koji ne sadržava ni svojstva ni metode.
+
+Moguće je pretvoriti JSON format u JavaScript objekt i obrnuto, koristeći ugrađene metode `JSON.parse()` i `JSON.stringify()`.
+
+### 2.4.1 JSON.parse()
+
+Kada podaci pristignu s web servera, gotovo uvijek su u JSON formatu koji je tekstualni format. Da bismo s njima mogli raditi u JavaScriptu, moramo ih pretvoriti u JavaScript objekt. To radimo pomoću metode `JSON.parse()`.
+
+Recimo da smo dobili JSON podatke o korisniku s web servera:
+
+**JSON:**
+```json
+{"ime": "Petar", "prezime": "Perković", "email": "pperkovic@unipu.hr", "lozinka": "98fd88c8fdc81c8efbd3a158007a97a6"}
+```
+
+Koristeći metodu `JSON.parse()`, možemo pretvoriti JSON podatke u JavaScript objekt:
+Uočite da smo koristili dvostruke navodnike oko ključeva, što je obavezno u JSON formatu. Međutim, cijeli JSON je string tako da ga ovdje moramo omotati u jednostruke navodnike (`''`) ili backticks navodnike.
+
+**JavaScript:**
+```javascript
+const korisnik = JSON.parse('{"ime": "Petar", "prezime": "Perković", "email": "pperkovic@unipu.hr", "lozinka": "98fd88c8fdc81c8efbd3a158007a97a6"}');
+
+console.log(korisnik.ime); // Petar
+console.log(korisnik.prezime); // Perković
+console.log(korisnik.email); // pperkovic@unipu.hr
+console.log(korisnik.lozinka) // 98fd88c8fdc81c8efbd3a158007a97a6
+```
+
+Primjetite da jednom kad parsiramo JSON u JavaScript objekt, možemo s njim raditi kao s bilo kojim drugim objektom u JavaScriptu.
+
+Isto vrijedi i za JSON polje:
+
+**JSON:**
+```json
+{
+    "naslov": "Harry Potter and the Philosopher's Stone",
+    "autor": "J.K. Rowling",
+    "godina izdanja": 1997,
+    "žanrovi": ["fantasy", "drama"],
+    "izdavač": {
+        "naziv": "Bloomsbury",
+        "lokacija": "London"
+    }
+}
+```
+**JavaScript:**
+```javascript
+const knjiga = JSON.parse('{"naslov": "Harry Potter and the Philosopher\'s Stone", "autor": "J.K. Rowling", "godina izdanja": 1997, "žanrovi": ["fantasy", "drama"], "izdavač": {"naziv": "Bloomsbury", "lokacija": "London"}}');
+
+console.log(typeof knjiga); // object
+
+console.log(knjiga.naslov); // Harry Potter and the Philosopher's Stone
+console.log(knjiga.žanrovi); // ["fantasy", "drama"]
+console.log(knjiga.izdavač.naziv); // Bloomsbury
+console.log(knjiga.žanrovi[0]); // fantasy
+
+for (let zanr of knjiga.žanrovi) {
+    console.log(zanr);
+}
+// fantasy
+// drama
+```
+
+### 2.4.1 JSON.stringify()
+
+Metoda `JSON.stringify()` koristi se za pretvaranje JavaScript objekta u JSON format. Ova metoda je korisna kada želimo poslati podatke na web server, jer web serveri uglavnom očekuju JSON format.
+
+Primjer pretvaranja JavaScript objekta u JSON format:
+```javascript
+const korisnik = {
+    ime: "Petar",
+    prezime: "Perković",
+    email: "pperkovic@gmail.com",
+    lozinka: "super_sigurna_lozinka123"
+};
+
+console.log(typeof korisnik); // object
+
+const korisnikJSON = JSON.stringify(korisnik);
+
+console.log(typeof korisnikJSON); // string
+
+console.log(korisnikJSON);
+
+// Ispis: '{"ime":"Petar","prezime":"Perković","email":"pperkovic@gmail.com","lozinka":"super_sigurna_lozinka123"}'
+```
+
+Kako funkcije/metode nisu dozvoljene u JSON formatu, metoda `JSON.stringify()` će ih ignorirati prilikom pretvaranja objekta u JSON format, i ključ i vrijednost će biti izostavljeni.
+
+```javascript
+const obj = {name: "John", age: function () {return 30;}, city: "New York"};
+
+console.log(JSON.stringify(obj)); // '{"name":"John","city":"New York"}'
+```
+
+Ako koristimo `JSON.stringify()` na objektu koji sadrži polje, metoda će automatski pretvoriti polje u JSON format.
+
+```javascript
+const obj = {name: "John", age: 30, cars: ["Ford", "BMW", "Fiat"]};
+
+console.log(JSON.stringify(obj)); // '{"name":"John","age":30,"cars":["Ford","BMW","Fiat"]}'
+```
+
+Međutim ako ubacite u objekt `Date` objekt, metoda će ga automatski pretvoriti u string.
+    
+```javascript
+const obj = {name: "John", age: 30, birthdate: new Date()};
+
+console.log(JSON.stringify(obj)); // '{"name":"John","age":30,"birthdate":"2024-05-19T21:12:05.712Z"}'
+```
+
+## 2.5 Lokalno čitanje JSON datoteka
+
+JSON podaci se česte koriste za razmjenu podataka između web poslužitelja i klijenta, ali se također mogu koristiti za lokalno čitanje i spremanje podataka.
+
+U JavaScriptu, ovisno o okruženju, možemo koristiti različite metode za čitanje i spremanje JSON datoteka.
+
+### 2.5.1 Node.js
+
+U Node.js okruženju, možemo koristiti ugrađeni modul `fs` (File System) za čitanje i pisanje datoteka.
+
+Funkcija `require` uključuje ugrađeni modul `fs`:
+
+Primjer čitanja JSON datoteke u Node.js okruženju. Pročitajmo datoteku `harry_potter.json` koja sadrži podatke o Harry Potter knjigama.
+
+Node.js program možemo pokrenuti u terminalu naredbom `node index.js`, odnosno `node naziv_datoteke.js`.
+
+```json
+{
+    "naslov": "Harry Potter and the Philosopher's Stone",
+    "autor": "J.K. Rowling",
+    "godina izdanja": 1997,
+    "žanrovi": ["fantasy", "drama"],
+    "izdavač": {
+        "naziv": "Bloomsbury",
+        "lokacija": "London"
+    }
+}
+```
+
+```javascript
+const fs = require('fs');
+
+fs.readFile('harry_potter.json', 'utf8', (err, data) => { // callback funkcija koja se poziva nakon što se datoteka pročita
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    const podaci = JSON.parse(data); // pretvaranje JSON podataka u JavaScript objekt
+    console.log(podaci); // ispis podataka
+});
+```
+
+```javascript
+console.log(podaci["harry_potter_books"][0]);
+/*
+{
+  title: "Harry Potter and the Philosopher's Stone",
+  author: 'J.K. Rowling',
+  publication_date: '1997-06-26',
+  publisher: 'Bloomsbury',
+  isbn: '978-0747532699',
+  summary: 'Harry Potter discovers on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own.'
+}
+*/
+```
+
+### 2.5.2 Web preglednik
+
+U web pregledniku, možemo koristiti `XMLHttpRequest` ili `fetch` API za čitanje JSON datoteka.
+
+Pokazat ćemo noviji `fetch` API, koji je jednostavniji za korištenje. 
+
+Detaljnije o `fetch` API-u u posljednjem poglavlju o asinkronom programiranju.
+
+```javascript
+fetch('harry_potter.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+```
+
+Također, isto možemo postići koristćei ES6 `import` sintaksu:
+
+```javascript
+import data from './harry_potter.json';
+
+console.log(data);
+```
+
+> **Napomena**: Direktno čitanje datoteka iz lokalnog sustava datoteka nije moguće iz sigurnosnih razloga. U stvarnim aplikacijama, JSON podaci se obično čitaju s web poslužitelja. Pokretanje lokalnog http servera često je dobar workaround za ovaj problem.
+
 # 3. Asinkrono programiranje
+
+Posljednje poglavlje ove skripte, kao i gradiva ovog kolegija, odnosi se na asinkrono programiranje.
+
+**Asinkrono programiranje** (***eng. Asynchronous programming***)  je način programiranja u kojem se operacije izvršavaju neovisno jedna o drugoj, bez čekanja na završetak prethodne operacije. Ovo je posebno korisno kada se radi o operacijama koje zahtijevaju vrijeme, kao što su čitanje podataka s web poslužitelja, pisanje u bazu podataka i sl.
+
+Recimo da želimo dohvatiti podatke s API-a koji se nalazi na udaljenom web poslužitelju. Primjerice radimo aplikaciju koja prikazuje vremensku prognozu za gradove diljem svijeta. Da bismo dohvatili podatke s API-a, moramo poslati zahtjev na web poslužitelj, pričekati odgovor i zatim prikazati podatke korisniku. Navedena operacija može potrajati nekoliko sekundi, ovisno o brzini interneta i udaljenosti web poslužitelja.
+
+Protok podataka može biti spor zbog različitih faktora, kao što su:
+- Spora veza s internetom
+- Preopterećenost web poslužitelja
+- Dugotrajne operacije na poslužitelju
+- Dugotrajne operacije na klijentskoj strani
+- Blokirajuće operacije
+- ISP (Internet Service Provider) problemi
+- Vanjski događaji (npr. kibernetički napadi, prirodne katastrofe, vremenske neprilike)
+
+Kako bi se izbjeglo blokiranje glavne dretve (engl. **main thread**), JavaScript koristi asinkrono programiranje. Asinkrono programiranje omogućuje izvršavanje više operacija istovremeno, bez čekanja na završetak prethodne operacije.
+
+Drugim riječima, ako naš korisnik čeka na odgovor s web poslužitelja, kod recimo dohvaćanja podataka o vremenskoj prognozi, ne želimo da mu se cijela aplikacija zamrzne dok čeka na odgovor. Umjesto toga, želimo da korisnik može nastaviti koristiti aplikaciju dok se podaci dohvaćaju.
