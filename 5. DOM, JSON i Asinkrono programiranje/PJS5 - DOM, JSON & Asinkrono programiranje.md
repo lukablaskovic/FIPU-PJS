@@ -1072,7 +1072,7 @@ Objekt treba prikazati u obliku HTML-a koristeći metode za dodavanje elemenata.
 
 ![alt text](screenshots/kupac.png)
 
-Rješenje: 
+>Rješenje: 
 ```javascript
 // Dohvaćamo element s ID-om "kupac"
 const divKupac = document.getElementById("kupac");
@@ -1136,37 +1136,73 @@ console.log(divKupac.outerHTML);
 
 ## 1.4 DOM events
 
-DOM događaji omogućuju JavaScriptu da reagira na korisničke akcije kao što su klikovi, unos teksta ili pokretanje mišem. Događaj se na element dodaje metodom `addEventListener(eventType, callbackFunction)`.
-- `callbackFunction` funkcija koju proslijeđujemo metodi, funkcija prima argument `event` koji se odnosi na pozvani događaj. Da bi se moglo pristupati elementu nad kojim se pozvao `event`, koristi se svojstvo `target`
+DOM događaji (**eng. DOM events**) omogućuju JavaScriptu da reagira na korisničke akcije kao što su klikovi mišem, različite kretnje mišem, unos na tipkovnici i sl. Događaj se na `element` dodaje metodom `addEventListener(event, callbackFn)`.
+- `callbackFn`: callback koji prima argument `event` a koji se odnosi na pozvani događaj. Da bi se moglo pristupati elementu nad kojim se pozvao `event`, koristi se svojstvo `target`.
 
+Sintaksa ove callback funkcije metode `addEventListener` je sljedeća:
+```javascript
+// Select the element to attach the event listener to
+const element = document.querySelector('#yourElementId'); // Replace '#yourElementId' with the actual element selector
+
+// Define the callback function
+function callbackFn(event) {
+
+    // Prevencija defaultne akcije (npr. spriječavanje slanja forme unutar <form> elementa)
+    event.preventDefault();
+
+    // Dohvaćanje svojstava: target, type, itd (najčešće se dohvaća target)
+    const target = event.target;
+    const eventType = event.type;
+
+    // Neka akcija koja se izvršava kada se događaj aktivira
+    console.log(`Event type: ${eventType}`);
+    console.log(`Event target: ${target}`);
+
+    // Primjer: change the background color of the element
+    target.style.backgroundColor = 'yellow';
+}
+```
+
+Uzmimo primjer gdje želimo promijeniti boju pozadine elementa kada se klikne na njega:
 ```html
 <button id="btn">Klikni me</button>
 ```
+Prvo dohvaćamo element na koji želimo dodati događaj:
 ```javascript
 const btn = document.getElementById("btn");
-
+```
+Zatim dodajemo događaj klikanja na taj element:
+```javascript
+// 1. način
 btn.addEventListener("click", function (event) {
     console.log(event.target.outerHTML)
 });
 // Output: "<button id="btn">Klikni me</button>" 
 ```
-`callbackFunction` se može pisati i na sljedeće načine:
+`callbackFn` se može pisati i kao arrow funkcija:
 ```javascript
+// 2. način
 btn.addEventListener("click", (event) => {
     console.log(event.target.outerHTML)
 });
+
+// 3. način (kratki zapis jer je samo jedan argument)
 btn.addEventListener("click", event => {
     console.log(event.target.outerHTML)
 });
+
+// 4. način (kratki zapis jer je samo jedan argument i jedna naredba)
 btn.addEventListener("click", event => console.log(event.target.outerHTML));
 
+// 5. način (callback funkcija je definirana izvan metode addEventListener)
 const ispis = (event) => console.log(event.target.outerHTML);
 btn.addEventListener("click", ispis);
-// Output: "<button id="btn">Klikni me</button>" x4
 ```
 
-- `eventType` je tipa `string`, ima ih mnogo, neki od značajnijih su prikazani u sljedećoj tablici:
+`event` argument sadrži informacije o događaju koji se dogodio.
+Napament ih nema smisla učiti (osim najčešće korištenih poput `click`, `input`, `focus`...) jer se mogu lako pronaći na internetu, ovisno o potrebi.
 
+Ima ih mnogo, neki od najčešće korištenih na webu su:
 
 | Metoda      | Objašnjenje                                      | Sintaksa                                       | Primjer                                   |
 |-------------|--------------------------------------------------|------------------------------------------------|-------------------------------------------|
@@ -1183,9 +1219,13 @@ dblclick    | Poziva se kada se dvaput klikne na element mišem. | `element.addE
 | mouseout    | Poziva se kada miš napusti element ili njegovog potomka. | `element.addEventListener('mouseout', function() {})` | `div.addEventListener('mouseout', function() { console.log('Miš napustio element!'); })` |
 | mouseover   | Poziva se kada miš uđe u element ili njegovog potomka. | `element.addEventListener('mouseover', function() {})` | `div.addEventListener('mouseover', function() { console.log('Miš ušao u element!'); })` |
 | mouseup     | Poziva se kada se miš otpusti iznad elementa.    | `element.addEventListener('mouseup', function() {})` | `div.addEventListener('mouseup', function() { console.log('Miš otpušten!'); })` |
-| input       | Poziva se kada se promijeni vrijednost input elementa. | `element.addEventListener('input', function() {})` | `input.addEventListener('input', function() { console.log('Vrijednost promijenjena!'); })` |
+| input       | Poziva se kada se promijeni vrijednost input elementa, a korisnik i dalje ostaje u polju. | `element.addEventListener('input', function() {})` | `input.addEventListener('input', function() { console.log('Vrijednost promijenjena!'); })` |
+| change      | Poziva se kada se promijeni vrijednost elementa, a korisnik se miče od polja. | `element.addEventListener('change', function() {})` | `inputElement.addEventListener('change', function() { console.log('Vrijednost promijenjena!'); })` |
 
-CSS korišten u sljedećim primjerima/zadacima:
+> Kroz sljedeće primjere i vježbe ćemo pokazati kako se koriste DOM događaji u JavaScriptu.
+
+U svim primjerima koristit ćemo sljedeći CSS kôd:
+
 ```css
 <style>
     div {
@@ -1211,6 +1251,9 @@ CSS korišten u sljedećim primjerima/zadacima:
 ```
 
 ### Primjer 6 - `click` event
+
+Dodajemo `input` polje i dva `button` elementa. Input polje predstavlja brojač, a dva button elementa povećavaju i smanjuju brojač za jedan.
+
 ```html
 <div>
     <button id="increaseBtn">+</button>
@@ -1218,19 +1261,26 @@ CSS korišten u sljedećim primjerima/zadacima:
     <button id="decreaseBtn">-</button>
 </div>
 ```
+Prvi korak je naravno dohvat elemenata:
 ```javascript
 const increaseBtn = document.getElementById("increaseBtn");
 const decreaseBtn = document.getElementById("decreaseBtn");
 const broj = document.getElementsByName("broj")[0];
-
-increaseBtn.addEventListener("click", () => broj.value++)
-decreaseBtn.addEventListener("click", () => broj.value--)
+```
+Zatim dodajemo događaje na `click` event za oba button elementa:
+```javascript
+increaseBtn.addEventListener("click", () => broj.value++) // povećava brojač za 1
+decreaseBtn.addEventListener("click", () => broj.value--) // smanjuje brojač za 1
 ```
 
 ### Vježba 5
 **EduCoder šifra**: `methods_to_methods`
 
-Zadan je sljedeći kôd:
+Želimo napraviti aplikaciju koja će omogućiti korisniku da unese podatke o korisniku (ime, prezime, email) i da ih dodaje u listu korisnika. Korisnik može dodavati korisnike na početak ili kraj liste, te ih može brisati s početka ili kraja liste.
+
+Koristit ćemo dobro poznate metode `Array` objekta. Za dodavanje korisnika koristit ćemo metode `push()` i `unshift()`, a za brisanje korisnika metode `pop()` i `shift()`.
+
+Zadan je sljedeći HTML kôd:
 ```html
 <div id="forma">
     Ime: <input type="text" name="Ime" placeholder="Ime..." />
@@ -1238,6 +1288,7 @@ Zadan je sljedeći kôd:
     Email: <input type="text" name="Email" placeholder="Email..." />
 </div>
 <div>
+    <!--Svaku metodu predstavit ćemo zasebnim gumbom-->
     <button id="push">push</button>
     <button id="pop">pop</button>
     <button id="unshift">unshift</button>
@@ -1247,10 +1298,13 @@ Zadan je sljedeći kôd:
 <div id="lista">
 </div>
 ```
+
+Zadatak je napisati implementacije funkcija: `dohvatiVrijednosti()`, `dodajNoviElement(pozicija)`, `ukloniElement(pozicija)` i dodati eventListenere za svaki button. 
 ```javascript
 const inputs = document.getElementsByTagName('input');
 const lista = document.getElementById('lista');
 const forma = document.getElementById('forma');
+
 const btn_push = document.getElementById('push');
 const btn_pop = document.getElementById('pop');
 const btn_unshift = document.getElementById('unshift');
@@ -1259,9 +1313,11 @@ const btn_shift = document.getElementById('shift');
 let emailPolje = []
 
 function dohvatiVrijednosti() {
-    //funckija dohvaća vrijednosti iz inputs i vraća novi formatirani div
-    //korsiteći for of ili forEach petlju iterira se kroz inputs (name, value) za svaki input
-    //ako je input prazan, default-na vrijednost je "blank"
+    // Pseudokod:
+
+    // Funkcija dohvaća vrijednosti iz "inputs" i vraća novi formatirani div element
+    // Koristeći "for of" petlju ili "forEach" metodu iterira se kroz "inputs" (name, value) za svaki input
+    // Ako je input prazan, defaultna vrijednost je "blank"
     return div; 
     /* Primjer div-a:
         <div>
@@ -1272,17 +1328,21 @@ function dohvatiVrijednosti() {
     */
 }
 function dodajNoviElement(pozicija) {
-    //funckija dodaje novi element ovisno o poziciji ("push", "unshift") switch(pozicija)
-    //vrijednost element dohvaća pomoću funckije dohvatiVrijednosti()
-    //prije dodavanje provjerava da li je email već dodan, ako je
-    //onda nakon forme dodaje upozorenje "<div id="upozorenje" style="color: red;">Email već postoji!</div>"
-    //inače dodaje novi element u polje i html te miče upozorenje
+    // Pseudokod:
+
+    // Funkcija dodaje novi element ovisno o poziciji ("push", "unshift") switch(pozicija)
+    // Vrijednost elementa dohvaća pomoću funkcije dohvatiVrijednosti()
+    // Prije dodavanja provjerava je li email već dodan, ako je:
+    // dodaje upozorenje "<div id="upozorenje" style="color: red;">Email već postoji!</div>"
+    // inače dodaje novi element u polje i html te miče upozorenje
 } 
 function ukloniElement(pozicija) {
-    //funckija briše element ovisno o poziciji ("pop", "shift") switch(pozicija)
-    //prije brisanja provjerava da li element postoji
-    //ako postoji briše element iz polja
-    //također se miče upozorenje bez obzira postoji li element ili ne
+    // Pseudokod:
+
+    // Funkcija briše element ovisno o poziciji ("pop", "shift") switch(pozicija)
+    // Prije brisanja provjerava postoji li element
+    // Ako postoji briše element iz polja
+    // Miče upozorenje bez obzira postoji li element ili ne
 }
 
 //dodati eventListener-e za svaki button
@@ -1294,25 +1354,32 @@ function ukloniElement(pozicija) {
 >Rješenje:
  
 ```javascript
+// Dohvaćamo sve elemente
 const inputs = document.getElementsByTagName('input');
 const lista = document.getElementById('lista');
 const forma = document.getElementById('forma');
+
 const btn_push = document.getElementById('push');
 const btn_pop = document.getElementById('pop');
 const btn_unshift = document.getElementById('unshift');
 const btn_shift = document.getElementById('shift');
 
 let emailPolje = []
-
+// Funkcija koja dohvaća vrijednosti iz input polja i vraća novi formatirani div element
 function dohvatiVrijednosti() {
   let div = document.createElement("div");
   for (const input of inputs) {
-    div.innerHTML+=`<b>${input.name}</b>: `;
-    div.innerHTML+=input.value == "" ? "blank " : (input.value+" ");
+    div.innerHTML += `<b>${input.name}</b>: `;
+    if (input.value == "") {
+      div.innerHTML += "blank ";
+    } else {
+      div.innerHTML += input.value + " ";
+    }
   }
   return div;
 }
 
+// Funkcija koja dodaje novi element ovisno o poziciji ("push", "unshift")
 function dodajNoviElement(pozicija) {
   const email = document.getElementsByName('Email')[0].value;
   if (emailPolje.includes(email)) {
@@ -1320,7 +1387,10 @@ function dodajNoviElement(pozicija) {
       forma.insertAdjacentHTML("afterend", `<div id="upozorenje" style="color: red;">Email već postoji!</div>`);
   }
   else {
-    document.getElementById("upozorenje")?.remove();
+    // Brišemo upozorenje
+    let element = document.getElementById("upozorenje");
+    if (element) element.remove();
+
     let vrijednost = dohvatiVrijednosti();
     switch(pozicija) {
       case "push": 
@@ -1335,6 +1405,7 @@ function dodajNoviElement(pozicija) {
   }
 }
 
+// Funkcija koja briše element ovisno o poziciji ("pop", "shift")
 function ukloniElement(pozicija) {
   switch(pozicija) {
     case "shift": 
@@ -1350,9 +1421,13 @@ function ukloniElement(pozicija) {
       }
       break;
   }
-  document.getElementById("upozorenje")?.remove();
+// Brišemo upozorenje
+let element = document.getElementById("upozorenje");
+if (element) element.remove();
+
 }
 
+// Dodajemo eventListenere za svaki button
 btn_push.addEventListener("click", () => dodajNoviElement("push"))
 btn_pop.addEventListener("click", () => ukloniElement("pop"))
 btn_unshift.addEventListener("click", () => dodajNoviElement("unshift"))
@@ -1420,7 +1495,7 @@ Potrebno je dodati dva event listener-a:
 
 ![alt text](screenshots/fokus.png)
 
-Rješenje:
+>Rješenje:
 
 ```javascript
 const inputs = document.getElementById('inputs');
@@ -1566,7 +1641,7 @@ Potrebno je dodati dva event listener-a:
 
 ![alt text](screenshots/gallery.png)
 
-Rješenje:
+>Rješenje:
 ```javascript
 let galerija = [
   {
@@ -1632,7 +1707,7 @@ repeatPassword.addEventListener("input", event => {
 **EduCoder šifra**: `recommend`
 
 Kreiramo aplikaciju za praćenje unosa u polje za pretraživanje. Korisnik će moći upisati pojam u polje za pretraživanje, a aplikacija će dinamički filtrirati rezultate kako korisnik tipka.
-- Implementirajte funckiju `showResults(searchTerm)` koja će filtrirati rezultate na temelju unesenog teksta
+- Implementirajte funkciju `showResults(searchTerm)` koja će filtrirati rezultate na temelju unesenog teksta
 - Klikom na rezultat popunjava se input i rezultati se izbrišu
 
 Zadan je sljedeći kôd:
@@ -1689,7 +1764,7 @@ function showResults(searchTerm) {
 
 ![alt text](screenshots/recommend.png)
 
-Rješenje:
+>Rješenje:
 ```javascript
 const inputField = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('searchResults');
