@@ -39,7 +39,7 @@
     - [Primjer 4 - Dohvaćanje `child` i `sibling` elemenata.](#primjer-4---dohvaćanje-child-i-sibling-elemenata)
     - [Vježba 3](#vježba-3)
   - [1.4 Dodavanje i brisanje DOM elemenata](#14-dodavanje-i-brisanje-dom-elemenata)
-    - [Primjer 5 - kreiranje, dodavanje, brisanje i mjenjanje elemenata](#primjer-5---kreiranje-dodavanje-brisanje-i-mjenjanje-elemenata)
+    - [Primjer 5 - Stvaranje, dodavanje, brisanje i izmjena DOM elemenata](#primjer-5---stvaranje-dodavanje-brisanje-i-izmjena-dom-elemenata)
     - [Vježba 4](#vježba-4)
   - [1.4 DOM events](#14-dom-events)
     - [Primjer 6 - `click` event](#primjer-6---click-event)
@@ -861,28 +861,30 @@ console.log(`Prosjek ocjena studenata: ${prosjekStudenata(filtriraniStudenti)}`)
 ```
 
 ## 1.4 Dodavanje i brisanje DOM elemenata
-Dodavanje i brisanje elemenata omogućuje dinamičko mijenjanje stranice temeljem korisničkih akcija ili događaja. Dosad smo naučili kako da dohvaćamo i mjenjamo elemente, međutim dodavanje novih elemenata je dosta nezgodno koristeći svojstvo `innerHTML`. Zato postoje sljedeće metode za dodavanja, umetanje i brisanje HTML-a i elemenata:
+Dodavanje i brisanje elemenata omogućuje dinamičke izmjene stranice temeljem korisničkih akcija ili događaja. 
+
+Dosad smo naučili kako da dohvaćamo i mijenjamo elemente, međutim dodavanje novih elemenata je dosta nezgodno koristeći svojstvo `innerHTML`. Iz tog razloga postoje i metode za dodavanja, umetanje i brisanje elemenata:
 
 | Metoda                   | Objašnjenje                                                  | Sintaksa                                              |
 |--------------------------|--------------------------------------------------------------|-------------------------------------------------------|
-| `createElement()`        | Stvara novi HTML element.                                   | `document.createElement(tagName)`                    |
-| `append()`               | Dodaje element(e) kao posljednje dijete elementa.           | `element.append(child1, child2, ...)`                 |
-| `prepend()`              | Dodaje element(e) kao prvo dijete elementa.                 | `element.prepend(child1, child2, ...)` | 
-`before()`               | Dodaje element(e) ispred odabranog elementa.                | `element.before(newElement)`                  |
-| `after()`                | Dodaje element(e) iza odabranog elementa.                   | `element.after(newElement)`                           |                       |
-| `insertAdjacentElement()`| Dodaje novi element u odabrani element, prema zadanoj poziciji.| `element.insertAdjacentElement(position, newElement)` |
-| `insertAdjacentHTML()`   | Dodaje HTML tekst u odabrani element, prema zadanoj poziciji.| `element.insertAdjacentHTML(position, html)`          |
+| `createElement()`        | Stvara novi HTML element prema definiranom `tag`-u                                   | `document.createElement(tagName)`                    |
+| `append()`               | Dodaje element(e) (`newElement`) kao posljednje dijete.           | `element.append(child1, child2, ...)`                 |
+| `prepend()`              | Dodaje element(e) (`newElement`) kao prvo dijete.                 | `element.prepend(child1, child2, ...)` | 
+`before()`               | Dodaje element(e) (`newElement`) ispred odabranog elementa.                | `element.before(newElement)`                  |
+| `after()`                | Dodaje element(e) (`newElement`) iza odabranog elementa.                   | `element.after(newElement)`                           |                       |
+| `insertAdjacentElement()`| Dodaje novi element u odabrani element, na zadanu poziciju (`position`).| `element.insertAdjacentElement(position, newElement)` |
+| `insertAdjacentHTML()`   | Dodaje HTML tekst u odabrani element, na zadanu poziciju (`position`).| `element.insertAdjacentHTML(position, html)`          |
 | `remove()`               | Uklanja element iz DOM-a.                                   | `element.remove()`                                    |
-| `replaceWith()`          | Zamjenjuje odabrani element novim elementom.                | `element.replaceWith(newElement)`                    |
+| `replaceWith()`          | Zamjenjuje odabrani element novim elementom (`newElement`).                | `element.replaceWith(newElement)`                    |
 
-U kodu za `insertAdjacentElement()` i `insertAdjacentHTML()` koristimo atribut `position` koji pokazuje gdje će se sadržaj nadodati, mora biti postavljen na jednu od sljedećih vrijednosti:
+U kôdu za `insertAdjacentElement()` i `insertAdjacentHTML()` koristimo atribut `position` koji označava gdje se sadržaj dodaje, mora biti postavljen na jednu od sljedećih vrijednosti:
 
-- `beforebegin`: Prije elementa
-- `afterbegin`: Unutar elementa, prije njegovog prvog djeteta
-- `beforeend`: Unutar elementa, nakon njegovog posljednjeg djeteta
-- `afterend`: Nakon elementa
+- `beforebegin`: prije elementa
+- `afterbegin`: unutar elementa, prije njegovog prvog djeteta
+- `beforeend`: unutar elementa, nakon njegovog posljednjeg djeteta
+- `afterend`: nakon elementa
 
-### Primjer 5 - kreiranje, dodavanje, brisanje i mjenjanje elemenata
+### Primjer 5 - Stvaranje, dodavanje, brisanje i izmjena DOM elemenata
 
 ```html
 <style>
@@ -899,53 +901,61 @@ U kodu za `insertAdjacentElement()` i `insertAdjacentHTML()` koristimo atribut `
     </div>
 </div>
 ```
-Dodavanje novih elemenata metodama: `append()`, `prepend()`, `before()`, `after()`
+Dodavanje novih elemenata koristeći metode: `append()`, `prepend()`, `before()`, `after()`
 ```javascript
 const mojElement = document.getElementById('mojID');
 
+// Stvaramo nove elemente
 const divAppend = document.createElement('div')
 const divPreppend = document.createElement('div')
 const divAfter = document.createElement('div')
 const divBefore = document.createElement('div')
 
+// Postavljamo sadržaj novih elemenata
 divAppend.innerHTML = 'divAppend'
 divPreppend.innerHTML = 'divPreppend'
 divAfter.innerHTML = 'divAfter'
 divBefore.innerHTML = 'divBefore'
 
+// Raspoređujemo nove elemente
 mojElement.append(divAppend);
 mojElement.prepend(divPreppend);
 mojElement.after(divAfter);
 mojElement.before(divBefore);
 ```
-Ili sa metodom: `insertAdjacentElement()`
+Ili s metodom: `insertAdjacentElement()`
 ```javascript
 const mojElement = document.getElementById('mojID');
 
+// Stvaramo nove elemente
 const divAppend = document.createElement('div')
 const divPreppend = document.createElement('div')
 const divAfter = document.createElement('div')
 const divBefore = document.createElement('div')
 
+// Postavljamo sadržaj novih elemenata
 divAppend.innerHTML = 'divAppend'
 divPreppend.innerHTML = 'divPreppend'
 divAfter.innerHTML = 'divAfter'
 divBefore.innerHTML = 'divBefore'
 
+// Raspoređujemo nove elemente
 mojElement.insertAdjacentElement("beforebegin", divBefore);
 mojElement.insertAdjacentElement("afterbegin", divPreppend);
 mojElement.insertAdjacentElement("beforeend", divAppend);
 mojElement.insertAdjacentElement("afterend", divAfter);
 ```
-Ili sa metodom: `insertAdjacentHTML()`
+Ili pak s metodom: `insertAdjacentHTML()`
 ```javascript
 const mojElement = document.getElementById('mojID');
 
+// Stvaramo nove elemente u obliku HTML stringa
 const divAppend = "<div> divAppend </div>"
 const divPreppend = "<div> divPreppend </div>"
 const divAfter = "<div> divAfter </div>"
 const divBefore = "<div> divBefore </div>"
 
+// Raspoređujemo nove elemente
 mojElement.insertAdjacentHTML("beforebegin", divBefore);
 mojElement.insertAdjacentHTML("afterbegin", divPreppend);
 mojElement.insertAdjacentHTML("beforeend", divAppend);
@@ -953,14 +963,14 @@ mojElement.insertAdjacentHTML("afterend", divAfter);
 ```
 ![alt text](screenshots/dodavanje_elementa.png)
 
-Brisanje prvog `child` elementa, `div`-a s `id`-jem "mojDiv":
+Brisanje radimo jednostavno koristeći metodu `remove()`. Na primjer, brisanje prvog `child` elementa, `div`-a gdje je `id`=`"mojDiv"`
 ```javascript
 const elementZaBrisanje = mojElement.firstElementChild;
 elementZaBrisanje.remove()
 ```
 ![alt text](screenshots/brisanje_elementa.png)
 
-Mjenjanje `div` elementa nakon `div`-a s `id`-jem "mojDiv":
+Izmjena `div` elementa nakon `div`-a gdje je `id`=`"mojDiv"`:
 ```javascript
 const elementZaMjenjanje = mojElement.nextElementSibling;
 
@@ -974,8 +984,11 @@ elementZaMjenjanje.replaceWith(newBoldElement)
 ### Vježba 4 
 **EduCoder šifra**: `html_from_object`
 
-Često ćemo imati zadatak gdje moramo stvoriti grafički prikaz danih podataka, pogotovo ako su ti podaci dinamički ili se dohvaćaju iz baze podataka. Ako se mijenjaju samo pojedinačne vrijednosti, dovoljno je mijenjati trenutne postojeće HTML elemente. Međutim, u slučaju da se količina podataka mijenja, tj. povećava ili smanjuje, tada je potrebno dodavati/brisati HTML elemente.
-Zadan je sljedeći HTML kôd:
+U web programiranju često ćemo morati grafički prikazati podatke iz dinamičkih struktura i različitih izvora podataka. Ako se mijenjaju samo pojedinačne vrijednosti u strukturi, dovoljno je samo izmjeniti postojeće definirane HTML elemente. Međutim, ako se struktura mijenja, ili se povečava/smanjuje količina podataka, tada je potrebno dinamički i dodavati/brisati HTML elemente.
+
+U praksi često za nas ove probleme rješavaju razvojni okviri za JavaScript, ili neka biblioteka, ali je dobro znati kako stvari funkcioniraju "ispod haube".
+
+Zadan je sljedeći HTML/CSS kôd:
 ```html
 <style>
     #kupac {
@@ -1011,6 +1024,7 @@ Zadan je sljedeći HTML kôd:
 <div id="kupac">
 </div>
 ```
+Zadan je objekt `kupac`:
 ```javascript
 let kupac = {
   ime: "Ivo",
@@ -1060,11 +1074,15 @@ Objekt treba prikazati u obliku HTML-a koristeći metode za dodavanje elemenata.
 
 Rješenje: 
 ```javascript
+// Dohvaćamo element s ID-om "kupac"
 const divKupac = document.getElementById("kupac");
-
+// Dodajemo naslov "KUPAC" u div element 
 divKupac.insertAdjacentHTML("beforeend", "<h1>KUPAC</h1>")
+// Dodajemo horizontalnu liniju
 divKupac.append(document.createElement("hr"));
-
+```
+Kada smo dodali naslov i liniju, slijedi ispisivanje informacije o kupcu. Stvarat ćemo nove `div` elemente te im dodavati sadržaj koristeći `innerHTML` svojstvo.
+```javascript	
 const divImePrezime = document.createElement("div");
 divImePrezime.innerHTML = `Ime i prezime: <b> ${kupac.ime} ${kupac.prezime} </b`
 divKupac.append(divImePrezime);
@@ -1077,8 +1095,11 @@ const divKontakt = document.createElement("div");
 divKontakt.innerHTML = `Email: <b> ${kupac.kontakt.email} </b> | Telefon: <b> ${kupac.kontakt.telefon} </b>`
 divKupac.append(divKontakt);
 
+// Dodajemo horizontalnu liniju
 divKupac.append(document.createElement("hr"));
-
+```
+Nakon što smo dodali informacije o kupcu, slijedi dodavanje tablice s narudžbama. Stvorit ćemo prvo tablicu, a naslove stupaca dodati koristeći `insertAdjacentHTML()` metodu.
+```javascript
 const tableNarudzbe = document.createElement("table");
 const tableHeaders = document.createElement("tr");
 
@@ -1088,7 +1109,9 @@ tableHeaders.insertAdjacentHTML("beforeend", "<th>Cijena</th>")
 tableHeaders.insertAdjacentHTML("beforeend", "<th>Ukupno</th>")
 
 tableNarudzbe.append(tableHeaders);
-
+```
+Nakon što smo dodali naslove stupaca, slijedi dodavanje redova tablice s podacima o narudžbama. Iterirat ćemo kroz sve stavke narudžbe i dodati ih u tablicu.
+```javascript
 for (let stavka of kupac.narudzbe[0].stavke) {
   const tableRow = document.createElement("tr");
   tableRow.insertAdjacentHTML("beforeend", `<td>${stavka.naziv}</td>`)
@@ -1099,9 +1122,11 @@ for (let stavka of kupac.narudzbe[0].stavke) {
 }
 
 divKupac.append(tableNarudzbe);
-
+// Još jedna horizontalna linija
 divKupac.append(document.createElement("hr"));
-
+```
+Na kraju, dodajemo boldano ukupnu cijenu narudžbe.
+```javascript
 const divUkupno = document.createElement("div");
 divUkupno.innerHTML = `Ukupno: <b> ${kupac.narudzbe[0].ukupnaCijena()} </b> ${kupac.narudzbe[0].valuta.toUpperCase()}`
 divKupac.append(divUkupno);
@@ -1266,7 +1291,7 @@ function ukloniElement(pozicija) {
 
 ![alt text](screenshots/methods_to_methods.png)
 
-Rješenje:
+>Rješenje:
  
 ```javascript
 const inputs = document.getElementsByTagName('input');
