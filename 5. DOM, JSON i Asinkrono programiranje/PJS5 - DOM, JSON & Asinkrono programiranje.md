@@ -498,21 +498,23 @@ Pronašli smo idealni web shop u Engleskoj, međutim sve cijene su prikazane u f
 function azurirajSadrzaj(klasa, noviSimbol) {
   const query = document.querySelectorAll("."+klasa)
   for (let element of query) {
-    element.innerHTML=noviSimbol;
+    element.innerHTML=noviSimbol; // Promjena sadržaja elementa
   }
 }
 function azurirajCijenu(tag) {
   const query = document.querySelectorAll(tag)
   for (let element of query) {
-    element.innerHTML=(Number.parseFloat(element.innerHTML)*1.16547).toFixed(2);
+    element.innerHTML=(Number.parseFloat(element.innerHTML)*1.16547).toFixed(2); // Promjena sadržaja elementa
   }
 }
-azurirajSadrzaj("symbol", "€");
-azurirajCijenu("u");
+azurirajSadrzaj("symbol", "€"); // Promjena simbola svugdje gdje imamo klasu "symbol"
+azurirajCijenu("u"); // Ažuriraj cijenu svugdje gdje imamo tag "u"
 ```
 ### Primjer 3 - Manipulacija klasama
 
-Ako elementu želimo direktno mijenjati ili dodati `class` onda koristimo `className` svojstvo, ne `classList` svojstvo. Onda možemo dohvatiti element s id-jem "prviDiv" i promijenit mu vriijednost klase na "text-6xl".
+Ako elementu želimo direktno mijenjati ili dodati klasu `class` onda koristimo `className` svojstvo, ne `classList` svojstvo.
+
+Primjerice, želimo promijeniti klasu elementa s ID-om `prviDiv` iz `text-5xl` u `text-6xl`
 
 ```html
 <div id="prviDiv" class="text-5xl">
@@ -523,21 +525,21 @@ Ako elementu želimo direktno mijenjati ili dodati `class` onda koristimo `class
 ```javascript
 const element = document.querySelector('#prviDiv')
 console.log(element.outerHTML); //Output: "<div class="text-5xl id="prviDiv""> Hi! </div>"
-element.className = "text-6xl"
+element.className = "text-6xl" // Promjena klase elementa
 console.log(element.outerHTML); //Output: "<div class="text-6xl" id="prviDiv"> Hi! </div>"
 ```
 
-> `className` služi za postavljanje i dohvaćanje cjelog atributa klase odabranog elementa. Za dodavanje dodavanje, brisanje, mjenjanje i provjeru pojedine klase korisi se `classList` svojstvo.
+> `className` služi za postavljanje i dohvaćanje cijelog atributa klase odabranog elementa. Za dodavanje dodavanje, brisanje, promjenu i provjeru pojedine klase bolje je koristiti `classList` svojstvo.
 
-Svojstvo `classList` ima dodatne metode koje nam olakšavaju manipulaciju klasom. 
+Nad svojstvom `classList` mogu se pozvati dodatne metode koje nam olakšavaju manipulaciju klasom elementa. 
 
 | Metoda | Objašnjenje | Sintaksa |
 |--------|-------------|---------|
-| `add(className1, className2, ...)` | Nadodaje jednu ili više CSS klasa elementu. | `element.classList.add(x);` |
-| `contains(className)` | Provjerava sadrži li element određenu CSS klasu. | `element.classList.contains(x);` |
-| `remove(className1, className2, ...)` | Uklanja jednu ili više CSS klasa iz elementa. | `element.classList.remove(x);` |
-| `replace(oldClassName, newClassName)` | Zamjenjuje postojeću CSS klasu s novom CSS klasom. | `element.classList.replace(x, y);` |
-| `toggle(className)` | Dodaje CSS klasu ako ju element nema, uklanja ako ju ima. | `element.classList.toggle(x);` |
+| `add(className1, className2, ...)` | Dodaje jednu ili više CSS klasa elementu | `element.classList.add(x);` |
+| `contains(className)` | Provjerava sadrži li element određenu CSS klasu | `element.classList.contains(x);` |
+| `remove(className1, className2, ...)` | Uklanja jednu ili više CSS klasa iz elementa | `element.classList.remove(x);` |
+| `replace(oldClassName, newClassName)` | Zamjenjuje postojeću CSS klasu s novom CSS klasom | `element.classList.replace(x, y);` |
+| `toggle(className)` | Dodaje CSS klasu ako ju element nema, uklanja ako ju ima (gasi/pali) | `element.classList.toggle(x);` |
 
 
 ```html
@@ -548,23 +550,23 @@ Svojstvo `classList` ima dodatne metode koje nam olakšavaju manipulaciju klasom
 
 ```javascript     
 const element = document.querySelector('#mojID')
-element.classList.add('italic');
+element.classList.add('italic'); // Dodajemo klasu "italic"
 console.log(element.className); //Output: "text-6xl italic"
 
 console.log(element.classList.contains('text-6xl')); // Output: true
-element.classList.remove('text-6xl');
+element.classList.remove('text-6xl'); // Uklanjamo klasu "text-6xl"
 console.log(element.className); //Output: "italic"
 
-element.classList.replace('italic', 'underline');
+element.classList.replace('italic', 'underline'); // Zamjenjujemo klasu "italic" s "underline"
 console.log(element.className); //Output: "underline"
-element.classList.toggle('font-bold')
+element.classList.toggle('font-bold') // Dodajemo klasu "font-bold" jer je nema
 console.log(element.className); //Output: "underline font-bold"
 ```
 
 ### Vježba 2
-**EduCoder šifra**: `tablica`
+**EduCoder šifra**: `books`
 
-Pregledavamo staru web stranicu koja prikazuje podatke o knjigama, ali primjećujemo da je prikaz tablice neuredan i teško čitljiv. Kao programeri, imamo mogućnost poboljšati prikaz podataka na drugim stranicama dodavanjem našeg koda za bolje oblikovanje.
+Naišli smo na staru web stranicu s bibliotekom knjiga. Na stranici su prikazane knjige u tablici. Želimo promijeniti stil tablice i ćelija kako bi bila nam bila preglednija.
 
 Zadan je sljedeći CSS i HTML kôd:
 ```html
@@ -581,7 +583,7 @@ Zadan je sljedeći CSS i HTML kôd:
         width: 100%;
         background-color: white;
     }
-    .kvadrat {
+    .celija {
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
@@ -590,10 +592,10 @@ Zadan je sljedeći CSS i HTML kôd:
         background-color: #00000065;
         font-size: 20px;
     }
-    .velik {
+    .velika {
         background-color: #4cb05065;
     }
-    .broj {
+    .broj-stranica {
         font-weight: bold;
     }
 </style>   
@@ -604,49 +606,47 @@ Zadan je sljedeći CSS i HTML kôd:
         <th>Broj stranica</th>
     </tr>
     <tr>
-        <td>Uvod u HTML</td>
-        <td>Josip Josipović</td>
-        <td class="broj">500</td>
+        <td>Harry Potter and the Philosopher's Stone</td>
+        <td>J. K. Rowling</td>
+        <td class="broj-stranica">500</td>
     </tr>
     <tr>
-        <td>JavaScript Osnove</td>
-        <td>Marko Markić</td>
-        <td class="broj">7500</td>
+        <td>The Lord of the Rings</td>
+        <td>J. R. R. Tolkien</td>
+        <td class="broj-stranica">1077</td>
     </tr>
     <tr>
-        <td>CSS Osnove</td>
-        <td>Ana Anić</td>
-        <td class="broj">640</td>
+        <td>Don Quixote</td>
+        <td>Miguel de Cervantes</td>
+        <td class="broj-stranica">120</td>
     </tr>
 </table>
 ```
-Koristeći `querySelector` i `classList` metode dodajte "tablica", "kvadrat" i "naslov" na odgovarajuće elemente, te ćeliji s najvećim brojem stranica dodajte klasu "velik".
+Koristeći `querySelector` i `classList` metode dodajte "tablica", "celija" i "naslov" na odgovarajuće elemente. Ćeliji s najvećim brojem stranica dodajte klasu "velika".
 
-✅Rezultat:
 
-![alt text](screenshots/tablica.png)
 
-Rješenje:
+> Rješenje:
 ```javascript
-document.querySelector('table').classList.replace('slika', 'tablica');
-document.querySelectorAll('th, td').forEach(element => {
-    element.classList.add('kvadrat');
+document.querySelector('table').classList.replace('slika', 'tablica'); // Zamjenjujemo klasu "slika" s "tablica"
+document.querySelectorAll('th, td').forEach(element => { // Dodajemo klasu "celija" na sve <th> i <td> elemente
+    element.classList.add('celija');
 });
-document.querySelectorAll('th').forEach(element => {
+document.querySelectorAll('th').forEach(element => { // Dodajemo klasu "naslov" na sve <th> elemente
     element.classList.add('naslov');
 });
 
 let maxBrojStranica = 0;
 let maxCelijaIndex = -1;
-let query = document.querySelectorAll('.broj');
-query.forEach((celija, index) => {
-    const brojStranica = parseInt(celija.innerHTML);
-    if (brojStranica > maxBrojStranica) {
-        maxBrojStranica = brojStranica;
-        maxCelijaIndex = index;
+let query = document.querySelectorAll('.broj-stranica'); // Dohvaćamo sve elemente s klasom "broj-stranica"
+query.forEach((celija, index) => { // Pronalazimo najveći broj stranica
+    const brojStranica = parseInt(celija.innerHTML); // Pretvaramo sadržaj u broj
+    if (brojStranica > maxBrojStranica) { // Ako je trenutni broj stranica veći od maksimalnog
+        maxBrojStranica = brojStranica; // Postavljamo novi maksimalni broj stranica
+        maxCelijaIndex = index; // Postavljamo index najvećeg broja stranica
     }
 });
-query[maxCelijaIndex].classList.add('velik') 
+query[maxCelijaIndex].classList.add('velika')  // Dodajemo klasu "velika" na ćeliju s najvećim brojem stranica
 ```
 
 ### Primjer 4 - Dohvaćanje `child` i `sibling` elemenata.
