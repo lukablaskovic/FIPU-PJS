@@ -30,7 +30,7 @@
 - [1. DOM manipulacija](#1-dom-manipulacija)
   - [1.1 Osnovni DOM element](#11-osnovni-dom-element)
   - [1.2 Dohvaćanje DOM elemenata](#12-dohvaćanje-dom-elemenata)
-    - [Primjer 1. - dohvaćanje elemenata](#primjer-1---dohvaćanje-elemenata)
+    - [Primjer 1. - Dohvaćanje elemenata](#primjer-1---dohvaćanje-elemenata)
   - [1.3 Svojstva DOM elemenata](#13-svojstva-dom-elemenata)
     - [Primjer 2 - Pristupanje sadržaju, `id`-u, `tag`-u, atributima i klasama elementa](#primjer-2---pristupanje-sadržaju-id-u-tag-u-atributima-i-klasama-elementa)
     - [Vježba 1](#vježba-1)
@@ -58,9 +58,13 @@
 # 0. Ponavljanje HTML-a i CSS-a
 U ovoj sekciji ćemo se osvrnuti na osnove HTML-a i CSS-a. **HTML** (HyperText Markup Language) je markup jezik za označavanje struktura web stranica, dok je CSS (Cascading Style Sheets) jezik za stilizaciju tih struktura. Kombinacija ova dva jezika omogućuje nam da oblikujemo i prikažemo sadržaj web stranica na željeni način.
 
+Kako bi vam HTML i CSS jezici već trebali biti poznati, u nastavku ćemo se osvrnuti na neke osnovne koncepte i primjere korištenja HTML i CSS elemenata. U skripti se dalje nećemo detaljno baviti HTML i CSS jezicima, već ćemo se fokusirati na JavaScript, odnosno kako možemo **manipulirati HTML elementima** pomoću JavaScripta.
+
 >**HTML (HyperText Markup Language)**
 
 **HTML** je markup jezik (***eng. [markup language](https://en.wikipedia.org/wiki/Markup_language#:~:text=July%202023content%20to%20facilitate%20automated%20processing.)***) koji se koristi za strukturiranje sadržaja web stranica. Sastoji se od HTML elemenata koji se koriste za označavanje dijelova sadržaja. Svaki HTML element sastoji se od otvarajuće oznake (***eng. start tag***), sadržaja elementa (***eng. content***) i zatvarajuće oznake (***eng. end tag***).
+
+Osnovna struktura HTML dokumenta često se može podijeliti na `head` i `body` dijelove. `head` dio obično sadrži meta informacije o dokumentu, kao što su naslov stranice, veze prema CSS datotekama, skripte itd. `body` dio sadrži glavni sadržaj stranice, poput zaglavlja (**header**), navigacije (**nav**), članaka (**article**) i podnožja (**footer**). 
 
 ```html
 <head>
@@ -96,7 +100,7 @@ U ovoj sekciji ćemo se osvrnuti na osnove HTML-a i CSS-a. **HTML** (HyperText M
     </footer>
 </body>
 ```
-Osnovna struktura HTML dokumenta često se može podijeliti na `head` i `body` dijelove. `head` dio obično sadrži meta informacije o dokumentu, kao što su naslov stranice, veze prema CSS datotekama, skripte itd. `body` dio sadrži glavni sadržaj stranice, poput zaglavlja (**header**), navigacije (**nav**), članaka (**article**) i podnožja (**footer**). 
+
 
 >Treba napomenuti da je dolaskom HTML5 standarda uvedeno mnogo novih elemenata i atributa koji omogućuju bolje semantičko označavanje sadržaja web stranica. Semantičko označavanje je važno jer pomaže tražilicama i drugim alatima da bolje razumiju strukturu i značenje sadržaja na web stranici. Svakako je moguće gotovo sve elemente stilizirati pomoću CSS-a i svesti na `div` i `span` elemente, ali korištenje semantičkih elemenata poboljšava pristupačnost i [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide#:~:text=SEO%E2%80%94short%20for%20search%20engine,site%20through%20a%20search%20engine.) (Search Engine Optimization) web stranice.
 
@@ -296,12 +300,14 @@ HTML elementi se mogu dohvatiti na sljedeće načine:
 
 | Metoda | Objašnjenje |	Sintaksa |	Primjer |
 |--------|-------------|-------------|----------|
-| `getElementById(x)` | Vraća prvi element po jedinstvenom ID-u. | `document.getElementById(x)` | `document.getElementById("mojID")`
-| `getElementsByTagName(x)` | Vraća sve elemente po HTML tagu. | `document.getElementsByTagName(x)` | `document.getElementsByTagName("p")`
-| `getElementsByClassName(x)` | Vraća sve elemente po klasi/klasama ili kombinaciji HTML taga i klase. | `document.getElementsByClassName(x)` | `document.getElementsByClassName("mojaKlasa")`
+| `getElementById(x)` | Vraća prvi element po jedinstvenom `Id`-u. | `document.getElementById(x)` | `document.getElementById("mojID")`
+| `getElementsByTagName(x)` | Vraća sve elemente po HTML `tagu`-u. | `document.getElementsByTagName(x)` | `document.getElementsByTagName("p")`
+| `getElementsByClassName(x)` | Vraća sve elemente po klasi/klasama ili kombinaciji HTML `tag`-a i klase (`class`). | `document.getElementsByClassName(x)` | `document.getElementsByClassName("mojaKlasa")`
 | `getElementsByName(x)` | Vraća sve elemente po imenu. | `document.getElementsByName(x)` | `document.getElementsByName("ime")`
-| `querySelector(x)` | Vraća **prvi element** koji odgovara određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća null. | `document.querySelector(x)` | `document.querySelector("#mojID")`<br>`document.querySelector(".mojaKlasa")`<br>`document.querySelector("p")`<br>`document.querySelector("input[name='ime']")`
-| `querySelectorAll(x)` | Vraća **sve elemente** koji odgovaraju određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća null. | `document.querySelectorAll(x)` |  `document.querySelectorAll("#mojID")`<br>`document.querySelectorAll(".mojaKlasa")`<br>`document.querySelectorAll("p")`<br>`document.querySelectorAll("input[name='ime']")`
+| `querySelector(x)` | Vraća **prvi element** koji odgovara određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća `null`. | `document.querySelector(x)` | `document.querySelector("#mojID")`<br>`document.querySelector(".mojaKlasa")`<br>`document.querySelector("p")`<br>`document.querySelector("input[name='ime']")`
+| `querySelectorAll(x)` | Vraća **sve elemente** koji odgovaraju određenom selektoru ili grupi selektora. Ako nema pronađenih podudaranja, vraća `null`. | `document.querySelectorAll(x)` |  `document.querySelectorAll("#mojID")`<br>`document.querySelectorAll(".mojaKlasa")`<br>`document.querySelectorAll("p")`<br>`document.querySelectorAll("input[name='ime']")`
+
+U sljedećem JavaScript kôdu možete vidjeti primjere dohvaćanja elemenata koristeći metode iz tablice.
 
 ```javascript
 // Dohvaćanje prvog DOM elementa po ID-u
@@ -336,7 +342,7 @@ console.log("Dohvaćen koristeći querySelector: " + query3.innerHTML);
 const query4 = document.querySelector("input[name='ime']");
 console.log("Dohvaćen koristeći querySelector: " + query4.value);
 
-// Dohvaćanje DOM elemenata koristeći querySelectorAll
+// Dohvaćanje svih DOM elemenata koristeći querySelectorAll
 const queryAll = document.querySelectorAll('p');
 for (let query of queryAll){
     console.log("Dohvaćen koristeći querySelectorAll: " + query.innerHTML);
@@ -346,7 +352,7 @@ for (let query of queryAll){
 > `querySelector` uvijek prvo pretražuje po `tag`-u, za pretraživanje po `id`-u treba koristiti oznaku `#`.
 >  za pretraživanje po klasi treba koristiti `.` dok za pretraživanje po imenu ili drugim atributima prvo treba staviti ime `tag`-a pa unutar uglatih zagrada pretragu `[atribut = vrijednost]`
 
-### Primjer 1. - dohvaćanje elemenata
+### Primjer 1. - Dohvaćanje elemenata
 Za zadani HTML kôd, treba dohvatiti `<input>` s vrijednošću **TOČNO**. Ne smijemo koristiti `id` atribut i naknadno mijenjati HTML.
 ```html
 <div class="moja-forma glavni2">
@@ -378,7 +384,11 @@ console.log(query.innerHTML)
 ## 1.3 Svojstva DOM elemenata
 DOM Elementi imaju mnogo svojstava, od kojih smo već neka koristili neka za dohvaćanje sadržaja elemenata poput `innerHTML`.
 
-Možemo ih podijeliti u svojstva za: dohvaćanje i postavljanje atributa, dohvaćanje sadržaja, dohvaćanje stilova, dohvaćanje djece i susjeda.
+**Možemo ih podijeliti u svojstva za**: 
+- dohvaćanje i postavljanje atributa, 
+- dohvaćanje sadržaja, 
+- dohvaćanje stilova, 
+- dohvaćanje djece i susjeda.
 
 U sljedećoj tablici su prikazana neka od bitnijih svojstava:
 
@@ -391,8 +401,8 @@ U sljedećoj tablici su prikazana neka od bitnijih svojstava:
 | `innerHTML` | Vraća ili mijenja HTML sadržaj unutar elementa. | `element.innerHTML` |
 | `outerHTML` | Vraća HTML elementa, uključujući sam element i njegov sadržaj. | `element.outerHTML` |
 | `attributes` | Vraća kolekciju svih atributa elementa. | `element.attributes` |
-| `style` | Vraća stil atribut elementa. | `element.style` |
-| `childElementCount` | Vraća broj direktnie djece elementa. | `element.childElementCount` |
+| `style` | Vraća `style` atribut elementa. | `element.style` |
+| `childElementCount` | Vraća broj direktne djece elementa. | `element.childElementCount` |
 | `children` | Vraća kolekciju direktne djece elementa. | `element.children` |
 | `firstElementChild` | Vraća prvo direktno dijete elementa. | `element.firstElementChild` |
 | `lastElementChild` | Vraća posljednje direktno dijete elementa. | `element.lastElementChild` |
@@ -424,7 +434,7 @@ for (const attr of element.attributes) {
   // Output: "attr: class -> text-5xl h-16 w-36 overflow-scroll"
 }
 ```
-Međutim, kolekciju klasa možemo dohvatiti preko `className` ili `classList` svojstva. `className` vraća string svih klasa dok `classList` vraća `DOMTokenList` objekt koji omogućava korištenje `forEach` petlje.
+Međutim, kolekciju klasa možemo dohvatiti preko `className` ili `classList` svojstva. `className` vraća `string` svih klasa dok `classList` vraća `DOMTokenList` objekt koji omogućava korištenje `forEach` petlje.
 ```javascript
 // Dohvaćanje klasa preko className
 console.log(element.className); // Output: "text-5xl h-16 w-36 overflow-scroll"
@@ -441,9 +451,11 @@ element.classList.forEach( klasa => {
 
 >  `attributes` svojstvo **ne vraća polje objekata već objekt objekata** kao povratnu vrijednost, tako da je za iteraciju najbolje koristiti `for of` petlju. Međutim, `classList` vraća `DOMTokenList` koja omogućava korištenje `forEach` petlje.
 > 
-> `attributes` vraća `NamedNodeMap` te nema mogućnost korištenja `forEach` petlje.
+> `attributes` vraća kolekciju tipa `NamedNodeMap` koja nema mogućnost korištenja `forEach` petlje.
 
-Elementu možemo direktno mijenjati ili dodati `id` koristeći `id` svojstvo. Možemo dohvatiti prvi `div` element s tekstom `"Hi!"` i dodati mu `id`: `"prviDiv"`.
+Elementu možemo direktno mijenjati ili dodati `id` koristeći `id` svojstvo. 
+
+Možemo dohvatiti prvi `div` element s tekstom `"Hi!"` i dodati mu `id`: `"prviDiv"`.
 
 ```javascript
 const element = document.querySelector('div')
@@ -463,7 +475,7 @@ console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> P
 ### Vježba 1
 **EduCoder šifra**: `funte_u_eure`
 
-Pronašli smo idealni web shop u Engleskoj, međutim sve cijene su prikazane u funtama, a stranica nema ugrađenu konverziju valuta. Želimo da nam se automatski prikažu sve cijene u valuti kuna. Idemo malo "hakirati" ovaj web shop.
+Pronašli smo idealni web shop u Engleskoj, međutim sve cijene su prikazane u funtama, a stranica nema ugrađenu konverziju valuta. Želimo da nam se automatski prikažu sve cijene u valuti eura. Zadatak nam je malo "hakirati" ovaj web shop bez da mijenjamo HTML kôd.
 
 ```html
 <div class="item">
@@ -486,7 +498,7 @@ Pronašli smo idealni web shop u Engleskoj, međutim sve cijene su prikazane u f
 </div>
 ```
 - Napišite funkciju `azurirajSimbol(klasa, noviSimbol)` koja će za danu klasu promijeniti unutarnji sadržaj svih klasa na novi sadržaj.
-- Napišite funkciju `azurirajCijenu(tag)` koja će za dani `tag` napraviti konverziju unutarnjeg sadržaja (cijena) svih `tag`-ova iz funta u eure zaokruženo na dvije decimale.
+- Napišite funkciju `azurirajCijenu(tag)` koja će za dani `tag` napraviti konverziju unutarnjeg sadržaja (cijena) svih `tag`-ova iz cijene u funtama u cijenu u eurima, zaokruženo na dvije decimale.
 - Devizni tečaj: `1£ = 1.16547€`
 
 ✅Rezultat:
@@ -504,7 +516,7 @@ function azurirajSadrzaj(klasa, noviSimbol) {
 function azurirajCijenu(tag) {
   const query = document.querySelectorAll(tag)
   for (let element of query) {
-    element.innerHTML=(Number.parseFloat(element.innerHTML)*1.16547).toFixed(2); // Promjena sadržaja elementa
+    element.innerHTML=(Number.parseFloat(element.innerHTML)*1.16547).toFixed(2); // Promjena sadržaja elementa (sadržaj dohvaćen s innerHTML je tipa string pa ga treba pretvoriti u broj, zato koristimo parseFloat metodu)
   }
 }
 azurirajSadrzaj("symbol", "€"); // Promjena simbola svugdje gdje imamo klasu "symbol"
@@ -512,9 +524,9 @@ azurirajCijenu("u"); // Ažuriraj cijenu svugdje gdje imamo tag "u"
 ```
 ### Primjer 3 - Manipulacija klasama
 
-Ako elementu želimo direktno mijenjati ili dodati klasu `class` onda koristimo `className` svojstvo, ne `classList` svojstvo.
+>Ako DOM elementu želimo direktno mijenjati ili dodati klasu `class` onda koristimo `className` svojstvo, ne `classList` svojstvo.
 
-Primjerice, želimo promijeniti klasu elementa s ID-om `prviDiv` iz `text-5xl` u `text-6xl`
+Primjerice, želimo ažurirati klasu elementa s ID-om `prviDiv` iz `text-5xl` u `text-6xl`
 
 ```html
 <div id="prviDiv" class="text-5xl">
@@ -531,7 +543,7 @@ console.log(element.outerHTML); //Output: "<div class="text-6xl" id="prviDiv"> H
 
 > `className` služi za postavljanje i dohvaćanje cijelog atributa klase odabranog elementa. Za dodavanje dodavanje, brisanje, promjenu i provjeru pojedine klase bolje je koristiti `classList` svojstvo.
 
-Nad svojstvom `classList` mogu se pozvati dodatne metode koje nam olakšavaju manipulaciju klasom elementa. 
+Nad svojstvom `classList` mogu se pozvati dodatne metode koje nam olakšavaju manipulaciju klasom (`class`) elementa. 
 
 | Metoda | Objašnjenje | Sintaksa |
 |--------|-------------|---------|
@@ -539,7 +551,7 @@ Nad svojstvom `classList` mogu se pozvati dodatne metode koje nam olakšavaju ma
 | `contains(className)` | Provjerava sadrži li element određenu CSS klasu | `element.classList.contains(x);` |
 | `remove(className1, className2, ...)` | Uklanja jednu ili više CSS klasa iz elementa | `element.classList.remove(x);` |
 | `replace(oldClassName, newClassName)` | Zamjenjuje postojeću CSS klasu s novom CSS klasom | `element.classList.replace(x, y);` |
-| `toggle(className)` | Dodaje CSS klasu ako ju element nema, uklanja ako ju ima (gasi/pali) | `element.classList.toggle(x);` |
+| `toggle(className)` | Dodaje CSS klasu ako ju element nema/uklanja ako ju ima | `element.classList.toggle(x);` |
 
 
 ```html
@@ -622,9 +634,9 @@ Zadan je sljedeći CSS i HTML kôd:
     </tr>
 </table>
 ```
-Koristeći `querySelector` i `classList` metode dodajte "tablica", "celija" i "naslov" na odgovarajuće elemente. Ćeliji s najvećim brojem stranica dodajte klasu "velika".
+Koristeći `querySelector` i `classList` metode dodajte "tablica", "celija" i "naslov" na odgovarajuće elemente, ćeliji s najvećim brojem stranica dodajte klasu "velika".
 
-
+![alt text](./screenshots/tablica_books.png)
 
 > Rješenje:
 ```javascript
@@ -650,7 +662,14 @@ query[maxCelijaIndex].classList.add('velika')  // Dodajemo klasu "velika" na će
 ```
 
 ### Primjer 4 - Dohvaćanje `child` i `sibling` elemenata.
-Naučili smo dohvaćati elemente koristeći `querySelector` i `getElements` metoda. Međutim ponekad nam one nisu dovoljne te želimo samo dohvatiti različite vrste elemenata od jednog elementa. Za takve situacije je najbolje koristiti svojstva: `childElementCount`, `children`, `lastElementChild`, `nextElementSibling`, `previousElementSibling`
+Naučili smo dohvaćati elemente koristeći `querySelector` i `getElements` metode. Međutim, ponekad želimo dohvatiti djecu ili susjede određenog elementa. Za to možemo koristiti sljedeća svojstva:
+`childElementCount`, 
+`children`, 
+`lastElementChild`, 
+`nextElementSibling`, 
+`previousElementSibling`
+
+Imamo sljedeći HTML kôd:
 
 ```html
 <div>
