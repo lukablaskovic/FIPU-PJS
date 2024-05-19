@@ -1152,10 +1152,9 @@ DOM događaji (**eng. DOM events**) omogućuju JavaScriptu da reagira na korisni
 
 Sintaksa ove callback funkcije metode `addEventListener` je sljedeća:
 ```javascript
-// Select the element to attach the event listener to
-const element = document.querySelector('#yourElementId'); // Replace '#yourElementId' with the actual element selector
 
-// Define the callback function
+const element = document.querySelector('#elementID');
+
 function callbackFn(event) {
 
     // Prevencija defaultne akcije (npr. spriječavanje slanja forme unutar <form> elementa)
