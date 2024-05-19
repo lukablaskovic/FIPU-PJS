@@ -420,10 +420,16 @@ console.log(element.tagName); // Output: "DIV"
 
 for (const attr of element.attributes) {
   console.log(`attr: ${attr.name} -> ${attr.value}`); 
-  // Output: id -> mojID
-  // Output: class -> mojaKlasa druga-klasa
+  // Output: "attr: id -> mojID"
+  // Output: "attr: class -> text-5xl h-16 w-36 overflow-scroll"
 }
+```
+Međutim, kolekciju klasa možemo dohvatiti preko `className` ili `classList` svojstva. `className` vraća string svih klasa dok `classList` vraća `DOMTokenList` objekt koji omogućava korištenje `forEach` petlje.
+```javascript
+// Dohvaćanje klasa preko className
 console.log(element.className); // Output: "text-5xl h-16 w-36 overflow-scroll"
+
+// Dohvaćanje klasa preko classList
 element.classList.forEach( klasa => {
   console.log(`class: ${klasa}`); 
   // Output: class: -> text-5xl
@@ -433,7 +439,9 @@ element.classList.forEach( klasa => {
 })
 ```
 
->  `attributes` svojstvo **ne vraća polje objekata već objekt objekata** kao povratnu vrijednost, tako da je za iteraciju najbolje koristiti `for of` petlju. Preciznije, `classList` vraća `DOMTokenList` koja omogućava korištenje `forEach` petlje dok `attributes` vraća `NamedNodeMap` te nema mogućnost korištenja `forEach` petlje.
+>  `attributes` svojstvo **ne vraća polje objekata već objekt objekata** kao povratnu vrijednost, tako da je za iteraciju najbolje koristiti `for of` petlju. Međutim, `classList` vraća `DOMTokenList` koja omogućava korištenje `forEach` petlje.
+> 
+> `attributes` vraća `NamedNodeMap` te nema mogućnost korištenja `forEach` petlje.
 
 Elementu možemo direktno mijenjati ili dodati `id` koristeći `id` svojstvo. Možemo dohvatiti prvi `div` element s tekstom `"Hi!"` i dodati mu `id`: `"prviDiv"`.
 
@@ -453,39 +461,39 @@ console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> P
 > Mijenjanjem sadržaja preko `outerHTML` svojstva možemo prekrižiti cijeli element pa nije pametno to koristiti. Međutim, za to postoje metode koje ćemo proći u poglavlju `Dodavanje i brisanje DOM elemenata`
 
 ### Vježba 1
-**EduCoder šifra**: `kune_u_eure`
+**EduCoder šifra**: `funte_u_eure`
 
-Zamislimo da želimo pretraživati web trgovinu u Engleskoj. Međutim sve cijene su prikazane u funtama, a stranica nema ugrađenu konverziju valuta. Želimo da nam se automatski prikažu sve cijene u našoj valuti, da ne bismo ručno radili konverziju za svaki proizvod.
-Zadan je sljedeći HTML kôd:
+Pronašli smo idealni web shop u Engleskoj, međutim sve cijene su prikazane u funtama, a stranica nema ugrađenu konverziju valuta. Želimo da nam se automatski prikažu sve cijene u valuti kuna. Idemo malo "hakirati" ovaj web shop.
+
 ```html
 <div class="item">
     <b>-</b>
-    <span> Bread </span>
-    <u>2.00</u>
+    <span> Laptop </span>
+    <u>1200</u>
     <span class="symbol">£</span>
 </div>
 <div class="item">
     <b>-</b>
-    <span> Apple </span>
-    <u>0.15</u>
+    <span> PC </span>
+    <u>1800</u>
     <span class="symbol">£</span>
 </div>
 <div class="item">
     <b>-</b>
-    <span> Carrot </span>
-    <u>0.06</u>
+    <span> Mouse & Keyboard </span>
+    <u>200</u>
     <span class="symbol">£</span>
 </div>
 ```
 - Napišite funkciju `azurirajSimbol(klasa, noviSimbol)` koja će za danu klasu promijeniti unutarnji sadržaj svih klasa na novi sadržaj.
-- Napišite funkciju `azurirajCijenu(tag)` koja će za dani tag napraviti konverziju unutarnjeg sadržaja svih tag-ova iz funta u eure zaokruženo na dvije decimale.
+- Napišite funkciju `azurirajCijenu(tag)` koja će za dani `tag` napraviti konverziju unutarnjeg sadržaja (cijena) svih `tag`-ova iz funta u eure zaokruženo na dvije decimale.
 - Devizni tečaj: `1£ = 1.16547€`
 
 ✅Rezultat:
 
-![alt text](screenshots/kune_u_eure.png)
+![alt text](./screenshots/funte_u_eure.png)
 
-Rješenje:
+>Rješenje:
 ```javascript
 function azurirajSadrzaj(klasa, noviSimbol) {
   const query = document.querySelectorAll("."+klasa)
