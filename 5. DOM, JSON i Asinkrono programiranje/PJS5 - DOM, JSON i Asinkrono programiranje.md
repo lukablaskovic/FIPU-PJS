@@ -1870,27 +1870,25 @@ inputField.addEventListener('input', event => {
 
 **EduCoder šifra**: `kosarica`
 
-Imate zadatak izraditi sučelje za košaricu web trgovine, promjenu količine proizvoda te uklanjanje proizvoda iz košarice.
-
-Sučelje aplikacije sastoji se od polja za unos naziva i cijene proizvoda te gumba za dodavanje proizvoda u košaricu. Također, prikazuje se lista proizvoda u košarici s informacijama o nazivu, količini, cijeni po komadu te ukupnoj cijeni za taj proizvod.
+Imate zadatak izraditi sučelje za **košaricu web trgovine**. Sučelje aplikacije sastoji se od polja za unos naziva i cijene proizvoda te gumba za dodavanje proizvoda u košaricu. Također, prikazuje se lista proizvoda u košarici s informacijama o nazivu, količini, cijeni po komadu te ukupnoj cijeni za taj proizvod.
 
 Kada korisnik unese naziv i cijenu proizvoda te klikne na gumb `Dodaj artikl`, proizvod se dodaje u košaricu. 
- - Ako proizvod nema ime, dugme se ne može kliknuti, zatamnjeno je/onemogućeno
+ - Ako proizvod nema ime, dugme se ne može kliknuti, mora biti zatamnjeno/onemogućeno
  - Ako se proizvod s istim imenom već nalazi u košarici, količina se povećava za `1`
- - Ako je novi, dodaje se na listu
+ - Ako je proizvod novi, dodaje se na listu
  - Cijena proizvoda ne može ići ispod `0`
 
 Korisnik može mijenjati količinu proizvoda u košarici koristeći gumbe `+` i `-` pored svakog proizvoda. Također, postoji opcija za uklanjanje proizvoda iz košarice klikom na gumb `Ukloni`.
 
 Nakon svake promjene u košarici, ukupna cijena se automatski ažurira kako bi korisnik imao uvid u trenutni trošak.
 
-Jedan primjer implementacije:
-- Napravi se konstruktor `Proizvod(naziv, kolicina, cijena)` koji ima atribute `naziv`, `kolicina`, `cijena` i metodu `ukupnaCijena()` koja vraća ukupnu cijenu proizvoda zaokruženu na dvije decimale.
+**Jedan primjer implementacije:**
+- Izrada konstruktora `Proizvod(naziv, kolicina, cijena)` koji ima atribute `naziv`, `kolicina`, `cijena` i metodu `ukupnaCijena()` koja vraća ukupnu cijenu proizvoda zaokruženu na dvije decimale.
 
-- Napraviti se objekt `kosarica` koja sadrži 
-    - atribut `proizvodi` - lista proizvoda
-    - metodu `dodajProizvod(proizvod)` - dodaje proizvod u HTML i polje `proizvodi`
-    - metodu `dodajFunkcionalnosti(naziv)` - dodaje funkcionalnosti (`eventListener`-i) proizvodu:
+- Izrada objekta `kosarica` koja sadrži: 
+    - atribut `proizvodi` - lista/polje proizvoda
+    - metodu `dodajProizvod(proizvod)` - dodaje proizvod u polje `proizvodi` i HTML element
+    - metodu `dodajFunkcionalnosti(naziv)` - dodaje funkcionalnosti (`eventListener`-i) za svaki proizvod u košarici:
         - povećanje količine
         - smanjenje količine
         - brisanje proizvoda
@@ -1900,7 +1898,7 @@ Jedan primjer implementacije:
 
 ![alt text](screenshots/kosarica.png)
 
-Korišteni HTML i CSS kôd:
+Možete napisati vlastiti HTML i CSS kôd ili koristiti sljedeći:
 ```html
 <style>
     body {
