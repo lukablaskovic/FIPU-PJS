@@ -1253,6 +1253,9 @@ U svim primjerima koristit ćemo sljedeći CSS kôd:
 ### Primjer 6 - `click` event
 
 Dodajemo `input` polje i dva `button` elementa. Input polje predstavlja brojač, a dva button elementa povećavaju i smanjuju brojač za jedan.
+`click` događaj smo rekli da se poziva kada se klikne na element jedanput.
+
+Nemojte zaboraviti kopirati CSS kôd iznad.
 
 ```html
 <div>
@@ -1435,6 +1438,13 @@ btn_shift.addEventListener("click", () => ukloniElement("shift"))
 ```
 
 ### Primjer 7 - `focus` events
+
+`focus` familija događaja se poziva kada element dobije/gubi fokus u nekom kontekstu. U primjeru ćemo koristiti `focus`, `focusin`, `focusout` i `blur` događaje.
+
+Dodat ćemo dva input polja za ime i prezime, te jedno za broj godina. Kada se fokusira na polje, ispisuje se koji je element fokusiran.
+
+Nemojte zaboraviti kopirati CSS kôd iznad.
+
 ```html
 <div id="inputi">
     <b>Ime:</b> <input id="ime" placeholder="Ime ..."/>
@@ -1442,29 +1452,46 @@ btn_shift.addEventListener("click", () => ukloniElement("shift"))
 </div>
 
 <div>
-    <b>Broj godina:</b> <input id="brojGodina" type="number" placeholder="Godina ..."/>
+    <b>Godine:</b> <input id="brojGodina" type="number" placeholder="Godina ..."/>
 </div>
 
 <div>
     <b>Element event:</b> <span id="event"> </span>
 </div>
 ```
+
 ```javascript
 const inputi = document.getElementById('inputi');
 const inputBrojGodina = document.getElementById('brojGodina');
 
 const span = document.getElementById('event');
-
+// Focus event se poziva kada element dobije fokus
 inputBrojGodina.addEventListener('focus', event => span.textContent = "focus: " + event.target.outerHTML);
+// Focusin event se poziva kada element ili njegovi potomci dobiju fokus
 inputi.addEventListener('focusin', event => span.textContent = "focusin: " + event.target.outerHTML);
+// Focusout event se poziva kada element ili njegovi potomci izgube fokus
 inputi.addEventListener('focusout', event => span.textContent = "focusout: " + event.target.outerHTML);
+// Blur event se poziva kada element izgubi fokus
 inputBrojGodina.addEventListener('blur', event => span.textContent = "blur: " + event.target.outerHTML);
 ```
 
 > `focus` i `blur` se pozivaju samo za trenutni element, ignoriraju potomke, dok se `focusin` i `focusout` pozivaju za element i svakog potomka zasebno.
 
 ### Vježba 6
-**EduCoder šifra**: `focus`
+**EduCoder šifra**: `please_focus`
+
+Imate zadana dva input polja za unos lozinke i ponovnu lozinku. 
+
+Kada je **input fokusiran**, ovisno o inputu treba pisati odgovarajući hint:
+
+za **Lozinku**:  
+  - Minimalna duljina lozinke mora biti 8
+  - Lozinka mora imati barem jedno veliko slovo
+  - Lozinka mora imati barem jedan broj
+
+za **Ponovi lozinku**:
+  - Lozinke moraju biti iste
+Kada se **izađe iz fokusa**, hint treba biti prazan.
 
 Zadan je sljedeći kôd:
 ```html
@@ -1478,16 +1505,8 @@ Zadan je sljedeći kôd:
 ```javascript
 const inputs = document.getElementById('inputs');
 const hint = document.getElementById('hint');
-/* 
-Potrebno je dodati dva event listener-a:
- > kada je input fokusiran, ovisno o inputu treba pisat odgovarajući hint
-    za Lozinku:
-      - Minimalna duljina lozinke mora biti 8
-      - Lozinka mora imati barem jedno veliko slovo
-      - Lozinka mora imati barem jedan broj
-    za Ponovi lozinku:
-      - Lozinke moraju biti iste
- > kada se izađe iz fokusa, hint treba biti prazan
+/*
+Vaš kôd ovdje...
 */
 ```
 
@@ -1500,7 +1519,8 @@ Potrebno je dodati dva event listener-a:
 ```javascript
 const inputs = document.getElementById('inputs');
 const hint = document.getElementById('hint');
-
+// Koristimo focusin i focusout jer se focus i blur pozivaju samo za trenutni element, ignoriraju potomke
+// Focusin se propagira kroz sve potomke unutar DOM stabla.
 inputs.addEventListener("focusin", (event) => {
   switch(event.target.name) {
     case "password":
@@ -1520,12 +1540,13 @@ inputs.addEventListener("focusin", (event) => {
 inputs.addEventListener("focusout", () => {
     hint.innerHTML = ``;
 })
-
 ```
 
-Zadan je sljedeći kôd:
-
 ### Primjer 8 - `mouse` events
+
+`mouse` familija događaja se poziva kada se događa neka akcija mišem. U primjeru ćemo koristiti `mouseover`, `mouseout`, `mouseenter`, `mouseleave`, `mousedown`, `mouseup` i `click` događaje.
+
+Zadan je sljedeći kôd:
 ```html
 <div id="buttons" style="background: lightblue;">
     <button id="btn_1">1</button>
@@ -1533,23 +1554,33 @@ Zadan je sljedeći kôd:
     <button id="btn_3">3</button>
     <button id="btn_4">4</button>
 </div>
+<!-- Ispisuje koji je događaj aktiviran -->
+<b>Mouse Event:</b> <span id="event"> </span>
 ```
+
 ```javascript
+// div koji sadrži sve gumbe
 const buttons = document.getElementById('buttons');
+// 4 gumba, svaki ima svoj id
 const btn_1 = document.getElementById('btn_1');
 const btn_2 = document.getElementById('btn_2');
 const btn_3 = document.getElementById('btn_3');
 const btn_4 = document.getElementById('btn_4');
+
+// dodajemo ih u polje
 const btnList = [btn_1, btn_2, btn_3, btn_4]
 
+// dohvaćamo span element za ispis događaja
 const span = document.getElementById('event');
 
+// dodavanje event listenera za različite mouse događaje
 buttons.addEventListener('mouseover', event => span.textContent = "mouseover: " + event.target.id);
 buttons.addEventListener('mouseout', event => span.textContent = "mouseout: " + event.target.id);
 
 buttons.addEventListener('mouseenter', event => console.log("mouseenter: " + event.target.id));
 buttons.addEventListener('mouseleave', event => console.log("mouseleave: " + event.target.id));
 
+// dodavanje event listenera za mousedown, mouseup i click događaje te ispis događaja
 for (const btn of btnList) {
   btn.addEventListener('mousedown', event => {
     console.log("[1] mousedown: " + event.target.id);
@@ -1565,7 +1596,7 @@ for (const btn of btnList) {
 
 > `mouseenter` i `mouseleave` se pozivaju samo za trenutni element, ignoriraju potomke, dok se `mouseover` i `mouseout` pozivaju za element i svakog potomka zasebno.
 
-> `click` se uvijek poziva nakon `mousedown` i `mouseup` točno tim redom.
+> `click` se uvijek poziva nakon `mousedown` i `mouseup` i točno tim redoslijedom.
 
 ### Vježba 7
 **EduCoder šifra**: `gallery`
