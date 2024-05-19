@@ -51,6 +51,8 @@
     - [Primjer 9 - `input` event](#primjer-9---input-event)
     - [Vježba 8](#vježba-8)
 - [Samostalni zadatak za vježbu 8](#samostalni-zadatak-za-vježbu-8)
+- [2. JSON - JavaScript Object Notation](#2-json---javascript-object-notation)
+- [3. Asinkrono programiranje](#3-asinkrono-programiranje)
 
 
 <br>
@@ -2071,3 +2073,7 @@ Možete napisati vlastiti HTML i CSS kôd ili koristiti sljedeći:
     </div>     
 </div>
 ```
+
+# 2. JSON - JavaScript Object Notation
+
+# 3. Asinkrono programiranje
