@@ -2506,3 +2506,5 @@ Protok podataka može biti spor zbog različitih faktora, kao što su:
 Kako bi se izbjeglo blokiranje glavne dretve (engl. **main thread**), JavaScript koristi asinkrono programiranje. Asinkrono programiranje omogućuje izvršavanje više operacija istovremeno, bez čekanja na završetak prethodne operacije.
 
 Drugim riječima, ako naš korisnik čeka na odgovor s web poslužitelja, kod recimo dohvaćanja podataka o vremenskoj prognozi, ne želimo da mu se cijela aplikacija zamrzne dok čeka na odgovor. Umjesto toga, želimo da korisnik može nastaviti koristiti aplikaciju dok se podaci dohvaćaju.
+
+<img src="./screenshots/async.png" width="800" >
