@@ -470,7 +470,9 @@ element.innerHTML = " Pozdrav! " //Mjenjanje sadržaja
 console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> Pozdrav! </div>"
 ```
 
-> Mijenjanjem sadržaja preko `outerHTML` svojstva možemo prekrižiti cijeli element pa nije pametno to koristiti. Međutim, za to postoje metode koje ćemo proći u poglavlju `Dodavanje i brisanje DOM elemenata`
+> Mijenjanjem sadržaja preko `outerHTML` svojstva možemo prekrižiti cijeli element pa nije pametno to koristiti. 
+> 
+> Međutim, za navedeno postoje metode koje ćemo proći u poglavlju `Dodavanje i brisanje DOM elemenata`
 
 ### Vježba 1
 **EduCoder šifra**: `funte_u_eure`
@@ -685,15 +687,22 @@ Imamo sljedeći HTML kôd:
 </div>
 ```
 
+Upotrijebit ćemo `querySelector` metodu za dohvaćanje elementa s ID-om `mojID` te potom iskoristiti navedena svojstva za dohvaćanje djece i susjeda tog elementa.
+
 ```javascript         
 const element = document.querySelector('#mojID')
+// Dohvaćanje broja djece elementa
 console.log(element.childElementCount); // Output: 3
+
+// Dohvaćanje djece elementa
 for (const child of element.children) {
   console.log(`child: ${child.outerHTML}`); 
   // Output: "child: <span>Hello</span>"
   // Output: "child: <span>,</span>"
   // Output: "child: <span>World</span>"
 }
+
+// Ili tradicionalnom for petljom
 for (let i = 0; i < element.childElementCount; i++) {
   console.log(`child: ${element.children.item(i).outerHTML}`); 
   // Output: "child: <span>Hello</span>"
@@ -708,12 +717,13 @@ console.log(element.nextElementSibling.outerHTML); // Output: "<div class="text-
 console.log(element.previousElementSibling.outerHTML); // Output: "<div class="text-5xl"> Hi! </div>"
 ```
 
-> `children` svojstvo vraća `HTMLCollection` koja nema `forEach` petlju. Međutim, imamo svojstvo `childElementCount` koje nam vraća broj djece elementa, te omogućava iteraciju kroz djecu koristeći običnu `for` petlju te pristupanje pojedinom djetetu preko indexa metodom `item()`
+> `children` svojstvo vraća `HTMLCollection` nad kojime se ne može pozvati `forEach` metoda. Međutim, imamo svojstvo `childElementCount` koje nam vraća broj djece elementa te omogućava iteraciju kroz djecu koristeći tradicionalnu `for` petlju i pristupanje pojedinom djetetu preko indexa metodom `item()`
 
 ### Vježba 3
 **EduCoder šifra**: `web_scraping`
 
-Radimo na projektu analize podataka, gdje trebamo prikupiti informacije s više web stranica škola. Nažalost, te stranice nemaju svoj API za dohvaćanje podataka. Unatoč tome, još uvijek želimo doći do potrebnih informacija s tih stranica. Kako bismo to postigli, koristit ćemo tehniku web scrapinga.
+Radimo na projektu analize podataka, gdje trebamo prikupiti informacije s više web stranica škola. Nažalost, te stranice nemaju svoj API za dohvaćanje podataka.
+Možemo koristiti web scraping, tehniku koja se koristi za ekstrakciju podataka s web stranica. U te svrhe moramo dobro poznavati HTML strukturu stranice, kao i manipulaciju DOM elementima.
 
 Zadan je sljedeći HTML kôd:
 ```html
@@ -721,7 +731,7 @@ Zadan je sljedeći HTML kôd:
     <div>
         <b>Ivo</b>
         <b>Ivić</b>
-        <u class="email">ivoivic@gmail.com</u>
+        <u class="email">ivoivic@skole.hr</u>
         <span>3</span>
     </div>
     <div>
@@ -732,37 +742,38 @@ Zadan je sljedeći HTML kôd:
     <div>
         <b>Maja</b>
         <b>Majić</b>
-        <u class="email">majamajic@gmail.com</u>
+        <u class="email">majamajic@skole.hr</u>
         <span>none</span>
     </div>
     <div>
         <b>Marko</b>
         <b>Marić</b>
-        <u class="email">markomaric@gmail.com</u>
+        <u class="email">markomaric@skole.hr</u>
         <span>1</span>
     </div>
 </div>
 ```
+
+Zadan je konstruktor `Student`:
 ```javascript
-function Student(ime, prezime, email, ocjena) {
+function Student(ime, prezime, email, ocjena, opisnaOcjena) {
     this.ime = ime;
     this.prezime = prezime;
     this.email = email;
     this.ocjena = ocjena;
-    this.opisnaOcjena = ocjena;
-    this.oStudentu = () => console.log(`${this.ime}` `${this.prezime} s emailom ${this.email} ima ocjenu ${this.opisnaOcjena}`)
+    this.opisnaOcjena = opisnaOcjena;
+    this.oStudentu = () => console.log(`${this.ime} ${this.prezime} s emailom ${this.email} ima ocjenu ${this.opisnaOcjena}`)
 }
-const studenti = [];
 ```
-Napišite funkciju `dodajStudente(id, poljeStudenata)` koja:
-- Za svako djete elementa s danim `id`-jem
-    - Vadi podatke o *imenu*, *prezimenu*, *emailu* i *ocjeni* koristeći samo `firstElementChild`, `lastElementChild`, `nextElementSibling`, `previousElementSibling` i `classList` metode
-    - Ako nedostaje *email*, postavi ga na "nema podatka"
-    - Pretvori ocjenu u format: od "odličan" do "nedovoljan" za ocjene od 5 do 1, ili "nema ocjenu" za ostalo
-    - Dodaje svakog studenta u polje studenti
+1. Napišite funkciju `dodajStudente(id, poljeStudenata)` koja:
+- Za svako dijete elementa s danim `id`-em
+    - Ekstrahira podatke o *imenu*, *prezimenu*, *emailu* i *ocjeni* koristeći samo `firstElementChild`, `lastElementChild`, `nextElementSibling`, `previousElementSibling` i `classList` metode
+    - Ako nedostaje *email*, postavlja ga na `"nema podatka"`
+    - Pretvara ocjenu u format: od "odličan" do "nedovoljan" za ocjene od `5` do `1`, ili "nema ocjenu" za ostalo
+    - Dodaje svakog studenta u polje studenti i vraća novoizgrađeno polje
 
-Spremite sve studente koji imaju ocjenu u polje `filtriraniStudenti` koristeći `filter()` metodu
-- Za svakog studenta koji ima ocjenu, pozovi metodu `oStudentu()`.
+2. Spremite sve studente koji imaju ocjenu u polje `filtriraniStudenti`.
+- Za svakog studenta koji ima ocjenu, pozovite metodu `oStudentu()` (metoda već definirana u konstruktoru `Student`)
 
 Napišite funkciju `prosjekStudenata(poljeStudenata)` koja vraća prosjek studenata:
 - spremite u `sumaOcjena` varijablu sumu svih ocjena studenata koristeći `reduce()` metodu
@@ -772,7 +783,7 @@ Konstruktor `Student` možete ažurirat ako je potrebno s dodatnim metodama ili 
 
 ✅Rezultat:
 ```javascript         
-dodajStudente('studenti', studenti);
+dodajStudente('studenti');
 
 // Output: "Ivo Ivić s emailom "ivoivic@gmail.com" ima ocjenu dobar"
 // Output: "Ana Anić s emailom "nema podatka" ima ocjenu odličan"
@@ -783,22 +794,30 @@ console.log(`Prosjek ocjena studenata: ${prosjekStudenata(filtriraniStudenti)}`)
 // Output: "Prosjek ocjena studenata: 3.00"
 ```
    
-Rješenje:
+>Rješenje:
 
 ```javascript      
-function dodajStudente(id, poljeStudenata) {
-    const elementiStudenata = document.getElementById(id).children;
+function dodajStudente(html_element_id) {
+    const elementiStudenata = document.getElementById(html_element_id).children;
+    const poljeStudenata = [];
+    // Iteriramo tradicionalnom for petljom kroz svu djecu elementa s danim ID-em (html_element_id)
+    // Kôd počiva na pretpostavci da su svi elementi u polju redom: ime, prezime, email, ocjena
     for (let i = 0; i < elementiStudenata.length; i++) {
         const student = elementiStudenata[i];
+
         const imeElement= student.firstElementChild;
         const ime = imeElement.innerHTML;
         const prezime = imeElement.nextElementSibling.innerHTML;
+
         const ocjenaElement = student.lastElementChild;
         const ocjena = student.lastElementChild.innerHTML;
+
         let opisnaOcjena = "nema ocjenu";
         let email = "nema podatka";
+
         if (ocjenaElement.previousElementSibling.classList.contains('email'))
           email = ocjenaElement.previousElementSibling.innerHTML;
+
         switch (ocjena) {
             case "5":
                 opisnaOcjena = 'odličan';
@@ -819,17 +838,21 @@ function dodajStudente(id, poljeStudenata) {
                 opisnaOcjena = 'nema ocjenu';
                 break;
         }
+        // Pozivanjem konstruktora stvaramo novi objekt s ekstrahiranim podacima
         poljeStudenata.push(new Student(ime, prezime, email, ocjena, opisnaOcjena));
     }
+    return poljeStudenata;
 }
 
-dodajStudente('studenti', studenti);
+// Pozivamo funkciju za ID "studenti"
+let studenti = dodajStudente('studenti');
 
+// U polje filtriraniStudenti spremamo sve studente koji imaju ispravnu ocjenu
 const filtriraniStudenti = studenti.filter(student => student.opisnaOcjena != "nema ocjenu");
 filtriraniStudenti.forEach(student => student.oStudentu());
 
 function prosjekStudenata(poljeStudenata) {
-  let sumaOcjena = poljeStudenata.reduce((total, student) => total+=Number.parseInt(student.ocjena), 0);
+  let sumaOcjena = poljeStudenata.reduce((total, student) => total+Number.parseInt(student.ocjena), 0);
   let prosjek = (sumaOcjena/poljeStudenata.length).toFixed(2);
   return prosjek;
 }
