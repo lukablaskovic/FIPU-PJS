@@ -3050,13 +3050,15 @@ async function fetchActivity() {
 }
 ```
 
+**KRAJ! WOOHO! 🎉**
+
 # Samostalni zadatak za vježbu 9
 
 **EduCoder šifra**: `bitcoin`
 
 Ako rješavate ovaj zadatak u EduCoderu, ugasite automatsku evaluaciju budući da bi vas servis mogao blokirati zbog prevelikog broja zahtjeva.
 
-Student ste na Fakultetu informatike u Puli i polažete kolegij "Programiranje u skriptnim jezicima". Većinu svojeg slobodnog vremena provodite u EduCoder alatu marljivo rješavajući zadatke iz skripti. Pripremate se za ispit i jednostavno ne stignete pratiti vijesti o kriptovalutama iako ste čuli da je Bitcoin u posljednje vrijeme u velikom porastu. Kako EduCoder ima mehanizme za prevenciju varanja, ne možete otvoriti CoinMarketCap ili CoinGecko stranice kako biste provjerili trenutnu cijenu Bitcoina, a silno vas zanima koliko je Bitcoin vrijedan i je pravo vrijeme za kupiti dip.
+Student ste na Fakultetu informatike u Puli i polažete kolegij "Programiranje u skriptnim jezicima". Većinu svojeg slobodnog vremena provodite u EduCoder alatu marljivo rješavajući zadatke iz skripti. Pripremate se za ispit i jednostavno ne stignete pratiti vijesti o kriptovalutama iako ste čuli da je Bitcoin u posljednje vrijeme u velikom porastu. Kako EduCoder ima mehanizme za prevenciju varanja, ne možete otvoriti CoinMarketCap ili CoinGecko stranice kako biste provjerili trenutnu cijenu Bitcoina, a silno vas zanima koliko je Bitcoin vrijedan i je li pravo vrijeme za kupiti dip 🤑.
 
 Prilikom rješavanja zadataka, došli ste i do zadnje skripte napokon i naučili koristiti `fetch` API za dohvaćanje podataka s web poslužitelja. Odlučili ste iskoristiti svoje novo znanje i malo nadograditi EduCoder, u kojem sad provodite većinu slobodnog vremena, s jednim widgetom koji će vam u svakom trenutku prikazivati trenutnu cijenu Bitcoina!
 
