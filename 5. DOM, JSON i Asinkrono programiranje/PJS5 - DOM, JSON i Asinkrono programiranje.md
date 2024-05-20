@@ -277,7 +277,7 @@ Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura
 
 **Document Object Model (DOM)** je standard koji definira strukturu i način pristupa HTML dokumentima. DOM predstavlja HTML dokument kao stablo objekata, gdje svaki HTML element predstavlja objekt, a svaki atribut i sadržaj elementa predstavlja svojstvo tog objekta.
 
-<img src="./screenshots/DOM.png" style="width:25%"></img> 
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/DOM.png?raw=true" style="width:25%"></img> 
 > Izvor: https://en.wikipedia.org/wiki/Document_Object_Model
 
 >**Zašto je važno naučiti DOM manipulaciju?**
@@ -990,14 +990,14 @@ mojElement.insertAdjacentHTML("afterbegin", divPreppend);
 mojElement.insertAdjacentHTML("beforeend", divAppend);
 mojElement.insertAdjacentHTML("afterend", divAfter);
 ```
-![alt text](screenshots/dodavanje_elementa.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/dodavanje_elementa.png?raw=true)
 
 Brisanje radimo jednostavno koristeći metodu `remove()`. Na primjer, brisanje prvog `child` elementa, `div`-a gdje je `id`=`"mojDiv"`
 ```javascript
 const elementZaBrisanje = mojElement.firstElementChild;
 elementZaBrisanje.remove()
 ```
-![alt text](screenshots/brisanje_elementa.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/brisanje_elementa.png?raw=true)
 
 Izmjena `div` elementa nakon `div`-a gdje je `id`=`"mojDiv"`:
 ```javascript
@@ -1008,7 +1008,7 @@ newBoldElement.innerHTML = "newBoldElement"
 
 elementZaMjenjanje.replaceWith(newBoldElement)
 ```
-![alt text](screenshots/replace_element.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/replace_element.png?raw=true)
 
 ### Vježba 4 
 **EduCoder šifra**: `html_from_object`
@@ -1099,7 +1099,7 @@ Objekt treba prikazati u obliku HTML-a koristeći metode za dodavanje elemenata.
 
 ✅Rezultat:
 
-![alt text](screenshots/kupac.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/kupac.png?raw=true)
 
 >Rješenje: 
 ```javascript
@@ -2294,7 +2294,7 @@ Postoje online alati koji vam mogu pomoći u validaciji i prikazu JSON formata:
 - [JSONEditorOnline.org](https://jsoneditoronline.org/)
 - [JSONViwer Chrome ekstenzija](https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
 
-![alt text](./screenshots/json_formatter.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/json_formatter.png?raw=true)
 
 ## 2.4 Rad s JSON formatom u JavaScriptu
 
@@ -2563,7 +2563,7 @@ Kako bi se izbjeglo blokiranje glavne dretve (engl. **main thread**), JavaScript
 
 Drugim riječima, ako naš korisnik čeka na odgovor s web poslužitelja, kod recimo dohvaćanja podataka o vremenskoj prognozi, ne želimo da mu se cijela aplikacija zamrzne dok čeka na odgovor. Umjesto toga, želimo da korisnik može nastaviti koristiti aplikaciju dok se podaci dohvaćaju.
 
-<img src="./screenshots/async.png" width="800" >
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/async.png?raw=true" width="800" >
 
 > Izvor: https://dev.to/vinaykishore/how-does-asynchronous-javascript-work-behind-the-scenes-4bjl
 
@@ -2639,7 +2639,7 @@ U kontekstu manipulacije DOM-om, koristili smo callback funkcije za dodavanje ev
 
 U kontekstu asinkronog programiranja, callback funkcije koristimo za **rukovanje asinkronim operacijama**.
 
-![alt text](./screenshots/async_callback.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/async_callback.png?raw=true)
 
 > Izvor: https://dev.to/marek/are-callbacks-always-asynchronous-bah
 
@@ -2766,7 +2766,7 @@ Kada ste uspješno dohvatili činjenicu o mačkama, pohranite ju u varijablu `ca
 
 > Primjer rezultata
 
-![alt text](./screenshots/cat_fact.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/cat_fact.png?raw=true)
 
 ## 3.4 Promise objekt
 
