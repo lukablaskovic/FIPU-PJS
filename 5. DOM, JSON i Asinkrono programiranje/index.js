@@ -1,11 +1,10 @@
-const fs = require('fs');
-
-fs.readFile('harry_potter.json', 'utf8', (err, data) => {
-    if (err) {
-        console.error(err);
-        return;
-    }
-
-    const podaci = JSON.parse(data);
-    console.log(podaci["harry_potter_books"][0]);
-});
+fetch('https://jsonplaceholder.typicodasde.com/todos/1')
+      .then(function(response) { // response kao argument je rezultat fetch metode
+          return response.json();
+      })
+      .then(function(json) { // json kao argument je rezultat prethodne then metode
+          console.log(json);
+      })
+      .catch(function(error) { // error kao argument je rezultat greške
+          console.error('Greška:', error);
+      });

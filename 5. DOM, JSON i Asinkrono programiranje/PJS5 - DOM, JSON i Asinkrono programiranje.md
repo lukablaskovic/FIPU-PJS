@@ -2698,7 +2698,57 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
       });
 ```
 
+Detaljnije o ovom API-ju i njegovim mogućnostima možete pronaći na [MDN web dokumentaciji](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+
+Primjetite da smo u gornjem primjeru radili dvostruke `then` metode. Ovo je korisno kada želimo izvršiti više operacija nakon dohvaćanja podataka, međutim može doći do tzv. **[callback hell](http://callbackhell.com/)**-a, odnosno dubokog gniježđenja callback funkcija, što može biti teško za održavanje i čitanje koda, ali i sklono greškama.
+
+U poglavlju o **Async/Await** sintaksi, pokazat ćemo kako možemo izbjeći callback hell i olakšati rad s asinkronim operacijama.
+
+
 ## 3.4 Promise objekt
+
+U JavaScriptu, `Promise` objekt predstavlja **eventualni rezultat asinkronog procesa** i njegovo konačno stanje (**rezoluciju** ili **odbijanje**). `Promise` objekt može biti u jednom od tri stanja:
+- **Pending**: Inicijalno stanje, očekuje se rezolucija ili odbijanje
+- **Fulfilled**: Operacija je završena uspješno
+- **Rejected**: Operacija je završena s greškom
+
+`Promise` objekt ima tri metode: `then()`, `catch()` i `finally()`.
+
+- `then()` metoda se koristi za rukovanje rezolucijom,
+- `catch()` metoda se koristi za rukovanje odbijanjem.
+- `finally()` metoda se koristi za izvršavanje koda nakon što se `Promise` završi, bez obzira na rezultat. 
+
+Iako mnogima predstavlja muke, za potpuno razumijevanje asinkronog programiranja u JavaScriptu, `Promise` objekt je ključan. Dodatno, potrebno je razumijeti koncepte koje smo prošli u gradivu ovog kolegija, kao što su funkcije, callback funkcije, arrow funkcije, objekti, konstruktori, JSON format i sl.
+
+`Promise` objekt možemo napraviti pozivanjem njegovog konstruktora, a kao argument prosljeđujemo callback funkciju s dva argumenta: `resolve` i `reject`.
+
+`resolve` se koristi za rezoluciju, `reject` za odbijanje.
+
+Primjer:
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  const uspjeh = true; // simulacija uspješne operacije, u pravilu je ovo rezultat neke asinkrone operacije
+  
+  if (uspjeh) {
+    resolve('Operacija je uspješna!');
+  } else {
+    reject('Operacija nije uspješna!');
+  }
+});
+```
+
+Rezultat `Promise` objekta ne možemo direktno ispisati koristeći `console.log()`. Umjesto toga, koristimo `then()` i `catch()` metode za rukovanje rezolucijom i odbijanjem.
+
+```javascript
+promise
+  .then((rezultat) => { // arrow funkcija koja se poziva nakon rezolucije
+    console.log(rezultat); // Operacija je uspješna!
+  })
+  .catch((greska) => { // arrow funkcija koja se poziva nakon odbijanja
+    console.error(greska); // 'Operacija nije uspješna!'
+  });
+```
 
 ## 3.5 Async/Await
 
