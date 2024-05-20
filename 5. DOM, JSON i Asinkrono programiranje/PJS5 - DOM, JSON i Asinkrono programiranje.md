@@ -61,11 +61,14 @@
   - [2.5 Lokalno čitanje JSON datoteka](#25-lokalno-čitanje-json-datoteka)
     - [2.5.1 Node.js](#251-nodejs)
     - [2.5.2 Web preglednik](#252-web-preglednik)
+  - [Vježba 9](#vježba-9)
 - [3. Asinkrono programiranje](#3-asinkrono-programiranje)
   - [3.1 Razumijevanje asinkronog vs. sinkronog](#31-razumijevanje-asinkronog-vs-sinkronog)
   - [3.2 Asinkrone callback funkcije](#32-asinkrone-callback-funkcije)
   - [3.3 Fetch API - dohvaćanje podataka s web poslužitelja](#33-fetch-api---dohvaćanje-podataka-s-web-poslužitelja)
+    - [Vježba 10](#vježba-10)
   - [3.4 Promise objekt](#34-promise-objekt)
+    - [Primjer 10](#primjer-10)
   - [3.5 Async/Await](#35-asyncawait)
 - [Samostalni zadatak za vježbu 9](#samostalni-zadatak-za-vježbu-9)
 
@@ -2492,9 +2495,58 @@ console.log(data);
 
 > **Napomena**: Direktno čitanje datoteka iz lokalnog sustava datoteka nije moguće iz sigurnosnih razloga. U stvarnim aplikacijama, JSON podaci se obično čitaju s web poslužitelja. Pokretanje lokalnog http servera često je dobar workaround za ovaj problem.
 
+## Vježba 9
+
+**EduCoder šifra**: `json`
+
+Ispravite greške u sljedećim JSON podacima:
+
+```
+{
+{
+  "books": [
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Fiction",
+      "publishedYear": 1960,
+      ISBN: "978-0-06-112008-4",
+      availableCopies: 4
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Dystopian",
+      "publishedYear": 1949,
+      ISBN: "978-0-452-28423-4",
+      availableCopies: 6
+    },
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Fiction",
+      "publishedYear": 1925,
+      ISBN: "978-0-7432-7356-5",
+      availableCopies: undefined
+    },
+  ]
+}
+}
+```
+
+Nakon što ispravite greške, napišite funkciju `printBooks(JSONbooks)` koja prima JSON podatke o knjigama, pretvara ih u JavaScript objekt i ispisuje sve knjige u konzoli.
+
+```javascript
+function printBooks(JSONbooks) {
+    // Vaš kod ovdje...
+}
+```
+
+
+
 # 3. Asinkrono programiranje
 
-Posljednje poglavlje ove skripte, kao i gradiva ovog kolegija, odnosi se na asinkrono programiranje.
+Posljednje poglavlje ove skripte, kao i gradivo ovog kolegija, odnosi se na asinkrono programiranje.
 
 **Asinkrono programiranje** (***eng. Asynchronous programming***)  je način programiranja u kojem se operacije izvršavaju neovisno jedna o drugoj, bez čekanja na završetak prethodne operacije. Ovo je posebno korisno kada se radi o operacijama koje zahtijevaju vrijeme, kao što su čitanje podataka s web poslužitelja, pisanje u bazu podataka i sl.
 
@@ -2522,8 +2574,6 @@ Asinkronim programiranjem bavit ćemo se intenzivnije na kolegijima: **[Programs
 ## 3.1 Razumijevanje asinkronog vs. sinkronog
 
 Najjednostanvije rečeno, u **sinkronom programiranju**, operacije se izvršavaju jedna za drugom, redom. Kada se jedna operacija završi, tek tada se izvršava sljedeća operacija. Sve ispite, zadaće i vježbe do sad iz ovih skripti pisali smo sinkrono.
-
-U asinkronom programiranju svaka operaicja mora biti izvršena prije nego što se izvrši sljedeća operacija.
 
 Primjer:
 
@@ -2704,6 +2754,21 @@ Primjetite da smo u gornjem primjeru radili dvostruke `then` metode. Ovo je kori
 
 U poglavlju o **Async/Await** sintaksi, pokazat ćemo kako možemo izbjeći callback hell i olakšati rad s asinkronim operacijama.
 
+### Vježba 10
+
+**EduCoder šifra**: `cat_fact`
+
+Ako rješavate ovaj zadatak u EduCoderu, ugasite automatsku evaluaciju budući da bi vas servis mogao blokirati zbog prevelikog broja zahtjeva. 
+
+Radite svoj web blog i želite korisnicima prikazati slučajno odabrane činjenice o mačkama. Za to koristite TheCatAPI servis koji pruža besplatne slučajne činjenice o mačkama. Potrebno je koristeći `fetch` API dohvatiti podatke s TheCatAPI servisa i ispisati slučajnu činjenicu o mačkama.
+
+- https://catfact.ninja/fact
+
+Kada ste uspješno dohvatili činjenicu o mačkama, pohranite ju u varijablu `catFact`. Dodajte novi HTML `<div>` element s ID-om `cat-fact` u vaš HTML dokument. Koristeći DOM manipulaciju dodijelite tekstualni sadržaj varijable `catFact` novom `<div>` elementu te dodajte stil po želji.
+
+> Primjer rezultata
+
+![alt text](./screenshots/cat_fact.png)
 
 ## 3.4 Promise objekt
 
@@ -2722,20 +2787,30 @@ Iako mnogima predstavlja muke, za potpuno razumijevanje asinkronog programiranja
 
 `Promise` objekt možemo napraviti pozivanjem njegovog konstruktora, a kao argument prosljeđujemo callback funkciju s dva argumenta: `resolve` i `reject`.
 
-`resolve` se koristi za rezoluciju, `reject` za odbijanje.
+`resolve()` se koristi za rezoluciju, `reject` za odbijanje.
 
-Primjer:
+Primjer izrade `Promise` objekta:
 
 ```javascript
 const promise = new Promise((resolve, reject) => {
   const uspjeh = true; // simulacija uspješne operacije, u pravilu je ovo rezultat neke asinkrone operacije
   
   if (uspjeh) {
-    resolve('Operacija je uspješna!');
+    resolve('Operacija je uspješna!'); // označi operaciju kao uspješnu
   } else {
-    reject('Operacija nije uspješna!');
+    reject('Operacija nije uspješna!'); // označi operaciju kao neuspješnu
   }
 });
+```
+
+U gornjem primjeru, `promise` je `Promise` objekt koji simulira uspješnu operaciju. Ako je `uspjeh` varijabla `true`, operacija je uspješna i rezolucija se poziva s porukom "Operacija je uspješna!". Ako je `uspjeh` varijabla `false`, operacija nije uspješna i odbijanje se poziva s porukom "Operacija nije uspješna!".
+
+Metode `resolve()` i `reject()` se mogu pozvati samo jednom. Nakon što se `Promise` objekt rezolva ili odbije, ne može se ponovno rezolvati ili odbiti. Ove metode mogu primiti argumente:
+
+```javascript
+resolve(vrijednost); // uspješna rezolucija s danom vrijednošću u argumentu
+
+reject(greska); // odbijanje s danom greškom u argumentu (razlogom za odbijanje)
 ```
 
 Rezultat `Promise` objekta ne možemo direktno ispisati koristeći `console.log()`. Umjesto toga, koristimo `then()` i `catch()` metode za rukovanje rezolucijom i odbijanjem.
@@ -2748,8 +2823,141 @@ promise
   .catch((greska) => { // arrow funkcija koja se poziva nakon odbijanja
     console.error(greska); // 'Operacija nije uspješna!'
   });
+  .finally(() => {
+    console.log('Kraj operacije'); // Kraj operacije
+  });
 ```
 
+Prilikom korištenja `fetch` API-a za dohvaćanje podataka s web poslužitelja, `fetch` funkcija vraća `Promise` objekt. Kao takav, možemo koristiti `then()` i `catch()` metode za rukovanje rezolucijom i odbijanjem direktno!
+
+### Primjer 10
+
+**EduCoder šifra**: `bored`
+
+Idemo složiti malu aplikaciju koja će nam pritiskom na gumb prikazati neku zanimaciju koju bi mogli raditi u slobodno vrijeme, kada nam je dosadno. Podatke ćemo dohvatiti s [Bored API](https://www.boredapi.com/) i to slučajnu aktivnost: `https://www.boredapi.com/api/activity`.
+
+Koristit ćemo `fetch` API za dohvaćanje podataka s web poslužitelja i `Promise` objekt za rukovanje rezolucijom i odbijanjem.
+
+Primjer JSON objekta kojeg dobivamo s API-a:
+```json
+{
+"activity": "Make bread from scratch",
+"type": "cooking",
+"participants": 1,
+"price": 0.2,
+"link": "",
+"key": "4809815",
+"accessibility": 0.2
+}
+```
+
+Prvo ćemo složiti HTML strukturu:
+
+```html
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+h1 {
+    color: #333;
+}
+#activity-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+</style>
+
+<body>
+    <h1>Što raditi kad nam je dosadno?</h1>
+    <!-- Gumb za dohvaćanje aktivnosti (iskoristit ćemo event listener) -->
+    <button id="fetch-activity-btn">Prikaži aktivnost</button>
+    <!-- Container za prikaz aktivnosti (proširit ćemo ga DOM manipulacijom) -->
+    <div id="activity-container"></div>
+</body>
+```
+
+Prvi korak je dohvatiti gumb i dodati event listener koji će se pozvati pritiskom na gumb. To smo rekli da postižemo koristeći `addEventListener` metodu. Međutim, callback funkciju ćemo definirati izvana, a ona će biti upravo naša funkcija za dohvaćanje aktivnosti s API-a.
+
+```javascript
+document.getElementById('fetch-activity-btn').addEventListener('click', fetchActivity); // dodajemo event listener na gumb i pozivamo funkciju fetchActivity
+```
+
+Sada definiramo funkciju `fetchActivity` koja će dohvatiti podatke s API-a i ispisati ih u HTML-u.
+Unutar funkcije koristimo `fetch` API za dohvaćanje podataka s web poslužitelja. Nakon što se podaci dohvate, koristimo `then()` metodu za rukovanje rezolucijom i `catch()` metodu za rukovanje odbijanjem.
+
+```javascript
+function fetchActivity() {
+            fetch('https://www.boredapi.com/api/activity')
+                .then(response => response.json())
+                .catch(error => {
+                    console.error('Error fetching activity:', error);
+                });
+        }
+```
+
+Sada ćemo dodati `then()` metodu za rukovanje našim podacima koje je odradila prva `then()` metoda. U ovoj metodi ćemo napisati callback funkciju koja će ispisati aktivnost u HTML-u. Rekli smo da koristimo `.json()` metodu za parsiranje JSON podataka u JavaScript objekt onda kada podaci dolaze s web poslužitelja.
+
+```javascript
+document.getElementById('fetch-activity-btn').addEventListener('click', fetchActivity);
+
+function fetchActivity() {
+    fetch('https://www.boredapi.com/api/activity')
+        .then(response => response.json())
+        .then(data => {
+            const activityContainer = document.getElementById('activity-container'); // dohvaćamo container za prikaz aktivnosti i pohranjujemo varijable
+            activityContainer.innerHTML = `
+                <h2>Prijedlog aktivnosti:</h2>
+                <p><strong>Aktivnost:</strong> ${data.activity}</p>
+                <p><strong>Tip:</strong> ${data.type}</p>
+                <p><strong>Broj sudionika:</strong> ${data.participants}</p>
+                <p><strong>Cijena:</strong> ${data.price}</p>
+                <p><strong>Pristupačnost:</strong> ${data.accessibility}</p>
+            `;
+        })
+        .catch(error => {
+            console.error('Error fetching activity:', error);
+        });
+}
+```
+
+> Rezultat
+
+![alt text](./screenshots/bored.png)
+
+To bi bilo što se tiče `Promise` objekta. U sljedećem poglavlju ćemo pokazati kako koristiti `async` i `await` sintaksu za olakšavanje rada s asinkronim operacijama.
+`Promise` objekt ćemo detaljnije obrađivati na budućim kolegijima.
+
 ## 3.5 Async/Await
+
+`async` i `await` sintaksa je novija sintaksa u JavaScriptu koja olakšava rad s asinkronim operacijama. 
+
+`async` funkcija vraća `Promise` objekt, dok `await` čeka na rezoluciju `Promise` objekta. `await` se koristi samo unutar `async` funkcija.
+
+`async` i `await` sintaksa je **[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)** za rad s `Promise` objektima. Ova sintaksa čini kod čitljivijim i lakšim za održavanje, posebno kod dubokog gniježđenja callback funkcija (callback hell).
+
+Dakle, svaku funkciju koja koristi `await` ključnu riječ moramo označiti s `async` ključnom riječi. Idemo vidjeti na ovaj način možemo pojednostaviti primjere iz prethodnih poglavlja.
 
 # Samostalni zadatak za vježbu 9
