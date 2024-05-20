@@ -134,7 +134,7 @@ U najnovijem HTML standardu za vrijeme pisanja ove skripte (svibanj 2024), posto
 | `<meta>`       | Definira metapodatke o HTML dokumentu | `charset`, `name`, `content`, `http-equiv` | `<meta charset="UTF-8">` |
 | `<link>`       | Povezuje vanjske resurse, poput CSS datoteka | `rel`, `href`, `type` | `<link rel="stylesheet" href="style.css">` |
 | `<style>`      | Sadrži CSS stilove za dokument | `type` | `<style> body { background-color: lightblue; } </style>` |
-| `<script>`     | Sadrži ili povezuje JavaScript kod | `src`, `type` | `<script src="script.js"></script>` |
+| `<script>`     | Sadrži ili povezuje JavaScript kôd | `src`, `type` | `<script src="script.js"></script>` |
 | `<body>`       | Glavni sadržaj HTML dokumenta | - | `<body> ... </body>` |
 | `<h1>` do `<h6>` | Naslovi različitih razina | - | `<h1>Naslov 1</h1>` |
 | `<p>`          | Paragraf teksta | - | `<p>Ovo je paragraf.</p>` |
@@ -2538,7 +2538,7 @@ Nakon što ispravite greške, napišite funkciju `printBooks(JSONbooks)` koja pr
 
 ```javascript
 function printBooks(JSONbooks) {
-    // Vaš kod ovdje...
+    // Vaš kôd ovdje...
 }
 ```
 
@@ -2591,7 +2591,7 @@ Operacija
 Kraj
 ```
 
-Kod **asinkronog programiranja**, kod se može izvršavati "preko reda". Operacije mogu započinjati i završavati u različito vrijeme, neovisno o glavnom protoku programa. JavaScript je single-threaded jezik, što znači da se sve operacije izvršavaju na jednoj dretvi. Međutim, JavaScript koristi asinkrono programiranje kako bi se izbjeglo blokiranje glavne dretve, asinkronim potrebama poput: čitanja podataka s web poslužitelja, pisanja u bazu podataka, čekanja na korisnički unos (I/O operacije).
+U **asinkronom programiranju**, kôd se može izvršavati "preko reda". Operacije mogu započinjati i završavati u različito vrijeme, neovisno o glavnom protoku programa. JavaScript je single-threaded jezik, što znači da se sve operacije izvršavaju na jednoj dretvi. Međutim, JavaScript koristi asinkrono programiranje kako bi se izbjeglo blokiranje glavne dretve, asinkronim potrebama poput: čitanja podataka s web poslužitelja, pisanja u bazu podataka, čekanja na korisnički unos (I/O operacije).
 
 Idemo simulirati čekanje dohvata podataka s nekog web poslužitelja. Recimo da je web server dosta udaljen i imamo spor internet, pa će dohvat podataka trajati 3 sekunde. Simulirat ćemo pomoću `setTimeout` funkcije koja prima 2 argumenta: callback funkciju koja se izvršava nakon određenog vremena i vrijeme čekanja u milisekundama.
 
@@ -2720,7 +2720,7 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 
 U gornjem primjeru, `fetch` funkcija prima URL kao argument i vraća `Promise` objekt. Nakon što se podaci dohvate, koristimo `then` metodu za rukovanje odgovorom. Prva `then` metoda pretvara odgovor u JSON format, a druga `then` metoda ispisuje JSON podatke.
 
-Kod možemo doslovno čitati kao: "**Dohvati** podatke s URL-a, **onda** pretvori odgovor u JSON format, **onda** ispiši JSON podatke".
+Kôd možemo doslovno čitati kao: "**Dohvati** podatke s URL-a, **onda** pretvori odgovor u JSON format, **onda** ispiši JSON podatke".
 
 `json()` metoda koristi se za parsiranje `Response` odgovora koji je u JSON formatu u JavaScript objekt.
 
@@ -2750,7 +2750,7 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 
 Detaljnije o ovom API-ju i njegovim mogućnostima možete pronaći na [MDN web dokumentaciji](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-Primjetite da smo u gornjem primjeru radili dvostruke `then` metode. Ovo je korisno kada želimo izvršiti više operacija nakon dohvaćanja podataka, međutim može doći do tzv. **[callback hell](http://callbackhell.com/)**-a, odnosno dubokog gniježđenja callback funkcija, što može biti teško za održavanje i čitanje koda, ali i sklono greškama.
+Primjetite da smo u gornjem primjeru radili dvostruke `then` metode. Ovo je korisno kada želimo izvršiti više operacija nakon dohvaćanja podataka, međutim može doći do tzv. **[callback hell](http://callbackhell.com/)**-a, odnosno dubokog gniježđenja callback funkcija, što može biti teško za održavanje i čitanje kôda, ali i sklono greškama.
 
 U poglavlju o **Async/Await** sintaksi, pokazat ćemo kako možemo izbjeći callback hell i olakšati rad s asinkronim operacijama.
 
@@ -2781,7 +2781,7 @@ U JavaScriptu, `Promise` objekt predstavlja **eventualni rezultat asinkronog pro
 
 - `then()` metoda se koristi za rukovanje rezolucijom,
 - `catch()` metoda se koristi za rukovanje odbijanjem.
-- `finally()` metoda se koristi za izvršavanje koda nakon što se `Promise` završi, bez obzira na rezultat. 
+- `finally()` metoda se koristi za izvršavanje kôda nakon što se `Promise` završi, bez obzira na rezultat. 
 
 Iako mnogima predstavlja muke, za potpuno razumijevanje asinkronog programiranja u JavaScriptu, `Promise` objekt je ključan. Dodatno, potrebno je razumijeti koncepte koje smo prošli u gradivu ovog kolegija, kao što su funkcije, callback funkcije, arrow funkcije, objekti, konstruktori, JSON format i sl.
 
@@ -2956,7 +2956,7 @@ To bi bilo što se tiče `Promise` objekta. U sljedećem poglavlju ćemo pokazat
 
 `async` funkcija vraća `Promise` objekt, dok `await` čeka na rezoluciju `Promise` objekta. `await` se koristi samo unutar `async` funkcija.
 
->`async` i `await` sintaksa je **[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)** za rad s `Promise` objektima. Ova sintaksa čini kod čitljivijim i lakšim za održavanje, posebno kod dubokog gniježđenja callback funkcija (callback hell).
+>`async` i `await` sintaksa je **[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)** za rad s `Promise` objektima. Ova sintaksa čini kôd čitljivijim i lakšim za održavanje, posebno kod dubokog gniježđenja callback funkcija (callback hell).
 
 Uzmimo za primjer funkciju koja vraća novi `Promise` objekt koji se uspješno rezolvira.
 
@@ -3014,15 +3014,15 @@ async function asinkronaFunkcija() {
 
 U gornjem primjeru, `asinkronaFunkcija` je `async` funkcija koja čeka 2 sekunde prije nego što ispiše `End`. `await` čeka na rezoluciju `Promise` objekta koji se rezolva nakon 2 sekunde.
 
-Pokazat ćemo kako koristiti `async` i `await` sintaksu za dohvaćanje podataka s web poslužitelja koristeći `fetch` API. Kako više ne koristimo `then()` i `catch()` metode, ali svejedno imamo asinkrone pozive kroz `async` i `await` sintaksu, omotat ćemo kod u `try` i `catch` blokove. `try` blok sadrži kod koji može izazvati grešku, dok `catch` blok rukuje greškom.
+Pokazat ćemo kako koristiti `async` i `await` sintaksu za dohvaćanje podataka s web poslužitelja koristeći `fetch` API. Kako više ne koristimo `then()` i `catch()` metode, ali svejedno imamo asinkrone pozive kroz `async` i `await` sintaksu, omotat ćemo kôd u `try` i `catch` blokove. `try` blok sadrži kôd koji može izazvati grešku, dok `catch` blok rukuje greškom.
 
 Sintaksa:
 
 ```javascript
 try {
-    // kod koji može izazvati grešku
+    // kôd koji može izazvati grešku
 } catch (error) {
-    // kod koji rukuje greškom
+    // kôd koji rukuje greškom
 }
 ```
 
@@ -3051,3 +3051,21 @@ async function fetchActivity() {
 ```
 
 # Samostalni zadatak za vježbu 9
+
+**EduCoder šifra**: `bitcoin`
+
+Ako rješavate ovaj zadatak u EduCoderu, ugasite automatsku evaluaciju budući da bi vas servis mogao blokirati zbog prevelikog broja zahtjeva.
+
+Student ste na Fakultetu informatike u Puli i polažete kolegij "Programiranje u skriptnim jezicima". Većinu svojeg slobodnog vremena provodite u EduCoder alatu marljivo rješavajući zadatke iz skripti. Pripremate se za ispit i jednostavno ne stignete pratiti vijesti o kriptovalutama iako ste čuli da je Bitcoin u posljednje vrijeme u velikom porastu. Kako EduCoder ima mehanizme za prevenciju varanja, ne možete otvoriti CoinMarketCap ili CoinGecko stranice kako biste provjerili trenutnu cijenu Bitcoina, a silno vas zanima koliko je Bitcoin vrijedan i je pravo vrijeme za kupiti dip.
+
+Prilikom rješavanja zadataka, došli ste i do zadnje skripte napokon i naučili koristiti `fetch` API za dohvaćanje podataka s web poslužitelja. Odlučili ste iskoristiti svoje novo znanje i malo nadograditi EduCoder, u kojem sad provodite većinu slobodnog vremena, s jednim widgetom koji će vam u svakom trenutku prikazivati trenutnu cijenu Bitcoina!
+
+Za dohvaćanje trenutne cijene Bitcoina koristite `CoinDesk API: "https://api.coindesk.com/v1/bpi/currentprice.json"` koji vraća JSON objekt s podacima o trenutnoj cijeni Bitcoina u USD, EUR i GBP valutama.
+
+Vaš zadatak je napraviti widget koji će prikazivati trenutnu cijenu Bitcoina u USD, EUR i GBP valutama. Widget treba sadržavati trenutnu cijenu Bitcoina u svim valutama, te datum i vrijeme kada su podaci ažurirani. Dodatno, widget treba sadržavati gumb za ručno ažuriranje podataka.
+
+Koristite `fetch` API za dohvaćanje podataka s web poslužitelja i `async` i `await` sintaksu za olakšavanje rada s asinkronim operacijama.
+
+> Primjer widgeta
+
+![alt text](./screenshots/bitcoin.png)
