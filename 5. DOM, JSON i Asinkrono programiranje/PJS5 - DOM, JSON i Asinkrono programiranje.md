@@ -2943,7 +2943,7 @@ function fetchActivity() {
 }
 ```
 
-> Rezultat
+✅Rezultat:
 
 ![alt text](./screenshots/bored.png)
 
