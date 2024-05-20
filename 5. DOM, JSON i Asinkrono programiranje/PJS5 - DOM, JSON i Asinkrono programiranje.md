@@ -2952,12 +2952,102 @@ To bi bilo što se tiče `Promise` objekta. U sljedećem poglavlju ćemo pokazat
 
 ## 3.5 Async/Await
 
-`async` i `await` sintaksa je novija sintaksa u JavaScriptu koja olakšava rad s asinkronim operacijama. 
+`async` i `await` sintaksa je novija sintaksa u JavaScriptu koja olakšava rad s asinkronim operacijama. JavaScript je dodao podršku za `async` i `await` sintaksu u ECMAScript 2017 (ES8).
 
 `async` funkcija vraća `Promise` objekt, dok `await` čeka na rezoluciju `Promise` objekta. `await` se koristi samo unutar `async` funkcija.
 
-`async` i `await` sintaksa je **[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)** za rad s `Promise` objektima. Ova sintaksa čini kod čitljivijim i lakšim za održavanje, posebno kod dubokog gniježđenja callback funkcija (callback hell).
+>`async` i `await` sintaksa je **[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)** za rad s `Promise` objektima. Ova sintaksa čini kod čitljivijim i lakšim za održavanje, posebno kod dubokog gniježđenja callback funkcija (callback hell).
 
-Dakle, svaku funkciju koja koristi `await` ključnu riječ moramo označiti s `async` ključnom riječi. Idemo vidjeti na ovaj način možemo pojednostaviti primjere iz prethodnih poglavlja.
+Uzmimo za primjer funkciju koja vraća novi `Promise` objekt koji se uspješno rezolvira.
+
+```javascript
+function funkcija() {
+    return Promise.resolve('Uspješna rezolucija');
+}
+
+funkcija().then(console.log); // Ispisuje: 'Uspješna rezolucija'
+```
+
+Isto možemo napisati koristeći `async` i `await` sintaksu. Rekli smo da `async` funkcija vraća `Promise` objekt, a `await` čeka na rezoluciju `Promise` objekta.
+
+```javascript
+async function funkcija() { // async funkcija
+    return 'Uspješna rezolucija';
+}
+
+console.log(await funkcija()); // Ispisuje: 'Uspješna rezolucija'
+```
+
+Osnovna sintaksa `await` izgleda ovako:
+
+```javascript
+const rezultat = await promise;
+```
+
+`await` čeka na rezoluciju `promise` objekta. Kada se `promise` rezolva, `await` vraća rezultat. Ako `promise` odbije, `await` baca grešku.
+
+Idemo primijeniti `async` i `await` sintaksu na primjeru s funkcijom `setTimeout` koja simulira asinkronu operaciju.
+
+Pokazali smo kako se koristi `setTimeout` funkcija za simulaciju asinkronog procesa. U ovom primjeru, koristimo `setTimeout` funkciju unutar `async` funkcije i `await` čekamo na završetak procesa.
+
+```javascript
+console.log('Start');
+
+setTimeout(() => {
+    console.log('Ovo je asinkroni callback');
+}, 2000); // 2000 milisekundi = 2 sekundi
+
+console.log('End');
+```
+
+Isto možemo napisati koristeći `async` i `await` sintaksu:
+
+```javascript
+async function asinkronaFunkcija() {
+    console.log('Start');
+
+    await new Promise(resolve => setTimeout(resolve, 2000)); // čekamo 2 sekunde
+
+    console.log('End');
+}
+```
+
+U gornjem primjeru, `asinkronaFunkcija` je `async` funkcija koja čeka 2 sekunde prije nego što ispiše `End`. `await` čeka na rezoluciju `Promise` objekta koji se rezolva nakon 2 sekunde.
+
+Pokazat ćemo kako koristiti `async` i `await` sintaksu za dohvaćanje podataka s web poslužitelja koristeći `fetch` API. Kako više ne koristimo `then()` i `catch()` metode, ali svejedno imamo asinkrone pozive kroz `async` i `await` sintaksu, omotat ćemo kod u `try` i `catch` blokove. `try` blok sadrži kod koji može izazvati grešku, dok `catch` blok rukuje greškom.
+
+Sintaksa:
+
+```javascript
+try {
+    // kod koji može izazvati grešku
+} catch (error) {
+    // kod koji rukuje greškom
+}
+```
+
+Više o upravljanju iznimkama na budućim kolegijima.
+
+Rješenje Primjera 10 s `async` i `await` sintaksom:
+```javascript
+async function fetchActivity() {
+    try {
+        const response = await fetch('https://www.boredapi.com/api/activity'); // uočite await i pohranu rezultata u varijablu
+        const data = await response.json(); // .json() metoda vraća Promise objekt, koristimo await za rezoluciju i pohranjujemo podatke u varijablu
+
+        const activityContainer = document.getElementById('activity-container');
+        activityContainer.innerHTML = `
+            <h2>Prijedlog aktivnosti:</h2>
+            <p><strong>Aktivnost:</strong> ${data.activity}</p>
+            <p><strong>Tip:</strong> ${data.type}</p>
+            <p><strong>Broj sudionika:</strong> ${data.participants}</p>
+            <p><strong>Cijena:</strong> ${data.price}</p>
+            <p><strong>Pristupačnost:</strong> ${data.accessibility}</p>
+        `;
+    } catch (error) { // catch block nam se ne mijenja mnogo
+        console.error('Error fetching activity:', error);
+    }
+}
+```
 
 # Samostalni zadatak za vježbu 9
