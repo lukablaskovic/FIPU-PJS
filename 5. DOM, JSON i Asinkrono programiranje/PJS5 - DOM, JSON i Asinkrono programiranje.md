@@ -534,7 +534,7 @@ Pronašli smo idealni web shop u Engleskoj, međutim sve cijene su prikazane u f
 
 ✅Rezultat:
 
-![alt text](./screenshots/funte_u_eure.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/funte_u_eure.png?raw=true)
 
 >Rješenje:
 ```javascript
@@ -667,7 +667,7 @@ Zadan je sljedeći CSS i HTML kôd:
 ```
 Koristeći `querySelector` i `classList` metode dodajte "tablica", "celija" i "naslov" na odgovarajuće elemente, ćeliji s najvećim brojem stranica dodajte klasu "velika".
 
-![alt text](./screenshots/tablica_books.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/tablica_books.png?raw=true)
 
 > Rješenje:
 ```javascript
@@ -1298,7 +1298,7 @@ const increaseBtn = document.getElementById("increaseBtn");
 const decreaseBtn = document.getElementById("decreaseBtn");
 const broj = document.getElementsByName("broj")[0];
 ```
-Zatim dodajemo događaje na `click` event za oba button elementa:
+Zatim dodajemo naredbe (inkrement/dekrement) na `click` event za oba buttona:
 ```javascript
 increaseBtn.addEventListener("click", () => broj.value++) // povećava brojač za 1
 decreaseBtn.addEventListener("click", () => broj.value--) // smanjuje brojač za 1
@@ -1380,7 +1380,7 @@ function ukloniElement(pozicija) {
 ```
 ✅Rezultat:
 
-![alt text](screenshots/methods_to_methods.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/methods_to_methods.png?raw=true)
 
 >Rješenje:
  
@@ -1540,7 +1540,7 @@ Vaš kôd ovdje...
 
 ✅Rezultat:
 
-![alt text](screenshots/fokus.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje/screenshots/fokus.png?raw=true)
 
 >Rješenje:
 
@@ -1704,7 +1704,7 @@ Pseudokod:
 
 ✅Rezultat:
 
-![alt text](screenshots/gallery.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/gallery.png?raw=true)
 
 >Rješenje:
 ```javascript
@@ -1849,7 +1849,7 @@ function showResults(searchTerm) {
 
 ✅Rezultat:
 
-![alt text](screenshots/recommend.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/recommend.png?raw=true)
 
 >Rješenje:
 ```javascript
@@ -1924,7 +1924,7 @@ Nakon svake promjene u košarici, ukupna cijena se automatski ažurira kako bi k
 
 >Primjer:
 
-![alt text](screenshots/kosarica.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/kosarica.png?raw=true)
 
 Možete napisati vlastiti HTML i CSS kôd ili koristiti sljedeći:
 ```html
@@ -2443,7 +2443,7 @@ const fs = require('fs');
 
 fs.readFile('harry_potter.json', 'utf8', (err, data) => { // callback funkcija koja se poziva nakon što se datoteka pročita
     if (err) {
-        console.error(err);
+        console.log(err);
         return;
     }
 
@@ -2481,7 +2481,7 @@ fetch('harry_potter.json')
         console.log(data);
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.log('Error:', error);
     });
 ```
 
@@ -2497,7 +2497,7 @@ console.log(data);
 
 ## Vježba 9
 
-**EduCoder šifra**: `json`
+**EduCoder šifra**: `JSON`
 
 Ispravite greške u sljedećim JSON podacima:
 
@@ -2541,8 +2541,6 @@ function printBooks(JSONbooks) {
     // Vaš kôd ovdje...
 }
 ```
-
-
 
 # 3. Asinkrono programiranje
 
@@ -2730,7 +2728,7 @@ Osim `then()` metode, možemo koristiti i `catch()` metodu za rukovanje greškam
 fetch('https://jsonplaceholder.typicode.com/todos/1')
       .then(response => response.json())
       .then(json => console.log(json))
-      .catch(error => console.error('Greška:', error));
+      .catch(error => console.log('Greška:', error));
 ```
 
 Ili bez arrow funkcija:
@@ -2744,7 +2742,7 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
           console.log(json);
       })
       .catch(function(error) { // error kao argument je rezultat greške
-          console.error('Greška:', error);
+          console.log('Greška:', error);
       });
 ```
 
@@ -2821,7 +2819,7 @@ promise
     console.log(rezultat); // Operacija je uspješna!
   })
   .catch((greska) => { // arrow funkcija koja se poziva nakon odbijanja
-    console.error(greska); // 'Operacija nije uspješna!'
+    console.log(greska); // 'Operacija nije uspješna!'
   });
   .finally(() => {
     console.log('Kraj operacije'); // Kraj operacije
@@ -2913,7 +2911,7 @@ function fetchActivity() {
             fetch('https://www.boredapi.com/api/activity')
                 .then(response => response.json())
                 .catch(error => {
-                    console.error('Error fetching activity:', error);
+                    console.log('Error fetching activity:', error);
                 });
         }
 ```
@@ -2938,14 +2936,14 @@ function fetchActivity() {
             `;
         })
         .catch(error => {
-            console.error('Error fetching activity:', error);
+            console.log('Error fetching activity:', error);
         });
 }
 ```
 
 ✅Rezultat:
 
-![alt text](./screenshots/bored.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/bored.png?raw=true)
 
 To bi bilo što se tiče `Promise` objekta. U sljedećem poglavlju ćemo pokazati kako koristiti `async` i `await` sintaksu za olakšavanje rada s asinkronim operacijama.
 `Promise` objekt ćemo detaljnije obrađivati na budućim kolegijima.
@@ -3045,7 +3043,7 @@ async function fetchActivity() {
             <p><strong>Pristupačnost:</strong> ${data.accessibility}</p>
         `;
     } catch (error) { // catch block nam se ne mijenja mnogo
-        console.error('Error fetching activity:', error);
+        console.log('Error fetching activity:', error);
     }
 }
 ```
@@ -3070,4 +3068,4 @@ Koristite `fetch` API za dohvaćanje podataka s web poslužitelja i `async` i `a
 
 > Primjer widgeta
 
-![alt text](./screenshots/bitcoin.png)
+![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/bitcoin.png?raw=true)
