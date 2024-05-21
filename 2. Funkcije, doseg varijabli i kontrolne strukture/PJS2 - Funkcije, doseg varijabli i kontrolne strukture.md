@@ -18,6 +18,8 @@
 
 <p><b>Kontrolne strukture</b> su konstrukti u programiranju koji odlučuju o toku izvršavanja programa. </p>
 
+**Posljednje ažurirano: 21.5.2024.**
+
 ## Sadržaj
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
