@@ -1,4 +1,4 @@
-# Programiranje u skriptnim jezicima
+# Programiranje u skriptnim jezicima (PJS)
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
