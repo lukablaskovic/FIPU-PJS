@@ -21,7 +21,7 @@
 
 ## Sadržaj
 
-- [Programiranje u skriptnim jezicima](#programiranje-u-skriptnim-jezicima)
+- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
 - [\[5\] DOM, JSON i Asinkrono programiranje](#5-dom-json-i-asinkrono-programiranje)
   - [Sadržaj](#sadržaj)
 - [0. Ponavljanje HTML-a i CSS-a](#0-ponavljanje-html-a-i-css-a)
@@ -2413,7 +2413,7 @@ console.log(JSON.stringify(obj)); // '{"name":"John","age":30,"birthdate":"2024-
 
 ## 2.5 Lokalno čitanje JSON datoteka
 
-JSON podaci se česte koriste za razmjenu podataka između web poslužitelja i klijenta, ali se također mogu koristiti za lokalno čitanje i spremanje podataka.
+JSON podaci se često koriste za razmjenu podataka između web poslužitelja i klijenta, ali se mogu koristiti i za lokalno čitanje i spremanje podataka.
 
 U JavaScriptu, ovisno o okruženju, možemo koristiti različite metode za čitanje i spremanje JSON datoteka.
 
@@ -2549,7 +2549,7 @@ function printBooks(JSONbooks) {
 
 Posljednje poglavlje ove skripte, kao i gradivo ovog kolegija, odnosi se na asinkrono programiranje.
 
-**Asinkrono programiranje** (***eng. Asynchronous programming***)  je način programiranja u kojem se operacije izvršavaju neovisno jedna o drugoj, bez čekanja na završetak prethodne operacije. Ovo je posebno korisno kada se radi s operacijama koje zahtijevaju vrijeme, kao što su čitanje podataka s web poslužitelja, pisanje u bazu podataka i sl.
+**Asinkrono programiranje** (***eng. Asynchronous programming***) je način programiranja u kojem se operacije izvršavaju neovisno jedna o drugoj, bez čekanja na završetak prethodne operacije. Ovo je posebno korisno kada se radi s operacijama koje zahtijevaju vrijeme, kao što su čitanje podataka s web poslužitelja, pisanje u bazu podataka i sl.
 
 Recimo da želimo dohvatiti podatke s API-a (**eng. [Application Programming Interface](https://aws.amazon.com/what-is/api/#:~:text=API%20stands%20for%20Application%20Programming,other%20using%20requests%20and%20responses.)**) koji se nalazi na udaljenom web poslužitelju. Primjerice, radimo aplikaciju koja prikazuje vremensku prognozu za gradove diljem svijeta. Da bismo dohvatili podatke s API-a, moramo poslati zahtjev na web poslužitelj, pričekati odgovor i zatim prikazati podatke korisniku. Navedena operacija može potrajati nekoliko sekundi, ovisno o brzini interneta i udaljenosti web poslužitelja.
 
@@ -2677,7 +2677,7 @@ Primjer iznad možemo podijeliti na sinkronu i asinkronu egzekuciju:
 
 ## 3.3 Fetch API - dohvaćanje podataka s web poslužitelja
 
-U JavaScriptu, `fetch` API je sučelje koje omogućuje asinkrono dohvaćanje resursa s web poslužitelja preko HTTP protokola. `fetch` API je moderna zamjena za zastarjelu `XMLHttpRequest` metodu.
+U JavaScriptu, [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) API je sučelje koje omogućuje asinkrono dohvaćanje resursa s web poslužitelja preko HTTP protokola. `fetch` API je moderna zamjena za zastarjelu `XMLHttpRequest` metodu.
 
 `fetch` API koristi `Promise` objekte za rukovanje asinkronim operacijama. `Promise` objekt predstavlja eventualni rezultat asinkronog procesa i njegovo konačno stanje (rezoluciju ili odbijanje). Više o `Promise` objektima u sljedećem poglavlju, i nadolazećim kolegijima.
 
@@ -2698,7 +2698,7 @@ Napomena, neki od API-eva mogu biti zastarjeli, imati ograničenja ili biti nedo
 Sad ćemo pokazati kako koristiti `fetch` API za dohvaćanje podataka s web poslužitelja koristeći `JSONPlaceholder` servis.
 
 ```javascript
-fetch('https://jsonplaceholder.typicode.com/todos/1')
+fetch('https://jsonplaceholder.typicode.com/todos/1') // Obavezni argument je URL (ima i drugih međutim za sad ćemo prekočiti)
       .then(response => response.json()) // arrow funkcija koja pretvara odgovor u JSON format
       .then(json => console.log(json)) // arrow funkcija koja ispisuje JSON podatke
 
