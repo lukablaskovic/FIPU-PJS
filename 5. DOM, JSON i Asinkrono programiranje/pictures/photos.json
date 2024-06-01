@@ -1,0 +1,44 @@
+{
+    "slike": [
+        {   
+            "naziv": "Seoski zalazak",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo1.jpg?raw=true"
+        },
+        {   
+            "naziv": "Lijepo crveno cvijeće",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo2.jpg?raw=true"
+        },
+        {   
+            "naziv": "Planine u oblacima",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo3.jpg?raw=true"
+        },
+        {   
+            "naziv": "Crno-bijela staza",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo4.jpg?raw=true"
+        },
+        {   
+            "naziv": "Zastavice i planine",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo5.jpg?raw=true"
+        },
+        {   
+            "naziv": "Pug",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo6.jpg?raw=true"
+        },
+        {   
+            "naziv": "Snježne planine i Mjesec",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo7.jpg?raw=true"
+        },
+        {   
+            "naziv": "Drvene stepenice",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo8.jpg?raw=true"
+        },
+        {   
+            "naziv": "Snježne planine",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo9.jpg?raw=true"
+        },
+        {   
+            "naziv": "Noćna scena ulice",
+            "url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/photos/photo10.jpg?raw=true"
+        }
+    ]
+}
