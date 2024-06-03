@@ -17,7 +17,7 @@
 
 <p style="float: clear">Prilikom izrade web aplikacija i stranica, često ćete na neki način manipulirati strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Važno je razumjeti kako funkcionira DOM budući da se svi poznati JavaScript razvojni okviri temelje na njemu (React, VUE, Angular, jQuery...). Dodatno, upoznat ćemo se s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešće korišteni format za razmjenu podataka. Za sam kraj ćemo proći asinkrono programiranje i time postaviti dobre temelje za uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
 
-**Posljednje ažurirano: 21.5.2024.**
+**Posljednje ažurirano: 3.6.2024.**
 
 ## Sadržaj
 
@@ -327,7 +327,7 @@ Imamo zadan sljedeći HTML gdje želimo izvući vrijednosti iz pojedinih elemena
 <p>Ja sam paragraf 3</p>
 ```
 
-HTML elementi se mogu dohvatiti na sljedeće načine:
+**HTML elementi** se mogu dohvatiti na sljedeće načine:
 
 | Metoda | Objašnjenje |	Sintaksa |	Primjer |
 |--------|-------------|-------------|----------|
@@ -1170,7 +1170,7 @@ console.log(divKupac.outerHTML);
 DOM događaji (**eng. DOM events**) omogućuju JavaScriptu da reagira na korisničke akcije kao što su klikovi mišem, različite kretnje mišem, unos na tipkovnici i sl. Događaj se na `element` dodaje metodom `addEventListener(event, callbackFn)`.
 - `callbackFn`: callback koji prima argument `event` a koji se odnosi na pozvani događaj. Da bi se moglo pristupati elementu nad kojim se pozvao `event`, koristi se svojstvo `target`.
 
-Sintaksa ove callback funkcije metode `addEventListener` je sljedeća:
+Sintaksa ove callback funkcije u metodi `addEventListener` je sljedeća:
 ```javascript
 
 const element = document.querySelector('#elementID');
@@ -1469,7 +1469,7 @@ btn_shift.addEventListener("click", () => ukloniElement("shift"))
 
 ### Primjer 7 - `focus` events
 
-`focus` familija događaja se poziva kada element dobije/gubi fokus u nekom kontekstu. U primjeru ćemo koristiti `focus`, `focusin`, `focusout` i `blur` događaje.
+`focus` familija događaja se poziva kada element dobiva/gubi fokus u nekom kontekstu. U primjeru ćemo koristiti `focus`, `focusin`, `focusout` i `blur` događaje.
 
 Dodat ćemo dva input polja za ime i prezime, te jedno za broj godina. Kada se fokusira na polje, ispisuje se koji je element fokusiran.
 
@@ -1790,7 +1790,7 @@ Na web stranicama i aplikacijama često se implementira preporuka pretrage. Kada
 
 U ovom primjeru implementirati ćemo preporuku pretrage za unos u polje za pretragu. Kada korisnik počne unositi pojam, prikazat će se rezultati koji odgovaraju unesenom pojmu. Rezultati se prikazuju u padajućem izborniku ispod polja za pretragu. Kada korisnik klikne na rezultat, unos u polje za pretragu postaje taj rezultat, a padajući izbornik se skriva.
 
-Samo filtriranje smo već do sad naučili kroz primjere iz prošlih skripti, sada ćemo sve ukomponirati koristeći HTML i CSS te JavaScript za manipulaciju našim `input` poljem odnosno tražilicom.
+Samo filtriranje smo do sada naučili kroz primjere iz prošlih skripti, sada ćemo sve ukomponirati koristeći HTML i CSS te JavaScript za manipulaciju našim `input` poljem odnosno tražilicom.
 
 >Za stilizirani input kopirajte CSS kôd od ranije.
 
@@ -2419,13 +2419,13 @@ U JavaScriptu, ovisno o okruženju, možemo koristiti različite metode za čita
 
 ### 2.5.1 Node.js
 
-U Node.js okruženju, možemo koristiti ugrađeni modul `fs` ([File System](https://www.w3schools.com/nodejs/nodejs_filesystem.asp)) za čitanje i pisanje datoteka.
+U **Node.js** okruženju, možemo koristiti ugrađeni modul `fs` ([File System](https://www.w3schools.com/nodejs/nodejs_filesystem.asp)) za čitanje i pisanje datoteka.
 
 Funkcija `require` uključuje ugrađeni modul `fs`, i pišemo ju na početku datoteke.
 
 Primjer čitanja JSON datoteke u Node.js okruženju. Pročitajmo datoteku `harry_potter.json` koja sadrži podatke o "Harry Potter" knjigama.
 
-Node.js program možemo pokrenuti u terminalu naredbom `node index.js`, odnosno `node naziv_datoteke.js`.
+**Node.js** program možemo pokrenuti u terminalu naredbom `node index.js`, odnosno `node naziv_datoteke.js`.
 
 ```json
 {
@@ -2836,20 +2836,25 @@ Prilikom korištenja `fetch` API-a za dohvaćanje podataka s web poslužitelja, 
 
 **EduCoder šifra**: `bored`
 
-Idemo složiti malu aplikaciju koja će nam pritiskom na gumb prikazati neku zanimaciju koju bi mogli raditi u slobodno vrijeme, kada nam je dosadno. Podatke ćemo dohvatiti s [Bored API](https://www.boredapi.com/) i to slučajnu aktivnost: `https://www.boredapi.com/api/activity`.
+Napomena, ako radite u EduCoderu, ugasite automatsku evaluaciju budući da bi vas servis mogao blokirati zbog prevelikog broja zahtjeva (limit: 100 zahtjeva svakih 15 minuta).
+
+Idemo složiti malu aplikaciju koja će nam pritiskom na gumb prikazati neku zanimaciju koju bi mogli raditi u slobodno vrijeme, kada nam je dosadno. Podatke ćemo dohvatiti s [Bored API](https://bored-api.appbrewery.com) i to slučajnu aktivnost: `https://bored-api.appbrewery.com/random`.
 
 Koristit ćemo `fetch` API za dohvaćanje podataka s web poslužitelja i `Promise` objekt za rukovanje rezolucijom i odbijanjem.
 
 Primjer JSON objekta kojeg dobivamo s API-a:
 ```json
 {
-"activity": "Make bread from scratch",
-"type": "cooking",
-"participants": 1,
-"price": 0.2,
-"link": "",
-"key": "4809815",
-"accessibility": 0.2
+  "activity": "Learn Express.js",
+  "availability": 0.25,
+  "type": "education",
+  "participants": 1,
+  "price": 0.1,
+  "accessibility": "Few to no challenges",
+  "duration": "hours",
+  "kidFriendly": true,
+  "link": "https://expressjs.com/",
+  "key": "3943506"
 }
 ```
 
@@ -2912,7 +2917,7 @@ Unutar funkcije koristimo `fetch` API za dohvaćanje podataka s web poslužitelj
 
 ```javascript
 function fetchActivity() {
-            fetch('https://www.boredapi.com/api/activity')
+            fetch('https://bored-api.appbrewery.com/random')
                 .then(response => response.json())
                 .catch(error => {
                     console.log('Error fetching activity:', error);
@@ -2926,7 +2931,7 @@ Sada ćemo dodati `then()` metodu za rukovanje našim podacima koje je odradila 
 document.getElementById('fetch-activity-btn').addEventListener('click', fetchActivity);
 
 function fetchActivity() {
-    fetch('https://www.boredapi.com/api/activity')
+    fetch('https://bored-api.appbrewery.com/random')
         .then(response => response.json())
         .then(data => {
             const activityContainer = document.getElementById('activity-container'); // dohvaćamo container za prikaz aktivnosti i pohranjujemo varijable
@@ -2936,7 +2941,7 @@ function fetchActivity() {
                 <p><strong>Tip:</strong> ${data.type}</p>
                 <p><strong>Broj sudionika:</strong> ${data.participants}</p>
                 <p><strong>Cijena:</strong> ${data.price}</p>
-                <p><strong>Pristupačnost:</strong> ${data.accessibility}</p>
+                <p><strong>Pristupačnost:</strong> ${data.availability}</p>
             `;
         })
         .catch(error => {

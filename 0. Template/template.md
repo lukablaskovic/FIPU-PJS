@@ -1,4 +1,4 @@
-# Programiranje u skriptnim jezicima
+# Programiranje u skriptnim jezicima (PJS)
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -15,18 +15,20 @@
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="logojs/js0.png" style="width:9%; float:right;"></img>
 
-<p style="float: clear">Uvod od nekoliko rečenica ovdje </p>
+<p style="float: clear">Uvod od nekoliko rečenica ovdje...</p>
+
+**Posljednje ažurirano: 3.6.2024.**
 
 ## Sadržaj
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [Programiranje u skriptnim jezicima](#programiranje-u-skriptnim-jezicima)
+- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
 - [\[1\] Naslov skripte](#1-naslov-skripte)
   - [Sadržaj](#sadržaj)
 - [1 Uvod](#1-uvod)
   - [1.2 Primjer slike](#12-primjer-slike)
-  - [1.2 Primjer koda](#12-primjer-koda)
+  - [1.2 Primjer kôda](#12-primjer-kôda)
     - [2.2.1 Primjer grananja naslova](#221-primjer-grananja-naslova)
       - [Naslov 4](#naslov-4)
       - [Naslov 4](#naslov-4-1)
@@ -37,6 +39,7 @@
     - [Screenshot rezultata, npr.](#screenshot-rezultata-npr)
   - [Vježba 2](#vježba-2)
 - [Samostalni zadatak za vježbu \[broj vjezbe\]](#samostalni-zadatak-za-vježbu-broj-vjezbe)
+  - [Primjer tablice](#primjer-tablice)
 
 <br>
 
@@ -46,7 +49,7 @@
 
 ![Hello World](hello_world.png)
 
-## 1.2 Primjer koda
+## 1.2 Primjer kôda
 
 ```javascript
 // script.js
@@ -93,6 +96,8 @@ Zašto `console.log(a == b)` vraća `true`? Objasnite.
 ### Screenshot rezultata, npr.
 Rezultat:
 
+<!-- Slike treba čitati s Githuba, ili weba, ne lokalno! -->
+
 ![vjezba_1](vjezba1.png)
 
 ## Vježba 2
@@ -112,4 +117,18 @@ Rezultat:
 8. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s 2 . **Napomena**, sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji koda</span>.
 9. Upišite u novu varijablu `xsc` vrijednost varijable `x` u znanstvenom zapisu (napisati ručno!).
 10. Provjerite i ispište u konzolu rezultat jednakosti varijabli `x` i `xsc`.
-```
+
+
+## Primjer tablice
+
+| Header 1    | Header 2    | Header 3    |
+|-------------|-------------|-------------|
+| Row 1 Col 1 | Row 1 Col 2 | Row 1 Col 3 |
+| Row 2 Col 1 | Row 2 Col 2 | Row 2 Col 3 |
+| Row 3 Col 1 | Row 3 Col 2 | Row 3 Col 3 |
+
+> Primjer važne napomene
+
+Primjer linka na [Google](https://www.google.com)
+
+Primjer prijevoda stručnog pojma na engleski, npr. varijabla (***eng. variable***)
