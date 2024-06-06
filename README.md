@@ -21,4 +21,4 @@
 7. [Ugniježđene Strukture](https://youtu.be/d4GvcASsfBU) ([PJS4](https://github.com/lukablaskovic/FIPU-PJS/tree/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije))
 8. [Napredne Funkcije](https://youtu.be/owJpiul4G6w) ([PJS4](https://github.com/lukablaskovic/FIPU-PJS/tree/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije))
 9. [DOM Manipulacija](https://youtu.be/YN7Ic2R5En4) ([PJS5](https://github.com/lukablaskovic/FIPU-PJS/tree/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje))
-10. JSON format i Asinkrono programiranje (To-Do) ([PJS5](https://github.com/lukablaskovic/FIPU-PJS/tree/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje))
+10. [JSON i Asinkrono programiranje](https://youtu.be/PFCZQutx7Ms) ([PJS5](https://github.com/lukablaskovic/FIPU-PJS/tree/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje))
