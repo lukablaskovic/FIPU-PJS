@@ -1,0 +1,50 @@
+{
+    "narudzbe": [
+      {
+        "datum_narudzbe": "2024-03-01",
+        "klijent": {
+          "ime_prezime": "Petar Petrović",
+          "email": "ppetrovic@gmail.com",
+          "adresa": "Vodnjanska 15, 52100 Pula, Hrvatska"
+        },
+        "proizvod": {
+          "naziv_proizvoda": "PC",
+          "opis": "Super jako računalo",
+          "slika_url": "",
+          "cijena" : 3000
+        },
+        "narucena_kolicina": 1
+      },
+      {
+        "datum_narudzbe": "2023-06-03",
+        "klijent": {
+          "ime_prezime": "Ana Mirković",
+          "email": "amirko555@gmail.com",
+          "adresa": "Ulica Kralja Tomislava 5, 10000 Zagreb"
+        },
+        "proizvod": {
+          "naziv_proizvoda": "Laptop",
+          "opis": "Macbook air M3",
+          "slika_url": "",
+          "cijena" : 2500
+        },
+        "narucena_kolicina": 2
+      },
+      {
+        "datum_narudzbe": "2024-06-05",
+        "klijent": {
+          "ime_prezime": "Alisa Čudesna",
+          "email": "acudesna@gmail.com",
+          "adresa": "Zemlja čudesa 12, 12345 Nigdjezemska"
+        },
+        "proizvod": {
+          "naziv_proizvoda": "Miš",
+          "opis": "Bežični ergonomski miš",
+          "slika_url": "",
+          "cijena" : 100
+        },
+        "narucena_kolicina": 5
+      }
+    ]
+  }
+  
