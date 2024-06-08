@@ -10,7 +10,7 @@
         "proizvod": {
           "naziv_proizvoda": "PC",
           "opis": "Super jako računalo",
-          "slika_url": "",
+          "slika_url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/pc_shop/PC.jpg?raw=true",
           "cijena" : 3000
         },
         "narucena_kolicina": 1
@@ -25,7 +25,7 @@
         "proizvod": {
           "naziv_proizvoda": "Laptop",
           "opis": "Macbook air M3",
-          "slika_url": "",
+          "slika_url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/pc_shop/macbookair.jpeg?raw=true",
           "cijena" : 2500
         },
         "narucena_kolicina": 2
