@@ -40,7 +40,7 @@
         "proizvod": {
           "naziv_proizvoda": "Miš",
           "opis": "Bežični ergonomski miš",
-          "slika_url": "",
+          "slika_url": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/pc_shop/mouse.jpg?raw=true",
           "cijena" : 100
         },
         "narucena_kolicina": 5
