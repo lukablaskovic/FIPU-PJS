@@ -1115,11 +1115,11 @@ divKupac.append(document.createElement("hr"));
 Kada smo dodali naslov i liniju, slijedi ispisivanje informacije o kupcu. Stvarat ćemo nove `div` elemente te im dodavati sadržaj koristeći `innerHTML` svojstvo.
 ```javascript	
 const divImePrezime = document.createElement("div");
-divImePrezime.innerHTML = `Ime i prezime: <b> ${kupac.ime} ${kupac.prezime} </b`
+divImePrezime.innerHTML = `Ime i prezime: <b> ${kupac.ime} ${kupac.prezime} </b>`
 divKupac.append(divImePrezime);
 
 const divAdresa = document.createElement("div");
-divAdresa.innerHTML = `Adesa: <b> ${kupac.adresa.grad}, ${kupac.adresa.postanskiBroj} - ${kupac.adresa.ulica}</b>`
+divAdresa.innerHTML = `Adresa: <b> ${kupac.adresa.grad}, ${kupac.adresa.postanskiBroj} - ${kupac.adresa.ulica}</b>`
 divKupac.append(divAdresa);
 
 const divKontakt = document.createElement("div");
