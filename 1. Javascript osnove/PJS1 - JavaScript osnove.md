@@ -3,8 +3,8 @@
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
 
-- Luka Blašković, univ. bacc. inf.
-- Alesandro Žužić, univ. bacc. inf.
+- Luka Blašković, mag. inf.
+- Alesandro Žužić, mag. inf.
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
@@ -16,7 +16,7 @@
 
 <p style="float: clear">JavaScript je programski jezik često korišten u web programiranju. Inicijalno je bio namijenjen kako bi učinio web stranice interaktivnijima. Međutim, danas se koristi i za izradu server-side aplikacija, desktop aplikacija, mobilnih aplikacija itd. </p>
 
-**Posljednje ažurirano: 21.5.2024.**
+**Posljednje ažurirano: 20.7.2024.**
 
 ## Sadržaj
 

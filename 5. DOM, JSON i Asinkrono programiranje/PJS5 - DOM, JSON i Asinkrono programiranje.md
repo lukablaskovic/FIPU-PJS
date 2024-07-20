@@ -3,8 +3,8 @@
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
 
-- Luka Blašković, univ. bacc. inf.
-- Alesandro Žužić, univ. bacc. inf.
+- Luka Blašković, mag. inf.
+- Alesandro Žužić, mag. inf.
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
@@ -17,7 +17,7 @@
 
 <p style="float: clear">Prilikom izrade web aplikacija i stranica, često ćete na neki način manipulirati strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Važno je razumjeti kako funkcionira DOM budući da se svi poznati JavaScript razvojni okviri temelje na njemu (React, VUE, Angular, jQuery...). Dodatno, upoznat ćemo se s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešće korišteni format za razmjenu podataka. Za sam kraj ćemo proći asinkrono programiranje i time postaviti dobre temelje za uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
 
-**Posljednje ažurirano: 3.6.2024.**
+**Posljednje ažurirano: 20.7.2024.**
 
 ## Sadržaj
 

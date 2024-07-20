@@ -3,8 +3,8 @@
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
 
-- Luka Blašković, univ. bacc. inf.
-- Alesandro Žužić, univ. bacc. inf.
+- Luka Blašković, mag. inf.
+- Alesandro Žužić, mag. inf.
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
@@ -17,7 +17,7 @@
 
 <p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili polja. Dohvat podataka s različitih API-eva, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
 
-**Posljednje ažurirano: 21.5.2024.**
+**Posljednje ažurirano: 20.7.2024.**
 
 ## Sadržaj
 
