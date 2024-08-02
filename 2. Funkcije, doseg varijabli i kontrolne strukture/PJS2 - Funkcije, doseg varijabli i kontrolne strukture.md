@@ -18,7 +18,7 @@
 
 <p><b>Kontrolne strukture</b> su konstrukti u programiranju koji odlučuju o toku izvršavanja programa. </p>
 
-**Posljednje ažurirano: 20.7.2024.**
+**Posljednje ažurirano: 2.8.2024.**
 
 ## Sadržaj
 
@@ -88,9 +88,9 @@ function kvadriraj(broj) {
 
 Funkcija `kvadriraj` prima jedan parametar `broj` i vraća kvadrat tog broja. Ključnom riječi `return` funkcija vraća definiranu vrijednost. Ako funkcija ne vraća ništa, koristimo `return;` ili još jednostavnije izostavimo `return` naredbu.
 
-Možemo primjetiti kako je funkcija `kvadriraj` zapravo vrlo slična matematičkoj funkciji `f(x) = x^2`. Funkcija `f` prima jedan parametar `x` i vraća kvadrat tog broja.
+Možemo primijetiti kako je funkcija `kvadriraj` zapravo vrlo slična matematičkoj funkciji `f(x) = x^2`. Funkcija `f` prima jedan parametar `x` i vraća kvadrat tog broja.
 
-Ako povućemo paralelu sa `C` familijom jezika, možemo primjetiti da kod deklaracije funkcije u JavaScriptu, kao i varijabli, ne navodimo tip podataka parametara i povratne vrijednosti. Funkcija `kvadriraj` ekvivalentna je funkciji u C-u:
+Ako povučemo paralelu sa `C` familijom jezika, možemo primijetiti da kod deklaracije funkcije u JavaScriptu, kao i varijabli, ne navodimo tip podataka parametara i povratne vrijednosti. Funkcija `kvadriraj` ekvivalentna je funkciji u C-u:
 
 ```c
 int kvadriraj(int broj) {
@@ -119,12 +119,12 @@ function imeFunkcije(parametar1, parametar2, parametar3) {
 Zapamtimo par pojmova:
 
 - parametri funkcije (eng. **_function parameters_**) su navedeni unutar zagrada `()` u definiciji funkcije.
-- argumenti funkcije (eng. **_function arguments_**) su vrijednosti koje se proslijeđuju funkciji kada se ona poziva.
+- argumenti funkcije (eng. **_function arguments_**) su vrijednosti koje se prosljeđuju funkciji kada se ona poziva.
 - najvažnije, unutar funkcije, parametri (argumenti) se ponašaju kao **lokalne varijable**.
 
 ## 1.2 Pozivanje funkcije
 
-Deklariranje funkcije neće pozvati funkciju, već samo definira funkciju. Da bismo pozvali funkciju, koristimo ime funkcije, operator `()` i unutar njega argumente koje proslijeđujemo funkciji. Primjerice, kako bi pozvali našu funkciju `kvadriraj` s arugmentom `5` i ispisali rezultat u konzolu, pišemo sljedeći kȏd:
+Deklariranje funkcije neće pozvati funkciju, već samo definira funkciju. Da bismo pozvali funkciju, koristimo ime funkcije, operator `()` i unutar njega argumente koje prosljeđujemo funkciji. Primjerice, kako bi pozvali našu funkciju `kvadriraj` s argumentom `5` i ispisali rezultat u konzolu, pišemo sljedeći kȏd:
 
 ```javascript
 console.log(kvadriraj(5)); // 25
@@ -217,7 +217,7 @@ function kvadriraj(broj) {
 console.log(text3); // ?
 ```
 
-Primjetite da smo pozvali funkciju `kvadriraj` prije nego smo ju deklarirali. JavaScript će prvo pročitati sve deklaracije funkcija i varijabli prije nego počne izvršavati kȏd, tako da ovaj kȏd neće proizvesti grešku i ispisat će `25 je rezultat kvadriranja broja 5.`. Ovo ponašanje se zove **Function hoisting**.
+Primijetite da smo pozvali funkciju `kvadriraj` prije nego smo ju deklarirali. JavaScript će prvo pročitati sve deklaracije funkcija i varijabli prije nego počne izvršavati kȏd, tako da ovaj kȏd neće proizvesti grešku i ispisat će `25 je rezultat kvadriranja broja 5.`. Ovo ponašanje se zove **Function hoisting**.
 Dakle prethodni kȏd je ekvivalentan ovome:
 
 ```javascript
@@ -304,7 +304,7 @@ const x = 10;
 console.log(x); // 10
 ```
 
-Možemo primjetiti da se varijabla `x` deklarirana unutar bloka `{}` ponaša kao lokalna varijabla unutar bloka, a varijabla `x` deklarirana izvan bloka ponaša se kao globalna varijabla.
+Možemo primijetiti da se varijabla `x` deklarirana unutar bloka `{}` ponaša kao lokalna varijabla unutar bloka, a varijabla `x` deklarirana izvan bloka ponaša se kao globalna varijabla.
 
 Ponovna deklaracija varijable s ključnom riječi `let` ili redeklaracija ključnom riječi `const`, unutar istog dosega, uzrokovat će grešku!
 
@@ -375,7 +375,7 @@ Za one koji žele naučiti više o blokovskom opsegu, i function hoistingu, link
 ### 2.2 Ponovno deklariranje funkcija
 
 Ponovno deklariranje funkcija u JavaScriptu s ključnom riječi `function` dozvoljeno je ovisno o dosegu gdje se funkcija deklarira.
-Deklaracije funkcija sa ključnom riječi `function` ponašaju se slično kao `var` i mogu se ponovno deklarirati s još jednom `function` ili `var` deklaracijom, ali ne sa `let`, `const` ili `class` deklaracijom.
+Deklaracije funkcija s ključnom riječi `function` ponašaju se slično kao `var` i mogu se ponovno deklarirati s još jednom `function` ili `var` deklaracijom, ali ne sa `let`, `const` ili `class` deklaracijom.
 
 ```javascript
 function a(b) {}
@@ -423,7 +423,7 @@ const zbroji = function (a, b) {
 };
 ```
 
-Možemo primjetiti da se kod funkcijskog izraza funkcija "izrađuje" s desne strane operatora dodjeljivanja `=`.
+Možemo primijetiti da se kod funkcijskog izraza funkcija "izrađuje" s desne strane operatora dodjeljivanja `=`.
 
 Kako smo ranije spomenuli, u poglavlju 1.3, **function hoisting** ponašanje dovodi do toga da se deklaracije funkcija mogu pozvati prije nego su deklarirane. Međutim, to se ne odnosi na funkcijske izraze. Funkcijski izrazi se ponašaju kao bilo koja druga varijabla, i ne mogu se pozvati prije nego su deklarirane.
 
@@ -611,7 +611,7 @@ console.log(zbroji(5, 3)); // 8
 console.log(oduzmi(5, 3)); // 2
 ```
 
-Rekli smo da je funkcija višeg reda koja prima drugu funkciju kao arugment ili vraća drugu funkciju kao rezultat. Možemo implementirati funkciju `izracunaj` koja će primiti funkciju `operacija` i dva broja `a` i `b` te će vratiti rezultat funkcije `operacija` s argumentima `a` i `b`.
+Rekli smo da je funkcija višeg reda koja prima drugu funkciju kao argument ili vraća drugu funkciju kao rezultat. Možemo implementirati funkciju `izracunaj` koja će primiti funkciju `operacija` i dva broja `a` i `b` te će vratiti rezultat funkcije `operacija` s argumentima `a` i `b`.
 
 ```javascript
 function izracunaj(operacija, a, b) {
@@ -637,7 +637,7 @@ console.log(triple(5)); // 15
 ```
 
 Što ako želimo dodati funkcije `quadruple` i `quintuple` koje će vraćati četverostruko odnosno petostruko veći broj? Recimo da želimo ostati na tome da naša funkcija prima samo jedan argument. Možemo li to riješiti pomoću funkcija višeg reda?
-Možemo! Deklarirati ćemo funkciju `mutliplier` koja će primati jedan argument `value` te će vraćati funkciju koja će primati jedan argument `x` i vraćati `x * multiplier`.
+Možemo! Deklarirat ćemo funkciju `mutliplier` koja će primati jedan argument `value` te će vraćati funkciju koja će primati jedan argument `x` i vraćati `x * multiplier`.
 
 Dakle `multiplier` je funkcija višeg reda jer vraća funkciju kao povratnu vrijednost.
 
@@ -704,7 +704,7 @@ console.log(quintuple(5)); // 25
 
 # 3. Kontrolne strukture
 
-Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na temelju određenih uvjeta. Ako je uvjet ispunjen tada se izvršava određeni blok radnji, inače će se izvršavati drugi blok radnji koji zadovoljava taj uvjet. Kontrolne strukture možemo podijeliti u dvije kateogrije:
+Kontrolne strukture su konstrukti koji odlučuju o toku izvršavanja programa na temelju određenih uvjeta. Ako je uvjet ispunjen tada se izvršava određeni blok radnji, inače će se izvršavati drugi blok radnji koji zadovoljava taj uvjet. Kontrolne strukture možemo podijeliti u dvije kategorije:
 
 1. Selekcije (eng. **_Conditional statements_**) - odlučuju o toku izvršavanja bloka kȏda na temelju logičkog izraza koji se evaluira u `true` ili `false`.
 2. Iteracije/Petlje (eng. **_Iterations_**) - omogućuju izvršavanje bloka kȏda više puta dok se ne ispuni uvjet definiran logičkim izrazom, koji se evaluira u `true` ili `false`.
@@ -772,7 +772,7 @@ if (logicki_izraz_1) {
 } else if (logicki_izraz_2) {
   // blok kȏda koji se izvršava ako je logicki_izraz_2 = true
 } else {
-  // blok kȏda koji se izvršava ako su svi prethodni logicki izrazi (logicki_izraz_1 && logicki_izraz_2) = false
+  // blok kȏda koji se izvršava ako su svi prethodni logički izrazi (logicki_izraz_1 && logicki_izraz_2) = false
 }
 ```
 
@@ -903,7 +903,7 @@ if (sat >= 6 && sat < 12) {
 
 ### Primjer 2 - Provjera prihvatljivosti za zajam (operator `||`, `&&` + `if-else` selekcija)
 
-U ovom primjeru simulirati ćemo provjeru prihvatljivosti klijenta za zajam temeljem nekoliko kriterija, koristeći logičke operatore `||` (ili) i `&&` (i).
+U ovom primjeru simulirat ćemo provjeru prihvatljivosti klijenta za zajam na temelju nekoliko kriterija, koristeći logičke operatore `||` (ili) i `&&` (i).
 Izmislit ćemo nekoliko tvrdnji koje ćemo provjeravati logičkim operatorima:
 
 - Ako je klijent zaposlen i ima stabilne prihode veće od 7000 novčanih jedinica, može dobiti zajam.
@@ -952,7 +952,7 @@ if (zaposlen && mjesecniPrihodi > 7000) {
 }
 ```
 
-Drugi uvjet: Ako je klijent samostalni obrtnik ili ima visoku kreditnu ocjenu, može dobiti zajam - `else if (obrtnik || kreditnaOcjenaVisoka)` - koristimo logički operator `||` (ili) kako bi provjerili jedan od dva uvjeta. Ako je `obrtnik` ili `kreditnaOcjenaVisoka` istinita tvrdnja, odnosno, `(obrtnik || kreditnaOcjenaVisoka)` klijent može dobiti zajam. Primjetite da smo izostavili `== true` jer su `obrtnik` i `kreditnaOcjenaVisoka` tipa `boolean`.
+Drugi uvjet: Ako je klijent samostalni obrtnik ili ima visoku kreditnu ocjenu, može dobiti zajam - `else if (obrtnik || kreditnaOcjenaVisoka)` - koristimo logički operator `||` (ili) kako bi provjerili jedan od dva uvjeta. Ako je `obrtnik` ili `kreditnaOcjenaVisoka` istinita tvrdnja, odnosno, `(obrtnik || kreditnaOcjenaVisoka)` klijent može dobiti zajam. Primijetite da smo izostavili `== true` jer su `obrtnik` i `kreditnaOcjenaVisoka` tipa `boolean`.
 
 ```javascript
 let zaposlen = true;
@@ -1011,7 +1011,7 @@ if (zaposlen && mjesecniPrihodi > 7000) {
 
 ## Vježba 4
 
-Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mjenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeća: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamjenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
+Napiši funkciju `provjeriDob(dob)` koja vraća poruku ovisno o dobi korisnika. Za dob manju od `18` godina, funkcija vraća poruku `"Osoba je maloljetna."`. Za dob između 18 i 65 godina, funkcija vraća poruku `"Osoba je punoljetna."`. Za dob veću od `65` godina, funkcija vraća poruku `"Osoba je u zlatnim godinama."`. Pozovite `provjeriDob(15)`, `provjeriDob(25)` i `provjeriDob(70)` te ispišite rezultate u konzolu. Kada to napravite, umjesto da ručno mijenjate dob, koristite [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) funkciju kako bi korisnik unio dob, sintaksa je sljedeća: `let x = prompt(text, defaultText);`, gdje je `text` poruka koja se prikazuje korisniku, a `defaultText` je opcionalni argument koji predstavlja zadani tekst u polju za unos. Kada to napravite, zamijenite `console.log` sa [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) funkcijom, sintaksa je sljedeća: `alert(poruka);`, gdje je `poruka` poruka koja se prikazuje korisniku.
 
 **EduCoder šifra**: `zlatne_godine`
 
@@ -1061,7 +1061,7 @@ for (initialization; condition; afterthought) {
 ```
 
 1. `initialization` - izvršava se jednom prije početka petlje, ako postoji. Često inicijalizira varijable koje se koriste u petlji, npr. `let i = 0`, ali sintaksa dozvoljava bilo koji izraz.
-2. `condition` izraz se evaluira prije svakog ponavljanja petlje. Ako je `true`, petlja i egezekucija `statement` izraza se nastavlja. Ako je `false`, petlja se prekida.
+2. `condition` izraz se evaluira prije svakog ponavljanja petlje. Ako je `true`, petlja i egzekucija `statement` izraza se nastavlja. Ako je `false`, petlja se prekida.
 3. `statement` izraz se izvršava svaki put kada je `condition` = `true`.
 4. `afterthought` izraz se izvršava nakon svakog ponavljanja petlje, ako postoji. Često se koristi za inkrementiranje ili dekrementiranje varijabli, npr. `i++`, ali sintaksa dozvoljava bilo koji izraz.
 
@@ -1121,7 +1121,7 @@ Oprez, beskonačne petlje često dovode do crashanja web preglednika ili vaše a
 ```javascript
 // Navedene petlje će vrlo vjerojatno srušiti vaš web preglednik
 for (;;) {
-  console.log("Beskonačna petlja!"); // Nema inicijalizacije, uvjeta niti afterthoughta
+  console.log("Beskonačna petlja!"); // Nema inicijalizacije, uvjeta niti afterthought-a
 }
 
 for (let i = 0; ; i++) {
@@ -1129,7 +1129,7 @@ for (let i = 0; ; i++) {
 }
 
 for (let i = 0; i < 10; ) {
-  console.log(i); // Nema afterthoughta, petlja će beskonačno ispisivati 0
+  console.log(i); // Nema afterthought-a, petlja će beskonačno ispisivati 0
 }
 ```
 
@@ -1182,7 +1182,7 @@ Ako je `condition` = `true`, izvršava se `statement`. Ako je `condition` = `fal
 
 `condition` se evaluira prije statement izraza, stoga je moguće da se `statement` izraz nikada ne izvrši ako je condition = `false`.
 
-Primjer, sljedeća petlja će iterirati dokle god je `n` manji od 3. Primjetite da u ovom slučaju, `n` mora biti deklariran izvan petlje.
+Primjer, sljedeća petlja će iterirati dokle god je `n` manji od 3. Primijetite da u ovom slučaju, `n` mora biti deklariran izvan petlje.
 
 ```javascript
 let n = 0;
@@ -1219,7 +1219,7 @@ while (i < 10) {
 }
 ```
 
-Primjetimo da je varijabla `text` deklarirana unutar petlje. To znači da će se svaki put kada se petlja izvrši, varijabla `text` ponovno inicijalizirati. Kod petlji vrijede ista pravila o dosegu varijabli kao i kod funkcija - varijabla deklarirana unutar petlje neće biti dostupna izvan petlje.
+Primijetimo da je varijabla `text` deklarirana unutar petlje. To znači da će se svaki put kada se petlja izvrši, varijabla `text` ponovno inicijalizirati. Kod petlji vrijede ista pravila o dosegu varijabli kao i kod funkcija - varijabla deklarirana unutar petlje neće biti dostupna izvan petlje.
 
 Što ako je `i` = `11`? Petlja se neće izvršiti niti jednom, jer je uvjet `i < 10` odmah `false`. Kako bismo ispisali "Broj 10", možemo koristiti varijantu `while` petlje - `do-while` petlju.
 
@@ -1233,7 +1233,7 @@ do {
 } while (condition);
 ```
 
-Prebacimo prethodni primjer u `do-while` petlju. Možemo primjetiti da se `statement` blok izvrši točno jednom, budući da je uvjet `i < 10` odmah `false`.
+Prebacimo prethodni primjer u `do-while` petlju. Možemo primijetiti da se `statement` blok izvrši točno jednom, budući da je uvjet `i < 10` odmah `false`.
 
 ```javascript
 let i = 11;
@@ -1286,7 +1286,7 @@ for (let i = 0; i < grad.length; i++) {
 }
 ```
 
-Idemo upotrijebiti svo znanje o petljama, selekcijama i funkcijama kako bismo napisali funkciju koja će zbrojiti ponavljanja određenog znaka u nizu znakova. Funkcija `brojPonavljanjaZnaka()` prima dva argumenta - niz znakova `niz` i znak `znak`. Funkcija vraća broj ponavljanja znaka `znak` u nizu znakova `niz`.
+Idemo upotrijebiti sve znanje o petljama, selekcijama i funkcijama kako bismo napisali funkciju koja će zbrojiti ponavljanja određenog znaka u nizu znakova. Funkcija `brojPonavljanjaZnaka()` prima dva argumenta - niz znakova `niz` i znak `znak`. Funkcija vraća broj ponavljanja znaka `znak` u nizu znakova `niz`.
 
 ```javascript
 function brojPonavljanjaZnaka(niz, znak) {
@@ -1363,7 +1363,7 @@ Dalje, želimo svaki broj `i` pomnožiti s brojevima od `1` do `10`. To ćemo je
 function tablicaMnozenja() {
   for (let i = 1; i <= 10; i++) {
     for (let j = 1; j <= 10; j++) {
-      console.log(i, j, i * j); // ispisuje sve kombinacije brojeva od 1 do 10 i njihove umnožke
+      console.log(i, j, i * j); // ispisuje sve kombinacije brojeva od 1 do 10 i njihove umnoške
     }
   }
 }
@@ -1390,7 +1390,7 @@ tablicaMnozenja();
 
 ## Vježba 5
 
-Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz`, dok za brojeve koji su djeljivi i sa 3 i sa 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
+Napišite program koji će ispisati sve brojeve od `1` do `100`. Za brojeve koji su djeljivi s 3 umjesto broja ispišite `Fizz`, za brojeve koji su djeljivi s 5 ispišite `Buzz`, dok za brojeve koji su djeljivi i s 3 i s 5 ispišite `FizzBuzz`. Ne ispisujte svaku vrijednost koristeći `console.log()`, već pohranjujte vrijednosti u varijablu `output` i na kraju ispišite niz koristeći `console.log(output)`. Nakon svake vrijednosti dodajte zarez i razmak (`, `), osim nakon posljednje vrijednosti, nakon nje dodajte ` i kraj!`.
 
 **EduCoder šifra**: `fizz_buzz`
 
@@ -1402,8 +1402,8 @@ Rezultat:
 
 Napišite funkciju koja prima jedan argument `godina` i provjerava je li godina prijestupna ili nije. Prema Gregorijanskom kalendaru, godina je prijestupna ako:
 
-- je dijeljiva s 4, ali nije dijeljiva s 100
-- ako je dijeljiva s 100, mora biti i s 400
+- je djeljiva s 4, ali nije djeljiva s 100
+- ako je djeljiva s 100, mora biti i s 400
   Na primjer, godine `1700`, `1800` i `1900` nisu prijestupne, ali godina `2000` jest.
 
 **EduCoder šifra**: `svake_prijestupne`
@@ -1476,7 +1476,7 @@ Kako izgleda poziv funkcije `faktorijel(5)`?
 11. Vraćanje vrijednosti - `faktorijel(4)` vraća `4 * 6 = 24` u poziv `faktorijel(5)`
 12. Vraćanje vrijednosti - `faktorijel(5)` vraća `5 * 24 = 120`
 
-Dakle konačni rezultat poziva `faktorijel(5)` je `120`.
+Konačno, rezultat poziva `faktorijel(5)` je `120`.
 
 Rekurzija nije uvijek najbolje rješenje za rješavanje problema. Rekurzivne funkcije mogu biti teže za razumjeti i održavati, a mogu dovesti i do prekoračenja stoga memorije. U praksi, rekurzija se koristi kada je problem koji rješavamo mogu se svesti na manje probleme iste vrste, a rekurzivno rješenje je jednostavnije i čitljivije od iterativnog rješenja.
 
@@ -1584,7 +1584,7 @@ lozinka = "123456";
 console.log(validirajFormu(ime, prezime, email, lozinka)); // false
 ```
 
-U Javascriptu, znakovi (uključujući i brojeve i slova) se kodiraju koristeći [Unicode]("https://home.unicode.org/") skup znakova. U ASCII i Unicode skupovima znakova, znakovi se prikazuju numeričkim vrijednostima. Primjerice, u **ASCII** skupu, slovo `a` kodira se brojem `97`, a slovo `z` brojem `122`. Brojevi se kodiraju brojevima od `48` do `57`. Dok u **Unicode** skupu, znak `0` kodira se brojem `0030`, a znak `9` brojem `0039`.
+U JavaScriptu, znakovi (uključujući i brojeve i slova) se kodiraju koristeći [Unicode]("https://home.unicode.org/") skup znakova. U ASCII i Unicode skupovima znakova, znakovi se prikazuju numeričkim vrijednostima. Primjerice, u **ASCII** skupu, slovo `a` kodira se brojem `97`, a slovo `z` brojem `122`. Brojevi se kodiraju brojevima od `48` do `57`. Dok u **Unicode** skupu, znak `0` kodira se brojem `0030`, a znak `9` brojem `0039`.
 Imajući to na umu, možemo dodati novu provjeru za `ime` i `prezime`. Funkciju koja provjerava sadrže li ime i prezime samo niz znakova `[a - z]`.
 
 Na ovaj način ne uzimamo u obzir hrvatska slova: `č`, `ć`, `š`, `đ`, `ž`, `lj`, `nj`, `dž`.
@@ -1607,7 +1607,7 @@ function containsOnlyLetters(str) {
 **Zapamtite:**
 
 > - **containsNumber(str)** : Ovdje su nam operandi u selekciji **znak** i **broj**. JavaScript će u ovom slučaju nastojati pretvoriti znak u broj i provesti usporedbu.
-> - **containsOnlyLetters(str)** : Ovdje su nam operandi u selekciji **znak** i **znak**. JavaScript će u ovom slučaju usporedti znakove leksikografski, tj. po redoslijedu u ASCII skupu znakova.
+> - **containsOnlyLetters(str)** : Ovdje su nam operandi u selekciji **znak** i **znak**. JavaScript će u ovom slučaju usporediti znakove leksikografski, tj. po redoslijedu u ASCII skupu znakova.
 
 Možemo još dodati provjeru je li e-mail ispravno formatiran. Na primjer, e-mail mora sadržavati znak `@` i barem jednu točku nakon znaka `@`.
 Radi pojednostavljenja, nećemo provjeravati sadrži li e-mail nedozvoljene znakove ili više znakova `@`.

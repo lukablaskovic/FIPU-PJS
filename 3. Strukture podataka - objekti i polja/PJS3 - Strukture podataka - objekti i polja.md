@@ -16,7 +16,7 @@
 
 Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj pohrani, organizaciji, dohvatu i obradi podataka. U JavaScriptu, objekti i polja predstavljaju glavne gradivne elemente. **Objekti** su kontejneri koji omogućuju pohranu podataka u obliku proizvoljnog broja parova `"ključ:vrijednost"`, dok **polja** predstavljaju kolekciju različitih elemenata organiziranih u linearni niz. Kombinacija ovih struktura omogućuje efikasno manipuliranje i pristup podacima u JavaScriptu.
 
-**Posljednje ažurirano: 20.7.2024.**
+**Posljednje ažurirano: 2.8.2024.**
 
 ## Sadržaj
 
@@ -82,7 +82,7 @@ Objekti su osnovna struktura podataka koja omogućavaju organizaciju i pohranu i
 
 Objekti se koriste za modeliranje stvarnih stvari, kao što su automobili, uloge, ljudi, hrana, knjige, itd.
 
-Prije nego definiramo objekte, važno je razumijeti što su primitivni tipovi podataka u JavaScriptu. Najjednostavnije rečeno, primitivni tipovi podataka, ili primitivi, su jednostavni podaci koji **nemaju svojstva i metode**, za razliku od objekata. JavaScript ima 7 primitivnih tipova podataka:
+Prije nego definiramo objekte, važno je razumjeti što su primitivni tipovi podataka u JavaScriptu. Najjednostavnije rečeno, primitivni tipovi podataka, ili primitivi, su jednostavni podaci koji **nemaju svojstva i metode**, za razliku od objekata. JavaScript ima 7 primitivnih tipova podataka:
 
 - `string`,
 - `number`,
@@ -254,7 +254,7 @@ Ključna riječ `this` odnosi se na trenutni objekt u kojem se koristi. U kontek
 `this` se koristi za pristup svojstvima i metodama objekta unutar samog objekta. Na primjer, u metodi `izracunajStarost`, `this.godina_proizvodnje` koristi se za pristup svojstvu `godina_proizvodnje` objekta `auto`.
 
 Idemo dodati novu metodu `opisiAuto` u objekt `auto` koja će ispisati sve informacije o automobilu u jednoj rečenici, koristeći svojstva objekta `auto`.
-Primjetite da se u metodi `opisiAuto` koristi ključna riječ `this` za pristup svojstvima objekta `auto`.
+Primijetite da se u metodi `opisiAuto` koristi ključna riječ `this` za pristup svojstvima objekta `auto`.
 
 ```javascript
 const auto = {
@@ -338,7 +338,7 @@ delete grad.velicina;
 console.log(grad); // { ime: "Pula", broj_stanovnika: 56540, gustocaNaseljenosti: [Function: gustocaNaseljenosti] }
 ```
 
-Ako upišete `delete grad.velicina` u konzolu primjetit ćete da će konzola vratiti `true` što znači da je svojstvo uspješno obrisano.
+Ako upišete `delete grad.velicina` u konzolu primijetit ćete da će konzola vratiti `true` što znači da je svojstvo uspješno obrisano.
 
 ## 1.4 Konstruktori
 
@@ -639,7 +639,7 @@ Tablica escape znakova:
 | \t   | Horizontal Tabulator        |
 | \v   | Vertical Tabulator        |
 
-Ne morate ih sve znati napamet, ali je dobro znati da postoje. Ovi tabulatori nastali su u doba pisačih strojeva, teleprintera i fax uređaja. U HTML-u ih nema potrebe koristiti jer se tekst formatira pomoću CSS-a.
+Ne morate ih sve znati napamet, ali je dobro znati da postoje. Ovi tabulatori nastali su u doba pisaćih strojeva, teleprintera i fax uređaja. U HTML-u ih nema potrebe koristiti jer se tekst formatira pomoću CSS-a.
 
 
 ## 2.2 `Number` objekt
@@ -736,7 +736,7 @@ Ispod su navedene neke od najčešće korištenih konstanti i statičnih metoda 
 | `Math.pow(x, y)` | Vraća rezultat potenciranja broja `x` na potenciju `y`.                                                                                                                     | `Math.pow(base, exponent)` | `Math.pow(2, 3)`        | `8`                          |
 | `Math.sqrt(x)`   | Računa kvadratni korijen broja `x`.                                                                                                                                         | `Math.sqrt(x)`             | `Math.sqrt(9)`          | `3`                          |
 | `Math.round(x)`  | Zaokružuje broj `x` na najbliži cijeli broj.                                                                                                                                | `Math.round(x)`            | `Math.round(4.3)`       | `4`                          |
-| `Math.random()`  | Generira pseudoslučajan broj između `0` i `1`. Funkcija koristi pribliŽno uniformnu distribuciju. Ne pruža kriptografski sigurne slučajne brojeve pa se za te svrhe ne koristi. | `Math.random()`            | `Math.random()`         | (slučajni broj između `0` i `1`) |
+| `Math.random()`  | Generira pseudoslučajan broj između `0` i `1`. Funkcija koristi približno uniformnu distribuciju. Ne pruža kriptografski sigurne slučajne brojeve pa se za te svrhe ne koristi. | `Math.random()`            | `Math.random()`         | (slučajni broj između `0` i `1`) |
 | `Math.log(x)`    | Računa prirodni logaritam (po bazi e) broja `x`.                                                                                                                            | `Math.log(x)`              | `Math.log(Math.E)`      | `1`                          |
 | `Math.exp(x)`    | Računa e na potenciju `x`.                                                                                                                                                  | `Math.exp(x)`              | `Math.exp(1)`           | `2.718281828459045`          |
 | `Math.sin(x)`    | Računa sinus broja `x` (u radijanima).                                                                                                                                      | `Math.sin(x)`              | `Math.sin(Math.PI / 2)` | `1`                          |
@@ -802,7 +802,7 @@ Novi datum možemo stvoriti koristeći `new Date()` konstruktor. Konstruktor mo�
 | `new Date(year, month, ...)`    | stvara novi `Date` objekt sa specificiranim datumom i vremenom. **JavaScript broji mjesece od 0**! Dakle 0 = Siječanj, 11 = Prosinac      |`const d = new Date(2019, 3, 24, 10, 33, 30);` `d = Wed Apr 24 2019 10:33:30` |
 | `new Date(milliseconds)`    | stvara novi `Date` objekt s **brojem milisekundi od 1. siječnja 1970.** odnosno `unix oznakom`     | `const d = new Date(1708436235000);`
 
-Primjetite da kod ispisa `Date` objekta, u konzolu nećemo dobiti klasičan ispis objekta, kao što je slučaj kod `String` i `Number` objekata. Umjesto toga, dobit ćemo ispis u formatu koji podsjeća na string reprezentaciju datuma budući da JavaScript automatski poziva `toString()` metodu prilikom ispisa objekta.
+Primijetite da kod ispisa `Date` objekta, u konzolu nećemo dobiti klasičan ispis objekta, kao što je slučaj kod `String` i `Number` objekata. Umjesto toga, dobit ćemo ispis u formatu koji podsjeća na string reprezentaciju datuma budući da JavaScript automatski poziva `toString()` metodu prilikom ispisa objekta.
 
 Nakon što izradimo `Date` objekt, možemo koristiti razne metode za dohvaćanje i manipulaciju datuma i vremena. Ispod se nalazi tablica s nekoliko najčešće korištenih metoda `Date` objekta:
 
@@ -849,7 +849,7 @@ console.log(d2 - d1); // 86400000
 
 **EduCoder šifra**: `vrijeme_u_rh`
 
-1. Napišite funkciju `hrDatum()` koja vraća današanji datum u formatu `dd.mm.yyyy.`. Funkcija ne prima argumente. Za implementaciju koristite metode iz `Date` objekta. Ispis ne smije sadržavati razmake. Regex izraz za pronalaženje svih razmaka u stringu je `/\s/g`.
+1. Napišite funkciju `hrDatum()` koja vraća današnji datum u formatu `dd.mm.yyyy.`. Funkcija ne prima argumente. Za implementaciju koristite metode iz `Date` objekta. Ispis ne smije sadržavati razmake. Regex izraz za pronalaženje svih razmaka u stringu je `/\s/g`.
 
 ✅Rezultat:
 
@@ -888,7 +888,7 @@ console.log(calculateHours(new Date(2024, 1, 14), new Date(2024, 1, 16))); // Ou
 
 ## 2.4 Usporedba JavaScript objekata
 
-Naučili smo što su primitivni tipovi podataka, koji su i kako se koriste. Također smo prošli kroz osnovne ugrađene objekte te samu teoriju iza objekata. Također smo naučili da postoje ugrađeni objekti za već postojeće primitivne tipove, poput `String` i `Number` objekata.
+Naučili smo što su primitivni tipovi podataka, koji su i kako se koriste. Također smo prošli kroz osnovne ugrađene objekte te samu teoriju iza objekata. Također smo naučili da postoje ugrađeni objekti za postojeće primitivne tipove, poput `String` i `Number` objekata.
 
 Rekli smo da nema smisla komplicirati kôd instanciranjem nekih primitivnih tipova kao objekte, zbog automatske pretvorbe. Na primjer:
 ```javascript
@@ -1031,7 +1031,7 @@ namirnice[2] = "sir";
 Ispis polja u konzolu možemo napraviti koristeći `console.log()` metodu. Ispis polja u konzolu će rezultirati ispisom svih elemenata polja, odvojenih zarezom.
 
 ```javascript
-console.log(namirnice); // Output: ["kruh", "mlijeko", "sir"] //Primjetite uglate zagrade, to je ispis polja
+console.log(namirnice); // Output: ["kruh", "mlijeko", "sir"] //Primijetite uglate zagrade, to je ispis polja
 
 console.log(namirnice[0]); // Output: "kruh"
 console.log(namirnice[1]); // Output: "mlijeko"
@@ -1191,7 +1191,7 @@ let bor = stabla.find(function(stablo) {
 });
 console.log(bor); // Output: "bor"
 ```
-> Primjetite koliko je kôd čitljiviji i jednostavniji za razumijevanje 😁
+> Primijetite koliko je kôd čitljiviji i jednostavniji za razumijevanje 😁
 
 Neke metode moguće je doslovno čitati prirodnim jezikom, na primjer sljedeći primjer čitamo: "Za svaki element polja `stabla` ispiši pojedino `stablo`"
 ```javascript
@@ -1205,7 +1205,7 @@ stabla.forEach(function(stablo) {
 
 **EduCoder šifra**: `pliz_moze_2`
 
-Napravite novo polje `ocjene_mat` koje sadrži ocjene iz matematike. U polje dodajte 10 ocjena: `5, 4, 3, 1, 2, 4, 5, 1, 4, 5`. Ispišite polje u konzolu. Za negativne ocjene ispišite poruku: `Ocjena na poziciji polja [pozicija] je negativna!`. Nakon šta to napravite, iterirajte kroz polje još jednom i ispravite negativne ocjene na `2`. Sumirajte sve ocjene i izračunajte prosjek. Ispišite `novo polje`, `sumu` ocjena i `prosjek` u konzolu.
+Napravite novo polje `ocjene_mat` koje sadrži ocjene iz matematike. U polje dodajte 10 ocjena: `5, 4, 3, 1, 2, 4, 5, 1, 4, 5`. Ispišite polje u konzolu. Za negativne ocjene ispišite poruku: `Ocjena na poziciji polja [pozicija] je negativna!`. Nakon što to napravite, iterirajte kroz polje još jednom i ispravite negativne ocjene na `2`. Sumirajte sve ocjene i izračunajte prosjek. Ispišite `novo polje`, `sumu` ocjena i `prosjek` u konzolu.
 
 ## 3.2 Iteracije kroz polja
 
@@ -1224,7 +1224,7 @@ for (let i = 0; i < polje.length; i++) { // Iteriramo za veličinu polja
 }
 ```
 
-Možemo svaki element izmjeniti u petlji, na primjer, npr. svakom elementu dodati prefiks `fruit_`.
+Možemo svaki element izmijeniti u petlji, na primjer, npr. svakom elementu dodati prefiks `fruit_`.
 ```javascript
 let polje = ["jabuka", "kruška", "šljiva", "naranča", "banana"];
 for (let i = 0; i < polje.length; i++) { // Iteriramo za veličinu polja
@@ -1322,7 +1322,7 @@ polje.forEach(function(element, index, array) {
 Primjerice imamo polje `slova` koje sadrži nekoliko slova. U sljedećem primjeru ispisat ćemo elemente `callback` funkcije u konzolu.
 ```javascript
 let slova = ["a", "b", "c",];
-slova.forEach(function (trenutnaVrijednost, indeks, polje) { // primjetite da u callback funkciji možemo koristiti bilo koje ime za argumente
+slova.forEach(function (trenutnaVrijednost, indeks, polje) { // Primijetite da u callback funkciji možemo koristiti bilo koje ime za argumente
   console.log(
     "Vrijednost: " + trenutnaVrijednost,
     "Indeks: " + indeks,
@@ -1418,7 +1418,7 @@ korisnici.forEach(function (korisnik) {
 });
 ```
 
-> Glavna ideja polja je da pohranjujemo više istvornih podataka pod jednim nazivom te da imamo mogućnost iteracije i primjene metoda na svakom elementu polja. Ono što ne želimo je raditi polja koja sadrže različite tipove podataka, kao što smo već rekli, na primjer.
+> Glavna ideja polja je da pohranjujemo više istovrsnih podataka pod jednim nazivom te da imamo mogućnost iteracije i primjene metoda na svakom elementu polja. Ono što ne želimo je raditi polja koja sadrže različite tipove podataka, kao što smo već rekli, na primjer.
 
 ```javascript
 let korisnik = ["Ivan", "Ivić", 1995, function() {console.log("Pozdrav ja sam Ivan!")}]; // ❌
@@ -1486,7 +1486,7 @@ Do sad smo spomenuli nekoliko osnovnih metoda `Array` objekta, kao što su `push
 
 **EduCoder šifra**: `paginate`
 
-Recimo da radimo na web stranici koja prikazuje objave korisnika. Kako ne bi preopterećivali korisnika s previše objava, želimo prikazati samo 5 objava po stranici od ukupno 100 objava. Kako bismo to napravili, koristimo `slice` metodu koja će nam omogućiti da izradimo "podskup" polja koji će sadržavati samo po 5 objava. Implementirati ćemo funkciju `paginate` koja će uzeti polje objava, trenutnu stranicu i broj objava po stranici, i vratiti "podskup" polja koji će sadržavati objave za trenutnu stranicu. Funkcija mora raditi za svaki broj objava po stranici i za svaku stranicu, kao i za bilo koji ukupni broj objava.
+Recimo da radimo na web stranici koja prikazuje objave korisnika. Kako ne bi preopterećivali korisnika s previše objava, želimo prikazati samo 5 objava po stranici od ukupno 100 objava. Kako bismo to napravili, koristimo `slice` metodu koja će nam omogućiti da izradimo "podskup" polja koji će sadržavati samo po 5 objava. Implementirat ćemo funkciju `paginate` koja će uzeti polje objava, trenutnu stranicu i broj objava po stranici, i vratiti "podskup" polja koji će sadržavati objave za trenutnu stranicu. Funkcija mora raditi za svaki broj objava po stranici i za svaku stranicu, kao i za bilo koji ukupni broj objava.
 
 Prvo ćemo definirati nekoliko varijabli:
 ```javascript

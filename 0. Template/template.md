@@ -3,8 +3,8 @@
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
 
-- Luka Blašković, univ. bacc. inf.
-- Alesandro Žužić, univ. bacc. inf.
+- Luka Blašković, mag. inf.
+- Alesandro Žužić, mag. inf.
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 

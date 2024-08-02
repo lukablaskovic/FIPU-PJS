@@ -17,7 +17,7 @@
 
 <p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili polja. Dohvat podataka s različitih API-eva, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
 
-**Posljednje ažurirano: 20.7.2024.**
+**Posljednje ažurirano: 2.8.2024.**
 
 ## Sadržaj
 
@@ -40,7 +40,7 @@
     - [2.4.1 Iteracije kroz više dimenzija](#241-iteracije-kroz-više-dimenzija)
     - [2.4.2 Stvaranje višedimenzionalnih polja pomoću `Array` konstruktora](#242-stvaranje-višedimenzionalnih-polja-pomoću-array-konstruktora)
     - [Vježba 3](#vježba-3)
-  - [2.5 Sažetak ugiježđenih struktura](#25-sažetak-ugiježđenih-struktura)
+  - [2.5 Sažetak ugniježđenih struktura](#25-sažetak-ugniježđenih-struktura)
     - [Vježba 4](#vježba-4)
 - [Samostalni zadatak za vježbu 6](#samostalni-zadatak-za-vježbu-6)
 - [3. Napredne funkcije](#3-napredne-funkcije)
@@ -80,7 +80,7 @@
 
 # 1. Uvod u ugniježđene strukture
 
-Do sad smo naučili da možemo ugniježđivati selekcije i petlje, pa i funkcije. U JavaScriptu međutim, kada pričamo o ugniježđenim strukturama, mislimo na razne složene strukture koje se pretežito sastoje od ugniježđenih objekata i polja. Prema tome, ugniježđene strukture možemo podijeliti u **4 kategorije**:
+Do sad smo naučili da možemo ugnježđivati selekcije i petlje, pa i funkcije. U JavaScriptu međutim, kada pričamo o ugniježđenim strukturama, mislimo na razne složene strukture koje se pretežito sastoje od ugniježđenih objekata i polja. Prema tome, ugniježđene strukture možemo podijeliti u **4 kategorije**:
 
 > 1.  **Objekti unutar objekata** `{{}}`
 > 2.  **Polja unutar objekata** `{[]}`
@@ -112,7 +112,7 @@ for (let i = 0; i < 3; i++) {
 }
 ```
 
-Rekli smo da možemo ugniježđivati i funkcije. Možda to nije nešto što ćemo često raditi, ali je moguće. Evo primjera:
+Rekli smo da možemo ugnježđivati i funkcije. Možda to nije nešto što ćemo često raditi, ali je moguće. Evo primjera:
 
 ```javascript
 function prvaFunkcija() {
@@ -553,7 +553,7 @@ Uočite glavni problem: Narudžbe su ustvari objekt (`narudzbe`), gdje se svaka 
 
 Rješenje je da svaka narudžba bude zaseban objekt koje ćemo pohranjivati u tzv. **polje objekata**.
 
-Dakle, do sada smo imali objekt `narduzbe` koji sadržava polje objekata `proizvodi`. Narudžbe su množina narudžbi, pa ima smisla da budu polje. Svaka narudžba sastoji se potencijano više stavki (proizvoda), pa ima smisla da svaka narudžba bude objekt.
+Dakle, do sada smo imali objekt `narduzbe` koji sadržava polje objekata `proizvodi`. Narudžbe su množina narudžbi, pa ima smisla da budu polje. Svaka narudžba sastoji se potencijalno više stavki (proizvoda), pa ima smisla da svaka narudžba bude objekt.
 
 Dakle, definirajmo jednu narudžbu kao objekt:
 
@@ -791,7 +791,7 @@ kinoValli.dodajRezervaciju(...);
 
 Obrt `rentaBoat` bavi se iznajmljivanjem brodica i brodova za razne prigode. Njihova web stranica https://www.rentaboat.net/ glavni je kanal komunikacije s korisnicima. Na web stranici se nalazi ponuda brodova i brodica, gdje se prikazuje koji brodovi su dostupni za najam, u kojem terminu (datum i vrijeme) te cijena najma. Svaki brod/brodica ima svoje karakteristike: naziv, maksimalni kapacitet, tip, godina proizvodnje, maksimalna brzina, snaga motora u KS, dodatna oprema, dnevna cijena najma.
 
-U dodatnu opremu mogu spadati: tuš, hladnjak, GPS, radio, kuhinja, WC, utičnice za struju, tenda, gumenjak, oprema za ribolov, ekosonder.
+U dodatnu opremu mogu spadati: tuš, hladnjak, GPS, radio, kuhinja, WC, utičnice za struju, tenda, gumenjak, oprema za ribolov, ehosonder.
 Tipovi brodica i brodova mogu uključivati: gliser, jahta, brodica za ribolov, gumenjak, jedrilica, brodica s kabinom, mala brodica bez kabine.
 
 Korisnici se moraju registrirati i unijeti osobne podatke, te za registraciju odabrati željeni termin najma (datumi od/do), broj osoba, željenu dodatnu opremu te naravno samu brodicu. Nakon što korisnik unese sve podatke, izračunava se ukupna cijena najma i korisnika se obavještava o uspješnoj rezervaciji.
@@ -800,7 +800,7 @@ Na temelju ugrubo danog opisa poslovnog procesa obrta `rentaBoat`, definirajte o
 
 Prvo definirajte 3 objekta `brod` koristeći sljedeće podatke:
 
-> **Brod 1:** "Gliser", 2015. god, 20 čvorova, 150 KS, 6 osoba, "Tuš", "Hladnjak", "GPS", "Radio", "Tenda", "Oprema za ribolov", "Ekosonder", 250 eur/dan
+> **Brod 1:** "Gliser", 2015. god, 20 čvorova, 150 KS, 6 osoba, "Tuš", "Hladnjak", "GPS", "Radio", "Tenda", "Oprema za ribolov", "Ehosonder", 250 eur/dan
 >
 > **Brod 2:** "Jahta", 2018. god, 35 čvorova, 300 KS, 8 osoba, "Tuš", "Hladnjak", "GPS", "Radio", "Kuhinja", "WC", "Utičnice za struju", "Tenda", "Gumenjak", 1000 eur/dan
 >
@@ -839,7 +839,7 @@ let matrica = [
 ];
 ```
 
-U ovom primjeru imamo matricu dimenzija 3x3. Matrica ima 3 redaka i 3 stupca. Svaki redak je polje koje sadrži 3 elementa. Matrica je dvodimenzionalna jer ima dvije (2) dimenzionalnosti (redak i stupac).
+U ovom primjeru imamo matricu dimenzija 3 x 3. Matrica ima 3 redaka i 3 stupca. Svaki redak je polje koje sadrži 3 elementa. Matrica je dvodimenzionalna jer ima dvije (2) dimenzionalnosti (redak i stupac).
 
 Kako možemo dohvatiti elemente matrice? Koristimo indekse redaka i stupaca.
 
@@ -925,7 +925,7 @@ for (let i = 0; i < matrica.length; i++) {
 }
 ```
 
-Kako bismo definirali matricu dimenzija 3x3x3, koristimo 3 ugniježđena polja koja sadrže po 3 elementa (također polja):
+Kako bismo definirali matricu dimenzija 3 x 3 x 3, koristimo 3 ugniježđena polja koja sadrže po 3 elementa (također polja):
 
 ```javascript
 let matrica3D = [
@@ -962,7 +962,7 @@ for (let i = 0; i < matrica3D.length; i++) {
 }
 ```
 
-**3D matricama** možemo reprezentirati razne stvari, npr. u području fizike i ineženjerstva možemo 3D matricom definirati tzv. **Stress tensor** (tenzor naprezanja) koji se koristi za opisivanje naprezanja u različitim točkama nekog tijela (Cauchy stress tensor).
+**3D matricama** možemo reprezentirati razne stvari, npr. u području fizike i inženjerstva možemo 3D matricom definirati tzv. **Stress tensor** (tenzor naprezanja) koji se koristi za opisivanje naprezanja u različitim točkama nekog tijela (Cauchy stress tensor).
 
 U računalnoj grafici možemo 3D matricom definirati **voxel grid** gdje svaki element matrice predstavlja jedan voxel (3D piksel) koji sadrži informacije o boji, teksturi, materijalu i sl.
 
@@ -1035,7 +1035,7 @@ console.log(arr2.flat(2)); // [0, 1, 2, 3, 4, 5, 6]
 > Već smo naveli moguće primjene višedimenzionalnih polja te naglasili da se u pravilu koriste za pohranu numeričkih podataka, koji su međusobno povezani odnosno predstavljaju neku **vrstu višedimenzionalne strukture**.
 
 - U praksi, ovaj primjer nije nešto što želite pohraniti u višedimenzionalno polje.
-Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost kôda , a i održavanje postaje teže.
+Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost kôda, a i održavanje postaje teže.
 
 Filmove je bolje pohraniti koristeći ranije naučene ugniježđene strukture - **kombiniranjem objekata i polja**.
 
@@ -1063,10 +1063,10 @@ console.log(filmovi.matrixSeries[1]); // Ispisuje "Matrix Reloaded"
 
 **EduCoder šifra**: `matrix`
 
-Definirajte dvodimenzionalno polje (matricu) dimenzija 3x3 koja će sadržavati random brojeve od `1` do `9`. Matricu morate "izgraditi" s pomoću ugniježđenih petlji, ne ručno! Implementirajte funkciju `randomNumbers()` koja vraća random broj između `1` i `9` koristeći `Math.random()` metodu.
+Definirajte dvodimenzionalno polje (matricu) dimenzija 3 x 3 koja će sadržavati random brojeve od `1` do `9`. Matricu morate "izgraditi" s pomoću ugniježđenih petlji, ne ručno! Implementirajte funkciju `randomNumbers()` koja vraća random broj između `1` i `9` koristeći `Math.random()` metodu.
 Na kraju definirajte funkciju `ispisMatrice(matrix2D)` koja ispisuje sve elemente dvodimenzionalne matrice `matrix2D`.
 
-## 2.5 Sažetak ugiježđenih struktura
+## 2.5 Sažetak ugniježđenih struktura
 
 Ugniježđene strukture su strukture koje se sastoje od više različitih struktura koje su međusobno povezane. U kontekstu ove skripte, one se odnose na ugniježđene objekte i polja. Ugniježđene strukture koje smo obradili su:
 
@@ -1201,7 +1201,7 @@ this.dodajNarudzbu = async function (narudzba) { // async funkcija zbog specifi�
 - kada se pozove funkcija, korisniku se mora prikazati izbornik u konzoli koji sadrži sva jela i pića iz menija s indeksom koji počinje od 1 ispred zapisa. Primjer:
 
 ```
-1. Margherita (Pizza s rajčicom i mozarella sirom)  - 7 eur
+1. Margherita (Pizza s rajčicom i Mozarella sirom)  - 7 eur
 2. Coca-Cola (Osvježavajuće gazirano bezalkoholno piće) - 3 eur
 3. Tjestenina s umakom od rajčice (Tjestenina s umakom od svježe rajčice) - 8 eur
 4. Fanta (Osvježavajuće gazirano bezalkoholno piće) - 2 eur
@@ -1310,11 +1310,11 @@ function pronadiBor(stablo) {
     return stablo == "bor";
 }
 
-let bor = stabla.find(pronadiBor); // Callback funkciju pronadiBor() proslijeđujemo bez zagrada ()
+let bor = stabla.find(pronadiBor); // Callback funkciju pronadiBor() prosljeđujemo bez zagrada ()
 console.log(bor); // Ispisuje "bor"
 ```
 
-> Ima li kôd grešaka? Funkciju `pronadiBor` proslijeđujemo bez zagrada `()`. Zašto? **Zato što želimo proslijediti referencu na funkciju, a ne rezultat izvršavanja funkcije.** 
+> Ima li kôd grešaka? Funkciju `pronadiBor` prosljeđujemo bez zagrada `()`. Zašto? **Zato što želimo proslijediti referencu na funkciju, a ne rezultat izvršavanja funkcije.** 
 - Grešku bi dobili da smo napisali `let bor = stabla.find(pronadiBor());`. U tom slučaju, `pronadiBor()` bi se izvršila odmah, a rezultat bi bio proslijeđen metodi `find()`.
 
 ### 3.1.2 Osnovna podjela `callback` funkcija
@@ -1359,7 +1359,7 @@ brojevi.forEach(ispisiKvadrat); // Pozovi metodu forEach() s callback funkcijom 
 // 25
 ```
 
-> VAŽNO: Primjetite da **nismo** pozivali `callback` funkciju niti definirali argument `broj`. Metoda `forEach()` će to učiniti za nas - mi smo samo **proslijedili referencu na funkciju** `ispisiKvadrat`.
+> VAŽNO: Primijetite da **nismo** pozivali `callback` funkciju niti definirali argument `broj`. Metoda `forEach()` će to učiniti za nas - mi smo samo **proslijedili referencu na funkciju** `ispisiKvadrat`.
 
 #### 2. Anonimna `callback` funkcija
 
@@ -1453,7 +1453,7 @@ let student = studenti.find(function(student) { // Anonimna funkcija koja provje
     return student.ocjena === 1;
 });
 ```
-Što ako želimo pronaći studenta s ocjenom većom od 3? Izmjenit ćemo uvjet i definirati u vanjskoj `callback` funkciji.
+Što ako želimo pronaći studenta s ocjenom većom od 3? Izmijenit ćemo uvjet i definirati u vanjskoj `callback` funkciji.
 
 ```javascript
 function ocjenaVecaOdTri(student) {
@@ -1555,7 +1555,7 @@ Na web stranicama trgovina, često se koristi tražilica koja omogućuje korisni
 
 U ovom primjeru ćemo implementirati jednostavnu tražilicu koja će **pretraživati proizvode samo po nazivu**.
 
-Upotrijebit ćemo novo znanje o `callback` funkcijama i metodi `filter()`, kao i poznavanje ugniježdenih struktura.
+Upotrijebit ćemo novo znanje o `callback` funkcijama i metodi `filter()`, kao i poznavanje ugniježđenih struktura.
 
 1. korak je definirati polje objekata `proizvodi` koje sadrži proizvode s nazivom, cijenom i kategorijom.
 
@@ -1713,7 +1713,7 @@ function zbroji(a, b) {
 console.log(zbroji(2, 3)); // Ispisuje 5
 ```
 
-Deklaracijom klasičnih Javascript funkcijskih izraza na neki način dodjeljujemo funkciju varijabli.
+Deklaracijom klasičnih JavaScript funkcijskih izraza na neki način dodjeljujemo funkciju varijabli.
 
 ```javascript
 let zbroji = function(a, b) {
@@ -1799,7 +1799,7 @@ Iako su iznad navedene različite sintakse `arrow` funkcija, ne morate ih i neć
 
 **Primjer 1: `arrow` funkcija koja zbraja 2 broja**
 
-Za početak ćemo definirati `arrow` funkciju koja zbraja 2 broja, dakle ekvilaventno funkciji `zbroji()` koju smo definirali ranije.
+Za početak ćemo definirati `arrow` funkciju koja zbraja 2 broja, dakle ekvivalentno funkciji `zbroji()` koju smo definirali ranije.
 
 ```javascript
 // Deklaracija funkcije zbroji() koja zbraja 2 broja
@@ -1873,7 +1873,7 @@ inicijaliziraj(); // Ispisuje "Aplikacija inicijalizirana"
 
 `arrow` funkcije su uvijek anonimne, tj. nikada ih ne imenujemo. Međutim, možemo ih dodijeliti varijabli ili koristiti kao argument funkcije, kao što smo pokazali u primjerima iznad.
 
-Sljedeći primjeri `arrow` funkcija su također ispravni. Jedina razlika je što ih ovdje ne pohranjujemo u varijable, poput funnkcijskih izraza.
+Sljedeći primjeri `arrow` funkcija su također ispravni. Jedina razlika je što ih ovdje ne pohranjujemo u varijable, poput funkcijskih izraza.
 Ove funkcije su anonimne i koriste se kao callback funkcije, same po sebi se neće pozvati.
 
 ```javascript
@@ -2241,9 +2241,9 @@ console.log(objekt.pozdrav()); // Ispisuje "Pozdrav, undefined!"
 ```
 
 Razlika u ova dva pristupa je u tome što kod tradicionalnih funkcija `this` ključna riječ se mijenja ovisno o kontekstu u kojem se funkcija poziva, dok kod `arrow` funkcija `this` ključna riječ se nasljeđuje iz okoline u kojoj je definirana.
->**VAŽNO!** U prvom primjeru kod stvaranja konsturktora, `this` ključna riječ se referencira na objekt koji se stvara, dok u drugom primjeru kod metode objekta, `this` ključna riječ se referencira na globalni objekt (u web pregledniku je to `window`).
+>**VAŽNO!** U prvom primjeru kod stvaranja konstruktora, `this` ključna riječ se referencira na objekt koji se stvara, dok u drugom primjeru kod metode objekta, `this` ključna riječ se referencira na globalni objekt (u web pregledniku je to `window`).
 
-Na predavanjima ste naučili koristiti HTML elemente i dodavati im event listenere. Event listeneri su funkcije koje se pozivaju kada se dogodi određeni događaj na HTML elementu.
+Na predavanjima ste naučili koristiti HTML elemente i dodavati im event listenere. **Event listeneri** su funkcije koje se pozivaju kada se dogodi određeni događaj na HTML elementu.
 
 Pokazat ćemo tradicionalni način dodavanja event listenera na HTML element.
 Želimo na `buton` element dodati event listener koji će ispisati "Hello, World!" kada se klikne na gumb.
@@ -2276,7 +2276,7 @@ document.getElementById("moj_button").addEventListener("click", () => {
 
 ## 3.4 Napredne metode `Array` objekta
 
-U skripti PJS3 upoznali smo se s osnovnim metodama `Array` objekta. U ovoj skripti nastavli smo priču s nešto naprednijim metodama, poput metode `find()` koja pronalazi prvi element koji zadovoljava uvjet, te metode `filter()` koja filtrira elemente prema zadanom uvjetu.
+U skripti PJS3 upoznali smo se s osnovnim metodama `Array` objekta. U ovoj skripti produljili smo priču s nešto naprednijim metodama, poput metode `find()` koja pronalazi prvi element koji zadovoljava uvjet, te metode `filter()` koja filtrira elemente prema zadanom uvjetu.
 
 Također smo se kroz skriptu upoznali s `callback` funkcijama kao i `arrow` funkcijama koje su korisne kao callback funkcije. Sada kada znamo kako pisati kvalitetne `callback` funkcije, možemo napokon pokazati preostale napredne metode `Array` objekta.
 
@@ -2635,7 +2635,7 @@ reduce(callbackFn)
 reduce(callbackFn, initialValue)
 ```
 
-Naizgled jednostavna sintaksa, međutim komplciraniji dio leži u samoj definiciji `callback` funkcije.
+Naizgled jednostavna sintaksa, međutim kompliciraniji dio leži u samoj definiciji `callback` funkcije.
 
 Callback funkcija prima četiri argumenta: `accumulator`, `currentValue`, `currentIndex` i `array`.
 - `initialValue` predstavlja početnu vrijednost accumulatora. Ako je definirana, prvi poziv funkcije koristi `initialValue` kao `accumulator`, inače koristi prvi element polja.
@@ -2747,10 +2747,10 @@ console.log(grupiranoPoGodinama);
 Napredne metode koje smo prošli su vrlo korisne i mogu vam uštedjeti puno vremena kod rješavanja problema. Međutim, važno je znati kada koristiti koju metodu.
 
 - `Array.map()` - koristimo kada želimo **stvoriti novo polje na temelju starog polja**. Ako želimo promijeniti elemente u polju, koristimo map metodu (mapiramo).
-- `Array.filter()` - koristimo kada želimo **dobiti novo polje na temeljeu starog međutim s manje elemenata**. Ako želimo filtrirati elemente u polju, koristimo filter metodu.
+- `Array.filter()` - koristimo kada želimo **dobiti novo polje na temelju starog međutim s manje elemenata**. Ako želimo filtrirati elemente u polju, koristimo filter metodu.
 - `Array.forEach()` - koristimo kada želimo **proći kroz svaki element polja i ne želimo stvarati novo polje**. Primjer: ispis, ažuriranje elemenata u polju i sl. Metoda ne vraća novo polje već modificira originalno polje ako se tako implementira callback funkcija.
 - `Array.some()` - koristimo kada želimo provjeriti **postoji li barem jedan element koji zadovoljava uvjet**.
-- `Array.every()` - koristimo kada želimo provjeriti **zadovaljaju li svi elementi uvjet**.
+- `Array.every()` - koristimo kada želimo provjeriti **zadovoljavaju li svi elementi uvjet**.
 - `Array.sort()` - koristimo kada želimo **sortirati elemente u polju**.
 - `Array.reduce()` - koristimo kada želimo **reducirati polje u jednu vrijednost**.
 
@@ -2856,7 +2856,7 @@ console.log(studentiVisokiProsjek); // Ispisuje [{"ime":"Maja","prezime":"Majić
 console.log(studenti); // Ispisuje polje studenata s novim ključem broj_kolegija
 ```
 
-4. Pohranite u varijablu `prosjekProsjeka` prosjek svih prosjeka studenata. Rezultat zaokržite na dvije decimale.
+4. Pohranite u varijablu `prosjekProsjeka` prosjek svih prosjeka studenata. Rezultat zaokružite na dvije decimale.
 
 ```javascript
 const prosjekProsjeka = /* Vaš kôd ovdje... */
@@ -2943,7 +2943,7 @@ RomobilPula.dohvatiDostupneRomobile = function() {
 }
 ```
 
-4. Dodajte metodu `zakljucajRomobil` koja prima argumente **id romobila**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "slobodan". Također, metoda treba postaviti trenutnog korisnika na `null`. Metoda treba vratiti poruku `"Romobil je uspješno zaključan."`. Ako romobil nije pronađen, metoda treba vratiti poruku `"Romobil nije pronađen."`. Dodatno, metoda mora izračunati ukupnu cijenu važnje koja je jednaka: `cijena otključavanja + cijena po prijeđenom kilometru * prijeđeni kilometri za taj romobil`. Metoda mora vratiti ukupnu cijenu kao povratnu vrijednost. Nakon izračuna metoda mora postaviti prijeđene kilometre na 0.
+4. Dodajte metodu `zakljucajRomobil` koja prima argumente **id romobila**. Metoda treba pronaći romobil s odgovarajućim id-em i postaviti status romobila na "slobodan". Također, metoda treba postaviti trenutnog korisnika na `null`. Metoda treba vratiti poruku `"Romobil je uspješno zaključan."`. Ako romobil nije pronađen, metoda treba vratiti poruku `"Romobil nije pronađen."`. Dodatno, metoda mora izračunati ukupnu cijenu vožnje koja je jednaka: `cijena otključavanja + cijena po prijeđenom kilometru * prijeđeni kilometri za taj romobil`. Metoda mora vratiti ukupnu cijenu kao povratnu vrijednost. Nakon izračuna metoda mora postaviti prijeđene kilometre na 0.
 
 ```javascript
 RomobiliPula.zakljucajRomobil = function(idRomobila) {

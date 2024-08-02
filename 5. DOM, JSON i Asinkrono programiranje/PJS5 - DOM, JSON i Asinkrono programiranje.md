@@ -17,7 +17,7 @@
 
 <p style="float: clear">Prilikom izrade web aplikacija i stranica, često ćete na neki način manipulirati strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Važno je razumjeti kako funkcionira DOM budući da se svi poznati JavaScript razvojni okviri temelje na njemu (React, VUE, Angular, jQuery...). Dodatno, upoznat ćemo se s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešće korišteni format za razmjenu podataka. Za sam kraj ćemo proći asinkrono programiranje i time postaviti dobre temelje za uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
 
-**Posljednje ažurirano: 20.7.2024.**
+**Posljednje ažurirano: 2.8.2024.**
 
 ## Sadržaj
 
@@ -315,7 +315,7 @@ console.log(document.URL); // Ispisuje URL stranice
 ```
 
 ## 1.2 Dohvaćanje DOM elemenata
-Kako bismo uopće mogli raditi sa DOM elementima prvo ih moramo "dohvatiti".
+Kako bismo uopće mogli raditi s DOM elementima prvo ih moramo "dohvatiti".
 
 Imamo zadan sljedeći HTML gdje želimo izvući vrijednosti iz pojedinih elemenata.
 ```html
@@ -497,7 +497,7 @@ console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> H
 
 Sadržaj mu možemo promijeniti preko `innerHTML` svojstva.
 ```javascript
-element.innerHTML = " Pozdrav! " //Mjenjanje sadržaja
+element.innerHTML = " Pozdrav! " //Mijenjanje sadržaja
 console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> Pozdrav! </div>"
 ```
 
@@ -574,7 +574,7 @@ element.className = "text-6xl" // Promjena klase elementa
 console.log(element.outerHTML); //Output: "<div class="text-6xl" id="prviDiv"> Hi! </div>"
 ```
 
-> `className` služi za postavljanje i dohvaćanje cijelog atributa klase odabranog elementa. Za dodavanje dodavanje, brisanje, promjenu i provjeru pojedine klase bolje je koristiti `classList` svojstvo.
+> `className` služi za postavljanje i dohvaćanje cijelog atributa klase odabranog elementa. Za dodavanje, brisanje, promjenu i provjeru pojedine klase bolje je koristiti `classList` svojstvo.
 
 Nad svojstvom `classList` mogu se pozvati dodatne metode koje nam olakšavaju manipulaciju klasom (`class`) elementa. 
 
@@ -892,7 +892,7 @@ console.log(`Prosjek ocjena studenata: ${prosjekStudenata(filtriraniStudenti)}`)
 ```
 
 ## 1.4 Dodavanje i brisanje DOM elemenata
-Dodavanje i brisanje elemenata omogućuje dinamičke izmjene stranice temeljem korisničkih akcija ili događaja. 
+Dodavanje i brisanje elemenata omogućuje dinamičke izmjene stranice na temelju korisničkih akcija ili događaja. 
 
 Dosad smo naučili kako da dohvaćamo i mijenjamo elemente, međutim dodavanje novih elemenata je dosta nezgodno koristeći svojstvo `innerHTML`. Iz tog razloga postoje i metode za dodavanja, umetanje i brisanje elemenata:
 
@@ -1003,19 +1003,19 @@ elementZaBrisanje.remove()
 
 Izmjena `div` elementa nakon `div`-a gdje je `id`=`"mojDiv"`:
 ```javascript
-const elementZaMjenjanje = mojElement.nextElementSibling;
+const elementZaMijenjanje = mojElement.nextElementSibling;
 
 const newBoldElement = document.createElement('b')
 newBoldElement.innerHTML = "newBoldElement"
 
-elementZaMjenjanje.replaceWith(newBoldElement)
+elementZaMijenjanje.replaceWith(newBoldElement)
 ```
 ![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/replace_element.png?raw=true)
 
 ### Vježba 4 
 **EduCoder šifra**: `html_from_object`
 
-U web programiranju često ćemo morati grafički prikazati podatke iz dinamičkih struktura i različitih izvora podataka. Ako se mijenjaju samo pojedinačne vrijednosti u strukturi, dovoljno je samo izmjeniti postojeće definirane HTML elemente. Međutim, ako se struktura mijenja, ili se povečava/smanjuje količina podataka, tada je potrebno dinamički i dodavati/brisati HTML elemente.
+U web programiranju često ćemo morati grafički prikazati podatke iz dinamičkih struktura i različitih izvora podataka. Ako se mijenjaju samo pojedinačne vrijednosti u strukturi, dovoljno je samo izmijeniti postojeće definirane HTML elemente. Međutim, ako se struktura mijenja, ili se povećava/smanjuje količina podataka, tada je potrebno dinamički i dodavati/brisati HTML elemente.
 
 U praksi često za nas ove probleme rješavaju razvojni okviri za JavaScript, ili neka biblioteka, ali je dobro znati kako stvari funkcioniraju "ispod haube".
 
@@ -1230,7 +1230,7 @@ btn.addEventListener("click", ispis);
 ```
 
 `event` argument sadrži informacije o događaju koji se dogodio.
-Napament ih nema smisla učiti (osim najčešće korištenih poput `click`, `input`, `focus`...) jer se mogu lako pronaći na internetu, ovisno o potrebi.
+Napamet ih nema smisla učiti (osim najčešće korištenih poput `click`, `input`, `focus`...) jer se mogu lako pronaći na internetu, ovisno o potrebi.
 
 Ima ih mnogo, neki od najčešće korištenih na webu su:
 
@@ -1788,7 +1788,7 @@ repeatPassword.addEventListener("input", event => {
 
 Na web stranicama i aplikacijama često se implementira preporuka pretrage. Kada korisnik počne unositi pojam u polje za pretragu, prikazuju se rezultati koji odgovaraju unesenom pojmu.
 
-U ovom primjeru implementirati ćemo preporuku pretrage za unos u polje za pretragu. Kada korisnik počne unositi pojam, prikazat će se rezultati koji odgovaraju unesenom pojmu. Rezultati se prikazuju u padajućem izborniku ispod polja za pretragu. Kada korisnik klikne na rezultat, unos u polje za pretragu postaje taj rezultat, a padajući izbornik se skriva.
+U ovom primjeru implementirat ćemo preporuku pretrage za unos u polje za pretragu. Kada korisnik počne unositi pojam, prikazat će se rezultati koji odgovaraju unesenom pojmu. Rezultati se prikazuju u padajućem izborniku ispod polja za pretragu. Kada korisnik klikne na rezultat, unos u polje za pretragu postaje taj rezultat, a padajući izbornik se skriva.
 
 Samo filtriranje smo do sada naučili kroz primjere iz prošlih skripti, sada ćemo sve ukomponirati koristeći HTML i CSS te JavaScript za manipulaciju našim `input` poljem odnosno tražilicom.
 
@@ -2106,7 +2106,7 @@ Možete napisati vlastiti HTML i CSS kôd ili koristiti sljedeći:
 
 **JSON** (**JavaScript Object Notation**) je **string format za razmjenu podataka** koji je jednostavan čovjeku za razumijevanje, ali i računalu za procesiranje. JSON format često se koristi za slanje podataka između web poslužitelja i klijenta. Radi se o tekstualnom formatu koji se sastoji od parova ključ-vrijednost i nizova, vrlo slične sintakse kao i JavaScript objekti.
 
-JSON format je neovisan o jeziku, što znači da se može koristiti u bilo kojem programskom jeziku. Međutim, svojom sintaksom podsjeća na JavaScript objekte i polja. Format je nastao ranih 2000-ih, a danas je de facto **standard za razmjenu podataka na webu**.
+JSON format je neovisan o jeziku, što znači da se može koristiti u bilo kojem programskom jeziku. Međutim, svojom sintaksom podsjeća na JavaScript objekte i polja. Format je nastao ranih 2000-tih, a danas je de facto **standard za razmjenu podataka na webu**.
 
 JSON podaci se mogu spremiti u datoteku s ekstenzijom `.json` ili kao tekstualni podaci u bazi podataka.
 
@@ -2140,7 +2140,7 @@ Primjer ugniježđenog JSON formata:
 }
 ```
 
-> Kao glavnu razliku uočite dvostuke navodnike oko ključeva
+> Kao glavnu razliku uočite dvostruke navodnike oko ključeva
 
 Još jedan popularan format za razmjenu podataka je **XML** (Extensible Markup Language). Sintaksa XML-a je nešto složenija od JSON-a te više nalikuje HTML-u.
 
@@ -2316,7 +2316,7 @@ Recimo da smo dobili JSON podatke o korisniku s web servera:
 ```
 
 Koristeći metodu `JSON.parse()`, možemo pretvoriti JSON podatke u JavaScript objekt:
-Uočite da smo koristili dvostruke navodnike oko ključeva, što je obavezno u JSON formatu. Međutim, cijeli JSON je string tako da ga ovdje moramo omotati u jednostruke navodnike (`''`) ili backticks navodnike.
+Uočite da smo koristili dvostruke navodnike oko ključeva, što je obavezno u JSON formatu. Međutim, cijeli JSON je string tako da ga ovdje moramo omotati u jednostruke navodnike (`''`) ili *backticks* navodnike.
 
 **JavaScript:**
 ```javascript
@@ -2328,7 +2328,7 @@ console.log(korisnik.email); // pperkovic@unipu.hr
 console.log(korisnik.lozinka) // 98fd88c8fdc81c8efbd3a158007a97a6
 ```
 
-Primjetite da jednom kad parsiramo JSON u JavaScript objekt, možemo s njim raditi kao s bilo kojim drugim objektom u JavaScriptu.
+Primijetite da jednom kad parsiramo JSON u JavaScript objekt, možemo s njim raditi kao s bilo kojim drugim objektom u JavaScriptu.
 
 Isto vrijedi i za JSON polje:
 
@@ -2474,7 +2474,7 @@ U web pregledniku, možemo koristiti `XMLHttpRequest` ili `fetch` API za čitanj
 
 Pokazat ćemo noviji `fetch` API, koji je jednostavniji za korištenje. 
 
-Detaljnije o `fetch` API-u u posljednjem poglavlju o asinkronom programiranju.
+Detaljnije o `fetch` API-u bit će u posljednjem poglavlju o asinkronom programiranju.
 
 Primjer čitanja JSON datoteke u web pregledniku koristeći `fetch` API:
 ```javascript
@@ -2488,7 +2488,7 @@ fetch('harry_potter.json') // Putanja do JSON datoteke lokalno
     });
 ```
 
-Također, isto možemo postići koristćei ES6 `import` sintaksu:
+Također, isto možemo postići koristeći ES6 `import` sintaksu:
 
 ```javascript
 import data from './harry_potter.json';
@@ -2574,7 +2574,7 @@ Asinkronim programiranjem bavit ćemo se intenzivnije na kolegijima: **[Programs
 
 ## 3.1 Razumijevanje asinkronog vs. sinkronog
 
-Najjednostanvije rečeno, u **sinkronom programiranju**, operacije se izvršavaju jedna za drugom, redom. Kada se jedna operacija završi, tek tada se izvršava sljedeća operacija. Sve ispite, zadaće i vježbe do sad iz ovih skripti - pisali smo sinkrono.
+Najjednostavnije rečeno, u **sinkronom programiranju**, operacije se izvršavaju jedna za drugom, redom. Kada se jedna operacija završi, tek tada se izvršava sljedeća operacija. Sve ispite, zadaće i vježbe do sad iz ovih skripti - pisali smo sinkrono.
 
 Primjer:
 
@@ -2698,7 +2698,7 @@ Napomena, neki od API-eva mogu biti zastarjeli, imati ograničenja ili biti nedo
 Sad ćemo pokazati kako koristiti `fetch` API za dohvaćanje podataka s web poslužitelja koristeći `JSONPlaceholder` servis.
 
 ```javascript
-fetch('https://jsonplaceholder.typicode.com/todos/1') // Obavezni argument je URL (ima i drugih međutim za sad ćemo prekočiti)
+fetch('https://jsonplaceholder.typicode.com/todos/1') // Obavezni argument je URL (ima i drugih međutim za sad ćemo preskočiti)
       .then(response => response.json()) // arrow funkcija koja pretvara odgovor u JSON format
       .then(json => console.log(json)) // arrow funkcija koja ispisuje JSON podatke
 
@@ -2750,7 +2750,7 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 
 Detalje o ovom API-ju i njegovim mogućnostima možete pronaći na [MDN web dokumentaciji](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-Primjetite da smo u gornjem primjeru radili dvostruke `then` metode. Ovo je korisno kada želimo izvršiti više operacija nakon dohvaćanja podataka, međutim može doći do tzv. **[callback hell](http://callbackhell.com/)**-a, odnosno dubokog gniježđenja callback funkcija, što može biti teško za održavanje i čitanje kôda, ali i sklono greškama.
+Primijetite da smo u gornjem primjeru radili dvostruke `then` metode. Ovo je korisno kada želimo izvršiti više operacija nakon dohvaćanja podataka, međutim može doći do tzv. **[callback hell](http://callbackhell.com/)**-a, odnosno dubokog gniježđenja callback funkcija, što može biti teško za održavanje i čitanje kôda, ali i sklono greškama.
 
 U poglavlju o **Async/Await** sintaksi, pokazat ćemo kako možemo izbjeći callback hell i olakšati rad s asinkronim operacijama.
 
@@ -2783,7 +2783,7 @@ U JavaScriptu, `Promise` objekt predstavlja **eventualni rezultat asinkronog pro
 - `catch()` metoda se koristi za rukovanje odbijanjem.
 - `finally()` metoda se koristi za izvršavanje kôda nakon što se `Promise` završi, bez obzira na rezultat. 
 
-Iako mnogima predstavlja muke, za potpuno razumijevanje asinkronog programiranja u JavaScriptu, `Promise` objekt je ključan. Dodatno, potrebno je razumijeti koncepte koje smo prošli u gradivu ovog kolegija, kao što su funkcije, callback funkcije, arrow funkcije, objekti, konstruktori, JSON format i sl.
+Iako mnogima predstavlja muke, za potpuno razumijevanje asinkronog programiranja u JavaScriptu, `Promise` objekt je ključan. Dodatno, potrebno je razumjeti koncepte koje smo prošli u gradivu ovog kolegija, kao što su funkcije, callback funkcije, arrow funkcije, objekti, konstruktori, JSON format i sl.
 
 `Promise` objekt možemo napraviti pozivanjem njegovog konstruktora, a kao argument prosljeđujemo callback funkciju s dva argumenta: `resolve` i `reject`.
 
@@ -2807,7 +2807,7 @@ U gornjem primjeru, `promise` je `Promise` objekt koji simulira uspješnu operac
 - Ako je `uspjeh` varijabla `true`, operacija je uspješna i rezolucija se poziva s porukom "Operacija je uspješna!". 
 - Ako je `uspjeh` varijabla `false`, operacija nije uspješna i odbijanje se poziva s porukom "Operacija nije uspješna!".
 
-Metode `resolve()` i `reject()` se mogu pozvati samo jednom. Nakon što se `Promise` objekt rezolva ili odbije, ne može se ponovno rezolvati ili odbiti. Ove metode mogu primiti argumente:
+Metode `resolve()` i `reject()` se mogu pozvati samo jednom. Nakon što se `Promise` objekt *rezolva* (upotpuni) ili odbije, ne može se ponovno *rezolvati* ili odbiti. Ove metode mogu primiti argumente:
 
 ```javascript
 resolve(vrijednost); // uspješna rezolucija s danom vrijednošću u argumentu
@@ -2965,7 +2965,7 @@ To bi bilo što se tiče `Promise` objekta. U sljedećem poglavlju ćemo pokazat
 
 >`async` i `await` sintaksa je **[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)** za rad s `Promise` objektima. Ova sintaksa čini kôd čitljivijim i lakšim za održavanje, posebno kod dubokog gniježđenja callback funkcija (callback hell).
 
-Uzmimo za primjer funkciju koja vraća novi `Promise` objekt koji se uspješno rezolvira.
+Uzmimo za primjer funkciju koja vraća novi `Promise` objekt koji se uspješno *rezolvira*.
 
 ```javascript
 function funkcija() {
@@ -3019,7 +3019,7 @@ async function asinkronaFunkcija() {
 }
 ```
 
-U gornjem primjeru, `asinkronaFunkcija` je `async` funkcija koja čeka 2 sekunde prije nego što ispiše `End`. `await` čeka na rezoluciju `Promise` objekta koji se rezolvira nakon 2 sekunde.
+U gornjem primjeru, `asinkronaFunkcija` je `async` funkcija koja čeka 2 sekunde prije nego što ispiše `End`. `await` čeka na rezoluciju `Promise` objekta koji se *rezolvira* nakon 2 sekunde.
 
 Pokazat ćemo kako koristiti `async` i `await` sintaksu za dohvaćanje podataka s web poslužitelja koristeći `fetch` API. Kako više ne koristimo `then()` i `catch()` metode, ali svejedno imamo asinkrone pozive kroz `async` i `await` sintaksu, omotat ćemo kôd u `try` i `catch` blokove. `try` blok sadrži kôd koji može izazvati grešku, dok `catch` blok rukuje greškom.
 

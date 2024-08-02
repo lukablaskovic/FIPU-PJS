@@ -16,7 +16,7 @@
 
 <p style="float: clear">JavaScript je programski jezik često korišten u web programiranju. Inicijalno je bio namijenjen kako bi učinio web stranice interaktivnijima. Međutim, danas se koristi i za izradu server-side aplikacija, desktop aplikacija, mobilnih aplikacija itd. </p>
 
-**Posljednje ažurirano: 20.7.2024.**
+**Posljednje ažurirano: 2.8.2024.**
 
 ## Sadržaj
 
@@ -67,7 +67,7 @@
    - desktop aplikacijama
    - mobilnim uređajima
 
-4. **Easy to learn, Hard to Master**: JavaScript je jedan od jednostavnijih jezika za naučiti. Ima jednostavnu sintaksu i rezultate izvođenja kȏda mođemo vidjeti gotovo odmah u web pregledniku.
+4. **Easy to learn, Hard to Master**: JavaScript je jedan od jednostavnijih jezika za naučiti. Ima jednostavnu sintaksu i rezultate izvođenja kȏda možemo vidjeti gotovo odmah u web pregledniku.
 
 5. **Bogat community**: JavaScript je jedan od najpopularnijih programskih jezika na svijetu. Ima veliku zajednicu developera, odlično je dokumentiran, ima puno biblioteka i razvojnih okruženja koji nam olakšavaju izradu web stranica/aplikacija.
 
@@ -123,7 +123,7 @@ Kada otvorimo HTML dokument u web pregledniku, možemo otvoriti konzolu (F12) i 
 
 ![Hello World](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/hello_world.png?raw=true)
 
-Idemo sada izmjeniti tekst koji nam ispisuje funkcija `showMessage()`. U `script.js` datoteci promijenimo tekst u `Hello JavaScript!`:
+Idemo sada izmijeniti tekst koji nam ispisuje funkcija `showMessage()`. U `script.js` datoteci promijenimo tekst u `Hello JavaScript!`:
 
 ```javascript
 // script.js
@@ -132,7 +132,7 @@ function showMessage() {
 }
 ```
 
-Možemo primjetiti da se ponovnim klikom na gumb, tekst u konzoli nije promijenio. To je zato što je kȏd iz `script.js` datoteke izvršen samo jednom, prilikom učitavanja stranice. Da bi promjena bila prikazana, moramo osvježiti stranicu (F5).
+Možemo primijetiti da se ponovnim klikom na gumb, tekst u konzoli nije promijenio. To je zato što je kȏd iz `script.js` datoteke izvršen samo jednom, prilikom učitavanja stranice. Da bi promjena bila prikazana, moramo osvježiti stranicu (F5).
 
 Naporno je svaki put osvježavati stranicu da bi vidjeli naše promjene. Iz tog razloga ćemo preuzeti [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) ekstenziju za Visual Studio Code. Ona će nam omogućiti da otvorimo HTML dokument u web pregledniku i da se svaka promjena u kȏdu automatski osvježi u web pregledniku. Nakon što instaliramo ekstenziju, kliknemo desnim klikom na HTML dokument i odaberemo `Open with Live Server`.  
 ![Live server](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/live_server.png?raw=true)
@@ -141,7 +141,7 @@ Naporno je svaki put osvježavati stranicu da bi vidjeli naše promjene. Iz tog 
 
 Varijable su mjesta u memoriji u koje spremamo podatke. Svaka varijabla ima svoje ime i vrijednost. Vrijednost varijable može se mijenjati tijekom izvođenja programa.
 
-Varijable možemo deklarirati na 3 načina: `var`, `let` i `const`. Varijable deklarirane sa ključnim riječima `var` i `let` su varijable koje se mogu mijenjati, dok je `const` konstanta koja se ne može mijenjati.
+Varijable možemo deklarirati na 3 načina: `var`, `let` i `const`. Varijable deklarirane s ključnim riječima `var` i `let` su varijable koje se mogu mijenjati, dok je `const` konstanta koja se ne može mijenjati.
 U pravilu koristimo `const` za deklariranje varijabli, osim ako znamo da će se vrijednost varijable mijenjati, tada koristimo `let`. `var` izbjegavamo, budući da ga je `let` zamijenio u ES6 standardu JavaScripta. Koga zanima više zašto je uveden `let`, može pročitati [ovdje](https://stackoverflow.com/questions/762011/what-is-the-difference-between-let-and-var).
 
 ```javascript
@@ -173,7 +173,7 @@ console.log(typeof b); // string
 console.log(typeof c); // boolean
 ```
 
-Varijable definirane sa `const`:
+Varijable definirane s `const`:
 
 - ne mogu se ponovno deklarirati (eng. **_redeclare_**)
 - ne mogu se ponovno dodijeliti (eng. **_reassign_**)
@@ -548,7 +548,7 @@ Rezultat:
 
 Varijable u JavaScriptu mogu sadržavati bilo koju vrijednost, neovisno o tipu podatka. To znači da varijabla može sadržavati broj, string, boolean, objekt, funkciju, itd.  
 Ista varijabla može sadržavati i više različitih tipova podataka!
-Važno je razumijeti što se dešava "ispod haube" kada deklariramo varijablu i dodijelimo joj vrijednost.
+Važno je razumjeti što se dešava "ispod haube" kada deklariramo varijablu i dodijelimo joj vrijednost.
 Bez tipova podataka, računalo neće znati interpretirati (na siguran način) sljedeće:
 
 ```javascript
@@ -606,7 +606,7 @@ console.log(typeof x); // string
 
 ### 2.3.1 JavaScript Strings
 
-String je tekstualni podatak, radi se o nizu znakova. String možemo definirati sa jednostrukim ili dvostrukim navodnicima.
+String je tekstualni podatak, radi se o nizu znakova. String možemo definirati s jednostrukim ili dvostrukim navodnicima.
 
 ```javascript
 let x = "Petar";
@@ -619,7 +619,7 @@ Možemo koristiti i navodne znakove unutar stringa, ali moramo paziti da se ne p
 let x = "Petar je rekao: 'Dobar dan!'";
 ```
 
-Možemo koristiti i varijable unutar stringa, ali onda moramo koristiti backtickse \`\` te `${}` za prikaz same varijable. Ovakva sintaksa se zove [**template literals**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+Možemo koristiti i varijable unutar stringa, ali onda moramo koristiti *backtickse* \`\` te `${}` za prikaz same varijable. Ovakva sintaksa se zove [**template literals**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
 
 ```javascript
 let ime = "Petar";
@@ -753,7 +753,7 @@ Napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
    - Deklarirajte dvije nove konstante `ime_duljina` i `prezime_duljina` u koje ćete pohraniti broj slova u vašem imenu i prezimenu koristeći funkciju [`length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) nad varijablama `ime` i `prezime`.
    - Ispišite u konzolu "Moje ime i prezime imaju ** i ** slova." koristeći `template literals`.
    - Ispišite u konzolu "It is \_\_ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
-3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja inkrementiranom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s `2`. Sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
+3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja uvećanom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s `2`. Sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
 
 4. Recimo da si želite definirati daily routine koji se sastoji od nekoliko ciljeva. Koristeći logičke operatore i operatore usporedbe, definirajte varijablu `daily_routine_ostvaren`, temeljem sljedećih tvrdnji. Vaš `daily_routine_ostvaren` je ispunjen ako:
 
