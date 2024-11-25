@@ -1,14 +1,28 @@
 # Materijali iz kolegija: Programiranje u skriptnim jezicima (PJS)
 
-**Nositelj**: doc. dr. sc. Nikola Tanković  
-**Asistenti**:
+<p>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+    
+</p>
 
-- Luka Blašković, univ. bacc. inf.
-- Alesandro Žužić, univ. bacc. inf.
+**Nositelj**: [doc. dr. sc. Nikola Tanković](https://fipu.unipu.hr/fipu/nikola.tankovic)  
+**Asistent**: [Luka Blašković, mag. inf.](https://fipu.unipu.hr/fipu/luka.blaskovic)
+**Asistent**: [Alesandro Žužić, mag. inf.](https://fipu.unipu.hr/fipu/alesandro.zuzic)
 
 **Ustanova**: [Sveučilište Jurja Dobrile u Puli](https://www.unipu.hr/), [Fakultet informatike u Puli](https://fipu.unipu.hr/)
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU_white.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU.png">
+  <img alt="Fakultet informatike u Puli (materijali iz kolegija Raspodijeljeni sustavi - Luka Blašković)" 
+       src="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU_white.png" width="300">
+</picture>
+
+---
+
+Kolegij slušaju:
+- studenti 1. godine [Prijediplomskog sveučilišnog studija Informatika](https://fipu.unipu.hr/fipu/studijski_programi/preddiplomski_sveucilisni_studij_informatika) u 2. semestru, na [Fakultetu informatike u Puli](https://fipu.unipu.hr/fipu)
 
 ## YouTube 📺
 
