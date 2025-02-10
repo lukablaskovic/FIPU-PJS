@@ -7,7 +7,7 @@
 </p>
 
 **Nositelj**: [doc. dr. sc. Nikola Tanković](https://fipu.unipu.hr/fipu/nikola.tankovic)  
-**Asistent**: [Luka Blašković, mag. inf.](https://fipu.unipu.hr/fipu/luka.blaskovic)
+**Asistent**: [Luka Blašković, mag. inf.](https://fipu.unipu.hr/fipu/luka.blaskovic)  
 **Asistent**: [Alesandro Žužić, mag. inf.](https://fipu.unipu.hr/fipu/alesandro.zuzic)
 
 **Ustanova**: [Sveučilište Jurja Dobrile u Puli](https://www.unipu.hr/), [Fakultet informatike u Puli](https://fipu.unipu.hr/)
