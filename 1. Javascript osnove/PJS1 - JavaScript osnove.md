@@ -55,6 +55,9 @@
 
 <br>
 
+<div style="page-break-after: always; break-after: page;"></div>
+
+
 # 1. Uvod
 
 1. **Web stranica**: Zamislimo da je web stranica ljudsko tijelo.
@@ -158,6 +161,9 @@ Možete preuzeti **Node.js** s [ovog linka](https://nodejs.org/en/download/) i i
 
 U nastavku vježbi, JavaScript ćemo izvoditi u web pregledniku i EduCoder alatu, no slobodno možete koristiti i Node.js.
 
+<div style="page-break-after: always; break-after: page;"></div>
+
+
 # 2. Izrazi, tvrdnje, varijable, tipovi podataka i operatori
 
 Varijable su mjesta u memoriji u koje spremamo podatke. Svaka varijabla ima svoj naziv i vrijednost. Vrijednost varijable može se mijenjati tijekom izvođenja programa. 
@@ -218,6 +224,9 @@ const PI = 3.141592653589793; // Točno!
 const PI; // Netočno! Nismo dali vrijednost konstanti
 ```
 
+<div style="page-break-after: always; break-after: page;"></div>
+
+
 ## 2.2 Operatori
 
 ### 2.2.1 Izrazi vs tvrdnje
@@ -243,6 +252,9 @@ Izrazi ne moraju biti samo brojevi! Evo još primjera izraza da bude jasnije:
 Najjednostavnije rečeno, računalni program je popis "instrukcija" koje računalo treba "izvršiti". U programiranju, te "instrukcije" nazivaju se **tvrdnje** (*eng. statements*). 
 
 - JavaScript program je popis tvrdnji koje se izvršavaju redom. Tvrdnje mogu biti: deklaracije varijabli, izrazi, kontrolne strukture, petlje, pozivi funkcija, ključne riječi, komentari itd.
+
+<div style="page-break-after: always; break-after: page;"></div>
+
 
 ### 2.2.2 Tablica osnovnih JavaScript operatora
 
@@ -598,6 +610,9 @@ Ostatak pri dijeljenju varijable a sa b je: 5
 Rezultat eksponiranja varijable a na potenciju varijable b je: 9765625
 ```
 
+<div style="page-break-after: always; break-after: page;"></div>
+
+
 ## 2.3 Koncept varijable u JavaScriptu
 
 Varijable u JavaScriptu mogu sadržavati bilo koju vrijednost, neovisno o tipu podatka. To znači da varijabla može sadržavati broj, string, boolean, objekt, funkciju, itd.
@@ -765,6 +780,9 @@ Moje ime je Marko Marić.
 Za svaku izjavu definirajte po nekoliko pomoćnih varijabli, npr. jednu za ciljanu vrijednost, jednu za ostvarenu vrijednost i jednu za rezultat ostvarenja (boolean). Na primjer, za izjavu `želim pročitati barem 50 stranica omiljene knjige` deklarirajte varijable `broj_procitanih_stranica` i `ciljani_broj_stranica` te varijablu `cilj_citanje`.
 
 Rezultat napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
+
+<div style="page-break-after: always; break-after: page;"></div>
+
 
 # Samostalni zadatak za Vježbu 1
 
