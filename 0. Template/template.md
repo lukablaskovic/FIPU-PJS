@@ -1,30 +1,27 @@
 # Programiranje u skriptnim jezicima (PJS)
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
-**Asistenti**:
-
-- Luka Blašković, mag. inf.
-- Alesandro Žužić, mag. inf.
+**Asistent**: Luka Blašković, mag. inf.
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
 
-# [1] Naslov skripte
+# Naslov skripte
 
 [comment]: <> (Ažurirati sliku - logojs/js0.png)
 <img src="logojs/js0.png" style="width:9%; float:right;"></img>
 
 <p style="float: clear">Uvod od nekoliko rečenica ovdje...</p>
 
-**Posljednje ažurirano: 3.6.2024.**
+**Posljednje ažurirano: [datum]**
 
 ## Sadržaj
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
-- [\[1\] Naslov skripte](#1-naslov-skripte)
+- [Naslov skripte](#naslov-skripte)
   - [Sadržaj](#sadržaj)
 - [1 Uvod](#1-uvod)
   - [1.2 Primjer slike](#12-primjer-slike)
@@ -38,7 +35,7 @@
     - [Tekst zadatka, npr.](#tekst-zadatka-npr)
     - [Screenshot rezultata, npr.](#screenshot-rezultata-npr)
   - [Vježba 2](#vježba-2)
-- [Samostalni zadatak za vježbu \[broj vjezbe\]](#samostalni-zadatak-za-vježbu-broj-vjezbe)
+- [Samostalni zadatak za vježbu](#samostalni-zadatak-za-vježbu)
   - [Primjer tablice](#primjer-tablice)
 
 <br>
@@ -103,7 +100,7 @@ Rezultat:
 ## Vježba 2
 ...
 
-# Samostalni zadatak za vježbu [broj vjezbe]
+# Samostalni zadatak za vježbu 
 
 **EduCoder šifra**: `sifra`
 
