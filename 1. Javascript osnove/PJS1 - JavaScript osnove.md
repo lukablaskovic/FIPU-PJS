@@ -8,22 +8,18 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important; "></img>
 
 # (1) JavaScript osnove
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js1.png?raw=true" style="width:9%; float:right; border-radius: 10px;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/0.%20Template/logojs/js1.png?raw=true" style="width:9%; float:right; border-radius: 8px;"></img>
 
-<p style="float: clear">
-    JavaScript je dinamički i višenamjenski programski jezik koji se najčešće koristi u web programiranju. 
-    Inicijalno je razvijen kako bi omogućio interaktivnost na web stranicama, omogućujući dinamičke promjene sadržaja, 
-    animacije, validaciju obrazaca i druge funkcionalnosti direktno u pretraživaču korisnika.  
-    Međutim, danas se JavaScript koristi i izvan okvira web preglednika. Zahvaljujući razvoju tehnologija poput Node.js-a, 
-    postao je snažan alat za izradu server-side aplikacija, API-ja i mikrousluga.  
-    Također, pomoću okvira kao što su Electron i React Native, omogućava razvoj desktop i mobilnih aplikacija, 
-    čineći ga jednim od najrasprostranjenijih programskih jezika u industriji softverskog inženjerstva.  
+<div style="float: clear; margin-right:5px;">
+JavaScript je dinamički i višenamjenski programski jezik koji se najčešće koristi u web programiranju. Inicijalno je razvijen kako bi omogućio interaktivnost na web stranicama, omogućujući dinamičke promjene sadržaja, animacije, validaciju obrazaca i druge funkcionalnosti direktno u pretraživaču korisnika.  
+Međutim, danas se JavaScript koristi i izvan okvira web preglednika. Zahvaljujući razvoju tehnologija poput Node.js-a, postao je snažan alat za izradu server-side aplikacija, API-ja i mikrousluga. Također, pomoću okvira kao što su Electron i React Native, omogućava razvoj desktop i mobilnih aplikacija, čineći ga jednim od najrasprostranjenijih programskih jezika u industriji softverskog inženjerstva.  
 </p>
 
+<div style="page-break-after: always; break-after: page;"></div>
 
 **🆙 Posljednje ažurirano: 10.3.2025.**
 
@@ -151,7 +147,7 @@ Možemo primijetiti da se ponovnim klikom na gumb, tekst u konzoli nije promijen
 
 Naporno je svaki put osvježavati stranicu da bi vidjeli naše promjene. Iz tog razloga ćemo preuzeti [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) ekstenziju za Visual Studio Code. Ona će nam omogućiti da otvorimo HTML dokument u web pregledniku i da se svaka promjena u kȏdu automatski osvježi u web pregledniku. Nakon što instaliramo ekstenziju, kliknemo desnim klikom na HTML dokument i odaberemo `Open with Live Server`.
 
-![Live Server](https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/live_server.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/1.%20Javascript%20osnove/screenshots/live_server.png?raw=true" alt="Live Server" />
 
 > Live Server ekstenzija za VS Code: dostupno na: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
 
@@ -242,7 +238,7 @@ Primjer izraza može biti bilo koja matematička operacija, npr:
 ```
 Navedeni izrazi se evaluiraju u vrijednosti: `3`, `10`, `10` i `12`.
 
-Izrazi ne moraju biti samo brojevi! Evo još primjera izraza da bude jasnije:
+**Izrazi se ne moraju sastojati samo od brojeva!** Evo još primjera izraza da bude jasnije:
 
 - aritmetički izrazi: `5 + 3` ili `4 * 2`
 - izrazi znakovnog niza: `"Hello " + "World"`
@@ -287,9 +283,9 @@ Operatori su simboli koji se koriste za izvođenje operacija nad podacima, preci
 | **Identično nejednako `!==`**                           |   Usporedni   |  binarni (2)   |                                                                     Vrati `true` ako su operandi jednaki ali različitog tipa, ili ako su različiti i istog tipa podatka.                                                                     |         `1 !== 1` vraća `false`, `'hello' !== 'hello'` vraća `false`, `'1' !== 1` vraća `true`, `0 !== false` vraća `true` |
 | **Veće od `>`, manje od `<`**                           |   Usporedni   |  binarni (2)   |                                                     (`>`) Vrati `true` ako je lijevi operand veći od desnog operanda. (`<`) Vrati `true` ako je lijevi operand manji od desnog operanda.                                                     |                                                   `5 > 2` vraća `true`, `'ab' > 'aa'` vraća `false`, `5 < 3` vraća `false` |
 | **Veće ili jednako od `>=`, manje ili jednako od `<=`** |   Usporedni   |  binarni (2)   |                                            (`>=`) Vrati `true` ako je lijevi operand veći ili jednak desnom operandu. (`<=`) Vrati `true` ako je lijevi operand manji ili jednak desnom operandu.                                            |                                                  `5 >= 3` vraća `true`, `'ab' >= 'aa'` vraća `true`, `3 <= 3` vraća `true` |
-| **Logički AND `&&`**                                    |    Logički    |  binarni (2)   |  Za skup boolean operanada rezultat će biti `true` samo i samo ako su oba operanda `true`. Ako generaliziramo, vraća vrijednost prvog `false` operanda kod evaluacije s lijeva na desno, ili vrijednost zadnjeg operanda ako su svi `true`.  |   za `a = 3` i `b = -2`, izraz `(a > 0 && b > 0)` vraća `false`, za izraz `5 && 6` vraća 6, ali `4 && false` vraća `false` |
-| **Logički OR `\|\|`**                                   |    Logički    |  binarni (2)   | Za skup boolean operanada rezultat će biti `true` ako je jedan ili više operanada `true`. Ako generaliziramo, vraća vrijednost prvog `true` operanda kod evaluacije s lijeva na desno, ili vrijednost zadnjeg operanda ako su svi `false`. |     za `a = 3` i `b = -2`, izraz `(a > 0 \|\| b > 0)` vraća `true`, `true \|\| 0` vraća `true`, ali `false \|\| 0 vraća 0` |
-| **Logički NOT `!`**                                     |    Logički    |   unarni (1)   |                               Mijenja `true` izraz u `false` i obrnuto. Tipično se koristi s boolean operandima, ali kada ne, vraća `false` kada se dodaje na tzv. `true` izraze, u suprotnom vraća `true`.                               | za `a = 3` i `b = -2`, izraz `(!(a > 0 \|\| b > 0))` vraća `false`. `!""` vraća `true`, ali `!"Hello World"` vraća `false` |
+| **Logički AND `&&`**                                    |    Logički    |  binarni (2)   |  Za skup `boolean` operanada rezultat će biti `true` samo i samo ako su oba operanda `true`. Ako generaliziramo, vraća vrijednost prvog `false` operanda kod evaluacije s lijeva na desno, ili vrijednost zadnjeg operanda ako su svi `true`.  |   za `a = 3` i `b = -2`, izraz `(a > 0 && b > 0)` vraća `false`, za izraz `5 && 6` vraća 6, ali `4 && false` vraća `false` |
+| **Logički OR `\|\|`**                                   |    Logički    |  binarni (2)   | Za skup `boolean` operanada rezultat će biti `true` ako je jedan ili više operanada `true`. Ako generaliziramo, vraća vrijednost prvog `true` operanda kod evaluacije s lijeva na desno, ili vrijednost zadnjeg operanda ako su svi `false`. |     za `a = 3` i `b = -2`, izraz `(a > 0 \|\| b > 0)` vraća `true`, `true \|\| 0` vraća `true`, ali `false \|\| 0 vraća 0` |
+| **Logički NOT `!`**                                     |    Logički    |   unarni (1)   |                               Mijenja `true` izraz u `false` i obrnuto. Tipično se koristi s `boolean` operandima, ali kada ne, vraća `false` kada se dodaje na tzv. `true` izraze, u suprotnom vraća `true`.                               | za `a = 3` i `b = -2`, izraz `(!(a > 0 \|\| b > 0))` vraća `false`. `!""` vraća `true`, ali `!"Hello World"` vraća `false` |
 | **Operator tipa `typeof`**                              |     Type      |   unarni (1)   |                                                                                               Vraća niz znakova (string) koji označava vrstu operatora.                                                                                               |               `typeof(2)` vraća `"number"`, `typeof("Banana")` vraća `"string"`, `typeof(someFunction)` vraća `"function"` |
 
 ### 2.2.3 Dodatni primjeri korištenja operatora
@@ -388,7 +384,7 @@ console.log(g || h); // true
 ```
 
 **Što ako se s ovim operandima ne koriste operandi `boolean` tipa?**
-- JavaScript će pokušati pretvoriti operande u boolean vrijednosti (npr. `0` u `false`, `1` u `true`, prazan string u `false`, string sa sadržajem u `true` itd.
+- JavaScript će pokušati pretvoriti operande u `boolean` vrijednosti (npr. `0` u `false`, `1` u `true`, prazan string u `false`, string sa sadržajem u `true` itd.
 
 Googlaj: *javascript type coercion*
 
@@ -414,7 +410,7 @@ console.log(!0); // true
 console.log(!5); // false
 ```
 
-Naglasili smo da je **izraz** (*eng. expression*) u JavaScriptu bilo koji valjani kod koji se evaluira u vrijednost.
+Naglasili smo da je **izraz** (*eng. expression*) u JavaScriptu **bilo koji valjani kod koji se evaluira u vrijednost**.
 
 _Primjer 1:_
 
@@ -558,7 +554,7 @@ console.log(typeof undefined); // undefined
 console.log(typeof null); // object
 ```
 
-Zašto je `typeof null` = objekt? U JavaScriptu, `null` doslovno predstavlja "ništa". Nažalost, `typeof` funkcija će vratiti da je tip podatka `null` objekt. Radi se o bugu koji je prisutan od samih početaka ovog jezika.
+Zašto je `typeof null` = objekt? U JavaScriptu, `null` doslovno predstavlja "ništa". Nažalost, `typeof` funkcija će vratiti da je tip podatka `null` objekt. Radi se o bugu koji je prisutan od samih početaka ovog jezika. Bug se nikad nije ispravio obzirom da jako puno postojećeg JavaScript koda ovisi o njemu.
 
 Kojeg će tipa biti sljedeća varijabla?
 
@@ -630,7 +626,7 @@ let x = 16 + "Volvo";
 <hr>
 
 Ima li smisla? Hoće li ovo biti broj ili string? Ili ćemo dobiti grešku?
-Kada JavaScript vidi da se koristi operator `+` na broju i stringu, on će automatski pretvoriti broj u string i spojiti ih. Ovo se zove **implicitna konverzija**.
+Kada JavaScript vidi da se koristi operator `+` na **broju i stringu**, on će automatski pretvoriti broj u string i spojiti ih (konkatenirati). Ovo se zove **implicitna konverzija**.
 
 ```javascript
 let x = "16" + "Volvo";
@@ -699,7 +695,7 @@ Možemo koristiti i varijable unutar stringa, ali onda moramo koristiti *backtic
 Gdje se nalaze *backticks* navodnici na tipkovnici?
 
 - hrvatska tipkovnica: AltGr + 7 (možete i promijeniti kroz [Character Map](https://www.bug.hr/savjeti/kako-dobiti--tildu-i-druge-posebne-znakove-15593))
-- engleska tipkovnica: isopd ESC tipke (lijevo od tipke 1), dijeli tipku s tildom `~`. Backtick se dobiva sa `Shift + ~`
+- engleska tipkovnica: ispod ESC tipke (lijevo od tipke 1), dijeli tipku s tildom `~`. Backtick se dobiva sa `Shift + ~`
 - na Apple tipkovnicama može bit svakako! Google it!
 
 ```javascript
@@ -718,7 +714,7 @@ let predstavljanje2 = `Moje ime je ${ime}`;
 console.log(predstavljanje1 == predstavljanje2); // true
 ```
 
-Još jedan primjer s brojevima! Uočite da osim varijable, unutar `${}` **možemo koristiti i izraze**!
+Još jedan primjer s brojevima! Uočite da osim pojedine varijable, unutar `${}` **možemo koristiti i izraze**!
 
 ```javascript
 const a = 5;
@@ -758,7 +754,7 @@ Decimalni broj 200.5 možemo zapisati kao:
 
 ## Vježba 3
 
-Deklarirajte dvije varijable `ime` i `prezime` i dodijelite im vrijednosti `Marko` i `Marić`. Ispišite dvaput u konzolu rečenicu `Moje ime je Marko Marić.`, jednom koristeći `+` operator, a drugi put koristeći `template literals`.
+Deklarirajte dvije varijable `ime` i `prezime` i dodijelite im vrijednosti `Marko` i `Marić`. Ispišite dvaput u konzolu rečenicu `Moje ime je Marko Marić.`, jednom koristeći `+` operator, a drugi put koristeći interpolaciju -  `template literals`.
 
 **Rezultat**:
 
@@ -777,11 +773,9 @@ Moje ime je Marko Marić.
 - želim vježbati JavaScript barem 2 sata ili riješiti barem 10 zadataka
 - želim se svaki dan naspavati
 
-Za svaku izjavu definirajte po nekoliko pomoćnih varijabli, npr. jednu za ciljanu vrijednost, jednu za ostvarenu vrijednost i jednu za rezultat ostvarenja (boolean). Na primjer, za izjavu `želim pročitati barem 50 stranica omiljene knjige` deklarirajte varijable `broj_procitanih_stranica` i `ciljani_broj_stranica` te varijablu `cilj_citanje`.
+Za svaku izjavu definirajte po nekoliko pomoćnih varijabli, npr. jednu za ciljanu vrijednost, jednu za ostvarenu vrijednost i jednu za rezultat ostvarenja (boolean). Na primjer, za izjavu `"želim pročitati barem 50 stranica omiljene knjige"` deklarirajte varijable `broj_procitanih_stranica` i `ciljani_broj_stranica` te varijablu `cilj_citanje`.
 
 Rezultat napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
-
-<div style="page-break-after: always; break-after: page;"></div>
 
 
 # Samostalni zadatak za Vježbu 1
@@ -795,9 +789,9 @@ Rezultat napišite u obliku: `weekly_goal = cilj1 && cilj2 && cilj3 && cilj4`
    - U varijable `ime` i `prezime` pohranite svoje ime i prezime, a u varijablu `godina_rodenja` pohranite godinu rođenja kao cjelobrojnu vrijednost. U varijablu `trenutno_vrijeme` pohranite trenutno vrijeme koristeći `new Date()` objekt.
    - Dodajte novu varijablu `godine` i u nju izračunajte koliko imate godina koristeći: funkciju [`getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) nad varijablom `trenutno_vrijeme` i varijablu `godina_rodenja`. Sintaksa je: `varijabla.getFullYear()`. Radi pojednostavljivanja, pretpostavljamo da je vaš rođendan već prošao ove godine.
 
-2. Koristeći [`template literals`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), u konzolu ispišite "Bok moje ime je \_\_ ** i imam ** godina.".
+2. Koristeći [`template literals`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), u konzolu ispišite "Bok moje ime je \_\_  i imam godina.".
    - Deklarirajte dvije nove konstante `ime_duljina` i `prezime_duljina` u koje ćete pohraniti broj slova u vašem imenu i prezimenu koristeći funkciju [`length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) nad varijablama `ime` i `prezime`.
-   - Ispišite u konzolu "Moje ime i prezime imaju ** i ** slova." koristeći `template literals`.
+   - Ispišite u konzolu "Moje ime i prezime imaju __ i __ slova." koristeći `template literals`.
    - Ispišite u konzolu "It is \_\_ that my name and surname are of the same length" koristeći `template literals` i operator `"je identično"`.
 3. Pohranite u novu varijablu `x` kvadrat zbroja varijabli `ime_duljina` i `prezime_duljina`. Rezultat zbrojite s vašom godinom rođenja uvećanom za 1 koristeći operator `++` ispred varijable (uočite grešku, zašto nastaje, i napravite izmjenu!) te sve skupa podijelite s `2`. Sve navedeno definirajte u obliku <span style="color:red">jednog izraza u jednoj liniji kȏda</span>.
 
