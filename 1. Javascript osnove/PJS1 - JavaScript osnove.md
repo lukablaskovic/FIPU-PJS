@@ -387,7 +387,7 @@ console.log(g && h); // false
 console.log(g || h); // true
 ```
 
-**Što ako se ovi operatori ne koriste operande boolean tipa?**
+**Što ako se s ovim operandima ne koriste operandi `boolean` tipa?**
 - JavaScript će pokušati pretvoriti operande u boolean vrijednosti (npr. `0` u `false`, `1` u `true`, prazan string u `false`, string sa sadržajem u `true` itd.
 
 Googlaj: *javascript type coercion*
