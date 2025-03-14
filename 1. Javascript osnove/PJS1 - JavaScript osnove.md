@@ -235,10 +235,10 @@ U JavaScriptu, **izraz** (*eng. expression*) je bilo koji valjani kȏd koji se e
 Primjer izraza može biti bilo koja matematička operacija, npr:
 
 ```js
-x = 3
+3
 5 + 5
-x = 7
-x = x + 5
+2 * 5
+4 + (2  * 4)
 ```
 Navedeni izrazi se evaluiraju u vrijednosti: `3`, `10`, `10` i `12`.
 
