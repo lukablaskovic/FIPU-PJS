@@ -1635,7 +1635,7 @@ let brojevi = [1, 2, 3, 4, 5, 1, 2, 6, 7, 6];
 
 let brojeviBezDuplikata = removeDuplicates(brojevi); // Output: [1, 2, 3, 4, 5, 6, 7] - ono što želimo
 ```
-Ovakvu funkciju možemo implementirati koristeći `filter` gotovu filter metodu, vrlo jednostavnu. Kako mi `filter` metodu još nismo odradili. Iskoristit ćemo znanje koje do sada imamo. Pokazat ćemo 2 načina implementacije ove funkcije.
+Ovakvu funkciju možemo implementirati koristeći gotovu `filter` metodu. Kako mi `filter` metodu još nismo odradili. Iskoristit ćemo znanje koje do sada imamo. Pokazat ćemo 2 načina implementacije ove funkcije.
 
 1. način počiva na ideji da su ključevi objekta jedinstveni, pa ćemo iskoristiti objekt kao pomoćnu strukturu za brisanje duplikata. 
 ```javascript
