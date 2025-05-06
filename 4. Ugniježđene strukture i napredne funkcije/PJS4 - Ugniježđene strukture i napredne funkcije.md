@@ -17,7 +17,7 @@
 
 <p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili polja. Dohvat podataka s različitih API-eva, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
 
-**Posljednje ažurirano: 2.8.2024.**
+**Posljednje ažurirano: 28.4.2025.**
 
 ## Sadržaj
 
@@ -142,7 +142,7 @@ let korisnik = {
 
 Uočite zašto je ovakav zapis nezgrapan. Kako bi dohvatili `ulicu` moramo koristiti `split` metodu. Isti problem predstavlja `poštanski broj`.
 
-Idemo problem riješiti **ugniježđenim objektima**.
+Idemo problem riješiti **ugniježđenim objektima**:
 
 ```javascript
 let korisnik = {
@@ -202,7 +202,7 @@ console.log(objekt1.objekt2.svojstvo3); // Ispisuje vrijednost3
 console.log(objekt1["objekt2"]["svojstvo3"]); // Ispisuje vrijednost3
 ```
 
-Zamislimo da radimo backend aplikacije. Gotovo uvijek bit će nam potrebna autentifikacija za korisnika, poveznica na bazu podataka te nekakav server koji će služiti kao podloga našoj aplikaciji. Idemo definirati dummy konfiguracijski objekt za našu aplikaciju. Konfiguracijski objekt se često definira kao objekt u koji ćemo definirati neke postavke tj. parametre naše aplikacije. Primjer:
+Zamislimo da radimo *backend* aplikacije. Gotovo uvijek bit će nam potrebna autentifikacija za korisnika, poveznica na bazu podataka te nekakav server koji će služiti kao podloga našoj aplikaciji. Idemo definirati dummy konfiguracijski objekt za našu aplikaciju. Konfiguracijski objekt se često definira kao objekt u koji ćemo definirati neke postavke tj. parametre naše aplikacije. Primjer:
 
 ```javascript
 let konfiguracija = {
@@ -253,7 +253,7 @@ let konfiguracija = {
 };
 ```
 
-Što ako ispišemo cijeli objekt `konfiguracija`? Rezultat ispisa će biti cijeli objekt, **uključujući i podobjekte**.
+Što ako ispišemo cijeli objekt `konfiguracija`? Rezultat ispisa će biti cijeli objekt, **koji uključuje i sve podobjekte**.
 
 ```javascript
 console.log(konfiguracija); // Ispisuje: {server: {...}, bazaPodataka: {...}, sigurnost: {...}}
@@ -282,7 +282,7 @@ Detaljni ispis objekta `konfiguracija`:
 
 #### Izmjena podataka unutar ugniježđenih objekata
 
-Kako mijenjati podatke unutar ugniježđenih objekata? Na primjer, kako promijeniti `host` servera u našem objektu `konfiguracija`? Na isti način kako dohvaćamo podatke iz ugniježđenih objekata, koristeći `.` operator ili notaciju uglatih zagrada `[]`.
+Kako mijenjati podatke unutar ugniježđenih objekata? Na primjer, kako promijeniti `host` servera u našem objektu `konfiguracija`? Na isti način kako dohvaćamo podatke iz ugniježđenih objekata - koristeći `.` operator ili notaciju uglatih zagrada `[]`.
 
 ```javascript
 konfiguracija.server.host = "192.168.5.5";
@@ -361,7 +361,7 @@ konfiguracija.server.protocol = "http";
 
 #### Brisanje podataka unutar ugniježđenih objekata
 
-Kako obrisati podatke unutar ugniježđenih objekata? Na primjer, tj. kako obrisati `port` servera u našem objektu `konfiguracija`? Koristimo `delete` naredbu.
+Kako obrisati podatke unutar ugniježđenih objekata? Na primjer, kako obrisati `port` servera u našem objektu `konfiguracija`? Koristimo `delete` naredbu.
 
 ```javascript
 delete konfiguracija.server.port; // vraća true
@@ -372,7 +372,7 @@ console.log(konfiguracija.server.port); // Ispisuje "undefined"
 
 ## 2.2 Polja unutar objekata
 
-Zamislite da radite neku web trgovinu, morate na neki način pohranjivati podatke o kupcu i narudžbama. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Kako ćemo pohraniti narudžbe? Narudžba se sastoji od više podataka iste strukture (stavki/proizvoda), dakle moramo koristiti polja!
+Zamislite da radite neku web trgovinu, morate na neki način pohranjivati podatke o kupcu i narudžbama. Podaci koje želimo pohraniti su: `ime`, `prezime`, `adresa`, `kontakt` i `narudžbe`. Pod adresa želimo pohraniti `ulica`, `grad` i `poštanski broj`. Pod kontakt želimo pohraniti `telefon` i `email`. Kako ćemo pohraniti narudžbe? Narudžba se sastoji od više podataka iste strukture (stavki/proizvoda), dakle moramo koristiti **polja**.
 
 Prvo ćemo pohraniti osnovne podatke o kupcu:
 
@@ -426,7 +426,7 @@ console.log(kupac.narudzbe.proizvodi[0]); // Ispisuje "Mobitel"
 ### 2.2.1 Iteracija kroz polje unutar objekata
 
 Kako iterirati kroz **polje unutar objekata**? Na primjer, kako ispisati sve proizvode koje je kupac naručio?
-Možemo koristeći `for` petlju:
+Možemo koristeći klasičnu `for` petlju:
 
 ```javascript
 for (let i = 0; i < kupac.narudzbe.proizvodi.length; i++) {
@@ -517,7 +517,7 @@ let kupac = {
 
 > Novi oblik ugniježđene strukture koji smo sad iskoristili jesu **objekti unutar polja**.
 
-Idemo vidjeti kako sada dohvaćamo podatke. Polje `proizvodi` sadrži objekte, pa ćemo morati koristiti `.` operator za dohvaćanje svojstava objekata.
+Idemo vidjeti kako sada dohvatiti podatke. Polje `proizvodi` sadrži objekte pa ćemo morati koristiti `.` operator za dohvaćanje svojstava objekata.
 
 ```javascript
 console.log(kupac.narudzbe.proizvodi[0].naziv); // Ispisuje "Mobitel"
@@ -525,7 +525,7 @@ console.log(kupac.narudzbe.proizvodi[0].kolicina); // Ispisuje 1
 console.log(kupac.narudzbe.proizvodi[0].cijena); // Ispisuje 300
 ```
 
-Kako možemo iterirati kroz proizvode i ispisati ih? Možemo koristiti `for-of` petlju:
+Kako možemo iterirati kroz proizvode i ispisati ih? Možemo koristiti `for-of` petlju!
 Pripazite, `proizvod` je sada objekt, pa ćemo morati koristiti `.` operator za dohvaćanje svojstava objekta.
 
 ```javascript
@@ -547,31 +547,31 @@ kupac.narudzbe.ukupnaCijena = ukupnaCijena;
 console.log(kupac.narudzbe.ukupnaCijena); // Ispisuje 340
 ```
 
-Uočite glavni problem: Narudžbe su ustvari objekt (`narudzbe`), gdje se svaka narudžba sastoji od više proizvoda (polje objekata) i ukupne cijene.
+**Uočite glavni problem**: Narudžbe su ustvari objekt (`narudzbe`), gdje se svaka narudžba sastoji od više proizvoda (polje objekata) i ukupne cijene.
 
 - Što ako kupac ima više narudžbi? Gdje to dodajemo i kako?
 
 Rješenje je da svaka narudžba bude zaseban objekt koje ćemo pohranjivati u tzv. **polje objekata**.
 
-Dakle, do sada smo imali objekt `narduzbe` koji sadržava polje objekata `proizvodi`. Narudžbe su množina narudžbi, pa ima smisla da budu polje. Svaka narudžba sastoji se potencijalno više stavki (proizvoda), pa ima smisla da svaka narudžba bude objekt.
+Dakle, do sada smo imali objekt `narduzbe` koji sadržava polje objekata `proizvodi`. Narudžbe su množina pa ima smisla da budu polje. Svaka narudžba sastoji se od jedne ili više stavki (proizvoda), a proizvod od više atributa pa ima smisla da bude objekt.
 
-Dakle, definirajmo jednu narudžbu kao objekt:
+Definirajmo prvo jednu narudžbu kao objekt:
 
 ```javascript
-let narudzba_1 = {
+let narudzba_1 = { // objekt
   stavke: [
-    // Polje objekata
-    {
+    // Polje objekata (proizvoda)
+    { // proizvod 1
       naziv: "Mobitel",
       kolicina: 1,
       cijena: 300,
     },
-    {
+    { // proizvod 2
       naziv: "Slušalice",
       kolicina: 1,
       cijena: 20,
     },
-    {
+    { // proizvod 3
       naziv: "Punjač",
       kolicina: 2,
       cijena: 10,
@@ -615,7 +615,7 @@ let narudzba_1 = {
 };
 ```
 
-Sada ćemo svojstvo `narudzbe` iz objekta `kupac` pretvoriti u polje objekata i u njega dodati našu narudžbu - `narudzba_1`.
+Sada ćemo svojstvo `narudzbe` iz objekta `kupac` pretvoriti u polje objekata i u njega dodati našu narudžbu: `narudzba_1`.
 
 ```javascript
 let kupac = {
@@ -992,11 +992,11 @@ filmovi[2] = new Array("Matrix", "Matrix Reloaded", "Matrix Revolutions"); // po
 filmovi[3] = new Array("Frozen", "Frozen 2", new Array("Tangled", "Alladin")); // 2D polje (jer sadrži stringove i još jedno polje)
 ```
 
-Dakle `filmovi[2]` predstavlja jednodimenzionalno polje s tri elementa (**filmovi** [string]), a `filmovi[3]` predstavlja dvodimenzionalno polje s tri elementa (**filmovi** [string] i polje s dva elementa (**filmovi** [string]).
+Dakle `filmovi[2]` predstavlja jednodimenzionalno polje s tri elementa, a `filmovi[3]` predstavlja dvodimenzionalno polje s tri elementa: 2 stringa i ugniježdeno polje s dva stringa.
 
 Kako se raspoređuju elementi u višedimenzionalnim poljima? Pogledamo ilustraciju:
 
-![Indices array](https://github.com/lukablaskovic/FIPU-PJS/blob/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije/screenschots/indices_array.png?raw=true)
+![Indices array](https://github.com/lukablaskovic/FIPU-PJS/blob/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije/screenshots/indices_array.png?raw=true)
 
 > Izvor: https://dev.to/sanchithasr/understanding-nested-arrays-2hf7
 
@@ -1034,7 +1034,7 @@ console.log(arr2.flat(2)); // [0, 1, 2, 3, 4, 5, 6]
 
 > Već smo naveli moguće primjene višedimenzionalnih polja te naglasili da se u pravilu koriste za pohranu numeričkih podataka, koji su međusobno povezani odnosno predstavljaju neku **vrstu višedimenzionalne strukture**.
 
-- U praksi, ovaj primjer nije nešto što želite pohraniti u višedimenzionalno polje.
+- U praksi, **ovaj primjer nije nešto što želite pohraniti u višedimenzionalno polje**.
 Dohvaćanje filmova postaje nezgrapno (više-dimenzionalno indeksiranje), značajno se smanjuje čitljivost kôda, a i održavanje postaje teže.
 
 Filmove je bolje pohraniti koristeći ranije naučene ugniježđene strukture - **kombiniranjem objekata i polja**.
@@ -1252,7 +1252,7 @@ Detaljnije ćemo obraditi `callback` funkcije koje smo već spomenuli u primjeri
 
 > Važno je prije prolaska kroz ovo poglavlje dobro ponoviti koncepte funkcija, funkcijskih izraza, objekata, polja te ugniježđenih struktura.
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije/screenschots/reduce_graphics.png?raw=true" alt="Advanced functions" style="width: 60%;" />
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/4.%20Ugnije%C5%BE%C4%91ene%20strukture%20i%20napredne%20funkcije/screenshots/reduce_graphics.png?raw=true" alt="Advanced functions" style="width: 60%;" />
 
 > Izvor: https://blog.khanacademy.org/lets-reduce-a-gentle-introduction-to-javascripts-reduce-method/
 
@@ -2134,7 +2134,7 @@ let five = 5;
 function fiveEven() {
     return five % 2 == 0;
 }
-const isEven = /* arrow funkcija */;
+const fiveEven = /* arrow funkcija */;
 ```
 
 ### Vježba 8
@@ -2194,7 +2194,7 @@ const osoba = {
         console.log(`Pozdrav, ${this.ime}!`); // this se referencira na objekt osoba
     }
 };
-console.log(objekt.pozdrav()); // Ispisuje "Pozdrav, Ana!"
+osoba.pozdrav(); // Ispisuje "Pozdrav, Ana!"
 ```
 
 Pokazali smo upotrebu `this` ključne riječi i u kontekstu definiranja konstruktora.
@@ -2233,11 +2233,11 @@ Međutim gdje dolazi do problema je kada koristimo `arrow` funkcije unutar metod
 // Objekt osoba s metodom pozdrav() koja neispravno koristi arrow funkciju
 const osoba = {
     ime: "Ana",
-    pozdrav() => {
+    pozdrav: () => {
         console.log(`Pozdrav, ${this.ime}!`); // this se ne referencira na objekt osoba, već na globalni objekt (u web pregledniku je to window)
     }
 };
-console.log(objekt.pozdrav()); // Ispisuje "Pozdrav, undefined!"
+osoba.pozdrav(); // Ispisuje "Pozdrav, undefined!"
 ```
 
 Razlika u ova dva pristupa je u tome što kod tradicionalnih funkcija `this` ključna riječ se mijenja ovisno o kontekstu u kojem se funkcija poziva, dok kod `arrow` funkcija `this` ključna riječ se nasljeđuje iz okoline u kojoj je definirana.
