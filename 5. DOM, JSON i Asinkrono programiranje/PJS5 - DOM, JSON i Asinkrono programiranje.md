@@ -17,7 +17,7 @@
 
 <p style="float: clear">Prilikom izrade web aplikacija i stranica, često ćete na neki način manipulirati strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Važno je razumjeti kako funkcionira DOM budući da se svi poznati JavaScript razvojni okviri temelje na njemu (React, VUE, Angular, jQuery...). Dodatno, upoznat ćemo se s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešće korišteni format za razmjenu podataka. Za sam kraj ćemo proći asinkrono programiranje i time postaviti dobre temelje za uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
 
-**Posljednje ažurirano: 2.8.2024.**
+**Posljednje ažurirano: 19.5.2025.**
 
 ## Sadržaj
 
@@ -43,7 +43,7 @@
   - [1.4 Dodavanje i brisanje DOM elemenata](#14-dodavanje-i-brisanje-dom-elemenata)
     - [Primjer 5 - Stvaranje, dodavanje, brisanje i izmjena DOM elemenata](#primjer-5---stvaranje-dodavanje-brisanje-i-izmjena-dom-elemenata)
     - [Vježba 4](#vježba-4)
-  - [1.4 DOM events](#14-dom-events)
+  - [1.4 DOM događaji (events)](#14-dom-događaji-events)
     - [Primjer 6 - `click` event](#primjer-6---click-event)
     - [Vježba 5](#vježba-5)
     - [Primjer 7 - `focus` events](#primjer-7---focus-events)
@@ -175,7 +175,6 @@ Sintaksa: `<tag id="jedinstveniID">`.
 <body>
     <p id="jedinstveniElement">Ovo je paragraf s jedinstvenim ID atributom.</p>
 </body>
-</html>
 ```
 
 ### Primjer upotrebe `class` atributa:
@@ -197,7 +196,6 @@ Sintaksa: `<p class="klasa1 klasa2 klasa3 klasaN...">`.
     <p class="velikiTekst">Ovo je paragraf s velikim tekstom.</p>
     <p class="crveniTekst velikiTekst">Ovo je paragraf s crvenim i velikim tekstom.</p>
 </body>
-</html>
 ```
 
 ### Primjer kombiniranja `id` i `class` atributa:
@@ -223,7 +221,7 @@ U ovom primjeru koristimo oba atributa kako bismo jedinstveno identificirali jed
 ### CSS (Cascading Style Sheets)
 **CSS** je jezik za stilizaciju HTML elemenata. Omogućuje nam definiranje izgleda i rasporeda elemenata na web stranici. CSS pravila sastoje se od selektora (***[eng. selectors](https://www.w3schools.com/cssref/css_selectors.php)***) i deklaracija svojstava ([***eng. declarations***](https://www.w3schools.com/css/css_syntax.ASP)). 
 
-Sljedeća tablica pokriva osnovna CSS svojstva:
+Sljedeća tablica pokriva **osnovna CSS svojstva**:
 
 | Naziv svojstva | Opis | Vrijednosti | Primjer |
 |----------------|------|-------------|---------|
@@ -256,7 +254,7 @@ Sljedeća tablica pokriva osnovna CSS svojstva:
 
 Postoje i CSS pseudo-klase (***[Pseudo-classes](https://www.w3schools.com/css/css_pseudo_classes.asp)***) kao što su `:hover`, `:active`, `:focus` i druge koje se mogu nadodati na CSS klase. Mogu se koristiti za primjenu stilova na elemente u određenim stanjima ili uvjetima.
 
-Tablica prikazuje neke od najčešće korištenih CSS pseudo-klasa:
+Tablica prikazuje neke od najčešće korištenih **CSS pseudo-klasa**:
 
 | Pseudo-klasa | Opis | Primjer |
 |--------------|------|---------|
@@ -279,10 +277,10 @@ Nakon stjecanja osnovnog razumijevanja JavaScript varijabli, funkcija, struktura
 
 **Document Object Model (DOM)** je standard koji definira strukturu i način pristupa HTML dokumentima. DOM predstavlja HTML dokument kao stablo objekata, gdje svaki HTML element predstavlja objekt, a svaki atribut i sadržaj elementa predstavlja svojstvo tog objekta.
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/DOM.png?raw=true" style="width:25%"></img> 
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/DOM.png?raw=true" style="width:50%"></img> 
 > Izvor: https://en.wikipedia.org/wiki/Document_Object_Model
 
->**Zašto je važno naučiti DOM manipulaciju?**
+>**Zašto je važno naučiti DOM manipulaciju (barem osnove)?**
 > - Većina današnjeg digitalnog poslovanja bazirana je upravno na web tehnologijama.
 > - JavaScript je jedan od najpopularnijih jezika za web razvoj.
 > - Statične web stranice postale su prošlost, danas su gotovo sve web stranice dinamične (interaktivne).
@@ -381,7 +379,7 @@ for (let query of queryAll){
 ```
 
 > `querySelector` uvijek prvo pretražuje po `tag`-u, za pretraživanje po `id`-u treba koristiti oznaku `#`.
->  za pretraživanje po klasi treba koristiti `.` dok za pretraživanje po imenu ili drugim atributima prvo treba staviti ime `tag`-a pa unutar uglatih zagrada pretragu `[atribut = vrijednost]`
+>  za pretraživanje po klasi treba koristiti `.` dok za pretraživanje po imenu ili drugim atributima prvo treba staviti naziv `tag`-a pa unutar uglatih zagrada uvjet pretrage: `[atribut = vrijednost]`
 
 ### Primjer 1. - Dohvaćanje elemenata
 Za zadani HTML kôd, treba dohvatiti `<input>` s vrijednošću **TOČNO**. Ne smijemo koristiti `id` atribut i naknadno mijenjati HTML.
@@ -501,7 +499,7 @@ element.innerHTML = " Pozdrav! " //Mijenjanje sadržaja
 console.log(element.outerHTML); //Output: "<div class="text-5xl" id="prviDiv"> Pozdrav! </div>"
 ```
 
-> Mijenjanjem sadržaja preko `outerHTML` svojstva možemo prekrižiti cijeli element pa nije pametno to koristiti. 
+> Izmjenom sadržaja preko `outerHTML` svojstva možemo prekrižiti cijeli element pa nije pametno to koristiti. 
 > 
 > Međutim, za navedeno postoje metode koje ćemo proći u poglavlju `Dodavanje i brisanje DOM elemenata`
 
@@ -536,7 +534,7 @@ Pronašli smo idealni web shop u Engleskoj, međutim sve cijene su prikazane u f
 
 ✅Rezultat:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/funte_u_eure.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/funte_u_eure.png?raw=true" style="width:50%"></img>
 
 >Rješenje:
 ```javascript
@@ -669,7 +667,7 @@ Zadan je sljedeći CSS i HTML kôd:
 ```
 Koristeći `querySelector` i `classList` metode dodajte "tablica", "celija" i "naslov" na odgovarajuće elemente, ćeliji s najvećim brojem stranica dodajte klasu "velika".
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/tablica_books.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/tablica_books.png?raw=true" style="width:100%"></img>
 
 > Rješenje:
 ```javascript
@@ -695,12 +693,14 @@ query[maxCelijaIndex].classList.add('velika')  // Dodajemo klasu "velika" na će
 ```
 
 ### Primjer 4 - Dohvaćanje `child` i `sibling` elemenata.
-Naučili smo dohvaćati elemente koristeći `querySelector` i `getElements` metode. Međutim, ponekad želimo dohvatiti djecu ili susjede određenog elementa. Za to možemo koristiti sljedeća svojstva:
-`childElementCount`, 
-`children`, 
-`lastElementChild`, 
-`nextElementSibling`, 
-`previousElementSibling`
+Naučili smo dohvaćati elemente koristeći `querySelector` i `getElements` metode. Međutim, ponekad želimo dohvatiti djecu ili susjede određenog elementa. 
+
+Za navedeno možemo koristiti sljedeća svojstva:
+- `childElementCount`, 
+- `children`, 
+- `lastElementChild`, 
+- `nextElementSibling`, 
+- `previousElementSibling`
 
 Imamo sljedeći HTML kôd:
 
@@ -992,14 +992,14 @@ mojElement.insertAdjacentHTML("afterbegin", divPreppend);
 mojElement.insertAdjacentHTML("beforeend", divAppend);
 mojElement.insertAdjacentHTML("afterend", divAfter);
 ```
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/dodavanje_elementa.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/dodavanje_elementa.png?raw=true" style="width:25%"></img>
 
 Brisanje radimo jednostavno koristeći metodu `remove()`. Na primjer, brisanje prvog `child` elementa, `div`-a gdje je `id`=`"mojDiv"`
 ```javascript
 const elementZaBrisanje = mojElement.firstElementChild;
 elementZaBrisanje.remove()
 ```
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/brisanje_elementa.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/brisanje_elementa.png?raw=true" style="width:25%"></img>
 
 Izmjena `div` elementa nakon `div`-a gdje je `id`=`"mojDiv"`:
 ```javascript
@@ -1010,7 +1010,8 @@ newBoldElement.innerHTML = "newBoldElement"
 
 elementZaMijenjanje.replaceWith(newBoldElement)
 ```
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/replace_element.png?raw=true)
+
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/replace_element.png?raw=true" style="width:25%"></img>
 
 ### Vježba 4 
 **EduCoder šifra**: `html_from_object`
@@ -1101,7 +1102,7 @@ Objekt treba prikazati u obliku HTML-a koristeći metode za dodavanje elemenata.
 
 ✅Rezultat:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/kupac.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/kupac.png?raw=true" style="width:50%"></img>
 
 >Rješenje: 
 ```javascript
@@ -1165,7 +1166,7 @@ divKupac.append(divUkupno);
 console.log(divKupac.outerHTML);
 ```
 
-## 1.4 DOM events
+## 1.4 DOM događaji (events)
 
 DOM događaji (**eng. DOM events**) omogućuju JavaScriptu da reagira na korisničke akcije kao što su klikovi mišem, različite kretnje mišem, unos na tipkovnici i sl. Događaj se na `element` dodaje metodom `addEventListener(event, callbackFn)`.
 - `callbackFn`: callback koji prima argument `event` a koji se odnosi na pozvani događaj. Da bi se moglo pristupati elementu nad kojim se pozvao `event`, koristi se svojstvo `target`.
@@ -1232,25 +1233,25 @@ btn.addEventListener("click", ispis);
 `event` argument sadrži informacije o događaju koji se dogodio.
 Napamet ih nema smisla učiti (osim najčešće korištenih poput `click`, `input`, `focus`...) jer se mogu lako pronaći na internetu, ovisno o potrebi.
 
-Ima ih mnogo, neki od najčešće korištenih na webu su:
+Neki od najčešće korištenih **DOM događaja** su:
 
 | Metoda      | Objašnjenje                                      | Sintaksa                                       | Primjer                                   |
 |-------------|--------------------------------------------------|------------------------------------------------|-------------------------------------------|
-| click       | Poziva se kada se klikne mišem na element.       | `element.addEventListener('click', function() {})` | `button.addEventListener('click', function() { console.log('Kliknuto!'); })` |
-dblclick    | Poziva se kada se dvaput klikne na element mišem. | `element.addEventListener('dblclick', function() {})` | `image.addEventListener('dblclick', function() { console.log('Dvaput kliknuto!'); })` |
-| focus       | Poziva se kada element dobije fokus.             | `element.addEventListener('focus', function() {})` | `input.addEventListener('focus', function() { console.log('Fokusiranje!'); })` |
-| focusin     | Poziva se kada element ili njegovi potomci dobiju fokus. | `element.addEventListener('focusin', function() {})` | `div.addEventListener('focusin', function() { console.log('Fokusiranje!'); })` |
-| focusout    | Poziva se kada element ili njegovi potomci izgube fokus. | `element.addEventListener('focusout', function() {})` | `input.addEventListener('focusout', function() { console.log('Izgubio fokus!'); })` |
-| blur        | Poziva se kada element izgubi fokus.             | `element.addEventListener('blur', function() {})`  | `input.addEventListener('blur', function() { console.log('Izgubio fokus!'); })` |
-| mousedown   | Poziva se kada se pritisne miš na element.       | `element.addEventListener('mousedown', function() {})` | `div.addEventListener('mousedown', function() { console.log('Miš pritisnut!'); })` |
-| mouseenter  | Poziva se kada miš uđe u element.                | `element.addEventListener('mouseenter', function() {})` | `div.addEventListener('mouseenter', function() { console.log('Miš unutar elementa!'); })` |
-| mouseleave  | Poziva se kada miš napusti element.              | `element.addEventListener('mouseleave', function() {})` | `div.addEventListener('mouseleave', function() { console.log('Miš izvan elementa!'); })` |
-| mousemove   | Poziva se kada se miš pomiče preko elementa.    | `element.addEventListener('mousemove', function() {})` | `div.addEventListener('mousemove', function() { console.log('Miš se pomiče!'); })` |
-| mouseout    | Poziva se kada miš napusti element ili njegovog potomka. | `element.addEventListener('mouseout', function() {})` | `div.addEventListener('mouseout', function() { console.log('Miš napustio element!'); })` |
-| mouseover   | Poziva se kada miš uđe u element ili njegovog potomka. | `element.addEventListener('mouseover', function() {})` | `div.addEventListener('mouseover', function() { console.log('Miš ušao u element!'); })` |
-| mouseup     | Poziva se kada se miš otpusti iznad elementa.    | `element.addEventListener('mouseup', function() {})` | `div.addEventListener('mouseup', function() { console.log('Miš otpušten!'); })` |
-| input       | Poziva se kada se promijeni vrijednost input elementa, a korisnik i dalje ostaje u polju. | `element.addEventListener('input', function() {})` | `input.addEventListener('input', function() { console.log('Vrijednost promijenjena!'); })` |
-| change      | Poziva se kada se promijeni vrijednost elementa, a korisnik se miče od polja. | `element.addEventListener('change', function() {})` | `inputElement.addEventListener('change', function() { console.log('Vrijednost promijenjena!'); })` |
+| `click`       | Poziva se kada se klikne mišem na element.       | `element.addEventListener('click', function() {})` | `button.addEventListener('click', function() { console.log('Kliknuto!'); })` |
+`dblclick`    | Poziva se kada se dvaput klikne na element mišem. | `element.addEventListener('dblclick', function() {})` | `image.addEventListener('dblclick', function() { console.log('Dvaput kliknuto!'); })` |
+| `focus`       | Poziva se kada element dobije fokus.             | `element.addEventListener('focus', function() {})` | `input.addEventListener('focus', function() { console.log('Fokusiranje!'); })` |
+| `focusin`     | Poziva se kada element ili njegovi potomci dobiju fokus. | `element.addEventListener('focusin', function() {})` | `div.addEventListener('focusin', function() { console.log('Fokusiranje!'); })` |
+| `focusout`    | Poziva se kada element ili njegovi potomci izgube fokus. | `element.addEventListener('focusout', function() {})` | `input.addEventListener('focusout', function() { console.log('Izgubio fokus!'); })` |
+| `blur`        | Poziva se kada element izgubi fokus.             | `element.addEventListener('blur', function() {})`  | `input.addEventListener('blur', function() { console.log('Izgubio fokus!'); })` |
+| `mousedown`   | Poziva se kada se pritisne miš na element.       | `element.addEventListener('mousedown', function() {})` | `div.addEventListener('mousedown', function() { console.log('Miš pritisnut!'); })` |
+| `mouseenter`  | Poziva se kada miš uđe u element.                | `element.addEventListener('mouseenter', function() {})` | `div.addEventListener('mouseenter', function() { console.log('Miš unutar elementa!'); })` |
+| `mouseleave`  | Poziva se kada miš napusti element.              | `element.addEventListener('mouseleave', function() {})` | `div.addEventListener('mouseleave', function() { console.log('Miš izvan elementa!'); })` |
+| `mousemove`   | Poziva se kada se miš pomiče preko elementa.    | `element.addEventListener('mousemove', function() {})` | `div.addEventListener('mousemove', function() { console.log('Miš se pomiče!'); })` |
+| `mouseout`    | Poziva se kada miš napusti element ili njegovog potomka. | `element.addEventListener('mouseout', function() {})` | `div.addEventListener('mouseout', function() { console.log('Miš napustio element!'); })` |
+| `mouseover`   | Poziva se kada miš uđe u element ili njegovog potomka. | `element.addEventListener('mouseover', function() {})` | `div.addEventListener('mouseover', function() { console.log('Miš ušao u element!'); })` |
+| `mouseup`     | Poziva se kada se miš otpusti iznad elementa.    | `element.addEventListener('mouseup', function() {})` | `div.addEventListener('mouseup', function() { console.log('Miš otpušten!'); })` |
+| `input`       | Poziva se kada se promijeni vrijednost input elementa, a korisnik i dalje ostaje u polju. | `element.addEventListener('input', function() {})` | `input.addEventListener('input', function() { console.log('Vrijednost promijenjena!'); })` |
+| `change`      | Poziva se kada se promijeni vrijednost elementa, a korisnik se miče od polja. | `element.addEventListener('change', function() {})` | `inputElement.addEventListener('change', function() { console.log('Vrijednost promijenjena!'); })` |
 
 > Kroz sljedeće primjere i vježbe ćemo pokazati kako se koriste DOM događaji u JavaScriptu.
 
@@ -1382,7 +1383,7 @@ function ukloniElement(pozicija) {
 ```
 ✅Rezultat:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/methods_to_methods.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/methods_to_methods.png?raw=true" style="width:75%"></img>
 
 >Rješenje:
  
@@ -1542,7 +1543,7 @@ Vaš kôd ovdje...
 
 ✅Rezultat:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje/screenshots/fokus.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje/screenshots/fokus.png?raw=true" style="width:75%"></img>
 
 >Rješenje:
 
@@ -1706,7 +1707,7 @@ Pseudokod:
 
 ✅Rezultat:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/gallery.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/gallery.png?raw=true" style="width:75%"></img>
 
 >Rješenje:
 ```javascript
@@ -1851,7 +1852,7 @@ function showResults(searchTerm) {
 
 ✅Rezultat:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/recommend.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/recommend.png?raw=true" style="width:75%"></img>
 
 >Rješenje:
 ```javascript
@@ -1896,6 +1897,9 @@ inputField.addEventListener('input', event => {
 });
 ```
 
+<div style="page-break-after: always; break-after: page;"></div>
+
+
 # Samostalni zadatak za vježbu 8
 
 **EduCoder šifra**: `kosarica`
@@ -1926,7 +1930,7 @@ Nakon svake promjene u košarici, ukupna cijena se automatski ažurira kako bi k
 
 >Primjer:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/kosarica.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/kosarica.png?raw=true" style="width:75%"></img>
 
 Možete napisati vlastiti HTML i CSS kôd ili koristiti sljedeći:
 ```html
@@ -2101,6 +2105,9 @@ Možete napisati vlastiti HTML i CSS kôd ili koristiti sljedeći:
     </div>     
 </div>
 ```
+
+<div style="page-break-after: always; break-after: page;"></div>
+
 
 # 2. JSON - JavaScript Object Notation
 
@@ -2296,7 +2303,7 @@ Postoje online alati koji vam mogu pomoći u validaciji i prikazu JSON formata:
 - [JSONEditorOnline.org](https://jsoneditoronline.org/)
 - [JSONViwer Chrome ekstenzija](https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/json_formatter.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/json_formatter.png?raw=true" style="width:100%"></img>
 
 ## 2.4 Rad s JSON formatom u JavaScriptu
 
@@ -2545,6 +2552,9 @@ function printBooks(JSONbooks) {
 }
 ```
 
+<div style="page-break-after: always; break-after: page;"></div>
+
+
 # 3. Asinkrono programiranje
 
 Posljednje poglavlje ove skripte, kao i gradivo ovog kolegija, odnosi se na asinkrono programiranje.
@@ -2562,15 +2572,15 @@ Međutim, protok podataka može biti spor (ili skroz puknuti) zbog različitih f
 - ISP (Internet Service Provider) problemi
 - Vanjski događaji (npr. kibernetički napadi, prirodne katastrofe, vremenske neprilike)
 
-Kako bi se izbjeglo blokiranje glavne dretve (**eng.** **main thread**), možemo koristiti asinkrono programiranje bazirano na konkurentnosti. Asinkrono programiranje omogućuje izvršavanje više operacija istovremeno, bez čekanja na završetak prethodne operacije.
+Kako bi se izbjeglo blokiranje glavne dretve (**eng. *main thread***), možemo koristiti asinkrono programiranje bazirano na konkurentnosti. Asinkrono programiranje omogućuje izvršavanje više operacija istovremeno, bez čekanja na završetak prethodne operacije.
 
 Drugim riječima, ako naš korisnik čeka na odgovor s web poslužitelja, kod recimo dohvaćanja podataka o vremenskoj prognozi, ne želimo da mu se cijela aplikacija zamrzne dok čeka. Umjesto toga, želimo da korisnik može nastaviti koristiti aplikaciju dok se podaci dohvaćaju te mu na korektan način dati povratnu informaciju o tome što se događa.
 
-<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/async.png?raw=true" width="800" >
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/refs/heads/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje/screenshots/async.png" width="800" >
 
 > Izvor: https://dev.to/vinaykishore/how-does-asynchronous-javascript-work-behind-the-scenes-4bjl
 
-Asinkronim programiranjem bavit ćemo se intenzivnije na kolegijima: **[Programsko inženjerstvo](https://fipu.unipu.hr/fipu/predmet/proinz_a)**, **[Web aplikacije](https://fipu.unipu.hr/fipu/predmet/webapl)** i **[Raspodijeljeni sustavi](https://fipu.unipu.hr/fipu/predmet/rassus)**.
+Asinkronim programiranjem bavit ćemo se intenzivnije na kolegijima: **[Programsko inženjerstvo](https://fipu.unipu.hr/fipu/predmet/proinz_a)**, **[Web aplikacije](https://fipu.unipu.hr/fipu/predmet/webapl)** i **[Raspodijeljeni sustavi](https://fipu.unipu.hr/fipu/predmet/rassus_a)**.
 
 ## 3.1 Razumijevanje asinkronog vs. sinkronog
 
@@ -2641,7 +2651,7 @@ U kontekstu manipulacije DOM-om, koristili smo callback funkcije za dodavanje ev
 
 U kontekstu asinkronog programiranja, callback funkcije koristimo za **rukovanje asinkronim operacijama**.
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/async_callback.png?raw=true)
+![alt text](https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/refs/heads/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje/screenshots/async_callback.png)
 
 > Izvor: https://dev.to/marek/are-callbacks-always-asynchronous-bah
 
@@ -2768,7 +2778,7 @@ Kada ste uspješno dohvatili činjenicu o mačkama, pohranite ju u varijablu `ca
 
 > Primjer rezultata
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/cat_fact.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/cat_fact.png?raw=true" style="width: 90%"/>
 
 ## 3.4 Promise objekt
 
@@ -2952,7 +2962,7 @@ function fetchActivity() {
 
 ✅Rezultat:
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/bored.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/bored.png?raw=true" style="width: 90%"/>
 
 To bi bilo što se tiče `Promise` objekta. U sljedećem poglavlju ćemo pokazati kako koristiti `async` i `await` sintaksu za olakšavanje rada s asinkronim operacijama.
 `Promise` objekt ćemo detaljnije obrađivati na budućim kolegijima.
@@ -3057,7 +3067,9 @@ async function fetchActivity() {
 }
 ```
 
-**KRAJ! WOOHO! 🎉**
+**KRAJ! WOOHO! 🎉** 
+
+Sretno svima na kolokviju/ispitu!
 
 # Samostalni zadatak za vježbu 9
 
@@ -3077,4 +3089,4 @@ Koristite `fetch` API za dohvaćanje podataka s web poslužitelja i `async` i `a
 
 > Primjer widgeta
 
-![alt text](https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/bitcoin.png?raw=true)
+<img src="https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/screenshots/bitcoin.png?raw=true" style="width: 100%"/>
