@@ -1,6 +1,7 @@
 {
   "apartmani": [
     {
+      "id": "apartman_1",
       "naziv": "Nebo",
       "slika": "https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/refs/heads/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje/pictures/apartments/apartment_1.jpg",
       "stavke": [
@@ -13,6 +14,7 @@
       "valuta": "euro"
     },
     {
+      "id": "apartman_2",
       "naziv": "More",
       "slika": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/apartments/apartment_2.jpg?raw=true",
       "stavke": [
@@ -25,6 +27,7 @@
       "valuta": "euro"
     },
     {
+      "id": "apartman_3",
       "naziv": "Maslina",
       "slika": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/apartments/apartment_3.jpg?raw=true",
       "stavke": ["3 kreveta", "kuhinja", "terasa", "besplatan WiFi"],
