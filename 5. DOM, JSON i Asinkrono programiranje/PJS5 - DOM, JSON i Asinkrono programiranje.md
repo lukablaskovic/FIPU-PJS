@@ -2544,10 +2544,10 @@ Ispravite greške u sljedećim JSON podacima:
 }
 ```
 
-Nakon što ispravite greške, napišite funkciju `printBooks(JSONbooks)` koja prima JSON podatke o knjigama, pretvara ih u JavaScript objekt i ispisuje sve knjige u konzolu.
+Nakon što ispravite greške, napišite funkciju `logBooks(JSONbooks)` koja prima JSON podatke o knjigama, pretvara ih u JavaScript objekt i ispisuje sve knjige u konzolu.
 
 ```javascript
-function printBooks(JSONbooks) {
+function logBooks(JSONbooks) {
     // Vaš kôd ovdje...
 }
 ```
