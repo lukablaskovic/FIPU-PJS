@@ -2834,7 +2834,7 @@ promise
   })
   .catch((greska) => { // arrow funkcija koja se poziva nakon odbijanja
     console.log(greska); // 'Operacija nije uspješna!'
-  });
+  })
   .finally(() => {
     console.log('Kraj operacije'); // Kraj operacije
   });
