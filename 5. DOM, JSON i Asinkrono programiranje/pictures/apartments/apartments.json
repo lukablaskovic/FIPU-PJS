@@ -1,0 +1,35 @@
+{
+  "apartmani": [
+    {
+      "naziv": "Nebo",
+      "slika": "https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/refs/heads/main/5.%20DOM%2C%20JSON%20i%20Asinkrono%20programiranje/pictures/apartments/apartment_1.jpg",
+      "stavke": [
+        "2 kreveta",
+        "2 kupatila",
+        "besplatan parking",
+        "organizacija izleta brodom"
+      ],
+      "cijena": 110,
+      "valuta": "euro"
+    },
+    {
+      "naziv": "More",
+      "slika": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/apartments/apartment_2.jpg?raw=true",
+      "stavke": [
+        "1 bračni krevet",
+        "klima uređaj",
+        "pogled na more",
+        "besplatan WiFi"
+      ],
+      "cijena": 75.5,
+      "valuta": "euro"
+    },
+    {
+      "naziv": "Maslina",
+      "slika": "https://github.com/lukablaskovic/FIPU-PJS/blob/main/5.%20DOM,%20JSON%20i%20Asinkrono%20programiranje/pictures/apartments/apartment_3.jpg?raw=true",
+      "stavke": ["3 kreveta", "kuhinja", "terasa", "besplatan WiFi"],
+      "cijena": 110,
+      "valuta": "euro"
+    }
+  ]
+}
