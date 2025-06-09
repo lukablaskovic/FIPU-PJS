@@ -1,0 +1,36 @@
+{
+  "shop": {
+    "naziv": "TehnoShop",
+    "adresa": "Ulica Tehnologije 123, Zagreb",
+    "proizvodi": {
+      "zaliha_2024": [
+        {
+          "naziv": "Iphone 14 512 GB, crni",
+          "cijena": 999.99
+        },
+        {
+          "naziv": "Samsung Galaxy S21 256 GB, srebrni",
+          "cijena": 799.99
+        },
+        {
+          "naziv": "Xiaomi Redmi Note 10 Pro 128 GB, plavi",
+          "cijena": 299.99
+        }
+      ],
+      "zaliha_2025": [
+        {
+          "naziv": "Iphone 15 512 GB, plavi",
+          "cijena": 1299.99
+        },
+        {
+          "naziv": "Samsung Galaxy S22 256 GB, crni",
+          "cijena": 899.99
+        },
+        {
+          "naziv": "Xiaomi Redmi Note 11 Pro 128 GB, zeleni",
+          "cijena": 349.99
+        }
+      ]
+    }
+  }
+}
