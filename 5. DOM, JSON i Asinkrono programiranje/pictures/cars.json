@@ -7,7 +7,7 @@
     "boja": "Tamno siva",
     "motor": {
       "vrsta": "Električni",
-      "konjske_snage": 1020,
+      "horsepower": 1020,
       "domet_km": 637
     },
     "značajke": [
@@ -25,7 +25,7 @@
     "boja": "Bijela",
     "motor": {
       "vrsta": "Hibrid",
-      "konjske_snage": 208,
+      "horsepower": 208,
       "domet_km": 933
     },
     "značajke": [
@@ -42,7 +42,7 @@
     "boja": "Plava",
     "motor": {
       "vrsta": "Benzin",
-      "konjske_snage": 400,
+      "horsepower": 400,
       "domet_km": 724
     },
     "značajke": [
@@ -59,7 +59,7 @@
     "boja": "Crna",
     "motor": {
       "vrsta": "Dizel",
-      "konjske_snage": 335,
+      "horsepower": 335,
       "domet_km": 885
     },
     "značajke": [
@@ -76,7 +76,7 @@
     "boja": "Crvena",
     "motor": {
       "vrsta": "Benzin",
-      "konjske_snage": 158,
+      "horsepower": 158,
       "domet_km": 676
     },
     "značajke": [
@@ -93,7 +93,7 @@
     "boja": "Narančasta",
     "motor": {
       "vrsta": "Električni",
-      "konjske_snage": 200,
+      "horsepower": 200,
       "domet_km": 417
     },
     "značajke": [
@@ -110,7 +110,7 @@
     "boja": "Srebrna",
     "motor": {
       "vrsta": "Benzin",
-      "konjske_snage": 362,
+      "horsepower": 362,
       "domet_km": 805
     },
     "značajke": [
@@ -127,7 +127,7 @@
     "boja": "Siva",
     "motor": {
       "vrsta": "Benzin",
-      "konjske_snage": 248,
+      "horsepower": 248,
       "domet_km": 740
     },
     "značajke": [
@@ -144,7 +144,7 @@
     "boja": "Zelena",
     "motor": {
       "vrsta": "Električni",
-      "konjske_snage": 320,
+      "horsepower": 320,
       "domet_km": 499
     },
     "značajke": [
@@ -161,7 +161,7 @@
     "boja": "Bijela",
     "motor": {
       "vrsta": "Električni",
-      "konjske_snage": 750,
+      "horsepower": 750,
       "domet_km": 454
     },
     "značajke": [
