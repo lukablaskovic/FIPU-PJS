@@ -1,0 +1,173 @@
+[
+  {
+    "id": "CAR001",
+    "marka": "Tesla",
+    "model": "Model S",
+    "godina": 2024,
+    "boja": "Tamno siva",
+    "motor": {
+      "vrsta": "Električni",
+      "konjske_snage": 1020,
+      "domet_km": 637
+    },
+    "značajke": [
+      "Autopilot",
+      "Grijana sjedala",
+      "Panoramski krov",
+      "Bluetooth"
+    ]
+  },
+  {
+    "id": "CAR002",
+    "marka": "Toyota",
+    "model": "Camry",
+    "godina": 2022,
+    "boja": "Bijela",
+    "motor": {
+      "vrsta": "Hibrid",
+      "konjske_snage": 208,
+      "domet_km": 933
+    },
+    "značajke": [
+      "Adaptivni tempomat",
+      "Pomoć pri zadržavanju trake",
+      "Bezkontaktni ulaz"
+    ]
+  },
+  {
+    "id": "CAR003",
+    "marka": "Ford",
+    "model": "F-150",
+    "godina": 2023,
+    "boja": "Plava",
+    "motor": {
+      "vrsta": "Benzin",
+      "konjske_snage": 400,
+      "domet_km": 724
+    },
+    "značajke": [
+      "Paket za vuču",
+      "Apple CarPlay",
+      "Stražnja kamera"
+    ]
+  },
+  {
+    "id": "CAR004",
+    "marka": "BMW",
+    "model": "X5",
+    "godina": 2021,
+    "boja": "Crna",
+    "motor": {
+      "vrsta": "Dizel",
+      "konjske_snage": 335,
+      "domet_km": 885
+    },
+    "značajke": [
+      "Kožna sjedala",
+      "Navigacija",
+      "Sustav nadzora mrtvog kuta"
+    ]
+  },
+  {
+    "id": "CAR005",
+    "marka": "Honda",
+    "model": "Civic",
+    "godina": 2020,
+    "boja": "Crvena",
+    "motor": {
+      "vrsta": "Benzin",
+      "konjske_snage": 158,
+      "domet_km": 676
+    },
+    "značajke": [
+      "Stražnja kamera",
+      "Bluetooth",
+      "Tempomat"
+    ]
+  },
+  {
+    "id": "CAR006",
+    "marka": "Chevrolet",
+    "model": "Bolt EV",
+    "godina": 2023,
+    "boja": "Narančasta",
+    "motor": {
+      "vrsta": "Električni",
+      "konjske_snage": 200,
+      "domet_km": 417
+    },
+    "značajke": [
+      "Brzo punjenje",
+      "WiFi hotspot",
+      "Grijani volan"
+    ]
+  },
+  {
+    "id": "CAR007",
+    "marka": "Mercedes-Benz",
+    "model": "E-Class",
+    "godina": 2021,
+    "boja": "Srebrna",
+    "motor": {
+      "vrsta": "Benzin",
+      "konjske_snage": 362,
+      "domet_km": 805
+    },
+    "značajke": [
+      "Ambijentalno osvjetljenje",
+      "Glasovno upravljanje",
+      "360 kamera"
+    ]
+  },
+  {
+    "id": "CAR008",
+    "marka": "Audi",
+    "model": "Q7",
+    "godina": 2022,
+    "boja": "Siva",
+    "motor": {
+      "vrsta": "Benzin",
+      "konjske_snage": 248,
+      "domet_km": 740
+    },
+    "značajke": [
+      "Virtualni kokpit",
+      "Adaptivni zračni ovjes",
+      "Bezkontaktno pokretanje"
+    ]
+  },
+  {
+    "id": "CAR009",
+    "marka": "Kia",
+    "model": "EV6",
+    "godina": 2024,
+    "boja": "Zelena",
+    "motor": {
+      "vrsta": "Električni",
+      "konjske_snage": 320,
+      "domet_km": 499
+    },
+    "značajke": [
+      "Proširena stvarnost HUD",
+      "V2L punjenje",
+      "Grijana sjedala"
+    ]
+  },
+  {
+    "id": "CAR010",
+    "marka": "Porsche",
+    "model": "Taycan",
+    "godina": 2023,
+    "boja": "Bijela",
+    "motor": {
+      "vrsta": "Električni",
+      "konjske_snage": 750,
+      "domet_km": 454
+    },
+    "značajke": [
+      "Sport Chrono paket",
+      "OTA ažuriranja",
+      "Dinamička kontrola šasije"
+    ]
+  }
+]
