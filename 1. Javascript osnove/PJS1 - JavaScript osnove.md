@@ -1,4 +1,6 @@
-# Programiranje u skriptnim jezicima (PJS)
+# Programiranje u skriptnim jezicima ([PJS - 253581](https://fipu.unipu.hr/fipu/predmet/pusj))
+
+<img src="../images/PJS-banner.png" alt="Programiranje u skriptnim jezicima (PJS - 253581)" style="border-radius: 8px;">
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -8,7 +10,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important; "></img>
+<img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important; "></img>
 
 # (1) JavaScript osnove
 
@@ -17,15 +19,15 @@
 <div style="float: clear; margin-right:5px;">
 JavaScript je dinamički i višenamjenski programski jezik koji se najčešće koristi u web programiranju. Inicijalno je razvijen kako bi omogućio interaktivnost na web stranicama, omogućujući dinamičke promjene sadržaja, animacije, validaciju obrazaca i druge funkcionalnosti direktno u pretraživaču korisnika.  
 Međutim, danas se JavaScript koristi i izvan okvira web preglednika. Zahvaljujući razvoju tehnologija poput Node.js-a, postao je snažan alat za izradu server-side aplikacija, API-ja i mikrousluga. Također, pomoću okvira kao što su Electron i React Native, omogućava razvoj desktop i mobilnih aplikacija, čineći ga jednim od najrasprostranjenijih programskih jezika u industriji softverskog inženjerstva.  
-</p>
+</div>
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-**🆙 Posljednje ažurirano: 10.3.2025.**
+**🆙 Posljednje ažurirano: 12.9.2026.**
 
 ## Sadržaj
 
-- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
+- [Programiranje u skriptnim jezicima (PJS - 253581)](#programiranje-u-skriptnim-jezicima-pjs---253581)
 - [(1) JavaScript osnove](#1-javascript-osnove)
   - [Sadržaj](#sadržaj)
 - [1. Uvod](#1-uvod)

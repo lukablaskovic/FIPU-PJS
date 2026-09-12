@@ -1,4 +1,6 @@
-# Programiranje u skriptnim jezicima (PJS)
+# Programiranje u skriptnim jezicima ([PJS - 253581](https://fipu.unipu.hr/fipu/predmet/pusj))
+
+<img src="../images/PJS-banner.png" alt="Programiranje u skriptnim jezicima (PJS - 253581)" style="border-radius: 8px;">
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -8,7 +10,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
+<img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
 
 # [3] Strukture podataka - Objekti i Polja
 
@@ -16,11 +18,11 @@
 
 Strukture podataka su specijalizirani formati podataka namijenjeni efikasnijoj pohrani, organizaciji, dohvatu i obradi podataka. U JavaScriptu, objekti i polja predstavljaju glavne gradivne elemente. **Objekti** su kontejneri koji omogućuju pohranu podataka u obliku proizvoljnog broja parova `"ključ:vrijednost"`, dok **polja** predstavljaju kolekciju različitih elemenata organiziranih u linearni niz. Kombinacija ovih struktura omogućuje efikasno manipuliranje i pristup podacima u JavaScriptu.
 
-**Posljednje ažurirano: 2.8.2024.**
+**🆙 Posljednje ažurirano: 12.9.2026.**
 
 ## Sadržaj
 
-- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
+- [Programiranje u skriptnim jezicima (PJS - 253581)](#programiranje-u-skriptnim-jezicima-pjs---253581)
 - [\[3\] Strukture podataka - Objekti i Polja](#3-strukture-podataka---objekti-i-polja)
   - [Sadržaj](#sadržaj)
 - [1. Objekti (eng. **_objects_**)](#1-objekti-eng-objects)
@@ -243,7 +245,7 @@ console.log(auto.izracunajStarost()); // 4
 U tablici su navedene metode i svojstva objekta `auto`:
 |                            Objekt                            |                           Svojstva                           |         Metode          |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :---------------------: |
-| auto<br><img src="https://www.motortrend.com/uploads/sites/10/2019/09/2020-ford-mustang-fastback-ecoboost-coupe-angular-front.png" style="width:50%; display: block; margin-left: auto; margin-right: auto;"></div> | auto.marka = "Ford"<br>auto.model = "Mustang"<br>auto.godina_proizvodnje = 2020<br>auto.boja = "Crna" | auto.izracunajStarost() |
+| auto<br><img src="../images/ford-mustang.png" style="width:50%; display: block; margin-left: auto; margin-right: auto;"></div> | auto.marka = "Ford"<br>auto.model = "Mustang"<br>auto.godina_proizvodnje = 2020<br>auto.boja = "Crna" | auto.izracunajStarost() |
 
 >✅ Zapamti! Kada pričamo o objektima, **svojstva** su varijable koje pripadaju objektu, a **metode** su funkcije koje pripadaju objektu. 
 

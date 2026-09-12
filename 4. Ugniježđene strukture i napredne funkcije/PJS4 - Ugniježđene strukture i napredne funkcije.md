@@ -1,4 +1,6 @@
-# Programiranje u skriptnim jezicima (PJS)
+# Programiranje u skriptnim jezicima ([PJS - 253581](https://fipu.unipu.hr/fipu/predmet/pusj))
+
+<img src="../images/PJS-banner.png" alt="Programiranje u skriptnim jezicima (PJS - 253581)" style="border-radius: 8px;">
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -8,7 +10,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%;"></img>
+<img src="../images/FIPU_UNIPU.png" style="width:40%;"></img>
 
 # [4] Ugniježđene strukture i Napredne funkcije
 
@@ -17,11 +19,11 @@
 
 <p style="float: clear">"Baratanje" ugniježđenim strukturama (<b><i>eng. nested structures</i></b>) je jedna od ključnih vještina u programiranju. Bilo to u obliku ugniježđenih petlji, objekata, funkcija, ili polja. Dohvat podataka s različitih API-eva, obrada podataka, ili pisanje algoritama, sve to zahtijeva dobro poznavanje ugniježđenih struktura. U ovoj skripti naučit ćete pisati ugniježđene strukture u JavaScriptu i naučiti koristiti napredne funkcije i operatore za jednostavniji rad s njima.</p>
 
-**Posljednje ažurirano: 28.4.2025.**
+**🆙 Posljednje ažurirano: 12.9.2026.**
 
 ## Sadržaj
 
-- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
+- [Programiranje u skriptnim jezicima (PJS - 253581)](#programiranje-u-skriptnim-jezicima-pjs---253581)
 - [\[4\] Ugniježđene strukture i Napredne funkcije](#4-ugniježđene-strukture-i-napredne-funkcije)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u ugniježđene strukture](#1-uvod-u-ugniježđene-strukture)

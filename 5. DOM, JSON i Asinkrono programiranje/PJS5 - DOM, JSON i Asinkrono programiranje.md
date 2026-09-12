@@ -1,4 +1,6 @@
-# Programiranje u skriptnim jezicima (PJS)
+# Programiranje u skriptnim jezicima ([PJS - 253581](https://fipu.unipu.hr/fipu/predmet/pusj))
+
+<img src="../images/PJS-banner.png" alt="Programiranje u skriptnim jezicima (PJS - 253581)" style="border-radius: 8px;">
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -8,7 +10,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%"></img>
+<img src="../images/FIPU_UNIPU.png" style="width:40%"></img>
 
 # [5] DOM, JSON i Asinkrono programiranje
 
@@ -17,11 +19,11 @@
 
 <p style="float: clear">Prilikom izrade web aplikacija i stranica, često ćete na neki način manipulirati strukturom dokumenata i njihovim sadržajem. U ovom poglavlju upoznat ćemo se s Document Object Model (DOM) standardom, koji predstavlja aplikacijsko programsko sučelje (API) za kontrolu HTML-a koristeći Document objekt. Važno je razumjeti kako funkcionira DOM budući da se svi poznati JavaScript razvojni okviri temelje na njemu (React, VUE, Angular, jQuery...). Dodatno, upoznat ćemo se s JSON formatom (JavaScript Object Notation) koji se koristi za razmjenu podataka između klijenta i servera te predstavlja jedan od najčešćih, ako ne i najčešće korišteni format za razmjenu podataka. Za sam kraj ćemo proći asinkrono programiranje i time postaviti dobre temelje za uvod u svijet programskog inženjerstva i razvoja web aplikacija.</p>
 
-**Posljednje ažurirano: 19.5.2025.**
+**🆙 Posljednje ažurirano: 12.9.2026.**
 
 ## Sadržaj
 
-- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
+- [Programiranje u skriptnim jezicima (PJS - 253581)](#programiranje-u-skriptnim-jezicima-pjs---253581)
 - [\[5\] DOM, JSON i Asinkrono programiranje](#5-dom-json-i-asinkrono-programiranje)
   - [Sadržaj](#sadržaj)
 - [0. Ponavljanje HTML-a i CSS-a](#0-ponavljanje-html-a-i-css-a)

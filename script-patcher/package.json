@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pdf": "node render-pdfs.mjs",
+    "test": "node test_pdf.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

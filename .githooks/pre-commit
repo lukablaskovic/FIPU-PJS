@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+import re
+import subprocess
+from datetime import date
+from pathlib import Path
+
+
+def git(*args, input=None):
+    return subprocess.check_output(["git", *args], input=input)
+
+
+def main():
+    today = date.today()
+    stamp = f"{today.day}.{today.month}.{today.year}.".encode()
+    pattern = re.compile(
+        rb"(?m)^(\*\*" + "🆙 Posljednje ažurirano: ".encode()
+        + rb")\d{1,2}\.\d{1,2}\.\d{4}\.(\*\*\r?$)"
+    )
+    paths = git("diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z")
+    for name in paths.split(b"\0"):
+        if not name.endswith(b".md"):
+            continue
+        path = name.decode("utf-8", errors="surrogateescape")
+        mode = git("ls-files", "--stage", "-z", "--", path).split()[0].decode()
+        if mode not in ("100644", "100755"):
+            continue
+        staged = git("show", f":{path}")
+        updated = pattern.sub(lambda m: m[1] + stamp + m[2], staged)
+        if updated == staged:
+            continue
+        # Update the index directly so unstaged edits stay out of the commit.
+        blob = git("hash-object", "-w", "--stdin", input=updated).strip().decode()
+        git("update-index", "--cacheinfo", mode, blob, path)
+        working = Path(path)
+        if working.is_file() and not working.is_symlink():
+            original = working.read_bytes()
+            refreshed = pattern.sub(lambda m: m[1] + stamp + m[2], original)
+            if refreshed != original:
+                working.write_bytes(refreshed)
+
+
+if __name__ == "__main__":
+    main()

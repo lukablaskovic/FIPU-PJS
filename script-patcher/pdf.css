@@ -1,0 +1,30 @@
+/* GitHub-style print layout: Open Sans, blue links, light tables and code. */
+@font-face { font-family: 'Open Sans'; src: url('https://course.invalid/script-patcher/fonts/OpenSans.ttf'); font-weight: 100 900; }
+@font-face { font-family: 'Open Sans'; src: url('https://course.invalid/script-patcher/fonts/OpenSans-Italic.ttf'); font-weight: 100 900; font-style: italic; }
+@page { size: A4; margin: 18mm 16mm; }
+* { box-sizing: border-box; }
+html { font-size: 13px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; color: #333; font-family: 'Open Sans', sans-serif; line-height: 1.6; }
+a { color: #4183c4; text-decoration: none; overflow-wrap: anywhere; }
+h1, h2, h3, h4, h5, h6 { margin: 1rem 0; font-weight: 700; line-height: 1.4; break-after: avoid; }
+h1 { font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid #eee; }
+h2 { font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid #eee; }
+h3 { font-size: 1.5em; } h4 { font-size: 1.25em; }
+h5, h6 { font-size: 1em; } h6 { color: #777; }
+p, blockquote, ul, ol, dl, table { margin: .8em 0; }
+p { orphans: 3; widows: 3; }
+ul, ol { padding-left: 30px; } li > ul, li > ol { margin: 0; }
+blockquote { border-left: 4px solid #dfe2e5; padding: 0 15px; color: #777; }
+hr { border: 0; height: 2px; background: #e7e7e7; margin: 16px 0; }
+img { max-width: 100%; height: auto; max-height: 245mm; object-fit: contain; break-inside: avoid; }
+table { border-collapse: collapse; width: 100%; table-layout: auto; }
+th, td { border: 1px solid #dfe2e5; padding: 6px 10px; overflow-wrap: anywhere; }
+thead, tr:nth-child(even) { background: #f8f8f8; }
+tr { break-inside: avoid; }
+code { font-family: 'DejaVu Sans Mono', Menlo, monospace; font-size: .9em; background: #f3f4f4; padding: 0 2px; border-radius: 3px; overflow-wrap: anywhere; }
+pre { background: #f8f8f8; border: 1px solid #e7eaed; border-radius: 3px; padding: 8px; margin: 15px 0; white-space: pre-wrap; overflow-wrap: anywhere; break-inside: avoid; }
+pre code { padding: 0; background: none; white-space: pre-wrap; }
+div.sourceCode { overflow: visible; }
+pre > code.sourceCode { white-space: pre-wrap; position: static; }
+pre > code.sourceCode > span { text-indent: 0; padding-left: 0; }
+details { display: block; } summary { font-weight: bold; }

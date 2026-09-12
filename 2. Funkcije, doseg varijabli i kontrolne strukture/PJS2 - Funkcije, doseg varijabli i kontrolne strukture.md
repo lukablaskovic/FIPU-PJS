@@ -1,4 +1,6 @@
-# Programiranje u skriptnim jezicima (PJS)
+# Programiranje u skriptnim jezicima ([PJS - 253581](https://fipu.unipu.hr/fipu/predmet/pusj))
+
+<img src="../images/PJS-banner.png" alt="Programiranje u skriptnim jezicima (PJS - 253581)" style="border-radius: 8px;">
 
 **Nositelj**: doc. dr. sc. Nikola Tanković  
 **Asistenti**:
@@ -8,7 +10,7 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
+<img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
 
 # [2] Funkcije, doseg varijabli i kontrolne strukture
 
@@ -18,13 +20,13 @@
 
 <p><b>Kontrolne strukture</b> su konstrukti u programiranju koji odlučuju o toku izvršavanja programa. </p>
 
-**Posljednje ažurirano: 2.8.2024.**
+**🆙 Posljednje ažurirano: 12.9.2026.**
 
 ## Sadržaj
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [Programiranje u skriptnim jezicima (PJS)](#programiranje-u-skriptnim-jezicima-pjs)
+- [Programiranje u skriptnim jezicima (PJS - 253581)](#programiranje-u-skriptnim-jezicima-pjs---253581)
 - [\[2\] Funkcije, doseg varijabli i kontrolne strukture](#2-funkcije-doseg-varijabli-i-kontrolne-strukture)
   - [Sadržaj](#sadržaj)
 - [1. Uvod u funkcije](#1-uvod-u-funkcije)
@@ -1584,7 +1586,7 @@ lozinka = "123456";
 console.log(validirajFormu(ime, prezime, email, lozinka)); // false
 ```
 
-U JavaScriptu, znakovi (uključujući i brojeve i slova) se kodiraju koristeći [Unicode]("https://home.unicode.org/") skup znakova. U ASCII i Unicode skupovima znakova, znakovi se prikazuju numeričkim vrijednostima. Primjerice, u **ASCII** skupu, slovo `a` kodira se brojem `97`, a slovo `z` brojem `122`. Brojevi se kodiraju brojevima od `48` do `57`. Dok u **Unicode** skupu, znak `0` kodira se brojem `0030`, a znak `9` brojem `0039`.
+U JavaScriptu, znakovi (uključujući i brojeve i slova) se kodiraju koristeći [Unicode](https://home.unicode.org/) skup znakova. U ASCII i Unicode skupovima znakova, znakovi se prikazuju numeričkim vrijednostima. Primjerice, u **ASCII** skupu, slovo `a` kodira se brojem `97`, a slovo `z` brojem `122`. Brojevi se kodiraju brojevima od `48` do `57`. Dok u **Unicode** skupu, znak `0` kodira se brojem `0030`, a znak `9` brojem `0039`.
 Imajući to na umu, možemo dodati novu provjeru za `ime` i `prezime`. Funkciju koja provjerava sadrže li ime i prezime samo niz znakova `[a - z]`.
 
 Na ovaj način ne uzimamo u obzir hrvatska slova: `č`, `ć`, `š`, `đ`, `ž`, `lj`, `nj`, `dž`.

@@ -1,4 +1,6 @@
-# Materijali iz kolegija: Programiranje u skriptnim jezicima (PJS)
+# Materijali iz kolegija: Programiranje u skriptnim jezicima ([PJS - 253581](https://fipu.unipu.hr/fipu/predmet/pusj))
+
+<img src="images/PJS-banner.png" alt="Programiranje u skriptnim jezicima (PJS - 253581)" style="border-radius: 8px;">
 
 <p>
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
@@ -13,10 +15,10 @@
 **Ustanova**: [Sveučilište Jurja Dobrile u Puli](https://www.unipu.hr/), [Fakultet informatike u Puli](https://fipu.unipu.hr/)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU_white.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU.png">
-  <img alt="Fakultet informatike u Puli (materijali iz kolegija Raspodijeljeni sustavi - Luka Blašković)" 
-       src="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU_white.png" width="300">
+  <source media="(prefers-color-scheme: dark)" srcset="images/FIPU_UNIPU_white.png">
+  <source media="(prefers-color-scheme: light)" srcset="images/FIPU_UNIPU.png">
+  <img alt="Fakultet informatike u Puli (materijali iz kolegija Programiranje u skriptnim jezicima - Luka Blašković)"
+       src="images/FIPU_UNIPU_white.png" width="300">
 </picture>
 
 ---

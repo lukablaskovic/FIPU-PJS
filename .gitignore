@@ -5,3 +5,10 @@
 .DS_Store
 1. Javascript osnove/md_Programiranje u skriptnim jezicima (PJS).md
 .DS_Store
+
+# Local PDF and Google Drive tools
+script-patcher/credentials.json
+script-patcher/token.json
+script-patcher/.venv/
+script-patcher/node_modules/
+script-patcher/__pycache__/
