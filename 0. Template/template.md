@@ -9,8 +9,8 @@
 
 # Naslov skripte
 
-[comment]: <> (Ažurirati sliku - logojs/js0.png)
-<img src="logojs/js0.png" style="width:9%; float:right;"></img>
+[comment]: <> (Ažurirati sliku - logojs/js1.png)
+<img src="logojs/js1.png" style="width:9%; float:right;"></img>
 
 <p style="float: clear">Uvod od nekoliko rečenica ovdje...</p>
 
