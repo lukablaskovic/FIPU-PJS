@@ -37,7 +37,7 @@ def build(output):
         rows.append(f'''<li data-script="{script}">
 <div><h2><span>{script}</span> {escape(name)}</h2>
 <p>Posljednje ažurirano: <time datetime="{updated.isoformat()}">{updated.day}. {updated.month}. {updated.year}.</time></p></div>
-<nav aria-label="Materijali {script}"><a href="{pdf_url}" target="_blank" rel="noopener">PDF (GitHub)</a><a href="{md_url}" target="_blank" rel="noopener">Skripta</a><a class="detail" href="?script={script}">Izdvojeni prikaz</a></nav></li>''')
+<nav aria-label="Materijali {script}"><a href="{pdf_url}" target="_blank" rel="noopener">PDF (GitHub)</a><a href="{md_url}" target="_blank" rel="noopener">Markdown (GitHub)</a></nav></li>''')
     template = Path(__file__).with_name('status.html').read_text(encoding='utf-8')
     page = template.replace('{{TITLE}}', escape(title)).replace('{{ROWS}}', '\n'.join(rows))
     page = page.replace('{{DRIVE}}', f'https://drive.google.com/drive/folders/{FOLDER_ID}')
