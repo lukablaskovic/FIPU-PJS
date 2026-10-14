@@ -12,3 +12,6 @@ script-patcher/token.json
 script-patcher/.venv/
 script-patcher/node_modules/
 script-patcher/__pycache__/
+
+# Generated script status site
+/_site/

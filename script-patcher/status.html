@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stanje skripti — {{TITLE}}</title>
+<style>
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #202d35; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: clamp(16px, 4vw, 48px); }
+main { max-width: 960px; margin: auto; }
+h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.15; margin: 0 0 12px; text-wrap: balance; }
+header p { margin: 0 0 32px; color: #4c5b64; }
+ul { list-style: none; padding: 0; margin: 0; border-top: 1px solid #cbd4da; }
+li { padding: 24px 0; border-bottom: 1px solid #cbd4da; }
+h2 { font-size: 1.05rem; line-height: 1.5; margin: 0 0 6px; overflow-wrap: anywhere; }
+h2 span { color: #405b6d; margin-right: 8px; }
+p { line-height: 1.6; }
+li p { margin: 0 0 12px; color: #4c5b64; }
+time { color: #202d35; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+a { color: #075c92; text-underline-offset: 4px; padding: 4px 0; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid #075c92; outline-offset: 4px; }
+::selection { background: #cbe6f5; color: #202d35; }
+footer { margin-top: 24px; font-size: .9rem; color: #4c5b64; }
+footer p { margin: 12px 0 0; max-width: 72ch; }
+[hidden] { display: none !important; }
+html.embed body { padding: 12px 16px; }
+.embed header, .embed footer, .embed .detail { display: none; }
+.embed ul { border: 0; }
+.embed li { padding: 0; border: 0; }
+#error { margin: 0; }
+</style>
+<script>
+if (new URLSearchParams(location.search).has('script')) document.documentElement.classList.add('embed');
+</script>
+</head>
+<body>
+<main>
+<header><h1>Stanje skripti iz vježbi</h1><p>{{TITLE}}</p></header>
+<p id="error" hidden>Nepoznata skripta. <a href="?">Prikaži sve skripte</a></p>
+<ul aria-label="Skripte iz vježbi">{{ROWS}}</ul>
+<footer><a href="{{DRIVE}}" target="_blank" rel="noopener">Sve skripte na Google Driveu</a>
+<p>Datumi označavaju posljednje ažuriranje sadržaja skripti. Prikaz se automatski objavljuje nakon uspješne sinkronizacije materijala.</p></footer>
+<noscript><p>Za izdvojeni prikaz uključite JavaScript. Prikazane su sve skripte.</p></noscript>
+</main>
+<script>
+const selected = new URLSearchParams(location.search).get('script');
+if (selected !== null) {
+ let found = false;
+ document.querySelectorAll('[data-script]').forEach(row => {
+   row.hidden = row.dataset.script !== selected;
+   if (!row.hidden) found = true;
+ });
+ document.getElementById('error').hidden = found;
+ if (found) document.title = selected + ' — Posljednje ažurirano';
+}
+</script>
+</body>
+</html>
